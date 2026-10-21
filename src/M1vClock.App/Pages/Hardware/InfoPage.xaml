@@ -17,6 +17,9 @@
                       Visibility="{Binding HasPageError, Converter={StaticResource BoolToVisible}}">
         <TextBlock Style="{StaticResource Banner.Text}" Text="{Binding PageError}" />
       </ContentControl>
+      <ContentControl Style="{StaticResource Banner}" Margin="0,0,0,16" Visibility="{Binding Notice, Converter={StaticResource NullToCollapsed}}">
+        <TextBlock Style="{StaticResource Banner.Text}" Text="{Binding Notice}" />
+      </ContentControl>
       <ItemsControl ItemsSource="{Binding Sections}" ItemTemplate="{StaticResource InfoSectionTemplate}" Focusable="False" />
       <TextBlock Text="{Binding FooterNote}" Style="{StaticResource Text.Caption}" Foreground="{DynamicResource Brush.TextTertiary}" Margin="4,0,0,0"
                  Visibility="{Binding FooterNote, Converter={StaticResource NullToCollapsed}}" />

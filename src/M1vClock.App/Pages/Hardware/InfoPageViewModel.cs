@@ -17,6 +17,9 @@ public abstract partial class InfoPageViewModel : HardwarePageViewModel
     [ObservableProperty]
     public partial string FooterNote { get; set; } = string.Empty;
 
+    [ObservableProperty]
+    public partial string Notice { get; set; } = string.Empty;
+
     protected void Add(InfoSectionViewModel section)
     {
         ArgumentNullException.ThrowIfNull(section);

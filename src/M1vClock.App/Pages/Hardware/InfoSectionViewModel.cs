@@ -1,6 +1,7 @@
 using System.Collections.ObjectModel;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
+using M1vClock.App.DesignSystem.Controls;
 using M1vClock.App.Formatting;
 using M1vClock.App.Localization;
 using M1vClock.Core.Privacy;
@@ -50,6 +51,14 @@ public sealed partial class InfoSectionViewModel(string title, string iconKey) :
 
     public ObservableCollection<InfoRowViewModel> Rows { get; } = [];
 
+    public ObservableCollection<string> Notes { get; } = [];
+
+    public bool HasSubtitle => !string.IsNullOrEmpty(Subtitle);
+
+    public bool HasStatus => !string.IsNullOrEmpty(StatusText);
+
+    public bool HasNotes => Notes.Count > 0;
+
     public bool IsLoading => State == SectionState.Loading;
 
     public bool IsReady => State == SectionState.Ready;
@@ -67,9 +76,31 @@ public sealed partial class InfoSectionViewModel(string title, string iconKey) :
     [ObservableProperty]
     public partial IRelayCommand? RetryCommand { get; set; }
 
+    [ObservableProperty]
+    public partial string Subtitle { get; set; } = string.Empty;
+
+    [ObservableProperty]
+    public partial string StatusText { get; set; } = string.Empty;
+
+    [ObservableProperty]
+    public partial MetricState StatusTone { get; set; }
+
+    public void SetNotes(IEnumerable<string> notes)
+    {
+        ArgumentNullException.ThrowIfNull(notes);
+        Notes.Clear();
+        foreach (var note in notes)
+        {
+            Notes.Add(note);
+        }
+
+        OnPropertyChanged(nameof(HasNotes));
+    }
+
     public void SetLoading()
     {
         Rows.Clear();
+        SetNotes([]);
         Error = string.Empty;
         State = SectionState.Loading;
     }
@@ -90,6 +121,7 @@ public sealed partial class InfoSectionViewModel(string title, string iconKey) :
     public void SetFailed(string error)
     {
         Rows.Clear();
+        SetNotes([]);
         Error = error;
         State = SectionState.Failed;
     }
@@ -115,4 +147,8 @@ public sealed partial class InfoSectionViewModel(string title, string iconKey) :
     }
 
     partial void OnErrorChanged(string value) => OnPropertyChanged(nameof(ErrorDetail));
+
+    partial void OnSubtitleChanged(string value) => OnPropertyChanged(nameof(HasSubtitle));
+
+    partial void OnStatusTextChanged(string value) => OnPropertyChanged(nameof(HasStatus));
 }
