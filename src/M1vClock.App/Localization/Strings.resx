@@ -580,7 +580,7 @@
     <value>Destaque</value>
   </data>
   <data name="Token.AccentForeground" xml:space="preserve">
-    <value>Destaque em texto</value>
+    <value>Texto destaque</value>
   </data>
   <data name="Token.Positive" xml:space="preserve">
     <value>Positivo</value>
