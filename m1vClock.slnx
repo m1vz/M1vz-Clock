@@ -1,0 +1,19 @@
+<Solution>
+  <Folder Name="/src/">
+    <Project Path="src/M1vClock.App/M1vClock.App.csproj" />
+    <Project Path="src/M1vClock.Core/M1vClock.Core.csproj" />
+    <Project Path="src/M1vClock.Hardware/M1vClock.Hardware.csproj" />
+    <Project Path="src/M1vClock.Benchmarks/M1vClock.Benchmarks.csproj" />
+    <Project Path="src/M1vClock.Tuning/M1vClock.Tuning.csproj" />
+    <Project Path="src/M1vClock.Optimize/M1vClock.Optimize.csproj" />
+    <Project Path="src/M1vClock.Diagnostics/M1vClock.Diagnostics.csproj" />
+    <Project Path="src/M1vClock.Games/M1vClock.Games.csproj" />
+    <Project Path="src/M1vClock.Integrations/M1vClock.Integrations.csproj" />
+    <Project Path="src/M1vClock.Maker/M1vClock.Maker.csproj" />
+  </Folder>
+  <Folder Name="/tests/">
+    <Project Path="tests/M1vClock.Core.Tests/M1vClock.Core.Tests.csproj" />
+    <Project Path="tests/M1vClock.App.Tests/M1vClock.App.Tests.csproj" />
+    <Project Path="tests/M1vClock.Architecture.Tests/M1vClock.Architecture.Tests.csproj" />
+  </Folder>
+</Solution>
