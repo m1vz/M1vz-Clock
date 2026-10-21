@@ -300,11 +300,10 @@ public sealed partial class DesignSystemPageViewModel : PageViewModel, IDisposab
     private static MotionSpecViewModel Spec(string nameKey, string useKey, SpringSpec spec)
     {
         var settle = SpringMath.SettleTime(spec, 0.95) * 1000;
-        var values = string.Format(
-            CultureInfo.GetCultureInfo("pt-BR"),
-            Loc.Get("Motion.Values"),
-            spec.DampingRatio.ToString("0.0", CultureInfo.GetCultureInfo("pt-BR")),
-            spec.Response.ToString("0.00", CultureInfo.GetCultureInfo("pt-BR")),
+        var values = Loc.Format(
+            "Motion.Values",
+            spec.DampingRatio.ToString("0.0", Loc.Culture),
+            spec.Response.ToString("0.00", Loc.Culture),
             Math.Round(settle));
         return new MotionSpecViewModel(Loc.Get(nameKey), Loc.Get(useKey), values);
     }
