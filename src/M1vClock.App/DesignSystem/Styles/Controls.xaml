@@ -489,6 +489,58 @@
     </Setter>
   </Style>
 
+  <Style TargetType="dc:StateBadge">
+    <Setter Property="Focusable" Value="False" />
+    <Setter Property="Template">
+      <Setter.Value>
+        <ControlTemplate TargetType="dc:StateBadge">
+          <Border x:Name="Chip" CornerRadius="6" Padding="8,3" Background="{DynamicResource Brush.FillPrimary}" HorizontalAlignment="Left">
+            <StackPanel Orientation="Horizontal">
+              <dc:Icon x:Name="Glyph" Size="12" StrokeThickness="2" Margin="0,0,5,0" VerticalAlignment="Center" Foreground="{DynamicResource Brush.TextSecondary}"
+                       Data="{StaticResource Icon.Info}" />
+              <TextBlock x:Name="Label" Text="{TemplateBinding Text}" Style="{StaticResource Text.Caption}" VerticalAlignment="Center" Foreground="{DynamicResource Brush.TextSecondary}" />
+            </StackPanel>
+          </Border>
+          <ControlTemplate.Triggers>
+            <Trigger Property="State" Value="Good">
+              <Setter TargetName="Chip" Property="Background" Value="{DynamicResource Brush.PositiveSubtle}" />
+              <Setter TargetName="Glyph" Property="Data" Value="{StaticResource Icon.Success}" />
+              <Setter TargetName="Glyph" Property="Foreground" Value="{DynamicResource Brush.Positive}" />
+              <Setter TargetName="Label" Property="Foreground" Value="{DynamicResource Brush.Positive}" />
+            </Trigger>
+            <Trigger Property="State" Value="Warning">
+              <Setter TargetName="Chip" Property="Background" Value="{DynamicResource Brush.WarningSubtle}" />
+              <Setter TargetName="Glyph" Property="Data" Value="{StaticResource Icon.Warning}" />
+              <Setter TargetName="Glyph" Property="Foreground" Value="{DynamicResource Brush.Warning}" />
+              <Setter TargetName="Label" Property="Foreground" Value="{DynamicResource Brush.Warning}" />
+            </Trigger>
+            <Trigger Property="State" Value="Critical">
+              <Setter TargetName="Chip" Property="Background" Value="{DynamicResource Brush.CriticalSubtle}" />
+              <Setter TargetName="Glyph" Property="Data" Value="{StaticResource Icon.Error}" />
+              <Setter TargetName="Glyph" Property="Foreground" Value="{DynamicResource Brush.Critical}" />
+              <Setter TargetName="Label" Property="Foreground" Value="{DynamicResource Brush.Critical}" />
+            </Trigger>
+          </ControlTemplate.Triggers>
+        </ControlTemplate>
+      </Setter.Value>
+    </Setter>
+  </Style>
+
+  <Style TargetType="dc:RingGauge">
+    <Setter Property="Foreground" Value="{DynamicResource Brush.Accent}" />
+    <Setter Property="Track" Value="{DynamicResource Brush.FillPrimary}" />
+    <Setter Property="Width" Value="84" />
+    <Setter Property="Height" Value="84" />
+    <Style.Triggers>
+      <Trigger Property="State" Value="Warning">
+        <Setter Property="Foreground" Value="{DynamicResource Brush.Warning}" />
+      </Trigger>
+      <Trigger Property="State" Value="Critical">
+        <Setter Property="Foreground" Value="{DynamicResource Brush.Critical}" />
+      </Trigger>
+    </Style.Triggers>
+  </Style>
+
   <Style TargetType="dc:EmptyState">
     <Setter Property="Focusable" Value="False" />
     <Setter Property="HorizontalAlignment" Value="Center" />
