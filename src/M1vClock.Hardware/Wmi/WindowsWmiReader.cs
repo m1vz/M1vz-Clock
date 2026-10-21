@@ -11,6 +11,18 @@ public sealed class WindowsWmiReader : IWmiReader
     public IReadOnlyList<WmiRow> Query(WmiQuery query)
     {
         ArgumentNullException.ThrowIfNull(query);
+        try
+        {
+            return Run(query);
+        }
+        catch (ManagementException ex) when (ex.ErrorCode == ManagementStatus.AccessDenied)
+        {
+            throw new UnauthorizedAccessException($"Access denied to {query.ClassName}.", ex);
+        }
+    }
+
+    private static List<WmiRow> Run(WmiQuery query)
+    {
         var scope = new ManagementScope(query.Scope, new ConnectionOptions { Timeout = ConnectTimeout });
         var options = new WmiEnumerationOptions { Timeout = QueryTimeout, ReturnImmediately = false };
         using var searcher = new ManagementObjectSearcher(scope, new ObjectQuery(query.ToWql()), options);
