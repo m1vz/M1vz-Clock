@@ -144,8 +144,8 @@ public sealed class MomentumTrack : Border
         var min = SnapX(0);
         var max = SnapX(Stops - 1);
         var x = raw < min
-            ? min + SpringMath.RubberBand(raw - min, ActualWidth)
-            : raw > max ? max + SpringMath.RubberBand(raw - max, ActualWidth) : raw;
+            ? min + SpringMath.RubberBand(raw - min, PuckSize)
+            : raw > max ? max + SpringMath.RubberBand(raw - max, PuckSize) : raw;
         SpringAnimator.Set(_offset, TranslateTransform.XProperty, x);
         _velocity.Add(Now, x);
     }

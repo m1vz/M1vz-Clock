@@ -90,4 +90,7 @@ internal static partial class CoreLog
 
     [LoggerMessage(EventId = 1404, Level = LogLevel.Warning, Message = "{CommandLine} não terminou em {Seconds} s e foi encerrado.")]
     public static partial void ProcessTimedOut(ILogger logger, string commandLine, double seconds);
+
+    [LoggerMessage(EventId = 1501, Level = LogLevel.Warning, Message = "Arquivo de sessão ilegível em {Path}; foi descartado.")]
+    public static partial void SessionStateUnreadable(ILogger logger, Exception exception, string path);
 }

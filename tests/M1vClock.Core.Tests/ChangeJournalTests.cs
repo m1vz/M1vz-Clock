@@ -1,5 +1,6 @@
 using M1vClock.Core.Journal;
 using M1vClock.Core.RegistryValues;
+using M1vClock.Core.RestorePoints;
 using Microsoft.Extensions.Logging.Abstractions;
 using Microsoft.Extensions.Time.Testing;
 using Microsoft.Win32;
@@ -179,6 +180,31 @@ public sealed class ChangeJournalTests : IDisposable
         var again = journal.Undo(applied.Entry.Id);
 
         Assert.Equal(UndoStatus.NotApplied, again.Status);
+    }
+
+    [Fact]
+    public async Task ChangeThatDoesNotAffectTheSystemSkipsTheRestorePoint()
+    {
+        using var journal = CreateJournal();
+        var change = RegistryValueChanges.Set("Demonstração", "Valor de teste", GameMode, RegistryValueState.DWord(1), affectsSystem: false);
+
+        var outcome = await journal.ApplyAsync(change, TestContext.Current.CancellationToken);
+
+        Assert.True(outcome.Succeeded);
+        Assert.Equal(0, _gate.Calls);
+        Assert.Equal(RestorePointGateStatus.NotRequired, outcome.RestorePoint.Status);
+        Assert.True(outcome.RestorePoint.IsProtected);
+    }
+
+    [Fact]
+    public async Task ChangeThatAffectsTheSystemStillAsksForTheRestorePoint()
+    {
+        using var journal = CreateJournal();
+
+        var outcome = await journal.ApplyAsync(SetGameMode(1), TestContext.Current.CancellationToken);
+
+        Assert.Equal(1, _gate.Calls);
+        Assert.Equal(RestorePointGateStatus.CreatedNow, outcome.RestorePoint.Status);
     }
 
     private static SystemChange SetGameMode(int value) =>

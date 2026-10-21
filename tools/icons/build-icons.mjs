@@ -104,7 +104,11 @@ function convertPath(d) {
           pairs.push(point(values[n], values[n + 1]));
         }
       }
-      parts.push(`${command} ${pairs.join(" ")}`);
+      if (upper === "M" && command === "m" && parts.length === 0) {
+        parts.push(`M ${pairs.join(" ")}`);
+      } else {
+        parts.push(`${command} ${pairs.join(" ")}`);
+      }
       if (upper === "M") {
         command = command === "M" ? "L" : "l";
       }

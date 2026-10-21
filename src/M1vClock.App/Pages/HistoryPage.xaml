@@ -14,7 +14,7 @@
     <StackPanel>
       <ContentControl Style="{StaticResource Banner}" Margin="0,0,0,16"
                       Visibility="{Binding Feedback, Converter={StaticResource NullToCollapsed}}">
-        <TextBlock Text="{Binding Feedback}" />
+        <TextBlock Style="{StaticResource Banner.Text}" Text="{Binding Feedback}" />
       </ContentControl>
 
       <Border Style="{StaticResource Card}" Padding="24,48" Visibility="{Binding IsEmpty, Converter={StaticResource BoolToVisible}}">

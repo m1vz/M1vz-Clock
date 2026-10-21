@@ -8,18 +8,36 @@
     <StackPanel>
       <TextBlock Text="{l:Text Settings.Appearance}" Style="{StaticResource Section.Title}" Margin="0,0,0,12" />
       <Border Style="{StaticResource Card}" Padding="20,16">
-        <DockPanel>
-          <dc:SegmentedControl DockPanel.Dock="Right" Width="264" SelectedIndex="{Binding ThemeIndex}" VerticalAlignment="Center"
-                               AutomationProperties.Name="{l:Text Settings.Theme}">
-            <dc:SegmentedItem Content="{l:Text Settings.Theme.System}" />
-            <dc:SegmentedItem Content="{l:Text Settings.Theme.Light}" />
-            <dc:SegmentedItem Content="{l:Text Settings.Theme.Dark}" />
-          </dc:SegmentedControl>
-          <StackPanel Margin="0,0,24,0">
-            <TextBlock Text="{l:Text Settings.Theme}" Style="{StaticResource Text.Body}" />
-            <TextBlock Text="{l:Text Settings.Theme.Detail}" Style="{StaticResource Text.Subhead.Secondary}" TextWrapping="Wrap" />
-          </StackPanel>
-        </DockPanel>
+        <StackPanel>
+          <DockPanel>
+            <dc:SegmentedControl DockPanel.Dock="Right" Width="264" SelectedIndex="{Binding ThemeIndex}" VerticalAlignment="Center"
+                                 AutomationProperties.Name="{l:Text Settings.Theme}">
+              <dc:SegmentedItem Content="{l:Text Settings.Theme.System}" />
+              <dc:SegmentedItem Content="{l:Text Settings.Theme.Light}" />
+              <dc:SegmentedItem Content="{l:Text Settings.Theme.Dark}" />
+            </dc:SegmentedControl>
+            <StackPanel Margin="0,0,24,0">
+              <TextBlock Text="{l:Text Settings.Theme}" Style="{StaticResource Text.Body}" />
+              <TextBlock Text="{l:Text Settings.Theme.Detail}" Style="{StaticResource Text.Subhead.Secondary}" TextWrapping="Wrap" />
+            </StackPanel>
+          </DockPanel>
+          <Border Style="{StaticResource Separator.Horizontal}" Margin="0,12" />
+          <DockPanel>
+            <dc:SegmentedControl DockPanel.Dock="Right" Width="216" SelectedIndex="{Binding LanguageIndex}" VerticalAlignment="Center"
+                                 AutomationProperties.Name="{l:Text Settings.Language}">
+              <dc:SegmentedItem Content="{l:Text Settings.Language.Portuguese}" />
+              <dc:SegmentedItem Content="{l:Text Settings.Language.English}" />
+            </dc:SegmentedControl>
+            <StackPanel Margin="0,0,24,0">
+              <TextBlock Text="{l:Text Settings.Language}" Style="{StaticResource Text.Body}" />
+              <TextBlock Text="{l:Text Settings.Language.Detail}" Style="{StaticResource Text.Subhead.Secondary}" TextWrapping="Wrap" />
+            </StackPanel>
+          </DockPanel>
+          <ContentControl Style="{StaticResource Banner}" Margin="0,12,0,0"
+                          Visibility="{Binding RestartRequired, Converter={StaticResource BoolToVisible}}">
+            <TextBlock Style="{StaticResource Banner.Text}" Text="{l:Text Settings.Language.Restart}" />
+          </ContentControl>
+        </StackPanel>
       </Border>
 
       <TextBlock Text="{l:Text Settings.About}" Style="{StaticResource Section.Title}" Margin="0,32,0,12" />
@@ -45,14 +63,14 @@
           </DockPanel>
           <ContentControl Style="{StaticResource Banner.Critical}" Margin="0,12,0,0"
                           Visibility="{Binding ActionError, Converter={StaticResource NullToCollapsed}}">
-            <TextBlock Text="{Binding ActionError}" />
+            <TextBlock Style="{StaticResource Banner.Text}" Text="{Binding ActionError}" />
           </ContentControl>
         </StackPanel>
       </Border>
 
       <TextBlock Text="{l:Text Settings.Privacy}" Style="{StaticResource Section.Title}" Margin="0,32,0,12" />
       <ContentControl Style="{StaticResource Banner}">
-        <TextBlock Text="{l:Text Settings.Privacy.Text}" />
+        <TextBlock Style="{StaticResource Banner.Text}" Text="{l:Text Settings.Privacy.Text}" />
       </ContentControl>
     </StackPanel>
   </dc:PageScaffold>

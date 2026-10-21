@@ -35,16 +35,9 @@ public partial class App : Application
     protected override void OnStartup(StartupEventArgs e)
     {
         base.OnStartup(e);
-        var culture = CultureInfo.GetCultureInfo("pt-BR");
-        CultureInfo.DefaultThreadCurrentCulture = culture;
-        CultureInfo.DefaultThreadCurrentUICulture = culture;
-        Thread.CurrentThread.CurrentCulture = culture;
-        Thread.CurrentThread.CurrentUICulture = culture;
-        Loc.Culture = culture;
-        FrameworkElement.LanguageProperty.OverrideMetadata(
-            typeof(FrameworkElement), new FrameworkPropertyMetadata(XmlLanguage.GetLanguage(culture.IetfLanguageTag)));
-
         var services = _host.Services;
+        var settings = services.GetRequiredService<AppSettingsService>();
+        ApplyCulture(SupportedLanguages.Resolve(settings.Current.Language));
         _logger = services.GetRequiredService<ILogger<App>>();
         _session = services.GetRequiredService<SessionTracker>();
         DispatcherUnhandledException += OnDispatcherUnhandledException;
@@ -52,7 +45,8 @@ public partial class App : Application
         TaskScheduler.UnobservedTaskException += OnUnobservedTaskException;
 
         var paths = services.GetRequiredService<AppPaths>();
-        AppLog.Started(_logger, _version, services.GetRequiredService<AppInfo>().IsElevated, paths.Root);
+        var info = services.GetRequiredService<AppInfo>();
+        AppLog.Started(_logger, _version, info.IsElevated, paths.Root);
         foreach (var quarantined in paths.QuarantinedDirectories)
         {
             AppLog.DirectoryQuarantined(_logger, quarantined);
@@ -64,7 +58,6 @@ public partial class App : Application
             AppLog.PreviousSessionCrashed(_logger, previous.Version, previous.StartedAt);
         }
 
-        var settings = services.GetRequiredService<AppSettingsService>();
         AppLog.SettingsLoaded(_logger, settings.LoadStatus);
         var options = services.GetRequiredService<StartupOptions>();
         var theme = services.GetRequiredService<ThemeService>();
@@ -88,6 +81,17 @@ public partial class App : Application
                 window.BringToFront();
             }),
             ex => AppLog.ActivationChannelFailed(_logger, ex));
+    }
+
+    private static void ApplyCulture(CultureInfo culture)
+    {
+        CultureInfo.DefaultThreadCurrentCulture = culture;
+        CultureInfo.DefaultThreadCurrentUICulture = culture;
+        Thread.CurrentThread.CurrentCulture = culture;
+        Thread.CurrentThread.CurrentUICulture = culture;
+        Loc.Culture = culture;
+        FrameworkElement.LanguageProperty.OverrideMetadata(
+            typeof(FrameworkElement), new FrameworkPropertyMetadata(XmlLanguage.GetLanguage(culture.IetfLanguageTag)));
     }
 
     protected override void OnExit(ExitEventArgs e)

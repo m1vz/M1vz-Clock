@@ -1,0 +1,954 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="Common.Ok" xml:space="preserve">
+    <value>OK</value>
+  </data>
+  <data name="Common.Cancel" xml:space="preserve">
+    <value>Cancel</value>
+  </data>
+  <data name="Common.Close" xml:space="preserve">
+    <value>Close</value>
+  </data>
+  <data name="Window.Minimize" xml:space="preserve">
+    <value>Minimize</value>
+  </data>
+  <data name="Window.Maximize" xml:space="preserve">
+    <value>Maximize</value>
+  </data>
+  <data name="Window.Restore" xml:space="preserve">
+    <value>Restore</value>
+  </data>
+  <data name="Window.Close" xml:space="preserve">
+    <value>Close</value>
+  </data>
+  <data name="Search.Placeholder" xml:space="preserve">
+    <value>Search pages and actions</value>
+  </data>
+  <data name="Search.Empty" xml:space="preserve">
+    <value>Nothing found.</value>
+  </data>
+  <data name="Search.Hint" xml:space="preserve">
+    <value>↑ ↓ to choose · Enter to open · Esc to close</value>
+  </data>
+  <data name="Search.Kind.Action" xml:space="preserve">
+    <value>Action</value>
+  </data>
+  <data name="Action.theme.light.Title" xml:space="preserve">
+    <value>Use light theme</value>
+  </data>
+  <data name="Action.theme.light.Keywords" xml:space="preserve">
+    <value>theme,light,appearance</value>
+  </data>
+  <data name="Action.theme.dark.Title" xml:space="preserve">
+    <value>Use dark theme</value>
+  </data>
+  <data name="Action.theme.dark.Keywords" xml:space="preserve">
+    <value>theme,dark,appearance,night</value>
+  </data>
+  <data name="Action.theme.system.Title" xml:space="preserve">
+    <value>Follow the Windows theme</value>
+  </data>
+  <data name="Action.theme.system.Keywords" xml:space="preserve">
+    <value>theme,system,automatic,windows</value>
+  </data>
+  <data name="Action.logs.open.Title" xml:space="preserve">
+    <value>Open logs folder</value>
+  </data>
+  <data name="Action.logs.open.Keywords" xml:space="preserve">
+    <value>logs,log,folder,errors</value>
+  </data>
+  <data name="Dialog.Changes" xml:space="preserve">
+    <value>What changes</value>
+  </data>
+  <data name="Dialog.Undo" xml:space="preserve">
+    <value>How to undo</value>
+  </data>
+  <data name="Crash.Title" xml:space="preserve">
+    <value>m1vClock closed unexpectedly</value>
+  </data>
+  <data name="Crash.Message" xml:space="preserve">
+    <value>The session started on {0} ended without closing normally. Details are in the log.</value>
+  </data>
+  <data name="Crash.OpenLogs" xml:space="preserve">
+    <value>Open logs</value>
+  </data>
+  <data name="Error.Unexpected.Title" xml:space="preserve">
+    <value>Something went wrong</value>
+  </data>
+  <data name="Error.Unexpected.Message" xml:space="preserve">
+    <value>The action did not finish. The error was written to the log.</value>
+  </data>
+  <data name="Placeholder.Title" xml:space="preserve">
+    <value>Not available yet</value>
+  </data>
+  <data name="Placeholder.Footnote" xml:space="preserve">
+    <value>Arrives in phase {0} of the plan.</value>
+  </data>
+  <data name="Chart.SecondsAgo" xml:space="preserve">
+    <value>{0} s ago</value>
+  </data>
+  <data name="State.Normal" xml:space="preserve">
+    <value>Normal</value>
+  </data>
+  <data name="State.Warm" xml:space="preserve">
+    <value>Hot</value>
+  </data>
+  <data name="State.High" xml:space="preserve">
+    <value>High</value>
+  </data>
+  <data name="State.Full" xml:space="preserve">
+    <value>Almost full</value>
+  </data>
+  <data name="Section.Top" xml:space="preserve">
+    <value>Home</value>
+  </data>
+  <data name="Section.Hardware" xml:space="preserve">
+    <value>Hardware</value>
+  </data>
+  <data name="Section.Performance" xml:space="preserve">
+    <value>Performance</value>
+  </data>
+  <data name="Section.Games" xml:space="preserve">
+    <value>Games</value>
+  </data>
+  <data name="Section.System" xml:space="preserve">
+    <value>Windows</value>
+  </data>
+  <data name="Section.Devices" xml:space="preserve">
+    <value>Devices</value>
+  </data>
+  <data name="Section.App" xml:space="preserve">
+    <value>App</value>
+  </data>
+  <data name="Page.Overview.Title" xml:space="preserve">
+    <value>Overview</value>
+  </data>
+  <data name="Page.Overview.Description" xml:space="preserve">
+    <value>Temperatures, usage and PC status on one screen.</value>
+  </data>
+  <data name="Page.Overview.Keywords" xml:space="preserve">
+    <value>home,summary,dashboard,panel</value>
+  </data>
+  <data name="Page.System.Title" xml:space="preserve">
+    <value>System</value>
+  </data>
+  <data name="Page.System.Description" xml:space="preserve">
+    <value>Processor, motherboard, BIOS and Windows version.</value>
+  </data>
+  <data name="Page.System.Keywords" xml:space="preserve">
+    <value>cpu,processor,motherboard,bios,windows,specifications</value>
+  </data>
+  <data name="Page.Sensors.Title" xml:space="preserve">
+    <value>Sensors</value>
+  </data>
+  <data name="Page.Sensors.Description" xml:space="preserve">
+    <value>Temperatures, voltages, clocks and fans in real time.</value>
+  </data>
+  <data name="Page.Sensors.Keywords" xml:space="preserve">
+    <value>temperature,voltage,clock,fan,rpm</value>
+  </data>
+  <data name="Page.Gpu.Title" xml:space="preserve">
+    <value>Graphics card</value>
+  </data>
+  <data name="Page.Gpu.Description" xml:space="preserve">
+    <value>Clocks, temperature, video memory and driver.</value>
+  </data>
+  <data name="Page.Gpu.Keywords" xml:space="preserve">
+    <value>gpu,video,graphics,vram,radeon,geforce</value>
+  </data>
+  <data name="Page.Memory.Title" xml:space="preserve">
+    <value>Memory</value>
+  </data>
+  <data name="Page.Memory.Description" xml:space="preserve">
+    <value>Installed modules, frequency, timings and usage.</value>
+  </data>
+  <data name="Page.Memory.Keywords" xml:space="preserve">
+    <value>ram,memory,ddr,latency,timings,xmp</value>
+  </data>
+  <data name="Page.Storage.Title" xml:space="preserve">
+    <value>Storage</value>
+  </data>
+  <data name="Page.Storage.Description" xml:space="preserve">
+    <value>Drives, SMART health and free space.</value>
+  </data>
+  <data name="Page.Storage.Keywords" xml:space="preserve">
+    <value>disk,drive,ssd,hdd,nvme,smart,space</value>
+  </data>
+  <data name="Page.Power.Title" xml:space="preserve">
+    <value>Power</value>
+  </data>
+  <data name="Page.Power.Description" xml:space="preserve">
+    <value>Power plans and battery.</value>
+  </data>
+  <data name="Page.Power.Keywords" xml:space="preserve">
+    <value>power,plan,battery,powercfg,performance</value>
+  </data>
+  <data name="Page.Network.Title" xml:space="preserve">
+    <value>Network</value>
+  </data>
+  <data name="Page.Network.Description" xml:space="preserve">
+    <value>Adapters, DNS and latency.</value>
+  </data>
+  <data name="Page.Network.Keywords" xml:space="preserve">
+    <value>network,internet,dns,ping,latency,wifi,ethernet</value>
+  </data>
+  <data name="Page.Devices.Title" xml:space="preserve">
+    <value>Devices</value>
+  </data>
+  <data name="Page.Devices.Description" xml:space="preserve">
+    <value>USB peripherals and devices with problems.</value>
+  </data>
+  <data name="Page.Devices.Keywords" xml:space="preserve">
+    <value>usb,devices,peripherals,device manager</value>
+  </data>
+  <data name="Page.Benchmarks.Title" xml:space="preserve">
+    <value>Benchmarks</value>
+  </data>
+  <data name="Page.Benchmarks.Description" xml:space="preserve">
+    <value>CPU, memory, disk and GPU with comparable results.</value>
+  </data>
+  <data name="Page.Benchmarks.Keywords" xml:space="preserve">
+    <value>benchmark,test,performance,score</value>
+  </data>
+  <data name="Page.Stress.Title" xml:space="preserve">
+    <value>Stress test</value>
+  </data>
+  <data name="Page.Stress.Description" xml:space="preserve">
+    <value>Sustained load to check stability and temperature.</value>
+  </data>
+  <data name="Page.Stress.Keywords" xml:space="preserve">
+    <value>stress,stability,load</value>
+  </data>
+  <data name="Page.Overclock.Title" xml:space="preserve">
+    <value>Overclock</value>
+  </data>
+  <data name="Page.Overclock.Description" xml:space="preserve">
+    <value>CPU and GPU tuning with safe limits and undo.</value>
+  </data>
+  <data name="Page.Overclock.Keywords" xml:space="preserve">
+    <value>overclock,oc,undervolt,curve optimizer,clock</value>
+  </data>
+  <data name="Page.Library.Title" xml:space="preserve">
+    <value>Library</value>
+  </data>
+  <data name="Page.Library.Description" xml:space="preserve">
+    <value>Games installed from Steam, Epic and other stores.</value>
+  </data>
+  <data name="Page.Library.Keywords" xml:space="preserve">
+    <value>games,steam,epic,library</value>
+  </data>
+  <data name="Page.Fps.Title" xml:space="preserve">
+    <value>FPS</value>
+  </data>
+  <data name="Page.Fps.Description" xml:space="preserve">
+    <value>Frames per second and frame time.</value>
+  </data>
+  <data name="Page.Fps.Keywords" xml:space="preserve">
+    <value>fps,frametime,frames,performance</value>
+  </data>
+  <data name="Page.Bottleneck.Title" xml:space="preserve">
+    <value>Bottleneck</value>
+  </data>
+  <data name="Page.Bottleneck.Description" xml:space="preserve">
+    <value>Shows whether the CPU or the GPU limits performance.</value>
+  </data>
+  <data name="Page.Bottleneck.Keywords" xml:space="preserve">
+    <value>bottleneck,limit</value>
+  </data>
+  <data name="Page.Overlay.Title" xml:space="preserve">
+    <value>Overlay</value>
+  </data>
+  <data name="Page.Overlay.Description" xml:space="preserve">
+    <value>Metrics on top of the game.</value>
+  </data>
+  <data name="Page.Overlay.Keywords" xml:space="preserve">
+    <value>overlay,osd</value>
+  </data>
+  <data name="Page.Cleanup.Title" xml:space="preserve">
+    <value>Cleanup</value>
+  </data>
+  <data name="Page.Cleanup.Description" xml:space="preserve">
+    <value>Temporary files and caches that can be deleted.</value>
+  </data>
+  <data name="Page.Cleanup.Keywords" xml:space="preserve">
+    <value>cleanup,temporary,cache,space</value>
+  </data>
+  <data name="Page.Standby.Title" xml:space="preserve">
+    <value>Standby memory</value>
+  </data>
+  <data name="Page.Standby.Description" xml:space="preserve">
+    <value>The RAM standby list and when to free it.</value>
+  </data>
+  <data name="Page.Standby.Keywords" xml:space="preserve">
+    <value>standby,memory,free</value>
+  </data>
+  <data name="Page.Tweaks.Title" xml:space="preserve">
+    <value>Tweaks</value>
+  </data>
+  <data name="Page.Tweaks.Description" xml:space="preserve">
+    <value>Windows settings, with what changes and how to undo it.</value>
+  </data>
+  <data name="Page.Tweaks.Keywords" xml:space="preserve">
+    <value>tweaks,optimization,registry</value>
+  </data>
+  <data name="Page.Services.Title" xml:space="preserve">
+    <value>Services</value>
+  </data>
+  <data name="Page.Services.Description" xml:space="preserve">
+    <value>Windows services and the start mode of each one.</value>
+  </data>
+  <data name="Page.Services.Keywords" xml:space="preserve">
+    <value>services</value>
+  </data>
+  <data name="Page.Startup.Title" xml:space="preserve">
+    <value>Startup</value>
+  </data>
+  <data name="Page.Startup.Description" xml:space="preserve">
+    <value>Programs that open with Windows.</value>
+  </data>
+  <data name="Page.Startup.Keywords" xml:space="preserve">
+    <value>startup,boot</value>
+  </data>
+  <data name="Page.Apps.Title" xml:space="preserve">
+    <value>Apps</value>
+  </data>
+  <data name="Page.Apps.Description" xml:space="preserve">
+    <value>Install and update programs with winget.</value>
+  </data>
+  <data name="Page.Apps.Keywords" xml:space="preserve">
+    <value>apps,programs,winget,install,update</value>
+  </data>
+  <data name="Page.Repair.Title" xml:space="preserve">
+    <value>Repair</value>
+  </data>
+  <data name="Page.Repair.Description" xml:space="preserve">
+    <value>SFC and DISM to fix system files.</value>
+  </data>
+  <data name="Page.Repair.Keywords" xml:space="preserve">
+    <value>repair,sfc,dism,fix</value>
+  </data>
+  <data name="Page.Events.Title" xml:space="preserve">
+    <value>Events</value>
+  </data>
+  <data name="Page.Events.Description" xml:space="preserve">
+    <value>Recent errors and warnings from Event Viewer.</value>
+  </data>
+  <data name="Page.Events.Keywords" xml:space="preserve">
+    <value>events,errors,warnings,event viewer</value>
+  </data>
+  <data name="Page.Crashes.Title" xml:space="preserve">
+    <value>Blue screens</value>
+  </data>
+  <data name="Page.Crashes.Description" xml:space="preserve">
+    <value>Memory dumps and the likely cause.</value>
+  </data>
+  <data name="Page.Crashes.Keywords" xml:space="preserve">
+    <value>blue screen,bsod,crash,minidump</value>
+  </data>
+  <data name="Page.Reliability.Title" xml:space="preserve">
+    <value>Reliability</value>
+  </data>
+  <data name="Page.Reliability.Description" xml:space="preserve">
+    <value>History of app and Windows failures.</value>
+  </data>
+  <data name="Page.Reliability.Keywords" xml:space="preserve">
+    <value>reliability,failures,stability</value>
+  </data>
+  <data name="Page.Logs.Title" xml:space="preserve">
+    <value>App logs</value>
+  </data>
+  <data name="Page.Logs.Description" xml:space="preserve">
+    <value>A record of what m1vClock did.</value>
+  </data>
+  <data name="Page.Logs.Keywords" xml:space="preserve">
+    <value>logs,log</value>
+  </data>
+  <data name="Page.Report.Title" xml:space="preserve">
+    <value>Report</value>
+  </data>
+  <data name="Page.Report.Description" xml:space="preserve">
+    <value>A summary of the PC to share.</value>
+  </data>
+  <data name="Page.Report.Keywords" xml:space="preserve">
+    <value>report,summary,export</value>
+  </data>
+  <data name="Page.Drivers.Title" xml:space="preserve">
+    <value>Drivers</value>
+  </data>
+  <data name="Page.Drivers.Description" xml:space="preserve">
+    <value>Installed drivers, versions and updates.</value>
+  </data>
+  <data name="Page.Drivers.Keywords" xml:space="preserve">
+    <value>drivers,update,pnputil</value>
+  </data>
+  <data name="Page.Rgb.Title" xml:space="preserve">
+    <value>RGB</value>
+  </data>
+  <data name="Page.Rgb.Description" xml:space="preserve">
+    <value>Lighting for Corsair devices.</value>
+  </data>
+  <data name="Page.Rgb.Keywords" xml:space="preserve">
+    <value>rgb,corsair,lighting,led</value>
+  </data>
+  <data name="Page.MakerPorts.Title" xml:space="preserve">
+    <value>Serial ports</value>
+  </data>
+  <data name="Page.MakerPorts.Description" xml:space="preserve">
+    <value>Arduino, ESP32 and other connected boards.</value>
+  </data>
+  <data name="Page.MakerPorts.Keywords" xml:space="preserve">
+    <value>serial,com,arduino,esp32,port</value>
+  </data>
+  <data name="Page.MakerDrivers.Title" xml:space="preserve">
+    <value>Serial drivers</value>
+  </data>
+  <data name="Page.MakerDrivers.Description" xml:space="preserve">
+    <value>CH340, CP210x and FTDI downloaded from the vendor.</value>
+  </data>
+  <data name="Page.MakerDrivers.Keywords" xml:space="preserve">
+    <value>ch340,cp210x,ftdi,serial driver</value>
+  </data>
+  <data name="Page.History.Title" xml:space="preserve">
+    <value>History</value>
+  </data>
+  <data name="Page.History.Description" xml:space="preserve">
+    <value>Every change made to the system, with undo.</value>
+  </data>
+  <data name="Page.History.Keywords" xml:space="preserve">
+    <value>history,undo,changes</value>
+  </data>
+  <data name="Page.Settings.Title" xml:space="preserve">
+    <value>Settings</value>
+  </data>
+  <data name="Page.Settings.Description" xml:space="preserve">
+    <value>Theme, language and app information.</value>
+  </data>
+  <data name="Page.Settings.Keywords" xml:space="preserve">
+    <value>settings,preferences,theme,language,about</value>
+  </data>
+  <data name="Page.DesignSystem.Title" xml:space="preserve">
+    <value>Design system</value>
+  </data>
+  <data name="Page.DesignSystem.Description" xml:space="preserve">
+    <value>Colors, typography, components and motion for m1vClock.</value>
+  </data>
+  <data name="Page.DesignSystem.Keywords" xml:space="preserve">
+    <value>design,colors,typography,components</value>
+  </data>
+  <data name="History.Status.Pending" xml:space="preserve">
+    <value>In progress</value>
+  </data>
+  <data name="History.Status.Applied" xml:space="preserve">
+    <value>Applied</value>
+  </data>
+  <data name="History.Status.ApplyFailed" xml:space="preserve">
+    <value>Failed</value>
+  </data>
+  <data name="History.Status.Undone" xml:space="preserve">
+    <value>Undone</value>
+  </data>
+  <data name="History.Status.UndoFailed" xml:space="preserve">
+    <value>Undo failed</value>
+  </data>
+  <data name="History.Undo" xml:space="preserve">
+    <value>Undo</value>
+  </data>
+  <data name="History.UndoAll.Button" xml:space="preserve">
+    <value>Undo all</value>
+  </data>
+  <data name="History.UndoAll.Title" xml:space="preserve">
+    <value>Undo all changes?</value>
+  </data>
+  <data name="History.UndoAll.Message" xml:space="preserve">
+    <value>{0} changes will be reverted, from newest to oldest.</value>
+  </data>
+  <data name="History.UndoAll.Undo" xml:space="preserve">
+    <value>Each tweak can be applied again from its own page.</value>
+  </data>
+  <data name="History.UndoAll.Confirm" xml:space="preserve">
+    <value>Undo all</value>
+  </data>
+  <data name="History.Feedback.Undone" xml:space="preserve">
+    <value>“{0}” was undone.</value>
+  </data>
+  <data name="History.Feedback.Blocked" xml:space="preserve">
+    <value>First undo {0} newer change(s) to the same item.</value>
+  </data>
+  <data name="History.Feedback.NotApplied" xml:space="preserve">
+    <value>That change is not applied.</value>
+  </data>
+  <data name="History.Feedback.UndoneAll" xml:space="preserve">
+    <value>{0} changes undone.</value>
+  </data>
+  <data name="History.Feedback.UndoneSome" xml:space="preserve">
+    <value>{0} undone, {1} with errors. The reason shows on each item.</value>
+  </data>
+  <data name="History.Error.Title" xml:space="preserve">
+    <value>Could not undo</value>
+  </data>
+  <data name="History.Error.Message" xml:space="preserve">
+    <value>“{0}” is still applied. Reason: {1}</value>
+  </data>
+  <data name="History.Empty.Title" xml:space="preserve">
+    <value>No changes yet</value>
+  </data>
+  <data name="History.Empty.Message" xml:space="preserve">
+    <value>When the app changes something in Windows, the change appears here and can be undone.</value>
+  </data>
+  <data name="Settings.Appearance" xml:space="preserve">
+    <value>Appearance</value>
+  </data>
+  <data name="Settings.Theme" xml:space="preserve">
+    <value>Theme</value>
+  </data>
+  <data name="Settings.Theme.Detail" xml:space="preserve">
+    <value>“System” follows the Windows light or dark mode.</value>
+  </data>
+  <data name="Settings.Theme.System" xml:space="preserve">
+    <value>System</value>
+  </data>
+  <data name="Settings.Theme.Light" xml:space="preserve">
+    <value>Light</value>
+  </data>
+  <data name="Settings.Theme.Dark" xml:space="preserve">
+    <value>Dark</value>
+  </data>
+  <data name="Settings.Language" xml:space="preserve">
+    <value>Language</value>
+  </data>
+  <data name="Settings.Language.Detail" xml:space="preserve">
+    <value>Changes the app text. Takes effect after a restart.</value>
+  </data>
+  <data name="Settings.Language.Portuguese" xml:space="preserve">
+    <value>Português</value>
+  </data>
+  <data name="Settings.Language.English" xml:space="preserve">
+    <value>English</value>
+  </data>
+  <data name="Settings.Language.Restart" xml:space="preserve">
+    <value>Restart m1vClock to apply the new language.</value>
+  </data>
+  <data name="Settings.About" xml:space="preserve">
+    <value>About</value>
+  </data>
+  <data name="Settings.About.Version" xml:space="preserve">
+    <value>Version</value>
+  </data>
+  <data name="Settings.About.Permission" xml:space="preserve">
+    <value>Permission</value>
+  </data>
+  <data name="Settings.About.Elevated" xml:space="preserve">
+    <value>Administrator</value>
+  </data>
+  <data name="Settings.About.NotElevated" xml:space="preserve">
+    <value>Standard user (development)</value>
+  </data>
+  <data name="Settings.About.Data" xml:space="preserve">
+    <value>Data folder</value>
+  </data>
+  <data name="Settings.About.OpenLogs" xml:space="preserve">
+    <value>Open logs</value>
+  </data>
+  <data name="Settings.About.OpenLogsFailed" xml:space="preserve">
+    <value>Could not open the logs folder.</value>
+  </data>
+  <data name="Settings.Privacy" xml:space="preserve">
+    <value>Privacy</value>
+  </data>
+  <data name="Settings.Privacy.Text" xml:space="preserve">
+    <value>m1vClock sends no usage data. The internet is only used to download drivers and updates, from fixed addresses and with the signature checked.</value>
+  </data>
+  <data name="Token.WindowBackground" xml:space="preserve">
+    <value>Background</value>
+  </data>
+  <data name="Token.Surface" xml:space="preserve">
+    <value>Surface</value>
+  </data>
+  <data name="Token.FillPrimary" xml:space="preserve">
+    <value>Fill</value>
+  </data>
+  <data name="Token.Separator" xml:space="preserve">
+    <value>Divider</value>
+  </data>
+  <data name="Token.TextPrimary" xml:space="preserve">
+    <value>Text</value>
+  </data>
+  <data name="Token.TextSecondary" xml:space="preserve">
+    <value>Secondary text</value>
+  </data>
+  <data name="Token.TextTertiary" xml:space="preserve">
+    <value>Tertiary text</value>
+  </data>
+  <data name="Token.Accent" xml:space="preserve">
+    <value>Accent</value>
+  </data>
+  <data name="Token.AccentForeground" xml:space="preserve">
+    <value>Accent text</value>
+  </data>
+  <data name="Token.Positive" xml:space="preserve">
+    <value>Positive</value>
+  </data>
+  <data name="Token.Warning" xml:space="preserve">
+    <value>Warning</value>
+  </data>
+  <data name="Token.Critical" xml:space="preserve">
+    <value>Critical</value>
+  </data>
+  <data name="Type.Display" xml:space="preserve">
+    <value>Display</value>
+  </data>
+  <data name="Type.Display.Sample" xml:space="preserve">
+    <value>72 °C</value>
+  </data>
+  <data name="Type.Title" xml:space="preserve">
+    <value>Title</value>
+  </data>
+  <data name="Type.Title.Sample" xml:space="preserve">
+    <value>Overview</value>
+  </data>
+  <data name="Type.Headline" xml:space="preserve">
+    <value>Section title</value>
+  </data>
+  <data name="Type.Headline.Sample" xml:space="preserve">
+    <value>Temperatures</value>
+  </data>
+  <data name="Type.Body" xml:space="preserve">
+    <value>Body</value>
+  </data>
+  <data name="Type.Body.Sample" xml:space="preserve">
+    <value>Ryzen 7 5700X at 4.65 GHz on all cores.</value>
+  </data>
+  <data name="Type.Subhead" xml:space="preserve">
+    <value>Support</value>
+  </data>
+  <data name="Type.Subhead.Sample" xml:space="preserve">
+    <value>Updated every second</value>
+  </data>
+  <data name="Type.Caption" xml:space="preserve">
+    <value>Caption</value>
+  </data>
+  <data name="Type.Caption.Sample" xml:space="preserve">
+    <value>Session maximum: 81 °C</value>
+  </data>
+  <data name="Motion.Standard" xml:space="preserve">
+    <value>Standard</value>
+  </data>
+  <data name="Motion.Standard.Use" xml:space="preserve">
+    <value>Navigation, sidebar selection, panels</value>
+  </data>
+  <data name="Motion.Quick" xml:space="preserve">
+    <value>Quick</value>
+  </data>
+  <data name="Motion.Quick.Use" xml:space="preserve">
+    <value>Opacity, indicators, closing menus</value>
+  </data>
+  <data name="Motion.Gentle" xml:space="preserve">
+    <value>Gentle</value>
+  </data>
+  <data name="Motion.Gentle.Use" xml:space="preserve">
+    <value>Theme change and large changes</value>
+  </data>
+  <data name="Motion.Press" xml:space="preserve">
+    <value>Press</value>
+  </data>
+  <data name="Motion.Press.Use" xml:space="preserve">
+    <value>Feedback while pressing</value>
+  </data>
+  <data name="Motion.Momentum" xml:space="preserve">
+    <value>Momentum</value>
+  </data>
+  <data name="Motion.Momentum.Use" xml:space="preserve">
+    <value>After a fast drag; may overshoot the point slightly</value>
+  </data>
+  <data name="Motion.Values" xml:space="preserve">
+    <value>damping {0} · response {1} s · settles in {2} ms</value>
+  </data>
+  <data name="DS.Section.Colors" xml:space="preserve">
+    <value>Colors</value>
+  </data>
+  <data name="DS.Section.Colors.Caption" xml:space="preserve">
+    <value>A single blue accent. Green, yellow and red only indicate state. Contrast is measured against the surface; the AA minimum is 4.5:1.</value>
+  </data>
+  <data name="DS.Palette.Light" xml:space="preserve">
+    <value>Light theme</value>
+  </data>
+  <data name="DS.Palette.Dark" xml:space="preserve">
+    <value>Dark theme</value>
+  </data>
+  <data name="DS.Color.Contrast" xml:space="preserve">
+    <value>Contrast {0}:1</value>
+  </data>
+  <data name="DS.Section.Type" xml:space="preserve">
+    <value>Typography</value>
+  </data>
+  <data name="DS.Section.Type.Caption" xml:space="preserve">
+    <value>Inter for text and Inter Display from 22 px. Fixed-width numbers so they do not “jump”.</value>
+  </data>
+  <data name="DS.Section.Buttons" xml:space="preserve">
+    <value>Buttons</value>
+  </data>
+  <data name="DS.Section.Buttons.Caption" xml:space="preserve">
+    <value>They react as you press. Red is only for actions that delete something.</value>
+  </data>
+  <data name="DS.Button.Primary" xml:space="preserve">
+    <value>Apply</value>
+  </data>
+  <data name="DS.Button.Secondary" xml:space="preserve">
+    <value>Cancel</value>
+  </data>
+  <data name="DS.Button.Plain" xml:space="preserve">
+    <value>Details</value>
+  </data>
+  <data name="DS.Button.Download" xml:space="preserve">
+    <value>Download</value>
+  </data>
+  <data name="DS.Button.Destructive" xml:space="preserve">
+    <value>Remove</value>
+  </data>
+  <data name="DS.Button.Refresh" xml:space="preserve">
+    <value>Refresh</value>
+  </data>
+  <data name="DS.Button.Disabled" xml:space="preserve">
+    <value>Unavailable</value>
+  </data>
+  <data name="DS.Button.Large" xml:space="preserve">
+    <value>Start benchmark</value>
+  </data>
+  <data name="DS.Section.Metrics" xml:space="preserve">
+    <value>Metrics</value>
+  </data>
+  <data name="DS.Section.Metrics.Caption" xml:space="preserve">
+    <value>Value, unit and state. State shows in color and in text, never color alone.</value>
+  </data>
+  <data name="DS.Metric.Cpu" xml:space="preserve">
+    <value>CPU temp</value>
+  </data>
+  <data name="DS.Metric.CpuDetail" xml:space="preserve">
+    <value>Session maximum: {0} °C</value>
+  </data>
+  <data name="DS.Metric.Gpu" xml:space="preserve">
+    <value>GPU temp</value>
+  </data>
+  <data name="DS.Metric.Memory" xml:space="preserve">
+    <value>Memory in use</value>
+  </data>
+  <data name="DS.Metric.Disk" xml:space="preserve">
+    <value>System disk</value>
+  </data>
+  <data name="DS.Section.Chart" xml:space="preserve">
+    <value>Live chart</value>
+  </data>
+  <data name="DS.Section.Chart.Caption" xml:space="preserve">
+    <value>Updates every second. Hover to see the exact value. Simulated data on this page.</value>
+  </data>
+  <data name="DS.Chart.Cpu" xml:space="preserve">
+    <value>CPU</value>
+  </data>
+  <data name="DS.Chart.Gpu" xml:space="preserve">
+    <value>GPU</value>
+  </data>
+  <data name="DS.Chart.Window" xml:space="preserve">
+    <value>Period</value>
+  </data>
+  <data name="DS.Chart.OneMinute" xml:space="preserve">
+    <value>1 min</value>
+  </data>
+  <data name="DS.Chart.FiveMinutes" xml:space="preserve">
+    <value>5 min</value>
+  </data>
+  <data name="DS.Chart.FifteenMinutes" xml:space="preserve">
+    <value>15 min</value>
+  </data>
+  <data name="DS.Section.List" xml:space="preserve">
+    <value>List</value>
+  </data>
+  <data name="DS.Section.List.Caption" xml:space="preserve">
+    <value>Right-aligned values, with fixed-width digits.</value>
+  </data>
+  <data name="DS.List.MemoryUsed" xml:space="preserve">
+    <value>Memory in use</value>
+  </data>
+  <data name="DS.List.SystemDisk" xml:space="preserve">
+    <value>Space used on C:</value>
+  </data>
+  <data name="DS.Section.Controls" xml:space="preserve">
+    <value>Controls</value>
+  </data>
+  <data name="DS.Section.Controls.Caption" xml:space="preserve">
+    <value>Click or drag the switch. It finishes the motion in the direction it was released.</value>
+  </data>
+  <data name="DS.Toggle.GameMode" xml:space="preserve">
+    <value>Game Mode</value>
+  </data>
+  <data name="DS.Toggle.GameMode.Detail" xml:space="preserve">
+    <value>Prioritizes the game in the foreground.</value>
+  </data>
+  <data name="DS.Toggle.GameDvr" xml:space="preserve">
+    <value>Background recording</value>
+  </data>
+  <data name="DS.Toggle.GameDvr.Detail" xml:space="preserve">
+    <value>Records the last minutes of gameplay. Uses CPU and disk.</value>
+  </data>
+  <data name="DS.Toggle.Hags" xml:space="preserve">
+    <value>Hardware-accelerated GPU scheduling</value>
+  </data>
+  <data name="DS.Toggle.Hags.Detail" xml:space="preserve">
+    <value>The GPU manages its own memory. Requires a restart.</value>
+  </data>
+  <data name="DS.Input.Label" xml:space="preserve">
+    <value>Profile name</value>
+  </data>
+  <data name="DS.Input.Placeholder" xml:space="preserve">
+    <value>E.g. Competitive games</value>
+  </data>
+  <data name="DS.Section.Feedback" xml:space="preserve">
+    <value>Notices</value>
+  </data>
+  <data name="DS.Section.Feedback.Caption" xml:space="preserve">
+    <value>Four kinds, always with an icon and text.</value>
+  </data>
+  <data name="DS.Banner.Info" xml:space="preserve">
+    <value>Sensors are read every second and pause during GPU benchmarks.</value>
+  </data>
+  <data name="DS.Banner.Positive" xml:space="preserve">
+    <value>Restore point created today at 14:02.</value>
+  </data>
+  <data name="DS.Banner.Warning" xml:space="preserve">
+    <value>The GPU went above 80 °C for more than 2 minutes.</value>
+  </data>
+  <data name="DS.Banner.Critical" xml:space="preserve">
+    <value>Could not read SMART data for drive D:. Open the app as administrator.</value>
+  </data>
+  <data name="DS.Section.Dialogs" xml:space="preserve">
+    <value>Confirmation and history</value>
+  </data>
+  <data name="DS.Section.Dialogs.Caption" xml:space="preserve">
+    <value>Every action that changes the system shows what changes and how to undo it before applying.</value>
+  </data>
+  <data name="DS.Dialogs.Confirm" xml:space="preserve">
+    <value>Confirmation</value>
+  </data>
+  <data name="DS.Dialogs.Destructive" xml:space="preserve">
+    <value>Destructive action</value>
+  </data>
+  <data name="DS.Dialogs.Journal" xml:space="preserve">
+    <value>Write to history</value>
+  </data>
+  <data name="DS.Dialogs.OpenHistory" xml:space="preserve">
+    <value>Open history</value>
+  </data>
+  <data name="DS.Dialog.Title" xml:space="preserve">
+    <value>Turn on Game Mode?</value>
+  </data>
+  <data name="DS.Dialog.Message" xml:space="preserve">
+    <value>Windows will prioritize the game in the foreground.</value>
+  </data>
+  <data name="DS.Dialog.Change1" xml:space="preserve">
+    <value>HKCU\Software\Microsoft\GameBar · AutoGameModeEnabled = 1</value>
+  </data>
+  <data name="DS.Dialog.Change2" xml:space="preserve">
+    <value>Applies to every game on this account.</value>
+  </data>
+  <data name="DS.Dialog.Undo" xml:space="preserve">
+    <value>From History, at any time. The previous value is kept.</value>
+  </data>
+  <data name="DS.Dialog.Confirm" xml:space="preserve">
+    <value>Turn on</value>
+  </data>
+  <data name="DS.Dialog.ResultConfirmed" xml:space="preserve">
+    <value>Confirmed. Nothing was changed in this demo.</value>
+  </data>
+  <data name="DS.Dialog.ResultCancelled" xml:space="preserve">
+    <value>Cancelled. Nothing was changed.</value>
+  </data>
+  <data name="DS.Destructive.Title" xml:space="preserve">
+    <value>Delete temporary files?</value>
+  </data>
+  <data name="DS.Destructive.Message" xml:space="preserve">
+    <value>2.4 GB in 3,812 files from the Temp folder.</value>
+  </data>
+  <data name="DS.Destructive.Change" xml:space="preserve">
+    <value>Files are deleted permanently, without going through the Recycle Bin.</value>
+  </data>
+  <data name="DS.Destructive.Undo" xml:space="preserve">
+    <value>It cannot be undone. Files in use are skipped.</value>
+  </data>
+  <data name="DS.Destructive.Confirm" xml:space="preserve">
+    <value>Delete</value>
+  </data>
+  <data name="DS.Journal.Title" xml:space="preserve">
+    <value>Write a test change?</value>
+  </data>
+  <data name="DS.Journal.Message" xml:space="preserve">
+    <value>Writes a value owned by m1vClock to the registry and records it in History. It does not affect Windows.</value>
+  </data>
+  <data name="DS.Journal.Change" xml:space="preserve">
+    <value>{0} = {1}</value>
+  </data>
+  <data name="DS.Journal.Undo" xml:space="preserve">
+    <value>From History: the value is removed and the key that was created is deleted.</value>
+  </data>
+  <data name="DS.Journal.Confirm" xml:space="preserve">
+    <value>Write</value>
+  </data>
+  <data name="DS.Journal.Module" xml:space="preserve">
+    <value>Design system</value>
+  </data>
+  <data name="DS.Journal.ChangeTitle" xml:space="preserve">
+    <value>Demo value</value>
+  </data>
+  <data name="DS.Journal.Applied" xml:space="preserve">
+    <value>Written. Open History to see it and undo it.</value>
+  </data>
+  <data name="DS.Journal.Failed" xml:space="preserve">
+    <value>Not written: {0}</value>
+  </data>
+  <data name="DS.Section.States" xml:space="preserve">
+    <value>States</value>
+  </data>
+  <data name="DS.Section.States.Caption" xml:space="preserve">
+    <value>Empty, loading and error.</value>
+  </data>
+  <data name="DS.State.Empty.Title" xml:space="preserve">
+    <value>No changes yet</value>
+  </data>
+  <data name="DS.State.Empty.Message" xml:space="preserve">
+    <value>Changes made by the app appear here.</value>
+  </data>
+  <data name="DS.State.Loading" xml:space="preserve">
+    <value>Loading sensors…</value>
+  </data>
+  <data name="DS.State.Error.Title" xml:space="preserve">
+    <value>Sensors unavailable</value>
+  </data>
+  <data name="DS.State.Error.Message" xml:space="preserve">
+    <value>The PawnIO driver did not respond.</value>
+  </data>
+  <data name="DS.State.Error.Action" xml:space="preserve">
+    <value>Try again</value>
+  </data>
+  <data name="DS.Section.Motion" xml:space="preserve">
+    <value>Motion</value>
+  </data>
+  <data name="DS.Section.Motion.Caption" xml:space="preserve">
+    <value>Springs that can be interrupted, instead of fixed durations. With Windows animations off, they become opacity transitions.</value>
+  </data>
+  <data name="DS.Momentum.Title" xml:space="preserve">
+    <value>Drag with momentum</value>
+  </data>
+  <data name="DS.Momentum.Caption" xml:space="preserve">
+    <value>Release with speed: the piece projects the motion and snaps to the nearest point. At the ends it resists. Arrow keys move it too.</value>
+  </data>
+</root>

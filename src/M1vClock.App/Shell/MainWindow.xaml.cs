@@ -241,7 +241,12 @@ public partial class MainWindow : Window
                 target.BackgroundColor = Colors.Transparent;
             }
 
-            var result = WindowInterop.SetMica(hwnd, true);
+            var result = WindowInterop.ExtendFrameIntoClient(hwnd);
+            if (result == 0)
+            {
+                result = WindowInterop.SetMica(hwnd, true);
+            }
+
             if (result != 0)
             {
                 useMaterial = false;
@@ -296,11 +301,11 @@ public partial class MainWindow : Window
 
                 SetMaximizeHover(false);
                 break;
-            case WindowInterop.WmNcLButtonDown when (int)wParam == WindowInterop.HtMaxButton:
+            case WindowInterop.WmNcLButtonDown when wParam.ToInt64() == WindowInterop.HtMaxButton:
                 _maximizePressed = true;
                 handled = true;
                 return IntPtr.Zero;
-            case WindowInterop.WmNcLButtonUp when (int)wParam == WindowInterop.HtMaxButton:
+            case WindowInterop.WmNcLButtonUp when wParam.ToInt64() == WindowInterop.HtMaxButton:
                 if (_maximizePressed)
                 {
                     ToggleMaximize();
@@ -354,6 +359,19 @@ public partial class MainWindow : Window
         _navigating = true;
         ShowPage(e.Page, e.Direction);
         UpdatePills();
+        Dispatcher.BeginInvoke(DispatcherPriority.Loaded, RevealSelectedItem);
+    }
+
+    private void RevealSelectedItem()
+    {
+        var selected = _viewModel.AllItems.FirstOrDefault(i => i.IsSelected);
+        if (selected is null)
+        {
+            return;
+        }
+
+        var button = FindButton(SectionList, selected) ?? FindButton(FooterList, selected);
+        button?.BringIntoView();
     }
 
     private void ShowPage(PageViewModel page, int direction)

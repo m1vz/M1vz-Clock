@@ -1,5 +1,6 @@
 using System.Text.Json;
 using M1vClock.Core.IO;
+using Microsoft.Extensions.Logging;
 
 namespace M1vClock.Core.Diagnostics;
 
@@ -14,14 +15,17 @@ public sealed class SessionTracker
     private readonly string _sessionFile;
     private readonly string _crashFile;
     private readonly TimeProvider _time;
+    private readonly ILogger<SessionTracker> _logger;
 
-    public SessionTracker(string stateDirectory, TimeProvider time)
+    public SessionTracker(string stateDirectory, TimeProvider time, ILogger<SessionTracker> logger)
     {
         ArgumentException.ThrowIfNullOrWhiteSpace(stateDirectory);
         ArgumentNullException.ThrowIfNull(time);
+        ArgumentNullException.ThrowIfNull(logger);
         _sessionFile = Path.Combine(stateDirectory, "session.json");
         _crashFile = Path.Combine(stateDirectory, "last-crash.json");
         _time = time;
+        _logger = logger;
     }
 
     public PreviousSession? Start(string version)
@@ -63,7 +67,7 @@ public sealed class SessionTracker
         AtomicFile.WriteAllText(_sessionFile, JsonSerializer.Serialize(current with { Running = false }));
     }
 
-    private static T? Read<T>(string path)
+    private T? Read<T>(string path)
         where T : class
     {
         if (!File.Exists(path))
@@ -75,8 +79,9 @@ public sealed class SessionTracker
         {
             return JsonSerializer.Deserialize<T>(File.ReadAllText(path));
         }
-        catch (JsonException)
+        catch (JsonException ex)
         {
+            CoreLog.SessionStateUnreadable(_logger, ex, path);
             File.Delete(path);
             return null;
         }

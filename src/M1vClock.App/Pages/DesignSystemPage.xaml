@@ -188,16 +188,16 @@
       <TextBlock Text="{l:Text DS.Section.Feedback}" Style="{StaticResource Section.Title}" />
       <TextBlock Text="{l:Text DS.Section.Feedback.Caption}" Style="{StaticResource Section.Caption}" />
       <ContentControl Style="{StaticResource Banner}">
-        <TextBlock Text="{l:Text DS.Banner.Info}" />
+        <TextBlock Style="{StaticResource Banner.Text}" Text="{l:Text DS.Banner.Info}" />
       </ContentControl>
       <ContentControl Style="{StaticResource Banner.Positive}">
-        <TextBlock Text="{l:Text DS.Banner.Positive}" />
+        <TextBlock Style="{StaticResource Banner.Text}" Text="{l:Text DS.Banner.Positive}" />
       </ContentControl>
       <ContentControl Style="{StaticResource Banner.Warning}">
-        <TextBlock Text="{l:Text DS.Banner.Warning}" />
+        <TextBlock Style="{StaticResource Banner.Text}" Text="{l:Text DS.Banner.Warning}" />
       </ContentControl>
       <ContentControl Style="{StaticResource Banner.Critical}">
-        <TextBlock Text="{l:Text DS.Banner.Critical}" />
+        <TextBlock Style="{StaticResource Banner.Text}" Text="{l:Text DS.Banner.Critical}" />
       </ContentControl>
 
       <TextBlock Text="{l:Text DS.Section.Dialogs}" Style="{StaticResource Section.Title}" />

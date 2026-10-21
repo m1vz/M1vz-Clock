@@ -40,7 +40,8 @@ public static class CoreModule
         services.AddSingleton<IChangeJournal, ChangeJournal>();
         services.AddSingleton(provider => new SessionTracker(
             paths.EnsureDirectory(paths.State),
-            provider.GetRequiredService<TimeProvider>()));
+            provider.GetRequiredService<TimeProvider>(),
+            provider.GetRequiredService<ILogger<SessionTracker>>()));
         services.AddSingleton(provider => new SettingsStore<AppSettings>(
             Path.Combine(paths.EnsureDirectory(paths.UserDirectory(elevation.UserSid)), "settings.json"),
             AppSettings.CurrentSchemaVersion,
