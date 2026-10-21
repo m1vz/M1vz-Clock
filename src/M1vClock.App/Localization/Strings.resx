@@ -1062,4 +1062,139 @@
   <data name="Hw.System.Cpu.Virtualization" xml:space="preserve">
     <value>Virtualização na BIOS</value>
   </data>
+  <data name="Hw.Ram.Summary" xml:space="preserve">
+    <value>Resumo</value>
+  </data>
+  <data name="Hw.Ram.Usage" xml:space="preserve">
+    <value>Uso agora</value>
+  </data>
+  <data name="Hw.Ram.Total" xml:space="preserve">
+    <value>Total instalado</value>
+  </data>
+  <data name="Hw.Ram.Modules" xml:space="preserve">
+    <value>Módulos instalados</value>
+  </data>
+  <data name="Hw.Ram.Modules.Value" xml:space="preserve">
+    <value>{0} de {1} slots</value>
+  </data>
+  <data name="Hw.Ram.Max" xml:space="preserve">
+    <value>Capacidade máxima da placa</value>
+  </data>
+  <data name="Hw.Ram.Type" xml:space="preserve">
+    <value>Tipo</value>
+  </data>
+  <data name="Hw.Ram.SpeedInUse" xml:space="preserve">
+    <value>Velocidade em uso</value>
+  </data>
+  <data name="Hw.Ram.SpeedRated" xml:space="preserve">
+    <value>Velocidade nominal</value>
+  </data>
+  <data name="Hw.Ram.Speed.Value" xml:space="preserve">
+    <value>{0} MT/s</value>
+  </data>
+  <data name="Hw.Ram.Profile" xml:space="preserve">
+    <value>Perfil EXPO/XMP (estimado)</value>
+  </data>
+  <data name="Hw.Ram.Profile.Unreadable" xml:space="preserve">
+    <value>Não foi possível ler a velocidade em uso.</value>
+  </data>
+  <data name="Hw.Ram.Profile.Off" xml:space="preserve">
+    <value>Provavelmente desligado: a RAM roda a {0} MT/s, mas o part number indica {1} MT/s. Ative o EXPO/XMP na BIOS.</value>
+  </data>
+  <data name="Hw.Ram.Profile.On" xml:space="preserve">
+    <value>Provavelmente ativo: roda a {0} MT/s (o part number indica {1} MT/s).</value>
+  </data>
+  <data name="Hw.Ram.Profile.Below" xml:space="preserve">
+    <value>Roda abaixo da velocidade nominal ({0} de {1} MT/s). Confira o EXPO/XMP na BIOS.</value>
+  </data>
+  <data name="Hw.Ram.Profile.None" xml:space="preserve">
+    <value>Sem como estimar: o part number não traz a velocidade. Confira na BIOS.</value>
+  </data>
+  <data name="Hw.Ram.Channels" xml:space="preserve">
+    <value>Canais (estimado)</value>
+  </data>
+  <data name="Hw.Ram.Channels.Single" xml:space="preserve">
+    <value>Canal único (1 módulo). Com 2 módulos iguais a RAM roda em dual channel e fica bem mais rápida.</value>
+  </data>
+  <data name="Hw.Ram.Channels.Multi" xml:space="preserve">
+    <value>{0} canais (dual channel ou mais)</value>
+  </data>
+  <data name="Hw.Ram.Channels.Same" xml:space="preserve">
+    <value>Canal único: os módulos estão no mesmo canal. Mude para os slots recomendados no manual da placa.</value>
+  </data>
+  <data name="Hw.Ram.Channels.Unknown" xml:space="preserve">
+    <value>Não deu para identificar pelos nomes dos slots ({0}). Veja o manual da placa.</value>
+  </data>
+  <data name="Hw.Ram.Ecc" xml:space="preserve">
+    <value>ECC</value>
+  </data>
+  <data name="Hw.Ram.Ecc.Yes" xml:space="preserve">
+    <value>Sim (correção de erros)</value>
+  </data>
+  <data name="Hw.Ram.Volts" xml:space="preserve">
+    <value>Tensão em uso</value>
+  </data>
+  <data name="Hw.Ram.Timings" xml:space="preserve">
+    <value>Timings (CL, tRCD, tRP…)</value>
+  </data>
+  <data name="Hw.Ram.Timings.Note" xml:space="preserve">
+    <value>O Windows não informa. Veja na BIOS ou no CPU-Z (aba SPD).</value>
+  </data>
+  <data name="Hw.Ram.Usage.Physical" xml:space="preserve">
+    <value>Memória física em uso</value>
+  </data>
+  <data name="Hw.Ram.Usage.Virtual" xml:space="preserve">
+    <value>Memória virtual em uso (RAM + arquivo de paginação)</value>
+  </data>
+  <data name="Hw.Ram.Usage.Value" xml:space="preserve">
+    <value>{0} de {1} ({2})</value>
+  </data>
+  <data name="Hw.Ram.Module.Capacity" xml:space="preserve">
+    <value>Capacidade</value>
+  </data>
+  <data name="Hw.Ram.Module.Form" xml:space="preserve">
+    <value>Formato</value>
+  </data>
+  <data name="Hw.Ram.Module.Ranks" xml:space="preserve">
+    <value>Ranks</value>
+  </data>
+  <data name="Hw.Ram.Module.VoltRange" xml:space="preserve">
+    <value>Faixa de tensão do módulo</value>
+  </data>
+  <data name="Hw.Ram.Module.Width" xml:space="preserve">
+    <value>Largura de dados / total</value>
+  </data>
+  <data name="Hw.Ram.Module.Width.Value" xml:space="preserve">
+    <value>{0} / {1} bits</value>
+  </data>
+  <data name="Hw.Ram.Module.Manufacturer" xml:space="preserve">
+    <value>Fabricante</value>
+  </data>
+  <data name="Hw.Ram.Module.Part" xml:space="preserve">
+    <value>Part number</value>
+  </data>
+  <data name="Hw.Ram.Module.Serial" xml:space="preserve">
+    <value>Número de série</value>
+  </data>
+  <data name="Hw.Ram.Form.Proprietary" xml:space="preserve">
+    <value>Proprietário</value>
+  </data>
+  <data name="Hw.Ram.Form.Other" xml:space="preserve">
+    <value>Outro</value>
+  </data>
+  <data name="Hw.Ram.Rank.1" xml:space="preserve">
+    <value>1 (simples)</value>
+  </data>
+  <data name="Hw.Ram.Rank.2" xml:space="preserve">
+    <value>2 (dupla)</value>
+  </data>
+  <data name="Hw.Ram.Rank.3" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="Hw.Ram.Rank.4" xml:space="preserve">
+    <value>4 (quádrupla)</value>
+  </data>
+  <data name="Hw.Ram.Volts.Range" xml:space="preserve">
+    <value>{0} a {1}</value>
+  </data>
 </root>
