@@ -15,7 +15,7 @@ public sealed partial class LocalizationKeyTests
     private static readonly string[] Prefixes =
     [
         "Action.", "Chart.", "Common.", "Crash.", "DS.", "Dialog.", "Error.", "History.", "Motion.", "Page.",
-        "Placeholder.", "Search.", "Section.", "Settings.", "State.", "Token.", "Type.", "Window.",
+        "Hw.", "Placeholder.", "Search.", "Section.", "Settings.", "State.", "Token.", "Type.", "Window.",
     ];
 
     private static readonly string[] NotResourceKeys = ["Motion.Reduced"];

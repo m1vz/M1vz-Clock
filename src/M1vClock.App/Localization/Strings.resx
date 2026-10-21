@@ -951,4 +951,115 @@
   <data name="DS.Momentum.Caption" xml:space="preserve">
     <value>Solte com velocidade: a peça projeta o movimento e encaixa no ponto mais próximo. Nas pontas, ela resiste. As setas do teclado também movem.</value>
   </data>
+  <data name="Hw.Common.Loading" xml:space="preserve">
+    <value>Lendo o hardware…</value>
+  </data>
+  <data name="Hw.Common.ReadError" xml:space="preserve">
+    <value>Não foi possível ler esta seção.</value>
+  </data>
+  <data name="Hw.Common.ReadError.Detail" xml:space="preserve">
+    <value>Motivo: {0}</value>
+  </data>
+  <data name="Hw.Common.Retry" xml:space="preserve">
+    <value>Tentar de novo</value>
+  </data>
+  <data name="Hw.Common.Refresh" xml:space="preserve">
+    <value>Atualizar</value>
+  </data>
+  <data name="Hw.Common.Show" xml:space="preserve">
+    <value>Mostrar</value>
+  </data>
+  <data name="Hw.Common.Hide" xml:space="preserve">
+    <value>Ocultar</value>
+  </data>
+  <data name="Hw.Common.Yes" xml:space="preserve">
+    <value>Sim</value>
+  </data>
+  <data name="Hw.Common.No" xml:space="preserve">
+    <value>Não</value>
+  </data>
+  <data name="Hw.Common.Unknown" xml:space="preserve">
+    <value>Desconhecido</value>
+  </data>
+  <data name="Hw.Common.PageError" xml:space="preserve">
+    <value>Algo deu errado ao ler esta página. O erro foi gravado no log.</value>
+  </data>
+  <data name="Hw.Common.SerialNote" xml:space="preserve">
+    <value>Números de série ficam ocultos até você mostrar.</value>
+  </data>
+  <data name="Hw.Common.Updated" xml:space="preserve">
+    <value>Atualizado às {0}</value>
+  </data>
+  <data name="Hw.System.Os" xml:space="preserve">
+    <value>Sistema operacional</value>
+  </data>
+  <data name="Hw.System.Os.Name" xml:space="preserve">
+    <value>Nome</value>
+  </data>
+  <data name="Hw.System.Os.Version" xml:space="preserve">
+    <value>Versão</value>
+  </data>
+  <data name="Hw.System.Os.Build" xml:space="preserve">
+    <value>Build</value>
+  </data>
+  <data name="Hw.System.Os.Architecture" xml:space="preserve">
+    <value>Arquitetura</value>
+  </data>
+  <data name="Hw.System.Os.Computer" xml:space="preserve">
+    <value>Nome do computador</value>
+  </data>
+  <data name="Hw.System.Board" xml:space="preserve">
+    <value>Placa-mãe</value>
+  </data>
+  <data name="Hw.System.Board.Manufacturer" xml:space="preserve">
+    <value>Fabricante</value>
+  </data>
+  <data name="Hw.System.Board.Model" xml:space="preserve">
+    <value>Modelo</value>
+  </data>
+  <data name="Hw.System.Board.Version" xml:space="preserve">
+    <value>Revisão</value>
+  </data>
+  <data name="Hw.System.Board.Serial" xml:space="preserve">
+    <value>Número de série</value>
+  </data>
+  <data name="Hw.System.Bios" xml:space="preserve">
+    <value>BIOS</value>
+  </data>
+  <data name="Hw.System.Bios.Manufacturer" xml:space="preserve">
+    <value>Fabricante</value>
+  </data>
+  <data name="Hw.System.Bios.Version" xml:space="preserve">
+    <value>Versão</value>
+  </data>
+  <data name="Hw.System.Bios.Date" xml:space="preserve">
+    <value>Data</value>
+  </data>
+  <data name="Hw.System.Cpu" xml:space="preserve">
+    <value>Processador</value>
+  </data>
+  <data name="Hw.System.Cpu.Vendor" xml:space="preserve">
+    <value>Fabricante</value>
+  </data>
+  <data name="Hw.System.Cpu.Socket" xml:space="preserve">
+    <value>Soquete</value>
+  </data>
+  <data name="Hw.System.Cpu.Cores" xml:space="preserve">
+    <value>Núcleos físicos</value>
+  </data>
+  <data name="Hw.System.Cpu.Threads" xml:space="preserve">
+    <value>Threads (lógicos)</value>
+  </data>
+  <data name="Hw.System.Cpu.Clock" xml:space="preserve">
+    <value>Clock máximo declarado</value>
+  </data>
+  <data name="Hw.System.Cpu.L2" xml:space="preserve">
+    <value>Cache L2</value>
+  </data>
+  <data name="Hw.System.Cpu.L3" xml:space="preserve">
+    <value>Cache L3</value>
+  </data>
+  <data name="Hw.System.Cpu.Virtualization" xml:space="preserve">
+    <value>Virtualização na BIOS</value>
+  </data>
 </root>
