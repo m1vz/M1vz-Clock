@@ -28,6 +28,7 @@ public partial class MainWindow : Window
     private const double OverlayScale = 0.96;
     private const double DialogStartScale = 0.9;
     private const double PageOffset = 16;
+    private static readonly TimeSpan MinimumScrollWait = TimeSpan.FromMilliseconds(500);
 
     private readonly MainViewModel _viewModel;
     private readonly ThemeService _theme;
@@ -80,7 +81,7 @@ public partial class MainWindow : Window
         _viewModel.Navigation.Navigate(LandingPage(options.Page));
         if (options.Scroll > 0)
         {
-            Dispatcher.BeginInvoke(DispatcherPriority.Loaded, () => FindDescendant<PageScaffold>(PageHost)?.ScrollTo(options.Scroll));
+            _ = ScrollLaterAsync(options);
         }
 
         if (previous is not null)
@@ -101,6 +102,13 @@ public partial class MainWindow : Window
         {
             _ = CaptureAndCloseAsync(path, options.ScreenshotDelay);
         }
+    }
+
+    private async Task ScrollLaterAsync(StartupOptions options)
+    {
+        var wait = options.ScreenshotPath is null ? TimeSpan.FromSeconds(1) : options.ScreenshotDelay - TimeSpan.FromSeconds(1);
+        await Task.Delay(wait < MinimumScrollWait ? MinimumScrollWait : wait).ConfigureAwait(true);
+        FindDescendant<PageScaffold>(PageHost)?.ScrollTo(options.Scroll);
     }
 
     public void BringToFront()
