@@ -48,4 +48,7 @@ internal static partial class AppLog
 
     [LoggerMessage(EventId = 2015, Level = LogLevel.Information, Message = "Captura de tela gravada em {Path}.")]
     public static partial void ScreenshotSaved(ILogger logger, string path);
+
+    [LoggerMessage(EventId = 2016, Level = LogLevel.Error, Message = "Falha ao carregar a página {Page}.")]
+    public static partial void PageLoadFailed(ILogger logger, Exception exception, string page);
 }
