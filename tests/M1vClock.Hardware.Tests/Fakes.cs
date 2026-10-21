@@ -61,7 +61,19 @@ internal sealed record LogEntry(LogLevel Level, EventId EventId, string Message,
 
 internal sealed class CollectingLogger<T> : ILogger<T>
 {
-    public List<LogEntry> Entries { get; } = [];
+    private readonly Lock _gate = new();
+    private readonly List<LogEntry> _entries = [];
+
+    public IReadOnlyList<LogEntry> Entries
+    {
+        get
+        {
+            lock (_gate)
+            {
+                return [.. _entries];
+            }
+        }
+    }
 
     public IDisposable? BeginScope<TState>(TState state)
         where TState : notnull => null;
@@ -71,6 +83,10 @@ internal sealed class CollectingLogger<T> : ILogger<T>
     public void Log<TState>(LogLevel logLevel, EventId eventId, TState state, Exception? exception, Func<TState, Exception?, string> formatter)
     {
         ArgumentNullException.ThrowIfNull(formatter);
-        Entries.Add(new LogEntry(logLevel, eventId, formatter(state, exception), exception));
+        var entry = new LogEntry(logLevel, eventId, formatter(state, exception), exception);
+        lock (_gate)
+        {
+            _entries.Add(entry);
+        }
     }
 }
