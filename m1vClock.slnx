@@ -13,6 +13,7 @@
   </Folder>
   <Folder Name="/tests/">
     <Project Path="tests/M1vClock.Core.Tests/M1vClock.Core.Tests.csproj" />
+    <Project Path="tests/M1vClock.Hardware.Tests/M1vClock.Hardware.Tests.csproj" />
     <Project Path="tests/M1vClock.App.Tests/M1vClock.App.Tests.csproj" />
     <Project Path="tests/M1vClock.Architecture.Tests/M1vClock.Architecture.Tests.csproj" />
   </Folder>

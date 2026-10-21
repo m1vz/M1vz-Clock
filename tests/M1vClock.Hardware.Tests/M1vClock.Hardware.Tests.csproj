@@ -1,0 +1,7 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\src\M1vClock.Hardware\M1vClock.Hardware.csproj" />
+  </ItemGroup>
+
+</Project>
