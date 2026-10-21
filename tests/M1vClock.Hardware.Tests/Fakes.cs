@@ -14,6 +14,7 @@ internal sealed class FakeWmiReader : IWmiReader
     public FakeWmiReader With(string className, params WmiRow[] rows)
     {
         _rows[className] = [.. rows];
+        _failures.Remove(className);
         return this;
     }
 
