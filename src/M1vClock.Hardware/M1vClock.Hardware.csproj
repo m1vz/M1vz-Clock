@@ -2,6 +2,12 @@
 
   <ItemGroup>
     <PackageReference Include="System.Management" />
+    <PackageReference Include="Vortice.Direct3D12" />
+    <PackageReference Include="Vortice.DXGI" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="Gpu/GpuSpecs.json" LogicalName="M1vClock.Hardware.Gpu.GpuSpecs.json" />
   </ItemGroup>
 
   <ItemGroup>
