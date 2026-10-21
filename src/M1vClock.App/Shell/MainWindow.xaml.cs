@@ -296,11 +296,11 @@ public partial class MainWindow : Window
 
                 SetMaximizeHover(false);
                 break;
-            case WindowInterop.WmNcLButtonDown when (int)wParam == WindowInterop.HtMaxButton:
+            case WindowInterop.WmNcLButtonDown when wParam.ToInt64() == WindowInterop.HtMaxButton:
                 _maximizePressed = true;
                 handled = true;
                 return IntPtr.Zero;
-            case WindowInterop.WmNcLButtonUp when (int)wParam == WindowInterop.HtMaxButton:
+            case WindowInterop.WmNcLButtonUp when wParam.ToInt64() == WindowInterop.HtMaxButton:
                 if (_maximizePressed)
                 {
                     ToggleMaximize();
