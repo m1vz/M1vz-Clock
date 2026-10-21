@@ -13,6 +13,7 @@ public static class PageRegistry
         ["history"] = Resolve<HistoryPageViewModel>,
         ["system"] = Resolve<SystemPageViewModel>,
         ["gpu"] = Resolve<GpuPageViewModel>,
+        ["power"] = Resolve<PowerPageViewModel>,
         ["memory"] = Resolve<MemoryPageViewModel>,
         ["storage"] = Resolve<StoragePageViewModel>,
     };
