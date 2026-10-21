@@ -52,5 +52,9 @@
   "Trash": "trash",
   "Download": "download",
   "Folder": "folder-open",
-  "Cpu": "cpu"
+  "Cpu": "cpu",
+  "Eye": "eye",
+  "EyeOff": "eye-off",
+  "Board": "circuit-board",
+  "Bios": "microchip"
 }
