@@ -1665,4 +1665,181 @@
   <data name="Hw.Power.Note.PlanSlow" xml:space="preserve">
     <value>Para jogos e benchmarks, o plano Alto desempenho evita que o PC diminua o clock.</value>
   </data>
+  <data name="Hw.Net.Active" xml:space="preserve">
+    <value>Conexão ativa</value>
+  </data>
+  <data name="Hw.Net.Others" xml:space="preserve">
+    <value>Outros adaptadores</value>
+  </data>
+  <data name="Hw.Net.NoConnection.Status" xml:space="preserve">
+    <value>Sem rede</value>
+  </data>
+  <data name="Hw.Net.NoConnection.Note" xml:space="preserve">
+    <value>O Windows não encontrou uma conexão ativa com acesso ao roteador. Verifique o cabo, o Wi-Fi ou o adaptador.</value>
+  </data>
+  <data name="Hw.Net.Row.Adapter" xml:space="preserve">
+    <value>Adaptador</value>
+  </data>
+  <data name="Hw.Net.Row.Kind" xml:space="preserve">
+    <value>Tipo</value>
+  </data>
+  <data name="Hw.Net.Row.Link" xml:space="preserve">
+    <value>Velocidade do link</value>
+  </data>
+  <data name="Hw.Net.Row.Ip" xml:space="preserve">
+    <value>Endereço IP</value>
+  </data>
+  <data name="Hw.Net.Row.Gateway" xml:space="preserve">
+    <value>Roteador (gateway)</value>
+  </data>
+  <data name="Hw.Net.Row.Dns" xml:space="preserve">
+    <value>Servidores DNS</value>
+  </data>
+  <data name="Hw.Net.Row.Mac" xml:space="preserve">
+    <value>Endereço MAC</value>
+  </data>
+  <data name="Hw.Net.Kind.Wifi" xml:space="preserve">
+    <value>Wi-Fi</value>
+  </data>
+  <data name="Hw.Net.Kind.Ethernet" xml:space="preserve">
+    <value>Ethernet (cabo)</value>
+  </data>
+  <data name="Hw.Net.Kind.Other" xml:space="preserve">
+    <value>Outro</value>
+  </data>
+  <data name="Hw.Net.Link" xml:space="preserve">
+    <value>{0} Mbps</value>
+  </data>
+  <data name="Hw.Diag.Title" xml:space="preserve">
+    <value>Diagnóstico de lag</value>
+  </data>
+  <data name="Hw.Diag.Intro" xml:space="preserve">
+    <value>Mede a latência até o roteador e a internet, a perda de pacotes, o DNS e a velocidade. Leva cerca de 25 segundos e usa a sua conexão. Nada é gravado no disco.</value>
+  </data>
+  <data name="Hw.Diag.Servers" xml:space="preserve">
+    <value>Fala só com o roteador, com 1.1.1.1, com 1.0.0.1 e com speed.cloudflare.com, por HTTPS.</value>
+  </data>
+  <data name="Hw.Diag.Start" xml:space="preserve">
+    <value>Testar a rede</value>
+  </data>
+  <data name="Hw.Diag.Cancel" xml:space="preserve">
+    <value>Cancelar</value>
+  </data>
+  <data name="Hw.Diag.Result" xml:space="preserve">
+    <value>Resultado</value>
+  </data>
+  <data name="Hw.Diag.Cancelled" xml:space="preserve">
+    <value>Teste cancelado.</value>
+  </data>
+  <data name="Hw.Diag.Failed" xml:space="preserve">
+    <value>O teste não terminou. O registro tem os detalhes.</value>
+  </data>
+  <data name="Hw.Diag.TestedAt" xml:space="preserve">
+    <value>Testado às {0}</value>
+  </data>
+  <data name="Hw.Diag.Stage.FindingConnection" xml:space="preserve">
+    <value>Procurando a conexão ativa…</value>
+  </data>
+  <data name="Hw.Diag.Stage.Latency" xml:space="preserve">
+    <value>Medindo latência e perda de pacotes (cerca de 7 s)…</value>
+  </data>
+  <data name="Hw.Diag.Stage.Dns" xml:space="preserve">
+    <value>Testando o DNS…</value>
+  </data>
+  <data name="Hw.Diag.Stage.Download" xml:space="preserve">
+    <value>Medindo a velocidade de download (cerca de 8 s)…</value>
+  </data>
+  <data name="Hw.Diag.Stage.Upload" xml:space="preserve">
+    <value>Medindo a velocidade de upload (cerca de 6 s)…</value>
+  </data>
+  <data name="Hw.Diag.Stage.Analyzing" xml:space="preserve">
+    <value>Analisando…</value>
+  </data>
+  <data name="Hw.Diag.Stage.Done" xml:space="preserve">
+    <value>Concluído</value>
+  </data>
+  <data name="Hw.Diag.Verdict.Stable" xml:space="preserve">
+    <value>Estável</value>
+  </data>
+  <data name="Hw.Diag.Verdict.Warning" xml:space="preserve">
+    <value>Atenção</value>
+  </data>
+  <data name="Hw.Diag.Verdict.Bad" xml:space="preserve">
+    <value>Ruim</value>
+  </data>
+  <data name="Hw.Diag.Finding.AllGood" xml:space="preserve">
+    <value>Latência baixa, sem perda de pacotes e sem sinais de bufferbloat. Se o jogo ainda engasga, o problema provavelmente não é a conexão: veja o Gargalo e as temperaturas.</value>
+  </data>
+  <data name="Hw.Diag.Finding.RouterUnstable" xml:space="preserve">
+    <value>A rede local está instável (roteador: {0} ms, perda {1}%, jitter {2} ms). Se for Wi-Fi, aproxime-se do roteador ou use cabo.</value>
+  </data>
+  <data name="Hw.Diag.Finding.RouterSilent" xml:space="preserve">
+    <value>O roteador não responde a ping (alguns modelos bloqueiam). Isso por si só não é problema.</value>
+  </data>
+  <data name="Hw.Diag.Finding.InternetUnreachable" xml:space="preserve">
+    <value>Nenhum dos servidores da internet respondeu: sem acesso à internet ou ping bloqueado pela rede.</value>
+  </data>
+  <data name="Hw.Diag.Finding.InternetLossLocal" xml:space="preserve">
+    <value>Há perda de pacotes até a internet ({0}%). Provavelmente vem da rede local.</value>
+  </data>
+  <data name="Hw.Diag.Finding.InternetLossProvider" xml:space="preserve">
+    <value>Há perda de pacotes até a internet ({0}%). Como o roteador está bem, o problema deve estar na linha ou no provedor.</value>
+  </data>
+  <data name="Hw.Diag.Finding.HighLatencyLocal" xml:space="preserve">
+    <value>Latência alta até a internet ({0} ms).</value>
+  </data>
+  <data name="Hw.Diag.Finding.HighLatencyProvider" xml:space="preserve">
+    <value>Latência alta até a internet ({0} ms). O roteador responde bem, então o atraso vem do provedor.</value>
+  </data>
+  <data name="Hw.Diag.Finding.HighJitter" xml:space="preserve">
+    <value>O jitter está alto ({0} ms): a latência oscila, o que causa engasgos em jogos online.</value>
+  </data>
+  <data name="Hw.Diag.Finding.Bufferbloat" xml:space="preserve">
+    <value>A latência sobe para {0} ms quando a conexão está cheia (bufferbloat). Ative SQM/QoS no roteador ou limite a velocidade a cerca de 90%.</value>
+  </data>
+  <data name="Hw.Diag.Finding.SlowDns" xml:space="preserve">
+    <value>O DNS demorou {0} ms. Trocar para um resolvedor público, como o 1.1.1.1, pode acelerar o carregamento de sites.</value>
+  </data>
+  <data name="Hw.Diag.Finding.LowDownload" xml:space="preserve">
+    <value>Download baixo ({0} Mbps) para jogos, streaming e atualizações.</value>
+  </data>
+  <data name="Hw.Diag.Finding.SpeedTestUnavailable" xml:space="preserve">
+    <value>Não foi possível medir a velocidade (speed.cloudflare.com inacessível ou bloqueado).</value>
+  </data>
+  <data name="Hw.Diag.Metric.Router" xml:space="preserve">
+    <value>Roteador ({0})</value>
+  </data>
+  <data name="Hw.Diag.Metric.Primary" xml:space="preserve">
+    <value>Internet · Cloudflare ({0})</value>
+  </data>
+  <data name="Hw.Diag.Metric.Secondary" xml:space="preserve">
+    <value>Internet · Cloudflare 2 ({0})</value>
+  </data>
+  <data name="Hw.Diag.Metric.Dns" xml:space="preserve">
+    <value>Resolução de DNS</value>
+  </data>
+  <data name="Hw.Diag.Metric.Download" xml:space="preserve">
+    <value>Download</value>
+  </data>
+  <data name="Hw.Diag.Metric.Upload" xml:space="preserve">
+    <value>Upload</value>
+  </data>
+  <data name="Hw.Diag.Metric.Loaded" xml:space="preserve">
+    <value>Latência sob carga</value>
+  </data>
+  <data name="Hw.Diag.Ping.Text" xml:space="preserve">
+    <value>média {0} ms · mín {1} · máx {2} · jitter {3} ms · perda {4}%</value>
+  </data>
+  <data name="Hw.Diag.Ping.Silent" xml:space="preserve">
+    <value>Não responde</value>
+  </data>
+  <data name="Hw.Diag.Value.Ms" xml:space="preserve">
+    <value>{0} ms</value>
+  </data>
+  <data name="Hw.Diag.Value.Mbps" xml:space="preserve">
+    <value>{0} Mbps</value>
+  </data>
+  <data name="Hw.Diag.Value.Loaded" xml:space="preserve">
+    <value>{0} ms (durante o download)</value>
+  </data>
 </root>
