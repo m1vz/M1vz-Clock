@@ -24,4 +24,7 @@ internal static partial class HardwareLog
 
     [LoggerMessage(EventId = 3103, Level = LogLevel.Warning, Message = "O teste de {Direction} falhou.")]
     public static partial void SpeedTestFailed(ILogger logger, Exception exception, string direction);
+
+    [LoggerMessage(EventId = 3104, Level = LogLevel.Information, Message = "Nenhum adaptador de rede ativo com gateway; o diagnóstico não foi iniciado.")]
+    public static partial void NoActiveAdapter(ILogger logger);
 }

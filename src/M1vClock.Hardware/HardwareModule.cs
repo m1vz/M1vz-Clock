@@ -1,11 +1,13 @@
 using M1vClock.Core.RegistryValues;
 using M1vClock.Hardware.Gpu;
+using M1vClock.Hardware.Network;
 using M1vClock.Hardware.Platform;
 using M1vClock.Hardware.Power;
 using M1vClock.Hardware.Ram;
 using M1vClock.Hardware.Storage;
 using M1vClock.Hardware.Wmi;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.DependencyInjection.Extensions;
 
 namespace M1vClock.Hardware;
 
@@ -31,6 +33,11 @@ public static class HardwareModule
         services.AddSingleton<IPowerService, PowerService>();
         services.AddSingleton<StorageCollector>();
         services.AddSingleton<IStorageService, StorageService>();
+        services.TryAddSingleton(TimeProvider.System);
+        services.AddSingleton<INetworkInterfaceSource, SystemNetworkInterfaceSource>();
+        services.AddSingleton<INetworkProbe, SystemNetworkProbe>();
+        services.AddSingleton(NetworkTestOptions.Default);
+        services.AddSingleton<INetworkService, NetworkService>();
         return services;
     }
 }
