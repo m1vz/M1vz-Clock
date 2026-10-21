@@ -264,7 +264,7 @@ public sealed partial class DesignSystemPageViewModel : PageViewModel, IDisposab
         {
             var brush = new SolidColorBrush(color);
             brush.Freeze();
-            var contrast = text ? Loc.Format("DS.Color.Contrast", Contrast.Ratio(color, surface).ToString("0.0", CultureInfo.GetCultureInfo("pt-BR"))) : null;
+            var contrast = text ? Loc.Format("DS.Color.Contrast", Contrast.Ratio(color, surface).ToString("0.0", Loc.Culture)) : null;
             return new SwatchViewModel(Loc.Get($"Token.{key}"), Hex(color), brush, contrast);
         }
 
