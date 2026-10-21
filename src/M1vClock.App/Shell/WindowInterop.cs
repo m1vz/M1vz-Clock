@@ -35,6 +35,12 @@ internal static partial class WindowInterop
         return DwmSetWindowAttribute(hwnd, DwmwaSystemBackdropType, ref value, sizeof(int));
     }
 
+    public static int ExtendFrameIntoClient(IntPtr hwnd)
+    {
+        var margins = new Margins { Left = -1, Right = -1, Top = -1, Bottom = -1 };
+        return DwmExtendFrameIntoClientArea(hwnd, ref margins);
+    }
+
     public static Point PointFromLParam(IntPtr lParam)
     {
         var raw = unchecked((int)lParam.ToInt64());
@@ -119,6 +125,15 @@ internal static partial class WindowInterop
     }
 
     [StructLayout(LayoutKind.Sequential)]
+    private struct Margins
+    {
+        public int Left;
+        public int Right;
+        public int Top;
+        public int Bottom;
+    }
+
+    [StructLayout(LayoutKind.Sequential)]
     private struct NativeRect
     {
         public int Left;
@@ -129,6 +144,9 @@ internal static partial class WindowInterop
 
     [LibraryImport("dwmapi.dll")]
     private static partial int DwmSetWindowAttribute(IntPtr hwnd, int attribute, ref int value, int size);
+
+    [LibraryImport("dwmapi.dll")]
+    private static partial int DwmExtendFrameIntoClientArea(IntPtr hwnd, ref Margins margins);
 
     [LibraryImport("dwmapi.dll")]
     private static partial int DwmGetWindowAttribute(IntPtr hwnd, int attribute, out NativeRect value, int size);

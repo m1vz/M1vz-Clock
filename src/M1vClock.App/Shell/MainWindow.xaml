@@ -12,7 +12,7 @@
         FontFamily="{StaticResource Font.Text}" FontSize="{DynamicResource Size.Body}" Foreground="{DynamicResource Brush.TextPrimary}">
 
   <WindowChrome.WindowChrome>
-    <WindowChrome CaptionHeight="48" ResizeBorderThickness="6" GlassFrameThickness="-1" CornerRadius="0"
+    <WindowChrome CaptionHeight="48" ResizeBorderThickness="6" GlassFrameThickness="0" CornerRadius="0"
                   UseAeroCaptionButtons="False" NonClientFrameEdges="None" />
   </WindowChrome.WindowChrome>
 

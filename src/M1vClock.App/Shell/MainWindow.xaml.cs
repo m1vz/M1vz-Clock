@@ -241,7 +241,12 @@ public partial class MainWindow : Window
                 target.BackgroundColor = Colors.Transparent;
             }
 
-            var result = WindowInterop.SetMica(hwnd, true);
+            var result = WindowInterop.ExtendFrameIntoClient(hwnd);
+            if (result == 0)
+            {
+                result = WindowInterop.SetMica(hwnd, true);
+            }
+
             if (result != 0)
             {
                 useMaterial = false;
