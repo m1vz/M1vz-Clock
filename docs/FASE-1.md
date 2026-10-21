@@ -11,16 +11,14 @@ dotnet build m1vClock.slnx
 dotnet test --solution m1vClock.slnx
 ```
 
-O app pede administrador (`app.manifest`). Para trabalhar na interface sem o prompt do UAC, compile com o manifesto de usuário comum:
+O app de produção (Release) pede administrador (`app.manifest`). O build Debug usa o manifesto de usuário comum (`app.asinvoker.manifest`), para trabalhar na interface sem o prompt do UAC:
 
 ```
-dotnet build src/M1vClock.App -p:M1vAsInvoker=true
+dotnet build src/M1vClock.App
 src/M1vClock.App/bin/Debug/net10.0-windows/win-x64/m1vClock.exe
 ```
 
-Nesse modo os dados ficam em `%LocalAppData%\m1vClock-dev`. Com administrador, ficam em `%ProgramData%\m1vClock`, numa pasta protegida por ACL.
-
-Atenção: `dotnet test` recompila o App sem `M1vAsInvoker`. Recompile com a opção acima antes de abrir o executável de desenvolvimento.
+Nesse modo os dados ficam em `%LocalAppData%\m1vClock-dev`. Com administrador, ficam em `%ProgramData%\m1vClock`, numa pasta protegida por ACL. Para testar o Debug elevado, compile com `-p:M1vAsInvoker=false`.
 
 ## Opções de linha de comando
 
