@@ -12,6 +12,7 @@ public static class PageRegistry
         ["settings"] = Resolve<SettingsPageViewModel>,
         ["history"] = Resolve<HistoryPageViewModel>,
         ["system"] = Resolve<SystemPageViewModel>,
+        ["memory"] = Resolve<MemoryPageViewModel>,
     };
 
     public static IReadOnlyCollection<string> Ids => Factories.Keys;
