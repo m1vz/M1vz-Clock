@@ -37,6 +37,25 @@ public sealed class UnitsTests
         Assert.Equal(Units.Missing, Units.Bytes(bytes, Portuguese));
     }
 
+    [Theory]
+    [InlineData(1000202273280, "1 TB")]
+    [InlineData(512105932800, "512,1 GB")]
+    [InlineData(16000000000, "16 GB")]
+    [InlineData(999, "999 B")]
+    public void DecimalBytesMatchTheSizeOnTheDriveLabel(double bytes, string expected)
+    {
+        Assert.Equal(expected, Units.DecimalBytes(bytes, Portuguese));
+    }
+
+    [Theory]
+    [InlineData(0)]
+    [InlineData(-1)]
+    [InlineData(double.NaN)]
+    public void DecimalBytesOfNothingShowADash(double bytes)
+    {
+        Assert.Equal(Units.Missing, Units.DecimalBytes(bytes, Portuguese));
+    }
+
     [Fact]
     public void KilobytesScaleToTheRightUnit()
     {
