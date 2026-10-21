@@ -1,7 +1,15 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <ItemGroup>
+    <PackageReference Include="System.Management" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\M1vClock.Core\M1vClock.Core.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <InternalsVisibleTo Include="M1vClock.Hardware.Tests" />
   </ItemGroup>
 
 </Project>
