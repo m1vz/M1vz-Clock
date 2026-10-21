@@ -1,6 +1,7 @@
 using M1vClock.Core.RegistryValues;
 using M1vClock.Hardware.Platform;
 using M1vClock.Hardware.Ram;
+using M1vClock.Hardware.Storage;
 using M1vClock.Hardware.Wmi;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -19,6 +20,8 @@ public static class HardwareModule
         services.AddSingleton<IPlatformService, PlatformService>();
         services.AddSingleton<RamCollector>();
         services.AddSingleton<IRamService, RamService>();
+        services.AddSingleton<StorageCollector>();
+        services.AddSingleton<IStorageService, StorageService>();
         return services;
     }
 }
