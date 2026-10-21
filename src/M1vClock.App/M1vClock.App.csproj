@@ -1,0 +1,49 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <UseWPF>true</UseWPF>
+    <AssemblyName>m1vClock</AssemblyName>
+    <RootNamespace>M1vClock.App</RootNamespace>
+    <RuntimeIdentifier>win-x64</RuntimeIdentifier>
+    <SelfContained>false</SelfContained>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <StartupObject>M1vClock.App.Program</StartupObject>
+    <ApplicationManifest>app.manifest</ApplicationManifest>
+    <ApplicationManifest Condition="'$(M1vAsInvoker)' == 'true'">app.asinvoker.manifest</ApplicationManifest>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ApplicationDefinition Remove="App.xaml" />
+    <Page Include="App.xaml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Assets\Fonts\*.ttf" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="CommunityToolkit.Mvvm" />
+    <PackageReference Include="Microsoft.Extensions.Hosting" />
+    <PackageReference Include="Serilog" />
+    <PackageReference Include="Serilog.Extensions.Hosting" />
+    <PackageReference Include="Serilog.Sinks.File" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\M1vClock.Core\M1vClock.Core.csproj" />
+    <ProjectReference Include="..\M1vClock.Hardware\M1vClock.Hardware.csproj" />
+    <ProjectReference Include="..\M1vClock.Benchmarks\M1vClock.Benchmarks.csproj" />
+    <ProjectReference Include="..\M1vClock.Tuning\M1vClock.Tuning.csproj" />
+    <ProjectReference Include="..\M1vClock.Optimize\M1vClock.Optimize.csproj" />
+    <ProjectReference Include="..\M1vClock.Diagnostics\M1vClock.Diagnostics.csproj" />
+    <ProjectReference Include="..\M1vClock.Games\M1vClock.Games.csproj" />
+    <ProjectReference Include="..\M1vClock.Integrations\M1vClock.Integrations.csproj" />
+    <ProjectReference Include="..\M1vClock.Maker\M1vClock.Maker.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <InternalsVisibleTo Include="M1vClock.App.Tests" />
+  </ItemGroup>
+
+</Project>

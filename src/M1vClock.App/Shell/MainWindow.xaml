@@ -1,0 +1,236 @@
+<Window x:Class="M1vClock.App.Shell.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:dc="clr-namespace:M1vClock.App.DesignSystem.Controls"
+        xmlns:l="clr-namespace:M1vClock.App.Localization"
+        xmlns:nav="clr-namespace:M1vClock.App.Navigation"
+        xmlns:search="clr-namespace:M1vClock.App.Search"
+        xmlns:shell="clr-namespace:M1vClock.App.Shell"
+        Title="m1vClock" Width="1280" Height="820" MinWidth="1040" MinHeight="640"
+        WindowStartupLocation="CenterScreen" ResizeMode="CanResize"
+        Background="Transparent" UseLayoutRounding="True"
+        FontFamily="{StaticResource Font.Text}" FontSize="{DynamicResource Size.Body}" Foreground="{DynamicResource Brush.TextPrimary}">
+
+  <WindowChrome.WindowChrome>
+    <WindowChrome CaptionHeight="48" ResizeBorderThickness="6" GlassFrameThickness="-1" CornerRadius="0"
+                  UseAeroCaptionButtons="False" NonClientFrameEdges="None" />
+  </WindowChrome.WindowChrome>
+
+  <Window.InputBindings>
+    <KeyBinding Key="K" Modifiers="Control" Command="{Binding OpenPaletteCommand, RelativeSource={RelativeSource AncestorType=Window}}" />
+  </Window.InputBindings>
+
+  <Window.Resources>
+    <DataTemplate x:Key="SidebarItemTemplate" DataType="{x:Type nav:SidebarItemViewModel}">
+      <Button Style="{StaticResource Sidebar.Item}" Command="{Binding OpenCommand}" Tag="{Binding}"
+              AutomationProperties.Name="{Binding Title}">
+        <StackPanel Orientation="Horizontal">
+          <dc:Icon x:Name="Glyph" Data="{Binding IconKey, Converter={StaticResource KeyToGeometry}}" Size="16"
+                   Foreground="{DynamicResource Brush.TextSecondary}" Margin="0,0,10,0" VerticalAlignment="Center" />
+          <TextBlock Text="{Binding Title}" VerticalAlignment="Center" TextTrimming="CharacterEllipsis" />
+        </StackPanel>
+      </Button>
+      <DataTemplate.Triggers>
+        <DataTrigger Binding="{Binding IsSelected}" Value="True">
+          <Setter TargetName="Glyph" Property="Foreground" Value="{DynamicResource Brush.AccentForeground}" />
+        </DataTrigger>
+      </DataTemplate.Triggers>
+    </DataTemplate>
+  </Window.Resources>
+
+  <Grid x:Name="Root">
+    <Grid.RowDefinitions>
+      <RowDefinition Height="48" />
+      <RowDefinition Height="*" />
+    </Grid.RowDefinitions>
+    <Grid.ColumnDefinitions>
+      <ColumnDefinition Width="248" />
+      <ColumnDefinition Width="*" />
+    </Grid.ColumnDefinitions>
+
+    <Grid x:Name="TitleBar" Grid.ColumnSpan="2">
+      <StackPanel Orientation="Horizontal" VerticalAlignment="Center" Margin="20,0,0,0">
+        <TextBlock Text="m1vClock" Style="{StaticResource Text.Subhead}" FontWeight="SemiBold" VerticalAlignment="Center" />
+      </StackPanel>
+
+      <Button x:Name="SearchButton" Style="{StaticResource TitleBar.Search}" HorizontalAlignment="Center" VerticalAlignment="Center"
+              WindowChrome.IsHitTestVisibleInChrome="True" Click="SearchButton_Click"
+              AutomationProperties.Name="{l:Text Search.Placeholder}">
+        <DockPanel>
+          <Border DockPanel.Dock="Right" BorderBrush="{DynamicResource Brush.Separator}" BorderThickness="1" CornerRadius="4" Padding="6,1" VerticalAlignment="Center">
+            <TextBlock Text="Ctrl K" Style="{StaticResource Text.Caption}" />
+          </Border>
+          <dc:Icon Data="{StaticResource Icon.Search}" Size="14" Margin="0,0,8,0" VerticalAlignment="Center" />
+          <TextBlock Text="{l:Text Search.Placeholder}" Style="{StaticResource Text.Subhead}" Foreground="{DynamicResource Brush.TextSecondary}" VerticalAlignment="Center" />
+        </DockPanel>
+      </Button>
+
+      <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" WindowChrome.IsHitTestVisibleInChrome="True">
+        <Button x:Name="MinimizeButton" Style="{StaticResource Caption.Button}" Content="&#xE921;" Click="Minimize_Click"
+                AutomationProperties.Name="{l:Text Window.Minimize}" ToolTip="{l:Text Window.Minimize}" />
+        <Button x:Name="MaximizeButton" Style="{StaticResource Caption.Button}" Content="&#xE922;" Click="Maximize_Click"
+                AutomationProperties.Name="{l:Text Window.Maximize}" />
+        <Button x:Name="CloseButton" Style="{StaticResource Caption.Close}" Content="&#xE8BB;" Click="Close_Click"
+                AutomationProperties.Name="{l:Text Window.Close}" ToolTip="{l:Text Window.Close}" />
+      </StackPanel>
+    </Grid>
+
+    <Grid x:Name="Sidebar" Grid.Row="1" Margin="0,0,0,0">
+      <Grid.RowDefinitions>
+        <RowDefinition Height="*" />
+        <RowDefinition Height="Auto" />
+      </Grid.RowDefinitions>
+
+      <ScrollViewer x:Name="SidebarScroll" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled" Focusable="False">
+        <Grid Margin="10,4,10,12">
+          <Canvas x:Name="MainPillLayer" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" IsHitTestVisible="False">
+            <Border x:Name="MainPill" CornerRadius="6" Background="{DynamicResource Brush.SidebarSelection}" Height="32" Opacity="0">
+              <Border.RenderTransform>
+                <TranslateTransform x:Name="MainPillOffset" />
+              </Border.RenderTransform>
+            </Border>
+          </Canvas>
+          <ItemsControl x:Name="SectionList" ItemsSource="{Binding Sections}" Focusable="False" KeyboardNavigation.TabNavigation="Continue">
+            <ItemsControl.ItemTemplate>
+              <DataTemplate DataType="{x:Type nav:SidebarSectionViewModel}">
+                <StackPanel KeyboardNavigation.DirectionalNavigation="Continue">
+                  <Button Style="{StaticResource Sidebar.Header}" Command="{Binding ToggleCommand}"
+                          Visibility="{Binding HasHeader, Converter={StaticResource BoolToVisible}}"
+                          AutomationProperties.Name="{Binding Title}">
+                    <DockPanel>
+                      <dc:Disclosure DockPanel.Dock="Right" IsExpanded="{Binding IsExpanded}" Width="12" Height="12" VerticalAlignment="Center" />
+                      <TextBlock Text="{Binding Title}" Style="{StaticResource Text.Caption}" Foreground="{Binding Foreground, RelativeSource={RelativeSource AncestorType=Button}}" />
+                    </DockPanel>
+                  </Button>
+                  <dc:CollapsiblePanel IsExpanded="{Binding IsExpanded}">
+                    <ItemsControl ItemsSource="{Binding Items}" ItemTemplate="{StaticResource SidebarItemTemplate}" Focusable="False" />
+                  </dc:CollapsiblePanel>
+                </StackPanel>
+              </DataTemplate>
+            </ItemsControl.ItemTemplate>
+          </ItemsControl>
+        </Grid>
+      </ScrollViewer>
+
+      <Grid Grid.Row="1" Margin="10,0,10,12">
+        <Grid.RowDefinitions>
+          <RowDefinition Height="Auto" />
+          <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+        <Border Style="{StaticResource Separator.Horizontal}" Margin="6,0,6,8" />
+        <Canvas x:Name="FooterPillLayer" Grid.Row="1" IsHitTestVisible="False">
+          <Border x:Name="FooterPill" CornerRadius="6" Background="{DynamicResource Brush.SidebarSelection}" Height="32" Opacity="0">
+            <Border.RenderTransform>
+              <TranslateTransform x:Name="FooterPillOffset" />
+            </Border.RenderTransform>
+          </Border>
+        </Canvas>
+        <ItemsControl x:Name="FooterList" Grid.Row="1" ItemsSource="{Binding FooterItems}" ItemTemplate="{StaticResource SidebarItemTemplate}" Focusable="False" />
+      </Grid>
+    </Grid>
+
+    <Border x:Name="ContentFrame" Grid.Row="1" Grid.Column="1" Background="{DynamicResource Brush.WindowBackground}"
+            BorderBrush="{DynamicResource Brush.Separator}" BorderThickness="1,1,0,0" CornerRadius="12,0,0,0">
+      <Grid x:Name="PageHost" ClipToBounds="True" />
+    </Border>
+
+    <Grid x:Name="OverlayRoot" Grid.RowSpan="2" Grid.ColumnSpan="2" Visibility="Collapsed">
+      <Border x:Name="Scrim" Background="{DynamicResource Brush.Scrim}" Opacity="0" MouseLeftButtonDown="Scrim_MouseLeftButtonDown" />
+
+      <Border x:Name="PaletteCard" Width="560" MaxHeight="460" VerticalAlignment="Top" HorizontalAlignment="Center" Margin="0,52,0,0"
+              Background="{DynamicResource Brush.SurfaceElevated}" BorderBrush="{DynamicResource Brush.Separator}" BorderThickness="1"
+              CornerRadius="12" Opacity="0" Visibility="Collapsed" DataContext="{Binding Palette}"
+              KeyboardNavigation.TabNavigation="Cycle">
+        <Border.Effect>
+          <DropShadowEffect BlurRadius="28" ShadowDepth="10" Direction="270" Opacity="0.22" />
+        </Border.Effect>
+        <Border.RenderTransform>
+          <ScaleTransform x:Name="PaletteScale" ScaleX="1" ScaleY="1" />
+        </Border.RenderTransform>
+        <DockPanel>
+          <TextBox x:Name="PaletteInput" DockPanel.Dock="Top" Style="{StaticResource Input.Text}" Margin="12,12,12,8" Height="40"
+                   Text="{Binding Query, UpdateSourceTrigger=PropertyChanged}" PreviewKeyDown="PaletteInput_PreviewKeyDown"
+                   dc:Assist.Icon="{StaticResource Icon.Search}" dc:Assist.Placeholder="{l:Text Search.Placeholder}"
+                   AutomationProperties.Name="{l:Text Search.Placeholder}" />
+          <TextBlock DockPanel.Dock="Bottom" Text="{l:Text Search.Hint}" Style="{StaticResource Text.Caption}"
+                     Foreground="{DynamicResource Brush.TextTertiary}" Margin="16,8,16,12" />
+          <Border DockPanel.Dock="Bottom" Style="{StaticResource Separator.Horizontal}" />
+          <Grid>
+            <TextBlock Text="{l:Text Search.Empty}" Style="{StaticResource Text.Body.Secondary}" Margin="16,12,16,16"
+                       Visibility="{Binding HasResults, Converter={StaticResource BoolToCollapsed}}" />
+            <ListBox x:Name="PaletteResults" Style="{StaticResource List.Plain}" ItemsSource="{Binding Results}" SelectedItem="{Binding Selected}"
+                     Margin="6,0,6,6" MaxHeight="360" Focusable="False" MouseLeftButtonUp="PaletteResults_MouseLeftButtonUp">
+              <ListBox.Template>
+                <ControlTemplate TargetType="ListBox">
+                  <ScrollViewer Focusable="False" VerticalScrollBarVisibility="Auto">
+                    <ItemsPresenter />
+                  </ScrollViewer>
+                </ControlTemplate>
+              </ListBox.Template>
+              <ListBox.ItemTemplate>
+                <DataTemplate DataType="{x:Type search:SearchItem}">
+                  <DockPanel>
+                    <TextBlock DockPanel.Dock="Right" Text="{Binding Subtitle}" Style="{StaticResource Text.Caption}" VerticalAlignment="Center" Margin="12,0,4,0" />
+                    <dc:Icon Data="{Binding IconKey, Converter={StaticResource KeyToGeometry}}" Size="16" Margin="0,0,12,0" VerticalAlignment="Center"
+                             Foreground="{DynamicResource Brush.TextSecondary}" />
+                    <TextBlock Text="{Binding Title}" Style="{StaticResource Text.Body}" VerticalAlignment="Center" TextTrimming="CharacterEllipsis" />
+                  </DockPanel>
+                </DataTemplate>
+              </ListBox.ItemTemplate>
+            </ListBox>
+          </Grid>
+        </DockPanel>
+      </Border>
+
+      <Border x:Name="DialogCard" Width="480" VerticalAlignment="Center" HorizontalAlignment="Center"
+              Background="{DynamicResource Brush.SurfaceElevated}" BorderBrush="{DynamicResource Brush.Separator}" BorderThickness="1"
+              CornerRadius="12" Padding="24" Opacity="0" Visibility="Collapsed" DataContext="{Binding Dialogs.Current}"
+              KeyboardNavigation.TabNavigation="Cycle">
+        <Border.Effect>
+          <DropShadowEffect BlurRadius="32" ShadowDepth="12" Direction="270" Opacity="0.24" />
+        </Border.Effect>
+        <Border.RenderTransform>
+          <ScaleTransform x:Name="DialogScale" ScaleX="1" ScaleY="1" />
+        </Border.RenderTransform>
+        <StackPanel>
+          <StackPanel Orientation="Horizontal" Margin="0,0,0,8">
+            <dc:Icon Data="{StaticResource Icon.Error}" Size="20" Foreground="{DynamicResource Brush.Critical}" Margin="0,0,10,0" VerticalAlignment="Center"
+                     Visibility="{Binding IsError, Converter={StaticResource BoolToVisible}}" />
+            <TextBlock x:Name="DialogTitle" Text="{Binding Title}" Style="{StaticResource Text.Headline}" TextWrapping="Wrap" />
+          </StackPanel>
+          <TextBlock Text="{Binding Message}" Style="{StaticResource Text.Body.Secondary}" TextWrapping="Wrap" />
+
+          <StackPanel Margin="0,20,0,0" Visibility="{Binding HasChanges, Converter={StaticResource BoolToVisible}}">
+            <TextBlock Text="{l:Text Dialog.Changes}" Style="{StaticResource Text.Subhead}" FontWeight="SemiBold" Margin="0,0,0,6" />
+            <ItemsControl ItemsSource="{Binding Changes}" Focusable="False">
+              <ItemsControl.ItemTemplate>
+                <DataTemplate>
+                  <DockPanel Margin="0,2">
+                    <Border DockPanel.Dock="Left" Width="4" Height="4" CornerRadius="2" Background="{DynamicResource Brush.TextSecondary}" Margin="2,0,10,0" VerticalAlignment="Center" />
+                    <TextBlock Text="{Binding}" Style="{StaticResource Text.Subhead}" TextWrapping="Wrap" />
+                  </DockPanel>
+                </DataTemplate>
+              </ItemsControl.ItemTemplate>
+            </ItemsControl>
+          </StackPanel>
+
+          <StackPanel Margin="0,16,0,0" Visibility="{Binding HasUndo, Converter={StaticResource BoolToVisible}}">
+            <TextBlock Text="{l:Text Dialog.Undo}" Style="{StaticResource Text.Subhead}" FontWeight="SemiBold" Margin="0,0,0,6" />
+            <TextBlock Text="{Binding Undo}" Style="{StaticResource Text.Subhead.Secondary}" TextWrapping="Wrap" />
+          </StackPanel>
+
+          <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,24,0,0">
+            <Button x:Name="DialogCancel" Content="{Binding CancelText}" Style="{StaticResource Button.Secondary}" MinWidth="96" Margin="0,0,8,0"
+                    Command="{Binding DataContext.Dialogs.CancelCommand, RelativeSource={RelativeSource AncestorType=Window}}"
+                    Visibility="{Binding HasCancel, Converter={StaticResource BoolToVisible}}" />
+            <Button x:Name="DialogConfirm" Content="{Binding ConfirmText}" Style="{StaticResource Button.Primary}" MinWidth="96"
+                    Command="{Binding DataContext.Dialogs.ConfirmCommand, RelativeSource={RelativeSource AncestorType=Window}}" />
+          </StackPanel>
+        </StackPanel>
+      </Border>
+    </Grid>
+
+    <Image x:Name="ThemeSnapshot" Grid.RowSpan="2" Grid.ColumnSpan="2" IsHitTestVisible="False" Visibility="Collapsed" Stretch="None"
+           HorizontalAlignment="Left" VerticalAlignment="Top" />
+  </Grid>
+</Window>

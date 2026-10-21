@@ -1,0 +1,22 @@
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:nav="clr-namespace:M1vClock.App.Navigation"
+                    xmlns:pages="clr-namespace:M1vClock.App.Pages">
+
+  <DataTemplate DataType="{x:Type nav:PlaceholderPageViewModel}">
+    <pages:PlaceholderPage />
+  </DataTemplate>
+
+  <DataTemplate DataType="{x:Type pages:DesignSystemPageViewModel}">
+    <pages:DesignSystemPage />
+  </DataTemplate>
+
+  <DataTemplate DataType="{x:Type pages:SettingsPageViewModel}">
+    <pages:SettingsPage />
+  </DataTemplate>
+
+  <DataTemplate DataType="{x:Type pages:HistoryPageViewModel}">
+    <pages:HistoryPage />
+  </DataTemplate>
+
+</ResourceDictionary>
