@@ -1,4 +1,5 @@
 using M1vClock.Core.RegistryValues;
+using M1vClock.Hardware.Gpu;
 using M1vClock.Hardware.Platform;
 using M1vClock.Hardware.Ram;
 using M1vClock.Hardware.Storage;
@@ -20,6 +21,11 @@ public static class HardwareModule
         services.AddSingleton<IPlatformService, PlatformService>();
         services.AddSingleton<RamCollector>();
         services.AddSingleton<IRamService, RamService>();
+        services.AddSingleton(GpuSpecDatabase.Default);
+        services.AddSingleton<IDxgiAdapterSource, VorticeDxgiAdapterSource>();
+        services.AddSingleton<ISystemLibraries, WindowsSystemLibraries>();
+        services.AddSingleton<GpuCollector>();
+        services.AddSingleton<IGpuService, GpuService>();
         services.AddSingleton<StorageCollector>();
         services.AddSingleton<IStorageService, StorageService>();
         return services;
