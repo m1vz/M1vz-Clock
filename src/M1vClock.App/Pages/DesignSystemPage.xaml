@@ -1,0 +1,271 @@
+<UserControl x:Class="M1vClock.App.Pages.DesignSystemPage"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:dc="clr-namespace:M1vClock.App.DesignSystem.Controls"
+             xmlns:l="clr-namespace:M1vClock.App.Localization"
+             xmlns:pages="clr-namespace:M1vClock.App.Pages"
+             Focusable="False">
+
+  <UserControl.Resources>
+    <DataTemplate x:Key="SwatchTemplate" DataType="{x:Type pages:SwatchViewModel}">
+      <StackPanel Width="112" Margin="0,0,8,16">
+        <Border Height="48" CornerRadius="8" Background="{Binding Fill}" BorderBrush="{DynamicResource Brush.Separator}" BorderThickness="1" />
+        <TextBlock Text="{Binding Name}" Style="{StaticResource Text.Subhead}" FontWeight="Medium" Margin="0,8,0,0" TextTrimming="CharacterEllipsis" />
+        <TextBlock Text="{Binding Hex}" Style="{StaticResource Text.Caption}" Typography.NumeralAlignment="Tabular" />
+        <TextBlock Text="{Binding ContrastText}" Style="{StaticResource Text.Caption}"
+                   Visibility="{Binding ContrastText, Converter={StaticResource NullToCollapsed}}" />
+      </StackPanel>
+    </DataTemplate>
+
+    <Style x:Key="Row.Separator" TargetType="Border" BasedOn="{StaticResource Separator.Horizontal}">
+      <Setter Property="Margin" Value="0,12" />
+    </Style>
+  </UserControl.Resources>
+
+  <dc:PageScaffold Title="{Binding Title}" Subtitle="{Binding Subtitle}">
+    <StackPanel>
+
+      <TextBlock Text="{l:Text DS.Section.Colors}" Style="{StaticResource Section.Title}" Margin="0,0,0,4" />
+      <TextBlock Text="{l:Text DS.Section.Colors.Caption}" Style="{StaticResource Section.Caption}" />
+      <Grid>
+        <Grid.ColumnDefinitions>
+          <ColumnDefinition Width="*" />
+          <ColumnDefinition Width="16" />
+          <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+        <Border Style="{StaticResource Card}" Padding="16,16,8,0">
+          <StackPanel>
+            <TextBlock Text="{l:Text DS.Palette.Light}" Style="{StaticResource Text.Subhead}" FontWeight="SemiBold" Margin="0,0,0,12" />
+            <ItemsControl ItemsSource="{Binding LightSwatches}" ItemTemplate="{StaticResource SwatchTemplate}" Focusable="False">
+              <ItemsControl.ItemsPanel>
+                <ItemsPanelTemplate>
+                  <WrapPanel />
+                </ItemsPanelTemplate>
+              </ItemsControl.ItemsPanel>
+            </ItemsControl>
+          </StackPanel>
+        </Border>
+        <Border Grid.Column="2" Style="{StaticResource Card}" Padding="16,16,8,0">
+          <StackPanel>
+            <TextBlock Text="{l:Text DS.Palette.Dark}" Style="{StaticResource Text.Subhead}" FontWeight="SemiBold" Margin="0,0,0,12" />
+            <ItemsControl ItemsSource="{Binding DarkSwatches}" ItemTemplate="{StaticResource SwatchTemplate}" Focusable="False">
+              <ItemsControl.ItemsPanel>
+                <ItemsPanelTemplate>
+                  <WrapPanel />
+                </ItemsPanelTemplate>
+              </ItemsControl.ItemsPanel>
+            </ItemsControl>
+          </StackPanel>
+        </Border>
+      </Grid>
+
+      <TextBlock Text="{l:Text DS.Section.Type}" Style="{StaticResource Section.Title}" />
+      <TextBlock Text="{l:Text DS.Section.Type.Caption}" Style="{StaticResource Section.Caption}" />
+      <Border Style="{StaticResource Card}" Padding="20,8">
+        <ItemsControl ItemsSource="{Binding TypeSamples}" Focusable="False">
+          <ItemsControl.ItemTemplate>
+            <DataTemplate DataType="{x:Type pages:TypeSampleViewModel}">
+              <Grid Margin="0,12">
+                <Grid.ColumnDefinitions>
+                  <ColumnDefinition Width="200" />
+                  <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <StackPanel VerticalAlignment="Center">
+                  <TextBlock Text="{Binding Name}" Style="{StaticResource Text.Subhead}" FontWeight="Medium" />
+                  <TextBlock Text="{Binding Spec}" Style="{StaticResource Text.Caption}" Typography.NumeralAlignment="Tabular" />
+                </StackPanel>
+                <TextBlock Grid.Column="1" Text="{Binding Sample}" Style="{Binding Style}" VerticalAlignment="Center" TextTrimming="CharacterEllipsis" />
+              </Grid>
+            </DataTemplate>
+          </ItemsControl.ItemTemplate>
+        </ItemsControl>
+      </Border>
+
+      <TextBlock Text="{l:Text DS.Section.Buttons}" Style="{StaticResource Section.Title}" />
+      <TextBlock Text="{l:Text DS.Section.Buttons.Caption}" Style="{StaticResource Section.Caption}" />
+      <Border Style="{StaticResource Card}" Padding="20">
+        <WrapPanel>
+          <Button Content="{l:Text DS.Button.Primary}" Style="{StaticResource Button.Primary}" Margin="0,0,8,8" />
+          <Button Content="{l:Text DS.Button.Secondary}" Style="{StaticResource Button.Secondary}" Margin="0,0,8,8" />
+          <Button Content="{l:Text DS.Button.Plain}" Style="{StaticResource Button.Plain}" Margin="0,0,8,8" />
+          <Button Content="{l:Text DS.Button.Download}" Style="{StaticResource Button.Secondary}" dc:Assist.Icon="{StaticResource Icon.Download}" Margin="0,0,8,8" />
+          <Button Content="{l:Text DS.Button.Destructive}" Style="{StaticResource Button.Destructive}" dc:Assist.Icon="{StaticResource Icon.Trash}" Margin="0,0,8,8" />
+          <Button Style="{StaticResource Button.Icon}" dc:Assist.Icon="{StaticResource Icon.Refresh}" Margin="0,0,8,8"
+                  ToolTip="{l:Text DS.Button.Refresh}" AutomationProperties.Name="{l:Text DS.Button.Refresh}" />
+          <Button Content="{l:Text DS.Button.Disabled}" Style="{StaticResource Button.Primary}" IsEnabled="False" Margin="0,0,8,8" />
+          <Button Content="{l:Text DS.Button.Large}" Style="{StaticResource Button.Large}" Margin="0,0,8,8" />
+        </WrapPanel>
+      </Border>
+
+      <TextBlock Text="{l:Text DS.Section.Metrics}" Style="{StaticResource Section.Title}" />
+      <TextBlock Text="{l:Text DS.Section.Metrics.Caption}" Style="{StaticResource Section.Caption}" />
+      <UniformGrid Columns="4" Margin="-8,0">
+        <dc:MetricCard Margin="8,0" Label="{l:Text DS.Metric.Cpu}" Value="{Binding CpuValue}" Unit="°C" Detail="{Binding CpuDetail}" />
+        <dc:MetricCard Margin="8,0" Label="{l:Text DS.Metric.Gpu}" Value="{Binding GpuValue}" Unit="°C" State="{Binding GpuState}" StateText="{Binding GpuStateText}" />
+        <dc:MetricCard Margin="8,0" Label="{l:Text DS.Metric.Memory}" Value="{Binding MemoryValue}" Unit="%" State="{Binding MemoryState}" StateText="{Binding MemoryStateText}" />
+        <dc:MetricCard Margin="8,0" Label="{l:Text DS.Metric.Disk}" IsLoading="True" />
+      </UniformGrid>
+
+      <TextBlock Text="{l:Text DS.Section.Chart}" Style="{StaticResource Section.Title}" />
+      <TextBlock Text="{l:Text DS.Section.Chart.Caption}" Style="{StaticResource Section.Caption}" />
+      <Border Style="{StaticResource Card}" Padding="20">
+        <StackPanel>
+          <DockPanel Margin="0,0,0,16">
+            <dc:SegmentedControl DockPanel.Dock="Right" Width="216" SelectedIndex="{Binding ChartWindowIndex}"
+                                 AutomationProperties.Name="{l:Text DS.Chart.Window}">
+              <dc:SegmentedItem Content="{l:Text DS.Chart.OneMinute}" />
+              <dc:SegmentedItem Content="{l:Text DS.Chart.FiveMinutes}" />
+              <dc:SegmentedItem Content="{l:Text DS.Chart.FifteenMinutes}" />
+            </dc:SegmentedControl>
+            <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+              <Border Width="8" Height="8" CornerRadius="4" Background="{DynamicResource Brush.Accent}" VerticalAlignment="Center" Margin="0,0,6,0" />
+              <TextBlock Text="{l:Text DS.Chart.Cpu}" Style="{StaticResource Text.Subhead}" Margin="0,0,16,0" />
+              <Border Width="8" Height="8" CornerRadius="4" Background="{DynamicResource Brush.TextSecondary}" VerticalAlignment="Center" Margin="0,0,6,0" />
+              <TextBlock Text="{l:Text DS.Chart.Gpu}" Style="{StaticResource Text.Subhead}" />
+            </StackPanel>
+          </DockPanel>
+          <dc:LiveChart Height="200" Primary="{Binding CpuSeries}" Secondary="{Binding GpuSeries}" WindowSeconds="{Binding ChartWindowSeconds}"
+                        Unit="°C" ValueFormat="0" MinimumRange="10" Floor="0" />
+        </StackPanel>
+      </Border>
+
+      <TextBlock Text="{l:Text DS.Section.List}" Style="{StaticResource Section.Title}" />
+      <TextBlock Text="{l:Text DS.Section.List.Caption}" Style="{StaticResource Section.Caption}" />
+      <Border Style="{StaticResource Card}" Padding="4">
+        <ListBox Style="{StaticResource List.Plain}" ItemsSource="{Binding Rows}" AutomationProperties.Name="{l:Text DS.Section.List}">
+          <ListBox.ItemTemplate>
+            <DataTemplate DataType="{x:Type pages:LiveRowViewModel}">
+              <DockPanel Margin="0,8">
+                <TextBlock DockPanel.Dock="Right" Text="{Binding Value}" Style="{StaticResource Text.Body.Numeric}" VerticalAlignment="Center" />
+                <Border DockPanel.Dock="Left" Width="32" Height="32" CornerRadius="8" Background="{DynamicResource Brush.FillPrimary}" Margin="0,0,12,0">
+                  <dc:Icon Data="{Binding IconKey, Converter={StaticResource KeyToGeometry}}" Size="16" Foreground="{DynamicResource Brush.TextSecondary}"
+                           HorizontalAlignment="Center" VerticalAlignment="Center" />
+                </Border>
+                <StackPanel VerticalAlignment="Center">
+                  <TextBlock Text="{Binding Name}" Style="{StaticResource Text.Body}" />
+                  <TextBlock Text="{Binding Detail}" Style="{StaticResource Text.Caption}" />
+                </StackPanel>
+              </DockPanel>
+            </DataTemplate>
+          </ListBox.ItemTemplate>
+        </ListBox>
+      </Border>
+
+      <TextBlock Text="{l:Text DS.Section.Controls}" Style="{StaticResource Section.Title}" />
+      <TextBlock Text="{l:Text DS.Section.Controls.Caption}" Style="{StaticResource Section.Caption}" />
+      <Border Style="{StaticResource Card}" Padding="20,16">
+        <StackPanel>
+          <DockPanel>
+            <dc:ToggleSwitch DockPanel.Dock="Right" IsChecked="{Binding GameModeOn}" VerticalAlignment="Center" AutomationProperties.Name="{l:Text DS.Toggle.GameMode}" />
+            <StackPanel Margin="0,0,24,0">
+              <TextBlock Text="{l:Text DS.Toggle.GameMode}" Style="{StaticResource Text.Body}" />
+              <TextBlock Text="{l:Text DS.Toggle.GameMode.Detail}" Style="{StaticResource Text.Subhead.Secondary}" TextWrapping="Wrap" />
+            </StackPanel>
+          </DockPanel>
+          <Border Style="{StaticResource Row.Separator}" />
+          <DockPanel>
+            <dc:ToggleSwitch DockPanel.Dock="Right" IsChecked="{Binding GameDvrOn}" VerticalAlignment="Center" AutomationProperties.Name="{l:Text DS.Toggle.GameDvr}" />
+            <StackPanel Margin="0,0,24,0">
+              <TextBlock Text="{l:Text DS.Toggle.GameDvr}" Style="{StaticResource Text.Body}" />
+              <TextBlock Text="{l:Text DS.Toggle.GameDvr.Detail}" Style="{StaticResource Text.Subhead.Secondary}" TextWrapping="Wrap" />
+            </StackPanel>
+          </DockPanel>
+          <Border Style="{StaticResource Row.Separator}" />
+          <DockPanel>
+            <dc:ToggleSwitch DockPanel.Dock="Right" IsChecked="{Binding HagsOn}" VerticalAlignment="Center" AutomationProperties.Name="{l:Text DS.Toggle.Hags}" />
+            <StackPanel Margin="0,0,24,0">
+              <TextBlock Text="{l:Text DS.Toggle.Hags}" Style="{StaticResource Text.Body}" />
+              <TextBlock Text="{l:Text DS.Toggle.Hags.Detail}" Style="{StaticResource Text.Subhead.Secondary}" TextWrapping="Wrap" />
+            </StackPanel>
+          </DockPanel>
+          <Border Style="{StaticResource Row.Separator}" />
+          <TextBlock Text="{l:Text DS.Input.Label}" Style="{StaticResource Text.Subhead}" FontWeight="Medium" Margin="0,0,0,8" />
+          <TextBox Style="{StaticResource Input.Text}" Width="320" HorizontalAlignment="Left" dc:Assist.Placeholder="{l:Text DS.Input.Placeholder}"
+                   AutomationProperties.Name="{l:Text DS.Input.Label}" />
+        </StackPanel>
+      </Border>
+
+      <TextBlock Text="{l:Text DS.Section.Feedback}" Style="{StaticResource Section.Title}" />
+      <TextBlock Text="{l:Text DS.Section.Feedback.Caption}" Style="{StaticResource Section.Caption}" />
+      <ContentControl Style="{StaticResource Banner}">
+        <TextBlock Text="{l:Text DS.Banner.Info}" />
+      </ContentControl>
+      <ContentControl Style="{StaticResource Banner.Positive}">
+        <TextBlock Text="{l:Text DS.Banner.Positive}" />
+      </ContentControl>
+      <ContentControl Style="{StaticResource Banner.Warning}">
+        <TextBlock Text="{l:Text DS.Banner.Warning}" />
+      </ContentControl>
+      <ContentControl Style="{StaticResource Banner.Critical}">
+        <TextBlock Text="{l:Text DS.Banner.Critical}" />
+      </ContentControl>
+
+      <TextBlock Text="{l:Text DS.Section.Dialogs}" Style="{StaticResource Section.Title}" />
+      <TextBlock Text="{l:Text DS.Section.Dialogs.Caption}" Style="{StaticResource Section.Caption}" />
+      <Border Style="{StaticResource Card}" Padding="20">
+        <StackPanel>
+          <WrapPanel>
+            <Button Content="{l:Text DS.Dialogs.Confirm}" Style="{StaticResource Button.Secondary}" Margin="0,0,8,8"
+                    Command="{Binding ShowConfirmationCommand}" CommandParameter="{Binding RelativeSource={RelativeSource Self}}" />
+            <Button Content="{l:Text DS.Dialogs.Destructive}" Style="{StaticResource Button.Secondary}" Margin="0,0,8,8"
+                    Command="{Binding ShowDestructiveCommand}" CommandParameter="{Binding RelativeSource={RelativeSource Self}}" />
+            <Button Content="{l:Text DS.Dialogs.Journal}" Style="{StaticResource Button.Primary}" dc:Assist.Icon="{StaticResource Icon.History}" Margin="0,0,8,8"
+                    Command="{Binding RunJournalDemoCommand}" CommandParameter="{Binding RelativeSource={RelativeSource Self}}" />
+            <Button Content="{l:Text DS.Dialogs.OpenHistory}" Style="{StaticResource Button.Plain}" Margin="0,0,8,8" Command="{Binding OpenHistoryCommand}" />
+          </WrapPanel>
+          <TextBlock Text="{Binding JournalDemoResult}" Style="{StaticResource Text.Subhead.Secondary}" TextWrapping="Wrap" Margin="0,4,0,0"
+                     Visibility="{Binding JournalDemoResult, Converter={StaticResource NullToCollapsed}}" />
+        </StackPanel>
+      </Border>
+
+      <TextBlock Text="{l:Text DS.Section.States}" Style="{StaticResource Section.Title}" />
+      <TextBlock Text="{l:Text DS.Section.States.Caption}" Style="{StaticResource Section.Caption}" />
+      <UniformGrid Columns="3" Margin="-8,0">
+        <Border Style="{StaticResource Card}" Margin="8,0">
+          <dc:EmptyState Icon="{StaticResource Icon.History}" Title="{l:Text DS.State.Empty.Title}" Message="{l:Text DS.State.Empty.Message}" />
+        </Border>
+        <Border Style="{StaticResource Card}" Margin="8,0" Padding="20">
+          <StackPanel VerticalAlignment="Center" AutomationProperties.Name="{l:Text DS.State.Loading}">
+            <Border Style="{StaticResource Skeleton}" Width="96" Margin="0,0,0,12" />
+            <Border Style="{StaticResource Skeleton}" Width="160" Height="28" Margin="0,0,0,12" />
+            <Border Style="{StaticResource Skeleton}" Width="200" Margin="0,0,0,8" />
+            <Border Style="{StaticResource Skeleton}" Width="140" />
+            <TextBlock Text="{l:Text DS.State.Loading}" Style="{StaticResource Text.Caption}" Margin="0,16,0,0" />
+          </StackPanel>
+        </Border>
+        <Border Style="{StaticResource Card}" Margin="8,0">
+          <dc:EmptyState Icon="{StaticResource Icon.Error}" IsError="True" Title="{l:Text DS.State.Error.Title}" Message="{l:Text DS.State.Error.Message}"
+                         ActionText="{l:Text DS.State.Error.Action}" />
+        </Border>
+      </UniformGrid>
+
+      <TextBlock Text="{l:Text DS.Section.Motion}" Style="{StaticResource Section.Title}" />
+      <TextBlock Text="{l:Text DS.Section.Motion.Caption}" Style="{StaticResource Section.Caption}" />
+      <Border Style="{StaticResource Card}" Padding="20,8,20,20">
+        <StackPanel>
+          <ItemsControl ItemsSource="{Binding MotionSpecs}" Focusable="False">
+            <ItemsControl.ItemTemplate>
+              <DataTemplate DataType="{x:Type pages:MotionSpecViewModel}">
+                <Grid Margin="0,10">
+                  <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="200" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="Auto" />
+                  </Grid.ColumnDefinitions>
+                  <TextBlock Text="{Binding Name}" Style="{StaticResource Text.Subhead}" FontWeight="Medium" />
+                  <TextBlock Grid.Column="1" Text="{Binding Use}" Style="{StaticResource Text.Subhead.Secondary}" TextWrapping="Wrap" Margin="0,0,16,0" />
+                  <TextBlock Grid.Column="2" Text="{Binding Values}" Style="{StaticResource Text.Subhead.Numeric}" />
+                </Grid>
+              </DataTemplate>
+            </ItemsControl.ItemTemplate>
+          </ItemsControl>
+          <Border Style="{StaticResource Separator.Horizontal}" Margin="0,8,0,16" />
+          <TextBlock Text="{l:Text DS.Momentum.Title}" Style="{StaticResource Text.Subhead}" FontWeight="Medium" />
+          <TextBlock Text="{l:Text DS.Momentum.Caption}" Style="{StaticResource Text.Subhead.Secondary}" TextWrapping="Wrap" Margin="0,2,0,12" />
+          <dc:MomentumTrack AutomationProperties.Name="{l:Text DS.Momentum.Title}" />
+        </StackPanel>
+      </Border>
+
+    </StackPanel>
+  </dc:PageScaffold>
+</UserControl>
