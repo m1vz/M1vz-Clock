@@ -15,4 +15,13 @@ internal static partial class HardwareLog
 
     [LoggerMessage(EventId = 3004, Level = LogLevel.Information, Message = "{Source} não existe neste PC (normal em PC de mesa ou driver sem suporte).")]
     public static partial void SourceMissing(ILogger logger, string source);
+
+    [LoggerMessage(EventId = 3101, Level = LogLevel.Warning, Message = "{Failures} pacote(s) para {Address} não puderam ser enviados.")]
+    public static partial void PingFailed(ILogger logger, Exception exception, string address, int failures);
+
+    [LoggerMessage(EventId = 3102, Level = LogLevel.Information, Message = "O DNS não resolveu {Host}.")]
+    public static partial void DnsFailed(ILogger logger, Exception exception, string host);
+
+    [LoggerMessage(EventId = 3103, Level = LogLevel.Warning, Message = "O teste de {Direction} falhou.")]
+    public static partial void SpeedTestFailed(ILogger logger, Exception exception, string direction);
 }
