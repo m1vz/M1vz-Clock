@@ -74,7 +74,7 @@ public sealed record Palette(
         AccentPressed: Hex("#0848AD"),
         AccentForeground: Hex("#0A5CD6"),
         AccentSubtle: Hex("#1A0A5CD6"),
-        Positive: Hex("#1A7F37"),
+        Positive: Hex("#187533"),
         Warning: Hex("#965900"),
         Critical: Hex("#C4282F"),
         PositiveSubtle: Hex("#1F1A7F37"),
