@@ -52,7 +52,8 @@ public partial class App : Application
         TaskScheduler.UnobservedTaskException += OnUnobservedTaskException;
 
         var paths = services.GetRequiredService<AppPaths>();
-        AppLog.Started(_logger, _version, services.GetRequiredService<AppInfo>().IsElevated, paths.Root);
+        var info = services.GetRequiredService<AppInfo>();
+        AppLog.Started(_logger, _version, info.IsElevated, paths.Root);
         foreach (var quarantined in paths.QuarantinedDirectories)
         {
             AppLog.DirectoryQuarantined(_logger, quarantined);
