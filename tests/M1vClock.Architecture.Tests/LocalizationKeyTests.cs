@@ -20,7 +20,7 @@ public sealed partial class LocalizationKeyTests
 
     private static readonly string[] NotResourceKeys = ["Motion.Reduced"];
 
-    private static readonly string[] SameInEveryLanguage = ["Page.Overclock.Keywords", "DS.Dialog.Change1", "Hw.Ram.Timings", "Hw.Gpu.Tech.DirectX.Ultimate"];
+    private static readonly string[] SameInEveryLanguage = ["Page.Overclock.Keywords", "DS.Dialog.Change1", "Hw.Ram.Timings", "Hw.Gpu.Tech.DirectX.Ultimate", "Hw.Diag.Metric.Primary", "Hw.Diag.Metric.Secondary"];
 
     [GeneratedRegex(@"\{l:Text\s+(?<key>[A-Za-z][A-Za-z0-9.]*)\}")]
     private static partial Regex XamlKey();
