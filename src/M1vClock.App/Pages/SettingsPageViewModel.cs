@@ -15,16 +15,21 @@ namespace M1vClock.App.Pages;
 public sealed partial class SettingsPageViewModel : PageViewModel
 {
     private readonly ThemeService _theme;
+    private readonly AppSettingsService _settings;
+    private readonly string _startLanguage;
     private readonly IShellLauncher _shell;
     private readonly AppPaths _paths;
     private readonly ILogger<SettingsPageViewModel> _logger;
 
-    public SettingsPageViewModel(ThemeService theme, IShellLauncher shell, AppPaths paths, AppInfo info, ILogger<SettingsPageViewModel> logger)
+    public SettingsPageViewModel(ThemeService theme, AppSettingsService settings, IShellLauncher shell, AppPaths paths, AppInfo info, ILogger<SettingsPageViewModel> logger)
         : base(PageCatalog.Find("settings"))
     {
         ArgumentNullException.ThrowIfNull(theme);
+        ArgumentNullException.ThrowIfNull(settings);
         ArgumentNullException.ThrowIfNull(info);
         _theme = theme;
+        _settings = settings;
+        _startLanguage = SupportedLanguages.Resolve(settings.Current.Language).Name;
         _shell = shell;
         _paths = paths;
         _logger = logger;
@@ -34,6 +39,7 @@ public sealed partial class SettingsPageViewModel : PageViewModel
             ThemePreference.Dark => 2,
             _ => 0,
         };
+        LanguageIndex = SupportedLanguages.IndexOf(settings.Current.Language);
         Version = info.Version;
         DataRoot = info.DataRoot;
         ElevationText = Loc.Get(info.IsElevated ? "Settings.About.Elevated" : "Settings.About.NotElevated");
@@ -41,6 +47,12 @@ public sealed partial class SettingsPageViewModel : PageViewModel
 
     [ObservableProperty]
     public partial int ThemeIndex { get; set; }
+
+    [ObservableProperty]
+    public partial int LanguageIndex { get; set; }
+
+    [ObservableProperty]
+    public partial bool RestartRequired { get; set; }
 
     public string Version { get; }
 
@@ -57,6 +69,17 @@ public sealed partial class SettingsPageViewModel : PageViewModel
         2 => ThemePreference.Dark,
         _ => ThemePreference.System,
     });
+
+    partial void OnLanguageIndexChanged(int value)
+    {
+        var tag = SupportedLanguages.TagAt(value);
+        if (SupportedLanguages.Resolve(_settings.Current.Language).Name != tag)
+        {
+            _settings.Update(s => s.Language = tag);
+        }
+
+        RestartRequired = tag != _startLanguage;
+    }
 
     [RelayCommand]
     private void OpenLogs()

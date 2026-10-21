@@ -433,7 +433,7 @@
     <value>Configurações</value>
   </data>
   <data name="Page.Settings.Description" xml:space="preserve">
-    <value>Tema e informações do app.</value>
+    <value>Tema, idioma e informações do app.</value>
   </data>
   <data name="Page.Settings.Keywords" xml:space="preserve">
     <value>configuracoes,preferencias,tema,sobre</value>
@@ -524,6 +524,21 @@
   </data>
   <data name="Settings.Theme.Dark" xml:space="preserve">
     <value>Escuro</value>
+  </data>
+  <data name="Settings.Language" xml:space="preserve">
+    <value>Idioma</value>
+  </data>
+  <data name="Settings.Language.Detail" xml:space="preserve">
+    <value>Muda os textos do app. Vale depois de reiniciar.</value>
+  </data>
+  <data name="Settings.Language.Portuguese" xml:space="preserve">
+    <value>Português</value>
+  </data>
+  <data name="Settings.Language.English" xml:space="preserve">
+    <value>English</value>
+  </data>
+  <data name="Settings.Language.Restart" xml:space="preserve">
+    <value>Reinicie o m1vClock para aplicar o novo idioma.</value>
   </data>
   <data name="Settings.About" xml:space="preserve">
     <value>Sobre</value>
