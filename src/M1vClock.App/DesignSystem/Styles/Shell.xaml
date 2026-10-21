@@ -176,6 +176,10 @@
     <Setter Property="TextWrapping" Value="Wrap" />
   </Style>
 
+  <Style x:Key="Banner.Text" TargetType="TextBlock" BasedOn="{StaticResource Text.Subhead}">
+    <Setter Property="TextWrapping" Value="Wrap" />
+  </Style>
+
   <Style x:Key="Banner" TargetType="ContentControl">
     <Setter Property="Focusable" Value="False" />
     <Setter Property="Margin" Value="0,0,0,8" />
@@ -189,13 +193,7 @@
             <DockPanel>
               <dc:Icon DockPanel.Dock="Left" Data="{TemplateBinding dc:Assist.Icon}" Size="16" Foreground="{TemplateBinding Foreground}"
                        Margin="0,1,10,0" VerticalAlignment="Top" />
-              <ContentPresenter TextElement.Foreground="{DynamicResource Brush.TextPrimary}" VerticalAlignment="Center">
-                <ContentPresenter.Resources>
-                  <Style TargetType="TextBlock" BasedOn="{StaticResource Text.Subhead}">
-                    <Setter Property="TextWrapping" Value="Wrap" />
-                  </Style>
-                </ContentPresenter.Resources>
-              </ContentPresenter>
+              <ContentPresenter TextElement.Foreground="{DynamicResource Brush.TextPrimary}" VerticalAlignment="Center" />
             </DockPanel>
           </Border>
         </ControlTemplate>

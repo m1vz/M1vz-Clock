@@ -45,14 +45,14 @@
           </DockPanel>
           <ContentControl Style="{StaticResource Banner.Critical}" Margin="0,12,0,0"
                           Visibility="{Binding ActionError, Converter={StaticResource NullToCollapsed}}">
-            <TextBlock Text="{Binding ActionError}" />
+            <TextBlock Style="{StaticResource Banner.Text}" Text="{Binding ActionError}" />
           </ContentControl>
         </StackPanel>
       </Border>
 
       <TextBlock Text="{l:Text Settings.Privacy}" Style="{StaticResource Section.Title}" Margin="0,32,0,12" />
       <ContentControl Style="{StaticResource Banner}">
-        <TextBlock Text="{l:Text Settings.Privacy.Text}" />
+        <TextBlock Style="{StaticResource Banner.Text}" Text="{l:Text Settings.Privacy.Text}" />
       </ContentControl>
     </StackPanel>
   </dc:PageScaffold>
