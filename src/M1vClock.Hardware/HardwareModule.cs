@@ -1,6 +1,7 @@
 using M1vClock.Core.RegistryValues;
 using M1vClock.Hardware.Gpu;
 using M1vClock.Hardware.Platform;
+using M1vClock.Hardware.Power;
 using M1vClock.Hardware.Ram;
 using M1vClock.Hardware.Storage;
 using M1vClock.Hardware.Wmi;
@@ -26,6 +27,8 @@ public static class HardwareModule
         services.AddSingleton<ISystemLibraries, WindowsSystemLibraries>();
         services.AddSingleton<GpuCollector>();
         services.AddSingleton<IGpuService, GpuService>();
+        services.AddSingleton<PowerCollector>();
+        services.AddSingleton<IPowerService, PowerService>();
         services.AddSingleton<StorageCollector>();
         services.AddSingleton<IStorageService, StorageService>();
         return services;

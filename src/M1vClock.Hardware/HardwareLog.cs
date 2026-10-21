@@ -12,4 +12,7 @@ internal static partial class HardwareLog
 
     [LoggerMessage(EventId = 3003, Level = LogLevel.Warning, Message = "Não foi possível ler {Source}; segue sem esse dado.")]
     public static partial void OptionalSourceFailed(ILogger logger, Exception exception, string source);
+
+    [LoggerMessage(EventId = 3004, Level = LogLevel.Information, Message = "{Source} não existe neste PC (normal em PC de mesa ou driver sem suporte).")]
+    public static partial void SourceMissing(ILogger logger, string source);
 }
