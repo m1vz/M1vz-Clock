@@ -1197,4 +1197,142 @@
   <data name="Hw.Ram.Volts.Range" xml:space="preserve">
     <value>{0} to {1}</value>
   </data>
+  <data name="Hw.Storage.Volumes" xml:space="preserve">
+    <value>Volumes</value>
+  </data>
+  <data name="Hw.Storage.Disks" xml:space="preserve">
+    <value>Physical drives</value>
+  </data>
+  <data name="Hw.Storage.Volume.Sizes" xml:space="preserve">
+    <value>{0} used · {1} free of {2}</value>
+  </data>
+  <data name="Hw.Storage.Volume.Used" xml:space="preserve">
+    <value>{0} used</value>
+  </data>
+  <data name="Hw.Storage.Kind.Internal" xml:space="preserve">
+    <value>Internal</value>
+  </data>
+  <data name="Hw.Storage.Kind.External" xml:space="preserve">
+    <value>External (USB)</value>
+  </data>
+  <data name="Hw.Storage.Kind.Removable" xml:space="preserve">
+    <value>Removable</value>
+  </data>
+  <data name="Hw.Storage.Kind.Network" xml:space="preserve">
+    <value>Network</value>
+  </data>
+  <data name="Hw.Storage.Kind.Optical" xml:space="preserve">
+    <value>Optical</value>
+  </data>
+  <data name="Hw.Storage.Kind.Other" xml:space="preserve">
+    <value>Other</value>
+  </data>
+  <data name="Hw.Storage.Letters" xml:space="preserve">
+    <value>Drives: {0}</value>
+  </data>
+  <data name="Hw.Storage.Verdict.Good" xml:space="preserve">
+    <value>Healthy</value>
+  </data>
+  <data name="Hw.Storage.Verdict.Warning" xml:space="preserve">
+    <value>Warning</value>
+  </data>
+  <data name="Hw.Storage.Verdict.Critical" xml:space="preserve">
+    <value>Critical</value>
+  </data>
+  <data name="Hw.Storage.Verdict.Unknown" xml:space="preserve">
+    <value>No data</value>
+  </data>
+  <data name="Hw.Storage.Finding.FailurePredicted" xml:space="preserve">
+    <value>The drive itself warns (S.M.A.R.T.) that it will fail soon. Back up now.</value>
+  </data>
+  <data name="Hw.Storage.Finding.WindowsUnhealthy" xml:space="preserve">
+    <value>Windows rates the drive as unhealthy.</value>
+  </data>
+  <data name="Hw.Storage.Finding.WindowsWarning" xml:space="preserve">
+    <value>Windows rates the drive health as “warning”.</value>
+  </data>
+  <data name="Hw.Storage.Finding.WearEndOfLife" xml:space="preserve">
+    <value>Wear of {0}%: the SSD is at the end of its life. Replace it and back up.</value>
+  </data>
+  <data name="Hw.Storage.Finding.WearHigh" xml:space="preserve">
+    <value>Wear of {0}%: the SSD has used much of its life. Plan a replacement.</value>
+  </data>
+  <data name="Hw.Storage.Finding.TemperatureCritical" xml:space="preserve">
+    <value>A temperature of {0} °C is too high for this drive.</value>
+  </data>
+  <data name="Hw.Storage.Finding.TemperatureHigh" xml:space="preserve">
+    <value>A temperature of {0} °C is high. Improve ventilation.</value>
+  </data>
+  <data name="Hw.Storage.Finding.UncorrectedErrors" xml:space="preserve">
+    <value>Uncorrected errors: {0} read and {1} write.</value>
+  </data>
+  <data name="Hw.Storage.Finding.None" xml:space="preserve">
+    <value>No problem found in the available readings.</value>
+  </data>
+  <data name="Hw.Storage.Finding.NoData" xml:space="preserve">
+    <value>This drive reports no health data (common on flash drives and some external drives).</value>
+  </data>
+  <data name="Hw.Storage.Metric.Temperature" xml:space="preserve">
+    <value>Temperature</value>
+  </data>
+  <data name="Hw.Storage.Metric.Temperature.Value" xml:space="preserve">
+    <value>{0} °C</value>
+  </data>
+  <data name="Hw.Storage.Metric.Temperature.WithMax" xml:space="preserve">
+    <value>{0} °C (recorded max {1})</value>
+  </data>
+  <data name="Hw.Storage.Metric.Wear" xml:space="preserve">
+    <value>Wear</value>
+  </data>
+  <data name="Hw.Storage.Metric.Life" xml:space="preserve">
+    <value>Remaining life</value>
+  </data>
+  <data name="Hw.Storage.Metric.Hours" xml:space="preserve">
+    <value>Power-on hours</value>
+  </data>
+  <data name="Hw.Storage.Metric.Hours.Value" xml:space="preserve">
+    <value>{0} h ({1} days)</value>
+  </data>
+  <data name="Hw.Storage.Metric.Cycles" xml:space="preserve">
+    <value>Power cycles</value>
+  </data>
+  <data name="Hw.Storage.Metric.ReadErrors" xml:space="preserve">
+    <value>Read errors</value>
+  </data>
+  <data name="Hw.Storage.Metric.WriteErrors" xml:space="preserve">
+    <value>Write errors</value>
+  </data>
+  <data name="Hw.Storage.Metric.Uncorrected" xml:space="preserve">
+    <value>{0} ({1} uncorrected)</value>
+  </data>
+  <data name="Hw.Storage.Metric.Predicted" xml:space="preserve">
+    <value>Failure predicted (S.M.A.R.T.)</value>
+  </data>
+  <data name="Hw.Storage.Metric.Predicted.Yes" xml:space="preserve">
+    <value>YES</value>
+  </data>
+  <data name="Hw.Storage.Metric.Health" xml:space="preserve">
+    <value>Health according to Windows</value>
+  </data>
+  <data name="Hw.Storage.Metric.Firmware" xml:space="preserve">
+    <value>Firmware</value>
+  </data>
+  <data name="Hw.Storage.Metric.Serial" xml:space="preserve">
+    <value>Serial number</value>
+  </data>
+  <data name="Hw.Storage.Health.Healthy" xml:space="preserve">
+    <value>Healthy</value>
+  </data>
+  <data name="Hw.Storage.Health.Warning" xml:space="preserve">
+    <value>Warning</value>
+  </data>
+  <data name="Hw.Storage.Health.Unhealthy" xml:space="preserve">
+    <value>Unhealthy</value>
+  </data>
+  <data name="Hw.Storage.Notice.Admin" xml:space="preserve">
+    <value>Temperature, wear, power-on hours and failure prediction only show when m1vClock runs as administrator.</value>
+  </data>
+  <data name="Hw.Storage.Notice.Unavailable" xml:space="preserve">
+    <value>This PC's Windows does not expose the drives' wear and temperature counters.</value>
+  </data>
 </root>

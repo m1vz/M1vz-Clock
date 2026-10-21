@@ -1197,4 +1197,142 @@
   <data name="Hw.Ram.Volts.Range" xml:space="preserve">
     <value>{0} a {1}</value>
   </data>
+  <data name="Hw.Storage.Volumes" xml:space="preserve">
+    <value>Unidades</value>
+  </data>
+  <data name="Hw.Storage.Disks" xml:space="preserve">
+    <value>Discos físicos</value>
+  </data>
+  <data name="Hw.Storage.Volume.Sizes" xml:space="preserve">
+    <value>{0} usados · {1} livres de {2}</value>
+  </data>
+  <data name="Hw.Storage.Volume.Used" xml:space="preserve">
+    <value>{0} usado</value>
+  </data>
+  <data name="Hw.Storage.Kind.Internal" xml:space="preserve">
+    <value>Interno</value>
+  </data>
+  <data name="Hw.Storage.Kind.External" xml:space="preserve">
+    <value>Externo (USB)</value>
+  </data>
+  <data name="Hw.Storage.Kind.Removable" xml:space="preserve">
+    <value>Removível</value>
+  </data>
+  <data name="Hw.Storage.Kind.Network" xml:space="preserve">
+    <value>Rede</value>
+  </data>
+  <data name="Hw.Storage.Kind.Optical" xml:space="preserve">
+    <value>Óptico</value>
+  </data>
+  <data name="Hw.Storage.Kind.Other" xml:space="preserve">
+    <value>Outro</value>
+  </data>
+  <data name="Hw.Storage.Letters" xml:space="preserve">
+    <value>Unidades: {0}</value>
+  </data>
+  <data name="Hw.Storage.Verdict.Good" xml:space="preserve">
+    <value>Saudável</value>
+  </data>
+  <data name="Hw.Storage.Verdict.Warning" xml:space="preserve">
+    <value>Atenção</value>
+  </data>
+  <data name="Hw.Storage.Verdict.Critical" xml:space="preserve">
+    <value>Crítico</value>
+  </data>
+  <data name="Hw.Storage.Verdict.Unknown" xml:space="preserve">
+    <value>Sem dados</value>
+  </data>
+  <data name="Hw.Storage.Finding.FailurePredicted" xml:space="preserve">
+    <value>O próprio disco avisa (S.M.A.R.T.) que deve falhar em breve. Faça backup agora.</value>
+  </data>
+  <data name="Hw.Storage.Finding.WindowsUnhealthy" xml:space="preserve">
+    <value>O Windows classifica o disco como não saudável.</value>
+  </data>
+  <data name="Hw.Storage.Finding.WindowsWarning" xml:space="preserve">
+    <value>O Windows classifica a saúde do disco como “atenção”.</value>
+  </data>
+  <data name="Hw.Storage.Finding.WearEndOfLife" xml:space="preserve">
+    <value>Desgaste de {0}%: o SSD está no fim da vida útil. Troque e faça backup.</value>
+  </data>
+  <data name="Hw.Storage.Finding.WearHigh" xml:space="preserve">
+    <value>Desgaste de {0}%: o SSD já gastou boa parte da vida útil. Planeje a troca.</value>
+  </data>
+  <data name="Hw.Storage.Finding.TemperatureCritical" xml:space="preserve">
+    <value>Temperatura de {0} °C é muito alta para este disco.</value>
+  </data>
+  <data name="Hw.Storage.Finding.TemperatureHigh" xml:space="preserve">
+    <value>Temperatura de {0} °C está alta. Melhore a ventilação.</value>
+  </data>
+  <data name="Hw.Storage.Finding.UncorrectedErrors" xml:space="preserve">
+    <value>Erros não corrigidos: {0} de leitura e {1} de escrita.</value>
+  </data>
+  <data name="Hw.Storage.Finding.None" xml:space="preserve">
+    <value>Nenhum problema encontrado nas leituras disponíveis.</value>
+  </data>
+  <data name="Hw.Storage.Finding.NoData" xml:space="preserve">
+    <value>Este disco não informa dados de saúde (comum em pendrives e alguns HDs externos).</value>
+  </data>
+  <data name="Hw.Storage.Metric.Temperature" xml:space="preserve">
+    <value>Temperatura</value>
+  </data>
+  <data name="Hw.Storage.Metric.Temperature.Value" xml:space="preserve">
+    <value>{0} °C</value>
+  </data>
+  <data name="Hw.Storage.Metric.Temperature.WithMax" xml:space="preserve">
+    <value>{0} °C (máx. registrado {1})</value>
+  </data>
+  <data name="Hw.Storage.Metric.Wear" xml:space="preserve">
+    <value>Desgaste</value>
+  </data>
+  <data name="Hw.Storage.Metric.Life" xml:space="preserve">
+    <value>Vida útil restante</value>
+  </data>
+  <data name="Hw.Storage.Metric.Hours" xml:space="preserve">
+    <value>Horas ligado</value>
+  </data>
+  <data name="Hw.Storage.Metric.Hours.Value" xml:space="preserve">
+    <value>{0} h ({1} dias)</value>
+  </data>
+  <data name="Hw.Storage.Metric.Cycles" xml:space="preserve">
+    <value>Ciclos liga/desliga</value>
+  </data>
+  <data name="Hw.Storage.Metric.ReadErrors" xml:space="preserve">
+    <value>Erros de leitura</value>
+  </data>
+  <data name="Hw.Storage.Metric.WriteErrors" xml:space="preserve">
+    <value>Erros de escrita</value>
+  </data>
+  <data name="Hw.Storage.Metric.Uncorrected" xml:space="preserve">
+    <value>{0} ({1} não corrigidos)</value>
+  </data>
+  <data name="Hw.Storage.Metric.Predicted" xml:space="preserve">
+    <value>Falha prevista (S.M.A.R.T.)</value>
+  </data>
+  <data name="Hw.Storage.Metric.Predicted.Yes" xml:space="preserve">
+    <value>SIM</value>
+  </data>
+  <data name="Hw.Storage.Metric.Health" xml:space="preserve">
+    <value>Saúde segundo o Windows</value>
+  </data>
+  <data name="Hw.Storage.Metric.Firmware" xml:space="preserve">
+    <value>Firmware</value>
+  </data>
+  <data name="Hw.Storage.Metric.Serial" xml:space="preserve">
+    <value>Número de série</value>
+  </data>
+  <data name="Hw.Storage.Health.Healthy" xml:space="preserve">
+    <value>Saudável</value>
+  </data>
+  <data name="Hw.Storage.Health.Warning" xml:space="preserve">
+    <value>Atenção</value>
+  </data>
+  <data name="Hw.Storage.Health.Unhealthy" xml:space="preserve">
+    <value>Não saudável</value>
+  </data>
+  <data name="Hw.Storage.Notice.Admin" xml:space="preserve">
+    <value>Temperatura, desgaste, horas ligado e previsão de falha só aparecem com o m1vClock aberto como administrador.</value>
+  </data>
+  <data name="Hw.Storage.Notice.Unavailable" xml:space="preserve">
+    <value>O Windows deste PC não expõe os contadores de desgaste e temperatura dos discos.</value>
+  </data>
 </root>

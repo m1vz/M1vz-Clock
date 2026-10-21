@@ -8,6 +8,7 @@ public static class Units
     public const string Missing = "—";
 
     private const double Step = 1024;
+    private const double DecimalStep = 1000;
 
     private static readonly string[] ByteUnits = ["B", "KB", "MB", "GB", "TB", "PB"];
 
@@ -27,6 +28,24 @@ public static class Units
         }
 
         return string.Create(culture ?? Loc.Culture, $"{Math.Round(value, 2):0.##} {ByteUnits[unit]}");
+    }
+
+    public static string DecimalBytes(double bytes, CultureInfo? culture = null)
+    {
+        if (double.IsNaN(bytes) || double.IsInfinity(bytes) || bytes <= 0)
+        {
+            return Missing;
+        }
+
+        var unit = 0;
+        var value = bytes;
+        while (value >= DecimalStep && unit < ByteUnits.Length - 1)
+        {
+            value /= DecimalStep;
+            unit++;
+        }
+
+        return string.Create(culture ?? Loc.Culture, $"{Math.Round(value, 1):0.#} {ByteUnits[unit]}");
     }
 
     public static string Kilobytes(double kilobytes, CultureInfo? culture = null) => Bytes(kilobytes * Step, culture);
