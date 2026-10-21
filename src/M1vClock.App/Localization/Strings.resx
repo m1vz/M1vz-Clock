@@ -718,13 +718,13 @@
     <value>Valor, unidade e estado. O estado aparece em cor e em texto, nunca só em cor.</value>
   </data>
   <data name="DS.Metric.Cpu" xml:space="preserve">
-    <value>Temperatura da CPU</value>
+    <value>Temp. da CPU</value>
   </data>
   <data name="DS.Metric.CpuDetail" xml:space="preserve">
     <value>Máximo da sessão: {0} °C</value>
   </data>
   <data name="DS.Metric.Gpu" xml:space="preserve">
-    <value>Temperatura da GPU</value>
+    <value>Temp. da GPU</value>
   </data>
   <data name="DS.Metric.Memory" xml:space="preserve">
     <value>Memória em uso</value>
