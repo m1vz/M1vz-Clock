@@ -109,7 +109,7 @@ public sealed record Palette(
         TextTertiary: Hex("#90909A"),
         TextOnAccent: Hex("#FFFFFF"),
         Accent: Hex("#2569D9"),
-        AccentHover: Hex("#2F75E6"),
+        AccentHover: Hex("#2A6FE0"),
         AccentPressed: Hex("#1F5CC2"),
         AccentForeground: Hex("#6AA6FF"),
         AccentSubtle: Hex("#332569D9"),
