@@ -1,4 +1,5 @@
 using M1vClock.Core.RegistryValues;
+using M1vClock.Hardware.Devices;
 using M1vClock.Hardware.Gpu;
 using M1vClock.Hardware.Network;
 using M1vClock.Hardware.Platform;
@@ -33,6 +34,8 @@ public static class HardwareModule
         services.AddSingleton<IPowerService, PowerService>();
         services.AddSingleton<StorageCollector>();
         services.AddSingleton<IStorageService, StorageService>();
+        services.AddSingleton<UsbCollector>();
+        services.AddSingleton<IUsbDeviceService, UsbDeviceService>();
         services.TryAddSingleton(TimeProvider.System);
         services.AddSingleton<INetworkInterfaceSource, SystemNetworkInterfaceSource>();
         services.AddSingleton<INetworkProbe, SystemNetworkProbe>();
