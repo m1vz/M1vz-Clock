@@ -12,6 +12,10 @@
     <hw:StoragePage />
   </DataTemplate>
 
+  <DataTemplate DataType="{x:Type hw:NetworkPageViewModel}">
+    <hw:NetworkPage />
+  </DataTemplate>
+
   <DataTemplate DataType="{x:Type hw:InfoPageViewModel}">
     <hw:InfoPage />
   </DataTemplate>

@@ -59,6 +59,8 @@ public static class AppHost
         builder.Services.AddTransient<SystemPageViewModel>();
         builder.Services.AddTransient<GpuPageViewModel>();
         builder.Services.AddTransient<PowerPageViewModel>();
+        builder.Services.AddTransient<NetworkDiagnosticViewModel>();
+        builder.Services.AddTransient<NetworkPageViewModel>();
         builder.Services.AddTransient<MemoryPageViewModel>();
         builder.Services.AddTransient<StoragePageViewModel>();
         return builder.Build();
