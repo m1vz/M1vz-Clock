@@ -1,0 +1,16 @@
+<Application x:Class="M1vClock.App.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             ShutdownMode="OnMainWindowClose">
+  <Application.Resources>
+    <ResourceDictionary>
+      <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="DesignSystem/Styles/Icons.xaml" />
+        <ResourceDictionary Source="DesignSystem/Styles/Typography.xaml" />
+        <ResourceDictionary Source="DesignSystem/Styles/Controls.xaml" />
+        <ResourceDictionary Source="DesignSystem/Styles/Shell.xaml" />
+        <ResourceDictionary Source="Pages/PageTemplates.xaml" />
+      </ResourceDictionary.MergedDictionaries>
+    </ResourceDictionary>
+  </Application.Resources>
+</Application>
