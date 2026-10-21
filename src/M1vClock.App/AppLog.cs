@@ -51,4 +51,7 @@ internal static partial class AppLog
 
     [LoggerMessage(EventId = 2016, Level = LogLevel.Error, Message = "Falha ao carregar a página {Page}.")]
     public static partial void PageLoadFailed(ILogger logger, Exception exception, string page);
+
+    [LoggerMessage(EventId = 2017, Level = LogLevel.Error, Message = "O diagnóstico de rede não terminou.")]
+    public static partial void NetworkDiagnosticFailed(ILogger logger, Exception exception);
 }
