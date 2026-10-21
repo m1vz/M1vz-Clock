@@ -32,16 +32,47 @@
     </Grid>
   </DataTemplate>
 
+  <DataTemplate DataType="{x:Type hw:VolumeCardViewModel}">
+    <Border Style="{StaticResource Card}" Padding="20" Margin="8,0,8,16">
+      <DockPanel>
+        <Grid DockPanel.Dock="Left" Width="84" Height="84" Margin="0,0,20,0" AutomationProperties.Name="{Binding AccessibleName}">
+          <dc:RingGauge Fraction="{Binding Fraction}" State="{Binding State}" />
+          <TextBlock Text="{Binding UsedText}" Style="{StaticResource Text.Headline.Numeric}" HorizontalAlignment="Center" VerticalAlignment="Center" />
+        </Grid>
+        <StackPanel VerticalAlignment="Center">
+          <TextBlock Text="{Binding Title}" Style="{StaticResource Text.Headline}" TextTrimming="CharacterEllipsis" />
+          <TextBlock Text="{Binding Sizes}" Style="{StaticResource Text.Subhead.Numeric}" TextWrapping="Wrap" Margin="0,4,0,0" />
+          <TextBlock Text="{Binding Meta}" Style="{StaticResource Text.Caption}" Foreground="{DynamicResource Brush.TextTertiary}" TextTrimming="CharacterEllipsis" Margin="0,4,0,0" />
+        </StackPanel>
+      </DockPanel>
+    </Border>
+  </DataTemplate>
+
   <DataTemplate x:Key="InfoSectionTemplate" DataType="{x:Type hw:InfoSectionViewModel}">
     <Border Style="{StaticResource Card}" Padding="20,16" Margin="0,0,0,16">
       <StackPanel>
-        <StackPanel Orientation="Horizontal" Margin="0,0,0,8">
-          <Border Width="32" Height="32" CornerRadius="8" Background="{DynamicResource Brush.FillPrimary}" Margin="0,0,12,0">
+        <DockPanel Margin="0,0,0,8">
+          <dc:StateBadge DockPanel.Dock="Right" State="{Binding StatusTone}" Text="{Binding StatusText}" VerticalAlignment="Center" Margin="12,0,0,0"
+                         Visibility="{Binding HasStatus, Converter={StaticResource BoolToVisible}}" />
+          <Border DockPanel.Dock="Left" Width="32" Height="32" CornerRadius="8" Background="{DynamicResource Brush.FillPrimary}" Margin="0,0,12,0">
             <dc:Icon Data="{Binding IconKey, Converter={StaticResource KeyToGeometry}}" Size="16" Foreground="{DynamicResource Brush.TextSecondary}"
                      HorizontalAlignment="Center" VerticalAlignment="Center" />
           </Border>
-          <TextBlock Text="{Binding Title}" Style="{StaticResource Text.Headline}" VerticalAlignment="Center" />
-        </StackPanel>
+          <StackPanel VerticalAlignment="Center">
+            <TextBlock Text="{Binding Title}" Style="{StaticResource Text.Headline}" TextTrimming="CharacterEllipsis" />
+            <TextBlock Text="{Binding Subtitle}" Style="{StaticResource Text.Subhead.Secondary}" TextTrimming="CharacterEllipsis"
+                       Visibility="{Binding HasSubtitle, Converter={StaticResource BoolToVisible}}" />
+          </StackPanel>
+        </DockPanel>
+
+        <ItemsControl ItemsSource="{Binding Notes}" Focusable="False" Margin="0,0,0,4"
+                      Visibility="{Binding HasNotes, Converter={StaticResource BoolToVisible}}">
+          <ItemsControl.ItemTemplate>
+            <DataTemplate>
+              <TextBlock Text="{Binding}" Style="{StaticResource Text.Subhead}" TextWrapping="Wrap" Margin="0,2" />
+            </DataTemplate>
+          </ItemsControl.ItemTemplate>
+        </ItemsControl>
 
         <StackPanel Visibility="{Binding IsLoading, Converter={StaticResource BoolToVisible}}" AutomationProperties.Name="{l:Text Hw.Common.Loading}" Margin="0,8,0,4">
           <Border Style="{StaticResource Skeleton}" Width="320" Height="14" Margin="0,6" />
