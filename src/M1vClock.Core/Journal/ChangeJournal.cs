@@ -56,7 +56,9 @@ public sealed class ChangeJournal : IChangeJournal, IDisposable
     {
         ArgumentNullException.ThrowIfNull(change);
         var handler = HandlerFor(change.Kind);
-        var restorePoint = await _restorePoints.EnsureForTodayAsync(cancellationToken).ConfigureAwait(false);
+        var restorePoint = change.AffectsSystem
+            ? await _restorePoints.EnsureForTodayAsync(cancellationToken).ConfigureAwait(false)
+            : RestorePointGateResult.NotRequired;
 
         await _gate.WaitAsync(cancellationToken).ConfigureAwait(false);
         try

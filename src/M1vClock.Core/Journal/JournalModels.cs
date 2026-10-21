@@ -19,7 +19,8 @@ public sealed record SystemChange(
     string Target,
     string TargetDisplay,
     JsonObject Address,
-    JsonObject DesiredState);
+    JsonObject DesiredState,
+    bool AffectsSystem = true);
 
 public sealed record JournalEntry
 {

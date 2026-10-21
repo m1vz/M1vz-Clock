@@ -34,7 +34,7 @@ public sealed class RegistryValueHandler(IRegistryAccess registry) : IChangeHand
 
 public static class RegistryValueChanges
 {
-    public static SystemChange Set(string module, string title, RegistryValueAddress address, RegistryValueState desired)
+    public static SystemChange Set(string module, string title, RegistryValueAddress address, RegistryValueState desired, bool affectsSystem = true)
     {
         ArgumentException.ThrowIfNullOrWhiteSpace(module);
         ArgumentException.ThrowIfNullOrWhiteSpace(title);
@@ -47,6 +47,7 @@ public static class RegistryValueChanges
             address.Target,
             address.Display,
             address.ToJson(),
-            desired.ToJson());
+            desired.ToJson(),
+            affectsSystem);
     }
 }

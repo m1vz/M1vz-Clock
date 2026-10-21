@@ -31,6 +31,7 @@ public interface IRestorePointService
 
 public enum RestorePointGateStatus
 {
+    NotRequired,
     CreatedNow,
     AlreadyCreatedToday,
     RecentPointExists,
@@ -40,7 +41,10 @@ public enum RestorePointGateStatus
 
 public sealed record RestorePointGateResult(RestorePointGateStatus Status, string? Detail)
 {
-    public bool IsProtected => Status is RestorePointGateStatus.CreatedNow
+    public static RestorePointGateResult NotRequired { get; } = new(RestorePointGateStatus.NotRequired, null);
+
+    public bool IsProtected => Status is RestorePointGateStatus.NotRequired
+        or RestorePointGateStatus.CreatedNow
         or RestorePointGateStatus.AlreadyCreatedToday
         or RestorePointGateStatus.RecentPointExists;
 }
