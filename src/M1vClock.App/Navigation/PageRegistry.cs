@@ -1,4 +1,5 @@
 using M1vClock.App.Pages;
+using M1vClock.App.Pages.Hardware;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace M1vClock.App.Navigation;
@@ -10,6 +11,7 @@ public static class PageRegistry
         ["design-system"] = Resolve<DesignSystemPageViewModel>,
         ["settings"] = Resolve<SettingsPageViewModel>,
         ["history"] = Resolve<HistoryPageViewModel>,
+        ["system"] = Resolve<SystemPageViewModel>,
     };
 
     public static IReadOnlyCollection<string> Ids => Factories.Keys;

@@ -1,6 +1,7 @@
 using M1vClock.App.Dialogs;
 using M1vClock.App.Navigation;
 using M1vClock.App.Pages;
+using M1vClock.App.Pages.Hardware;
 using M1vClock.App.Search;
 using M1vClock.App.Services;
 using M1vClock.App.Shell;
@@ -55,6 +56,7 @@ public static class AppHost
         builder.Services.AddTransient<DesignSystemPageViewModel>();
         builder.Services.AddTransient<SettingsPageViewModel>();
         builder.Services.AddTransient<HistoryPageViewModel>();
+        builder.Services.AddTransient<SystemPageViewModel>();
         return builder.Build();
     }
 }

@@ -9,6 +9,7 @@
         <ResourceDictionary Source="DesignSystem/Styles/Typography.xaml" />
         <ResourceDictionary Source="DesignSystem/Styles/Controls.xaml" />
         <ResourceDictionary Source="DesignSystem/Styles/Shell.xaml" />
+        <ResourceDictionary Source="Pages/Hardware/HardwareTemplates.xaml" />
         <ResourceDictionary Source="Pages/PageTemplates.xaml" />
       </ResourceDictionary.MergedDictionaries>
     </ResourceDictionary>
