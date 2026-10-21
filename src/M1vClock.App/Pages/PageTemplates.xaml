@@ -8,8 +8,8 @@
     <pages:PlaceholderPage />
   </DataTemplate>
 
-  <DataTemplate DataType="{x:Type hw:SystemPageViewModel}">
-    <hw:SystemPage />
+  <DataTemplate DataType="{x:Type hw:InfoPageViewModel}">
+    <hw:InfoPage />
   </DataTemplate>
 
   <DataTemplate DataType="{x:Type pages:DesignSystemPageViewModel}">
