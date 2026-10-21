@@ -541,6 +541,13 @@
     </Style.Triggers>
   </Style>
 
+  <Style TargetType="dc:ProgressTrack">
+    <Setter Property="Foreground" Value="{DynamicResource Brush.Accent}" />
+    <Setter Property="Track" Value="{DynamicResource Brush.FillPrimary}" />
+    <Setter Property="Height" Value="6" />
+    <Setter Property="Focusable" Value="False" />
+  </Style>
+
   <Style TargetType="dc:EmptyState">
     <Setter Property="Focusable" Value="False" />
     <Setter Property="HorizontalAlignment" Value="Center" />
