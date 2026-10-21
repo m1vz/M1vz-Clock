@@ -1335,4 +1335,172 @@
   <data name="Hw.Storage.Notice.Unavailable" xml:space="preserve">
     <value>This PC's Windows does not expose the drives' wear and temperature counters.</value>
   </data>
+  <data name="Hw.Gpu.Section.Id" xml:space="preserve">
+    <value>Identification</value>
+  </data>
+  <data name="Hw.Gpu.Section.Units" xml:space="preserve">
+    <value>Processing units</value>
+  </data>
+  <data name="Hw.Gpu.Section.Memory" xml:space="preserve">
+    <value>Video memory</value>
+  </data>
+  <data name="Hw.Gpu.Section.Clocks" xml:space="preserve">
+    <value>Clocks and power</value>
+  </data>
+  <data name="Hw.Gpu.Section.Driver" xml:space="preserve">
+    <value>Driver</value>
+  </data>
+  <data name="Hw.Gpu.Section.Tech" xml:space="preserve">
+    <value>Technologies</value>
+  </data>
+  <data name="Hw.Gpu.Name" xml:space="preserve">
+    <value>Name</value>
+  </data>
+  <data name="Hw.Gpu.Vendor" xml:space="preserve">
+    <value>Chip maker</value>
+  </data>
+  <data name="Hw.Gpu.Chip" xml:space="preserve">
+    <value>Chip</value>
+  </data>
+  <data name="Hw.Gpu.Arch" xml:space="preserve">
+    <value>Architecture</value>
+  </data>
+  <data name="Hw.Gpu.Revision" xml:space="preserve">
+    <value>Revision</value>
+  </data>
+  <data name="Hw.Gpu.Board" xml:space="preserve">
+    <value>Board maker</value>
+  </data>
+  <data name="Hw.Gpu.DeviceId" xml:space="preserve">
+    <value>PCI device ID</value>
+  </data>
+  <data name="Hw.Gpu.Process" xml:space="preserve">
+    <value>Manufacturing process</value>
+  </data>
+  <data name="Hw.Gpu.Die" xml:space="preserve">
+    <value>Die area</value>
+  </data>
+  <data name="Hw.Gpu.Die.Value" xml:space="preserve">
+    <value>{0} mm²</value>
+  </data>
+  <data name="Hw.Gpu.Transistors" xml:space="preserve">
+    <value>Transistors</value>
+  </data>
+  <data name="Hw.Gpu.Transistors.Value" xml:space="preserve">
+    <value>{0} billion</value>
+  </data>
+  <data name="Hw.Gpu.Release" xml:space="preserve">
+    <value>Release</value>
+  </data>
+  <data name="Hw.Gpu.Shaders.Nvidia" xml:space="preserve">
+    <value>CUDA cores</value>
+  </data>
+  <data name="Hw.Gpu.Shaders.Amd" xml:space="preserve">
+    <value>Stream processors</value>
+  </data>
+  <data name="Hw.Gpu.Units.Nvidia" xml:space="preserve">
+    <value>SMs</value>
+  </data>
+  <data name="Hw.Gpu.Units.Amd" xml:space="preserve">
+    <value>Compute units</value>
+  </data>
+  <data name="Hw.Gpu.RayAccelerators" xml:space="preserve">
+    <value>Ray accelerators</value>
+  </data>
+  <data name="Hw.Gpu.RopsTmus" xml:space="preserve">
+    <value>ROPs / TMUs</value>
+  </data>
+  <data name="Hw.Gpu.RopsTmus.Value" xml:space="preserve">
+    <value>{0} / {1}</value>
+  </data>
+  <data name="Hw.Gpu.PixelFill" xml:space="preserve">
+    <value>Pixel fillrate</value>
+  </data>
+  <data name="Hw.Gpu.PixelFill.Value" xml:space="preserve">
+    <value>{0} GPixel/s</value>
+  </data>
+  <data name="Hw.Gpu.TexelFill" xml:space="preserve">
+    <value>Texture fillrate</value>
+  </data>
+  <data name="Hw.Gpu.TexelFill.Value" xml:space="preserve">
+    <value>{0} GTexel/s</value>
+  </data>
+  <data name="Hw.Gpu.Fp32" xml:space="preserve">
+    <value>FP32 (theoretical)</value>
+  </data>
+  <data name="Hw.Gpu.Fp32.Value" xml:space="preserve">
+    <value>{0} TFLOPS</value>
+  </data>
+  <data name="Hw.Gpu.NoData" xml:space="preserve">
+    <value>No data</value>
+  </data>
+  <data name="Hw.Gpu.NoData.Detail" xml:space="preserve">
+    <value>This card is not in the specifications database.</value>
+  </data>
+  <data name="Hw.Gpu.Mem.Size" xml:space="preserve">
+    <value>Size</value>
+  </data>
+  <data name="Hw.Gpu.Mem.Size.Value" xml:space="preserve">
+    <value>{0} GB ({1} MB usable)</value>
+  </data>
+  <data name="Hw.Gpu.Mem.Reserved" xml:space="preserve">
+    <value>Reserved (dedicated)</value>
+  </data>
+  <data name="Hw.Gpu.Mem.Shared" xml:space="preserve">
+    <value>Shared with the system</value>
+  </data>
+  <data name="Hw.Gpu.Mem.Type" xml:space="preserve">
+    <value>Type</value>
+  </data>
+  <data name="Hw.Gpu.Clock.Base" xml:space="preserve">
+    <value>Base (reference)</value>
+  </data>
+  <data name="Hw.Gpu.Clock.Boost" xml:space="preserve">
+    <value>Boost (reference)</value>
+  </data>
+  <data name="Hw.Gpu.Clock.Value" xml:space="preserve">
+    <value>{0} MHz</value>
+  </data>
+  <data name="Hw.Gpu.Tdp" xml:space="preserve">
+    <value>TDP (reference)</value>
+  </data>
+  <data name="Hw.Gpu.Tdp.Value" xml:space="preserve">
+    <value>{0} W</value>
+  </data>
+  <data name="Hw.Gpu.Driver.Version" xml:space="preserve">
+    <value>Driver version</value>
+  </data>
+  <data name="Hw.Gpu.Driver.Date" xml:space="preserve">
+    <value>Driver date</value>
+  </data>
+  <data name="Hw.Gpu.Driver.Signature" xml:space="preserve">
+    <value>Digital signature</value>
+  </data>
+  <data name="Hw.Gpu.Sig.Whql" xml:space="preserve">
+    <value>WHQL (Microsoft)</value>
+  </data>
+  <data name="Hw.Gpu.Sig.Signed" xml:space="preserve">
+    <value>Signed · {0}</value>
+  </data>
+  <data name="Hw.Gpu.Sig.None" xml:space="preserve">
+    <value>Not signed</value>
+  </data>
+  <data name="Hw.Gpu.Tech.DirectX" xml:space="preserve">
+    <value>DirectX</value>
+  </data>
+  <data name="Hw.Gpu.Tech.DirectX.Ultimate" xml:space="preserve">
+    <value>DirectX 12 Ultimate (12_2)</value>
+  </data>
+  <data name="Hw.Gpu.Tech.DirectX.Level" xml:space="preserve">
+    <value>DirectX {0} ({1})</value>
+  </data>
+  <data name="Hw.Gpu.Tech.Apis" xml:space="preserve">
+    <value>APIs</value>
+  </data>
+  <data name="Hw.Gpu.Tech.Features" xml:space="preserve">
+    <value>Architecture features</value>
+  </data>
+  <data name="Hw.Gpu.Note.Reference" xml:space="preserve">
+    <value>Chip, units, clocks and TDP are manufacturer reference values, not hardware readings. Memory, driver and DirectX come from Windows.</value>
+  </data>
 </root>
