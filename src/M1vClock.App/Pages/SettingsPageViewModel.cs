@@ -20,6 +20,7 @@ public sealed partial class SettingsPageViewModel : PageViewModel
     private readonly IShellLauncher _shell;
     private readonly AppPaths _paths;
     private readonly ILogger<SettingsPageViewModel> _logger;
+    private readonly bool _ready;
 
     public SettingsPageViewModel(ThemeService theme, AppSettingsService settings, IShellLauncher shell, AppPaths paths, AppInfo info, ILogger<SettingsPageViewModel> logger)
         : base(PageCatalog.Find("settings"))
@@ -43,6 +44,7 @@ public sealed partial class SettingsPageViewModel : PageViewModel
         Version = info.Version;
         DataRoot = info.DataRoot;
         ElevationText = Loc.Get(info.IsElevated ? "Settings.About.Elevated" : "Settings.About.NotElevated");
+        _ready = true;
     }
 
     [ObservableProperty]
@@ -63,15 +65,28 @@ public sealed partial class SettingsPageViewModel : PageViewModel
     [ObservableProperty]
     public partial string ActionError { get; set; } = string.Empty;
 
-    partial void OnThemeIndexChanged(int value) => _theme.SetPreference(value switch
+    partial void OnThemeIndexChanged(int value)
     {
-        1 => ThemePreference.Light,
-        2 => ThemePreference.Dark,
-        _ => ThemePreference.System,
-    });
+        if (!_ready)
+        {
+            return;
+        }
+
+        _theme.SetPreference(value switch
+        {
+            1 => ThemePreference.Light,
+            2 => ThemePreference.Dark,
+            _ => ThemePreference.System,
+        });
+    }
 
     partial void OnLanguageIndexChanged(int value)
     {
+        if (!_ready)
+        {
+            return;
+        }
+
         var tag = SupportedLanguages.TagAt(value);
         if (SupportedLanguages.Resolve(_settings.Current.Language).Name != tag)
         {
