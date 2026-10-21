@@ -111,7 +111,7 @@ public sealed class PageScaffold : ContentControl
 
     private bool HasNestedScroller(DependencyObject? source)
     {
-        for (var node = source; node is not null && !ReferenceEquals(node, _scroll); node = Parent(node))
+        for (var node = source; node is not null && !ReferenceEquals(node, _scroll); node = ParentOf(node))
         {
             if (node is ScrollViewer nested && nested.ScrollableHeight > 0)
             {
@@ -122,6 +122,6 @@ public sealed class PageScaffold : ContentControl
         return false;
     }
 
-    private static DependencyObject? Parent(DependencyObject node) =>
+    private static DependencyObject? ParentOf(DependencyObject node) =>
         node is Visual or System.Windows.Media.Media3D.Visual3D ? VisualTreeHelper.GetParent(node) : LogicalTreeHelper.GetParent(node);
 }
