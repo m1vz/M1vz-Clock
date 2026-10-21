@@ -1503,4 +1503,166 @@
   <data name="Hw.Gpu.Note.Reference" xml:space="preserve">
     <value>Chip, unidades, clocks e TDP são valores de referência do fabricante, não leituras do hardware. Memória, driver e DirectX vêm do Windows.</value>
   </data>
+  <data name="Hw.Power.Battery" xml:space="preserve">
+    <value>Bateria</value>
+  </data>
+  <data name="Hw.Power.Battery.N" xml:space="preserve">
+    <value>Bateria {0}</value>
+  </data>
+  <data name="Hw.Power.Battery.Charge" xml:space="preserve">
+    <value>{0}% de carga</value>
+  </data>
+  <data name="Hw.Power.Verdict.Good" xml:space="preserve">
+    <value>Saudável</value>
+  </data>
+  <data name="Hw.Power.Verdict.Warning" xml:space="preserve">
+    <value>Atenção</value>
+  </data>
+  <data name="Hw.Power.Verdict.Worn" xml:space="preserve">
+    <value>Desgastada</value>
+  </data>
+  <data name="Hw.Power.Verdict.Unknown" xml:space="preserve">
+    <value>Sem dados</value>
+  </data>
+  <data name="Hw.Power.Finding.NoCapacityData" xml:space="preserve">
+    <value>O Windows não informou a capacidade de projeto ou a atual, então o desgaste não pôde ser calculado.</value>
+  </data>
+  <data name="Hw.Power.Finding.WornOut" xml:space="preserve">
+    <value>Perdeu {0}% da capacidade original: a autonomia é metade do que era. Vale trocar a bateria.</value>
+  </data>
+  <data name="Hw.Power.Finding.Moderate" xml:space="preserve">
+    <value>Perdeu {0}% da capacidade original. Ainda funciona, mas a autonomia já caiu bastante.</value>
+  </data>
+  <data name="Hw.Power.Finding.Normal" xml:space="preserve">
+    <value>Desgaste de {0}%, normal para uma bateria com uso.</value>
+  </data>
+  <data name="Hw.Power.Finding.Excellent" xml:space="preserve">
+    <value>Desgaste de apenas {0}%: bateria em ótimo estado.</value>
+  </data>
+  <data name="Hw.Power.Finding.ManyCycles" xml:space="preserve">
+    <value>{0} ciclos de carga: perto do fim da vida útil típica das baterias de íon-lítio (500 a 1000).</value>
+  </data>
+  <data name="Hw.Power.Finding.LowCharge" xml:space="preserve">
+    <value>Carga baixa e fora da tomada.</value>
+  </data>
+  <data name="Hw.Power.Metric.Charge" xml:space="preserve">
+    <value>Carga atual</value>
+  </data>
+  <data name="Hw.Power.Metric.State" xml:space="preserve">
+    <value>Estado</value>
+  </data>
+  <data name="Hw.Power.Metric.Runtime" xml:space="preserve">
+    <value>Autonomia estimada</value>
+  </data>
+  <data name="Hw.Power.Metric.Runtime.Value" xml:space="preserve">
+    <value>{0} h {1} min</value>
+  </data>
+  <data name="Hw.Power.Metric.Design" xml:space="preserve">
+    <value>Capacidade de projeto</value>
+  </data>
+  <data name="Hw.Power.Metric.Full" xml:space="preserve">
+    <value>Capacidade máxima atual</value>
+  </data>
+  <data name="Hw.Power.Metric.Wh" xml:space="preserve">
+    <value>{0} Wh</value>
+  </data>
+  <data name="Hw.Power.Metric.Wear" xml:space="preserve">
+    <value>Desgaste</value>
+  </data>
+  <data name="Hw.Power.Metric.Cycles" xml:space="preserve">
+    <value>Ciclos de carga</value>
+  </data>
+  <data name="Hw.Power.Metric.Voltage" xml:space="preserve">
+    <value>Tensão</value>
+  </data>
+  <data name="Hw.Power.Metric.ChargePower" xml:space="preserve">
+    <value>Potência de carga</value>
+  </data>
+  <data name="Hw.Power.Metric.DischargePower" xml:space="preserve">
+    <value>Consumo atual</value>
+  </data>
+  <data name="Hw.Power.Metric.Watts" xml:space="preserve">
+    <value>{0} W</value>
+  </data>
+  <data name="Hw.Power.Metric.Maker" xml:space="preserve">
+    <value>Fabricante</value>
+  </data>
+  <data name="Hw.Power.Metric.Model" xml:space="preserve">
+    <value>Modelo</value>
+  </data>
+  <data name="Hw.Power.Metric.Chemistry" xml:space="preserve">
+    <value>Química</value>
+  </data>
+  <data name="Hw.Power.State.Discharging" xml:space="preserve">
+    <value>Descarregando</value>
+  </data>
+  <data name="Hw.Power.State.OnAc" xml:space="preserve">
+    <value>Na tomada</value>
+  </data>
+  <data name="Hw.Power.State.FullyCharged" xml:space="preserve">
+    <value>Totalmente carregada</value>
+  </data>
+  <data name="Hw.Power.State.Low" xml:space="preserve">
+    <value>Carga baixa</value>
+  </data>
+  <data name="Hw.Power.State.Critical" xml:space="preserve">
+    <value>Carga crítica</value>
+  </data>
+  <data name="Hw.Power.State.Charging" xml:space="preserve">
+    <value>Carregando</value>
+  </data>
+  <data name="Hw.Power.State.PartlyCharged" xml:space="preserve">
+    <value>Parcialmente carregada</value>
+  </data>
+  <data name="Hw.Power.Chem.LeadAcid" xml:space="preserve">
+    <value>Chumbo-ácido</value>
+  </data>
+  <data name="Hw.Power.Chem.NiCd" xml:space="preserve">
+    <value>NiCd</value>
+  </data>
+  <data name="Hw.Power.Chem.NiMh" xml:space="preserve">
+    <value>NiMH</value>
+  </data>
+  <data name="Hw.Power.Chem.LithiumIon" xml:space="preserve">
+    <value>Íon-lítio</value>
+  </data>
+  <data name="Hw.Power.Chem.ZincAir" xml:space="preserve">
+    <value>Zinco-ar</value>
+  </data>
+  <data name="Hw.Power.Chem.LithiumPolymer" xml:space="preserve">
+    <value>Polímero de lítio</value>
+  </data>
+  <data name="Hw.Power.Energy" xml:space="preserve">
+    <value>Energia</value>
+  </data>
+  <data name="Hw.Power.Energy.Source" xml:space="preserve">
+    <value>Fonte de energia</value>
+  </data>
+  <data name="Hw.Power.Source.DesktopMains" xml:space="preserve">
+    <value>Tomada (PC de mesa)</value>
+  </data>
+  <data name="Hw.Power.Source.Mains" xml:space="preserve">
+    <value>Tomada</value>
+  </data>
+  <data name="Hw.Power.Source.Battery" xml:space="preserve">
+    <value>Bateria</value>
+  </data>
+  <data name="Hw.Power.Energy.Plan" xml:space="preserve">
+    <value>Plano de energia</value>
+  </data>
+  <data name="Hw.Power.Plan.Custom" xml:space="preserve">
+    <value>{0} (personalizado)</value>
+  </data>
+  <data name="Hw.Power.Note.NoBattery" xml:space="preserve">
+    <value>Nenhuma bateria detectada neste PC.</value>
+  </data>
+  <data name="Hw.Power.Note.Psu" xml:space="preserve">
+    <value>O Windows não mede o consumo da fonte (PSU). O consumo da CPU e da GPU aparece na página Sensores.</value>
+  </data>
+  <data name="Hw.Power.Note.PlanUnknown" xml:space="preserve">
+    <value>Não foi possível identificar o plano de energia ativo.</value>
+  </data>
+  <data name="Hw.Power.Note.PlanSlow" xml:space="preserve">
+    <value>Para jogos e benchmarks, o plano Alto desempenho evita que o PC diminua o clock.</value>
+  </data>
 </root>
