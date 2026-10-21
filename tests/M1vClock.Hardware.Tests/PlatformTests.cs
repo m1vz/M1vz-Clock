@@ -11,7 +11,7 @@ public sealed class PlatformCollectorTests
     private static FakeWmiReader RealMachine() => new FakeWmiReader()
         .With("Win32_OperatingSystem", WmiRow.Of(("Caption", "Microsoft Windows 11 Home"), ("Version", "10.0.26200"), ("BuildNumber", "26200"), ("OSArchitecture", "64 bits")))
         .With("Win32_BaseBoard", WmiRow.Of(("Manufacturer", "ASUSTeK COMPUTER INC."), ("Product", "TUF GAMING B550M-PLUS"), ("Version", "Rev X.0x"), ("SerialNumber", "To be filled by O.E.M.")))
-        .With("Win32_BIOS", WmiRow.Of(("Manufacturer", "American Megatrends Inc."), ("SMBIOSBIOSVersion", "3636"), ("ReleaseDate", "20260103210000.000000+000")))
+        .With("Win32_BIOS", WmiRow.Of(("Manufacturer", "American Megatrends Inc."), ("SMBIOSBIOSVersion", "3636"), ("ReleaseDate", "20260104000000.000000+000")))
         .With("Win32_Processor", WmiRow.Of(
             ("Name", "AMD Ryzen 7 5700X 8-Core Processor             "),
             ("Manufacturer", "AuthenticAMD"),
@@ -80,7 +80,17 @@ public sealed class PlatformCollectorTests
 
         Assert.Equal("American Megatrends Inc.", bios.Manufacturer);
         Assert.Equal("3636", bios.Version);
-        Assert.Equal(new DateOnly(2026, 1, 3), bios.ReleaseDate);
+        Assert.Equal(new DateOnly(2026, 1, 4), bios.ReleaseDate);
+    }
+
+    [Fact]
+    public void TheBiosDateIgnoresTheUtcOffsetBecauseSmbiosDatesHaveNoTimeZone()
+    {
+        var wmi = new FakeWmiReader().With("Win32_BIOS", WmiRow.Of(("Manufacturer", "AMI"), ("SMBIOSBIOSVersion", "1"), ("ReleaseDate", "20260104000000.000000-180")));
+
+        var bios = new PlatformCollector(wmi, RealRegistry(), "PC").ReadBios();
+
+        Assert.Equal(new DateOnly(2026, 1, 4), bios.ReleaseDate);
     }
 
     [Fact]
