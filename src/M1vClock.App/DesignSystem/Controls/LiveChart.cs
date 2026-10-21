@@ -353,7 +353,7 @@ public sealed class LiveChart : FrameworkElement
         }
 
         var ago = Math.Max(0, ChartClock.Now - point.Time);
-        text += " · " + string.Format(culture, Loc.Get("Chart.SecondsAgo"), Math.Round(ago));
+        text += " · " + Loc.Format("Chart.SecondsAgo", Math.Round(ago));
         _bubbleAnchor = anchor;
         SetBubble(text);
     }
