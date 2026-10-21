@@ -58,6 +58,7 @@ public static class AppHost
         builder.Services.AddTransient<HistoryPageViewModel>();
         builder.Services.AddTransient<SystemPageViewModel>();
         builder.Services.AddTransient<MemoryPageViewModel>();
+        builder.Services.AddTransient<StoragePageViewModel>();
         return builder.Build();
     }
 }

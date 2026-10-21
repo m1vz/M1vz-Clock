@@ -13,6 +13,7 @@ public static class PageRegistry
         ["history"] = Resolve<HistoryPageViewModel>,
         ["system"] = Resolve<SystemPageViewModel>,
         ["memory"] = Resolve<MemoryPageViewModel>,
+        ["storage"] = Resolve<StoragePageViewModel>,
     };
 
     public static IReadOnlyCollection<string> Ids => Factories.Keys;
