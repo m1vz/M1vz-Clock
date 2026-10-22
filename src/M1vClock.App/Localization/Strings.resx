@@ -1714,7 +1714,7 @@
     <value>Diagnóstico de lag</value>
   </data>
   <data name="Hw.Diag.Intro" xml:space="preserve">
-    <value>Mede a latência até o roteador e a internet, a perda de pacotes, o DNS e a velocidade. Leva cerca de 25 segundos e usa a sua conexão. Nada é gravado no disco.</value>
+    <value>Mede a latência até o roteador e a internet, a perda de pacotes, o DNS e a velocidade. Leva cerca de 25 segundos e usa a sua conexão, com limite de cerca de 350 MB de dados. Nada é gravado no disco.</value>
   </data>
   <data name="Hw.Diag.Servers" xml:space="preserve">
     <value>Fala só com o roteador, com 1.1.1.1, com 1.0.0.1 e com speed.cloudflare.com, por HTTPS.</value>

@@ -1714,7 +1714,7 @@
     <value>Lag diagnostic</value>
   </data>
   <data name="Hw.Diag.Intro" xml:space="preserve">
-    <value>Measures latency to the router and the internet, packet loss, DNS and speed. It takes about 25 seconds and uses your connection. Nothing is written to disk.</value>
+    <value>Measures latency to the router and the internet, packet loss, DNS and speed. It takes about 25 seconds and uses your connection, capped at about 350 MB of data. Nothing is written to disk.</value>
   </data>
   <data name="Hw.Diag.Servers" xml:space="preserve">
     <value>Talks only to the router, to 1.1.1.1, to 1.0.0.1 and to speed.cloudflare.com, over HTTPS.</value>
