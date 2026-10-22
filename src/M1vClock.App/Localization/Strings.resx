@@ -2055,4 +2055,169 @@
   <data name="Hw.Sensor.Problem.ReadFailed" xml:space="preserve">
     <value>O PawnIO está instalado, mas a leitura da CPU falhou. Se acabou de instalar, reinicie o PC. Se continuar, confira se o antivírus bloqueou o driver ou se a CPU é nova demais para a biblioteca de sensores.</value>
   </data>
+  <data name="Hw.Overview.Cpu" xml:space="preserve">
+    <value>Processador</value>
+  </data>
+  <data name="Hw.Overview.Gpu" xml:space="preserve">
+    <value>Placa de vídeo</value>
+  </data>
+  <data name="Hw.Overview.Memory" xml:space="preserve">
+    <value>Memória</value>
+  </data>
+  <data name="Hw.Overview.Disk" xml:space="preserve">
+    <value>Disco do sistema</value>
+  </data>
+  <data name="Hw.Overview.Detail.MemoryOf" xml:space="preserve">
+    <value>{0} de {1} GB</value>
+  </data>
+  <data name="Hw.Overview.Detail.DiskFree" xml:space="preserve">
+    <value>{0} livres de {1}</value>
+  </data>
+  <data name="Hw.Overview.Chart" xml:space="preserve">
+    <value>Histórico</value>
+  </data>
+  <data name="Hw.Overview.Chart.Temperature" xml:space="preserve">
+    <value>Temperatura</value>
+  </data>
+  <data name="Hw.Overview.Chart.Load" xml:space="preserve">
+    <value>Carga</value>
+  </data>
+  <data name="Hw.Overview.Chart.Power" xml:space="preserve">
+    <value>Consumo</value>
+  </data>
+  <data name="Hw.Overview.Chart.Metric" xml:space="preserve">
+    <value>Métrica do gráfico</value>
+  </data>
+  <data name="Hw.Overview.Chart.Window" xml:space="preserve">
+    <value>Período do gráfico</value>
+  </data>
+  <data name="Hw.Overview.Window.OneMinute" xml:space="preserve">
+    <value>1 min</value>
+  </data>
+  <data name="Hw.Overview.Window.FiveMinutes" xml:space="preserve">
+    <value>5 min</value>
+  </data>
+  <data name="Hw.Overview.Window.FifteenMinutes" xml:space="preserve">
+    <value>15 min</value>
+  </data>
+  <data name="Hw.Overview.Legend.Cpu" xml:space="preserve">
+    <value>CPU</value>
+  </data>
+  <data name="Hw.Overview.Legend.Gpu" xml:space="preserve">
+    <value>GPU</value>
+  </data>
+  <data name="Hw.Overview.Health" xml:space="preserve">
+    <value>Saúde do PC</value>
+  </data>
+  <data name="Hw.Overview.Health.Loading" xml:space="preserve">
+    <value>Verificando…</value>
+  </data>
+  <data name="Hw.Overview.Health.Ok" xml:space="preserve">
+    <value>Tudo certo</value>
+  </data>
+  <data name="Hw.Overview.Health.Attention" xml:space="preserve">
+    <value>{0} ponto(s) de atenção</value>
+  </data>
+  <data name="Hw.Overview.Health.Critical" xml:space="preserve">
+    <value>Atenção urgente: {0} problema(s)</value>
+  </data>
+  <data name="Hw.Overview.Health.Unknown" xml:space="preserve">
+    <value>Sem dados suficientes</value>
+  </data>
+  <data name="Hw.Overview.Health.Failed" xml:space="preserve">
+    <value>Não foi possível verificar a saúde do PC. O registro tem os detalhes.</value>
+  </data>
+  <data name="Hw.Overview.Activity" xml:space="preserve">
+    <value>Atividade recente</value>
+  </data>
+  <data name="Hw.Overview.Activity.Empty" xml:space="preserve">
+    <value>Nada aconteceu desde que o m1vClock abriu.</value>
+  </data>
+  <data name="Hw.Health.CpuSensors.Title" xml:space="preserve">
+    <value>Sensores da CPU</value>
+  </data>
+  <data name="Hw.Health.CpuSensors.Ok" xml:space="preserve">
+    <value>Temperatura e consumo disponíveis.</value>
+  </data>
+  <data name="Hw.Health.CpuSensors.NotElevated" xml:space="preserve">
+    <value>Falta rodar como administrador para ler a temperatura da CPU.</value>
+  </data>
+  <data name="Hw.Health.CpuSensors.PawnIoMissing" xml:space="preserve">
+    <value>Falta o driver PawnIO para ler a temperatura da CPU.</value>
+  </data>
+  <data name="Hw.Health.CpuSensors.ReadFailed" xml:space="preserve">
+    <value>O PawnIO está instalado, mas a leitura da CPU falhou.</value>
+  </data>
+  <data name="Hw.Health.Disks.Title" xml:space="preserve">
+    <value>Discos</value>
+  </data>
+  <data name="Hw.Health.Disks.Ok" xml:space="preserve">
+    <value>S.M.A.R.T. sem sinais de falha.</value>
+  </data>
+  <data name="Hw.Health.Disks.Attention" xml:space="preserve">
+    <value>{0} disco(s) com sinal de alerta.</value>
+  </data>
+  <data name="Hw.Health.Disks.Critical" xml:space="preserve">
+    <value>{0} disco(s) com risco de falha: faça backup.</value>
+  </data>
+  <data name="Hw.Health.Disks.Unknown" xml:space="preserve">
+    <value>O Windows só mostra o S.M.A.R.T. completo como administrador.</value>
+  </data>
+  <data name="Hw.Health.Memory.Title" xml:space="preserve">
+    <value>Memória</value>
+  </data>
+  <data name="Hw.Health.Memory.Ok" xml:space="preserve">
+    <value>{0}% em uso.</value>
+  </data>
+  <data name="Hw.Health.Memory.Attention" xml:space="preserve">
+    <value>{0}% em uso: perto do limite.</value>
+  </data>
+  <data name="Hw.Health.Memory.Critical" xml:space="preserve">
+    <value>{0}% em uso: o Windows deve estar usando o disco como memória.</value>
+  </data>
+  <data name="Hw.Health.SystemDrive.Title" xml:space="preserve">
+    <value>Disco do sistema</value>
+  </data>
+  <data name="Hw.Health.SystemDrive.Ok" xml:space="preserve">
+    <value>{0}% livre.</value>
+  </data>
+  <data name="Hw.Health.SystemDrive.Attention" xml:space="preserve">
+    <value>Só {0}% livre: o Windows e os jogos precisam de espaço para atualizar.</value>
+  </data>
+  <data name="Hw.Health.SystemDrive.Critical" xml:space="preserve">
+    <value>Só {0}% livre: libere espaço agora.</value>
+  </data>
+  <data name="Hw.Health.PowerPlan.Title" xml:space="preserve">
+    <value>Plano de energia</value>
+  </data>
+  <data name="Hw.Health.PowerPlan.Ok" xml:space="preserve">
+    <value>O plano de energia não limita o desempenho.</value>
+  </data>
+  <data name="Hw.Health.PowerPlan.Attention" xml:space="preserve">
+    <value>Plano Equilibrado ou Economia: Alto desempenho evita queda de clock em jogos.</value>
+  </data>
+  <data name="Hw.Health.Battery.Title" xml:space="preserve">
+    <value>Bateria</value>
+  </data>
+  <data name="Hw.Health.Battery.Ok" xml:space="preserve">
+    <value>Bateria saudável.</value>
+  </data>
+  <data name="Hw.Health.Battery.Attention" xml:space="preserve">
+    <value>A bateria perdeu parte da capacidade.</value>
+  </data>
+  <data name="Hw.Health.Battery.Critical" xml:space="preserve">
+    <value>A bateria está desgastada: vale trocar.</value>
+  </data>
+  <data name="Hw.Health.Battery.Unknown" xml:space="preserve">
+    <value>O Windows não informou o desgaste da bateria.</value>
+  </data>
+  <data name="Hw.Health.Usb.Title" xml:space="preserve">
+    <value>Dispositivos USB</value>
+  </data>
+  <data name="Hw.Health.Usb.Ok" xml:space="preserve">
+    <value>Nenhum dispositivo USB com erro.</value>
+  </data>
+  <data name="Hw.Health.Usb.Attention" xml:space="preserve">
+    <value>{0} dispositivo(s) USB com erro no Windows.</value>
+  </data>
 </root>
