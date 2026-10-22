@@ -10,6 +10,10 @@
   </ItemGroup>
 
   <ItemGroup>
+    <EmbeddedResource Include="Fixtures/*.json" LogicalName="Fixtures.%(Filename).json" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\..\src\M1vClock.Hardware\M1vClock.Hardware.csproj" />
   </ItemGroup>
 

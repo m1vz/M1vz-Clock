@@ -1,0 +1,28 @@
+[
+    {
+        "diskNumber":  "1",
+        "friendlyName":  "NX-512 2280",
+        "mediaType":  "SSD",
+        "busType":  "NVMe",
+        "temperature":  41,
+        "temperatureMax":  90,
+        "wear":  0,
+        "powerOnHours":  null,
+        "readErrorsTotal":  null,
+        "writeErrorsTotal":  null,
+        "startStopCycleCount":  null
+    },
+    {
+        "diskNumber":  "0",
+        "friendlyName":  "ST1000VM002-1SD102",
+        "mediaType":  "HDD",
+        "busType":  "SATA",
+        "temperature":  27,
+        "temperatureMax":  0,
+        "wear":  0,
+        "powerOnHours":  7384,
+        "readErrorsTotal":  0,
+        "writeErrorsTotal":  null,
+        "startStopCycleCount":  3067
+    }
+]
