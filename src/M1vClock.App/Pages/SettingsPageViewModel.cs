@@ -56,6 +56,21 @@ public sealed partial class SettingsPageViewModel : PageViewModel
     [ObservableProperty]
     public partial bool RestartRequired { get; set; }
 
+    public bool BackgroundSensorHistory
+    {
+        get => _settings.Current.BackgroundSensorHistory;
+        set
+        {
+            if (value == _settings.Current.BackgroundSensorHistory)
+            {
+                return;
+            }
+
+            _settings.Update(s => s.BackgroundSensorHistory = value);
+            OnPropertyChanged();
+        }
+    }
+
     public string Version { get; }
 
     public string DataRoot { get; }

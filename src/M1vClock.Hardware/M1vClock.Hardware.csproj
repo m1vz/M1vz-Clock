@@ -1,7 +1,22 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <ItemGroup>
+    <PackageReference Include="LibreHardwareMonitorLib" />
+    <PackageReference Include="System.Management" />
+    <PackageReference Include="Vortice.Direct3D12" />
+    <PackageReference Include="Vortice.DXGI" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="Gpu/GpuSpecs.json" LogicalName="M1vClock.Hardware.Gpu.GpuSpecs.json" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\M1vClock.Core\M1vClock.Core.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <InternalsVisibleTo Include="M1vClock.Hardware.Tests" />
   </ItemGroup>
 
 </Project>

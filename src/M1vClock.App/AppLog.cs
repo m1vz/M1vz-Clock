@@ -48,4 +48,16 @@ internal static partial class AppLog
 
     [LoggerMessage(EventId = 2015, Level = LogLevel.Information, Message = "Captura de tela gravada em {Path}.")]
     public static partial void ScreenshotSaved(ILogger logger, string path);
+
+    [LoggerMessage(EventId = 2016, Level = LogLevel.Error, Message = "Falha ao carregar a página {Page}.")]
+    public static partial void PageLoadFailed(ILogger logger, Exception exception, string page);
+
+    [LoggerMessage(EventId = 2017, Level = LogLevel.Error, Message = "O diagnóstico de rede não terminou.")]
+    public static partial void NetworkDiagnosticFailed(ILogger logger, Exception exception);
+
+    [LoggerMessage(EventId = 2018, Level = LogLevel.Warning, Message = "O Windows não deixou vigiar a conexão de dispositivos; os avisos ficam indisponíveis.")]
+    public static partial void DeviceWatcherUnavailable(ILogger logger);
+
+    [LoggerMessage(EventId = 2019, Level = LogLevel.Error, Message = "Falha ao tratar uma mudança de dispositivos.")]
+    public static partial void DeviceNotifierFailed(ILogger logger, Exception exception);
 }

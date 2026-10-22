@@ -1,0 +1,28 @@
+<UserControl x:Class="M1vClock.App.Pages.Hardware.InfoPage"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:dc="clr-namespace:M1vClock.App.DesignSystem.Controls"
+             xmlns:l="clr-namespace:M1vClock.App.Localization"
+             Focusable="False">
+  <dc:PageScaffold Title="{Binding Title}" Subtitle="{Binding Subtitle}">
+    <dc:PageScaffold.Actions>
+      <StackPanel Orientation="Horizontal">
+        <TextBlock Text="{Binding UpdatedText}" Style="{StaticResource Text.Caption}" VerticalAlignment="Center" Margin="0,0,12,0" />
+        <Button Style="{StaticResource Button.Secondary}" dc:Assist.Icon="{StaticResource Icon.Refresh}" Content="{l:Text Hw.Common.Refresh}"
+                Command="{Binding RefreshCommand}" />
+      </StackPanel>
+    </dc:PageScaffold.Actions>
+    <StackPanel>
+      <ContentControl Style="{StaticResource Banner.Critical}" Margin="0,0,0,16"
+                      Visibility="{Binding HasPageError, Converter={StaticResource BoolToVisible}}">
+        <TextBlock Style="{StaticResource Banner.Text}" Text="{Binding PageError}" />
+      </ContentControl>
+      <ContentControl Style="{StaticResource Banner}" Margin="0,0,0,16" Visibility="{Binding Notice, Converter={StaticResource NullToCollapsed}}">
+        <TextBlock Style="{StaticResource Banner.Text}" Text="{Binding Notice}" />
+      </ContentControl>
+      <ItemsControl ItemsSource="{Binding Sections}" ItemTemplate="{StaticResource InfoSectionTemplate}" Focusable="False" />
+      <TextBlock Text="{Binding FooterNote}" Style="{StaticResource Text.Caption}" Foreground="{DynamicResource Brush.TextTertiary}" Margin="4,0,0,0"
+                 Visibility="{Binding FooterNote, Converter={StaticResource NullToCollapsed}}" />
+    </StackPanel>
+  </dc:PageScaffold>
+</UserControl>

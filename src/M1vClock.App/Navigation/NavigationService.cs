@@ -51,7 +51,7 @@ public sealed class NavigationService(IServiceProvider services, ILogger<Navigat
 
         var previous = Current;
         var direction = previous is null ? 0 : Math.Sign(IndexOf(descriptor) - IndexOf(previous.Descriptor));
-        var page = Create(descriptor);
+        var page = PageRegistry.Create(descriptor, services);
         previous?.OnNavigatedFrom();
         if (previous is IDisposable disposable)
         {
@@ -63,14 +63,6 @@ public sealed class NavigationService(IServiceProvider services, ILogger<Navigat
         AppLog.Navigated(logger, descriptor.Id);
         Navigated?.Invoke(this, new NavigatedEventArgs(page, direction));
     }
-
-    private PageViewModel Create(PageDescriptor descriptor) => descriptor.Id switch
-    {
-        "design-system" => services.GetRequiredService<DesignSystemPageViewModel>(),
-        "settings" => services.GetRequiredService<SettingsPageViewModel>(),
-        "history" => services.GetRequiredService<HistoryPageViewModel>(),
-        _ => new PlaceholderPageViewModel(descriptor),
-    };
 
     private static int IndexOf(PageDescriptor descriptor)
     {

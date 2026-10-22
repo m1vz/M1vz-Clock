@@ -40,6 +40,18 @@
         </StackPanel>
       </Border>
 
+      <TextBlock Text="{l:Text Settings.Sensors}" Style="{StaticResource Section.Title}" Margin="0,32,0,12" />
+      <Border Style="{StaticResource Card}" Padding="20,16">
+        <DockPanel>
+          <dc:ToggleSwitch DockPanel.Dock="Right" IsChecked="{Binding BackgroundSensorHistory, Mode=TwoWay}" VerticalAlignment="Center"
+                           AutomationProperties.Name="{l:Text Settings.Sensors.History}" />
+          <StackPanel Margin="0,0,24,0">
+            <TextBlock Text="{l:Text Settings.Sensors.History}" Style="{StaticResource Text.Body}" />
+            <TextBlock Text="{l:Text Settings.Sensors.History.Detail}" Style="{StaticResource Text.Subhead.Secondary}" TextWrapping="Wrap" />
+          </StackPanel>
+        </DockPanel>
+      </Border>
+
       <TextBlock Text="{l:Text Settings.About}" Style="{StaticResource Section.Title}" Margin="0,32,0,12" />
       <Border Style="{StaticResource Card}" Padding="20,16">
         <StackPanel>

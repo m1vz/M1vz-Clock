@@ -26,13 +26,11 @@ public sealed record PageDescriptor(string Id, SidebarSection Section, string Ic
 
     public string IconKey => $"Icon.{Icon}";
 
-    public bool IsAvailable => Phase <= PageCatalog.CurrentPhase;
+    public bool IsAvailable => PageRegistry.Has(Id);
 }
 
 public static class PageCatalog
 {
-    public const int CurrentPhase = 1;
-
     public static IReadOnlyList<PageDescriptor> All { get; } =
     [
         new("overview", SidebarSection.Top, "Overview", 2),

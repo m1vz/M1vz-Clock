@@ -66,11 +66,33 @@ public sealed class PageCatalogTests
     }
 
     [Fact]
-    public void OnlyThePhaseOnePagesAreAvailableNow()
+    public void EveryRegisteredPageExistsInTheCatalog()
     {
-        var available = PageCatalog.All.Where(p => p.IsAvailable).Select(p => p.Id).Order().ToList();
+        Assert.All(PageRegistry.Ids, id => Assert.Equal(id, PageCatalog.Find(id).Id));
+    }
 
-        Assert.Equal(["design-system", "history", "settings"], available);
+    [Fact]
+    public void AvailabilityComesFromTheRegistryAlone()
+    {
+        var available = PageCatalog.All.Where(p => p.IsAvailable).Select(p => p.Id).Order(StringComparer.Ordinal).ToList();
+
+        Assert.Equal(PageRegistry.Ids.Order(StringComparer.Ordinal).ToList(), available);
+    }
+
+    [Theory]
+    [InlineData("design-system")]
+    [InlineData("history")]
+    [InlineData("settings")]
+    public void PhaseOnePagesAreAlwaysRegistered(string id)
+    {
+        Assert.True(PageRegistry.Has(id));
+        Assert.True(PageCatalog.Find(id).IsAvailable);
+    }
+
+    [Fact]
+    public void AnUnregisteredPageIsNotAvailable()
+    {
+        Assert.False(PageRegistry.Has("nao-existe"));
     }
 
     [Fact]

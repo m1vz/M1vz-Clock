@@ -1,6 +1,7 @@
 using M1vClock.App.Dialogs;
 using M1vClock.App.Navigation;
 using M1vClock.App.Pages;
+using M1vClock.App.Pages.Hardware;
 using M1vClock.App.Search;
 using M1vClock.App.Services;
 using M1vClock.App.Shell;
@@ -44,6 +45,13 @@ public static class AppHost
 
         builder.Services.AddSingleton(options);
         builder.Services.AddSingleton(new AppInfo(version, paths.Root, elevation.IsElevated));
+        builder.Services.AddSingleton<IUiThread, WpfUiThread>();
+        builder.Services.AddSingleton<ActivityLog>();
+        builder.Services.AddSingleton<NotificationService>();
+        builder.Services.AddSingleton<INotificationService>(provider => provider.GetRequiredService<NotificationService>());
+        builder.Services.AddHostedService<DeviceNotifier>();
+        builder.Services.AddSingleton<OverviewHistory>();
+        builder.Services.AddHostedService(provider => provider.GetRequiredService<OverviewHistory>());
         builder.Services.AddSingleton<SystemPreferences>();
         builder.Services.AddSingleton<AppSettingsService>();
         builder.Services.AddSingleton<ThemeService>();
@@ -55,6 +63,16 @@ public static class AppHost
         builder.Services.AddTransient<DesignSystemPageViewModel>();
         builder.Services.AddTransient<SettingsPageViewModel>();
         builder.Services.AddTransient<HistoryPageViewModel>();
+        builder.Services.AddTransient<SystemPageViewModel>();
+        builder.Services.AddTransient<GpuPageViewModel>();
+        builder.Services.AddTransient<PowerPageViewModel>();
+        builder.Services.AddTransient<NetworkDiagnosticViewModel>();
+        builder.Services.AddTransient<NetworkPageViewModel>();
+        builder.Services.AddTransient<DevicesPageViewModel>();
+        builder.Services.AddTransient<SensorsPageViewModel>();
+        builder.Services.AddTransient<OverviewPageViewModel>();
+        builder.Services.AddTransient<MemoryPageViewModel>();
+        builder.Services.AddTransient<StoragePageViewModel>();
         return builder.Build();
     }
 }

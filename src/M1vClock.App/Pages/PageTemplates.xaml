@@ -1,10 +1,35 @@
 <ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:nav="clr-namespace:M1vClock.App.Navigation"
-                    xmlns:pages="clr-namespace:M1vClock.App.Pages">
+                    xmlns:pages="clr-namespace:M1vClock.App.Pages"
+                    xmlns:hw="clr-namespace:M1vClock.App.Pages.Hardware">
 
   <DataTemplate DataType="{x:Type nav:PlaceholderPageViewModel}">
     <pages:PlaceholderPage />
+  </DataTemplate>
+
+  <DataTemplate DataType="{x:Type hw:StoragePageViewModel}">
+    <hw:StoragePage />
+  </DataTemplate>
+
+  <DataTemplate DataType="{x:Type hw:OverviewPageViewModel}">
+    <hw:OverviewPage />
+  </DataTemplate>
+
+  <DataTemplate DataType="{x:Type hw:SensorsPageViewModel}">
+    <hw:SensorsPage />
+  </DataTemplate>
+
+  <DataTemplate DataType="{x:Type hw:DevicesPageViewModel}">
+    <hw:DevicesPage />
+  </DataTemplate>
+
+  <DataTemplate DataType="{x:Type hw:NetworkPageViewModel}">
+    <hw:NetworkPage />
+  </DataTemplate>
+
+  <DataTemplate DataType="{x:Type hw:InfoPageViewModel}">
+    <hw:InfoPage />
   </DataTemplate>
 
   <DataTemplate DataType="{x:Type pages:DesignSystemPageViewModel}">

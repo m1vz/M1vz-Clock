@@ -71,6 +71,32 @@ public sealed class SettingsPageViewModelTests : IDisposable
         Assert.Equal(0, _writes);
     }
 
+    [Fact]
+    public void TheSensorHistorySwitchStartsOnAndSavesWhenChanged()
+    {
+        using var theme = CreateTheme(new AppSettings(), out var settings);
+        var page = CreatePage(theme, settings);
+
+        Assert.True(page.BackgroundSensorHistory);
+        page.BackgroundSensorHistory = false;
+
+        Assert.False(settings.Current.BackgroundSensorHistory);
+        Assert.False(page.BackgroundSensorHistory);
+        Assert.Equal(1, _writes);
+    }
+
+    [Fact]
+    public void TheSensorHistorySwitchReflectsASavedOffAndDoesNotWriteWhenUnchanged()
+    {
+        using var theme = CreateTheme(new AppSettings { BackgroundSensorHistory = false }, out var settings);
+        var page = CreatePage(theme, settings);
+
+        Assert.False(page.BackgroundSensorHistory);
+        page.BackgroundSensorHistory = false;
+
+        Assert.Equal(0, _writes);
+    }
+
     private ThemeService CreateTheme(AppSettings initial, out AppSettingsService settings)
     {
         var store = new SettingsStore<AppSettings>(Path.Combine(_temp.FullName, "settings.json"), AppSettings.CurrentSchemaVersion, [], NullLogger.Instance);

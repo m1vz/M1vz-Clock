@@ -951,4 +951,1288 @@
   <data name="DS.Momentum.Caption" xml:space="preserve">
     <value>Solte com velocidade: a peça projeta o movimento e encaixa no ponto mais próximo. Nas pontas, ela resiste. As setas do teclado também movem.</value>
   </data>
+  <data name="Hw.Common.Loading" xml:space="preserve">
+    <value>Lendo o hardware…</value>
+  </data>
+  <data name="Hw.Common.ReadError" xml:space="preserve">
+    <value>Não foi possível ler esta seção.</value>
+  </data>
+  <data name="Hw.Common.ReadError.Detail" xml:space="preserve">
+    <value>Motivo: {0}</value>
+  </data>
+  <data name="Hw.Common.Retry" xml:space="preserve">
+    <value>Tentar de novo</value>
+  </data>
+  <data name="Hw.Common.Refresh" xml:space="preserve">
+    <value>Atualizar</value>
+  </data>
+  <data name="Hw.Common.Show" xml:space="preserve">
+    <value>Mostrar</value>
+  </data>
+  <data name="Hw.Common.Hide" xml:space="preserve">
+    <value>Ocultar</value>
+  </data>
+  <data name="Hw.Common.Yes" xml:space="preserve">
+    <value>Sim</value>
+  </data>
+  <data name="Hw.Common.No" xml:space="preserve">
+    <value>Não</value>
+  </data>
+  <data name="Hw.Common.Unknown" xml:space="preserve">
+    <value>Desconhecido</value>
+  </data>
+  <data name="Hw.Common.PageError" xml:space="preserve">
+    <value>Algo deu errado ao ler esta página. O erro foi gravado no log.</value>
+  </data>
+  <data name="Hw.Common.SerialNote" xml:space="preserve">
+    <value>Números de série ficam ocultos até você mostrar.</value>
+  </data>
+  <data name="Hw.Common.Updated" xml:space="preserve">
+    <value>Atualizado às {0}</value>
+  </data>
+  <data name="Hw.System.Os" xml:space="preserve">
+    <value>Sistema operacional</value>
+  </data>
+  <data name="Hw.System.Os.Name" xml:space="preserve">
+    <value>Nome</value>
+  </data>
+  <data name="Hw.System.Os.Version" xml:space="preserve">
+    <value>Versão</value>
+  </data>
+  <data name="Hw.System.Os.Build" xml:space="preserve">
+    <value>Build</value>
+  </data>
+  <data name="Hw.System.Os.Architecture" xml:space="preserve">
+    <value>Arquitetura</value>
+  </data>
+  <data name="Hw.System.Os.Computer" xml:space="preserve">
+    <value>Nome do computador</value>
+  </data>
+  <data name="Hw.System.Board" xml:space="preserve">
+    <value>Placa-mãe</value>
+  </data>
+  <data name="Hw.System.Board.Manufacturer" xml:space="preserve">
+    <value>Fabricante</value>
+  </data>
+  <data name="Hw.System.Board.Model" xml:space="preserve">
+    <value>Modelo</value>
+  </data>
+  <data name="Hw.System.Board.Version" xml:space="preserve">
+    <value>Revisão</value>
+  </data>
+  <data name="Hw.System.Board.Serial" xml:space="preserve">
+    <value>Número de série</value>
+  </data>
+  <data name="Hw.System.Bios" xml:space="preserve">
+    <value>BIOS</value>
+  </data>
+  <data name="Hw.System.Bios.Manufacturer" xml:space="preserve">
+    <value>Fabricante</value>
+  </data>
+  <data name="Hw.System.Bios.Version" xml:space="preserve">
+    <value>Versão</value>
+  </data>
+  <data name="Hw.System.Bios.Date" xml:space="preserve">
+    <value>Data</value>
+  </data>
+  <data name="Hw.System.Cpu" xml:space="preserve">
+    <value>Processador</value>
+  </data>
+  <data name="Hw.System.Cpu.Vendor" xml:space="preserve">
+    <value>Fabricante</value>
+  </data>
+  <data name="Hw.System.Cpu.Socket" xml:space="preserve">
+    <value>Soquete</value>
+  </data>
+  <data name="Hw.System.Cpu.Cores" xml:space="preserve">
+    <value>Núcleos físicos</value>
+  </data>
+  <data name="Hw.System.Cpu.Threads" xml:space="preserve">
+    <value>Threads (lógicos)</value>
+  </data>
+  <data name="Hw.System.Cpu.Clock" xml:space="preserve">
+    <value>Clock máximo declarado</value>
+  </data>
+  <data name="Hw.System.Cpu.L2" xml:space="preserve">
+    <value>Cache L2</value>
+  </data>
+  <data name="Hw.System.Cpu.L3" xml:space="preserve">
+    <value>Cache L3</value>
+  </data>
+  <data name="Hw.System.Cpu.Virtualization" xml:space="preserve">
+    <value>Virtualização na BIOS</value>
+  </data>
+  <data name="Hw.Ram.Summary" xml:space="preserve">
+    <value>Resumo</value>
+  </data>
+  <data name="Hw.Ram.Usage" xml:space="preserve">
+    <value>Uso agora</value>
+  </data>
+  <data name="Hw.Ram.Total" xml:space="preserve">
+    <value>Total instalado</value>
+  </data>
+  <data name="Hw.Ram.Modules" xml:space="preserve">
+    <value>Módulos instalados</value>
+  </data>
+  <data name="Hw.Ram.Modules.Value" xml:space="preserve">
+    <value>{0} de {1} slots</value>
+  </data>
+  <data name="Hw.Ram.Max" xml:space="preserve">
+    <value>Capacidade máxima da placa</value>
+  </data>
+  <data name="Hw.Ram.Type" xml:space="preserve">
+    <value>Tipo</value>
+  </data>
+  <data name="Hw.Ram.SpeedInUse" xml:space="preserve">
+    <value>Velocidade em uso</value>
+  </data>
+  <data name="Hw.Ram.SpeedRated" xml:space="preserve">
+    <value>Velocidade nominal</value>
+  </data>
+  <data name="Hw.Ram.Speed.Value" xml:space="preserve">
+    <value>{0} MT/s</value>
+  </data>
+  <data name="Hw.Ram.Profile" xml:space="preserve">
+    <value>Perfil EXPO/XMP (estimado)</value>
+  </data>
+  <data name="Hw.Ram.Profile.Unreadable" xml:space="preserve">
+    <value>Não foi possível ler a velocidade em uso.</value>
+  </data>
+  <data name="Hw.Ram.Profile.Off" xml:space="preserve">
+    <value>Provavelmente desligado: a RAM roda a {0} MT/s, mas o part number indica {1} MT/s. Ative o EXPO/XMP na BIOS.</value>
+  </data>
+  <data name="Hw.Ram.Profile.On" xml:space="preserve">
+    <value>Provavelmente ativo: roda a {0} MT/s (o part number indica {1} MT/s).</value>
+  </data>
+  <data name="Hw.Ram.Profile.Below" xml:space="preserve">
+    <value>Roda abaixo da velocidade nominal ({0} de {1} MT/s). Confira o EXPO/XMP na BIOS.</value>
+  </data>
+  <data name="Hw.Ram.Profile.None" xml:space="preserve">
+    <value>Sem como estimar: o part number não traz a velocidade. Confira na BIOS.</value>
+  </data>
+  <data name="Hw.Ram.Channels" xml:space="preserve">
+    <value>Canais (estimado)</value>
+  </data>
+  <data name="Hw.Ram.Channels.Single" xml:space="preserve">
+    <value>Canal único (1 módulo). Com 2 módulos iguais a RAM roda em dual channel e fica bem mais rápida.</value>
+  </data>
+  <data name="Hw.Ram.Channels.Multi" xml:space="preserve">
+    <value>{0} canais (dual channel ou mais)</value>
+  </data>
+  <data name="Hw.Ram.Channels.Same" xml:space="preserve">
+    <value>Canal único: os módulos estão no mesmo canal. Mude para os slots recomendados no manual da placa.</value>
+  </data>
+  <data name="Hw.Ram.Channels.Unknown" xml:space="preserve">
+    <value>Não deu para identificar pelos nomes dos slots ({0}). Veja o manual da placa.</value>
+  </data>
+  <data name="Hw.Ram.Ecc" xml:space="preserve">
+    <value>ECC</value>
+  </data>
+  <data name="Hw.Ram.Ecc.Yes" xml:space="preserve">
+    <value>Sim (correção de erros)</value>
+  </data>
+  <data name="Hw.Ram.Volts" xml:space="preserve">
+    <value>Tensão em uso</value>
+  </data>
+  <data name="Hw.Ram.Timings" xml:space="preserve">
+    <value>Timings (CL, tRCD, tRP…)</value>
+  </data>
+  <data name="Hw.Ram.Timings.Note" xml:space="preserve">
+    <value>O Windows não informa. Veja na BIOS ou no CPU-Z (aba SPD).</value>
+  </data>
+  <data name="Hw.Ram.Usage.Physical" xml:space="preserve">
+    <value>Memória física em uso</value>
+  </data>
+  <data name="Hw.Ram.Usage.Virtual" xml:space="preserve">
+    <value>Memória virtual em uso (RAM + arquivo de paginação)</value>
+  </data>
+  <data name="Hw.Ram.Usage.Value" xml:space="preserve">
+    <value>{0} de {1} ({2})</value>
+  </data>
+  <data name="Hw.Ram.Module.Capacity" xml:space="preserve">
+    <value>Capacidade</value>
+  </data>
+  <data name="Hw.Ram.Module.Form" xml:space="preserve">
+    <value>Formato</value>
+  </data>
+  <data name="Hw.Ram.Module.Ranks" xml:space="preserve">
+    <value>Ranks</value>
+  </data>
+  <data name="Hw.Ram.Module.VoltRange" xml:space="preserve">
+    <value>Faixa de tensão do módulo</value>
+  </data>
+  <data name="Hw.Ram.Module.Width" xml:space="preserve">
+    <value>Largura de dados / total</value>
+  </data>
+  <data name="Hw.Ram.Module.Width.Value" xml:space="preserve">
+    <value>{0} / {1} bits</value>
+  </data>
+  <data name="Hw.Ram.Module.Manufacturer" xml:space="preserve">
+    <value>Fabricante</value>
+  </data>
+  <data name="Hw.Ram.Module.Part" xml:space="preserve">
+    <value>Part number</value>
+  </data>
+  <data name="Hw.Ram.Module.Serial" xml:space="preserve">
+    <value>Número de série</value>
+  </data>
+  <data name="Hw.Ram.Form.Proprietary" xml:space="preserve">
+    <value>Proprietário</value>
+  </data>
+  <data name="Hw.Ram.Form.Other" xml:space="preserve">
+    <value>Outro</value>
+  </data>
+  <data name="Hw.Ram.Rank.1" xml:space="preserve">
+    <value>1 (simples)</value>
+  </data>
+  <data name="Hw.Ram.Rank.2" xml:space="preserve">
+    <value>2 (dupla)</value>
+  </data>
+  <data name="Hw.Ram.Rank.3" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="Hw.Ram.Rank.4" xml:space="preserve">
+    <value>4 (quádrupla)</value>
+  </data>
+  <data name="Hw.Ram.Volts.Range" xml:space="preserve">
+    <value>{0} a {1}</value>
+  </data>
+  <data name="Hw.Storage.Volumes" xml:space="preserve">
+    <value>Unidades</value>
+  </data>
+  <data name="Hw.Storage.Disks" xml:space="preserve">
+    <value>Discos físicos</value>
+  </data>
+  <data name="Hw.Storage.Volume.Sizes" xml:space="preserve">
+    <value>{0} usados · {1} livres de {2}</value>
+  </data>
+  <data name="Hw.Storage.Volume.Used" xml:space="preserve">
+    <value>{0} usado</value>
+  </data>
+  <data name="Hw.Storage.Kind.Internal" xml:space="preserve">
+    <value>Interno</value>
+  </data>
+  <data name="Hw.Storage.Kind.External" xml:space="preserve">
+    <value>Externo (USB)</value>
+  </data>
+  <data name="Hw.Storage.Kind.Removable" xml:space="preserve">
+    <value>Removível</value>
+  </data>
+  <data name="Hw.Storage.Kind.Network" xml:space="preserve">
+    <value>Rede</value>
+  </data>
+  <data name="Hw.Storage.Kind.Optical" xml:space="preserve">
+    <value>Óptico</value>
+  </data>
+  <data name="Hw.Storage.Kind.Other" xml:space="preserve">
+    <value>Outro</value>
+  </data>
+  <data name="Hw.Storage.Letters" xml:space="preserve">
+    <value>Unidades: {0}</value>
+  </data>
+  <data name="Hw.Storage.Verdict.Good" xml:space="preserve">
+    <value>Saudável</value>
+  </data>
+  <data name="Hw.Storage.Verdict.Warning" xml:space="preserve">
+    <value>Atenção</value>
+  </data>
+  <data name="Hw.Storage.Verdict.Critical" xml:space="preserve">
+    <value>Crítico</value>
+  </data>
+  <data name="Hw.Storage.Verdict.Unknown" xml:space="preserve">
+    <value>Sem dados</value>
+  </data>
+  <data name="Hw.Storage.Finding.FailurePredicted" xml:space="preserve">
+    <value>O próprio disco avisa (S.M.A.R.T.) que deve falhar em breve. Faça backup agora.</value>
+  </data>
+  <data name="Hw.Storage.Finding.WindowsUnhealthy" xml:space="preserve">
+    <value>O Windows classifica o disco como não saudável.</value>
+  </data>
+  <data name="Hw.Storage.Finding.WindowsWarning" xml:space="preserve">
+    <value>O Windows classifica a saúde do disco como “atenção”.</value>
+  </data>
+  <data name="Hw.Storage.Finding.WearEndOfLife" xml:space="preserve">
+    <value>Desgaste de {0}%: o SSD está no fim da vida útil. Troque e faça backup.</value>
+  </data>
+  <data name="Hw.Storage.Finding.WearHigh" xml:space="preserve">
+    <value>Desgaste de {0}%: o SSD já gastou boa parte da vida útil. Planeje a troca.</value>
+  </data>
+  <data name="Hw.Storage.Finding.TemperatureCritical" xml:space="preserve">
+    <value>Temperatura de {0} °C é muito alta para este disco.</value>
+  </data>
+  <data name="Hw.Storage.Finding.TemperatureHigh" xml:space="preserve">
+    <value>Temperatura de {0} °C está alta. Melhore a ventilação.</value>
+  </data>
+  <data name="Hw.Storage.Finding.UncorrectedErrors" xml:space="preserve">
+    <value>Erros não corrigidos: {0} de leitura e {1} de escrita.</value>
+  </data>
+  <data name="Hw.Storage.Finding.None" xml:space="preserve">
+    <value>Nenhum problema encontrado nas leituras disponíveis.</value>
+  </data>
+  <data name="Hw.Storage.Finding.NoData" xml:space="preserve">
+    <value>Este disco não informa dados de saúde (comum em pendrives e alguns HDs externos).</value>
+  </data>
+  <data name="Hw.Storage.Metric.Temperature" xml:space="preserve">
+    <value>Temperatura</value>
+  </data>
+  <data name="Hw.Storage.Metric.Temperature.Value" xml:space="preserve">
+    <value>{0} °C</value>
+  </data>
+  <data name="Hw.Storage.Metric.Temperature.WithMax" xml:space="preserve">
+    <value>{0} °C (máx. registrado {1})</value>
+  </data>
+  <data name="Hw.Storage.Metric.Wear" xml:space="preserve">
+    <value>Desgaste</value>
+  </data>
+  <data name="Hw.Storage.Metric.Life" xml:space="preserve">
+    <value>Vida útil restante</value>
+  </data>
+  <data name="Hw.Storage.Metric.Hours" xml:space="preserve">
+    <value>Horas ligado</value>
+  </data>
+  <data name="Hw.Storage.Metric.Hours.Value" xml:space="preserve">
+    <value>{0} h ({1} dias)</value>
+  </data>
+  <data name="Hw.Storage.Metric.Cycles" xml:space="preserve">
+    <value>Ciclos liga/desliga</value>
+  </data>
+  <data name="Hw.Storage.Metric.ReadErrors" xml:space="preserve">
+    <value>Erros de leitura</value>
+  </data>
+  <data name="Hw.Storage.Metric.WriteErrors" xml:space="preserve">
+    <value>Erros de escrita</value>
+  </data>
+  <data name="Hw.Storage.Metric.Uncorrected" xml:space="preserve">
+    <value>{0} ({1} não corrigidos)</value>
+  </data>
+  <data name="Hw.Storage.Metric.Predicted" xml:space="preserve">
+    <value>Falha prevista (S.M.A.R.T.)</value>
+  </data>
+  <data name="Hw.Storage.Metric.Predicted.Yes" xml:space="preserve">
+    <value>SIM</value>
+  </data>
+  <data name="Hw.Storage.Metric.Health" xml:space="preserve">
+    <value>Saúde segundo o Windows</value>
+  </data>
+  <data name="Hw.Storage.Metric.Firmware" xml:space="preserve">
+    <value>Firmware</value>
+  </data>
+  <data name="Hw.Storage.Metric.Serial" xml:space="preserve">
+    <value>Número de série</value>
+  </data>
+  <data name="Hw.Storage.Health.Healthy" xml:space="preserve">
+    <value>Saudável</value>
+  </data>
+  <data name="Hw.Storage.Health.Warning" xml:space="preserve">
+    <value>Atenção</value>
+  </data>
+  <data name="Hw.Storage.Health.Unhealthy" xml:space="preserve">
+    <value>Não saudável</value>
+  </data>
+  <data name="Hw.Storage.Notice.Admin" xml:space="preserve">
+    <value>Temperatura, desgaste, horas ligado e previsão de falha só aparecem com o m1vClock aberto como administrador.</value>
+  </data>
+  <data name="Hw.Storage.Notice.Unavailable" xml:space="preserve">
+    <value>O Windows deste PC não expõe os contadores de desgaste e temperatura dos discos.</value>
+  </data>
+  <data name="Hw.Gpu.Section.Id" xml:space="preserve">
+    <value>Identificação</value>
+  </data>
+  <data name="Hw.Gpu.Section.Units" xml:space="preserve">
+    <value>Unidades de processamento</value>
+  </data>
+  <data name="Hw.Gpu.Section.Memory" xml:space="preserve">
+    <value>Memória de vídeo</value>
+  </data>
+  <data name="Hw.Gpu.Section.Clocks" xml:space="preserve">
+    <value>Clocks e energia</value>
+  </data>
+  <data name="Hw.Gpu.Section.Driver" xml:space="preserve">
+    <value>Driver</value>
+  </data>
+  <data name="Hw.Gpu.Section.Tech" xml:space="preserve">
+    <value>Tecnologias</value>
+  </data>
+  <data name="Hw.Gpu.Name" xml:space="preserve">
+    <value>Nome</value>
+  </data>
+  <data name="Hw.Gpu.Vendor" xml:space="preserve">
+    <value>Fabricante do chip</value>
+  </data>
+  <data name="Hw.Gpu.Chip" xml:space="preserve">
+    <value>Chip</value>
+  </data>
+  <data name="Hw.Gpu.Arch" xml:space="preserve">
+    <value>Arquitetura</value>
+  </data>
+  <data name="Hw.Gpu.Revision" xml:space="preserve">
+    <value>Revisão</value>
+  </data>
+  <data name="Hw.Gpu.Board" xml:space="preserve">
+    <value>Fabricante da placa</value>
+  </data>
+  <data name="Hw.Gpu.DeviceId" xml:space="preserve">
+    <value>ID do dispositivo PCI</value>
+  </data>
+  <data name="Hw.Gpu.Process" xml:space="preserve">
+    <value>Processo de fabricação</value>
+  </data>
+  <data name="Hw.Gpu.Die" xml:space="preserve">
+    <value>Área do chip</value>
+  </data>
+  <data name="Hw.Gpu.Die.Value" xml:space="preserve">
+    <value>{0} mm²</value>
+  </data>
+  <data name="Hw.Gpu.Transistors" xml:space="preserve">
+    <value>Transistores</value>
+  </data>
+  <data name="Hw.Gpu.Transistors.Value" xml:space="preserve">
+    <value>{0} bilhões</value>
+  </data>
+  <data name="Hw.Gpu.Release" xml:space="preserve">
+    <value>Lançamento</value>
+  </data>
+  <data name="Hw.Gpu.Shaders.Nvidia" xml:space="preserve">
+    <value>CUDA cores</value>
+  </data>
+  <data name="Hw.Gpu.Shaders.Amd" xml:space="preserve">
+    <value>Stream processors</value>
+  </data>
+  <data name="Hw.Gpu.Units.Nvidia" xml:space="preserve">
+    <value>SMs</value>
+  </data>
+  <data name="Hw.Gpu.Units.Amd" xml:space="preserve">
+    <value>Compute units</value>
+  </data>
+  <data name="Hw.Gpu.RayAccelerators" xml:space="preserve">
+    <value>Ray accelerators</value>
+  </data>
+  <data name="Hw.Gpu.RopsTmus" xml:space="preserve">
+    <value>ROPs / TMUs</value>
+  </data>
+  <data name="Hw.Gpu.RopsTmus.Value" xml:space="preserve">
+    <value>{0} / {1}</value>
+  </data>
+  <data name="Hw.Gpu.PixelFill" xml:space="preserve">
+    <value>Taxa de pixels</value>
+  </data>
+  <data name="Hw.Gpu.PixelFill.Value" xml:space="preserve">
+    <value>{0} GPixel/s</value>
+  </data>
+  <data name="Hw.Gpu.TexelFill" xml:space="preserve">
+    <value>Taxa de texturas</value>
+  </data>
+  <data name="Hw.Gpu.TexelFill.Value" xml:space="preserve">
+    <value>{0} GTexel/s</value>
+  </data>
+  <data name="Hw.Gpu.Fp32" xml:space="preserve">
+    <value>FP32 (teórico)</value>
+  </data>
+  <data name="Hw.Gpu.Fp32.Value" xml:space="preserve">
+    <value>{0} TFLOPS</value>
+  </data>
+  <data name="Hw.Gpu.NoData" xml:space="preserve">
+    <value>Sem dados</value>
+  </data>
+  <data name="Hw.Gpu.NoData.Detail" xml:space="preserve">
+    <value>Esta placa não está no banco de especificações.</value>
+  </data>
+  <data name="Hw.Gpu.Mem.Size" xml:space="preserve">
+    <value>Tamanho</value>
+  </data>
+  <data name="Hw.Gpu.Mem.Size.Value" xml:space="preserve">
+    <value>{0} GB ({1} MB utilizáveis)</value>
+  </data>
+  <data name="Hw.Gpu.Mem.Reserved" xml:space="preserve">
+    <value>Reservada (dedicada)</value>
+  </data>
+  <data name="Hw.Gpu.Mem.Shared" xml:space="preserve">
+    <value>Compartilhada do sistema</value>
+  </data>
+  <data name="Hw.Gpu.Mem.Type" xml:space="preserve">
+    <value>Tipo</value>
+  </data>
+  <data name="Hw.Gpu.Clock.Base" xml:space="preserve">
+    <value>Base (referência)</value>
+  </data>
+  <data name="Hw.Gpu.Clock.Boost" xml:space="preserve">
+    <value>Boost (referência)</value>
+  </data>
+  <data name="Hw.Gpu.Clock.Value" xml:space="preserve">
+    <value>{0} MHz</value>
+  </data>
+  <data name="Hw.Gpu.Tdp" xml:space="preserve">
+    <value>TDP (referência)</value>
+  </data>
+  <data name="Hw.Gpu.Tdp.Value" xml:space="preserve">
+    <value>{0} W</value>
+  </data>
+  <data name="Hw.Gpu.Driver.Version" xml:space="preserve">
+    <value>Versão do driver</value>
+  </data>
+  <data name="Hw.Gpu.Driver.Date" xml:space="preserve">
+    <value>Data do driver</value>
+  </data>
+  <data name="Hw.Gpu.Driver.Signature" xml:space="preserve">
+    <value>Assinatura digital</value>
+  </data>
+  <data name="Hw.Gpu.Sig.Whql" xml:space="preserve">
+    <value>WHQL (Microsoft)</value>
+  </data>
+  <data name="Hw.Gpu.Sig.Signed" xml:space="preserve">
+    <value>Assinado · {0}</value>
+  </data>
+  <data name="Hw.Gpu.Sig.None" xml:space="preserve">
+    <value>Não assinado</value>
+  </data>
+  <data name="Hw.Gpu.Tech.DirectX" xml:space="preserve">
+    <value>DirectX</value>
+  </data>
+  <data name="Hw.Gpu.Tech.DirectX.Ultimate" xml:space="preserve">
+    <value>DirectX 12 Ultimate (12_2)</value>
+  </data>
+  <data name="Hw.Gpu.Tech.DirectX.Level" xml:space="preserve">
+    <value>DirectX {0} ({1})</value>
+  </data>
+  <data name="Hw.Gpu.Tech.Apis" xml:space="preserve">
+    <value>APIs</value>
+  </data>
+  <data name="Hw.Gpu.Tech.Features" xml:space="preserve">
+    <value>Recursos da arquitetura</value>
+  </data>
+  <data name="Hw.Gpu.Note.Reference" xml:space="preserve">
+    <value>Chip, unidades, clocks e TDP são valores de referência do fabricante, não leituras do hardware. Memória, driver e DirectX vêm do Windows.</value>
+  </data>
+  <data name="Hw.Power.Battery" xml:space="preserve">
+    <value>Bateria</value>
+  </data>
+  <data name="Hw.Power.Battery.N" xml:space="preserve">
+    <value>Bateria {0}</value>
+  </data>
+  <data name="Hw.Power.Battery.Charge" xml:space="preserve">
+    <value>{0}% de carga</value>
+  </data>
+  <data name="Hw.Power.Verdict.Good" xml:space="preserve">
+    <value>Saudável</value>
+  </data>
+  <data name="Hw.Power.Verdict.Warning" xml:space="preserve">
+    <value>Atenção</value>
+  </data>
+  <data name="Hw.Power.Verdict.Worn" xml:space="preserve">
+    <value>Desgastada</value>
+  </data>
+  <data name="Hw.Power.Verdict.Unknown" xml:space="preserve">
+    <value>Sem dados</value>
+  </data>
+  <data name="Hw.Power.Finding.NoCapacityData" xml:space="preserve">
+    <value>O Windows não informou a capacidade de projeto ou a atual, então o desgaste não pôde ser calculado.</value>
+  </data>
+  <data name="Hw.Power.Finding.WornOut" xml:space="preserve">
+    <value>Perdeu {0}% da capacidade original: a autonomia é metade do que era. Vale trocar a bateria.</value>
+  </data>
+  <data name="Hw.Power.Finding.Moderate" xml:space="preserve">
+    <value>Perdeu {0}% da capacidade original. Ainda funciona, mas a autonomia já caiu bastante.</value>
+  </data>
+  <data name="Hw.Power.Finding.Normal" xml:space="preserve">
+    <value>Desgaste de {0}%, normal para uma bateria com uso.</value>
+  </data>
+  <data name="Hw.Power.Finding.Excellent" xml:space="preserve">
+    <value>Desgaste de apenas {0}%: bateria em ótimo estado.</value>
+  </data>
+  <data name="Hw.Power.Finding.ManyCycles" xml:space="preserve">
+    <value>{0} ciclos de carga: perto do fim da vida útil típica das baterias de íon-lítio (500 a 1000).</value>
+  </data>
+  <data name="Hw.Power.Finding.LowCharge" xml:space="preserve">
+    <value>Carga baixa e fora da tomada.</value>
+  </data>
+  <data name="Hw.Power.Metric.Charge" xml:space="preserve">
+    <value>Carga atual</value>
+  </data>
+  <data name="Hw.Power.Metric.State" xml:space="preserve">
+    <value>Estado</value>
+  </data>
+  <data name="Hw.Power.Metric.Runtime" xml:space="preserve">
+    <value>Autonomia estimada</value>
+  </data>
+  <data name="Hw.Power.Metric.Runtime.Value" xml:space="preserve">
+    <value>{0} h {1} min</value>
+  </data>
+  <data name="Hw.Power.Metric.Design" xml:space="preserve">
+    <value>Capacidade de projeto</value>
+  </data>
+  <data name="Hw.Power.Metric.Full" xml:space="preserve">
+    <value>Capacidade máxima atual</value>
+  </data>
+  <data name="Hw.Power.Metric.Wh" xml:space="preserve">
+    <value>{0} Wh</value>
+  </data>
+  <data name="Hw.Power.Metric.Wear" xml:space="preserve">
+    <value>Desgaste</value>
+  </data>
+  <data name="Hw.Power.Metric.Cycles" xml:space="preserve">
+    <value>Ciclos de carga</value>
+  </data>
+  <data name="Hw.Power.Metric.Voltage" xml:space="preserve">
+    <value>Tensão</value>
+  </data>
+  <data name="Hw.Power.Metric.ChargePower" xml:space="preserve">
+    <value>Potência de carga</value>
+  </data>
+  <data name="Hw.Power.Metric.DischargePower" xml:space="preserve">
+    <value>Consumo atual</value>
+  </data>
+  <data name="Hw.Power.Metric.Watts" xml:space="preserve">
+    <value>{0} W</value>
+  </data>
+  <data name="Hw.Power.Metric.Maker" xml:space="preserve">
+    <value>Fabricante</value>
+  </data>
+  <data name="Hw.Power.Metric.Model" xml:space="preserve">
+    <value>Modelo</value>
+  </data>
+  <data name="Hw.Power.Metric.Chemistry" xml:space="preserve">
+    <value>Química</value>
+  </data>
+  <data name="Hw.Power.State.Discharging" xml:space="preserve">
+    <value>Descarregando</value>
+  </data>
+  <data name="Hw.Power.State.OnAc" xml:space="preserve">
+    <value>Na tomada</value>
+  </data>
+  <data name="Hw.Power.State.FullyCharged" xml:space="preserve">
+    <value>Totalmente carregada</value>
+  </data>
+  <data name="Hw.Power.State.Low" xml:space="preserve">
+    <value>Carga baixa</value>
+  </data>
+  <data name="Hw.Power.State.Critical" xml:space="preserve">
+    <value>Carga crítica</value>
+  </data>
+  <data name="Hw.Power.State.Charging" xml:space="preserve">
+    <value>Carregando</value>
+  </data>
+  <data name="Hw.Power.State.PartlyCharged" xml:space="preserve">
+    <value>Parcialmente carregada</value>
+  </data>
+  <data name="Hw.Power.Chem.LeadAcid" xml:space="preserve">
+    <value>Chumbo-ácido</value>
+  </data>
+  <data name="Hw.Power.Chem.NiCd" xml:space="preserve">
+    <value>NiCd</value>
+  </data>
+  <data name="Hw.Power.Chem.NiMh" xml:space="preserve">
+    <value>NiMH</value>
+  </data>
+  <data name="Hw.Power.Chem.LithiumIon" xml:space="preserve">
+    <value>Íon-lítio</value>
+  </data>
+  <data name="Hw.Power.Chem.ZincAir" xml:space="preserve">
+    <value>Zinco-ar</value>
+  </data>
+  <data name="Hw.Power.Chem.LithiumPolymer" xml:space="preserve">
+    <value>Polímero de lítio</value>
+  </data>
+  <data name="Hw.Power.Energy" xml:space="preserve">
+    <value>Energia</value>
+  </data>
+  <data name="Hw.Power.Energy.Source" xml:space="preserve">
+    <value>Fonte de energia</value>
+  </data>
+  <data name="Hw.Power.Source.DesktopMains" xml:space="preserve">
+    <value>Tomada (PC de mesa)</value>
+  </data>
+  <data name="Hw.Power.Source.Mains" xml:space="preserve">
+    <value>Tomada</value>
+  </data>
+  <data name="Hw.Power.Source.Battery" xml:space="preserve">
+    <value>Bateria</value>
+  </data>
+  <data name="Hw.Power.Energy.Plan" xml:space="preserve">
+    <value>Plano de energia</value>
+  </data>
+  <data name="Hw.Power.Plan.Custom" xml:space="preserve">
+    <value>{0} (personalizado)</value>
+  </data>
+  <data name="Hw.Power.Note.NoBattery" xml:space="preserve">
+    <value>Nenhuma bateria detectada neste PC.</value>
+  </data>
+  <data name="Hw.Power.Note.Psu" xml:space="preserve">
+    <value>O Windows não mede o consumo da fonte (PSU). O consumo da CPU e da GPU aparece na página Sensores.</value>
+  </data>
+  <data name="Hw.Power.Note.PlanUnknown" xml:space="preserve">
+    <value>Não foi possível identificar o plano de energia ativo.</value>
+  </data>
+  <data name="Hw.Power.Note.PlanSlow" xml:space="preserve">
+    <value>Para jogos e benchmarks, o plano Alto desempenho evita que o PC diminua o clock.</value>
+  </data>
+  <data name="Hw.Net.Active" xml:space="preserve">
+    <value>Conexão ativa</value>
+  </data>
+  <data name="Hw.Net.Others" xml:space="preserve">
+    <value>Outros adaptadores</value>
+  </data>
+  <data name="Hw.Net.NoConnection.Status" xml:space="preserve">
+    <value>Sem rede</value>
+  </data>
+  <data name="Hw.Net.NoConnection.Note" xml:space="preserve">
+    <value>O Windows não encontrou uma conexão ativa com acesso ao roteador. Verifique o cabo, o Wi-Fi ou o adaptador.</value>
+  </data>
+  <data name="Hw.Net.Row.Adapter" xml:space="preserve">
+    <value>Adaptador</value>
+  </data>
+  <data name="Hw.Net.Row.Kind" xml:space="preserve">
+    <value>Tipo</value>
+  </data>
+  <data name="Hw.Net.Row.Link" xml:space="preserve">
+    <value>Velocidade do link</value>
+  </data>
+  <data name="Hw.Net.Row.Ip" xml:space="preserve">
+    <value>Endereço IP</value>
+  </data>
+  <data name="Hw.Net.Row.Gateway" xml:space="preserve">
+    <value>Roteador (gateway)</value>
+  </data>
+  <data name="Hw.Net.Row.Dns" xml:space="preserve">
+    <value>Servidores DNS</value>
+  </data>
+  <data name="Hw.Net.Row.Mac" xml:space="preserve">
+    <value>Endereço MAC</value>
+  </data>
+  <data name="Hw.Net.Kind.Wifi" xml:space="preserve">
+    <value>Wi-Fi</value>
+  </data>
+  <data name="Hw.Net.Kind.Ethernet" xml:space="preserve">
+    <value>Ethernet (cabo)</value>
+  </data>
+  <data name="Hw.Net.Kind.Other" xml:space="preserve">
+    <value>Outro</value>
+  </data>
+  <data name="Hw.Net.Link" xml:space="preserve">
+    <value>{0} Mbps</value>
+  </data>
+  <data name="Hw.Diag.Title" xml:space="preserve">
+    <value>Diagnóstico de lag</value>
+  </data>
+  <data name="Hw.Diag.Intro" xml:space="preserve">
+    <value>Mede a latência até o roteador e a internet, a perda de pacotes, o DNS e a velocidade. Leva cerca de 25 segundos e usa a sua conexão, com limite de cerca de 350 MB de dados. Nada é gravado no disco.</value>
+  </data>
+  <data name="Hw.Diag.Servers" xml:space="preserve">
+    <value>Fala só com o roteador, com 1.1.1.1, com 1.0.0.1 e com speed.cloudflare.com, por HTTPS.</value>
+  </data>
+  <data name="Hw.Diag.Start" xml:space="preserve">
+    <value>Testar a rede</value>
+  </data>
+  <data name="Hw.Diag.Cancel" xml:space="preserve">
+    <value>Cancelar</value>
+  </data>
+  <data name="Hw.Diag.Result" xml:space="preserve">
+    <value>Resultado</value>
+  </data>
+  <data name="Hw.Diag.Cancelled" xml:space="preserve">
+    <value>Teste cancelado.</value>
+  </data>
+  <data name="Hw.Diag.Failed" xml:space="preserve">
+    <value>O teste não terminou. O registro tem os detalhes.</value>
+  </data>
+  <data name="Hw.Diag.TestedAt" xml:space="preserve">
+    <value>Testado às {0}</value>
+  </data>
+  <data name="Hw.Diag.Stage.FindingConnection" xml:space="preserve">
+    <value>Procurando a conexão ativa…</value>
+  </data>
+  <data name="Hw.Diag.Stage.Latency" xml:space="preserve">
+    <value>Medindo latência e perda de pacotes (cerca de 7 s)…</value>
+  </data>
+  <data name="Hw.Diag.Stage.Dns" xml:space="preserve">
+    <value>Testando o DNS…</value>
+  </data>
+  <data name="Hw.Diag.Stage.Download" xml:space="preserve">
+    <value>Medindo a velocidade de download (cerca de 8 s)…</value>
+  </data>
+  <data name="Hw.Diag.Stage.Upload" xml:space="preserve">
+    <value>Medindo a velocidade de upload (cerca de 6 s)…</value>
+  </data>
+  <data name="Hw.Diag.Stage.Analyzing" xml:space="preserve">
+    <value>Analisando…</value>
+  </data>
+  <data name="Hw.Diag.Stage.Done" xml:space="preserve">
+    <value>Concluído</value>
+  </data>
+  <data name="Hw.Diag.Verdict.Stable" xml:space="preserve">
+    <value>Estável</value>
+  </data>
+  <data name="Hw.Diag.Verdict.Warning" xml:space="preserve">
+    <value>Atenção</value>
+  </data>
+  <data name="Hw.Diag.Verdict.Bad" xml:space="preserve">
+    <value>Ruim</value>
+  </data>
+  <data name="Hw.Diag.Finding.AllGood" xml:space="preserve">
+    <value>Latência baixa, sem perda de pacotes e sem sinais de bufferbloat. Se o jogo ainda engasga, o problema provavelmente não é a conexão: veja o Gargalo e as temperaturas.</value>
+  </data>
+  <data name="Hw.Diag.Finding.RouterUnstable" xml:space="preserve">
+    <value>A rede local está instável (roteador: {0} ms, perda {1}%, jitter {2} ms). Se for Wi-Fi, aproxime-se do roteador ou use cabo.</value>
+  </data>
+  <data name="Hw.Diag.Finding.RouterSilent" xml:space="preserve">
+    <value>O roteador não responde a ping (alguns modelos bloqueiam). Isso por si só não é problema.</value>
+  </data>
+  <data name="Hw.Diag.Finding.InternetUnreachable" xml:space="preserve">
+    <value>Nenhum dos servidores da internet respondeu: sem acesso à internet ou ping bloqueado pela rede.</value>
+  </data>
+  <data name="Hw.Diag.Finding.InternetLossLocal" xml:space="preserve">
+    <value>Há perda de pacotes até a internet ({0}%). Provavelmente vem da rede local.</value>
+  </data>
+  <data name="Hw.Diag.Finding.InternetLossProvider" xml:space="preserve">
+    <value>Há perda de pacotes até a internet ({0}%). Como o roteador está bem, o problema deve estar na linha ou no provedor.</value>
+  </data>
+  <data name="Hw.Diag.Finding.HighLatencyLocal" xml:space="preserve">
+    <value>Latência alta até a internet ({0} ms).</value>
+  </data>
+  <data name="Hw.Diag.Finding.HighLatencyProvider" xml:space="preserve">
+    <value>Latência alta até a internet ({0} ms). O roteador responde bem, então o atraso vem do provedor.</value>
+  </data>
+  <data name="Hw.Diag.Finding.HighJitter" xml:space="preserve">
+    <value>O jitter está alto ({0} ms): a latência oscila, o que causa engasgos em jogos online.</value>
+  </data>
+  <data name="Hw.Diag.Finding.Bufferbloat" xml:space="preserve">
+    <value>A latência sobe para {0} ms quando a conexão está cheia (bufferbloat). Ative SQM/QoS no roteador ou limite a velocidade a cerca de 90%.</value>
+  </data>
+  <data name="Hw.Diag.Finding.SlowDns" xml:space="preserve">
+    <value>O DNS demorou {0} ms. Trocar para um resolvedor público, como o 1.1.1.1, pode acelerar o carregamento de sites.</value>
+  </data>
+  <data name="Hw.Diag.Finding.LowDownload" xml:space="preserve">
+    <value>Download baixo ({0} Mbps) para jogos, streaming e atualizações.</value>
+  </data>
+  <data name="Hw.Diag.Finding.SpeedTestUnavailable" xml:space="preserve">
+    <value>Não foi possível medir a velocidade (speed.cloudflare.com inacessível ou bloqueado).</value>
+  </data>
+  <data name="Hw.Diag.Metric.Router" xml:space="preserve">
+    <value>Roteador ({0})</value>
+  </data>
+  <data name="Hw.Diag.Metric.Primary" xml:space="preserve">
+    <value>Internet · Cloudflare ({0})</value>
+  </data>
+  <data name="Hw.Diag.Metric.Secondary" xml:space="preserve">
+    <value>Internet · Cloudflare 2 ({0})</value>
+  </data>
+  <data name="Hw.Diag.Metric.Dns" xml:space="preserve">
+    <value>Resolução de DNS</value>
+  </data>
+  <data name="Hw.Diag.Metric.Download" xml:space="preserve">
+    <value>Download</value>
+  </data>
+  <data name="Hw.Diag.Metric.Upload" xml:space="preserve">
+    <value>Upload</value>
+  </data>
+  <data name="Hw.Diag.Metric.Loaded" xml:space="preserve">
+    <value>Latência sob carga</value>
+  </data>
+  <data name="Hw.Diag.Ping.Text" xml:space="preserve">
+    <value>média {0} ms · mín {1} · máx {2} · jitter {3} ms · perda {4}%</value>
+  </data>
+  <data name="Hw.Diag.Ping.Silent" xml:space="preserve">
+    <value>Não responde</value>
+  </data>
+  <data name="Hw.Diag.Value.Ms" xml:space="preserve">
+    <value>{0} ms</value>
+  </data>
+  <data name="Hw.Diag.Value.Mbps" xml:space="preserve">
+    <value>{0} Mbps</value>
+  </data>
+  <data name="Hw.Diag.Value.Loaded" xml:space="preserve">
+    <value>{0} ms (durante o download)</value>
+  </data>
+  <data name="Hw.Dev.Connected" xml:space="preserve">
+    <value>Dispositivos USB conectados</value>
+  </data>
+  <data name="Hw.Dev.Problem" xml:space="preserve">
+    <value>Dispositivos com problema</value>
+  </data>
+  <data name="Hw.Dev.Problem.Status" xml:space="preserve">
+    <value>Atenção</value>
+  </data>
+  <data name="Hw.Dev.Problem.Note" xml:space="preserve">
+    <value>O Windows marcou estes dispositivos com erro. Reconectar o cabo, usar outra porta USB ou reinstalar o driver costuma resolver.</value>
+  </data>
+  <data name="Hw.Dev.Problem.Code.10" xml:space="preserve">
+    <value>O dispositivo não inicia (código 10).</value>
+  </data>
+  <data name="Hw.Dev.Problem.Code.22" xml:space="preserve">
+    <value>O dispositivo está desativado (código 22).</value>
+  </data>
+  <data name="Hw.Dev.Problem.Code.28" xml:space="preserve">
+    <value>Falta o driver (código 28).</value>
+  </data>
+  <data name="Hw.Dev.Problem.Code.31" xml:space="preserve">
+    <value>O driver não carrega (código 31).</value>
+  </data>
+  <data name="Hw.Dev.Problem.Code.43" xml:space="preserve">
+    <value>O dispositivo avisou o Windows de um problema (código 43). Muitas vezes é o cabo ou a porta USB.</value>
+  </data>
+  <data name="Hw.Dev.Problem.Code.Other" xml:space="preserve">
+    <value>O Windows reportou o código de erro {0}.</value>
+  </data>
+  <data name="Hw.Dev.Empty" xml:space="preserve">
+    <value>Nenhum dispositivo USB conectado além dos hubs do PC.</value>
+  </data>
+  <data name="Hw.Dev.Category.SerialPort" xml:space="preserve">
+    <value>Porta serial</value>
+  </data>
+  <data name="Hw.Dev.Category.Audio" xml:space="preserve">
+    <value>Áudio</value>
+  </data>
+  <data name="Hw.Dev.Category.Input" xml:space="preserve">
+    <value>Entrada (teclado, mouse, controle)</value>
+  </data>
+  <data name="Hw.Dev.Category.Storage" xml:space="preserve">
+    <value>Armazenamento</value>
+  </data>
+  <data name="Hw.Dev.Category.Imaging" xml:space="preserve">
+    <value>Imagem (câmera, scanner)</value>
+  </data>
+  <data name="Hw.Dev.Category.Bluetooth" xml:space="preserve">
+    <value>Bluetooth</value>
+  </data>
+  <data name="Hw.Dev.Category.Network" xml:space="preserve">
+    <value>Rede</value>
+  </data>
+  <data name="Hw.Dev.Category.Generic" xml:space="preserve">
+    <value>Dispositivo USB</value>
+  </data>
+  <data name="Hw.Dev.Category.Hub" xml:space="preserve">
+    <value>Hub USB</value>
+  </data>
+  <data name="Hw.Dev.Notify.Title" xml:space="preserve">
+    <value>Avisos de dispositivos</value>
+  </data>
+  <data name="Hw.Dev.Notify.Detail" xml:space="preserve">
+    <value>Mostra um aviso quando um dispositivo USB ou uma unidade é conectado ou removido.</value>
+  </data>
+  <data name="Hw.Dev.Notify.Unavailable" xml:space="preserve">
+    <value>O Windows não deixou assinar os eventos de dispositivo, então os avisos estão indisponíveis.</value>
+  </data>
+  <data name="Hw.Dev.Activity" xml:space="preserve">
+    <value>Atividade recente</value>
+  </data>
+  <data name="Hw.Dev.Activity.Empty" xml:space="preserve">
+    <value>Nada foi conectado ou removido desde que o m1vClock abriu.</value>
+  </data>
+  <data name="Hw.Dev.Activity.Entry" xml:space="preserve">
+    <value>{0}: {1}</value>
+  </data>
+  <data name="Hw.Dev.Toast.UsbConnected" xml:space="preserve">
+    <value>Dispositivo USB conectado</value>
+  </data>
+  <data name="Hw.Dev.Toast.UsbDisconnected" xml:space="preserve">
+    <value>Dispositivo USB desconectado</value>
+  </data>
+  <data name="Hw.Dev.Toast.PenDrive" xml:space="preserve">
+    <value>Pendrive conectado</value>
+  </data>
+  <data name="Hw.Dev.Toast.External" xml:space="preserve">
+    <value>Disco externo conectado</value>
+  </data>
+  <data name="Hw.Dev.Toast.Drive" xml:space="preserve">
+    <value>Unidade conectada</value>
+  </data>
+  <data name="Hw.Dev.Toast.DriveRemoved" xml:space="preserve">
+    <value>Unidade removida</value>
+  </data>
+  <data name="Hw.Dev.Toast.VolumeText" xml:space="preserve">
+    <value>{0} · {1} livres de {2}</value>
+  </data>
+  <data name="Hw.Dev.Toast.SafeToRemove" xml:space="preserve">
+    <value>{0} pode ser desconectada.</value>
+  </data>
+  <data name="Hw.Dev.Toast.LetterRemoved" xml:space="preserve">
+    <value>{0} removida.</value>
+  </data>
+  <data name="Hw.Dev.Toast.Maker" xml:space="preserve">
+    <value>{0} · {1}</value>
+  </data>
+  <data name="Toast.Dismiss" xml:space="preserve">
+    <value>Fechar aviso</value>
+  </data>
+  <data name="Hw.Sensor.Search" xml:space="preserve">
+    <value>Buscar sensor ou componente</value>
+  </data>
+  <data name="Hw.Sensor.Filter.All" xml:space="preserve">
+    <value>Todos</value>
+  </data>
+  <data name="Hw.Sensor.Filter.Temperature" xml:space="preserve">
+    <value>Temperatura</value>
+  </data>
+  <data name="Hw.Sensor.Filter.Load" xml:space="preserve">
+    <value>Carga</value>
+  </data>
+  <data name="Hw.Sensor.Filter.Clock" xml:space="preserve">
+    <value>Clock</value>
+  </data>
+  <data name="Hw.Sensor.Filter.Power" xml:space="preserve">
+    <value>Consumo</value>
+  </data>
+  <data name="Hw.Sensor.Filter.Fan" xml:space="preserve">
+    <value>Ventoinhas</value>
+  </data>
+  <data name="Hw.Sensor.Filter.Other" xml:space="preserve">
+    <value>Outros</value>
+  </data>
+  <data name="Hw.Sensor.Hardware.Cpu" xml:space="preserve">
+    <value>Processador</value>
+  </data>
+  <data name="Hw.Sensor.Hardware.Gpu" xml:space="preserve">
+    <value>Placa de vídeo</value>
+  </data>
+  <data name="Hw.Sensor.Hardware.Memory" xml:space="preserve">
+    <value>Memória</value>
+  </data>
+  <data name="Hw.Sensor.Hardware.Motherboard" xml:space="preserve">
+    <value>Placa-mãe</value>
+  </data>
+  <data name="Hw.Sensor.Hardware.Storage" xml:space="preserve">
+    <value>Armazenamento</value>
+  </data>
+  <data name="Hw.Sensor.Hardware.Network" xml:space="preserve">
+    <value>Rede</value>
+  </data>
+  <data name="Hw.Sensor.Hardware.Cooling" xml:space="preserve">
+    <value>Refrigeração</value>
+  </data>
+  <data name="Hw.Sensor.Hardware.PowerSupply" xml:space="preserve">
+    <value>Fonte e energia</value>
+  </data>
+  <data name="Hw.Sensor.Hardware.Battery" xml:space="preserve">
+    <value>Bateria</value>
+  </data>
+  <data name="Hw.Sensor.Hardware.Other" xml:space="preserve">
+    <value>Outros</value>
+  </data>
+  <data name="Hw.Sensor.Col.Current" xml:space="preserve">
+    <value>Atual</value>
+  </data>
+  <data name="Hw.Sensor.Col.Min" xml:space="preserve">
+    <value>Mín</value>
+  </data>
+  <data name="Hw.Sensor.Col.Max" xml:space="preserve">
+    <value>Máx</value>
+  </data>
+  <data name="Hw.Sensor.Starting" xml:space="preserve">
+    <value>Detectando o hardware…</value>
+  </data>
+  <data name="Hw.Sensor.Failed" xml:space="preserve">
+    <value>Não foi possível abrir os sensores. O registro tem os detalhes.</value>
+  </data>
+  <data name="Hw.Sensor.NoMatch" xml:space="preserve">
+    <value>Nenhum sensor corresponde à busca.</value>
+  </data>
+  <data name="Hw.Sensor.Waiting" xml:space="preserve">
+    <value>Aguardando a primeira leitura…</value>
+  </data>
+  <data name="Hw.Sensor.Summary" xml:space="preserve">
+    <value>{0} sensores · atualizado às {1}</value>
+  </data>
+  <data name="Hw.Sensor.Summary.Frozen" xml:space="preserve">
+    <value>{0} sensores · valores congelados às {1}</value>
+  </data>
+  <data name="Hw.Sensor.Freeze" xml:space="preserve">
+    <value>Congelar</value>
+  </data>
+  <data name="Hw.Sensor.Resume" xml:space="preserve">
+    <value>Retomar</value>
+  </data>
+  <data name="Hw.Sensor.Note.MinMax" xml:space="preserve">
+    <value>Mín e Máx valem desde que o m1vClock abriu os sensores.</value>
+  </data>
+  <data name="Hw.Sensor.Problem.NotElevated" xml:space="preserve">
+    <value>A temperatura e o consumo da CPU não aparecem: o Windows só libera os sensores internos da CPU quando o m1vClock roda como administrador. Feche e abra de novo aceitando o pedido de administrador.</value>
+  </data>
+  <data name="Hw.Sensor.Problem.PawnIoMissing" xml:space="preserve">
+    <value>A temperatura e o consumo da CPU não aparecem porque falta o driver PawnIO. Ele é gratuito, assinado e também usado pelo LibreHardwareMonitor e pelo FanControl. A instalação pelo m1vClock chega numa próxima fase; por enquanto, instale pelo comando abaixo e reabra o app.</value>
+  </data>
+  <data name="Hw.Sensor.Problem.PawnIoCommand" xml:space="preserve">
+    <value>winget install --id namazso.PawnIO -e</value>
+  </data>
+  <data name="Hw.Sensor.Problem.ReadFailed" xml:space="preserve">
+    <value>O PawnIO está instalado, mas a leitura da CPU falhou. Se acabou de instalar, reinicie o PC. Se continuar, confira se o antivírus bloqueou o driver ou se a CPU é nova demais para a biblioteca de sensores.</value>
+  </data>
+  <data name="Hw.Overview.Cpu" xml:space="preserve">
+    <value>Processador</value>
+  </data>
+  <data name="Hw.Overview.Gpu" xml:space="preserve">
+    <value>Placa de vídeo</value>
+  </data>
+  <data name="Hw.Overview.Memory" xml:space="preserve">
+    <value>Memória</value>
+  </data>
+  <data name="Hw.Overview.Disk" xml:space="preserve">
+    <value>Disco do sistema</value>
+  </data>
+  <data name="Hw.Overview.Detail.MemoryOf" xml:space="preserve">
+    <value>{0} de {1} GB</value>
+  </data>
+  <data name="Hw.Overview.Detail.DiskFree" xml:space="preserve">
+    <value>{0} livres de {1}</value>
+  </data>
+  <data name="Hw.Overview.Chart" xml:space="preserve">
+    <value>Histórico</value>
+  </data>
+  <data name="Hw.Overview.Chart.Temperature" xml:space="preserve">
+    <value>Temperatura</value>
+  </data>
+  <data name="Hw.Overview.Chart.Load" xml:space="preserve">
+    <value>Carga</value>
+  </data>
+  <data name="Hw.Overview.Chart.Power" xml:space="preserve">
+    <value>Consumo</value>
+  </data>
+  <data name="Hw.Overview.Chart.Metric" xml:space="preserve">
+    <value>Métrica do gráfico</value>
+  </data>
+  <data name="Hw.Overview.Chart.Window" xml:space="preserve">
+    <value>Período do gráfico</value>
+  </data>
+  <data name="Hw.Overview.Window.OneMinute" xml:space="preserve">
+    <value>1 min</value>
+  </data>
+  <data name="Hw.Overview.Window.FiveMinutes" xml:space="preserve">
+    <value>5 min</value>
+  </data>
+  <data name="Hw.Overview.Window.FifteenMinutes" xml:space="preserve">
+    <value>15 min</value>
+  </data>
+  <data name="Hw.Overview.Legend.Cpu" xml:space="preserve">
+    <value>CPU</value>
+  </data>
+  <data name="Hw.Overview.Legend.Gpu" xml:space="preserve">
+    <value>GPU</value>
+  </data>
+  <data name="Hw.Overview.Health" xml:space="preserve">
+    <value>Saúde do PC</value>
+  </data>
+  <data name="Hw.Overview.Health.Loading" xml:space="preserve">
+    <value>Verificando…</value>
+  </data>
+  <data name="Hw.Overview.Health.Ok" xml:space="preserve">
+    <value>Tudo certo</value>
+  </data>
+  <data name="Hw.Overview.Health.Attention" xml:space="preserve">
+    <value>{0} ponto(s) de atenção</value>
+  </data>
+  <data name="Hw.Overview.Health.Critical" xml:space="preserve">
+    <value>Atenção urgente: {0} problema(s)</value>
+  </data>
+  <data name="Hw.Overview.Health.Unknown" xml:space="preserve">
+    <value>Sem dados suficientes</value>
+  </data>
+  <data name="Hw.Overview.Health.Failed" xml:space="preserve">
+    <value>Não foi possível verificar a saúde do PC. O registro tem os detalhes.</value>
+  </data>
+  <data name="Hw.Overview.Activity" xml:space="preserve">
+    <value>Atividade recente</value>
+  </data>
+  <data name="Hw.Overview.Activity.Empty" xml:space="preserve">
+    <value>Nada aconteceu desde que o m1vClock abriu.</value>
+  </data>
+  <data name="Hw.Health.CpuSensors.Title" xml:space="preserve">
+    <value>Sensores da CPU</value>
+  </data>
+  <data name="Hw.Health.CpuSensors.Ok" xml:space="preserve">
+    <value>Temperatura e consumo disponíveis.</value>
+  </data>
+  <data name="Hw.Health.CpuSensors.NotElevated" xml:space="preserve">
+    <value>Falta rodar como administrador para ler a temperatura da CPU.</value>
+  </data>
+  <data name="Hw.Health.CpuSensors.PawnIoMissing" xml:space="preserve">
+    <value>Falta o driver PawnIO para ler a temperatura da CPU.</value>
+  </data>
+  <data name="Hw.Health.CpuSensors.ReadFailed" xml:space="preserve">
+    <value>O PawnIO está instalado, mas a leitura da CPU falhou.</value>
+  </data>
+  <data name="Hw.Health.Disks.Title" xml:space="preserve">
+    <value>Discos</value>
+  </data>
+  <data name="Hw.Health.Disks.Ok" xml:space="preserve">
+    <value>S.M.A.R.T. sem sinais de falha.</value>
+  </data>
+  <data name="Hw.Health.Disks.Attention" xml:space="preserve">
+    <value>{0} disco(s) com sinal de alerta.</value>
+  </data>
+  <data name="Hw.Health.Disks.Critical" xml:space="preserve">
+    <value>{0} disco(s) com risco de falha: faça backup.</value>
+  </data>
+  <data name="Hw.Health.Disks.Unknown" xml:space="preserve">
+    <value>O Windows só mostra o S.M.A.R.T. completo como administrador.</value>
+  </data>
+  <data name="Hw.Health.Memory.Title" xml:space="preserve">
+    <value>Memória</value>
+  </data>
+  <data name="Hw.Health.Memory.Ok" xml:space="preserve">
+    <value>{0}% em uso.</value>
+  </data>
+  <data name="Hw.Health.Memory.Attention" xml:space="preserve">
+    <value>{0}% em uso: perto do limite.</value>
+  </data>
+  <data name="Hw.Health.Memory.Critical" xml:space="preserve">
+    <value>{0}% em uso: o Windows deve estar usando o disco como memória.</value>
+  </data>
+  <data name="Hw.Health.SystemDrive.Title" xml:space="preserve">
+    <value>Disco do sistema</value>
+  </data>
+  <data name="Hw.Health.SystemDrive.Ok" xml:space="preserve">
+    <value>{0}% livre.</value>
+  </data>
+  <data name="Hw.Health.SystemDrive.Attention" xml:space="preserve">
+    <value>Só {0}% livre: o Windows e os jogos precisam de espaço para atualizar.</value>
+  </data>
+  <data name="Hw.Health.SystemDrive.Critical" xml:space="preserve">
+    <value>Só {0}% livre: libere espaço agora.</value>
+  </data>
+  <data name="Hw.Health.PowerPlan.Title" xml:space="preserve">
+    <value>Plano de energia</value>
+  </data>
+  <data name="Hw.Health.PowerPlan.Ok" xml:space="preserve">
+    <value>O plano de energia não limita o desempenho.</value>
+  </data>
+  <data name="Hw.Health.PowerPlan.Attention" xml:space="preserve">
+    <value>Plano Equilibrado ou Economia: Alto desempenho evita queda de clock em jogos.</value>
+  </data>
+  <data name="Hw.Health.Battery.Title" xml:space="preserve">
+    <value>Bateria</value>
+  </data>
+  <data name="Hw.Health.Battery.Ok" xml:space="preserve">
+    <value>Bateria saudável.</value>
+  </data>
+  <data name="Hw.Health.Battery.Attention" xml:space="preserve">
+    <value>A bateria perdeu parte da capacidade.</value>
+  </data>
+  <data name="Hw.Health.Battery.Critical" xml:space="preserve">
+    <value>A bateria está desgastada: vale trocar.</value>
+  </data>
+  <data name="Hw.Health.Battery.Unknown" xml:space="preserve">
+    <value>O Windows não informou o desgaste da bateria.</value>
+  </data>
+  <data name="Hw.Health.Usb.Title" xml:space="preserve">
+    <value>Dispositivos USB</value>
+  </data>
+  <data name="Hw.Health.Usb.Ok" xml:space="preserve">
+    <value>Nenhum dispositivo USB com erro.</value>
+  </data>
+  <data name="Hw.Health.Usb.Attention" xml:space="preserve">
+    <value>{0} dispositivo(s) USB com erro no Windows.</value>
+  </data>
+  <data name="Settings.Sensors" xml:space="preserve">
+    <value>Sensores</value>
+  </data>
+  <data name="Settings.Sensors.History" xml:space="preserve">
+    <value>Guardar o histórico em segundo plano</value>
+  </data>
+  <data name="Settings.Sensors.History.Detail" xml:space="preserve">
+    <value>Mantém até 15 minutos de gráficos na Visão geral mesmo com ela fechada. Desligado, os sensores só são lidos enquanto uma página que os usa está aberta, e o gráfico começa vazio.</value>
+  </data>
+  <data name="Hw.Storage.Metric.Written" xml:space="preserve">
+    <value>Total gravado</value>
+  </data>
+  <data name="Hw.Storage.Metric.Read" xml:space="preserve">
+    <value>Total lido</value>
+  </data>
 </root>

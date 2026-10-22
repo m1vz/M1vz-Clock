@@ -1,10 +1,11 @@
+using System.Text.RegularExpressions;
 using Microsoft.CodeAnalysis;
 using Microsoft.CodeAnalysis.CSharp;
 using Microsoft.CodeAnalysis.CSharp.Syntax;
 
 namespace M1vClock.Architecture.Tests;
 
-public sealed class CodeStyleTests
+public sealed partial class CodeStyleTests
 {
     private static readonly SyntaxKind[] CommentKinds =
     [
@@ -13,8 +14,6 @@ public sealed class CodeStyleTests
         SyntaxKind.SingleLineDocumentationCommentTrivia,
         SyntaxKind.MultiLineDocumentationCommentTrivia,
     ];
-
-    private static readonly string[] LoggerPrefixes = ["AppLog.", "CoreLog.", "Log.", "_logger.", "logger."];
 
     [Fact]
     public void CSharpCodeHasNoComments()
@@ -90,6 +89,9 @@ public sealed class CodeStyleTests
         Assert.True(catchAll.Count == 0, "catch sem tipo que não relança: " + string.Join(", ", catchAll));
     }
 
+    [GeneratedRegex(@"^(\w*Log|_?logger)\.")]
+    private static partial Regex LoggerCall();
+
     private static bool IsAllowedProbe(string location, string type) =>
         location.StartsWith("src/M1vClock.Core/Processes/ProcessRunner.cs", StringComparison.Ordinal) && type == "ArgumentException";
 
@@ -99,7 +101,7 @@ public sealed class CodeStyleTests
     private static bool CallsLogger(CatchClauseSyntax clause) =>
         clause.Block.DescendantNodes()
             .OfType<InvocationExpressionSyntax>()
-            .Any(call => LoggerPrefixes.Any(prefix => call.Expression.ToString().StartsWith(prefix, StringComparison.Ordinal)));
+            .Any(call => LoggerCall().IsMatch(call.Expression.ToString()));
 
     private static bool UsesException(CatchClauseSyntax clause)
     {

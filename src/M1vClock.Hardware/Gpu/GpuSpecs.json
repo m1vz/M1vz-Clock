@@ -1,0 +1,750 @@
+{
+  "source": "Banco de referência derivado do ResetExplode (MIT, Copyright (c) 2026 Gustavo / GustavoReset), com acréscimos para AMD RDNA 1 e 2. Valores de referência dos fabricantes; o hardware não os informa.",
+  "vendors": {
+    "1002": "AMD",
+    "8086": "Intel",
+    "10DE": "NVIDIA"
+  },
+  "subvendors": {
+    "1002": "AMD",
+    "1025": "Acer",
+    "1028": "Dell",
+    "1043": "ASUS",
+    "1458": "Gigabyte",
+    "1462": "MSI",
+    "1569": "Palit",
+    "1682": "XFX",
+    "1849": "ASRock",
+    "3842": "EVGA",
+    "7377": "Colorful",
+    "8086": "Intel",
+    "19DA": "Zotac",
+    "196E": "PNY",
+    "10DE": "NVIDIA",
+    "1DA2": "Sapphire",
+    "148C": "PowerColor",
+    "10B0": "Gainward",
+    "1B4C": "Galax / KFA2",
+    "103C": "HP",
+    "17AA": "Lenovo",
+    "144D": "Samsung",
+    "1D05": "Tongfang"
+  },
+  "features": {
+    "RDNA 1": "FidelityFX Super Resolution (por driver) · Radeon Anti-Lag · Sem ray tracing por hardware",
+    "Blackwell": "DLSS 4 (Multi Frame Generation) · Ray Tracing 4ª ger. · Tensor 5ª ger. · Reflex 2 · NVENC 9ª ger.",
+    "Ada Lovelace": "DLSS 3 (Frame Generation) · Ray Tracing 3ª ger. · Tensor 4ª ger. · Reflex · NVENC AV1",
+    "Ampere": "DLSS 2 · Ray Tracing 2ª ger. · Tensor 3ª ger. · Reflex · Resizable BAR",
+    "RDNA 4": "FSR 4 · Ray Accelerators 3ª ger. · AI Accelerators · Anti-Lag 2 · AV1",
+    "RDNA 3": "FSR 3 · Ray Accelerators 2ª ger. · AI Accelerators · AV1",
+    "RDNA 2": "FSR · Ray Accelerators 1ª ger."
+  },
+  "specs": {
+    "10DE:2B85": [
+      {
+        "chip": "GB202",
+        "arch": "Blackwell",
+        "process": "TSMC 4N (5 nm)",
+        "dieMm2": 750,
+        "transistorsBillions": 92.2,
+        "shaders": 21760,
+        "rops": 176,
+        "tmus": 680,
+        "memoryType": "GDDR7",
+        "baseMhz": 2017,
+        "boostMhz": 2407,
+        "tdpWatts": 575,
+        "release": "30/01/2025",
+        "nameMatch": null
+      }
+    ],
+    "10DE:2C02": [
+      {
+        "chip": "GB203",
+        "arch": "Blackwell",
+        "process": "TSMC 4N (5 nm)",
+        "dieMm2": 378,
+        "transistorsBillions": 45.6,
+        "shaders": 10752,
+        "rops": 112,
+        "tmus": 336,
+        "memoryType": "GDDR7",
+        "baseMhz": 2295,
+        "boostMhz": 2617,
+        "tdpWatts": 360,
+        "release": "30/01/2025",
+        "nameMatch": null
+      }
+    ],
+    "10DE:2C05": [
+      {
+        "chip": "GB203",
+        "arch": "Blackwell",
+        "process": "TSMC 4N (5 nm)",
+        "dieMm2": 378,
+        "transistorsBillions": 45.6,
+        "shaders": 8960,
+        "rops": 96,
+        "tmus": 280,
+        "memoryType": "GDDR7",
+        "baseMhz": 2295,
+        "boostMhz": 2452,
+        "tdpWatts": 300,
+        "release": "20/02/2025",
+        "nameMatch": null
+      }
+    ],
+    "10DE:2F04": [
+      {
+        "chip": "GB205",
+        "arch": "Blackwell",
+        "process": "TSMC 4N (5 nm)",
+        "dieMm2": 263,
+        "transistorsBillions": 31.1,
+        "shaders": 6144,
+        "rops": 80,
+        "tmus": 192,
+        "memoryType": "GDDR7",
+        "baseMhz": 2325,
+        "boostMhz": 2512,
+        "tdpWatts": 250,
+        "release": "05/03/2025",
+        "nameMatch": null
+      }
+    ],
+    "10DE:2D04": [
+      {
+        "chip": "GB206",
+        "arch": "Blackwell",
+        "process": "TSMC 4N (5 nm)",
+        "dieMm2": 181,
+        "transistorsBillions": 21.9,
+        "shaders": 4608,
+        "rops": 48,
+        "tmus": 144,
+        "memoryType": "GDDR7",
+        "baseMhz": 2407,
+        "boostMhz": 2572,
+        "tdpWatts": 180,
+        "release": "16/04/2025",
+        "nameMatch": null
+      }
+    ],
+    "10DE:2D05": [
+      {
+        "chip": "GB206",
+        "arch": "Blackwell",
+        "process": "TSMC 4N (5 nm)",
+        "dieMm2": 181,
+        "transistorsBillions": 21.9,
+        "shaders": 3840,
+        "rops": 48,
+        "tmus": 120,
+        "memoryType": "GDDR7",
+        "baseMhz": 2280,
+        "boostMhz": 2497,
+        "tdpWatts": 145,
+        "release": "19/05/2025",
+        "nameMatch": null
+      }
+    ],
+    "10DE:2684": [
+      {
+        "chip": "AD102",
+        "arch": "Ada Lovelace",
+        "process": "TSMC 4N (5 nm)",
+        "dieMm2": 609,
+        "transistorsBillions": 76.3,
+        "shaders": 16384,
+        "rops": 176,
+        "tmus": 512,
+        "memoryType": "GDDR6X",
+        "baseMhz": 2235,
+        "boostMhz": 2520,
+        "tdpWatts": 450,
+        "release": "12/10/2022",
+        "nameMatch": null
+      }
+    ],
+    "10DE:2702": [
+      {
+        "chip": "AD103",
+        "arch": "Ada Lovelace",
+        "process": "TSMC 4N (5 nm)",
+        "dieMm2": 379,
+        "transistorsBillions": 45.9,
+        "shaders": 10240,
+        "rops": 112,
+        "tmus": 320,
+        "memoryType": "GDDR6X",
+        "baseMhz": 2295,
+        "boostMhz": 2550,
+        "tdpWatts": 320,
+        "release": "31/01/2024",
+        "nameMatch": null
+      }
+    ],
+    "10DE:2704": [
+      {
+        "chip": "AD103",
+        "arch": "Ada Lovelace",
+        "process": "TSMC 4N (5 nm)",
+        "dieMm2": 379,
+        "transistorsBillions": 45.9,
+        "shaders": 9728,
+        "rops": 112,
+        "tmus": 304,
+        "memoryType": "GDDR6X",
+        "baseMhz": 2205,
+        "boostMhz": 2505,
+        "tdpWatts": 320,
+        "release": "16/11/2022",
+        "nameMatch": null
+      }
+    ],
+    "10DE:2705": [
+      {
+        "chip": "AD103",
+        "arch": "Ada Lovelace",
+        "process": "TSMC 4N (5 nm)",
+        "dieMm2": 379,
+        "transistorsBillions": 45.9,
+        "shaders": 8448,
+        "rops": 96,
+        "tmus": 264,
+        "memoryType": "GDDR6X",
+        "baseMhz": 2340,
+        "boostMhz": 2610,
+        "tdpWatts": 285,
+        "release": "24/01/2024",
+        "nameMatch": null
+      }
+    ],
+    "10DE:2782": [
+      {
+        "chip": "AD104",
+        "arch": "Ada Lovelace",
+        "process": "TSMC 4N (5 nm)",
+        "dieMm2": 295,
+        "transistorsBillions": 35.8,
+        "shaders": 7680,
+        "rops": 80,
+        "tmus": 240,
+        "memoryType": "GDDR6X",
+        "baseMhz": 2310,
+        "boostMhz": 2610,
+        "tdpWatts": 285,
+        "release": "05/01/2023",
+        "nameMatch": null
+      }
+    ],
+    "10DE:2783": [
+      {
+        "chip": "AD104",
+        "arch": "Ada Lovelace",
+        "process": "TSMC 4N (5 nm)",
+        "dieMm2": 295,
+        "transistorsBillions": 35.8,
+        "shaders": 7168,
+        "rops": 80,
+        "tmus": 224,
+        "memoryType": "GDDR6X",
+        "baseMhz": 1980,
+        "boostMhz": 2475,
+        "tdpWatts": 220,
+        "release": "17/01/2024",
+        "nameMatch": null
+      }
+    ],
+    "10DE:2786": [
+      {
+        "chip": "AD104",
+        "arch": "Ada Lovelace",
+        "process": "TSMC 4N (5 nm)",
+        "dieMm2": 295,
+        "transistorsBillions": 35.8,
+        "shaders": 5888,
+        "rops": 64,
+        "tmus": 184,
+        "memoryType": "GDDR6X",
+        "baseMhz": 1920,
+        "boostMhz": 2475,
+        "tdpWatts": 200,
+        "release": "13/04/2023",
+        "nameMatch": null
+      }
+    ],
+    "10DE:2803": [
+      {
+        "chip": "AD106",
+        "arch": "Ada Lovelace",
+        "process": "TSMC 4N (5 nm)",
+        "dieMm2": 190,
+        "transistorsBillions": 22.9,
+        "shaders": 4352,
+        "rops": 48,
+        "tmus": 136,
+        "memoryType": "GDDR6",
+        "baseMhz": 2310,
+        "boostMhz": 2535,
+        "tdpWatts": 160,
+        "release": "24/05/2023",
+        "nameMatch": null
+      }
+    ],
+    "10DE:2805": [
+      {
+        "chip": "AD106",
+        "arch": "Ada Lovelace",
+        "process": "TSMC 4N (5 nm)",
+        "dieMm2": 190,
+        "transistorsBillions": 22.9,
+        "shaders": 4352,
+        "rops": 48,
+        "tmus": 136,
+        "memoryType": "GDDR6",
+        "baseMhz": 2310,
+        "boostMhz": 2535,
+        "tdpWatts": 165,
+        "release": "18/07/2023",
+        "nameMatch": null
+      }
+    ],
+    "10DE:2882": [
+      {
+        "chip": "AD107",
+        "arch": "Ada Lovelace",
+        "process": "TSMC 4N (5 nm)",
+        "dieMm2": 159,
+        "transistorsBillions": 18.9,
+        "shaders": 3072,
+        "rops": 48,
+        "tmus": 96,
+        "memoryType": "GDDR6",
+        "baseMhz": 1830,
+        "boostMhz": 2460,
+        "tdpWatts": 115,
+        "release": "29/06/2023",
+        "nameMatch": null
+      }
+    ],
+    "10DE:2204": [
+      {
+        "chip": "GA102",
+        "arch": "Ampere",
+        "process": "Samsung 8 nm",
+        "dieMm2": 628,
+        "transistorsBillions": 28.3,
+        "shaders": 10496,
+        "rops": 112,
+        "tmus": 328,
+        "memoryType": "GDDR6X",
+        "baseMhz": 1395,
+        "boostMhz": 1695,
+        "tdpWatts": 350,
+        "release": "24/09/2020",
+        "nameMatch": null
+      }
+    ],
+    "10DE:2206": [
+      {
+        "chip": "GA102",
+        "arch": "Ampere",
+        "process": "Samsung 8 nm",
+        "dieMm2": 628,
+        "transistorsBillions": 28.3,
+        "shaders": 8704,
+        "rops": 96,
+        "tmus": 272,
+        "memoryType": "GDDR6X",
+        "baseMhz": 1440,
+        "boostMhz": 1710,
+        "tdpWatts": 320,
+        "release": "17/09/2020",
+        "nameMatch": null
+      }
+    ],
+    "10DE:2484": [
+      {
+        "chip": "GA104",
+        "arch": "Ampere",
+        "process": "Samsung 8 nm",
+        "dieMm2": 392,
+        "transistorsBillions": 17.4,
+        "shaders": 5888,
+        "rops": 96,
+        "tmus": 184,
+        "memoryType": "GDDR6",
+        "baseMhz": 1500,
+        "boostMhz": 1725,
+        "tdpWatts": 220,
+        "release": "29/10/2020",
+        "nameMatch": null
+      }
+    ],
+    "10DE:2486": [
+      {
+        "chip": "GA104",
+        "arch": "Ampere",
+        "process": "Samsung 8 nm",
+        "dieMm2": 392,
+        "transistorsBillions": 17.4,
+        "shaders": 4864,
+        "rops": 80,
+        "tmus": 152,
+        "memoryType": "GDDR6",
+        "baseMhz": 1410,
+        "boostMhz": 1665,
+        "tdpWatts": 200,
+        "release": "02/12/2020",
+        "nameMatch": null
+      }
+    ],
+    "10DE:2503": [
+      {
+        "chip": "GA106",
+        "arch": "Ampere",
+        "process": "Samsung 8 nm",
+        "dieMm2": 276,
+        "transistorsBillions": 12,
+        "shaders": 3584,
+        "rops": 48,
+        "tmus": 112,
+        "memoryType": "GDDR6",
+        "baseMhz": 1320,
+        "boostMhz": 1777,
+        "tdpWatts": 170,
+        "release": "25/02/2021",
+        "nameMatch": null
+      }
+    ],
+    "10DE:2504": [
+      {
+        "chip": "GA106",
+        "arch": "Ampere",
+        "process": "Samsung 8 nm",
+        "dieMm2": 276,
+        "transistorsBillions": 12,
+        "shaders": 3584,
+        "rops": 48,
+        "tmus": 112,
+        "memoryType": "GDDR6",
+        "baseMhz": 1320,
+        "boostMhz": 1777,
+        "tdpWatts": 170,
+        "release": "25/02/2021",
+        "nameMatch": null
+      }
+    ],
+    "1002:7550": [
+      {
+        "chip": "Navi 48",
+        "arch": "RDNA 4",
+        "process": "TSMC N4P (4 nm)",
+        "dieMm2": 357,
+        "transistorsBillions": 53.9,
+        "shaders": 4096,
+        "rops": 128,
+        "tmus": 256,
+        "memoryType": "GDDR6",
+        "baseMhz": 2400,
+        "boostMhz": 2970,
+        "tdpWatts": 304,
+        "release": "06/03/2025",
+        "nameMatch": "9070 XT"
+      },
+      {
+        "chip": "Navi 48",
+        "arch": "RDNA 4",
+        "process": "TSMC N4P (4 nm)",
+        "dieMm2": 357,
+        "transistorsBillions": 53.9,
+        "shaders": 3584,
+        "rops": 128,
+        "tmus": 224,
+        "memoryType": "GDDR6",
+        "baseMhz": 2070,
+        "boostMhz": 2520,
+        "tdpWatts": 220,
+        "release": "06/03/2025",
+        "nameMatch": "9070"
+      }
+    ],
+    "1002:744C": [
+      {
+        "chip": "Navi 31",
+        "arch": "RDNA 3",
+        "process": "TSMC 5 nm + 6 nm",
+        "dieMm2": 529,
+        "transistorsBillions": 57.7,
+        "shaders": 6144,
+        "rops": 192,
+        "tmus": 384,
+        "memoryType": "GDDR6",
+        "baseMhz": 1855,
+        "boostMhz": 2499,
+        "tdpWatts": 355,
+        "release": "13/12/2022",
+        "nameMatch": "XTX"
+      },
+      {
+        "chip": "Navi 31",
+        "arch": "RDNA 3",
+        "process": "TSMC 5 nm + 6 nm",
+        "dieMm2": 529,
+        "transistorsBillions": 57.7,
+        "shaders": 5376,
+        "rops": 192,
+        "tmus": 336,
+        "memoryType": "GDDR6",
+        "baseMhz": 1500,
+        "boostMhz": 2394,
+        "tdpWatts": 315,
+        "release": "13/12/2022",
+        "nameMatch": "7900 XT"
+      }
+    ],
+    "1002:747E": [
+      {
+        "chip": "Navi 32",
+        "arch": "RDNA 3",
+        "process": "TSMC 5 nm + 6 nm",
+        "dieMm2": 346,
+        "transistorsBillions": 28.1,
+        "shaders": 3840,
+        "rops": 96,
+        "tmus": 240,
+        "memoryType": "GDDR6",
+        "baseMhz": 1295,
+        "boostMhz": 2430,
+        "tdpWatts": 263,
+        "release": "06/09/2023",
+        "nameMatch": "7800"
+      },
+      {
+        "chip": "Navi 32",
+        "arch": "RDNA 3",
+        "process": "TSMC 5 nm + 6 nm",
+        "dieMm2": 346,
+        "transistorsBillions": 28.1,
+        "shaders": 3456,
+        "rops": 96,
+        "tmus": 216,
+        "memoryType": "GDDR6",
+        "baseMhz": 1435,
+        "boostMhz": 2544,
+        "tdpWatts": 245,
+        "release": "06/09/2023",
+        "nameMatch": "7700"
+      }
+    ],
+    "1002:7480": [
+      {
+        "chip": "Navi 33",
+        "arch": "RDNA 3",
+        "process": "TSMC 6 nm",
+        "dieMm2": 204,
+        "transistorsBillions": 13.3,
+        "shaders": 2048,
+        "rops": 64,
+        "tmus": 128,
+        "memoryType": "GDDR6",
+        "baseMhz": 1720,
+        "boostMhz": 2655,
+        "tdpWatts": 165,
+        "release": "25/05/2023",
+        "nameMatch": null
+      }
+    ],
+    "1002:164E": [
+      {
+        "chip": "Raphael (iGPU)",
+        "arch": "RDNA 2",
+        "process": "TSMC 6 nm",
+        "dieMm2": 122,
+        "transistorsBillions": 3.4,
+        "shaders": 128,
+        "rops": 4,
+        "tmus": 8,
+        "memoryType": "Memória do sistema (DDR5)",
+        "baseMhz": 400,
+        "boostMhz": 2200,
+        "tdpWatts": 0,
+        "release": "27/09/2022",
+        "nameMatch": null
+      }
+    ],
+    "1002:7340": [
+      {
+        "chip": "Navi 14",
+        "arch": "RDNA 1",
+        "process": "TSMC 7 nm",
+        "dieMm2": 158,
+        "transistorsBillions": 6.4,
+        "shaders": 1408,
+        "rops": 32,
+        "tmus": 88,
+        "memoryType": "GDDR6",
+        "baseMhz": 1607,
+        "boostMhz": 1845,
+        "tdpWatts": 130,
+        "release": "12/12/2019",
+        "nameMatch": null
+      }
+    ],
+    "1002:731F": [
+      {
+        "chip": "Navi 10",
+        "arch": "RDNA 1",
+        "process": "TSMC 7 nm",
+        "dieMm2": 251,
+        "transistorsBillions": 10.3,
+        "shaders": 2560,
+        "rops": 64,
+        "tmus": 160,
+        "memoryType": "GDDR6",
+        "baseMhz": 1605,
+        "boostMhz": 1905,
+        "tdpWatts": 225,
+        "release": "07/07/2019",
+        "nameMatch": "5700 XT"
+      },
+      {
+        "chip": "Navi 10",
+        "arch": "RDNA 1",
+        "process": "TSMC 7 nm",
+        "dieMm2": 251,
+        "transistorsBillions": 10.3,
+        "shaders": 2304,
+        "rops": 64,
+        "tmus": 144,
+        "memoryType": "GDDR6",
+        "baseMhz": 1465,
+        "boostMhz": 1725,
+        "tdpWatts": 180,
+        "release": "07/07/2019",
+        "nameMatch": "5700"
+      }
+    ],
+    "1002:73BF": [
+      {
+        "chip": "Navi 21",
+        "arch": "RDNA 2",
+        "process": "TSMC 7 nm",
+        "dieMm2": 520,
+        "transistorsBillions": 26.8,
+        "shaders": 5120,
+        "rops": 128,
+        "tmus": 320,
+        "memoryType": "GDDR6",
+        "baseMhz": 1825,
+        "boostMhz": 2250,
+        "tdpWatts": 300,
+        "release": "08/12/2020",
+        "nameMatch": "6900 XT"
+      },
+      {
+        "chip": "Navi 21",
+        "arch": "RDNA 2",
+        "process": "TSMC 7 nm",
+        "dieMm2": 520,
+        "transistorsBillions": 26.8,
+        "shaders": 4608,
+        "rops": 128,
+        "tmus": 288,
+        "memoryType": "GDDR6",
+        "baseMhz": 1825,
+        "boostMhz": 2250,
+        "tdpWatts": 300,
+        "release": "18/11/2020",
+        "nameMatch": "6800 XT"
+      },
+      {
+        "chip": "Navi 21",
+        "arch": "RDNA 2",
+        "process": "TSMC 7 nm",
+        "dieMm2": 520,
+        "transistorsBillions": 26.8,
+        "shaders": 3840,
+        "rops": 128,
+        "tmus": 240,
+        "memoryType": "GDDR6",
+        "baseMhz": 1815,
+        "boostMhz": 2105,
+        "tdpWatts": 250,
+        "release": "18/11/2020",
+        "nameMatch": "6800"
+      }
+    ],
+    "1002:73DF": [
+      {
+        "chip": "Navi 22",
+        "arch": "RDNA 2",
+        "process": "TSMC 7 nm",
+        "dieMm2": 335,
+        "transistorsBillions": 17.2,
+        "shaders": 2560,
+        "rops": 64,
+        "tmus": 160,
+        "memoryType": "GDDR6",
+        "baseMhz": 2321,
+        "boostMhz": 2581,
+        "tdpWatts": 230,
+        "release": "18/03/2021",
+        "nameMatch": null
+      }
+    ],
+    "1002:73FF": [
+      {
+        "chip": "Navi 23",
+        "arch": "RDNA 2",
+        "process": "TSMC 7 nm",
+        "dieMm2": 237,
+        "transistorsBillions": 11.1,
+        "shaders": 2048,
+        "rops": 64,
+        "tmus": 128,
+        "memoryType": "GDDR6",
+        "baseMhz": 1968,
+        "boostMhz": 2589,
+        "tdpWatts": 160,
+        "release": "11/08/2021",
+        "nameMatch": "6600 XT"
+      },
+      {
+        "chip": "Navi 23",
+        "arch": "RDNA 2",
+        "process": "TSMC 7 nm",
+        "dieMm2": 237,
+        "transistorsBillions": 11.1,
+        "shaders": 1792,
+        "rops": 64,
+        "tmus": 112,
+        "memoryType": "GDDR6",
+        "baseMhz": 1626,
+        "boostMhz": 2491,
+        "tdpWatts": 132,
+        "release": "13/10/2021",
+        "nameMatch": "6600"
+      }
+    ],
+    "1002:743F": [
+      {
+        "chip": "Navi 24",
+        "arch": "RDNA 2",
+        "process": "TSMC 6 nm",
+        "dieMm2": 107,
+        "transistorsBillions": 5.4,
+        "shaders": 1024,
+        "rops": 32,
+        "tmus": 64,
+        "memoryType": "GDDR6",
+        "baseMhz": 2310,
+        "boostMhz": 2815,
+        "tdpWatts": 107,
+        "release": "19/01/2022",
+        "nameMatch": null
+      }
+    ]
+  }
+}

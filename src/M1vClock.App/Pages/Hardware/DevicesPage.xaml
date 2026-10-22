@@ -1,0 +1,39 @@
+<UserControl x:Class="M1vClock.App.Pages.Hardware.DevicesPage"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:dc="clr-namespace:M1vClock.App.DesignSystem.Controls"
+             xmlns:l="clr-namespace:M1vClock.App.Localization"
+             Focusable="False">
+  <dc:PageScaffold Title="{Binding Title}" Subtitle="{Binding Subtitle}">
+    <dc:PageScaffold.Actions>
+      <StackPanel Orientation="Horizontal">
+        <TextBlock Text="{Binding UpdatedText}" Style="{StaticResource Text.Caption}" VerticalAlignment="Center" Margin="0,0,12,0" />
+        <Button Style="{StaticResource Button.Secondary}" dc:Assist.Icon="{StaticResource Icon.Refresh}" Content="{l:Text Hw.Common.Refresh}"
+                Command="{Binding RefreshCommand}" />
+      </StackPanel>
+    </dc:PageScaffold.Actions>
+    <StackPanel>
+      <ContentControl Style="{StaticResource Banner.Critical}" Margin="0,0,0,16"
+                      Visibility="{Binding HasPageError, Converter={StaticResource BoolToVisible}}">
+        <TextBlock Style="{StaticResource Banner.Text}" Text="{Binding PageError}" />
+      </ContentControl>
+      <ContentControl Style="{StaticResource Banner.Warning}" Margin="0,0,0,16"
+                      Visibility="{Binding WatcherUnavailable, Converter={StaticResource BoolToVisible}}">
+        <TextBlock Style="{StaticResource Banner.Text}" Text="{l:Text Hw.Dev.Notify.Unavailable}" />
+      </ContentControl>
+
+      <Border Style="{StaticResource Card}" Padding="20,16" Margin="0,0,0,16">
+        <DockPanel>
+          <dc:ToggleSwitch DockPanel.Dock="Right" IsChecked="{Binding NotifyDevices, Mode=TwoWay}" VerticalAlignment="Center"
+                           AutomationProperties.Name="{l:Text Hw.Dev.Notify.Title}" />
+          <StackPanel Margin="0,0,24,0">
+            <TextBlock Text="{l:Text Hw.Dev.Notify.Title}" Style="{StaticResource Text.Body}" />
+            <TextBlock Text="{l:Text Hw.Dev.Notify.Detail}" Style="{StaticResource Text.Subhead.Secondary}" TextWrapping="Wrap" />
+          </StackPanel>
+        </DockPanel>
+      </Border>
+
+      <ItemsControl ItemsSource="{Binding Sections}" ItemTemplate="{StaticResource InfoSectionTemplate}" Focusable="False" />
+    </StackPanel>
+  </dc:PageScaffold>
+</UserControl>

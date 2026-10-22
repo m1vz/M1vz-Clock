@@ -40,6 +40,12 @@ public sealed class StartupOptionsTests
     }
 
     [Fact]
+    public void TheToastOverlayIsAccepted()
+    {
+        Assert.Equal("toast", StartupOptions.Parse(["--overlay", "toast"]).Overlay);
+    }
+
+    [Fact]
     public void UnknownThemeAndOverlayAreIgnored()
     {
         var options = StartupOptions.Parse(["--theme", "roxo", "--overlay", "tudo"]);

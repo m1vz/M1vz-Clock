@@ -15,6 +15,7 @@ public sealed partial class MainViewModel : ObservableObject
         NavigationService navigation,
         CommandPaletteViewModel palette,
         DialogService dialogs,
+        NotificationService notifications,
         AppSettingsService settings,
         AppInfo info)
     {
@@ -23,6 +24,7 @@ public sealed partial class MainViewModel : ObservableObject
         Navigation = navigation;
         Palette = palette;
         Dialogs = dialogs;
+        Notifications = notifications;
         Info = info;
         _settings = settings;
 
@@ -62,6 +64,8 @@ public sealed partial class MainViewModel : ObservableObject
     public CommandPaletteViewModel Palette { get; }
 
     public DialogService Dialogs { get; }
+
+    public NotificationService Notifications { get; }
 
     public AppInfo Info { get; }
 
