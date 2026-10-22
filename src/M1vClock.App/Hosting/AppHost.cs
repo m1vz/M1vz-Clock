@@ -45,6 +45,11 @@ public static class AppHost
 
         builder.Services.AddSingleton(options);
         builder.Services.AddSingleton(new AppInfo(version, paths.Root, elevation.IsElevated));
+        builder.Services.AddSingleton<IUiThread, WpfUiThread>();
+        builder.Services.AddSingleton<ActivityLog>();
+        builder.Services.AddSingleton<NotificationService>();
+        builder.Services.AddSingleton<INotificationService>(provider => provider.GetRequiredService<NotificationService>());
+        builder.Services.AddHostedService<DeviceNotifier>();
         builder.Services.AddSingleton<SystemPreferences>();
         builder.Services.AddSingleton<AppSettingsService>();
         builder.Services.AddSingleton<ThemeService>();
