@@ -1,5 +1,6 @@
 using System.Management;
 using M1vClock.Core.Privacy;
+using M1vClock.Core.Security;
 using M1vClock.Hardware.Storage;
 using M1vClock.Hardware.Wmi;
 using Microsoft.Extensions.Logging;
@@ -191,8 +192,8 @@ public sealed class StorageCollectorTests
         .Failing("MSFT_StorageReliabilityCounter", new UnauthorizedAccessException("negado"))
         .Failing("MSStorageDriver_FailurePredictStatus", new UnauthorizedAccessException("negado"));
 
-    private static StorageCollector Collector(FakeWmiReader wmi, CollectingLogger<StorageCollector>? logger = null) =>
-        new(wmi, logger ?? new CollectingLogger<StorageCollector>());
+    private static StorageCollector Collector(FakeWmiReader wmi, CollectingLogger<StorageCollector>? logger = null, bool elevated = true) =>
+        new(wmi, new ElevationInfo(elevated, "S-1-5-21-1", "PC-usuario"), logger ?? new CollectingLogger<StorageCollector>());
 
     [Fact]
     public void ReadsTheTwoDisksOfThisMachineInOrder()
@@ -235,9 +236,8 @@ public sealed class StorageCollectorTests
     public void WithAdministratorTheCountersAreReadAndUnsupportedValuesAreDropped()
     {
         var wmi = RealMachine()
-            .With("MSFT_StorageReliabilityCounter",
-                WmiRow.Of(("DeviceId", "1"), ("Temperature", 38u), ("TemperatureMax", 70u), ("Wear", 4u), ("PowerOnHours", 4321UL), ("ReadErrorsTotal", 0UL), ("WriteErrorsTotal", 0UL), ("ReadErrorsUncorrected", 0UL), ("WriteErrorsUncorrected", 0UL), ("StartStopCycleCount", 812u)),
-                WmiRow.Of(("DeviceId", "0"), ("Temperature", 0xFFFFFFFFFFFFFFFFUL), ("Wear", -1), ("PowerOnHours", 9000UL)))
+            .WithRelated("MSFT_StorageReliabilityCounter", "1", WmiRow.Of(("Temperature", 38u), ("TemperatureMax", 70u), ("Wear", 4u), ("PowerOnHours", 4321UL), ("ReadErrorsTotal", 0UL), ("WriteErrorsTotal", 0UL), ("ReadErrorsUncorrected", 0UL), ("WriteErrorsUncorrected", 0UL), ("StartStopCycleCount", 812u)))
+            .WithRelated("MSFT_StorageReliabilityCounter", "0", WmiRow.Of(("Temperature", 0xFFFFFFFFFFFFFFFFUL), ("Wear", -1), ("PowerOnHours", 9000UL)))
             .With("MSStorageDriver_FailurePredictStatus", WmiRow.Of(("InstanceName", @"SCSI\DISK&VEN_NVME&PROD_NX-512_2280\5&7014638&0&000000_0"), ("PredictFailure", false)));
 
         var inventory = Collector(wmi).ReadDisks();
@@ -254,6 +254,61 @@ public sealed class StorageCollectorTests
         Assert.Equal(812, ssd.Counters.StartStopCycles);
         Assert.False(ssd.FailurePredicted);
         Assert.Null(hdd.FailurePredicted);
+    }
+
+    [Fact]
+    public void TheCountersAreReadThroughTheAssociationWithEachPhysicalDisk()
+    {
+        var wmi = RealMachine()
+            .WithRelated("MSFT_StorageReliabilityCounter", "1", WmiRow.Of(("Temperature", 41u), ("TemperatureMax", 90u), ("Wear", 0u)))
+            .WithRelated("MSFT_StorageReliabilityCounter", "0", WmiRow.Of(("Temperature", 27u), ("TemperatureMax", 0u), ("Wear", 0u), ("PowerOnHours", 7382UL), ("ReadErrorsTotal", 0UL), ("StartStopCycleCount", 3067u)));
+
+        var inventory = Collector(wmi).ReadDisks();
+
+        Assert.Equal(("MSFT_PhysicalDisk", "MSFT_StorageReliabilityCounter"), Assert.Single(wmi.RelatedQueries));
+        Assert.DoesNotContain(wmi.Queries, q => q.ClassName == "MSFT_StorageReliabilityCounter");
+        var hdd = inventory.Disks[0];
+        Assert.Equal(27, hdd.Counters!.Temperature);
+        Assert.Equal(7382, hdd.Counters.PowerOnHours);
+        Assert.Equal(3067, hdd.Counters.StartStopCycles);
+        var ssd = inventory.Disks[1];
+        Assert.Equal(41, ssd.Counters!.Temperature);
+        Assert.Equal(90, ssd.Counters.TemperatureMax);
+        Assert.Equal(0, ssd.Counters.Wear);
+    }
+
+    [Fact]
+    public void AMechanicalDiskNeverReportsWearEvenWhenWindowsSendsZero()
+    {
+        var wmi = RealMachine()
+            .WithRelated("MSFT_StorageReliabilityCounter", "1", WmiRow.Of(("Temperature", 41u), ("Wear", 0u)))
+            .WithRelated("MSFT_StorageReliabilityCounter", "0", WmiRow.Of(("Temperature", 27u), ("Wear", 0u), ("PowerOnHours", 7382UL)));
+
+        var inventory = Collector(wmi).ReadDisks();
+
+        Assert.Null(inventory.Disks[0].Counters!.Wear);
+        Assert.Equal(7382, inventory.Disks[0].Counters!.PowerOnHours);
+        Assert.Equal(0, inventory.Disks[1].Counters!.Wear);
+    }
+
+    [Fact]
+    public void WithoutAnyRelatedCounterAndWithoutAdministratorTheAnswerIsThatAdministratorIsNeeded()
+    {
+        var logger = new CollectingLogger<StorageCollector>();
+        var inventory = Collector(RealMachine().With("MSFT_StorageReliabilityCounter"), logger, elevated: false).ReadDisks();
+
+        Assert.All(inventory.Disks, d => Assert.Null(d.Counters));
+        Assert.Equal(CounterAccess.NeedsAdministrator, inventory.CounterAccess);
+        Assert.Contains(logger.Entries, e => e.EventId.Id == 3002);
+    }
+
+    [Fact]
+    public void WithoutAnyRelatedCounterWhileElevatedTheSourceIsUnavailable()
+    {
+        var inventory = Collector(RealMachine().With("MSFT_StorageReliabilityCounter"), elevated: true).ReadDisks();
+
+        Assert.All(inventory.Disks, d => Assert.Null(d.Counters));
+        Assert.Equal(CounterAccess.Unavailable, inventory.CounterAccess);
     }
 
     [Fact]
@@ -403,7 +458,7 @@ public sealed class StorageServiceTests
         var wmi = new FakeWmiReader()
             .Failing("Win32_DiskDrive", new TimeoutException("Demorou."))
             .With("Win32_LogicalDisk", WmiRow.Of(("DeviceID", "C:"), ("Size", 100UL), ("FreeSpace", 50UL), ("DriveType", 3u)));
-        var service = new StorageService(new StorageCollector(wmi, NullLogger<StorageCollector>.Instance), NullLogger<StorageService>.Instance);
+        var service = new StorageService(new StorageCollector(wmi, ElevationInfo.Current(), NullLogger<StorageCollector>.Instance), NullLogger<StorageService>.Instance);
 
         var report = await service.ReadAsync(TestContext.Current.CancellationToken);
 
@@ -422,7 +477,7 @@ public sealed class StorageServiceTests
             .With("MSFT_PhysicalDisk", WmiRow.Of(("DeviceId", "0"), ("HealthStatus", (ushort)2), ("MediaType", (ushort)4), ("BusType", (ushort)17)))
             .Failing("MSFT_StorageReliabilityCounter", new UnauthorizedAccessException("negado"))
             .Failing("MSStorageDriver_FailurePredictStatus", new UnauthorizedAccessException("negado"));
-        var service = new StorageService(new StorageCollector(wmi, NullLogger<StorageCollector>.Instance), NullLogger<StorageService>.Instance);
+        var service = new StorageService(new StorageCollector(wmi, ElevationInfo.Current(), NullLogger<StorageCollector>.Instance), NullLogger<StorageService>.Instance);
 
         var report = await service.ReadAsync(TestContext.Current.CancellationToken);
 
@@ -435,7 +490,7 @@ public sealed class StorageServiceTests
     [Fact]
     public async Task ReadsThisMachineForReal()
     {
-        var service = new StorageService(new StorageCollector(new WindowsWmiReader(), NullLogger<StorageCollector>.Instance), NullLogger<StorageService>.Instance);
+        var service = new StorageService(new StorageCollector(new WindowsWmiReader(), ElevationInfo.Current(), NullLogger<StorageCollector>.Instance), NullLogger<StorageService>.Instance);
 
         var report = await service.ReadAsync(TestContext.Current.CancellationToken);
 
@@ -447,5 +502,19 @@ public sealed class StorageServiceTests
         Assert.Contains(volumes, v => v.Letter.Equals("C:", StringComparison.OrdinalIgnoreCase));
         Assert.All(volumes, v => Assert.InRange(v.UsedFraction, 0, 1));
         Assert.NotEqual(CounterAccess.Unavailable, report.CounterAccess);
+    }
+
+    [Fact]
+    public async Task WithAdministratorTheRealCountersArePairedWithTheirDisks()
+    {
+        Assert.SkipUnless(ElevationInfo.Current().IsElevated, "Precisa de administrador.");
+        var service = new StorageService(new StorageCollector(new WindowsWmiReader(), ElevationInfo.Current(), NullLogger<StorageCollector>.Instance), NullLogger<StorageService>.Instance);
+
+        var report = await service.ReadAsync(TestContext.Current.CancellationToken);
+
+        Assert.Equal(CounterAccess.Read, report.CounterAccess);
+        Assert.True(report.Disks.TryGet(out var disks), report.Disks.Error);
+        Assert.All(disks, d => Assert.NotNull(d.Disk.Counters));
+        Assert.Contains(disks, d => d.Disk.Counters!.Temperature is > 0 and < 100);
     }
 }

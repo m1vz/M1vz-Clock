@@ -27,6 +27,8 @@ public sealed partial record WmiQuery
 
     public string Scope { get; }
 
+    public static bool IsIdentifier(string? name) => name is not null && Identifier().IsMatch(name);
+
     public string ToWql() => $"SELECT {string.Join(", ", Properties)} FROM {ClassName}";
 
     [GeneratedRegex(@"^[A-Za-z][A-Za-z0-9_]*$")]

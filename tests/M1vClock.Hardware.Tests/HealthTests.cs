@@ -306,7 +306,7 @@ public sealed class HealthServiceTests
         var wmi = new Wmi.WindowsWmiReader();
         var logger = Microsoft.Extensions.Logging.Abstractions.NullLogger<StorageService>.Instance;
         var service = new HealthService(
-            new StorageService(new StorageCollector(wmi, Microsoft.Extensions.Logging.Abstractions.NullLogger<StorageCollector>.Instance), logger),
+            new StorageService(new StorageCollector(wmi, Core.Security.ElevationInfo.Current(), Microsoft.Extensions.Logging.Abstractions.NullLogger<StorageCollector>.Instance), logger),
             new PowerService(new PowerCollector(wmi, Microsoft.Extensions.Logging.Abstractions.NullLogger<PowerCollector>.Instance), new Core.Processes.ProcessRunner(Microsoft.Extensions.Logging.Abstractions.NullLogger<Core.Processes.ProcessRunner>.Instance), Microsoft.Extensions.Logging.Abstractions.NullLogger<PowerService>.Instance),
             new UsbDeviceService(new UsbCollector(wmi), Microsoft.Extensions.Logging.Abstractions.NullLogger<UsbDeviceService>.Instance),
             new RegistryPawnIoProbe(new Core.RegistryValues.WindowsRegistryAccess()));

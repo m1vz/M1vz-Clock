@@ -1,13 +1,14 @@
 using System.Management;
 using System.Runtime.InteropServices;
 using M1vClock.Core.Privacy;
+using M1vClock.Core.Security;
 using M1vClock.Hardware.Platform;
 using M1vClock.Hardware.Wmi;
 using Microsoft.Extensions.Logging;
 
 namespace M1vClock.Hardware.Storage;
 
-public sealed class StorageCollector(IWmiReader wmi, ILogger<StorageCollector> logger)
+public sealed class StorageCollector(IWmiReader wmi, ElevationInfo elevation, ILogger<StorageCollector> logger)
 {
     private const string StorageScope = @"root\Microsoft\Windows\Storage";
     private const string WmiScope = @"root\wmi";
@@ -15,12 +16,6 @@ public sealed class StorageCollector(IWmiReader wmi, ILogger<StorageCollector> l
 
     private static readonly string[] DriveProperties = ["Index", "Model", "SerialNumber", "FirmwareRevision", "InterfaceType", "Size", "PNPDeviceID"];
     private static readonly string[] PhysicalProperties = ["DeviceId", "HealthStatus", "MediaType", "BusType"];
-
-    private static readonly string[] CounterProperties =
-    [
-        "DeviceId", "Temperature", "TemperatureMax", "Wear", "PowerOnHours", "ReadErrorsTotal", "WriteErrorsTotal",
-        "ReadErrorsUncorrected", "WriteErrorsUncorrected", "StartStopCycleCount",
-    ];
 
     private static readonly string[] PredictProperties = ["InstanceName", "PredictFailure"];
     private static readonly string[] AssociationProperties = ["Antecedent", "Dependent"];
@@ -31,14 +26,20 @@ public sealed class StorageCollector(IWmiReader wmi, ILogger<StorageCollector> l
         var rows = wmi.Query(new WmiQuery("Win32_DiskDrive", DriveProperties));
         var drives = rows.Select(r => new DriveRow(r)).OrderBy(d => d.Index).ToList();
         var physical = ReadOptional("MSFT_PhysicalDisk", () => wmi.Query(new WmiQuery("MSFT_PhysicalDisk", PhysicalProperties, StorageScope)), out _) ?? [];
-        var counterRows = ReadOptional("MSFT_StorageReliabilityCounter", () => wmi.Query(new WmiQuery("MSFT_StorageReliabilityCounter", CounterProperties, StorageScope)), out var counterAccess);
+        var counterRows = ReadOptional("MSFT_StorageReliabilityCounter", () => wmi.QueryRelated(new WmiQuery("MSFT_PhysicalDisk", ["DeviceId", "ObjectId"], StorageScope), "MSFT_StorageReliabilityCounter"), out var counterAccess);
+        if (counterRows is not null && counterRows.All(r => r.Related.Count == 0))
+        {
+            counterAccess = elevation.IsElevated ? CounterAccess.Unavailable : CounterAccess.NeedsAdministrator;
+            HardwareLog.OptionalSourceDenied(logger, "MSFT_StorageReliabilityCounter");
+        }
+
         var predictRows = ReadOptional("MSStorageDriver_FailurePredictStatus", () => wmi.Query(new WmiQuery("MSStorageDriver_FailurePredictStatus", PredictProperties, WmiScope)), out var predictionAccess);
         var letters = ReadLetters();
 
         var disks = drives.Select(drive =>
         {
             var info = physical.FirstOrDefault(p => p.Number("DeviceId", -1) == drive.Index);
-            var counters = counterRows?.FirstOrDefault(c => c.Number("DeviceId", -1) == drive.Index);
+            var counters = FirstRelated(counterRows?.FirstOrDefault(c => c.Source.Number("DeviceId", -1) == drive.Index));
             return BuildDisk(drive, info, counters, predictRows, letters.GetValueOrDefault(drive.Index) ?? []);
         }).ToList();
         return new DiskInventory(disks, counterAccess, predictionAccess);
@@ -70,6 +71,8 @@ public sealed class StorageCollector(IWmiReader wmi, ILogger<StorageCollector> l
 
         return volumes.OrderBy(v => v.Letter, StringComparer.OrdinalIgnoreCase).ToList();
     }
+
+    private static WmiRow? FirstRelated(WmiRelation? relation) => relation is { Related.Count: > 0 } ? relation.Related[0] : null;
 
     public static double? Counter(WmiRow row, string name)
     {
@@ -129,24 +132,25 @@ public sealed class StorageCollector(IWmiReader wmi, ILogger<StorageCollector> l
             }
         }
 
+        var media = info is null ? DriveMedia.Unknown : MediaOf(info.Number("MediaType"));
         return new PhysicalDisk(
             drive.Index,
             drive.Model,
             new SensitiveText(PlatformCollector.Clean(drive.Serial)),
             drive.Firmware,
             resolvedBus,
-            info is null ? DriveMedia.Unknown : MediaOf(info.Number("MediaType")),
+            media,
             drive.Size,
             info is null ? WindowsHealth.Unknown : HealthOf(info.Number("HealthStatus", 5)),
             predicted,
-            counters is null ? null : ToCounters(counters),
+            counters is null ? null : ToCounters(counters, media),
             letters);
     }
 
-    private static StorageCounters ToCounters(WmiRow row) => new(
+    private static StorageCounters ToCounters(WmiRow row, DriveMedia media) => new(
         Counter(row, "Temperature"),
         Counter(row, "TemperatureMax"),
-        Counter(row, "Wear"),
+        media == DriveMedia.Hdd ? null : Counter(row, "Wear"),
         (long?)Counter(row, "PowerOnHours"),
         (long?)Counter(row, "ReadErrorsTotal"),
         (long?)Counter(row, "WriteErrorsTotal"),
@@ -209,7 +213,8 @@ public sealed class StorageCollector(IWmiReader wmi, ILogger<StorageCollector> l
         return at >= 0 && int.TryParse(deviceId[(at + Marker.Length)..], out var index) ? index : null;
     }
 
-    private IReadOnlyList<WmiRow>? ReadOptional(string source, Func<IReadOnlyList<WmiRow>> read, out CounterAccess access)
+    private T? ReadOptional<T>(string source, Func<T> read, out CounterAccess access)
+        where T : class
     {
         try
         {

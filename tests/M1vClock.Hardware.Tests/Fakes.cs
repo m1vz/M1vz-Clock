@@ -9,12 +9,29 @@ internal sealed class FakeWmiReader : IWmiReader
     private readonly Dictionary<string, List<WmiRow>> _rows = new(StringComparer.OrdinalIgnoreCase);
     private readonly Dictionary<string, Exception> _failures = new(StringComparer.OrdinalIgnoreCase);
 
+    private readonly Dictionary<string, List<(string SourceDeviceId, WmiRow Related)>> _related = new(StringComparer.OrdinalIgnoreCase);
+
     public List<WmiQuery> Queries { get; } = [];
+
+    public List<(string Source, string Related)> RelatedQueries { get; } = [];
 
     public FakeWmiReader With(string className, params WmiRow[] rows)
     {
         _rows[className] = [.. rows];
         _failures.Remove(className);
+        return this;
+    }
+
+    public FakeWmiReader WithRelated(string relatedClass, string sourceDeviceId, WmiRow related)
+    {
+        if (!_related.TryGetValue(relatedClass, out var list))
+        {
+            list = [];
+            _related[relatedClass] = list;
+        }
+
+        list.Add((sourceDeviceId, related));
+        _failures.Remove(relatedClass);
         return this;
     }
 
@@ -34,6 +51,20 @@ internal sealed class FakeWmiReader : IWmiReader
         }
 
         return _rows.TryGetValue(query.ClassName, out var rows) ? rows : [];
+    }
+
+    public IReadOnlyList<WmiRelation> QueryRelated(WmiQuery source, string relatedClass)
+    {
+        ArgumentNullException.ThrowIfNull(source);
+        RelatedQueries.Add((source.ClassName, relatedClass));
+        if (_failures.TryGetValue(relatedClass, out var failure))
+        {
+            throw failure;
+        }
+
+        var sources = _rows.TryGetValue(source.ClassName, out var rows) ? rows : [];
+        var related = _related.TryGetValue(relatedClass, out var list) ? list : [];
+        return [.. sources.Select(s => new WmiRelation(s, [.. related.Where(r => r.SourceDeviceId == s.Text("DeviceId")).Select(r => r.Related)]))];
     }
 }
 
