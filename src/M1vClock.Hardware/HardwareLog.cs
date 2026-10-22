@@ -27,4 +27,7 @@ internal static partial class HardwareLog
 
     [LoggerMessage(EventId = 3104, Level = LogLevel.Information, Message = "Nenhum adaptador de rede ativo com gateway; o diagnóstico não foi iniciado.")]
     public static partial void NoActiveAdapter(ILogger logger);
+
+    [LoggerMessage(EventId = 3105, Level = LogLevel.Information, Message = "Dispositivos USB mudaram: {Added} conectado(s), {Removed} removido(s).")]
+    public static partial void DeviceBatchDetected(ILogger logger, int added, int removed);
 }

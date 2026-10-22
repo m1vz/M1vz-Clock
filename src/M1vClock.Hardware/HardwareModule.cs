@@ -36,6 +36,8 @@ public static class HardwareModule
         services.AddSingleton<IStorageService, StorageService>();
         services.AddSingleton<UsbCollector>();
         services.AddSingleton<IUsbDeviceService, UsbDeviceService>();
+        services.AddSingleton<IDeviceChangeSource, WmiDeviceChangeSource>();
+        services.AddSingleton<IDeviceWatcher, DeviceWatcher>();
         services.TryAddSingleton(TimeProvider.System);
         services.AddSingleton<INetworkInterfaceSource, SystemNetworkInterfaceSource>();
         services.AddSingleton<INetworkProbe, SystemNetworkProbe>();
