@@ -136,12 +136,15 @@ public sealed class StressSession : IAsyncDisposable
         }
 
         var runner = _cpuRam;
+        var wake = new CancellationTokenSource();
+        EventHandler<SafetyTrip> onTripped = (_, _) => wake.Cancel();
+        _monitor.Tripped += onTripped;
         _monitor.Start(watched, plan.Limits, () => runner?.Status.MemoryErrors ?? 0, isResponsive);
         var started = _clock.GetTimestamp();
         SafetyLog.StressStarted(_logger, plan.Cpu, plan.Ram, plan.Gpu, plan.Duration.TotalMinutes);
         _cpuRam?.Start();
         _gpu?.Start();
-        var completion = Task.Run(() => RunAsync(plan, started), CancellationToken.None);
+        var completion = Task.Run(() => RunAsync(plan, started, wake, onTripped), CancellationToken.None);
         lock (_gate)
         {
             _completion = completion;
@@ -171,11 +174,26 @@ public sealed class StressSession : IAsyncDisposable
 
         await _monitor.StopAsync().ConfigureAwait(false);
     }
-    private async Task<StressOutcome> RunAsync(StressPlan plan, long started)
+    private async Task<StressOutcome> RunAsync(StressPlan plan, long started, CancellationTokenSource wake, EventHandler<SafetyTrip> onTripped)
     {
         using var timer = new PeriodicTimer(UpdateInterval, _clock);
-        while (_monitor.Trip is null && await timer.WaitForNextTickAsync().ConfigureAwait(false))
+        while (_monitor.Trip is null)
         {
+            var ticked = true;
+            try
+            {
+                ticked = await timer.WaitForNextTickAsync(wake.Token).ConfigureAwait(false);
+            }
+            catch (OperationCanceledException)
+            {
+                ticked = false;
+            }
+
+            if (!ticked)
+            {
+                break;
+            }
+
             var elapsed = _clock.GetElapsedTime(started);
             Progress?.Invoke(this, new StressProgress(elapsed, plan.Duration, _monitor.Latest, CpuRamStatus(), GpuStatus()));
             if (_monitor.Trip is not null)
@@ -201,6 +219,8 @@ public sealed class StressSession : IAsyncDisposable
             }
         }
 
+        _monitor.Tripped -= onTripped;
+        wake.Dispose();
         return await FinishAsync(started).ConfigureAwait(false);
     }
 

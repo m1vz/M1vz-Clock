@@ -329,6 +329,20 @@ public sealed class StressSessionTests : IAsyncDisposable
     }
 
     [Fact]
+    public async Task StoppingDoesNotWaitForTheNextClockTick()
+    {
+        _probe.Steady(ThermalComponent.Cpu, 60);
+        _session.Start(Plan(minutes: 0), _cpuRam, null);
+        await Task.Delay(100, TestContext.Current.CancellationToken);
+
+        _session.Stop();
+        var outcome = await _session.Completion!.WaitAsync(TimeSpan.FromSeconds(5), TestContext.Current.CancellationToken);
+
+        Assert.Equal(StressEnd.StoppedByUser, outcome.End);
+        Assert.Equal(1, _cpuRam.Halts);
+    }
+
+    [Fact]
     public async Task ATestWithoutADurationRunsUntilSomeoneStopsIt()
     {
         _probe.Steady(ThermalComponent.Cpu, 60);
