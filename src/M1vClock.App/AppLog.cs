@@ -90,4 +90,7 @@ internal static partial class AppLog
 
     [LoggerMessage(EventId = 2029, Level = LogLevel.Warning, Message = "Não foi possível verificar o suporte a ray tracing.")]
     public static partial void RayTracingCheckFailed(ILogger logger, Exception exception);
+
+    [LoggerMessage(EventId = 2031, Level = LogLevel.Information, Message = "A área de transferência estava em uso por outro programa.")]
+    public static partial void ClipboardBusy(ILogger logger, Exception exception);
 }

@@ -3846,4 +3846,79 @@
   <data name="Diag.Reliability.Part.records" xml:space="preserve">
     <value>os registros</value>
   </data>
+  <data name="Diag.Logs.File" xml:space="preserve">
+    <value>Arquivo de log</value>
+  </data>
+  <data name="Diag.Logs.File.Today" xml:space="preserve">
+    <value>Hoje</value>
+  </data>
+  <data name="Diag.Logs.File.Yesterday" xml:space="preserve">
+    <value>Ontem</value>
+  </data>
+  <data name="Diag.Logs.File.Label" xml:space="preserve">
+    <value>{0} · {1}</value>
+  </data>
+  <data name="Diag.Logs.Level" xml:space="preserve">
+    <value>Nível</value>
+  </data>
+  <data name="Diag.Logs.Level.All" xml:space="preserve">
+    <value>Tudo</value>
+  </data>
+  <data name="Diag.Logs.Level.Problems" xml:space="preserve">
+    <value>Avisos e erros</value>
+  </data>
+  <data name="Diag.Logs.Level.Errors" xml:space="preserve">
+    <value>Só erros</value>
+  </data>
+  <data name="Diag.Logs.Search" xml:space="preserve">
+    <value>Buscar no texto, na origem e nos detalhes</value>
+  </data>
+  <data name="Diag.Logs.Summary" xml:space="preserve">
+    <value>{0} entradas · {1} avisos · {2} erros</value>
+  </data>
+  <data name="Diag.Logs.Showing" xml:space="preserve">
+    <value>Mostrando as {0} mais recentes de {1} entradas que combinam com o filtro.</value>
+  </data>
+  <data name="Diag.Logs.MidFile" xml:space="preserve">
+    <value>O arquivo é grande; só o final dele foi lido.</value>
+  </data>
+  <data name="Diag.Logs.Empty" xml:space="preserve">
+    <value>Nenhuma entrada com esse filtro.</value>
+  </data>
+  <data name="Diag.Logs.NoFiles" xml:space="preserve">
+    <value>Ainda não há arquivos de log.</value>
+  </data>
+  <data name="Diag.Logs.OpenFolder" xml:space="preserve">
+    <value>Abrir pasta de logs</value>
+  </data>
+  <data name="Diag.Logs.Copy" xml:space="preserve">
+    <value>Copiar o que está na tela</value>
+  </data>
+  <data name="Diag.Logs.Copied" xml:space="preserve">
+    <value>Copiado para a área de transferência.</value>
+  </data>
+  <data name="Diag.Logs.CopyFailed" xml:space="preserve">
+    <value>O Windows não deixou usar a área de transferência agora. Tente de novo.</value>
+  </data>
+  <data name="Diag.Logs.Failed" xml:space="preserve">
+    <value>Não foi possível ler os logs: {0}</value>
+  </data>
+  <data name="Diag.Logs.Severity.Verbose" xml:space="preserve">
+    <value>Detalhe</value>
+  </data>
+  <data name="Diag.Logs.Severity.Debug" xml:space="preserve">
+    <value>Depuração</value>
+  </data>
+  <data name="Diag.Logs.Severity.Information" xml:space="preserve">
+    <value>Info</value>
+  </data>
+  <data name="Diag.Logs.Severity.Warning" xml:space="preserve">
+    <value>Aviso</value>
+  </data>
+  <data name="Diag.Logs.Severity.Error" xml:space="preserve">
+    <value>Erro</value>
+  </data>
+  <data name="Diag.Logs.Severity.Fatal" xml:space="preserve">
+    <value>Fatal</value>
+  </data>
 </root>

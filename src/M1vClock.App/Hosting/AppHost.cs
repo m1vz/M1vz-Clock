@@ -50,6 +50,7 @@ public static class AppHost
         builder.Services.AddSingleton(new AppInfo(version, paths.Root, elevation.IsElevated));
         builder.Services.AddSingleton<IUiThread, WpfUiThread>();
         builder.Services.AddSingleton<ActivityLog>();
+        builder.Services.AddSingleton<IClipboardService, WpfClipboardService>();
         builder.Services.AddSingleton<NotificationService>();
         builder.Services.AddSingleton<INotificationService>(provider => provider.GetRequiredService<NotificationService>());
         builder.Services.AddHostedService<DeviceNotifier>();
@@ -89,6 +90,7 @@ public static class AppHost
         builder.Services.AddTransient<EventsPageViewModel>();
         builder.Services.AddTransient<CrashesPageViewModel>();
         builder.Services.AddTransient<ReliabilityPageViewModel>();
+        builder.Services.AddTransient<LogsPageViewModel>();
         return builder.Build();
     }
 }

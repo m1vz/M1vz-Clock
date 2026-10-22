@@ -27,6 +27,7 @@ public static class PageRegistry
         ["events"] = Resolve<EventsPageViewModel>,
         ["crashes"] = Resolve<CrashesPageViewModel>,
         ["reliability"] = Resolve<ReliabilityPageViewModel>,
+        ["logs"] = Resolve<LogsPageViewModel>,
     };
 
     public static IReadOnlyCollection<string> Ids => Factories.Keys;
