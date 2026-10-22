@@ -50,6 +50,8 @@ public static class AppHost
         builder.Services.AddSingleton<NotificationService>();
         builder.Services.AddSingleton<INotificationService>(provider => provider.GetRequiredService<NotificationService>());
         builder.Services.AddHostedService<DeviceNotifier>();
+        builder.Services.AddSingleton<OverviewHistory>();
+        builder.Services.AddHostedService(provider => provider.GetRequiredService<OverviewHistory>());
         builder.Services.AddSingleton<SystemPreferences>();
         builder.Services.AddSingleton<AppSettingsService>();
         builder.Services.AddSingleton<ThemeService>();
@@ -68,6 +70,7 @@ public static class AppHost
         builder.Services.AddTransient<NetworkPageViewModel>();
         builder.Services.AddTransient<DevicesPageViewModel>();
         builder.Services.AddTransient<SensorsPageViewModel>();
+        builder.Services.AddTransient<OverviewPageViewModel>();
         builder.Services.AddTransient<MemoryPageViewModel>();
         builder.Services.AddTransient<StoragePageViewModel>();
         return builder.Build();
