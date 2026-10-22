@@ -55,8 +55,9 @@ public static class HardenedDirectory
             return HardenedDirectoryStatus.Verified;
         }
 
+        var original = info.FullName;
         Quarantine(info);
-        new DirectoryInfo(info.FullName).Create(CreateSecurity());
+        new DirectoryInfo(original).Create(CreateSecurity());
         return HardenedDirectoryStatus.Quarantined;
     }
 
