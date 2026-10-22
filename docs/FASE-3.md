@@ -115,15 +115,23 @@ Vários bugs só apareceram rodando de verdade, não nos testes unitários:
 | `M1vClock.Core.Tests` | 72 |
 | `M1vClock.Hardware.Tests` | 544 |
 | `M1vClock.Benchmarks.Tests` (novo) | 229 |
-| `M1vClock.App.Tests` | 609 |
+| `M1vClock.App.Tests` | 610 |
 | `M1vClock.Architecture.Tests` | 35 |
 
-Total 1.489, com 4 pulados que exigem administrador, 0 avisos de compilação. Há testes contra a máquina real para a pasta temporária, a E/S sem cache, a cena e o estresse de GPU (abrem uma janela por alguns segundos), a verificação de ray tracing e o conjunto de CPU. Os que dependem de tempo usam relógio falso.
+Total 1.490, com 4 pulados que exigem administrador, 0 avisos de compilação. Há testes contra a máquina real para a pasta temporária, a E/S sem cache, a cena e o estresse de GPU (abrem uma janela por alguns segundos), a verificação de ray tracing e o conjunto de CPU. Os que dependem de tempo usam relógio falso.
+
+## Validação elevada do estresse (22/10/2026)
+
+Release sob administrador com o PawnIO, roteiro de interface com corte no mínimo:
+
+- **GPU**: corte em 63 °C, disparou duas vezes aos 32 s ("Temperature (Gpu) valor 63, limite 63") e o teste encerrou na hora.
+- **CPU**: corte em 60 °C, a CPU ficou em 58 °C por 15 min a 100 % e cerca de 78 W; terminou como "Concluído (tempo esgotado)".
+- Achados corrigidos: o selo de status não aparecia para leitores de tela; o limite da GPU parava em 63 °C sem chegar a 60 °C; fechar a página depois de um teste encerrado gravava uma parada falsa no log.
 
 ## O que a fase 3 não verifica
 
 - **O renderizador de ray tracing (DXR 1.1) não foi portado.** A verificação de suporte está pronta e foi testada de verdade: esta RX 5500 XT não tem ray tracing por hardware, e a página diz isso com o nome da placa. Para uma placa que tem DXR 1.1 a entrada avisa que o teste não está disponível, porque o código de renderização e a nota não podem ser validados sem uma placa assim. O original tem 776 linhas desse teste; portar às cegas arriscaria dar uma nota errada.
-- **Estresse com temperatura real da CPU e da GPU**, sob administrador com o PawnIO, e o corte por temperatura de verdade ainda não foram exercitados. Sem administrador a página recusa começar por falta de sensor, e isso foi visto na tela. A validação elevada depende de aprovar o UAC.
+- **Corte por temperatura da CPU** não disparou de verdade: com o Release elevado e o PawnIO, 15 min de CPU a 100 % (cerca de 78 W) estabilizaram em 58 °C, abaixo do menor corte (60 °C), e o teste terminou pelo tempo. O corte é o mesmo código do da GPU.
 - **Comparação de notas com o ResetExplode** no mesmo PC (o plano pede "mesma faixa de nota"). O render de CPU e a simulação são idênticos ao original pixel a pixel e quadro a quadro, então a faixa segue do código, mas a medição lado a lado não foi feita.
 - Estresse de GPU em tela cheia, MSAA 8x e durações longas (acima de 1 minuto) não foram rodados.
 - Notas em outro PC, Windows 10, alto contraste e texto acima de 100 %.
