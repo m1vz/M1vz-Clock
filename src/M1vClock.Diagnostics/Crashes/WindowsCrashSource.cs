@@ -142,7 +142,7 @@ public sealed class WindowsCrashSource(IRegistryAccess registry, CrashPaths path
         }
     }
 
-    private static DumpFileInfo Describe(FileInfo file, bool readHeader)
+    private DumpFileInfo Describe(FileInfo file, bool readHeader)
     {
         BugCheckInfo? bugCheck = null;
         if (readHeader)
@@ -154,14 +154,14 @@ public sealed class WindowsCrashSource(IRegistryAccess registry, CrashPaths path
             }
             catch (Exception ex) when (ex is IOException or UnauthorizedAccessException)
             {
-                bugCheck = null;
+                DiagnosticsLog.DumpHeaderUnreadable(logger, ex, file.Name);
             }
         }
 
         return new DumpFileInfo(file.FullName, file.Name, file.Length, new DateTimeOffset(file.LastWriteTimeUtc, TimeSpan.Zero), bugCheck);
     }
 
-    private static List<DumpFileInfo> Files(string directory, bool readHeader)
+    private List<DumpFileInfo> Files(string directory, bool readHeader)
     {
         var info = new DirectoryInfo(directory);
         if (!info.Exists || info.Attributes.HasFlag(FileAttributes.ReparsePoint))

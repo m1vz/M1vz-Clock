@@ -22,4 +22,10 @@ internal static partial class DiagnosticsLog
 
     [LoggerMessage(EventId = 4006, Level = LogLevel.Warning, Message = "Não foi possível ler a pasta de dumps {Folder}.")]
     public static partial void DumpFolderFailed(ILogger logger, Exception exception, DumpFolder folder);
+
+    [LoggerMessage(EventId = 4007, Level = LogLevel.Information, Message = "Um evento veio com XML que não dá para ler; foi ignorado.")]
+    public static partial void EventXmlInvalid(ILogger logger, Exception exception);
+
+    [LoggerMessage(EventId = 4008, Level = LogLevel.Information, Message = "Não foi possível ler o cabeçalho do dump {Name}; segue sem o código.")]
+    public static partial void DumpHeaderUnreadable(ILogger logger, Exception exception, string name);
 }

@@ -1,16 +1,15 @@
 using System.Globalization;
 using System.Xml;
 using System.Xml.Linq;
+using Microsoft.Extensions.Logging;
 
 namespace M1vClock.Diagnostics.Crashes;
 
 public static class CrashParsers
 {
-    private static readonly XNamespace EventNamespace = "http://schemas.microsoft.com/win/2004/08/events/event";
-
-    public static UnexpectedShutdown? ParseKernelPower(string xml)
+    public static UnexpectedShutdown? ParseKernelPower(string xml, ILogger? logger = null)
     {
-        if (!TryLoad(xml, out var root) || TimeOf(root) is not { } time)
+        if (!TryLoad(xml, logger, out var root) || TimeOf(root) is not { } time)
         {
             return null;
         }
@@ -27,9 +26,9 @@ public static class CrashParsers
         return new UnexpectedShutdown(time, buttonPressed ? ShutdownCause.PowerButton : ShutdownCause.Unknown, null);
     }
 
-    public static AppCrash? ParseAppCrash(string xml)
+    public static AppCrash? ParseAppCrash(string xml, ILogger? logger = null)
     {
-        if (!TryLoad(xml, out var root) || TimeOf(root) is not { } time)
+        if (!TryLoad(xml, logger, out var root) || TimeOf(root) is not { } time)
         {
             return null;
         }
@@ -52,7 +51,7 @@ public static class CrashParsers
             NullIfBlank(data.GetValueOrDefault("AppPath")));
     }
 
-    private static bool TryLoad(string xml, out XElement root)
+    private static bool TryLoad(string xml, ILogger? logger, out XElement root)
     {
         root = null!;
         if (string.IsNullOrWhiteSpace(xml))
@@ -63,24 +62,31 @@ public static class CrashParsers
         try
         {
             root = XDocument.Parse(xml).Root ?? throw new XmlException("Sem raiz.");
-            return root.Name == EventNamespace + "Event";
+            return root.Name.LocalName == "Event";
         }
-        catch (XmlException)
+        catch (XmlException ex)
         {
+            if (logger is not null)
+            {
+                DiagnosticsLog.EventXmlInvalid(logger, ex);
+            }
+
             return false;
         }
     }
 
     private static DateTimeOffset? TimeOf(XElement root)
     {
-        var stamp = root.Element(EventNamespace + "System")?.Element(EventNamespace + "TimeCreated")?.Attribute("SystemTime")?.Value;
+        var stamp = Child(Child(root, "System"), "TimeCreated")?.Attribute("SystemTime")?.Value;
         return DateTimeOffset.TryParse(stamp, CultureInfo.InvariantCulture, DateTimeStyles.AssumeUniversal | DateTimeStyles.AdjustToUniversal, out var time) ? time : null;
     }
+
+    private static XElement? Child(XElement? parent, string name) => parent?.Elements().FirstOrDefault(e => e.Name.LocalName == name);
 
     private static Dictionary<string, string> DataOf(XElement root)
     {
         var result = new Dictionary<string, string>(StringComparer.Ordinal);
-        var items = root.Element(EventNamespace + "EventData")?.Elements(EventNamespace + "Data") ?? [];
+        var items = Child(root, "EventData")?.Elements().Where(e => e.Name.LocalName == "Data") ?? [];
         foreach (var item in items)
         {
             if (item.Attribute("Name")?.Value is { Length: > 0 } name)

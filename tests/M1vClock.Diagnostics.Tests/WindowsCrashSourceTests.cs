@@ -312,7 +312,7 @@ public sealed class RealMachineCrashTests
     [Fact]
     public async Task TheWholeServiceRunsAgainstThisPcAndTheCountsAddUp()
     {
-        var service = new CrashService(Create());
+        var service = new CrashService(Create(), NullLogger<CrashService>.Instance);
 
         var report = await service.ReadAsync(TimeSpan.FromDays(60), CancellationToken.None);
 

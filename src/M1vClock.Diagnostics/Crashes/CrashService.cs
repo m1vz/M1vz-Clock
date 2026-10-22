@@ -1,5 +1,6 @@
 using M1vClock.Core.Results;
 using M1vClock.Diagnostics.Events;
+using Microsoft.Extensions.Logging;
 
 namespace M1vClock.Diagnostics.Crashes;
 
@@ -8,7 +9,7 @@ public interface ICrashService
     Task<CrashReport> ReadAsync(TimeSpan window, CancellationToken cancellationToken);
 }
 
-public sealed class CrashService(ICrashSource source) : ICrashService
+public sealed class CrashService(ICrashSource source, ILogger<CrashService> logger) : ICrashService
 {
     public const int EventsPerKind = 2000;
 
@@ -33,10 +34,10 @@ public sealed class CrashService(ICrashSource source) : ICrashService
         await Task.WhenAll(settings, shutdowns, apps, kernel, user).ConfigureAwait(false);
 
         var failures = new Dictionary<string, string>(StringComparer.Ordinal);
-        var shutdownList = Collect(shutdowns.Result, ShutdownsPart, failures, CrashParsers.ParseKernelPower)
+        var shutdownList = Collect(shutdowns.Result, ShutdownsPart, failures, xml => CrashParsers.ParseKernelPower(xml, logger))
             .OrderByDescending(s => s.Time)
             .ToList();
-        var crashList = Collect(apps.Result, AppCrashesPart, failures, CrashParsers.ParseAppCrash);
+        var crashList = Collect(apps.Result, AppCrashesPart, failures, xml => CrashParsers.ParseAppCrash(xml, logger));
         return new CrashReport(
             window,
             settings.Result,

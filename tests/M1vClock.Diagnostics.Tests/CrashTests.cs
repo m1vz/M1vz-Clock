@@ -1,6 +1,7 @@
 using System.Buffers.Binary;
 using M1vClock.Core.Results;
 using M1vClock.Diagnostics.Crashes;
+using Microsoft.Extensions.Logging.Abstractions;
 
 namespace M1vClock.Diagnostics.Tests;
 
@@ -356,7 +357,7 @@ public sealed class CrashServiceTests
         source.Events[41] = Xmls(RealCrashXml.KernelPowerWithoutAnyCause, RealCrashXml.KernelPowerWithPowerButton);
         source.Events[1000] = Xmls(RealCrashXml.DwmCrashInTheAmdDriver);
 
-        var report = await new CrashService(source).ReadAsync(TimeSpan.FromDays(30), CancellationToken.None);
+        var report = await new CrashService(source, NullLogger<CrashService>.Instance).ReadAsync(TimeSpan.FromDays(30), CancellationToken.None);
 
         Assert.Equal([ShutdownCause.PowerButton, ShutdownCause.Unknown], report.Shutdowns.Select(s => s.Cause));
         Assert.Equal(0, report.BlueScreens);
@@ -372,7 +373,7 @@ public sealed class CrashServiceTests
     {
         var source = new FakeCrashSource();
 
-        await new CrashService(source).ReadAsync(TimeSpan.FromDays(14), CancellationToken.None);
+        await new CrashService(source, NullLogger<CrashService>.Instance).ReadAsync(TimeSpan.FromDays(14), CancellationToken.None);
 
         Assert.Equal(2, source.Requests.Count);
         Assert.Contains(("System", 41, "Microsoft-Windows-Kernel-Power", TimeSpan.FromDays(14)), source.Requests);
@@ -407,7 +408,7 @@ public sealed class CrashServiceTests
         source.Settings = ReadResult.Failure<DumpSettings>("registro bloqueado");
         source.Dumps[DumpFolder.Kernel] = ReadResult.Failure<IReadOnlyList<DumpFileInfo>>("sem acesso");
 
-        var report = await new CrashService(source).ReadAsync(TimeSpan.FromDays(7), CancellationToken.None);
+        var report = await new CrashService(source, NullLogger<CrashService>.Instance).ReadAsync(TimeSpan.FromDays(7), CancellationToken.None);
 
         Assert.Single(report.AppCrashes);
         Assert.Empty(report.Shutdowns);
@@ -422,7 +423,7 @@ public sealed class CrashServiceTests
         var source = new FakeCrashSource();
         source.Events[41] = Xmls("lixo", RealCrashXml.KernelPowerWithPowerButton, string.Empty);
 
-        var report = await new CrashService(source).ReadAsync(TimeSpan.FromDays(7), CancellationToken.None);
+        var report = await new CrashService(source, NullLogger<CrashService>.Instance).ReadAsync(TimeSpan.FromDays(7), CancellationToken.None);
 
         Assert.Single(report.Shutdowns);
     }
@@ -439,7 +440,7 @@ public sealed class CrashServiceTests
             new DumpFileInfo(@"C:\WINDOWS\Minidump\b.dmp", "b.dmp", 2000, Now.AddDays(-1), null),
         ]);
 
-        var report = await new CrashService(source).ReadAsync(TimeSpan.FromDays(30), CancellationToken.None);
+        var report = await new CrashService(source, NullLogger<CrashService>.Instance).ReadAsync(TimeSpan.FromDays(30), CancellationToken.None);
 
         Assert.Equal(1, report.BlueScreens);
         Assert.Equal(["b.dmp", "a.dmp"], report.KernelDumps.Select(d => d.Name));
@@ -455,6 +456,48 @@ public sealed class CrashServiceTests
     {
         var window = days == 0 ? TimeSpan.Zero : TimeSpan.FromDays(days);
 
-        await Assert.ThrowsAsync<ArgumentOutOfRangeException>(() => new CrashService(new FakeCrashSource()).ReadAsync(window, CancellationToken.None));
+        await Assert.ThrowsAsync<ArgumentOutOfRangeException>(() => new CrashService(new FakeCrashSource(), NullLogger<CrashService>.Instance).ReadAsync(window, CancellationToken.None));
+    }
+}
+
+internal sealed class ListLogger : Microsoft.Extensions.Logging.ILogger
+{
+    public List<string> Messages { get; } = [];
+
+    public IDisposable? BeginScope<TState>(TState state)
+        where TState : notnull => null;
+
+    public bool IsEnabled(Microsoft.Extensions.Logging.LogLevel logLevel) => true;
+
+    public void Log<TState>(Microsoft.Extensions.Logging.LogLevel logLevel, Microsoft.Extensions.Logging.EventId eventId, TState state, Exception? exception, Func<TState, Exception?, string> formatter)
+    {
+        ArgumentNullException.ThrowIfNull(formatter);
+        Messages.Add(formatter(state, exception));
+    }
+}
+
+public sealed class ParserLoggingTests
+{
+    [Fact]
+    public void AnEventWhoseXmlCannotBeReadIsLoggedOnceAndSkipped()
+    {
+        var logger = new ListLogger();
+
+        Assert.Null(CrashParsers.ParseKernelPower("<Event", logger));
+        Assert.Null(CrashParsers.ParseAppCrash("isto não é xml", logger));
+
+        Assert.Equal(2, logger.Messages.Count);
+        Assert.All(logger.Messages, m => Assert.Contains("XML", m, StringComparison.Ordinal));
+    }
+
+    [Fact]
+    public void ValidXmlAndEmptyTextAreNeverLogged()
+    {
+        var logger = new ListLogger();
+
+        Assert.NotNull(CrashParsers.ParseKernelPower(RealCrashXml.KernelPowerWithPowerButton, logger));
+        Assert.Null(CrashParsers.ParseAppCrash(string.Empty, logger));
+
+        Assert.Empty(logger.Messages);
     }
 }
