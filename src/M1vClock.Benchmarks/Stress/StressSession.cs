@@ -157,12 +157,19 @@ public sealed class StressSession : IAsyncDisposable
 
     public void Stop()
     {
-        _monitor.RequestStop();
+        if (IsRunning)
+        {
+            _monitor.RequestStop();
+        }
     }
 
     public async ValueTask DisposeAsync()
     {
-        _monitor.RequestStop();
+        if (IsRunning)
+        {
+            _monitor.RequestStop();
+        }
+
         Task<StressOutcome>? completion;
         lock (_gate)
         {
