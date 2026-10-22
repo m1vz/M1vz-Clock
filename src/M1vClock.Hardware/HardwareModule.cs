@@ -1,6 +1,7 @@
 using M1vClock.Core.RegistryValues;
 using M1vClock.Hardware.Devices;
 using M1vClock.Hardware.Gpu;
+using M1vClock.Hardware.Health;
 using M1vClock.Hardware.Network;
 using M1vClock.Hardware.Platform;
 using M1vClock.Hardware.Power;
@@ -43,6 +44,7 @@ public static class HardwareModule
         services.AddSingleton<ISensorSource, LibreHardwareSensorSource>();
         services.AddSingleton<ISensorService, SensorService>();
         services.AddSingleton<IPawnIoProbe, RegistryPawnIoProbe>();
+        services.AddSingleton<IHealthService, HealthService>();
         services.AddSingleton<INetworkInterfaceSource, SystemNetworkInterfaceSource>();
         services.AddSingleton<INetworkProbe, SystemNetworkProbe>();
         services.AddSingleton(NetworkTestOptions.Default);
