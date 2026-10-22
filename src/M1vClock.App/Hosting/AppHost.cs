@@ -88,6 +88,7 @@ public static class AppHost
         builder.Services.AddTransient<StressPageViewModel>();
         builder.Services.AddTransient<EventsPageViewModel>();
         builder.Services.AddTransient<CrashesPageViewModel>();
+        builder.Services.AddTransient<ReliabilityPageViewModel>();
         return builder.Build();
     }
 }

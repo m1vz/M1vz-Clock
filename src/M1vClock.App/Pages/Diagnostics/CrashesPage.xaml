@@ -4,30 +4,6 @@
              xmlns:dc="clr-namespace:M1vClock.App.DesignSystem.Controls"
              xmlns:l="clr-namespace:M1vClock.App.Localization"
              Focusable="False">
-  <UserControl.Resources>
-    <DataTemplate x:Key="CrashRowTemplate">
-      <Border Style="{StaticResource Card}" Padding="20,14" Margin="0,0,0,12" AutomationProperties.Name="{Binding AccessibleName}">
-        <DockPanel>
-          <StackPanel DockPanel.Dock="Right" Margin="20,0,0,0" MinWidth="120" HorizontalAlignment="Right"
-                      Visibility="{Binding HasTrailing, Converter={StaticResource BoolToVisible}}">
-            <dc:StateBadge State="{Binding Tone}" Text="{Binding Badge}" HorizontalAlignment="Right" Margin="0,0,0,6"
-                           Visibility="{Binding HasBadge, Converter={StaticResource BoolToVisible}}" />
-            <TextBlock Text="{Binding TrailingTop}" Style="{StaticResource Text.Headline.Numeric}" HorizontalAlignment="Right" TextWrapping="Wrap" TextAlignment="Right" />
-            <TextBlock Text="{Binding TrailingBottom}" Style="{StaticResource Text.Caption}" HorizontalAlignment="Right" TextWrapping="Wrap" TextAlignment="Right" />
-          </StackPanel>
-          <dc:StateBadge DockPanel.Dock="Right" State="{Binding Tone}" Text="{Binding Badge}" VerticalAlignment="Top" Margin="20,0,0,0"
-                         Visibility="{Binding HasBadgeOnly, Converter={StaticResource BoolToVisible}}" />
-          <StackPanel>
-            <TextBlock Text="{Binding Title}" Style="{StaticResource Text.Headline}" TextWrapping="Wrap" />
-            <TextBlock Text="{Binding Detail}" Style="{StaticResource Text.Subhead}" TextWrapping="Wrap" Margin="0,4,0,0"
-                       Visibility="{Binding HasDetail, Converter={StaticResource BoolToVisible}}" />
-            <TextBlock Text="{Binding Meta}" Style="{StaticResource Text.Caption}" Foreground="{DynamicResource Brush.TextTertiary}" TextWrapping="Wrap" Margin="0,6,0,0"
-                       Visibility="{Binding HasMeta, Converter={StaticResource BoolToVisible}}" />
-          </StackPanel>
-        </DockPanel>
-      </Border>
-    </DataTemplate>
-  </UserControl.Resources>
   <dc:PageScaffold Title="{Binding Title}" Subtitle="{Binding Subtitle}">
     <dc:PageScaffold.Actions>
       <StackPanel Orientation="Horizontal">
@@ -71,23 +47,23 @@
       <TextBlock Text="{l:Text Diag.Crashes.Shutdowns.Title}" Style="{StaticResource Section.Title}" Margin="0,8,0,12" />
       <TextBlock Text="{l:Text Diag.Crashes.Shutdowns.Empty}" Style="{StaticResource Text.Subhead.Secondary}" Margin="4,0,0,16"
                  Visibility="{Binding ShowShutdownsEmpty, Converter={StaticResource BoolToVisible}}" />
-      <ItemsControl ItemsSource="{Binding Shutdowns}" ItemTemplate="{StaticResource CrashRowTemplate}" Focusable="False" />
+      <ItemsControl ItemsSource="{Binding Shutdowns}" ItemTemplate="{StaticResource DiagnosticRowTemplate}" Focusable="False" />
 
       <TextBlock Text="{l:Text Diag.Crashes.Apps.Title}" Style="{StaticResource Section.Title}" Margin="0,8,0,12" />
       <TextBlock Text="{l:Text Diag.Crashes.Apps.Empty}" Style="{StaticResource Text.Subhead.Secondary}" Margin="4,0,0,16"
                  Visibility="{Binding ShowAppsEmpty, Converter={StaticResource BoolToVisible}}" />
-      <ItemsControl ItemsSource="{Binding AppCrashes}" ItemTemplate="{StaticResource CrashRowTemplate}" Focusable="False" />
+      <ItemsControl ItemsSource="{Binding AppCrashes}" ItemTemplate="{StaticResource DiagnosticRowTemplate}" Focusable="False" />
 
       <TextBlock Text="{l:Text Diag.Crashes.KernelDumps.Title}" Style="{StaticResource Section.Title}" Margin="0,8,0,12" />
       <TextBlock Text="{l:Text Diag.Crashes.KernelDumps.Empty}" Style="{StaticResource Text.Subhead.Secondary}" Margin="4,0,0,16"
                  Visibility="{Binding ShowKernelDumpsEmpty, Converter={StaticResource BoolToVisible}}" />
-      <ItemsControl ItemsSource="{Binding KernelDumps}" ItemTemplate="{StaticResource CrashRowTemplate}" Focusable="False" />
+      <ItemsControl ItemsSource="{Binding KernelDumps}" ItemTemplate="{StaticResource DiagnosticRowTemplate}" Focusable="False" />
 
       <TextBlock Text="{l:Text Diag.Crashes.UserDumps.Title}" Style="{StaticResource Section.Title}" Margin="0,8,0,4" />
       <TextBlock Text="{l:Text Diag.Crashes.UserDumps.Hint}" Style="{StaticResource Text.Subhead.Secondary}" TextWrapping="Wrap" Margin="4,0,0,12" />
       <TextBlock Text="{l:Text Diag.Crashes.UserDumps.Empty}" Style="{StaticResource Text.Subhead.Secondary}" Margin="4,0,0,16"
                  Visibility="{Binding ShowUserDumpsEmpty, Converter={StaticResource BoolToVisible}}" />
-      <ItemsControl ItemsSource="{Binding UserDumps}" ItemTemplate="{StaticResource CrashRowTemplate}" Focusable="False" />
+      <ItemsControl ItemsSource="{Binding UserDumps}" ItemTemplate="{StaticResource DiagnosticRowTemplate}" Focusable="False" />
     </StackPanel>
   </dc:PageScaffold>
 </UserControl>

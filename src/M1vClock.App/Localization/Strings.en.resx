@@ -3759,4 +3759,91 @@
   <data name="Diag.Exception.CPP_EXCEPTION.Detail" xml:space="preserve">
     <value>A C++ program threw an exception it did not handle.</value>
   </data>
+  <data name="Diag.Reliability.Index.Current" xml:space="preserve">
+    <value>Now</value>
+  </data>
+  <data name="Diag.Reliability.Index.Lowest" xml:space="preserve">
+    <value>Lowest in the period</value>
+  </data>
+  <data name="Diag.Reliability.Index.Average" xml:space="preserve">
+    <value>Period average</value>
+  </data>
+  <data name="Diag.Reliability.Index.Scale" xml:space="preserve">
+    <value>out of 10</value>
+  </data>
+  <data name="Diag.Reliability.Verdict.Stable" xml:space="preserve">
+    <value>Stable</value>
+  </data>
+  <data name="Diag.Reliability.Verdict.Occasional" xml:space="preserve">
+    <value>Occasional failures</value>
+  </data>
+  <data name="Diag.Reliability.Verdict.Unstable" xml:space="preserve">
+    <value>Unstable</value>
+  </data>
+  <data name="Diag.Reliability.Verdict.Unknown" xml:space="preserve">
+    <value>No data</value>
+  </data>
+  <data name="Diag.Reliability.Chart.Title" xml:space="preserve">
+    <value>Stability over time</value>
+  </data>
+  <data name="Diag.Reliability.Chart.Name" xml:space="preserve">
+    <value>Stability index over the period; now {0} out of 10</value>
+  </data>
+  <data name="Diag.Reliability.Chart.Note" xml:space="preserve">
+    <value>Windows works out the index every hour, from 1 to 10, from the failures of the last days. Each failure drops the number and it only climbs back after days without failures. The red ticks at the bottom mark when failures happened.</value>
+  </data>
+  <data name="Diag.Reliability.Summary.Failures" xml:space="preserve">
+    <value>Failures</value>
+  </data>
+  <data name="Diag.Reliability.Summary.Changes" xml:space="preserve">
+    <value>Installs and updates</value>
+  </data>
+  <data name="Diag.Reliability.Records.Title" xml:space="preserve">
+    <value>Records</value>
+  </data>
+  <data name="Diag.Reliability.ShowChanges" xml:space="preserve">
+    <value>Also show installs and updates</value>
+  </data>
+  <data name="Diag.Reliability.ShowChanges.Detail" xml:space="preserve">
+    <value>By default the list shows only failures, which are what lowers the index.</value>
+  </data>
+  <data name="Diag.Reliability.Hidden" xml:space="preserve">
+    <value>{0} records that are not failures (installs, updates and others) are hidden. Turn on the switch above to see them.</value>
+  </data>
+  <data name="Diag.Reliability.Empty" xml:space="preserve">
+    <value>No failures recorded in this period.</value>
+  </data>
+  <data name="Diag.Reliability.Kind.UpdateInstalled" xml:space="preserve">
+    <value>Update installed</value>
+  </data>
+  <data name="Diag.Reliability.Kind.UpdateFailed" xml:space="preserve">
+    <value>Update failed to install</value>
+  </data>
+  <data name="Diag.Reliability.Kind.SoftwareInstalled" xml:space="preserve">
+    <value>Program installed</value>
+  </data>
+  <data name="Diag.Reliability.Kind.SoftwareRemoved" xml:space="preserve">
+    <value>Program removed</value>
+  </data>
+  <data name="Diag.Reliability.Kind.SoftwareReconfigured" xml:space="preserve">
+    <value>Program reconfigured</value>
+  </data>
+  <data name="Diag.Reliability.Kind.UnexpectedShutdown" xml:space="preserve">
+    <value>Unexpected shutdown</value>
+  </data>
+  <data name="Diag.Reliability.Kind.AppCrash" xml:space="preserve">
+    <value>Program crashed</value>
+  </data>
+  <data name="Diag.Reliability.Kind.WindowsFailure" xml:space="preserve">
+    <value>Windows failure (blue screen)</value>
+  </data>
+  <data name="Diag.Reliability.Kind.Other" xml:space="preserve">
+    <value>Other record</value>
+  </data>
+  <data name="Diag.Reliability.Part.stability" xml:space="preserve">
+    <value>the stability index</value>
+  </data>
+  <data name="Diag.Reliability.Part.records" xml:space="preserve">
+    <value>the records</value>
+  </data>
 </root>

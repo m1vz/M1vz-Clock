@@ -6,49 +6,18 @@ using M1vClock.Diagnostics.Crashes;
 
 namespace M1vClock.App.Pages.Diagnostics;
 
-public sealed class CrashRowViewModel(string title, string detail, string meta, string badge, MetricState tone, string trailingTop, string trailingBottom)
-{
-    public string Title { get; } = title;
-
-    public string Detail { get; } = detail;
-
-    public string Meta { get; } = meta;
-
-    public string Badge { get; } = badge;
-
-    public MetricState Tone { get; } = tone;
-
-    public string TrailingTop { get; } = trailingTop;
-
-    public string TrailingBottom { get; } = trailingBottom;
-
-    public bool HasDetail => Detail.Length > 0;
-
-    public bool HasMeta => Meta.Length > 0;
-
-    public bool HasBadge => Badge.Length > 0;
-
-    public bool HasTrailing => TrailingTop.Length > 0 || TrailingBottom.Length > 0;
-
-    public bool HasBadgeOnly => HasBadge && !HasTrailing;
-
-    public string AccessibleName => string.Join(". ", new[] { Badge, Title, TrailingTop, TrailingBottom }.Where(s => s.Length > 0));
-
-    public override string ToString() => AccessibleName;
-}
-
 public static class CrashRows
 {
     public static string Time(DateTimeOffset time) => time.ToLocalTime().ToString("g", Loc.Culture);
 
-    public static CrashRowViewModel Shutdown(UnexpectedShutdown shutdown)
+    public static DiagnosticRowViewModel Shutdown(UnexpectedShutdown shutdown)
     {
         ArgumentNullException.ThrowIfNull(shutdown);
         var when = Time(shutdown.Time);
         switch (shutdown.Cause)
         {
             case ShutdownCause.BlueScreen when shutdown.BugCheck is { } bugCheck:
-                return new CrashRowViewModel(
+                return new DiagnosticRowViewModel(
                     bugCheck.Name is { } name
                         ? Loc.Format("Diag.Crashes.Cause.BlueScreen", name)
                         : Loc.Format("Diag.Crashes.Cause.BlueScreen.Unnamed", bugCheck.Hex),
@@ -59,13 +28,13 @@ public static class CrashRows
                     when,
                     string.Empty);
             case ShutdownCause.PowerButton:
-                return new CrashRowViewModel(Loc.Get("Diag.Crashes.Cause.PowerButton"), Loc.Get("Diag.Crashes.Cause.PowerButton.Detail"), string.Empty, string.Empty, MetricState.Neutral, when, string.Empty);
+                return new DiagnosticRowViewModel(Loc.Get("Diag.Crashes.Cause.PowerButton"), Loc.Get("Diag.Crashes.Cause.PowerButton.Detail"), string.Empty, string.Empty, MetricState.Neutral, when, string.Empty);
             default:
-                return new CrashRowViewModel(Loc.Get("Diag.Crashes.Cause.Unknown"), Loc.Get("Diag.Crashes.Cause.Unknown.Detail"), string.Empty, Loc.Get("Diag.Severity.Warning"), MetricState.Warning, when, string.Empty);
+                return new DiagnosticRowViewModel(Loc.Get("Diag.Crashes.Cause.Unknown"), Loc.Get("Diag.Crashes.Cause.Unknown.Detail"), string.Empty, Loc.Get("Diag.Severity.Warning"), MetricState.Warning, when, string.Empty);
         }
     }
 
-    public static CrashRowViewModel App(AppCrashGroup group)
+    public static DiagnosticRowViewModel App(AppCrashGroup group)
     {
         ArgumentNullException.ThrowIfNull(group);
         var self = string.Equals(group.App, group.Module, StringComparison.OrdinalIgnoreCase);
@@ -73,7 +42,7 @@ public static class CrashRows
         var origin = Loc.Format($"Diag.Crashes.Origin.{group.Origin}", group.Vendor ?? string.Empty);
         var detail = group.ExceptionName is { } name ? $"{origin} {Loc.Get($"Diag.Exception.{name}.Detail")}" : origin;
         var exception = Loc.Format("Diag.Crashes.Apps.Exception", group.ExceptionHex);
-        return new CrashRowViewModel(
+        return new DiagnosticRowViewModel(
             title,
             detail,
             group.ExceptionName is { } code ? Loc.Format("Diag.Crashes.Dump.Meta", exception, code) : exception,
@@ -83,18 +52,18 @@ public static class CrashRows
             Loc.Format("Diag.Events.Last", Time(group.Last)));
     }
 
-    public static CrashRowViewModel Dump(DumpFileInfo dump)
+    public static DiagnosticRowViewModel Dump(DumpFileInfo dump)
     {
         ArgumentNullException.ThrowIfNull(dump);
         var size = Units.Bytes(dump.Length, Loc.Culture);
         var meta = Loc.Format("Diag.Crashes.Dump.Meta", size, Time(dump.Modified));
         if (dump.BugCheck is not { } bugCheck)
         {
-            return new CrashRowViewModel(dump.Name, string.Empty, meta, string.Empty, MetricState.Neutral, string.Empty, string.Empty);
+            return new DiagnosticRowViewModel(dump.Name, string.Empty, meta, string.Empty, MetricState.Neutral, string.Empty, string.Empty);
         }
 
         var title = bugCheck.Name is { } name ? $"{dump.Name} · {name}" : $"{dump.Name} · {bugCheck.Hex}";
-        return new CrashRowViewModel(title, BugCheckDetail(bugCheck), meta, Loc.Get("Diag.Severity.Critical"), MetricState.Critical, string.Empty, string.Empty);
+        return new DiagnosticRowViewModel(title, BugCheckDetail(bugCheck), meta, Loc.Get("Diag.Severity.Critical"), MetricState.Critical, string.Empty, string.Empty);
     }
 
     public static IReadOnlyList<InfoRowViewModel> Settings(DumpSettings settings)

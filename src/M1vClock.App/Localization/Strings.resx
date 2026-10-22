@@ -3759,4 +3759,91 @@
   <data name="Diag.Exception.CPP_EXCEPTION.Detail" xml:space="preserve">
     <value>Um programa em C++ lançou uma exceção que não tratou.</value>
   </data>
+  <data name="Diag.Reliability.Index.Current" xml:space="preserve">
+    <value>Agora</value>
+  </data>
+  <data name="Diag.Reliability.Index.Lowest" xml:space="preserve">
+    <value>Mais baixo no período</value>
+  </data>
+  <data name="Diag.Reliability.Index.Average" xml:space="preserve">
+    <value>Média do período</value>
+  </data>
+  <data name="Diag.Reliability.Index.Scale" xml:space="preserve">
+    <value>de 10</value>
+  </data>
+  <data name="Diag.Reliability.Verdict.Stable" xml:space="preserve">
+    <value>Estável</value>
+  </data>
+  <data name="Diag.Reliability.Verdict.Occasional" xml:space="preserve">
+    <value>Falhas ocasionais</value>
+  </data>
+  <data name="Diag.Reliability.Verdict.Unstable" xml:space="preserve">
+    <value>Instável</value>
+  </data>
+  <data name="Diag.Reliability.Verdict.Unknown" xml:space="preserve">
+    <value>Sem dados</value>
+  </data>
+  <data name="Diag.Reliability.Chart.Title" xml:space="preserve">
+    <value>Estabilidade ao longo do tempo</value>
+  </data>
+  <data name="Diag.Reliability.Chart.Name" xml:space="preserve">
+    <value>Índice de estabilidade ao longo do período; agora {0} de 10</value>
+  </data>
+  <data name="Diag.Reliability.Chart.Note" xml:space="preserve">
+    <value>O Windows calcula o índice a cada hora, de 1 a 10, com as falhas dos últimos dias. Cada falha derruba o número e ele só volta a subir depois de dias sem falhas. Os traços vermelhos embaixo marcam quando houve falhas.</value>
+  </data>
+  <data name="Diag.Reliability.Summary.Failures" xml:space="preserve">
+    <value>Falhas</value>
+  </data>
+  <data name="Diag.Reliability.Summary.Changes" xml:space="preserve">
+    <value>Instalações e atualizações</value>
+  </data>
+  <data name="Diag.Reliability.Records.Title" xml:space="preserve">
+    <value>Registros</value>
+  </data>
+  <data name="Diag.Reliability.ShowChanges" xml:space="preserve">
+    <value>Mostrar também instalações e atualizações</value>
+  </data>
+  <data name="Diag.Reliability.ShowChanges.Detail" xml:space="preserve">
+    <value>Por padrão a lista mostra só as falhas, que são o que baixa o índice.</value>
+  </data>
+  <data name="Diag.Reliability.Hidden" xml:space="preserve">
+    <value>{0} registros que não são falhas (instalações, atualizações e outros) estão escondidos. Ligue a chave acima para ver.</value>
+  </data>
+  <data name="Diag.Reliability.Empty" xml:space="preserve">
+    <value>Nenhuma falha registrada neste período.</value>
+  </data>
+  <data name="Diag.Reliability.Kind.UpdateInstalled" xml:space="preserve">
+    <value>Atualização instalada</value>
+  </data>
+  <data name="Diag.Reliability.Kind.UpdateFailed" xml:space="preserve">
+    <value>Falha ao instalar atualização</value>
+  </data>
+  <data name="Diag.Reliability.Kind.SoftwareInstalled" xml:space="preserve">
+    <value>Programa instalado</value>
+  </data>
+  <data name="Diag.Reliability.Kind.SoftwareRemoved" xml:space="preserve">
+    <value>Programa removido</value>
+  </data>
+  <data name="Diag.Reliability.Kind.SoftwareReconfigured" xml:space="preserve">
+    <value>Programa reconfigurado</value>
+  </data>
+  <data name="Diag.Reliability.Kind.UnexpectedShutdown" xml:space="preserve">
+    <value>Desligamento inesperado</value>
+  </data>
+  <data name="Diag.Reliability.Kind.AppCrash" xml:space="preserve">
+    <value>Programa travou</value>
+  </data>
+  <data name="Diag.Reliability.Kind.WindowsFailure" xml:space="preserve">
+    <value>Falha do Windows (tela azul)</value>
+  </data>
+  <data name="Diag.Reliability.Kind.Other" xml:space="preserve">
+    <value>Outro registro</value>
+  </data>
+  <data name="Diag.Reliability.Part.stability" xml:space="preserve">
+    <value>o índice de estabilidade</value>
+  </data>
+  <data name="Diag.Reliability.Part.records" xml:space="preserve">
+    <value>os registros</value>
+  </data>
 </root>

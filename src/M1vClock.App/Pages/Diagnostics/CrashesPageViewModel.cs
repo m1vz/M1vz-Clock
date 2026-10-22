@@ -34,13 +34,13 @@ public sealed partial class CrashesPageViewModel : HardwarePageViewModel
 
     public InfoSectionViewModel Settings { get; }
 
-    public ObservableCollection<CrashRowViewModel> Shutdowns { get; } = [];
+    public ObservableCollection<DiagnosticRowViewModel> Shutdowns { get; } = [];
 
-    public ObservableCollection<CrashRowViewModel> AppCrashes { get; } = [];
+    public ObservableCollection<DiagnosticRowViewModel> AppCrashes { get; } = [];
 
-    public ObservableCollection<CrashRowViewModel> KernelDumps { get; } = [];
+    public ObservableCollection<DiagnosticRowViewModel> KernelDumps { get; } = [];
 
-    public ObservableCollection<CrashRowViewModel> UserDumps { get; } = [];
+    public ObservableCollection<DiagnosticRowViewModel> UserDumps { get; } = [];
 
     public IReadOnlyList<string> WindowLabels { get; } =
     [
@@ -114,7 +114,7 @@ public sealed partial class CrashesPageViewModel : HardwarePageViewModel
 
     partial void OnProblemsChanged(string value) => OnPropertyChanged(nameof(HasProblems));
 
-    private static void Fill(ObservableCollection<CrashRowViewModel> target, IEnumerable<CrashRowViewModel> rows)
+    private static void Fill(ObservableCollection<DiagnosticRowViewModel> target, IEnumerable<DiagnosticRowViewModel> rows)
     {
         target.Clear();
         foreach (var row in rows)
