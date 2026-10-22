@@ -1,3 +1,4 @@
+using M1vClock.Diagnostics.Crashes;
 using Microsoft.Extensions.Logging;
 
 namespace M1vClock.Diagnostics;
@@ -12,4 +13,13 @@ internal static partial class DiagnosticsLog
 
     [LoggerMessage(EventId = 4003, Level = LogLevel.Information, Message = "A leitura do log {Log} parou em {Limit} eventos; o resto fica de fora.")]
     public static partial void EventLogTruncated(ILogger logger, string log, int limit);
+
+    [LoggerMessage(EventId = 4004, Level = LogLevel.Warning, Message = "Não foi possível ler a configuração de dumps do Windows.")]
+    public static partial void CrashSettingsFailed(ILogger logger, Exception exception);
+
+    [LoggerMessage(EventId = 4005, Level = LogLevel.Information, Message = "Sem permissão para ler a pasta de dumps {Folder}; segue sem ela.")]
+    public static partial void DumpFolderDenied(ILogger logger, DumpFolder folder);
+
+    [LoggerMessage(EventId = 4006, Level = LogLevel.Warning, Message = "Não foi possível ler a pasta de dumps {Folder}.")]
+    public static partial void DumpFolderFailed(ILogger logger, Exception exception, DumpFolder folder);
 }
