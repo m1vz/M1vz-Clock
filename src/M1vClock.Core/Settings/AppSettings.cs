@@ -27,5 +27,7 @@ public sealed class AppSettings : IVersionedSettings
 
     public bool CheckForUpdates { get; set; } = true;
 
+    public bool NotifyDevices { get; set; } = true;
+
     public IReadOnlyList<string> CollapsedSidebarSections { get; set; } = [];
 }
