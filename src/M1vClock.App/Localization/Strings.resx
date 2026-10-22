@@ -3450,4 +3450,313 @@
   <data name="Diag.Known.Perflib.Detail" xml:space="preserve">
     <value>Um programa instalou contadores de desempenho com defeito. Inofensivo.</value>
   </data>
+  <data name="Diag.Crashes.Window.Quarter" xml:space="preserve">
+    <value>90 dias</value>
+  </data>
+  <data name="Diag.Crashes.Summary.BlueScreens" xml:space="preserve">
+    <value>Telas azuis</value>
+  </data>
+  <data name="Diag.Crashes.Summary.Shutdowns" xml:space="preserve">
+    <value>Reinícios inesperados</value>
+  </data>
+  <data name="Diag.Crashes.Summary.Apps" xml:space="preserve">
+    <value>Programas que travaram</value>
+  </data>
+  <data name="Diag.Crashes.Summary.AppKinds" xml:space="preserve">
+    <value>{0} programa(s) diferentes</value>
+  </data>
+  <data name="Diag.Crashes.Settings.Title" xml:space="preserve">
+    <value>Registro de telas azuis</value>
+  </data>
+  <data name="Diag.Crashes.Settings.Status.Off" xml:space="preserve">
+    <value>Dumps desligados</value>
+  </data>
+  <data name="Diag.Crashes.Settings.Status.On" xml:space="preserve">
+    <value>Dumps ligados</value>
+  </data>
+  <data name="Diag.Crashes.Settings.Mode" xml:space="preserve">
+    <value>Tipo de dump</value>
+  </data>
+  <data name="Diag.Crashes.Settings.Folder" xml:space="preserve">
+    <value>Pasta dos dumps</value>
+  </data>
+  <data name="Diag.Crashes.Settings.File" xml:space="preserve">
+    <value>Arquivo do dump completo</value>
+  </data>
+  <data name="Diag.Crashes.Settings.AutoReboot" xml:space="preserve">
+    <value>Reiniciar sozinho após a tela azul</value>
+  </data>
+  <data name="Diag.Crashes.Settings.LogEvent" xml:space="preserve">
+    <value>Registrar no log de eventos</value>
+  </data>
+  <data name="Diag.Crashes.Settings.Advice.Off" xml:space="preserve">
+    <value>Este PC está configurado para não guardar nada quando dá tela azul. Sem isso, uma tela azul vira só um reinício inesperado, sem código e sem causa. Para ligar: Configurações do Windows, Sistema, Sobre, Configurações avançadas do sistema, Inicialização e recuperação, e escolha “Despejo de memória automático”.</value>
+  </data>
+  <data name="Diag.Crashes.Settings.Advice.Unknown" xml:space="preserve">
+    <value>O Windows não tem um tipo de dump definido neste PC. Confira em Inicialização e recuperação, nas configurações avançadas do sistema.</value>
+  </data>
+  <data name="Diag.Dump.Mode.Disabled" xml:space="preserve">
+    <value>Desligado (nada é guardado)</value>
+  </data>
+  <data name="Diag.Dump.Mode.Small" xml:space="preserve">
+    <value>Pequeno (minidump)</value>
+  </data>
+  <data name="Diag.Dump.Mode.Kernel" xml:space="preserve">
+    <value>Memória do kernel</value>
+  </data>
+  <data name="Diag.Dump.Mode.Complete" xml:space="preserve">
+    <value>Memória completa</value>
+  </data>
+  <data name="Diag.Dump.Mode.Automatic" xml:space="preserve">
+    <value>Automático</value>
+  </data>
+  <data name="Diag.Dump.Mode.Unknown" xml:space="preserve">
+    <value>Não definido</value>
+  </data>
+  <data name="Diag.Crashes.Shutdowns.Title" xml:space="preserve">
+    <value>Reinícios inesperados</value>
+  </data>
+  <data name="Diag.Crashes.Shutdowns.Empty" xml:space="preserve">
+    <value>Nenhum reinício inesperado neste período.</value>
+  </data>
+  <data name="Diag.Crashes.Cause.BlueScreen" xml:space="preserve">
+    <value>Tela azul: {0}</value>
+  </data>
+  <data name="Diag.Crashes.Cause.BlueScreen.Unnamed" xml:space="preserve">
+    <value>Tela azul com o código {0}</value>
+  </data>
+  <data name="Diag.Crashes.Cause.BlueScreen.NoDescription" xml:space="preserve">
+    <value>O Windows não tem uma descrição para este código. Procure por ele junto com “bug check” para ver o que significa.</value>
+  </data>
+  <data name="Diag.Crashes.Cause.PowerButton" xml:space="preserve">
+    <value>Desligamento forçado pelo botão de energia</value>
+  </data>
+  <data name="Diag.Crashes.Cause.PowerButton.Detail" xml:space="preserve">
+    <value>O botão de energia foi segurado até o PC desligar. Normalmente é a saída para um travamento da tela.</value>
+  </data>
+  <data name="Diag.Crashes.Cause.Unknown" xml:space="preserve">
+    <value>Sem causa registrada</value>
+  </data>
+  <data name="Diag.Crashes.Cause.Unknown.Detail" xml:space="preserve">
+    <value>Pode ter sido queda de energia, travamento total ou uma tela azul que não deixou registro. Se o PC reinicia sozinho, confira a fonte, as temperaturas e a memória.</value>
+  </data>
+  <data name="Diag.Crashes.Parameters" xml:space="preserve">
+    <value>Parâmetros: {0}</value>
+  </data>
+  <data name="Diag.Crashes.Apps.Title" xml:space="preserve">
+    <value>Programas que travaram</value>
+  </data>
+  <data name="Diag.Crashes.Apps.Empty" xml:space="preserve">
+    <value>Nenhum programa travou neste período.</value>
+  </data>
+  <data name="Diag.Crashes.Apps.TitleIn" xml:space="preserve">
+    <value>{0} travou em {1}</value>
+  </data>
+  <data name="Diag.Crashes.Apps.TitleSelf" xml:space="preserve">
+    <value>{0} travou</value>
+  </data>
+  <data name="Diag.Crashes.Apps.Exception" xml:space="preserve">
+    <value>Exceção {0}</value>
+  </data>
+  <data name="Diag.Crashes.Origin.GraphicsDriver" xml:space="preserve">
+    <value>O módulo que falhou é o driver de vídeo {0}. Se repetir, reinstale o driver (limpando o anterior) e teste sem overclock.</value>
+  </data>
+  <data name="Diag.Crashes.Origin.Windows" xml:space="preserve">
+    <value>O módulo que falhou é do próprio Windows. Se repetir, a página Reparo ajuda a corrigir arquivos do sistema.</value>
+  </data>
+  <data name="Diag.Crashes.Origin.Application" xml:space="preserve">
+    <value>O erro está no código do próprio programa. Atualizar ou reinstalar costuma resolver.</value>
+  </data>
+  <data name="Diag.Crashes.Origin.ThirdPartyModule" xml:space="preserve">
+    <value>O módulo que falhou é de terceiros (um plugin, overlay ou biblioteca). Desligar o que injeta nesse programa costuma resolver.</value>
+  </data>
+  <data name="Diag.Crashes.KernelDumps.Title" xml:space="preserve">
+    <value>Dumps de tela azul</value>
+  </data>
+  <data name="Diag.Crashes.KernelDumps.Empty" xml:space="preserve">
+    <value>Nenhum arquivo de dump de tela azul neste PC.</value>
+  </data>
+  <data name="Diag.Crashes.UserDumps.Title" xml:space="preserve">
+    <value>Dumps de programas</value>
+  </data>
+  <data name="Diag.Crashes.UserDumps.Hint" xml:space="preserve">
+    <value>Arquivos que o Windows guarda quando um programa trava. Podem ocupar bastante espaço e conter dados do programa.</value>
+  </data>
+  <data name="Diag.Crashes.UserDumps.Empty" xml:space="preserve">
+    <value>Nenhum dump de programa guardado.</value>
+  </data>
+  <data name="Diag.Crashes.Dump.Meta" xml:space="preserve">
+    <value>{0} · {1}</value>
+  </data>
+  <data name="Diag.Crashes.Failed" xml:space="preserve">
+    <value>Não foi possível ler {0}: {1}</value>
+  </data>
+  <data name="Diag.Crashes.Part.settings" xml:space="preserve">
+    <value>a configuração de dumps</value>
+  </data>
+  <data name="Diag.Crashes.Part.shutdowns" xml:space="preserve">
+    <value>os reinícios inesperados</value>
+  </data>
+  <data name="Diag.Crashes.Part.apps" xml:space="preserve">
+    <value>os travamentos de programas</value>
+  </data>
+  <data name="Diag.Crashes.Part.kernelDumps" xml:space="preserve">
+    <value>os dumps de tela azul</value>
+  </data>
+  <data name="Diag.Crashes.Part.userDumps" xml:space="preserve">
+    <value>os dumps de programas</value>
+  </data>
+  <data name="Diag.BugCheck.IRQL_NOT_LESS_OR_EQUAL.Detail" xml:space="preserve">
+    <value>Um driver ou o kernel mexeu na memória no momento errado. Costuma ser driver com defeito ou memória instável.</value>
+  </data>
+  <data name="Diag.BugCheck.BAD_POOL_HEADER.Detail" xml:space="preserve">
+    <value>A memória do sistema foi corrompida. Aponta para driver ruim ou memória com defeito.</value>
+  </data>
+  <data name="Diag.BugCheck.MEMORY_MANAGEMENT.Detail" xml:space="preserve">
+    <value>Erro grave de gerenciamento de memória. Rode o diagnóstico de memória do Windows e teste os pentes um a um.</value>
+  </data>
+  <data name="Diag.BugCheck.KMODE_EXCEPTION_NOT_HANDLED.Detail" xml:space="preserve">
+    <value>Um driver gerou um erro que ninguém tratou. Atualize ou reinstale o driver do dispositivo citado no dump.</value>
+  </data>
+  <data name="Diag.BugCheck.NTFS_FILE_SYSTEM.Detail" xml:space="preserve">
+    <value>O sistema de arquivos encontrou um erro. Verifique o disco na página Reparo e faça backup.</value>
+  </data>
+  <data name="Diag.BugCheck.SYSTEM_SERVICE_EXCEPTION.Detail" xml:space="preserve">
+    <value>Um serviço do sistema falhou, quase sempre por driver de vídeo ou antivírus. Reinstale o driver de vídeo.</value>
+  </data>
+  <data name="Diag.BugCheck.NO_MORE_SYSTEM_PTES.Detail" xml:space="preserve">
+    <value>O Windows ficou sem espaço de endereços do kernel, por vazamento de um driver. Atualize os drivers.</value>
+  </data>
+  <data name="Diag.BugCheck.PFN_LIST_CORRUPT.Detail" xml:space="preserve">
+    <value>A lista de páginas de memória foi corrompida. Aponta para driver ruim ou memória com defeito.</value>
+  </data>
+  <data name="Diag.BugCheck.PAGE_FAULT_IN_NONPAGED_AREA.Detail" xml:space="preserve">
+    <value>O sistema tentou usar memória que não existe. Costuma ser memória com defeito, driver ruim ou disco com problema.</value>
+  </data>
+  <data name="Diag.BugCheck.REGISTRY_ERROR.Detail" xml:space="preserve">
+    <value>O Windows encontrou um problema no registro ou no disco onde ele fica. Verifique o disco.</value>
+  </data>
+  <data name="Diag.BugCheck.KERNEL_STACK_INPAGE_ERROR.Detail" xml:space="preserve">
+    <value>O Windows não conseguiu ler dados do disco para a memória. Aponta para disco, cabo ou controlador com problema.</value>
+  </data>
+  <data name="Diag.BugCheck.KERNEL_DATA_INPAGE_ERROR.Detail" xml:space="preserve">
+    <value>O Windows não conseguiu ler dados do disco para a memória. Aponta para disco, cabo ou controlador com problema.</value>
+  </data>
+  <data name="Diag.BugCheck.INACCESSIBLE_BOOT_DEVICE.Detail" xml:space="preserve">
+    <value>O Windows perdeu o acesso ao disco de inicialização. Aconteceu depois de mudar o modo da controladora (AHCI/RAID) ou de um driver de armazenamento.</value>
+  </data>
+  <data name="Diag.BugCheck.SYSTEM_THREAD_EXCEPTION_NOT_HANDLED.Detail" xml:space="preserve">
+    <value>Uma tarefa do sistema falhou sem tratamento, quase sempre por um driver. O dump diz qual.</value>
+  </data>
+  <data name="Diag.BugCheck.UNEXPECTED_KERNEL_MODE_TRAP.Detail" xml:space="preserve">
+    <value>A CPU recebeu uma condição que o kernel não esperava. Pode ser memória, superaquecimento ou overclock instável.</value>
+  </data>
+  <data name="Diag.BugCheck.DRIVER_POWER_STATE_FAILURE.Detail" xml:space="preserve">
+    <value>Um driver não respondeu ao suspender ou ligar o dispositivo. Atualize os drivers e confira as opções de energia.</value>
+  </data>
+  <data name="Diag.BugCheck.INTERNAL_POWER_ERROR.Detail" xml:space="preserve">
+    <value>Erro interno na gerência de energia. Atualize a BIOS e os drivers de chipset.</value>
+  </data>
+  <data name="Diag.BugCheck.ACPI_BIOS_ERROR.Detail" xml:space="preserve">
+    <value>A BIOS descreveu o hardware de um jeito que o Windows não aceita. Atualize a BIOS.</value>
+  </data>
+  <data name="Diag.BugCheck.ATTEMPTED_WRITE_TO_READONLY_MEMORY.Detail" xml:space="preserve">
+    <value>Um driver tentou gravar em memória protegida. Atualize ou reinstale o driver citado no dump.</value>
+  </data>
+  <data name="Diag.BugCheck.BAD_POOL_CALLER.Detail" xml:space="preserve">
+    <value>Um driver pediu memória do jeito errado. Atualize os drivers e remova os que você instalou há pouco.</value>
+  </data>
+  <data name="Diag.BugCheck.DRIVER_VERIFIER_DETECTED_VIOLATION.Detail" xml:space="preserve">
+    <value>O Verificador de Drivers pegou um driver fazendo algo proibido. Desligue o verificador se não foi você que ligou.</value>
+  </data>
+  <data name="Diag.BugCheck.DRIVER_CORRUPTED_EXPOOL.Detail" xml:space="preserve">
+    <value>Um driver corrompeu a memória do sistema. Atualize os drivers.</value>
+  </data>
+  <data name="Diag.BugCheck.DRIVER_IRQL_NOT_LESS_OR_EQUAL.Detail" xml:space="preserve">
+    <value>Um driver acessou memória em um momento proibido. É um dos códigos mais comuns; o dump aponta o driver.</value>
+  </data>
+  <data name="Diag.BugCheck.THREAD_STUCK_IN_DEVICE_DRIVER.Detail" xml:space="preserve">
+    <value>Um driver, em geral o de vídeo, ficou preso esperando o hardware. Reinstale o driver de vídeo.</value>
+  </data>
+  <data name="Diag.BugCheck.CRITICAL_PROCESS_DIED.Detail" xml:space="preserve">
+    <value>Um processo essencial do Windows terminou. Pode ser disco, memória ou arquivos do sistema danificados.</value>
+  </data>
+  <data name="Diag.BugCheck.CRITICAL_OBJECT_TERMINATION.Detail" xml:space="preserve">
+    <value>Um processo ou thread essencial terminou. Pode ser disco, memória ou arquivos do sistema danificados.</value>
+  </data>
+  <data name="Diag.BugCheck.CLOCK_WATCHDOG_TIMEOUT.Detail" xml:space="preserve">
+    <value>Um núcleo da CPU parou de responder. Costuma ser overclock ou undervolt instável, ou BIOS desatualizada.</value>
+  </data>
+  <data name="Diag.BugCheck.CRITICAL_STRUCTURE_CORRUPTION.Detail" xml:space="preserve">
+    <value>O kernel detectou que uma estrutura protegida foi alterada. Pode ser driver ruim ou memória com defeito.</value>
+  </data>
+  <data name="Diag.BugCheck.VIDEO_TDR_FAILURE.Detail" xml:space="preserve">
+    <value>O driver de vídeo parou de responder e o Windows não conseguiu recuperar. Reinstale o driver e teste sem overclock.</value>
+  </data>
+  <data name="Diag.BugCheck.VIDEO_TDR_TIMEOUT_DETECTED.Detail" xml:space="preserve">
+    <value>A placa de vídeo demorou demais para responder. Reinstale o driver e teste sem overclock.</value>
+  </data>
+  <data name="Diag.BugCheck.VIDEO_SCHEDULER_INTERNAL_ERROR.Detail" xml:space="preserve">
+    <value>O agendador de vídeo encontrou um erro fatal. Reinstale o driver de vídeo.</value>
+  </data>
+  <data name="Diag.BugCheck.WHEA_UNCORRECTABLE_ERROR.Detail" xml:space="preserve">
+    <value>O hardware reportou um erro que não deu para corrigir: CPU, memória, placa-mãe ou overclock. Confira temperaturas e teste sem overclock.</value>
+  </data>
+  <data name="Diag.BugCheck.DPC_WATCHDOG_VIOLATION.Detail" xml:space="preserve">
+    <value>Um driver demorou demais numa tarefa urgente. Costuma ser driver de SSD, de rede ou de vídeo; atualize o firmware do SSD.</value>
+  </data>
+  <data name="Diag.BugCheck.KERNEL_SECURITY_CHECK_FAILURE.Detail" xml:space="preserve">
+    <value>O kernel detectou dados corrompidos. Pode ser driver ruim, memória ou disco com problema.</value>
+  </data>
+  <data name="Diag.BugCheck.KERNEL_MODE_HEAP_CORRUPTION.Detail" xml:space="preserve">
+    <value>Um driver corrompeu a memória do kernel. Atualize os drivers.</value>
+  </data>
+  <data name="Diag.BugCheck.VIDEO_ENGINE_TIMEOUT_DETECTED.Detail" xml:space="preserve">
+    <value>Um motor da placa de vídeo parou de responder. Reinstale o driver de vídeo e confira a temperatura da placa.</value>
+  </data>
+  <data name="Diag.BugCheck.UNEXPECTED_STORE_EXCEPTION.Detail" xml:space="preserve">
+    <value>O componente de armazenamento do Windows encontrou um erro. Costuma ser SSD com problema ou driver de disco; verifique o SMART.</value>
+  </data>
+  <data name="Diag.BugCheck.LIVE_SYSTEM_DUMP.Detail" xml:space="preserve">
+    <value>Não é uma tela azul: o Windows tirou uma cópia da memória sem desligar o PC, por causa de um problema que não derrubou o sistema.</value>
+  </data>
+  <data name="Diag.BugCheck.SYNTHETIC_WATCHDOG_TIMEOUT.Detail" xml:space="preserve">
+    <value>O sistema ficou travado por tempo demais sem responder. Costuma ser driver, overclock ou BIOS.</value>
+  </data>
+  <data name="Diag.Exception.BREAKPOINT.Detail" xml:space="preserve">
+    <value>O programa parou num ponto de interrupção, o que acontece com depuradores ou erro interno.</value>
+  </data>
+  <data name="Diag.Exception.ACCESS_VIOLATION.Detail" xml:space="preserve">
+    <value>Acesso inválido à memória, o motivo de travamento mais comum.</value>
+  </data>
+  <data name="Diag.Exception.ILLEGAL_INSTRUCTION.Detail" xml:space="preserve">
+    <value>O programa executou uma instrução que a CPU não conhece, como um programa novo em CPU antiga.</value>
+  </data>
+  <data name="Diag.Exception.INT_DIVIDE_BY_ZERO.Detail" xml:space="preserve">
+    <value>Divisão por zero dentro do programa.</value>
+  </data>
+  <data name="Diag.Exception.STACK_OVERFLOW.Detail" xml:space="preserve">
+    <value>O programa usou mais pilha de memória do que existe, em geral por uma repetição sem fim.</value>
+  </data>
+  <data name="Diag.Exception.DLL_NOT_FOUND.Detail" xml:space="preserve">
+    <value>O programa precisa de uma DLL que não foi encontrada. Reinstale o programa ou os componentes do Visual C++.</value>
+  </data>
+  <data name="Diag.Exception.DLL_INIT_FAILED.Detail" xml:space="preserve">
+    <value>Uma DLL não conseguiu iniciar. Pode ser versão errada ou componente quebrado.</value>
+  </data>
+  <data name="Diag.Exception.HEAP_CORRUPTION.Detail" xml:space="preserve">
+    <value>A memória do programa foi corrompida. Costuma ser bug do programa ou um módulo injetado.</value>
+  </data>
+  <data name="Diag.Exception.STACK_BUFFER_OVERRUN.Detail" xml:space="preserve">
+    <value>O programa se encerrou por uma verificação de segurança ou erro fatal interno.</value>
+  </data>
+  <data name="Diag.Exception.INVALID_IMAGE_FORMAT.Detail" xml:space="preserve">
+    <value>O programa ou uma DLL é de uma arquitetura que não combina (32 e 64 bits misturados).</value>
+  </data>
+  <data name="Diag.Exception.CLR_EXCEPTION.Detail" xml:space="preserve">
+    <value>Um programa .NET lançou uma exceção que não tratou.</value>
+  </data>
+  <data name="Diag.Exception.CPP_EXCEPTION.Detail" xml:space="preserve">
+    <value>Um programa em C++ lançou uma exceção que não tratou.</value>
+  </data>
 </root>

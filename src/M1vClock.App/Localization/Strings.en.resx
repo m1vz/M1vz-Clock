@@ -3450,4 +3450,313 @@
   <data name="Diag.Known.Perflib.Detail" xml:space="preserve">
     <value>A program installed faulty performance counters. Harmless.</value>
   </data>
+  <data name="Diag.Crashes.Window.Quarter" xml:space="preserve">
+    <value>90 days</value>
+  </data>
+  <data name="Diag.Crashes.Summary.BlueScreens" xml:space="preserve">
+    <value>Blue screens</value>
+  </data>
+  <data name="Diag.Crashes.Summary.Shutdowns" xml:space="preserve">
+    <value>Unexpected restarts</value>
+  </data>
+  <data name="Diag.Crashes.Summary.Apps" xml:space="preserve">
+    <value>Program crashes</value>
+  </data>
+  <data name="Diag.Crashes.Summary.AppKinds" xml:space="preserve">
+    <value>{0} different program(s)</value>
+  </data>
+  <data name="Diag.Crashes.Settings.Title" xml:space="preserve">
+    <value>Blue screen recording</value>
+  </data>
+  <data name="Diag.Crashes.Settings.Status.Off" xml:space="preserve">
+    <value>Dumps off</value>
+  </data>
+  <data name="Diag.Crashes.Settings.Status.On" xml:space="preserve">
+    <value>Dumps on</value>
+  </data>
+  <data name="Diag.Crashes.Settings.Mode" xml:space="preserve">
+    <value>Dump type</value>
+  </data>
+  <data name="Diag.Crashes.Settings.Folder" xml:space="preserve">
+    <value>Dump folder</value>
+  </data>
+  <data name="Diag.Crashes.Settings.File" xml:space="preserve">
+    <value>Full dump file</value>
+  </data>
+  <data name="Diag.Crashes.Settings.AutoReboot" xml:space="preserve">
+    <value>Restart on its own after a blue screen</value>
+  </data>
+  <data name="Diag.Crashes.Settings.LogEvent" xml:space="preserve">
+    <value>Write to the event log</value>
+  </data>
+  <data name="Diag.Crashes.Settings.Advice.Off" xml:space="preserve">
+    <value>This PC is set to keep nothing when a blue screen happens. Without that, a blue screen shows up as just an unexpected restart, with no code and no cause. To turn it on: Windows Settings, System, About, Advanced system settings, Startup and Recovery, and choose “Automatic memory dump”.</value>
+  </data>
+  <data name="Diag.Crashes.Settings.Advice.Unknown" xml:space="preserve">
+    <value>Windows has no dump type set on this PC. Check Startup and Recovery in the advanced system settings.</value>
+  </data>
+  <data name="Diag.Dump.Mode.Disabled" xml:space="preserve">
+    <value>Off (nothing is kept)</value>
+  </data>
+  <data name="Diag.Dump.Mode.Small" xml:space="preserve">
+    <value>Small (minidump)</value>
+  </data>
+  <data name="Diag.Dump.Mode.Kernel" xml:space="preserve">
+    <value>Kernel memory</value>
+  </data>
+  <data name="Diag.Dump.Mode.Complete" xml:space="preserve">
+    <value>Complete memory</value>
+  </data>
+  <data name="Diag.Dump.Mode.Automatic" xml:space="preserve">
+    <value>Automatic</value>
+  </data>
+  <data name="Diag.Dump.Mode.Unknown" xml:space="preserve">
+    <value>Not set</value>
+  </data>
+  <data name="Diag.Crashes.Shutdowns.Title" xml:space="preserve">
+    <value>Unexpected restarts</value>
+  </data>
+  <data name="Diag.Crashes.Shutdowns.Empty" xml:space="preserve">
+    <value>No unexpected restarts in this period.</value>
+  </data>
+  <data name="Diag.Crashes.Cause.BlueScreen" xml:space="preserve">
+    <value>Blue screen: {0}</value>
+  </data>
+  <data name="Diag.Crashes.Cause.BlueScreen.Unnamed" xml:space="preserve">
+    <value>Blue screen with code {0}</value>
+  </data>
+  <data name="Diag.Crashes.Cause.BlueScreen.NoDescription" xml:space="preserve">
+    <value>Windows has no description for this code. Search for it together with “bug check” to see what it means.</value>
+  </data>
+  <data name="Diag.Crashes.Cause.PowerButton" xml:space="preserve">
+    <value>Forced shutdown with the power button</value>
+  </data>
+  <data name="Diag.Crashes.Cause.PowerButton.Detail" xml:space="preserve">
+    <value>The power button was held until the PC turned off. It is usually the way out of a frozen screen.</value>
+  </data>
+  <data name="Diag.Crashes.Cause.Unknown" xml:space="preserve">
+    <value>No cause recorded</value>
+  </data>
+  <data name="Diag.Crashes.Cause.Unknown.Detail" xml:space="preserve">
+    <value>It may have been a power loss, a total freeze or a blue screen that left no record. If the PC restarts on its own, check the power supply, temperatures and memory.</value>
+  </data>
+  <data name="Diag.Crashes.Parameters" xml:space="preserve">
+    <value>Parameters: {0}</value>
+  </data>
+  <data name="Diag.Crashes.Apps.Title" xml:space="preserve">
+    <value>Programs that crashed</value>
+  </data>
+  <data name="Diag.Crashes.Apps.Empty" xml:space="preserve">
+    <value>No program crashed in this period.</value>
+  </data>
+  <data name="Diag.Crashes.Apps.TitleIn" xml:space="preserve">
+    <value>{0} crashed in {1}</value>
+  </data>
+  <data name="Diag.Crashes.Apps.TitleSelf" xml:space="preserve">
+    <value>{0} crashed</value>
+  </data>
+  <data name="Diag.Crashes.Apps.Exception" xml:space="preserve">
+    <value>Exception {0}</value>
+  </data>
+  <data name="Diag.Crashes.Origin.GraphicsDriver" xml:space="preserve">
+    <value>The module that failed is the {0} graphics driver. If it repeats, reinstall the driver (cleaning the old one) and test without overclock.</value>
+  </data>
+  <data name="Diag.Crashes.Origin.Windows" xml:space="preserve">
+    <value>The module that failed belongs to Windows itself. If it repeats, the Repair page helps fix system files.</value>
+  </data>
+  <data name="Diag.Crashes.Origin.Application" xml:space="preserve">
+    <value>The error is in the program's own code. Updating or reinstalling usually fixes it.</value>
+  </data>
+  <data name="Diag.Crashes.Origin.ThirdPartyModule" xml:space="preserve">
+    <value>The module that failed is third-party (a plugin, overlay or library). Turning off whatever hooks into that program usually fixes it.</value>
+  </data>
+  <data name="Diag.Crashes.KernelDumps.Title" xml:space="preserve">
+    <value>Blue screen dumps</value>
+  </data>
+  <data name="Diag.Crashes.KernelDumps.Empty" xml:space="preserve">
+    <value>No blue screen dump files on this PC.</value>
+  </data>
+  <data name="Diag.Crashes.UserDumps.Title" xml:space="preserve">
+    <value>Program dumps</value>
+  </data>
+  <data name="Diag.Crashes.UserDumps.Hint" xml:space="preserve">
+    <value>Files Windows keeps when a program crashes. They can take a lot of space and contain the program's data.</value>
+  </data>
+  <data name="Diag.Crashes.UserDumps.Empty" xml:space="preserve">
+    <value>No program dumps kept.</value>
+  </data>
+  <data name="Diag.Crashes.Dump.Meta" xml:space="preserve">
+    <value>{0} · {1}</value>
+  </data>
+  <data name="Diag.Crashes.Failed" xml:space="preserve">
+    <value>Could not read {0}: {1}</value>
+  </data>
+  <data name="Diag.Crashes.Part.settings" xml:space="preserve">
+    <value>the dump settings</value>
+  </data>
+  <data name="Diag.Crashes.Part.shutdowns" xml:space="preserve">
+    <value>the unexpected restarts</value>
+  </data>
+  <data name="Diag.Crashes.Part.apps" xml:space="preserve">
+    <value>the program crashes</value>
+  </data>
+  <data name="Diag.Crashes.Part.kernelDumps" xml:space="preserve">
+    <value>the blue screen dumps</value>
+  </data>
+  <data name="Diag.Crashes.Part.userDumps" xml:space="preserve">
+    <value>the program dumps</value>
+  </data>
+  <data name="Diag.BugCheck.IRQL_NOT_LESS_OR_EQUAL.Detail" xml:space="preserve">
+    <value>A driver or the kernel touched memory at the wrong time. Usually a faulty driver or unstable memory.</value>
+  </data>
+  <data name="Diag.BugCheck.BAD_POOL_HEADER.Detail" xml:space="preserve">
+    <value>System memory was corrupted. It points to a bad driver or faulty memory.</value>
+  </data>
+  <data name="Diag.BugCheck.MEMORY_MANAGEMENT.Detail" xml:space="preserve">
+    <value>Serious memory management error. Run the Windows memory diagnostic and test the sticks one by one.</value>
+  </data>
+  <data name="Diag.BugCheck.KMODE_EXCEPTION_NOT_HANDLED.Detail" xml:space="preserve">
+    <value>A driver raised an error nobody handled. Update or reinstall the driver of the device named in the dump.</value>
+  </data>
+  <data name="Diag.BugCheck.NTFS_FILE_SYSTEM.Detail" xml:space="preserve">
+    <value>The file system hit an error. Check the disk on the Repair page and back up.</value>
+  </data>
+  <data name="Diag.BugCheck.SYSTEM_SERVICE_EXCEPTION.Detail" xml:space="preserve">
+    <value>A system service failed, almost always because of the graphics driver or antivirus. Reinstall the graphics driver.</value>
+  </data>
+  <data name="Diag.BugCheck.NO_MORE_SYSTEM_PTES.Detail" xml:space="preserve">
+    <value>Windows ran out of kernel address space because of a driver leak. Update the drivers.</value>
+  </data>
+  <data name="Diag.BugCheck.PFN_LIST_CORRUPT.Detail" xml:space="preserve">
+    <value>The memory page list was corrupted. It points to a bad driver or faulty memory.</value>
+  </data>
+  <data name="Diag.BugCheck.PAGE_FAULT_IN_NONPAGED_AREA.Detail" xml:space="preserve">
+    <value>The system tried to use memory that does not exist. Usually faulty memory, a bad driver or a failing disk.</value>
+  </data>
+  <data name="Diag.BugCheck.REGISTRY_ERROR.Detail" xml:space="preserve">
+    <value>Windows found a problem in the registry or on the disk that holds it. Check the disk.</value>
+  </data>
+  <data name="Diag.BugCheck.KERNEL_STACK_INPAGE_ERROR.Detail" xml:space="preserve">
+    <value>Windows could not read data from disk into memory. It points to a disk, cable or controller problem.</value>
+  </data>
+  <data name="Diag.BugCheck.KERNEL_DATA_INPAGE_ERROR.Detail" xml:space="preserve">
+    <value>Windows could not read data from disk into memory. It points to a disk, cable or controller problem.</value>
+  </data>
+  <data name="Diag.BugCheck.INACCESSIBLE_BOOT_DEVICE.Detail" xml:space="preserve">
+    <value>Windows lost access to the boot disk. It happens after changing the controller mode (AHCI/RAID) or a storage driver.</value>
+  </data>
+  <data name="Diag.BugCheck.SYSTEM_THREAD_EXCEPTION_NOT_HANDLED.Detail" xml:space="preserve">
+    <value>A system task failed unhandled, almost always because of a driver. The dump says which one.</value>
+  </data>
+  <data name="Diag.BugCheck.UNEXPECTED_KERNEL_MODE_TRAP.Detail" xml:space="preserve">
+    <value>The CPU received a condition the kernel did not expect. It can be memory, overheating or an unstable overclock.</value>
+  </data>
+  <data name="Diag.BugCheck.DRIVER_POWER_STATE_FAILURE.Detail" xml:space="preserve">
+    <value>A driver did not answer when suspending or waking the device. Update the drivers and check the power options.</value>
+  </data>
+  <data name="Diag.BugCheck.INTERNAL_POWER_ERROR.Detail" xml:space="preserve">
+    <value>Internal power management error. Update the BIOS and the chipset drivers.</value>
+  </data>
+  <data name="Diag.BugCheck.ACPI_BIOS_ERROR.Detail" xml:space="preserve">
+    <value>The BIOS described the hardware in a way Windows does not accept. Update the BIOS.</value>
+  </data>
+  <data name="Diag.BugCheck.ATTEMPTED_WRITE_TO_READONLY_MEMORY.Detail" xml:space="preserve">
+    <value>A driver tried to write to protected memory. Update or reinstall the driver named in the dump.</value>
+  </data>
+  <data name="Diag.BugCheck.BAD_POOL_CALLER.Detail" xml:space="preserve">
+    <value>A driver asked for memory the wrong way. Update the drivers and remove any you installed recently.</value>
+  </data>
+  <data name="Diag.BugCheck.DRIVER_VERIFIER_DETECTED_VIOLATION.Detail" xml:space="preserve">
+    <value>Driver Verifier caught a driver doing something forbidden. Turn the verifier off if you did not turn it on.</value>
+  </data>
+  <data name="Diag.BugCheck.DRIVER_CORRUPTED_EXPOOL.Detail" xml:space="preserve">
+    <value>A driver corrupted system memory. Update the drivers.</value>
+  </data>
+  <data name="Diag.BugCheck.DRIVER_IRQL_NOT_LESS_OR_EQUAL.Detail" xml:space="preserve">
+    <value>A driver accessed memory at a forbidden moment. It is one of the most common codes; the dump points to the driver.</value>
+  </data>
+  <data name="Diag.BugCheck.THREAD_STUCK_IN_DEVICE_DRIVER.Detail" xml:space="preserve">
+    <value>A driver, usually the graphics one, got stuck waiting for the hardware. Reinstall the graphics driver.</value>
+  </data>
+  <data name="Diag.BugCheck.CRITICAL_PROCESS_DIED.Detail" xml:space="preserve">
+    <value>An essential Windows process ended. It can be the disk, memory or damaged system files.</value>
+  </data>
+  <data name="Diag.BugCheck.CRITICAL_OBJECT_TERMINATION.Detail" xml:space="preserve">
+    <value>An essential process or thread ended. It can be the disk, memory or damaged system files.</value>
+  </data>
+  <data name="Diag.BugCheck.CLOCK_WATCHDOG_TIMEOUT.Detail" xml:space="preserve">
+    <value>A CPU core stopped responding. Usually an unstable overclock or undervolt, or an outdated BIOS.</value>
+  </data>
+  <data name="Diag.BugCheck.CRITICAL_STRUCTURE_CORRUPTION.Detail" xml:space="preserve">
+    <value>The kernel detected that a protected structure was changed. It can be a bad driver or faulty memory.</value>
+  </data>
+  <data name="Diag.BugCheck.VIDEO_TDR_FAILURE.Detail" xml:space="preserve">
+    <value>The graphics driver stopped responding and Windows could not recover. Reinstall the driver and test without overclock.</value>
+  </data>
+  <data name="Diag.BugCheck.VIDEO_TDR_TIMEOUT_DETECTED.Detail" xml:space="preserve">
+    <value>The graphics card took too long to respond. Reinstall the driver and test without overclock.</value>
+  </data>
+  <data name="Diag.BugCheck.VIDEO_SCHEDULER_INTERNAL_ERROR.Detail" xml:space="preserve">
+    <value>The video scheduler hit a fatal error. Reinstall the graphics driver.</value>
+  </data>
+  <data name="Diag.BugCheck.WHEA_UNCORRECTABLE_ERROR.Detail" xml:space="preserve">
+    <value>The hardware reported an error that could not be corrected: CPU, memory, motherboard or overclock. Check temperatures and test without overclock.</value>
+  </data>
+  <data name="Diag.BugCheck.DPC_WATCHDOG_VIOLATION.Detail" xml:space="preserve">
+    <value>A driver took too long on an urgent task. Usually an SSD, network or graphics driver; update the SSD firmware.</value>
+  </data>
+  <data name="Diag.BugCheck.KERNEL_SECURITY_CHECK_FAILURE.Detail" xml:space="preserve">
+    <value>The kernel detected corrupted data. It can be a bad driver, memory or a failing disk.</value>
+  </data>
+  <data name="Diag.BugCheck.KERNEL_MODE_HEAP_CORRUPTION.Detail" xml:space="preserve">
+    <value>A driver corrupted kernel memory. Update the drivers.</value>
+  </data>
+  <data name="Diag.BugCheck.VIDEO_ENGINE_TIMEOUT_DETECTED.Detail" xml:space="preserve">
+    <value>A graphics card engine stopped responding. Reinstall the graphics driver and check the card temperature.</value>
+  </data>
+  <data name="Diag.BugCheck.UNEXPECTED_STORE_EXCEPTION.Detail" xml:space="preserve">
+    <value>The Windows storage component hit an error. Usually a failing SSD or disk driver; check SMART.</value>
+  </data>
+  <data name="Diag.BugCheck.LIVE_SYSTEM_DUMP.Detail" xml:space="preserve">
+    <value>This is not a blue screen: Windows took a copy of memory without shutting the PC down, because of a problem that did not bring the system down.</value>
+  </data>
+  <data name="Diag.BugCheck.SYNTHETIC_WATCHDOG_TIMEOUT.Detail" xml:space="preserve">
+    <value>The system stayed frozen for too long without answering. Usually a driver, overclock or BIOS.</value>
+  </data>
+  <data name="Diag.Exception.BREAKPOINT.Detail" xml:space="preserve">
+    <value>The program stopped at a breakpoint, which happens with debuggers or an internal error.</value>
+  </data>
+  <data name="Diag.Exception.ACCESS_VIOLATION.Detail" xml:space="preserve">
+    <value>Invalid memory access, the most common reason for a crash.</value>
+  </data>
+  <data name="Diag.Exception.ILLEGAL_INSTRUCTION.Detail" xml:space="preserve">
+    <value>The program ran an instruction the CPU does not know, like a new program on an old CPU.</value>
+  </data>
+  <data name="Diag.Exception.INT_DIVIDE_BY_ZERO.Detail" xml:space="preserve">
+    <value>Division by zero inside the program.</value>
+  </data>
+  <data name="Diag.Exception.STACK_OVERFLOW.Detail" xml:space="preserve">
+    <value>The program used more stack than exists, usually because of an endless recursion.</value>
+  </data>
+  <data name="Diag.Exception.DLL_NOT_FOUND.Detail" xml:space="preserve">
+    <value>The program needs a DLL that was not found. Reinstall the program or the Visual C++ components.</value>
+  </data>
+  <data name="Diag.Exception.DLL_INIT_FAILED.Detail" xml:space="preserve">
+    <value>A DLL failed to start. It can be the wrong version or a broken component.</value>
+  </data>
+  <data name="Diag.Exception.HEAP_CORRUPTION.Detail" xml:space="preserve">
+    <value>The program's memory was corrupted. Usually a program bug or an injected module.</value>
+  </data>
+  <data name="Diag.Exception.STACK_BUFFER_OVERRUN.Detail" xml:space="preserve">
+    <value>The program ended on a security check or a fatal internal error.</value>
+  </data>
+  <data name="Diag.Exception.INVALID_IMAGE_FORMAT.Detail" xml:space="preserve">
+    <value>The program or a DLL has a mismatched architecture (32 and 64 bits mixed).</value>
+  </data>
+  <data name="Diag.Exception.CLR_EXCEPTION.Detail" xml:space="preserve">
+    <value>A .NET program threw an exception it did not handle.</value>
+  </data>
+  <data name="Diag.Exception.CPP_EXCEPTION.Detail" xml:space="preserve">
+    <value>A C++ program threw an exception it did not handle.</value>
+  </data>
 </root>

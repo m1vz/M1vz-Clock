@@ -87,6 +87,7 @@ public static class AppHost
         builder.Services.AddSingleton<IStressWorkloadFactory, StressWorkloadFactory>();
         builder.Services.AddTransient<StressPageViewModel>();
         builder.Services.AddTransient<EventsPageViewModel>();
+        builder.Services.AddTransient<CrashesPageViewModel>();
         return builder.Build();
     }
 }

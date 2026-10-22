@@ -25,6 +25,7 @@ public static class PageRegistry
         ["benchmarks"] = Resolve<BenchmarksPageViewModel>,
         ["stress"] = Resolve<StressPageViewModel>,
         ["events"] = Resolve<EventsPageViewModel>,
+        ["crashes"] = Resolve<CrashesPageViewModel>,
     };
 
     public static IReadOnlyCollection<string> Ids => Factories.Keys;
