@@ -60,11 +60,11 @@ Um serviço em segundo plano assina os eventos de dispositivo e de volume do Win
 | Projeto de testes | Testes |
 |---|---|
 | `M1vClock.Core.Tests` | 72 |
-| `M1vClock.Hardware.Tests` | 479 |
+| `M1vClock.Hardware.Tests` | 484 |
 | `M1vClock.App.Tests` | 467 |
 | `M1vClock.Architecture.Tests` | 35 |
 
-Total 1.053 (2 pulados que exigem administrador), 0 avisos de compilação. Há testes contra a máquina real para WMI, adaptadores de rede, USB, assinatura de eventos de dispositivo e abertura do LibreHardwareMonitor. Os que dependem de tempo usam relógio falso.
+Total 1.058 (3 pulados que exigem administrador), 0 avisos de compilação. Rodando como administrador, os 3 também passam (validado nesta máquina). Há testes contra a máquina real para WMI, adaptadores de rede, USB, assinatura de eventos de dispositivo e abertura do LibreHardwareMonitor. Os que dependem de tempo usam relógio falso.
 
 ## Terceiros
 
@@ -76,13 +76,18 @@ Total 1.053 (2 pulados que exigem administrador), 0 avisos de compilação. Há 
 
 ## O que a fase 2 não verifica
 
-- **Administrador.** Contadores e previsão de falha do S.M.A.R.T., clocks e temperatura da CPU, e os 2 testes `HardenedDirectory` não foram exercitados. Falta uma execução elevada (com o seu OK para o UAC) e a instalação do PawnIO.
+- **Administrador.** Validado nesta máquina: execução elevada, PawnIO 2.2.0 instalado pelo winget (hash verificado), temperatura da CPU (52,3 °C), consumo (62,6 W) e clock; contadores dos dois discos; os 3 testes que exigem administrador passam. Não foi exercitado o app de Release com o manifesto de administrador (o Debug elevado foi aberto a partir de um terminal elevado).
 - **Plugar e desplugar de verdade.** A assinatura dos eventos foi confirmada e a lógica de diferença, espera e avisos tem testes, mas ainda ninguém plugou um dispositivo com o app aberto.
 - **Bateria e notebook.** O código de bateria nunca rodou numa bateria real (este PC é de mesa) e não há leitura do `powercfg /batteryreport`.
 - **NVIDIA.** NVML, link PCIe, Resizable BAR e VBIOS não foram implementados; não há placa NVIDIA aqui. O banco de especificações de algumas placas AMD veio de especificações públicas lembradas, não de uma fonte lida na hora.
 - **Teste de velocidade da rede** só foi rodado à mão neste PC (cabo gigabit); a lógica tem testes, mas a medição não.
-- **Comparação lado a lado com o ResetExplode.** Exige abrir o original, que pede administrador.
+- **Comparação lado a lado com o ResetExplode.** Não foi possível compilar o original aqui (algumas versões de pacote dele não resolvem). No lugar, os números foram conferidos contra o próprio Windows: RAM física (CIM), contadores dos discos (`Get-StorageReliabilityCounter`), lista USB (CIM) e memória de vídeo (DXGI e D3D do LibreHardwareMonitor).
 - Alto contraste, texto acima de 100 % e Windows 10.
+
+## Bugs achados ao validar com administrador
+
+- Os contadores de disco (temperatura, horas ligado, ciclos, erros) nunca apareciam: o Windows só os entrega pela associação com cada disco e a consulta direta voltava vazia, mesmo como administrador. Os testes passavam porque usavam linhas inventadas. Agora a leitura é pela associação, o desgaste de HDD deixa de ser mostrado e, sem administrador, a página pede administrador.
+- A pasta protegida em quarentena não era recriada no lugar original (o `MoveTo` muda o caminho do objeto). Os 2 testes de administrador estavam pulados e esconderam o problema.
 
 ## Decisões que precisam de OK
 
