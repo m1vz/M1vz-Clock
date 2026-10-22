@@ -46,7 +46,12 @@ public sealed record StorageCounters(
     long? WriteErrors,
     long? ReadErrorsUncorrected,
     long? WriteErrorsUncorrected,
-    long? StartStopCycles);
+    long? StartStopCycles)
+{
+    public ulong? BytesWritten { get; init; }
+
+    public ulong? BytesRead { get; init; }
+}
 
 public sealed record PhysicalDisk(
     int Index,

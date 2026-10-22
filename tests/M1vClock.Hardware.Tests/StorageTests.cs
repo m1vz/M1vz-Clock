@@ -458,7 +458,7 @@ public sealed class StorageServiceTests
         var wmi = new FakeWmiReader()
             .Failing("Win32_DiskDrive", new TimeoutException("Demorou."))
             .With("Win32_LogicalDisk", WmiRow.Of(("DeviceID", "C:"), ("Size", 100UL), ("FreeSpace", 50UL), ("DriveType", 3u)));
-        var service = new StorageService(new StorageCollector(wmi, ElevationInfo.Current(), NullLogger<StorageCollector>.Instance), NullLogger<StorageService>.Instance);
+        var service = new StorageService(new StorageCollector(wmi, ElevationInfo.Current(), NullLogger<StorageCollector>.Instance), new StubSensorService(), TimeProvider.System, NullLogger<StorageService>.Instance);
 
         var report = await service.ReadAsync(TestContext.Current.CancellationToken);
 
@@ -477,7 +477,7 @@ public sealed class StorageServiceTests
             .With("MSFT_PhysicalDisk", WmiRow.Of(("DeviceId", "0"), ("HealthStatus", (ushort)2), ("MediaType", (ushort)4), ("BusType", (ushort)17)))
             .Failing("MSFT_StorageReliabilityCounter", new UnauthorizedAccessException("negado"))
             .Failing("MSStorageDriver_FailurePredictStatus", new UnauthorizedAccessException("negado"));
-        var service = new StorageService(new StorageCollector(wmi, ElevationInfo.Current(), NullLogger<StorageCollector>.Instance), NullLogger<StorageService>.Instance);
+        var service = new StorageService(new StorageCollector(wmi, ElevationInfo.Current(), NullLogger<StorageCollector>.Instance), new StubSensorService(), TimeProvider.System, NullLogger<StorageService>.Instance);
 
         var report = await service.ReadAsync(TestContext.Current.CancellationToken);
 
@@ -490,7 +490,7 @@ public sealed class StorageServiceTests
     [Fact]
     public async Task ReadsThisMachineForReal()
     {
-        var service = new StorageService(new StorageCollector(new WindowsWmiReader(), ElevationInfo.Current(), NullLogger<StorageCollector>.Instance), NullLogger<StorageService>.Instance);
+        var service = new StorageService(new StorageCollector(new WindowsWmiReader(), ElevationInfo.Current(), NullLogger<StorageCollector>.Instance), new StubSensorService(), TimeProvider.System, NullLogger<StorageService>.Instance);
 
         var report = await service.ReadAsync(TestContext.Current.CancellationToken);
 
@@ -508,7 +508,7 @@ public sealed class StorageServiceTests
     public async Task WithAdministratorTheRealCountersArePairedWithTheirDisks()
     {
         Assert.SkipUnless(ElevationInfo.Current().IsElevated, "Precisa de administrador.");
-        var service = new StorageService(new StorageCollector(new WindowsWmiReader(), ElevationInfo.Current(), NullLogger<StorageCollector>.Instance), NullLogger<StorageService>.Instance);
+        var service = new StorageService(new StorageCollector(new WindowsWmiReader(), ElevationInfo.Current(), NullLogger<StorageCollector>.Instance), new StubSensorService(), TimeProvider.System, NullLogger<StorageService>.Instance);
 
         var report = await service.ReadAsync(TestContext.Current.CancellationToken);
 

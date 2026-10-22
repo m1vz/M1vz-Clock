@@ -99,7 +99,7 @@ public sealed class RealStorageFixtureTests
     [Fact]
     public async Task BothRealDisksAreHealthyAndTheVerdictIsGood()
     {
-        var service = new StorageService(Collector(), NullLogger<StorageService>.Instance);
+        var service = new StorageService(Collector(), new StubSensorService(), TimeProvider.System, NullLogger<StorageService>.Instance);
 
         var report = await service.ReadAsync(TestContext.Current.CancellationToken);
 
