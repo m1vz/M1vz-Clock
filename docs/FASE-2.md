@@ -60,11 +60,11 @@ Um serviço em segundo plano assina os eventos de dispositivo e de volume do Win
 | Projeto de testes | Testes |
 |---|---|
 | `M1vClock.Core.Tests` | 72 |
-| `M1vClock.Hardware.Tests` | 484 |
-| `M1vClock.App.Tests` | 467 |
+| `M1vClock.Hardware.Tests` | 502 |
+| `M1vClock.App.Tests` | 473 |
 | `M1vClock.Architecture.Tests` | 35 |
 
-Total 1.058 (3 pulados que exigem administrador), 0 avisos de compilação. Rodando como administrador, os 3 também passam (validado nesta máquina). Há testes contra a máquina real para WMI, adaptadores de rede, USB, assinatura de eventos de dispositivo e abertura do LibreHardwareMonitor. Os que dependem de tempo usam relógio falso.
+Total 1.082 (3 pulados que exigem administrador), 0 avisos de compilação. Rodando como administrador, os 3 também passam (validado nesta máquina). Há testes contra a máquina real para WMI, adaptadores de rede, USB, assinatura de eventos de dispositivo e abertura do LibreHardwareMonitor. Os que dependem de tempo usam relógio falso. Há também testes sobre saídas reais deste PC (WMI de disco, GPU, memória, plataforma, USB e o `Get-StorageReliabilityCounter`) guardadas em `tests/M1vClock.Hardware.Tests/Fixtures`, capturadas como administrador por `tools/fixtures/capture-wmi-fixture.ps1` com nome do computador, usuário e números de série trocados. Para recapturar, rode o script como administrador.
 
 ## Terceiros
 
@@ -91,6 +91,6 @@ Total 1.058 (3 pulados que exigem administrador), 0 avisos de compilação. Roda
 
 ## Decisões que precisam de OK
 
-- O histórico de 15 minutos mantém a leitura de sensores ligada o tempo todo (medido: menos de 1 % de um núcleo com uma página parada). Dá para virar uma opção em Configurações.
-- A barra lateral tem uma seção chamada "Dispositivos" (drivers, RGB, Maker) e agora também uma página "Dispositivos" em Hardware. Sugestão: renomear a seção para "Periféricos".
+- O histórico de 15 minutos mantém a leitura de sensores ligada por padrão (medido: menos de 1 % de um núcleo com uma página parada). Há um interruptor em Configurações > Sensores; desligado, o histórico só grava enquanto outra página usa os sensores. Só os últimos 15 minutos ficam em memória (cerca de 900 pontos por série). A leitura continua podendo ser pausada para benchmarks e stress, que chegam na fase 3.
+- Decidido: o nome "Dispositivos" fica (é o nome que o Windows usa).
 - A instalação do PawnIO pelo app (com winget localizado de forma segura) fica para a fase 4; por enquanto a página Sensores mostra o comando.
