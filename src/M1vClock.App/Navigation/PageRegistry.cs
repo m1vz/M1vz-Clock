@@ -1,5 +1,6 @@
 using M1vClock.App.Pages;
 using M1vClock.App.Pages.Hardware;
+using M1vClock.App.Pages.Performance;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace M1vClock.App.Navigation;
@@ -20,6 +21,7 @@ public static class PageRegistry
         ["devices"] = Resolve<DevicesPageViewModel>,
         ["sensors"] = Resolve<SensorsPageViewModel>,
         ["overview"] = Resolve<OverviewPageViewModel>,
+        ["benchmarks"] = Resolve<BenchmarksPageViewModel>,
     };
 
     public static IReadOnlyCollection<string> Ids => Factories.Keys;

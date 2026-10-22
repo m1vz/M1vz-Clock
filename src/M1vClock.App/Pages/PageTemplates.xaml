@@ -2,7 +2,8 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:nav="clr-namespace:M1vClock.App.Navigation"
                     xmlns:pages="clr-namespace:M1vClock.App.Pages"
-                    xmlns:hw="clr-namespace:M1vClock.App.Pages.Hardware">
+                    xmlns:hw="clr-namespace:M1vClock.App.Pages.Hardware"
+                    xmlns:pf="clr-namespace:M1vClock.App.Pages.Performance">
 
   <DataTemplate DataType="{x:Type nav:PlaceholderPageViewModel}">
     <pages:PlaceholderPage />
@@ -26,6 +27,10 @@
 
   <DataTemplate DataType="{x:Type hw:NetworkPageViewModel}">
     <hw:NetworkPage />
+  </DataTemplate>
+
+  <DataTemplate DataType="{x:Type pf:BenchmarksPageViewModel}">
+    <pf:BenchmarksPage />
   </DataTemplate>
 
   <DataTemplate DataType="{x:Type hw:InfoPageViewModel}">

@@ -9,7 +9,12 @@ using Microsoft.Extensions.Logging;
 
 namespace M1vClock.App.Services;
 
-public sealed class MachineProfileProvider
+public interface IMachineProfile
+{
+    Task<BenchmarkMachine> GetAsync(CancellationToken cancellationToken);
+}
+
+public sealed class MachineProfileProvider : IMachineProfile
 {
     private const double BytesPerGigabyte = 1024.0 * 1024 * 1024;
 
