@@ -11,6 +11,8 @@ public sealed class BenchTempArea : IDisposable
 
     private static readonly TimeSpan DefaultMinimumAge = TimeSpan.FromMinutes(1);
 
+    private static readonly TimeSpan[] RetryDelays = [TimeSpan.FromMilliseconds(20), TimeSpan.FromMilliseconds(40), TimeSpan.FromMilliseconds(80), TimeSpan.FromMilliseconds(160), TimeSpan.FromMilliseconds(320)];
+
     private readonly ILogger _logger;
     private bool _disposed;
 
@@ -157,18 +159,34 @@ public sealed class BenchTempArea : IDisposable
                 }
             }
 
-            foreach (var file in Directory.EnumerateFiles(directory))
-            {
-                File.Delete(file);
-            }
-
-            Directory.Delete(directory, recursive: false);
-            return true;
+            return DeleteWithRetry(directory, logger);
         }
         catch (Exception ex) when (ex is IOException or UnauthorizedAccessException)
         {
             BenchmarkLog.TempDeleteFailed(logger, ex, directory);
             return false;
+        }
+    }
+
+    private static bool DeleteWithRetry(string directory, ILogger logger)
+    {
+        for (var attempt = 0; ; attempt++)
+        {
+            try
+            {
+                foreach (var file in Directory.EnumerateFiles(directory))
+                {
+                    File.Delete(file);
+                }
+
+                Directory.Delete(directory, recursive: false);
+                return true;
+            }
+            catch (Exception ex) when (ex is IOException or UnauthorizedAccessException && attempt < RetryDelays.Length)
+            {
+                BenchmarkLog.TempDeleteRetry(logger, ex, directory, attempt + 1);
+                Thread.Sleep(RetryDelays[attempt]);
+            }
         }
     }
 }

@@ -10,6 +10,9 @@ internal static partial class BenchmarkLog
     [LoggerMessage(EventId = 4002, Level = LogLevel.Warning, Message = "Não foi possível apagar {Path}; a limpeza de sobras tenta de novo na próxima abertura.")]
     public static partial void TempDeleteFailed(ILogger logger, Exception exception, string path);
 
+    [LoggerMessage(EventId = 4006, Level = LogLevel.Debug, Message = "{Path} estava em uso por outro programa; tentativa {Attempt} de apagar.")]
+    public static partial void TempDeleteRetry(ILogger logger, Exception exception, string path, int attempt);
+
     [LoggerMessage(EventId = 4003, Level = LogLevel.Information, Message = "Sobras de teste anteriores removidas: {Count} pasta(s) em {Parent}.")]
     public static partial void LeftoversRemoved(ILogger logger, int count, string parent);
 
