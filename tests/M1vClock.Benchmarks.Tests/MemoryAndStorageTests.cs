@@ -115,6 +115,21 @@ public sealed class MemoryBenchmarkTests
     }
 
     [Fact]
+    public void TheMemoryTakenByTheBandwidthTestIsGivenBackRightAwaySoTheNextRunIsNotRefused()
+    {
+        Assert.SkipUnless(M1vClock.Benchmarks.Io.PhysicalMemory.AvailableBytes() > 2L << 30, "Pouca memória livre neste PC para o teste.");
+        var benchmark = new MemoryBenchmark(4L << 20, 512L << 20, 100_000);
+        var before = M1vClock.Benchmarks.Io.PhysicalMemory.AvailableBytes();
+
+        benchmark.MeasureBandwidth(TestContext.Current.CancellationToken);
+        var after = M1vClock.Benchmarks.Io.PhysicalMemory.AvailableBytes();
+        var second = benchmark.MeasureBandwidth(TestContext.Current.CancellationToken);
+
+        Assert.True(after > before - (300L << 20), $"antes {before >> 20} MB, depois {after >> 20} MB livres");
+        Assert.True(second.Read > 0);
+    }
+
+    [Fact]
     public void TheRealFreeMemoryOfThisPcIsReported()
     {
         Assert.True(M1vClock.Benchmarks.Io.PhysicalMemory.AvailableBytes() > 64L << 20);

@@ -1,11 +1,12 @@
 using System.Diagnostics;
+using System.Runtime.InteropServices;
 using M1vClock.Benchmarks.Io;
 
 namespace M1vClock.Benchmarks.Memory;
 
 public sealed record MemoryBenchmarkResult(double LatencyNanoseconds, double ReadGigabytesPerSecond, double CopyGigabytesPerSecond);
 
-public sealed class MemoryBenchmark
+public sealed unsafe class MemoryBenchmark
 {
     public const long DefaultLatencyBytes = 256L << 20;
     public const long DefaultBandwidthBytes = 1L << 30;
@@ -15,6 +16,7 @@ public sealed class MemoryBenchmark
     private const int CacheLineLongs = 8;
     private const int WarmupSteps = 200_000;
     private const int Repetitions = 3;
+    private const int PageSize = 4096;
 
     private readonly long _latencyBytes;
     private readonly long _bandwidthBytes;
@@ -54,7 +56,6 @@ public sealed class MemoryBenchmark
     {
         RequireMemory(LatencyRequiredBytes);
         var count = (int)(_latencyBytes / sizeof(long));
-        var next = new long[count];
         var lines = count / CacheLineLongs;
         var order = new int[lines];
         for (var i = 0; i < lines; i++)
@@ -69,30 +70,39 @@ public sealed class MemoryBenchmark
             (order[i], order[j]) = (order[j], order[i]);
         }
 
-        for (var i = 0; i < lines; i++)
+        var table = Allocate((long)count * sizeof(long));
+        try
         {
-            next[order[i] * CacheLineLongs] = order[(i + 1) % lines] * CacheLineLongs;
-        }
-
-        long position = 0;
-        for (var i = 0; i < WarmupSteps; i++)
-        {
-            position = next[position];
-        }
-
-        var clock = Stopwatch.StartNew();
-        for (var i = 0; i < _latencySteps; i++)
-        {
-            position = next[position];
-            if ((i & 0xFFFFF) == 0)
+            var next = (long*)table;
+            for (var i = 0; i < lines; i++)
             {
-                cancellationToken.ThrowIfCancellationRequested();
+                next[order[i] * CacheLineLongs] = order[(i + 1) % lines] * CacheLineLongs;
             }
-        }
 
-        var nanoseconds = clock.Elapsed.TotalMilliseconds * 1e6 / _latencySteps;
-        GC.KeepAlive(position);
-        return nanoseconds;
+            long position = 0;
+            for (var i = 0; i < WarmupSteps; i++)
+            {
+                position = next[position];
+            }
+
+            var clock = Stopwatch.StartNew();
+            for (var i = 0; i < _latencySteps; i++)
+            {
+                position = next[position];
+                if ((i & 0xFFFFF) == 0)
+                {
+                    cancellationToken.ThrowIfCancellationRequested();
+                }
+            }
+
+            var nanoseconds = clock.Elapsed.TotalMilliseconds * 1e6 / _latencySteps;
+            GC.KeepAlive(position);
+            return nanoseconds;
+        }
+        finally
+        {
+            NativeMemory.AlignedFree((void*)table);
+        }
     }
 
     public (double Read, double Copy) MeasureBandwidth(CancellationToken cancellationToken)
@@ -100,41 +110,65 @@ public sealed class MemoryBenchmark
         RequireMemory(BandwidthRequiredBytes);
         var threads = Environment.ProcessorCount;
         var count = (int)(_bandwidthBytes / sizeof(long));
-        var source = new long[count];
-        var destination = new long[count];
         var per = count / threads;
-        Parallel.For(0, threads, t => Array.Fill(source, t + 1, t * per, per));
-
-        double bestRead = 0;
-        double bestCopy = 0;
-        for (var repetition = 0; repetition < Repetitions; repetition++)
+        var sourceAddress = Allocate((long)count * sizeof(long));
+        nint destinationAddress = 0;
+        try
         {
-            cancellationToken.ThrowIfCancellationRequested();
-            var clock = Stopwatch.StartNew();
-            long total = 0;
-            Parallel.For(0, threads, () => 0L, (t, _, accumulator) =>
+            destinationAddress = Allocate((long)count * sizeof(long));
+            Parallel.For(0, threads, t => new Span<long>((long*)sourceAddress + (long)t * per, per).Fill(t + 1));
+
+            double bestRead = 0;
+            double bestCopy = 0;
+            for (var repetition = 0; repetition < Repetitions; repetition++)
             {
-                var span = new ReadOnlySpan<long>(source, t * per, per);
-                long s0 = 0, s1 = 0, s2 = 0, s3 = 0;
-                for (var i = 0; i + 3 < span.Length; i += 4)
+                cancellationToken.ThrowIfCancellationRequested();
+                var clock = Stopwatch.StartNew();
+                long total = 0;
+                Parallel.For(0, threads, () => 0L, (t, _, accumulator) =>
                 {
-                    s0 += span[i];
-                    s1 += span[i + 1];
-                    s2 += span[i + 2];
-                    s3 += span[i + 3];
-                }
+                    var span = new ReadOnlySpan<long>((long*)sourceAddress + (long)t * per, per);
+                    long s0 = 0, s1 = 0, s2 = 0, s3 = 0;
+                    for (var i = 0; i + 3 < span.Length; i += 4)
+                    {
+                        s0 += span[i];
+                        s1 += span[i + 1];
+                        s2 += span[i + 2];
+                        s3 += span[i + 3];
+                    }
 
-                return accumulator + s0 + s1 + s2 + s3;
-            }, accumulator => Interlocked.Add(ref total, accumulator));
-            bestRead = Math.Max(bestRead, _bandwidthBytes / clock.Elapsed.TotalSeconds / 1e9);
-            GC.KeepAlive(total);
+                    return accumulator + s0 + s1 + s2 + s3;
+                }, accumulator => Interlocked.Add(ref total, accumulator));
+                bestRead = Math.Max(bestRead, _bandwidthBytes / clock.Elapsed.TotalSeconds / 1e9);
+                GC.KeepAlive(total);
 
-            clock.Restart();
-            Parallel.For(0, threads, t => Array.Copy(source, t * per, destination, t * per, per));
-            bestCopy = Math.Max(bestCopy, 2.0 * _bandwidthBytes / clock.Elapsed.TotalSeconds / 1e9);
+                clock.Restart();
+                Parallel.For(0, threads, t =>
+                {
+                    var from = new ReadOnlySpan<long>((long*)sourceAddress + (long)t * per, per);
+                    var to = new Span<long>((long*)destinationAddress + (long)t * per, per);
+                    from.CopyTo(to);
+                });
+                bestCopy = Math.Max(bestCopy, 2.0 * _bandwidthBytes / clock.Elapsed.TotalSeconds / 1e9);
+            }
+
+            return (bestRead, bestCopy);
         }
+        finally
+        {
+            NativeMemory.AlignedFree((void*)sourceAddress);
+            if (destinationAddress != 0)
+            {
+                NativeMemory.AlignedFree((void*)destinationAddress);
+            }
+        }
+    }
 
-        return (bestRead, bestCopy);
+    private static nint Allocate(long bytes)
+    {
+        var pointer = NativeMemory.AlignedAlloc((nuint)bytes, PageSize);
+        NativeMemory.Clear(pointer, (nuint)bytes);
+        return (nint)pointer;
     }
 
     private void RequireMemory(long required)
