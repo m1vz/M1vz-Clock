@@ -8,6 +8,20 @@ public sealed record GameSimulationResult(double AverageFps, double LowFps, doub
     public double Score => AverageFps;
 }
 
+public sealed record GameSimulationSummary(
+    double AverageFps,
+    double LowFps,
+    double MainThreadMilliseconds,
+    double ParallelMilliseconds,
+    int Frames,
+    double Seconds,
+    IReadOnlyList<GameSimulationResult> Passes,
+    double SpreadPercent,
+    int Workers)
+{
+    public double Score => AverageFps;
+}
+
 public sealed class GameSimulation
 {
     public const int DefaultEntities = 30_000;
@@ -20,6 +34,7 @@ public sealed class GameSimulation
     private const float Step60 = 1 / 60f;
 
     private readonly int _entities;
+    private readonly int _workers;
     private float[] _x;
     private float[] _y;
     private float[] _vx;
@@ -40,9 +55,10 @@ public sealed class GameSimulation
     private int _frames;
     private int _visible;
 
-    public GameSimulation(int entities = DefaultEntities)
+    public GameSimulation(int entities = DefaultEntities, int? workers = null)
     {
         ArgumentOutOfRangeException.ThrowIfLessThan(entities, 2);
+        _workers = Math.Max(1, workers ?? CpuTopology.PhysicalCores());
         _entities = entities;
         _x = new float[entities];
         _y = new float[entities];
@@ -63,6 +79,8 @@ public sealed class GameSimulation
     }
 
     public int Entities => _entities;
+
+    public int Workers => _workers;
 
     public int FramesDone => Volatile.Read(ref _frames);
 
@@ -140,14 +158,37 @@ public sealed class GameSimulation
             clock.Elapsed.TotalSeconds);
     }
 
+    public GameSimulationSummary RunPasses(int passes, TimeSpan duration, TimeSpan warmup, Action<int>? onPassStarted, CancellationToken cancellationToken)
+    {
+        ArgumentOutOfRangeException.ThrowIfLessThan(passes, 1);
+        var results = new List<GameSimulationResult>(passes);
+        for (var pass = 1; pass <= passes; pass++)
+        {
+            onPassStarted?.Invoke(pass);
+            results.Add(Run(duration, warmup, cancellationToken));
+        }
+
+        var averages = results.Select(r => r.AverageFps).ToList();
+        return new GameSimulationSummary(
+            BenchStatistics.Median(averages),
+            BenchStatistics.Median(results.Select(r => r.LowFps).ToList()),
+            BenchStatistics.Median(results.Select(r => r.MainThreadMilliseconds).ToList()),
+            BenchStatistics.Median(results.Select(r => r.ParallelMilliseconds).ToList()),
+            results.Sum(r => r.Frames),
+            results.Sum(r => r.Seconds),
+            results,
+            BenchStatistics.SpreadPercent(averages),
+            _workers);
+    }
+
     public void AdvanceFrame(out double mainMilliseconds, out double parallelMilliseconds)
     {
         var t0 = Stopwatch.GetTimestamp();
         BuildGrid();
         var t1 = Stopwatch.GetTimestamp();
-        var chunks = Environment.ProcessorCount * 4;
+        var chunks = _workers * 4;
         var perChunk = (_entities + chunks - 1) / chunks;
-        Parallel.For(0, chunks, chunk =>
+        Parallel.For(0, chunks, new ParallelOptions { MaxDegreeOfParallelism = _workers }, chunk =>
         {
             var end = Math.Min(_entities, (chunk + 1) * perChunk);
             for (var i = chunk * perChunk; i < end; i++)

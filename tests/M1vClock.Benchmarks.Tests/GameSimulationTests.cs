@@ -129,4 +129,113 @@ public sealed class GameSimulationTests
 
         Assert.InRange(simulation.VisibleEntities, 1, Entities);
     }
+
+    [Fact]
+    public void TheNumberOfWorkersNeverChangesWhatTheSimulationComputes()
+    {
+        var one = new GameSimulation(Entities, workers: 1);
+        var many = new GameSimulation(Entities, workers: 6);
+        for (var i = 0; i < 40; i++)
+        {
+            one.AdvanceFrame(out _, out _);
+            many.AdvanceFrame(out _, out _);
+        }
+
+        Assert.Equal(one.Checksum(), many.Checksum());
+        Assert.Equal(1, one.Workers);
+        Assert.Equal(6, many.Workers);
+    }
+
+    [Fact]
+    public void ByDefaultThePhysicalCoresDoTheParallelWork()
+    {
+        var simulation = new GameSimulation(Entities);
+
+        Assert.Equal(CpuTopology.PhysicalCores(), simulation.Workers);
+        Assert.InRange(simulation.Workers, 1, Environment.ProcessorCount);
+    }
+
+    [Fact]
+    public void ThreePassesGiveTheMedianAndTheSpreadAndStartEachPassOnce()
+    {
+        var simulation = new GameSimulation(Entities);
+        var started = new List<int>();
+
+        var summary = simulation.RunPasses(3, TimeSpan.FromMilliseconds(250), TimeSpan.Zero, started.Add, TestContext.Current.CancellationToken);
+
+        Assert.Equal([1, 2, 3], started);
+        Assert.Equal(3, summary.Passes.Count);
+        Assert.Equal(summary.Passes.Select(p => p.AverageFps).Order().ElementAt(1), summary.AverageFps);
+        Assert.Equal(summary.Passes.Sum(p => p.Frames), summary.Frames);
+        Assert.True(summary.SpreadPercent >= 0);
+        Assert.Equal(simulation.Workers, summary.Workers);
+        Assert.Equal(summary.AverageFps, summary.Score);
+    }
+
+    [Fact]
+    public void CancellingBetweenPassesStopsTheWholeRun()
+    {
+        var simulation = new GameSimulation(Entities);
+        using var cancellation = new CancellationTokenSource();
+
+        Assert.ThrowsAny<OperationCanceledException>(() =>
+            simulation.RunPasses(3, TimeSpan.FromMilliseconds(200), TimeSpan.Zero, pass => { if (pass == 2) { cancellation.Cancel(); } }, cancellation.Token));
+    }
+
+    [Fact]
+    public void AtLeastOnePassIsRequired()
+    {
+        Assert.Throws<ArgumentOutOfRangeException>(() => new GameSimulation(Entities).RunPasses(0, TimeSpan.FromSeconds(1), TimeSpan.Zero, null, TestContext.Current.CancellationToken));
+    }
+}
+
+public sealed class CpuTopologyTests
+{
+    [Fact]
+    public void ThePhysicalCoreCountOfThisPcIsPlausible()
+    {
+        var cores = CpuTopology.PhysicalCores();
+
+        Assert.InRange(cores, 1, CpuTopology.LogicalProcessors);
+    }
+
+    [Fact]
+    public void OnlyRecordsOfTheCoreKindAreCounted()
+    {
+        var buffer = System.Runtime.InteropServices.Marshal.AllocHGlobal(128);
+        try
+        {
+            WriteRecord(buffer, 0, 0, 48);
+            WriteRecord(buffer, 48, 0, 48);
+            WriteRecord(buffer, 96, 3, 32);
+
+            Assert.Equal(2, CpuTopology.CountCores(buffer, 128));
+        }
+        finally
+        {
+            System.Runtime.InteropServices.Marshal.FreeHGlobal(buffer);
+        }
+    }
+
+    [Fact]
+    public void AZeroSizedRecordEndsTheWalkInsteadOfLoopingForever()
+    {
+        var buffer = System.Runtime.InteropServices.Marshal.AllocHGlobal(64);
+        try
+        {
+            WriteRecord(buffer, 0, 0, 0);
+
+            Assert.Equal(0, CpuTopology.CountCores(buffer, 64));
+        }
+        finally
+        {
+            System.Runtime.InteropServices.Marshal.FreeHGlobal(buffer);
+        }
+    }
+
+    private static void WriteRecord(nint buffer, int offset, int relationship, int size)
+    {
+        System.Runtime.InteropServices.Marshal.WriteInt32(buffer, offset, relationship);
+        System.Runtime.InteropServices.Marshal.WriteInt32(buffer, offset + 4, size);
+    }
 }
