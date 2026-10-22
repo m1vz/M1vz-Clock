@@ -1,3 +1,4 @@
+using System.Net.NetworkInformation;
 using LibreHardwareMonitor.Hardware;
 
 namespace M1vClock.Hardware.Sensors;
@@ -79,8 +80,14 @@ public sealed class LibreHardwareSensorSource : ISensorSource
         }
 
         var readings = new List<SensorReading>();
+        var interfaces = ReadInterfaces();
         foreach (var hardware in _computer.Hardware)
         {
+            if (hardware.HardwareType == HardwareType.Network && !NetworkSensorFilter.IsConnectedAdapter(hardware.Name, interfaces))
+            {
+                continue;
+            }
+
             Walk(hardware, readings);
         }
 
@@ -93,6 +100,33 @@ public sealed class LibreHardwareSensorSource : ISensorSource
         {
             _computer.Close();
             _opened = false;
+        }
+    }
+
+    private static IReadOnlyList<NetworkAdapterState> ReadInterfaces()
+    {
+        try
+        {
+            return [.. NetworkInterface.GetAllNetworkInterfaces().Select(n => new NetworkAdapterState(n.Name, n.OperationalStatus, n.NetworkInterfaceType, HasUsableAddress(n)))];
+        }
+        catch (NetworkInformationException)
+        {
+            return [];
+        }
+    }
+
+    private static bool HasUsableAddress(NetworkInterface adapter)
+    {
+        try
+        {
+            return adapter.GetIPProperties().UnicastAddresses.Any(a =>
+                a.Address.AddressFamily == System.Net.Sockets.AddressFamily.InterNetwork
+                && !System.Net.IPAddress.IsLoopback(a.Address)
+                && !a.Address.ToString().StartsWith("169.254.", StringComparison.Ordinal));
+        }
+        catch (NetworkInformationException)
+        {
+            return false;
         }
     }
 

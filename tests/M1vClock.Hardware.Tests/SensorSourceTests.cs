@@ -86,6 +86,43 @@ public sealed class CpuSensorDiagnosticsTests
     }
 }
 
+public sealed class NetworkSensorFilterTests
+{
+    private static NetworkAdapterState Adapter(string name, System.Net.NetworkInformation.OperationalStatus status = System.Net.NetworkInformation.OperationalStatus.Up, System.Net.NetworkInformation.NetworkInterfaceType type = System.Net.NetworkInformation.NetworkInterfaceType.Ethernet, bool address = true) =>
+        new(name, status, type, address);
+
+    private static readonly NetworkAdapterState[] Interfaces =
+    [
+        Adapter("Ethernet"),
+        Adapter("Conexão Local* 5", System.Net.NetworkInformation.OperationalStatus.Down, System.Net.NetworkInformation.NetworkInterfaceType.Wireless80211),
+        Adapter("Loopback Pseudo-Interface 1", type: System.Net.NetworkInformation.NetworkInterfaceType.Loopback),
+        Adapter("Teredo", type: System.Net.NetworkInformation.NetworkInterfaceType.Tunnel),
+        Adapter("Conexão Local* 6", address: false),
+        Adapter("Ethernet-QoS Packet Scheduler-0000", address: false),
+    ];
+
+    [Theory]
+    [InlineData("Ethernet", true)]
+    [InlineData("ethernet", true)]
+    [InlineData("Conexão Local* 5", false)]
+    [InlineData("Ethernet-QoS Packet Scheduler-0000", false)]
+    [InlineData("Ethernet-Kaspersky Lab NDIS 6 Filter-0000", false)]
+    [InlineData("Ethernet-WFP Native MAC Layer LightWeight Filter-0000", false)]
+    [InlineData("Loopback Pseudo-Interface 1", false)]
+    [InlineData("Teredo", false)]
+    [InlineData("Desconhecido", false)]
+    public void OnlyAdaptersWindowsListsAsConnectedAreKept(string name, bool expected)
+    {
+        Assert.Equal(expected, NetworkSensorFilter.IsConnectedAdapter(name, Interfaces));
+    }
+
+    [Fact]
+    public void IfTheAdapterListCouldNotBeReadNothingIsHidden()
+    {
+        Assert.True(NetworkSensorFilter.IsConnectedAdapter("Qualquer", []));
+    }
+}
+
 public sealed class PawnIoProbeTests
 {
     [Fact]
@@ -148,6 +185,20 @@ public sealed class LibreHardwareSensorSourceTests
             Assert.False(string.IsNullOrWhiteSpace(r.Name));
         });
         Assert.Equal(readings.Count, readings.Select(r => r.Id).Distinct(StringComparer.Ordinal).Count());
+    }
+
+    [Fact]
+    public void ThisMachineShowsOnlyNetworkAdaptersThatAreConnectedNotFilterDrivers()
+    {
+        using var source = new LibreHardwareSensorSource();
+        source.Open();
+
+        var readings = source.Read();
+
+        var shown = readings.Where(r => r.Hardware == SensorHardware.Network).Select(r => r.HardwareName).Distinct().ToList();
+        Assert.NotEmpty(shown);
+        Assert.DoesNotContain(shown, name => name.Contains("-0000", StringComparison.Ordinal) || name.Contains("* ", StringComparison.Ordinal));
+        Assert.DoesNotContain(shown, name => name.Contains("QoS Packet Scheduler", StringComparison.OrdinalIgnoreCase) || name.Contains("WFP", StringComparison.OrdinalIgnoreCase));
     }
 
     [Fact]
