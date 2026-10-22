@@ -1,6 +1,7 @@
 using M1vClock.App.Dialogs;
 using M1vClock.App.Navigation;
 using M1vClock.App.Pages;
+using M1vClock.App.Pages.Diagnostics;
 using M1vClock.App.Pages.Hardware;
 using M1vClock.App.Pages.Performance;
 using M1vClock.App.Search;
@@ -85,6 +86,7 @@ public static class AppHost
         builder.Services.AddTransient<BenchmarksPageViewModel>();
         builder.Services.AddSingleton<IStressWorkloadFactory, StressWorkloadFactory>();
         builder.Services.AddTransient<StressPageViewModel>();
+        builder.Services.AddTransient<EventsPageViewModel>();
         return builder.Build();
     }
 }

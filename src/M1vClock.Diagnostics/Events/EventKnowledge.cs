@@ -13,6 +13,8 @@ public static class EventKnowledge
         ["Microsoft-Windows-Perflib"] = new("Perflib", KnownEventKind.Noise),
     };
 
+    public static IReadOnlyCollection<string> AllKeys { get; } = Exact.Values.Concat(WholeProvider.Values).Select(k => k.Key).Distinct(StringComparer.Ordinal).Order(StringComparer.Ordinal).ToList();
+
     public static KnownEvent? Find(string provider, int id)
     {
         ArgumentNullException.ThrowIfNull(provider);

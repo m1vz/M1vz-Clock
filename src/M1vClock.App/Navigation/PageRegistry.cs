@@ -1,4 +1,5 @@
 using M1vClock.App.Pages;
+using M1vClock.App.Pages.Diagnostics;
 using M1vClock.App.Pages.Hardware;
 using M1vClock.App.Pages.Performance;
 using Microsoft.Extensions.DependencyInjection;
@@ -23,6 +24,7 @@ public static class PageRegistry
         ["overview"] = Resolve<OverviewPageViewModel>,
         ["benchmarks"] = Resolve<BenchmarksPageViewModel>,
         ["stress"] = Resolve<StressPageViewModel>,
+        ["events"] = Resolve<EventsPageViewModel>,
     };
 
     public static IReadOnlyCollection<string> Ids => Factories.Keys;

@@ -8,7 +8,9 @@ public sealed class FakeEventSource : IEventLogSource
 {
     private readonly Dictionary<string, ReadResult<RawEventBatch>> _logs = new(StringComparer.Ordinal);
 
-    public int Reads { get; private set; }
+    private int _reads;
+
+    public int Reads => Volatile.Read(ref _reads);
 
     public FakeEventSource With(string log, params RawEvent[] events) => With(log, false, events);
 
@@ -26,7 +28,7 @@ public sealed class FakeEventSource : IEventLogSource
 
     public ReadResult<RawEventBatch> Read(string log, TimeSpan window, int limit, CancellationToken cancellationToken)
     {
-        Reads++;
+        Interlocked.Increment(ref _reads);
         return _logs.TryGetValue(log, out var result) ? result : ReadResult.Success(new RawEventBatch([], false));
     }
 }
@@ -170,6 +172,24 @@ public sealed class EventGroupingTests
     public void NothingToGroupGivesNoGroups()
     {
         Assert.Empty(EventService.Group([]));
+    }
+
+    [Fact]
+    public void GroupsThatTieOnSeverityAndTimeComeInTheSameOrderEveryTime()
+    {
+        RawEvent[] events =
+        [
+            .. Repeat("System", "Zeta", 1, EventSeverity.Warning, 2),
+            .. Repeat("System", "Alfa", 2, EventSeverity.Warning, 2),
+            .. Repeat("System", "Alfa", 1, EventSeverity.Warning, 2),
+            .. Repeat("System", "Mais", 9, EventSeverity.Warning, 5),
+        ];
+
+        var forward = EventService.Group(events).Select(g => g.Key).ToList();
+        var backward = EventService.Group(events.Reverse()).Select(g => g.Key).ToList();
+
+        Assert.Equal(["System/Mais/9", "System/Alfa/1", "System/Alfa/2", "System/Zeta/1"], forward);
+        Assert.Equal(forward, backward);
     }
 
     [Fact]

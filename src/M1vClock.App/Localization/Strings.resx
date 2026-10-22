@@ -3171,4 +3171,283 @@
   <data name="Activity.Stress.Title" xml:space="preserve">
     <value>Teste de estresse</value>
   </data>
+  <data name="Diag.Events.Window" xml:space="preserve">
+    <value>Período</value>
+  </data>
+  <data name="Diag.Events.Window.Day" xml:space="preserve">
+    <value>24 horas</value>
+  </data>
+  <data name="Diag.Events.Window.Week" xml:space="preserve">
+    <value>7 dias</value>
+  </data>
+  <data name="Diag.Events.Window.Fortnight" xml:space="preserve">
+    <value>14 dias</value>
+  </data>
+  <data name="Diag.Events.Window.Month" xml:space="preserve">
+    <value>30 dias</value>
+  </data>
+  <data name="Diag.Events.Summary.Critical" xml:space="preserve">
+    <value>Críticos</value>
+  </data>
+  <data name="Diag.Events.Summary.Error" xml:space="preserve">
+    <value>Erros</value>
+  </data>
+  <data name="Diag.Events.Summary.Warning" xml:space="preserve">
+    <value>Avisos</value>
+  </data>
+  <data name="Diag.Events.Summary.Kinds" xml:space="preserve">
+    <value>{0} tipo(s) diferentes</value>
+  </data>
+  <data name="Diag.Events.ShowNoise" xml:space="preserve">
+    <value>Mostrar ruído repetido</value>
+  </data>
+  <data name="Diag.Events.ShowNoise.Detail" xml:space="preserve">
+    <value>Eventos que aparecem milhares de vezes ou que o Windows considera inofensivos ficam escondidos por padrão.</value>
+  </data>
+  <data name="Diag.Events.Hidden" xml:space="preserve">
+    <value>{0} eventos repetitivos escondidos, de {1} tipo(s). Ligue “Mostrar ruído repetido” para ver.</value>
+  </data>
+  <data name="Diag.Events.Empty" xml:space="preserve">
+    <value>Nenhum erro ou aviso relevante neste período.</value>
+  </data>
+  <data name="Diag.Events.Count" xml:space="preserve">
+    <value>{0}×</value>
+  </data>
+  <data name="Diag.Events.Last" xml:space="preserve">
+    <value>Último: {0}</value>
+  </data>
+  <data name="Diag.Events.Source" xml:space="preserve">
+    <value>{0} · ID {1}</value>
+  </data>
+  <data name="Diag.Events.Log.System" xml:space="preserve">
+    <value>Sistema</value>
+  </data>
+  <data name="Diag.Events.Log.Application" xml:space="preserve">
+    <value>Aplicativo</value>
+  </data>
+  <data name="Diag.Events.Truncated" xml:space="preserve">
+    <value>O período tem eventos demais; a leitura parou nos mais recentes de cada log.</value>
+  </data>
+  <data name="Diag.Events.LogFailed" xml:space="preserve">
+    <value>Não foi possível ler o log {0}: {1}</value>
+  </data>
+  <data name="Diag.Severity.Critical" xml:space="preserve">
+    <value>Crítico</value>
+  </data>
+  <data name="Diag.Severity.Error" xml:space="preserve">
+    <value>Erro</value>
+  </data>
+  <data name="Diag.Severity.Warning" xml:space="preserve">
+    <value>Aviso</value>
+  </data>
+  <data name="Diag.Kind.UnexpectedShutdown" xml:space="preserve">
+    <value>Desligamento</value>
+  </data>
+  <data name="Diag.Kind.Hardware" xml:space="preserve">
+    <value>Hardware</value>
+  </data>
+  <data name="Diag.Kind.Disk" xml:space="preserve">
+    <value>Disco</value>
+  </data>
+  <data name="Diag.Kind.Display" xml:space="preserve">
+    <value>Vídeo</value>
+  </data>
+  <data name="Diag.Kind.Service" xml:space="preserve">
+    <value>Serviço</value>
+  </data>
+  <data name="Diag.Kind.Application" xml:space="preserve">
+    <value>Programa</value>
+  </data>
+  <data name="Diag.Kind.Update" xml:space="preserve">
+    <value>Atualização</value>
+  </data>
+  <data name="Diag.Kind.Noise" xml:space="preserve">
+    <value>Ruído</value>
+  </data>
+  <data name="Diag.Known.KernelPower41.Title" xml:space="preserve">
+    <value>O PC desligou sem avisar</value>
+  </data>
+  <data name="Diag.Known.KernelPower41.Detail" xml:space="preserve">
+    <value>O Windows reiniciou sem um desligamento limpo: queda de energia, travamento, reinício forçado ou tela azul. Se acontecer sozinho, confira temperatura, fonte e memória.</value>
+  </data>
+  <data name="Diag.Known.UnexpectedShutdown6008.Title" xml:space="preserve">
+    <value>Desligamento inesperado anterior</value>
+  </data>
+  <data name="Diag.Known.UnexpectedShutdown6008.Detail" xml:space="preserve">
+    <value>O Windows registra isto na abertura seguinte a um desligamento sem aviso. Costuma vir junto com o evento Kernel-Power 41.</value>
+  </data>
+  <data name="Diag.Known.BugCheck1001.Title" xml:space="preserve">
+    <value>O Windows reiniciou depois de uma tela azul</value>
+  </data>
+  <data name="Diag.Known.BugCheck1001.Detail" xml:space="preserve">
+    <value>A página Telas azuis mostra o código e o que ele costuma significar.</value>
+  </data>
+  <data name="Diag.Known.DiskBadBlock.Title" xml:space="preserve">
+    <value>Setor defeituoso no disco</value>
+  </data>
+  <data name="Diag.Known.DiskBadBlock.Detail" xml:space="preserve">
+    <value>O disco reportou um bloco ruim. Um só pode ser normal; se repetir, faça backup e confira o SMART na página Armazenamento.</value>
+  </data>
+  <data name="Diag.Known.DiskController.Title" xml:space="preserve">
+    <value>Erro do controlador de disco</value>
+  </data>
+  <data name="Diag.Known.DiskController.Detail" xml:space="preserve">
+    <value>O disco, o cabo ou o controlador falhou numa operação. Repetido, aponta para cabo, porta SATA ou o próprio disco.</value>
+  </data>
+  <data name="Diag.Known.DiskPaging.Title" xml:space="preserve">
+    <value>Erro ao paginar no disco</value>
+  </data>
+  <data name="Diag.Known.DiskPaging.Detail" xml:space="preserve">
+    <value>O Windows não conseguiu ler ou gravar a memória virtual no disco. Aponta para problema no disco ou na memória.</value>
+  </data>
+  <data name="Diag.Known.DiskRetried.Title" xml:space="preserve">
+    <value>Operação de disco refeita</value>
+  </data>
+  <data name="Diag.Known.DiskRetried.Detail" xml:space="preserve">
+    <value>O Windows precisou repetir uma leitura ou gravação. Algumas vezes é normal; muitas, em pouco tempo, indicam disco ou cabo com problema.</value>
+  </data>
+  <data name="Diag.Known.NtfsCorruption.Title" xml:space="preserve">
+    <value>Sistema de arquivos com erro</value>
+  </data>
+  <data name="Diag.Known.NtfsCorruption.Detail" xml:space="preserve">
+    <value>O NTFS encontrou corrupção. Rode a verificação de disco na página Reparo e faça backup.</value>
+  </data>
+  <data name="Diag.Known.NvmeReset.Title" xml:space="preserve">
+    <value>SSD NVMe reiniciado pelo Windows</value>
+  </data>
+  <data name="Diag.Known.NvmeReset.Detail" xml:space="preserve">
+    <value>O Windows precisou resetar o SSD porque ele demorou a responder. Se repetir, atualize o firmware e o driver do SSD.</value>
+  </data>
+  <data name="Diag.Known.DisplayTimeout.Title" xml:space="preserve">
+    <value>O driver de vídeo parou de responder e voltou</value>
+  </data>
+  <data name="Diag.Known.DisplayTimeout.Detail" xml:space="preserve">
+    <value>Costuma ser driver de vídeo instável, overclock ou temperatura alta da placa. Se repetir, reinstale o driver e teste sem overclock.</value>
+  </data>
+  <data name="Diag.Known.DriverNotLoaded.Title" xml:space="preserve">
+    <value>Um driver não carregou</value>
+  </data>
+  <data name="Diag.Known.DriverNotLoaded.Detail" xml:space="preserve">
+    <value>O Windows não conseguiu iniciar o driver de um dispositivo. Se o dispositivo funciona, pode ignorar; senão, reinstale o driver.</value>
+  </data>
+  <data name="Diag.Known.TpmProvisioning.Title" xml:space="preserve">
+    <value>O TPM não terminou de ser configurado</value>
+  </data>
+  <data name="Diag.Known.TpmProvisioning.Detail" xml:space="preserve">
+    <value>Aviso comum em PCs de mesa. Só importa se você precisa do TPM, por exemplo para o Windows 11 ou o BitLocker.</value>
+  </data>
+  <data name="Diag.Known.DcomPermission.Title" xml:space="preserve">
+    <value>Permissão de um componente DCOM</value>
+  </data>
+  <data name="Diag.Known.DcomPermission.Detail" xml:space="preserve">
+    <value>Muito comum e quase sempre inofensivo: um programa do Windows pediu uma permissão que não tem. Pode ignorar.</value>
+  </data>
+  <data name="Diag.Known.DcomNoResponse.Title" xml:space="preserve">
+    <value>Um servidor DCOM não respondeu</value>
+  </data>
+  <data name="Diag.Known.DcomNoResponse.Detail" xml:space="preserve">
+    <value>Um programa tentou falar com um componente que não respondeu a tempo. Só importa se vier junto com travamentos.</value>
+  </data>
+  <data name="Diag.Known.EsentFile.Title" xml:space="preserve">
+    <value>Banco de dados do Windows reclamando de um arquivo</value>
+  </data>
+  <data name="Diag.Known.EsentFile.Detail" xml:space="preserve">
+    <value>Costuma vir da busca ou de outro serviço do Windows e se repete milhares de vezes. Em geral é inofensivo e fica escondido por padrão.</value>
+  </data>
+  <data name="Diag.Known.TimeSync.Title" xml:space="preserve">
+    <value>O relógio não sincronizou com o servidor de hora</value>
+  </data>
+  <data name="Diag.Known.TimeSync.Detail" xml:space="preserve">
+    <value>Pode ser a internet instável no momento. Se o horário do PC fica errado, troque o servidor de hora do Windows.</value>
+  </data>
+  <data name="Diag.Known.ServiceFailedToStart.Title" xml:space="preserve">
+    <value>Um serviço não iniciou</value>
+  </data>
+  <data name="Diag.Known.ServiceFailedToStart.Detail" xml:space="preserve">
+    <value>O texto do evento diz qual. Se for um serviço que você usa, reinicie-o; se for de um programa que você desinstalou, é resto dele.</value>
+  </data>
+  <data name="Diag.Known.ServiceTimeout.Title" xml:space="preserve">
+    <value>Um serviço demorou demais para responder</value>
+  </data>
+  <data name="Diag.Known.ServiceTimeout.Detail" xml:space="preserve">
+    <value>O Windows desistiu de esperar o serviço. Costuma acontecer ao ligar o PC, quando ele está ocupado.</value>
+  </data>
+  <data name="Diag.Known.ServiceTerminated.Title" xml:space="preserve">
+    <value>Um serviço terminou de forma inesperada</value>
+  </data>
+  <data name="Diag.Known.ServiceTerminated.Detail" xml:space="preserve">
+    <value>O serviço parou sozinho. Se ele é importante, confira a página Serviços.</value>
+  </data>
+  <data name="Diag.Known.ServiceCrashed.Title" xml:space="preserve">
+    <value>Um serviço travou</value>
+  </data>
+  <data name="Diag.Known.ServiceCrashed.Detail" xml:space="preserve">
+    <value>O serviço fechou com erro. Se repetir, reinstale o programa dono dele.</value>
+  </data>
+  <data name="Diag.Known.FilterAttach.Title" xml:space="preserve">
+    <value>Um filtro de arquivos não conseguiu se acoplar a um volume</value>
+  </data>
+  <data name="Diag.Known.FilterAttach.Detail" xml:space="preserve">
+    <value>Comum com antivírus, backup ou drivers de disco virtual. Inofensivo se nada mais falhar.</value>
+  </data>
+  <data name="Diag.Known.VssError.Title" xml:space="preserve">
+    <value>Falha no serviço de cópia de sombra</value>
+  </data>
+  <data name="Diag.Known.VssError.Detail" xml:space="preserve">
+    <value>Afeta pontos de restauração e backups. Confira se a proteção do sistema está ligada.</value>
+  </data>
+  <data name="Diag.Known.VolsnapError.Title" xml:space="preserve">
+    <value>Falha ao criar a cópia de sombra de um volume</value>
+  </data>
+  <data name="Diag.Known.VolsnapError.Detail" xml:space="preserve">
+    <value>Pode afetar pontos de restauração. Falta de espaço no disco é a causa mais comum.</value>
+  </data>
+  <data name="Diag.Known.AppCrash.Title" xml:space="preserve">
+    <value>Um programa travou</value>
+  </data>
+  <data name="Diag.Known.AppCrash.Detail" xml:space="preserve">
+    <value>O texto do evento mostra qual programa e qual módulo falhou. O mesmo programa repetindo pede atualização ou reinstalação.</value>
+  </data>
+  <data name="Diag.Known.DotNetCrash.Title" xml:space="preserve">
+    <value>Um programa .NET fechou por erro</value>
+  </data>
+  <data name="Diag.Known.DotNetCrash.Detail" xml:space="preserve">
+    <value>Um aplicativo feito em .NET encontrou um erro que não tratou. O texto do evento mostra qual.</value>
+  </data>
+  <data name="Diag.Known.AppHang.Title" xml:space="preserve">
+    <value>Um programa parou de responder</value>
+  </data>
+  <data name="Diag.Known.AppHang.Detail" xml:space="preserve">
+    <value>O programa travou a janela e o Windows registrou. Repetido, pede atualização ou reinstalação.</value>
+  </data>
+  <data name="Diag.Known.AppReport.Title" xml:space="preserve">
+    <value>Relatório de erro enviado ao Windows</value>
+  </data>
+  <data name="Diag.Known.AppReport.Detail" xml:space="preserve">
+    <value>Acompanha uma falha de programa e traz o nome do arquivo de relatório.</value>
+  </data>
+  <data name="Diag.Known.UpdateFailed.Title" xml:space="preserve">
+    <value>Uma atualização do Windows falhou</value>
+  </data>
+  <data name="Diag.Known.UpdateFailed.Detail" xml:space="preserve">
+    <value>Tente de novo em Configurações, Windows Update. Se persistir, a página Reparo tem os reparos do Windows Update.</value>
+  </data>
+  <data name="Diag.Known.Whea.Title" xml:space="preserve">
+    <value>Erro de hardware reportado pelo Windows</value>
+  </data>
+  <data name="Diag.Known.Whea.Detail" xml:space="preserve">
+    <value>O processador, a memória ou o barramento PCI avisou um erro. Corrigido de vez em quando é normal; repetido ou fatal merece atenção: confira temperatura, overclock e memória.</value>
+  </data>
+  <data name="Diag.Known.GpuDriver.Title" xml:space="preserve">
+    <value>Erro do driver de vídeo</value>
+  </data>
+  <data name="Diag.Known.GpuDriver.Detail" xml:space="preserve">
+    <value>O driver da placa de vídeo registrou um problema. Se vier com travamentos de tela, reinstale o driver e teste sem overclock.</value>
+  </data>
+  <data name="Diag.Known.Perflib.Title" xml:space="preserve">
+    <value>Contador de desempenho com problema</value>
+  </data>
+  <data name="Diag.Known.Perflib.Detail" xml:space="preserve">
+    <value>Um programa instalou contadores de desempenho com defeito. Inofensivo.</value>
+  </data>
 </root>

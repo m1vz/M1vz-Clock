@@ -58,6 +58,9 @@ public sealed class EventService(IEventLogSource source, ILogger<EventService> l
             .ThenBy(g => g.Known is { Kind: KnownEventKind.Noise })
             .ThenBy(g => g.Severity)
             .ThenByDescending(g => g.Last)
+            .ThenByDescending(g => g.Count)
+            .ThenBy(g => g.Provider, StringComparer.OrdinalIgnoreCase)
+            .ThenBy(g => g.Id)
             .ToList();
     }
 
