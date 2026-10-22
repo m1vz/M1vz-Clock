@@ -12,6 +12,10 @@
     <hw:StoragePage />
   </DataTemplate>
 
+  <DataTemplate DataType="{x:Type hw:SensorsPageViewModel}">
+    <hw:SensorsPage />
+  </DataTemplate>
+
   <DataTemplate DataType="{x:Type hw:DevicesPageViewModel}">
     <hw:DevicesPage />
   </DataTemplate>
