@@ -94,6 +94,7 @@ public sealed class BenchmarkHistory
         lock (_gate)
         {
             _records.Insert(0, record);
+            _records = [.. _records.OrderByDescending(r => r.At)];
             Trim();
             SaveLocked();
         }

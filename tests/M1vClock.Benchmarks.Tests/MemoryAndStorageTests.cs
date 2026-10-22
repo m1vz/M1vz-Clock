@@ -1,4 +1,5 @@
 using M1vClock.Benchmarks.Disk;
+using M1vClock.Benchmarks.Io;
 using M1vClock.Benchmarks.Memory;
 
 namespace M1vClock.Benchmarks.Tests;
@@ -206,9 +207,9 @@ public sealed class LoadingBenchmarkTests : IDisposable
     {
         var benchmark = new LoadingBenchmark(_logger, packBytes: 1L << 50, assetCount: 24);
 
-        var error = Assert.Throws<IOException>(() => benchmark.Run(_work.Path, hardened: false, progress: null, TestContext.Current.CancellationToken));
+        var error = Assert.Throws<InsufficientDiskSpaceException>(() => benchmark.Run(_work.Path, hardened: false, progress: null, TestContext.Current.CancellationToken));
 
-        Assert.Contains("espaço", error.Message, StringComparison.OrdinalIgnoreCase);
+        Assert.True(error.NeededBytes > error.FreeBytes);
         Assert.Empty(_work.BenchFolders());
     }
 
@@ -312,9 +313,9 @@ public sealed class DiskBenchmarkTests : IDisposable
     [Fact]
     public async Task NotEnoughFreeSpaceIsReportedBeforeCreatingTheFile()
     {
-        var error = await Assert.ThrowsAsync<IOException>(() => Create().RunAsync(_work.Path, false, 1L << 40, null, TestContext.Current.CancellationToken));
+        var error = await Assert.ThrowsAsync<InsufficientDiskSpaceException>(() => Create().RunAsync(_work.Path, false, 1L << 40, null, TestContext.Current.CancellationToken));
 
-        Assert.Contains("espaço", error.Message, StringComparison.OrdinalIgnoreCase);
+        Assert.True(error.NeededBytes > error.FreeBytes);
         Assert.Empty(_work.BenchFolders());
     }
 

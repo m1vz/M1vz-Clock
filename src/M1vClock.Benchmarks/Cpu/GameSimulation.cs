@@ -88,6 +88,8 @@ public sealed class GameSimulation
 
     public double CurrentFps { get; private set; }
 
+    public bool IsWarmingUp { get; private set; }
+
     public double Progress { get; private set; }
 
     public void CopyView(Span<float> x, Span<float> y, Span<byte> team)
@@ -114,12 +116,16 @@ public sealed class GameSimulation
     public GameSimulationResult Run(TimeSpan duration, TimeSpan warmup, CancellationToken cancellationToken)
     {
         Reset();
+        Progress = 0;
+        CurrentFps = 0;
+        IsWarmingUp = true;
         var warm = Stopwatch.StartNew();
         while (warm.Elapsed < warmup && !cancellationToken.IsCancellationRequested)
         {
             AdvanceFrame(out _, out _);
         }
 
+        IsWarmingUp = false;
         cancellationToken.ThrowIfCancellationRequested();
         var frameTimes = new List<double>(20_000);
         double mainMs = 0;

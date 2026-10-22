@@ -406,6 +406,19 @@ public sealed class BenchmarkHistoryTests : IDisposable
     }
 
     [Fact]
+    public void AnOlderRecordAddedLaterStillSitsBehindTheNewerOneWithoutReopening()
+    {
+        var history = Open();
+        var newest = Samples.Record(at: Samples.Now.AddDays(-1));
+        var oldest = Samples.Record(at: Samples.Now.AddDays(-3));
+
+        history.Add(newest);
+        history.Add(oldest);
+
+        Assert.Equal([newest.Id, oldest.Id], history.Records.Select(r => r.Id));
+    }
+
+    [Fact]
     public void ThereIsNoLimitOfTenAsInTheOriginal()
     {
         var history = Open();
