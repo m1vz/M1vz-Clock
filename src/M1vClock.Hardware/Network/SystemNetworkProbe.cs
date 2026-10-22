@@ -10,6 +10,9 @@ namespace M1vClock.Hardware.Network;
 
 public sealed class SystemNetworkProbe : INetworkProbe, IDisposable
 {
+    public const long DownloadCapBytes = 250_000_000;
+    public const long UploadCapBytes = 100_000_000;
+
     private const int DownloadWorkers = 4;
     private const int UploadWorkers = 3;
     private const int PingTimeoutMs = 1500;
@@ -19,13 +22,16 @@ public sealed class SystemNetworkProbe : INetworkProbe, IDisposable
     private readonly HttpClient _http;
 
     public SystemNetworkProbe(ILogger<SystemNetworkProbe> logger)
+        : this(logger, new SocketsHttpHandler { AllowAutoRedirect = false, PooledConnectionLifetime = TimeSpan.FromMinutes(2) })
+    {
+    }
+
+    internal SystemNetworkProbe(ILogger<SystemNetworkProbe> logger, HttpMessageHandler handler)
     {
         ArgumentNullException.ThrowIfNull(logger);
+        ArgumentNullException.ThrowIfNull(handler);
         _logger = logger;
-        _http = new HttpClient(new SocketsHttpHandler { AllowAutoRedirect = false, PooledConnectionLifetime = TimeSpan.FromMinutes(2) })
-        {
-            Timeout = TimeSpan.FromSeconds(30),
-        };
+        _http = new HttpClient(handler) { Timeout = TimeSpan.FromSeconds(30) };
     }
 
     public void Dispose() => _http.Dispose();
@@ -87,13 +93,13 @@ public sealed class SystemNetworkProbe : INetworkProbe, IDisposable
     }
 
     public Task<double?> MeasureDownloadAsync(TimeSpan duration, CancellationToken cancellationToken) =>
-        MeasureAsync("download", DownloadWorkers, duration, DownloadLoopAsync, cancellationToken);
+        MeasureAsync("download", DownloadWorkers, duration, DownloadCapBytes, DownloadLoopAsync, cancellationToken);
 
     public Task<double?> MeasureUploadAsync(TimeSpan duration, CancellationToken cancellationToken)
     {
         var payload = new byte[SpeedTestEndpoints.UploadBytes];
         RandomNumberGenerator.Fill(payload);
-        return MeasureAsync("upload", UploadWorkers, duration, (counter, token) => UploadLoopAsync(payload, counter, token), cancellationToken);
+        return MeasureAsync("upload", UploadWorkers, duration, UploadCapBytes, (counter, token) => UploadLoopAsync(payload, counter, token), cancellationToken);
     }
 
     private static async Task<bool> WaitAsync(TimeSpan delay, CancellationToken cancellationToken)
@@ -114,16 +120,16 @@ public sealed class SystemNetworkProbe : INetworkProbe, IDisposable
         }
     }
 
-    private async Task<double?> MeasureAsync(string direction, int workers, TimeSpan duration, Func<ByteCounter, CancellationToken, Task> loop, CancellationToken cancellationToken)
+    private async Task<double?> MeasureAsync(string direction, int workers, TimeSpan duration, long capBytes, Func<ByteCounter, CancellationToken, Task> loop, CancellationToken cancellationToken)
     {
-        var counter = new ByteCounter();
-        var clock = Stopwatch.StartNew();
         using var window = CancellationTokenSource.CreateLinkedTokenSource(cancellationToken);
+        var clock = Stopwatch.StartNew();
+        var counter = new ByteCounter(capBytes, window, clock);
         window.CancelAfter(duration);
         var tasks = Enumerable.Range(0, workers).Select(_ => RunWorkerAsync(direction, loop, counter, window.Token)).ToArray();
         await Task.WhenAll(tasks).ConfigureAwait(false);
         cancellationToken.ThrowIfCancellationRequested();
-        var seconds = clock.Elapsed.TotalSeconds;
+        var seconds = (counter.CapReachedAt ?? clock.Elapsed).TotalSeconds;
         return counter.Total > 0 && seconds > 0 ? counter.Total * 8 / 1e6 / seconds : null;
     }
 
@@ -180,12 +186,21 @@ public sealed class SystemNetworkProbe : INetworkProbe, IDisposable
         }
     }
 
-    private sealed class ByteCounter
+    private sealed class ByteCounter(long cap, CancellationTokenSource window, Stopwatch clock)
     {
         private long _total;
+        private long _reachedTicks;
 
         public long Total => Interlocked.Read(ref _total);
 
-        public void Add(long bytes) => Interlocked.Add(ref _total, bytes);
+        public TimeSpan? CapReachedAt => Interlocked.Read(ref _reachedTicks) is var ticks and > 0 ? TimeSpan.FromTicks(ticks) : null;
+
+        public void Add(long bytes)
+        {
+            if (Interlocked.Add(ref _total, bytes) >= cap && Interlocked.CompareExchange(ref _reachedTicks, Math.Max(1, clock.Elapsed.Ticks), 0) == 0)
+            {
+                window.Cancel();
+            }
+        }
     }
 }
