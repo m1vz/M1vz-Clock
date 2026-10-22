@@ -15,6 +15,8 @@ public interface ISensorService
     IDisposable Subscribe();
 
     IDisposable Pause();
+
+    SensorSnapshot? ReadComponent(SensorHardware component);
 }
 
 public sealed class SensorService : ISensorService, IDisposable
@@ -28,6 +30,7 @@ public sealed class SensorService : ISensorService, IDisposable
     private readonly TimeProvider _clock;
     private readonly ILogger<SensorService> _logger;
     private readonly Lock _gate = new();
+    private readonly Lock _sourceGate = new();
     private int _leases;
     private int _failedReads;
     private int _pauses;
@@ -78,6 +81,30 @@ public sealed class SensorService : ISensorService, IDisposable
         return new Release(() => Change(() => _pauses--));
     }
 
+    public SensorSnapshot? ReadComponent(SensorHardware component)
+    {
+        IReadOnlyList<SensorReading> readings;
+        lock (_sourceGate)
+        {
+            if (!_opened || _disposed)
+            {
+                return null;
+            }
+
+            try
+            {
+                readings = _source.ReadComponent(component);
+            }
+            catch (Exception ex) when (ex is not OutOfMemoryException)
+            {
+                HardwareLog.ComponentReadFailed(_logger, ex, component);
+                return null;
+            }
+        }
+
+        return new SensorSnapshot(_clock.GetUtcNow(), readings);
+    }
+
     public void Dispose()
     {
         Task tail;
@@ -99,7 +126,12 @@ public sealed class SensorService : ISensorService, IDisposable
             HardwareLog.SensorStopTimedOut(_logger);
         }
 
-        _source.Dispose();
+        lock (_sourceGate)
+        {
+            _source.Dispose();
+            _opened = false;
+        }
+
         SetState(SensorServiceState.Stopped);
     }
 
@@ -172,6 +204,14 @@ public sealed class SensorService : ISensorService, IDisposable
         }
     }
 
+    private void OpenSource()
+    {
+        lock (_sourceGate)
+        {
+            _source.Open();
+        }
+    }
+
     private async Task<bool> OpenAsync()
     {
         if (_opened)
@@ -183,7 +223,7 @@ public sealed class SensorService : ISensorService, IDisposable
         var started = _clock.GetTimestamp();
         try
         {
-            await Task.Run(_source.Open, CancellationToken.None).ConfigureAwait(false);
+            await Task.Run(OpenSource, CancellationToken.None).ConfigureAwait(false);
         }
         catch (Exception ex) when (ex is not OutOfMemoryException)
         {
@@ -198,7 +238,11 @@ public sealed class SensorService : ISensorService, IDisposable
             return false;
         }
 
-        _opened = true;
+        lock (_sourceGate)
+        {
+            _opened = true;
+        }
+
         var elapsed = (long)_clock.GetElapsedTime(started).TotalMilliseconds;
         HardwareLog.SensorsOpened(_logger, elapsed);
         return true;
@@ -209,7 +253,10 @@ public sealed class SensorService : ISensorService, IDisposable
         IReadOnlyList<SensorReading> readings;
         try
         {
-            readings = _source.Read();
+            lock (_sourceGate)
+            {
+                readings = _source.Read();
+            }
         }
         catch (Exception ex) when (ex is not OutOfMemoryException)
         {

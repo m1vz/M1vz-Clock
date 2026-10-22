@@ -2235,4 +2235,940 @@
   <data name="Hw.Storage.Metric.Read" xml:space="preserve">
     <value>Total lido</value>
   </data>
+  <data name="Bench.Start" xml:space="preserve">
+    <value>Iniciar teste</value>
+  </data>
+  <data name="Bench.Cancel" xml:space="preserve">
+    <value>Cancelar</value>
+  </data>
+  <data name="Bench.Tests" xml:space="preserve">
+    <value>Testes</value>
+  </data>
+  <data name="Bench.Preparing" xml:space="preserve">
+    <value>Preparando o teste…</value>
+  </data>
+  <data name="Bench.Remaining" xml:space="preserve">
+    <value>Faltam cerca de {0}</value>
+  </data>
+  <data name="Bench.Saved" xml:space="preserve">
+    <value>Resultado salvo no histórico.</value>
+  </data>
+  <data name="Bench.OtherRunning" xml:space="preserve">
+    <value>Outro teste está em andamento ({0}). Espere ele terminar.</value>
+  </data>
+  <data name="Bench.Import.Button" xml:space="preserve">
+    <value>Importar</value>
+  </data>
+  <data name="Bench.Export.Button" xml:space="preserve">
+    <value>Exportar</value>
+  </data>
+  <data name="Bench.Import.Title" xml:space="preserve">
+    <value>Importar resultados de outro PC</value>
+  </data>
+  <data name="Bench.Export.Title" xml:space="preserve">
+    <value>Exportar resultados</value>
+  </data>
+  <data name="Bench.File.Filter" xml:space="preserve">
+    <value>Resultados do m1vClock (*.json)|*.json</value>
+  </data>
+  <data name="Bench.Export.Done" xml:space="preserve">
+    <value>Resultados exportados para {0}.</value>
+  </data>
+  <data name="Bench.Export.Failed" xml:space="preserve">
+    <value>Não foi possível gravar o arquivo. Os detalhes estão no log.</value>
+  </data>
+  <data name="Bench.Import.Done" xml:space="preserve">
+    <value>{0} resultado(s) importado(s).</value>
+  </data>
+  <data name="Bench.Import.DoneWithRejected" xml:space="preserve">
+    <value>{0} resultado(s) importado(s). {1} foram recusados por não passarem na verificação.</value>
+  </data>
+  <data name="Bench.Import.Failure.Missing" xml:space="preserve">
+    <value>O arquivo não foi encontrado.</value>
+  </data>
+  <data name="Bench.Import.Failure.TooLarge" xml:space="preserve">
+    <value>O arquivo é grande demais para ser um export do m1vClock.</value>
+  </data>
+  <data name="Bench.Import.Failure.NotValid" xml:space="preserve">
+    <value>O arquivo não é um JSON válido.</value>
+  </data>
+  <data name="Bench.Import.Failure.WrongFormat" xml:space="preserve">
+    <value>Este arquivo não é um export de resultados do m1vClock.</value>
+  </data>
+  <data name="Bench.Import.Failure.NewerSchema" xml:space="preserve">
+    <value>O arquivo vem de uma versão mais nova do m1vClock. Atualize o app para importar.</value>
+  </data>
+  <data name="Bench.Import.Failure.TooMany" xml:space="preserve">
+    <value>O arquivo tem registros demais.</value>
+  </data>
+  <data name="Bench.History.Title" xml:space="preserve">
+    <value>Histórico</value>
+  </data>
+  <data name="Bench.History.Hint" xml:space="preserve">
+    <value>Clique em um resultado para usá-lo como base e compará-lo com o mais recente do mesmo teste.</value>
+  </data>
+  <data name="Bench.History.Empty" xml:space="preserve">
+    <value>Nenhum resultado ainda. Rode o teste para começar o histórico.</value>
+  </data>
+  <data name="Bench.History.ShowMore" xml:space="preserve">
+    <value>Mostrar mais</value>
+  </data>
+  <data name="Bench.History.Delete" xml:space="preserve">
+    <value>Apagar este resultado</value>
+  </data>
+  <data name="Bench.History.ThisPc" xml:space="preserve">
+    <value>Este PC</value>
+  </data>
+  <data name="Bench.History.OtherPc" xml:space="preserve">
+    <value>Outro PC</value>
+  </data>
+  <data name="Bench.History.Imported" xml:space="preserve">
+    <value>Importado · {0}</value>
+  </data>
+  <data name="Bench.History.Sustained" xml:space="preserve">
+    <value>10 min (sustentado)</value>
+  </data>
+  <data name="Bench.Compare.Title" xml:space="preserve">
+    <value>Comparação com {0} · {1}</value>
+  </data>
+  <data name="Bench.Compare.Score" xml:space="preserve">
+    <value>Nota</value>
+  </data>
+  <data name="Bench.Compare.OtherMachine" xml:space="preserve">
+    <value>Os dois resultados vêm de PCs diferentes. A diferença mostra a máquina, não um ajuste.</value>
+  </data>
+  <data name="Bench.Compare.NoiseNote" xml:space="preserve">
+    <value>Diferenças abaixo de {0} % ficam dentro da variação normal entre execuções.</value>
+  </data>
+  <data name="Bench.Compare.Verdict.WithinNoise" xml:space="preserve">
+    <value>dentro da margem</value>
+  </data>
+  <data name="Bench.Compare.Verdict.Better" xml:space="preserve">
+    <value>melhor</value>
+  </data>
+  <data name="Bench.Compare.Verdict.Worse" xml:space="preserve">
+    <value>pior</value>
+  </data>
+  <data name="Bench.Compare.Problem.DifferentTests" xml:space="preserve">
+    <value>Testes diferentes não podem ser comparados.</value>
+  </data>
+  <data name="Bench.Compare.Problem.DifferentScoreVersions" xml:space="preserve">
+    <value>A fórmula da nota mudou entre as versões. Esses resultados não são comparáveis.</value>
+  </data>
+  <data name="Bench.Versus.First" xml:space="preserve">
+    <value>Primeiro resultado deste PC neste teste.</value>
+  </data>
+  <data name="Bench.Versus.Title" xml:space="preserve">
+    <value>Em relação à execução anterior neste PC: {0}</value>
+  </data>
+  <data name="Bench.Versus.Line" xml:space="preserve">
+    <value>{0} {1} ({2})</value>
+  </data>
+  <data name="Bench.Result.Title" xml:space="preserve">
+    <value>Resultado</value>
+  </data>
+  <data name="Bench.Result.Done" xml:space="preserve">
+    <value>Concluído em {0}</value>
+  </data>
+  <data name="Bench.Result.Points" xml:space="preserve">
+    <value>{0} pts</value>
+  </data>
+  <data name="Bench.Result.Fps" xml:space="preserve">
+    <value>{0} FPS</value>
+  </data>
+  <data name="Bench.Result.PerFrame" xml:space="preserve">
+    <value>{0} ms por quadro</value>
+  </data>
+  <data name="Bench.Result.Percent" xml:space="preserve">
+    <value>{0} %</value>
+  </data>
+  <data name="Bench.Result.Seconds" xml:space="preserve">
+    <value>{0} s</value>
+  </data>
+  <data name="Bench.Result.Nanoseconds" xml:space="preserve">
+    <value>{0} ns</value>
+  </data>
+  <data name="Bench.Result.Microseconds" xml:space="preserve">
+    <value>{0} µs</value>
+  </data>
+  <data name="Bench.Result.GigabytesPerSecond" xml:space="preserve">
+    <value>{0} GB/s</value>
+  </data>
+  <data name="Bench.Result.MegabytesPerSecond" xml:space="preserve">
+    <value>{0} MB/s</value>
+  </data>
+  <data name="Bench.Result.PerSecond" xml:space="preserve">
+    <value>{0} por segundo</value>
+  </data>
+  <data name="Bench.Result.Iops" xml:space="preserve">
+    <value>{0} IOPS</value>
+  </data>
+  <data name="Bench.Result.Drive" xml:space="preserve">
+    <value>Unidade</value>
+  </data>
+  <data name="Bench.Option.Mode" xml:space="preserve">
+    <value>Modo</value>
+  </data>
+  <data name="Bench.Option.Duration" xml:space="preserve">
+    <value>Duração</value>
+  </data>
+  <data name="Bench.Option.Drive" xml:space="preserve">
+    <value>Unidade</value>
+  </data>
+  <data name="Bench.Option.FileSize" xml:space="preserve">
+    <value>Tamanho do arquivo de teste</value>
+  </data>
+  <data name="Bench.Live.Temperature" xml:space="preserve">
+    <value>Temperatura</value>
+  </data>
+  <data name="Bench.Live.Load" xml:space="preserve">
+    <value>Carga</value>
+  </data>
+  <data name="Bench.Live.Power" xml:space="preserve">
+    <value>Consumo</value>
+  </data>
+  <data name="Bench.Live.Clock" xml:space="preserve">
+    <value>Clock</value>
+  </data>
+  <data name="Bench.Protection.On" xml:space="preserve">
+    <value>Proteção térmica ligada: o teste para sozinho se passar de {0} °C.</value>
+  </data>
+  <data name="Bench.Protection.Off" xml:space="preserve">
+    <value>Sem leitura de temperatura: o corte automático não está disponível. Execute como administrador e instale o PawnIO para ter a proteção.</value>
+  </data>
+  <data name="Bench.Component.Cpu" xml:space="preserve">
+    <value>CPU</value>
+  </data>
+  <data name="Bench.Component.Gpu" xml:space="preserve">
+    <value>GPU</value>
+  </data>
+  <data name="Bench.Stop.Temperature" xml:space="preserve">
+    <value>Teste interrompido: a {0} chegou a {1} °C (limite de {2} °C).</value>
+  </data>
+  <data name="Bench.Stop.SensorLost" xml:space="preserve">
+    <value>Teste interrompido: o sensor de temperatura parou de responder.</value>
+  </data>
+  <data name="Bench.Stop.Failed" xml:space="preserve">
+    <value>Teste interrompido por falha do componente testado.</value>
+  </data>
+  <data name="Bench.Stop.User" xml:space="preserve">
+    <value>Teste cancelado. Nada foi salvo.</value>
+  </data>
+  <data name="Bench.Error.Memory" xml:space="preserve">
+    <value>Não há memória livre suficiente para este teste. Feche outros programas e tente de novo.</value>
+  </data>
+  <data name="Bench.Error.Access" xml:space="preserve">
+    <value>O Windows não deixou criar a pasta do teste nessa unidade. Escolha outra ou execute como administrador.</value>
+  </data>
+  <data name="Bench.Error.Space" xml:space="preserve">
+    <value>Falta espaço livre nessa unidade para o teste. Libere espaço ou escolha outra unidade.</value>
+  </data>
+  <data name="Bench.Error.Generic" xml:space="preserve">
+    <value>O teste não terminou. Os detalhes estão no log.</value>
+  </data>
+  <data name="Bench.Drive.None" xml:space="preserve">
+    <value>Nenhuma unidade com 1,5 GB livres.</value>
+  </data>
+  <data name="Bench.TestName.cpu_multi" xml:space="preserve">
+    <value>Render de CPU · multi-core</value>
+  </data>
+  <data name="Bench.TestName.cpu_single" xml:space="preserve">
+    <value>Render de CPU · single-core</value>
+  </data>
+  <data name="Bench.TestName.cpu_gamesim" xml:space="preserve">
+    <value>Simulação de jogo</value>
+  </data>
+  <data name="Bench.TestName.memory" xml:space="preserve">
+    <value>Memória</value>
+  </data>
+  <data name="Bench.TestName.loading" xml:space="preserve">
+    <value>Carregamento de mapa</value>
+  </data>
+  <data name="Bench.TestName.disk" xml:space="preserve">
+    <value>Disco</value>
+  </data>
+  <data name="Bench.TestName.gpu_scene" xml:space="preserve">
+    <value>Cena de jogo (GPU)</value>
+  </data>
+  <data name="Bench.Metric.seconds" xml:space="preserve">
+    <value>Tempo</value>
+  </data>
+  <data name="Bench.Metric.passes" xml:space="preserve">
+    <value>Passadas</value>
+  </data>
+  <data name="Bench.Metric.threads" xml:space="preserve">
+    <value>Threads</value>
+  </data>
+  <data name="Bench.Metric.average_fps" xml:space="preserve">
+    <value>FPS médio</value>
+  </data>
+  <data name="Bench.Metric.low_fps" xml:space="preserve">
+    <value>1% low</value>
+  </data>
+  <data name="Bench.Metric.main_ms" xml:space="preserve">
+    <value>Thread principal</value>
+  </data>
+  <data name="Bench.Metric.parallel_ms" xml:space="preserve">
+    <value>Física + IA (paralelo)</value>
+  </data>
+  <data name="Bench.Metric.frames" xml:space="preserve">
+    <value>Quadros</value>
+  </data>
+  <data name="Bench.Metric.entities" xml:space="preserve">
+    <value>Unidades</value>
+  </data>
+  <data name="Bench.Metric.workers" xml:space="preserve">
+    <value>Trabalhadores</value>
+  </data>
+  <data name="Bench.Metric.spread_percent" xml:space="preserve">
+    <value>Variação entre passadas</value>
+  </data>
+  <data name="Bench.Metric.read_gbs" xml:space="preserve">
+    <value>Banda de leitura</value>
+  </data>
+  <data name="Bench.Metric.copy_gbs" xml:space="preserve">
+    <value>Banda de cópia</value>
+  </data>
+  <data name="Bench.Metric.latency_ns" xml:space="preserve">
+    <value>Latência</value>
+  </data>
+  <data name="Bench.Metric.map_seconds" xml:space="preserve">
+    <value>Carregar o mapa</value>
+  </data>
+  <data name="Bench.Metric.sequential_mbs" xml:space="preserve">
+    <value>Leitura sequencial</value>
+  </data>
+  <data name="Bench.Metric.small_files_mbs" xml:space="preserve">
+    <value>Arquivos pequenos</value>
+  </data>
+  <data name="Bench.Metric.files_per_second" xml:space="preserve">
+    <value>Arquivos por segundo</value>
+  </data>
+  <data name="Bench.Metric.seq_read_q1" xml:space="preserve">
+    <value>Leitura sequencial (fila 1)</value>
+  </data>
+  <data name="Bench.Metric.seq_write_q1" xml:space="preserve">
+    <value>Escrita sequencial (fila 1)</value>
+  </data>
+  <data name="Bench.Metric.seq_read_q8" xml:space="preserve">
+    <value>Leitura sequencial (fila 8)</value>
+  </data>
+  <data name="Bench.Metric.seq_write_q8" xml:space="preserve">
+    <value>Escrita sequencial (fila 8)</value>
+  </data>
+  <data name="Bench.Metric.rand_read_q1" xml:space="preserve">
+    <value>Leitura 4 KB (fila 1)</value>
+  </data>
+  <data name="Bench.Metric.rand_write_q1" xml:space="preserve">
+    <value>Escrita 4 KB (fila 1)</value>
+  </data>
+  <data name="Bench.Metric.rand_read_q8" xml:space="preserve">
+    <value>Leitura 4 KB (fila 8)</value>
+  </data>
+  <data name="Bench.Metric.rand_read_q32" xml:space="preserve">
+    <value>Leitura 4 KB (fila 32)</value>
+  </data>
+  <data name="Bench.Metric.rand_write_q32" xml:space="preserve">
+    <value>Escrita 4 KB (fila 32)</value>
+  </data>
+  <data name="Bench.Metric.read_latency_us" xml:space="preserve">
+    <value>Latência de leitura</value>
+  </data>
+  <data name="Bench.Metric.write_latency_us" xml:space="preserve">
+    <value>Latência de escrita</value>
+  </data>
+  <data name="Bench.Metric.read_latency_p99_us" xml:space="preserve">
+    <value>Latência de leitura (p99)</value>
+  </data>
+  <data name="Bench.Metric.file_mb" xml:space="preserve">
+    <value>Arquivo de teste</value>
+  </data>
+  <data name="Bench.Metric.width" xml:space="preserve">
+    <value>Largura</value>
+  </data>
+  <data name="Bench.Metric.height" xml:space="preserve">
+    <value>Altura</value>
+  </data>
+  <data name="Bench.Phase.CpuMulti" xml:space="preserve">
+    <value>Multi-core · todos os threads</value>
+  </data>
+  <data name="Bench.Phase.CpuSingle" xml:space="preserve">
+    <value>Single-core · uma thread</value>
+  </data>
+  <data name="Bench.Phase.SimWarmup" xml:space="preserve">
+    <value>Aquecendo a simulação</value>
+  </data>
+  <data name="Bench.Phase.Sim" xml:space="preserve">
+    <value>Simulando</value>
+  </data>
+  <data name="Bench.Phase.MemoryLatency" xml:space="preserve">
+    <value>Medindo a latência da RAM</value>
+  </data>
+  <data name="Bench.Phase.MemoryBandwidth" xml:space="preserve">
+    <value>Medindo a banda da RAM</value>
+  </data>
+  <data name="Bench.Phase.LoadPrepare" xml:space="preserve">
+    <value>Preparando os arquivos de teste</value>
+  </data>
+  <data name="Bench.Phase.LoadPack" xml:space="preserve">
+    <value>Lendo o pacote do mapa</value>
+  </data>
+  <data name="Bench.Phase.LoadAntivirus" xml:space="preserve">
+    <value>Passada de aquecimento: o antivírus verifica os arquivos novos</value>
+  </data>
+  <data name="Bench.Phase.LoadAssets" xml:space="preserve">
+    <value>Lendo arquivos pequenos (8 threads)</value>
+  </data>
+  <data name="Bench.Phase.DiskSeqWrite" xml:space="preserve">
+    <value>Escrita sequencial de 1 MB (fila 1)</value>
+  </data>
+  <data name="Bench.Phase.DiskSeqRead" xml:space="preserve">
+    <value>Leitura sequencial de 1 MB (fila 1)</value>
+  </data>
+  <data name="Bench.Phase.DiskSeqWriteQ8" xml:space="preserve">
+    <value>Escrita sequencial de 1 MB (fila 8)</value>
+  </data>
+  <data name="Bench.Phase.DiskSeqReadQ8" xml:space="preserve">
+    <value>Leitura sequencial de 1 MB (fila 8)</value>
+  </data>
+  <data name="Bench.Phase.DiskRandReadQ1" xml:space="preserve">
+    <value>Leitura aleatória de 4 KB (fila 1)</value>
+  </data>
+  <data name="Bench.Phase.DiskRandWriteQ1" xml:space="preserve">
+    <value>Escrita aleatória de 4 KB (fila 1)</value>
+  </data>
+  <data name="Bench.Phase.DiskRandReadQ8" xml:space="preserve">
+    <value>Leitura aleatória de 4 KB (fila 8)</value>
+  </data>
+  <data name="Bench.Phase.DiskRandReadQ32" xml:space="preserve">
+    <value>Leitura aleatória de 4 KB (fila 32)</value>
+  </data>
+  <data name="Bench.Phase.DiskRandWriteQ32" xml:space="preserve">
+    <value>Escrita aleatória de 4 KB (fila 32)</value>
+  </data>
+  <data name="Bench.Phase.Done" xml:space="preserve">
+    <value>Concluído</value>
+  </data>
+  <data name="Bench.Cpu.Title" xml:space="preserve">
+    <value>Render de CPU</value>
+  </data>
+  <data name="Bench.Cpu.Description" xml:space="preserve">
+    <value>Path tracing de uma cena 3D, no princípio do Cinebench. A cena e a carga são sempre as mesmas, então a nota é comparável entre execuções.</value>
+  </data>
+  <data name="Bench.Cpu.Mode.Both" xml:space="preserve">
+    <value>Multi e single-core</value>
+  </data>
+  <data name="Bench.Cpu.Mode.Multi" xml:space="preserve">
+    <value>Só multi-core</value>
+  </data>
+  <data name="Bench.Cpu.Mode.Single" xml:space="preserve">
+    <value>Só single-core</value>
+  </data>
+  <data name="Bench.Cpu.Duration.Normal" xml:space="preserve">
+    <value>Uma passada</value>
+  </data>
+  <data name="Bench.Cpu.Duration.Sustained" xml:space="preserve">
+    <value>10 minutos (sustentado)</value>
+  </data>
+  <data name="Bench.Cpu.Sustained.Detail" xml:space="preserve">
+    <value>Sustentado: {0} de {1}</value>
+  </data>
+  <data name="Bench.Cpu.Result.Multi" xml:space="preserve">
+    <value>Multi-core</value>
+  </data>
+  <data name="Bench.Cpu.Result.MultiTime" xml:space="preserve">
+    <value>Tempo do multi-core</value>
+  </data>
+  <data name="Bench.Cpu.Result.TimeThreads" xml:space="preserve">
+    <value>{0} s com {1} threads</value>
+  </data>
+  <data name="Bench.Cpu.Result.Single" xml:space="preserve">
+    <value>Single-core</value>
+  </data>
+  <data name="Bench.Cpu.Result.SingleTime" xml:space="preserve">
+    <value>Tempo do single-core</value>
+  </data>
+  <data name="Bench.Cpu.Result.Time" xml:space="preserve">
+    <value>{0} s</value>
+  </data>
+  <data name="Bench.Cpu.Result.Ratio" xml:space="preserve">
+    <value>Multi ÷ single</value>
+  </data>
+  <data name="Bench.Cpu.Result.RatioValue" xml:space="preserve">
+    <value>{0}x com {1} threads</value>
+  </data>
+  <data name="Bench.Cpu.Result.RatioNote" xml:space="preserve">
+    <value>O quanto o multi-core rende acima do single-core depende dos {0} núcleos físicos e do SMT.</value>
+  </data>
+  <data name="Bench.Sim.Title" xml:space="preserve">
+    <value>Simulação de jogo</value>
+  </data>
+  <data name="Bench.Sim.Description" xml:space="preserve">
+    <value>Quantos quadros por segundo a CPU aguenta numa simulação com 30 mil unidades: física, colisão, IA e preparo do desenho.</value>
+  </data>
+  <data name="Bench.Sim.Length.Quick" xml:space="preserve">
+    <value>Rápido · 3 × 8 s</value>
+  </data>
+  <data name="Bench.Sim.Length.Full" xml:space="preserve">
+    <value>Completo · 3 × 20 s</value>
+  </data>
+  <data name="Bench.Sim.Pass" xml:space="preserve">
+    <value>Passada {0} de {1}</value>
+  </data>
+  <data name="Bench.Sim.Live" xml:space="preserve">
+    <value>Passada {0} de {1} · {2} FPS agora</value>
+  </data>
+  <data name="Bench.Sim.Result.Fps" xml:space="preserve">
+    <value>FPS médio (nota)</value>
+  </data>
+  <data name="Bench.Sim.Result.Low" xml:space="preserve">
+    <value>1% low</value>
+  </data>
+  <data name="Bench.Sim.Result.Main" xml:space="preserve">
+    <value>Thread principal</value>
+  </data>
+  <data name="Bench.Sim.Result.Parallel" xml:space="preserve">
+    <value>Física + IA (paralelo)</value>
+  </data>
+  <data name="Bench.Sim.Result.Units" xml:space="preserve">
+    <value>Unidades</value>
+  </data>
+  <data name="Bench.Sim.Result.Workers" xml:space="preserve">
+    <value>Trabalhadores em paralelo</value>
+  </data>
+  <data name="Bench.Sim.Result.Passes" xml:space="preserve">
+    <value>FPS de cada passada</value>
+  </data>
+  <data name="Bench.Sim.Result.Spread" xml:space="preserve">
+    <value>Variação entre passadas</value>
+  </data>
+  <data name="Bench.Sim.Result.Note" xml:space="preserve">
+    <value>A nota é a mediana de 3 passadas. Os trabalhadores ficam nos núcleos físicos para o resultado variar menos entre execuções, então a nota fica abaixo da do ResetExplode, que usava todas as threads.</value>
+  </data>
+  <data name="Bench.Memory.Title" xml:space="preserve">
+    <value>Memória</value>
+  </data>
+  <data name="Bench.Memory.Description" xml:space="preserve">
+    <value>Latência e banda da RAM (leitura e cópia), fora do cache do processador.</value>
+  </data>
+  <data name="Bench.Memory.Result.Latency" xml:space="preserve">
+    <value>Latência</value>
+  </data>
+  <data name="Bench.Memory.Result.Read" xml:space="preserve">
+    <value>Banda de leitura</value>
+  </data>
+  <data name="Bench.Memory.Result.Copy" xml:space="preserve">
+    <value>Banda de cópia</value>
+  </data>
+  <data name="Bench.Memory.Result.Note" xml:space="preserve">
+    <value>A nota do histórico é a banda de leitura. O teste precisa de cerca de 2,5 GB livres e devolve tudo ao terminar.</value>
+  </data>
+  <data name="Bench.Loading.Title" xml:space="preserve">
+    <value>Carregamento</value>
+  </data>
+  <data name="Bench.Loading.Description" xml:space="preserve">
+    <value>Simula o carregamento de um jogo: um pacote grande e muitos arquivos pequenos, lidos do disco sem o cache do Windows.</value>
+  </data>
+  <data name="Bench.Loading.Result.Map" xml:space="preserve">
+    <value>Tempo para carregar o mapa</value>
+  </data>
+  <data name="Bench.Loading.Result.Sequential" xml:space="preserve">
+    <value>Leitura do pacote</value>
+  </data>
+  <data name="Bench.Loading.Result.Small" xml:space="preserve">
+    <value>Arquivos pequenos</value>
+  </data>
+  <data name="Bench.Loading.Result.Files" xml:space="preserve">
+    <value>Arquivos por segundo</value>
+  </data>
+  <data name="Bench.Loading.Result.Note" xml:space="preserve">
+    <value>A nota é o tempo do mapa: menor é melhor. Os arquivos de teste ficam numa pasta temporária e são apagados no fim.</value>
+  </data>
+  <data name="Bench.Disk.Title" xml:space="preserve">
+    <value>Disco</value>
+  </data>
+  <data name="Bench.Disk.Description" xml:space="preserve">
+    <value>Leitura e escrita sequenciais de 1 MB e acessos aleatórios de 4 KB com fila de verdade (1, 8 e 32 requisições ao mesmo tempo), no estilo CrystalDiskMark.</value>
+  </data>
+  <data name="Bench.Disk.Result.SeqReadQ8" xml:space="preserve">
+    <value>Leitura sequencial (fila 8)</value>
+  </data>
+  <data name="Bench.Disk.Result.SeqWriteQ8" xml:space="preserve">
+    <value>Escrita sequencial (fila 8)</value>
+  </data>
+  <data name="Bench.Disk.Result.SeqReadQ1" xml:space="preserve">
+    <value>Leitura sequencial (fila 1)</value>
+  </data>
+  <data name="Bench.Disk.Result.SeqWriteQ1" xml:space="preserve">
+    <value>Escrita sequencial (fila 1)</value>
+  </data>
+  <data name="Bench.Disk.Result.RandReadQ1" xml:space="preserve">
+    <value>Leitura 4 KB (fila 1)</value>
+  </data>
+  <data name="Bench.Disk.Result.RandWriteQ1" xml:space="preserve">
+    <value>Escrita 4 KB (fila 1)</value>
+  </data>
+  <data name="Bench.Disk.Result.RandReadQ8" xml:space="preserve">
+    <value>Leitura 4 KB (fila 8)</value>
+  </data>
+  <data name="Bench.Disk.Result.RandReadQ32" xml:space="preserve">
+    <value>Leitura 4 KB (fila 32)</value>
+  </data>
+  <data name="Bench.Disk.Result.RandWriteQ32" xml:space="preserve">
+    <value>Escrita 4 KB (fila 32)</value>
+  </data>
+  <data name="Bench.Disk.Result.ReadLatency" xml:space="preserve">
+    <value>Latência média de leitura (fila 1)</value>
+  </data>
+  <data name="Bench.Disk.Result.ReadLatencyP99" xml:space="preserve">
+    <value>Latência de leitura p99 (fila 1)</value>
+  </data>
+  <data name="Bench.Disk.Result.WriteLatency" xml:space="preserve">
+    <value>Latência média de escrita (fila 1)</value>
+  </data>
+  <data name="Bench.Disk.Result.DriveValue" xml:space="preserve">
+    <value>{0} · arquivo de {1} MB</value>
+  </data>
+  <data name="Bench.Disk.Result.Note" xml:space="preserve">
+    <value>Nota versão 2, com fila real de E/S. Não é comparável com a do ResetExplode, que usava 8 threads síncronas.</value>
+  </data>
+  <data name="Stress.Start" xml:space="preserve">
+    <value>Iniciar</value>
+  </data>
+  <data name="Stress.Stop" xml:space="preserve">
+    <value>Parar</value>
+  </data>
+  <data name="Stress.Section.Setup" xml:space="preserve">
+    <value>Configuração</value>
+  </data>
+  <data name="Stress.Cpu" xml:space="preserve">
+    <value>CPU</value>
+  </data>
+  <data name="Stress.Cpu.Detail" xml:space="preserve">
+    <value>Carga em todos os núcleos, com cálculos de ponto flutuante e de inteiros.</value>
+  </data>
+  <data name="Stress.Ram" xml:space="preserve">
+    <value>RAM</value>
+  </data>
+  <data name="Stress.Ram.Detail" xml:space="preserve">
+    <value>Grava padrões na memória livre, confere e conta os erros.</value>
+  </data>
+  <data name="Stress.Ram.Fraction" xml:space="preserve">
+    <value>Quanto da memória livre usar</value>
+  </data>
+  <data name="Stress.Ram.TooLittle" xml:space="preserve">
+    <value>Pouca memória livre: a parte de RAM do teste não vai rodar.</value>
+  </data>
+  <data name="Stress.Ram.Plan" xml:space="preserve">
+    <value>Vai reservar {0} da memória livre. Sempre sobra 1 GB para o Windows.</value>
+  </data>
+  <data name="Stress.Gpu" xml:space="preserve">
+    <value>GPU</value>
+  </data>
+  <data name="Stress.Gpu.Detail" xml:space="preserve">
+    <value>Cena pesada em Direct3D 11 que usa a placa inteira, no estilo FurMark.</value>
+  </data>
+  <data name="Stress.Gpu.Unavailable" xml:space="preserve">
+    <value>Nenhuma GPU de hardware foi encontrada neste PC.</value>
+  </data>
+  <data name="Stress.Limit.Cpu" xml:space="preserve">
+    <value>Corte da CPU</value>
+  </data>
+  <data name="Stress.Limit.Gpu" xml:space="preserve">
+    <value>Corte da GPU</value>
+  </data>
+  <data name="Stress.Limit.Lower" xml:space="preserve">
+    <value>Baixar o limite</value>
+  </data>
+  <data name="Stress.Limit.Raise" xml:space="preserve">
+    <value>Subir o limite</value>
+  </data>
+  <data name="Stress.Limit.Hint" xml:space="preserve">
+    <value>O teste para sozinho quando a temperatura chega a esse valor. De 60 a 90 °C você escolhe livremente. Acima de 90 °C, até 95 °C, pede confirmação dupla.</value>
+  </data>
+  <data name="Stress.Duration" xml:space="preserve">
+    <value>Duração</value>
+  </data>
+  <data name="Stress.Duration.Unlimited" xml:space="preserve">
+    <value>Sem limite</value>
+  </data>
+  <data name="Stress.Leave.Note" xml:space="preserve">
+    <value>Sair desta página interrompe o teste. Enquanto ele roda, a leitura geral dos sensores fica pausada. Esc também para.</value>
+  </data>
+  <data name="Stress.Chart.Title" xml:space="preserve">
+    <value>Temperatura</value>
+  </data>
+  <data name="Stress.Live.CpuTemperature" xml:space="preserve">
+    <value>Temperatura da CPU</value>
+  </data>
+  <data name="Stress.Live.CpuLoad" xml:space="preserve">
+    <value>Carga da CPU</value>
+  </data>
+  <data name="Stress.Live.CpuPower" xml:space="preserve">
+    <value>Consumo da CPU</value>
+  </data>
+  <data name="Stress.Live.Memory" xml:space="preserve">
+    <value>RAM: passadas</value>
+  </data>
+  <data name="Stress.Live.GpuTemperature" xml:space="preserve">
+    <value>Temperatura da GPU</value>
+  </data>
+  <data name="Stress.Live.GpuFps" xml:space="preserve">
+    <value>FPS da GPU</value>
+  </data>
+  <data name="Stress.Live.Elapsed" xml:space="preserve">
+    <value>Tempo</value>
+  </data>
+  <data name="Stress.Live.MemoryDetail" xml:space="preserve">
+    <value>{0} erro(s) · {1} em teste</value>
+  </data>
+  <data name="Stress.Live.Limit" xml:space="preserve">
+    <value>limite de {0}</value>
+  </data>
+  <data name="Stress.Live.FpsAverage" xml:space="preserve">
+    <value>média de {0}</value>
+  </data>
+  <data name="Stress.Live.NoLimit" xml:space="preserve">
+    <value>sem limite de tempo</value>
+  </data>
+  <data name="Stress.Status.Idle" xml:space="preserve">
+    <value>Parado</value>
+  </data>
+  <data name="Stress.Status.Running" xml:space="preserve">
+    <value>Rodando</value>
+  </data>
+  <data name="Stress.Status.Completed" xml:space="preserve">
+    <value>Concluído (tempo esgotado)</value>
+  </data>
+  <data name="Stress.Status.Stopped" xml:space="preserve">
+    <value>Parado pelo usuário</value>
+  </data>
+  <data name="Stress.Status.Aborted" xml:space="preserve">
+    <value>Abortado</value>
+  </data>
+  <data name="Stress.Status.Temperature" xml:space="preserve">
+    <value>Abortado: a {0} chegou a {1}, o limite era {2}</value>
+  </data>
+  <data name="Stress.Status.MemoryErrors" xml:space="preserve">
+    <value>Abortado: {0} erro(s) de memória detectados</value>
+  </data>
+  <data name="Stress.Status.SensorLost" xml:space="preserve">
+    <value>Abortado: o sensor de temperatura parou de responder</value>
+  </data>
+  <data name="Stress.Status.Unresponsive" xml:space="preserve">
+    <value>Abortado: a janela do teste parou de responder</value>
+  </data>
+  <data name="Stress.Status.Failed" xml:space="preserve">
+    <value>Abortado: falha no componente testado ({0})</value>
+  </data>
+  <data name="Stress.Error.NothingSelected" xml:space="preserve">
+    <value>Ligue a CPU, a RAM ou a GPU para começar.</value>
+  </data>
+  <data name="Stress.Error.NoSensor" xml:space="preserve">
+    <value>Sem leitura de temperatura da {0}. O teste de estresse não começa sem ela, porque não haveria como cortar a carga se esquentasse demais. Execute como administrador e instale o PawnIO: {1}</value>
+  </data>
+  <data name="Stress.Error.AlreadyRunning" xml:space="preserve">
+    <value>Já existe um teste de estresse rodando.</value>
+  </data>
+  <data name="Stress.Error.Generic" xml:space="preserve">
+    <value>O teste de estresse não terminou. Os detalhes estão no log.</value>
+  </data>
+  <data name="Stress.Confirm.Title" xml:space="preserve">
+    <value>Iniciar o teste de estresse?</value>
+  </data>
+  <data name="Stress.Confirm.Message" xml:space="preserve">
+    <value>O teste leva o computador ao limite por um tempo. Ele corta sozinho se passar da temperatura escolhida, e você pode parar a qualquer momento com Esc ou Parar.</value>
+  </data>
+  <data name="Stress.Confirm.Cpu" xml:space="preserve">
+    <value>CPU: 100 % de uso em todos os núcleos, corte em {0}</value>
+  </data>
+  <data name="Stress.Confirm.Ram" xml:space="preserve">
+    <value>RAM: {0}</value>
+  </data>
+  <data name="Stress.Confirm.Gpu" xml:space="preserve">
+    <value>GPU: carga máxima, corte em {0}</value>
+  </data>
+  <data name="Stress.Confirm.Unlimited" xml:space="preserve">
+    <value>Sem limite de tempo: roda até você parar</value>
+  </data>
+  <data name="Stress.Confirm.Duration" xml:space="preserve">
+    <value>Duração: {0} min</value>
+  </data>
+  <data name="Stress.Confirm.Undo" xml:space="preserve">
+    <value>Nada no Windows é alterado. Parar o teste devolve CPU, memória e GPU na hora.</value>
+  </data>
+  <data name="Stress.Confirm.Start" xml:space="preserve">
+    <value>Iniciar o teste</value>
+  </data>
+  <data name="Stress.HighLimit.Title" xml:space="preserve">
+    <value>Subir o limite da {0}?</value>
+  </data>
+  <data name="Stress.HighLimit.Message" xml:space="preserve">
+    <value>Um limite de {0} deixa a {1} chegar perto do que o fabricante tolera. Na dúvida, mantenha o padrão.</value>
+  </data>
+  <data name="Stress.HighLimit.Change" xml:space="preserve">
+    <value>O corte por temperatura sobe para {0}</value>
+  </data>
+  <data name="Stress.HighLimit.Undo" xml:space="preserve">
+    <value>Volte o limite ao padrão com o botão de menos.</value>
+  </data>
+  <data name="Stress.HighLimit.Continue" xml:space="preserve">
+    <value>Continuar</value>
+  </data>
+  <data name="Stress.HighLimit.SecondTitle" xml:space="preserve">
+    <value>Tem certeza?</value>
+  </data>
+  <data name="Stress.HighLimit.SecondMessage" xml:space="preserve">
+    <value>Último aviso: com o limite em {0}, o teste só para quando a {1} chegar a esse ponto. Calor excessivo pode encurtar a vida do componente.</value>
+  </data>
+  <data name="Stress.HighLimit.Confirm" xml:space="preserve">
+    <value>Sim, usar esse limite</value>
+  </data>
+  <data name="Stress.Summary.Title" xml:space="preserve">
+    <value>Resumo</value>
+  </data>
+  <data name="Stress.Summary.Duration" xml:space="preserve">
+    <value>Duração</value>
+  </data>
+  <data name="Stress.Summary.CpuMax" xml:space="preserve">
+    <value>Temperatura máxima da CPU</value>
+  </data>
+  <data name="Stress.Summary.GpuMax" xml:space="preserve">
+    <value>Temperatura máxima da GPU</value>
+  </data>
+  <data name="Stress.Summary.RamPasses" xml:space="preserve">
+    <value>Passadas de memória</value>
+  </data>
+  <data name="Stress.Summary.RamErrors" xml:space="preserve">
+    <value>Erros de memória</value>
+  </data>
+  <data name="Stress.Summary.GpuFrames" xml:space="preserve">
+    <value>Quadros da GPU</value>
+  </data>
+  <data name="Stress.Summary.GpuFps" xml:space="preserve">
+    <value>FPS médio da GPU</value>
+  </data>
+  <data name="Stress.Log.Title" xml:space="preserve">
+    <value>Registro</value>
+  </data>
+  <data name="Stress.Log.Empty" xml:space="preserve">
+    <value>Nada ainda.</value>
+  </data>
+  <data name="Stress.Log.Clear" xml:space="preserve">
+    <value>Limpar</value>
+  </data>
+  <data name="Stress.Log.Started" xml:space="preserve">
+    <value>Iniciado · CPU {0} · RAM {1} · GPU {2} · {3}</value>
+  </data>
+  <data name="Stress.Log.On" xml:space="preserve">
+    <value>sim ({0})</value>
+  </data>
+  <data name="Stress.Log.Off" xml:space="preserve">
+    <value>não</value>
+  </data>
+  <data name="Stress.Log.Limit" xml:space="preserve">
+    <value>limite de {0}</value>
+  </data>
+  <data name="Stress.Log.Fraction" xml:space="preserve">
+    <value>{0} da livre</value>
+  </data>
+  <data name="Stress.Log.NoLimit" xml:space="preserve">
+    <value>sem limite de tempo</value>
+  </data>
+  <data name="Stress.Log.Minutes" xml:space="preserve">
+    <value>{0} min</value>
+  </data>
+  <data name="Stress.Log.Ended" xml:space="preserve">
+    <value>{0} · duração {1}</value>
+  </data>
+  <data name="Bench.Option.Resolution" xml:space="preserve">
+    <value>Resolução</value>
+  </data>
+  <data name="Bench.Gpu.Title" xml:space="preserve">
+    <value>Cena de jogo (GPU)</value>
+  </data>
+  <data name="Bench.Gpu.Description" xml:space="preserve">
+    <value>Uma cena em Direct3D 11 com terreno, 40 mil árvores, sombras, água e pós-processamento. A câmera e a carga são sempre as mesmas, então a nota compara placas e ajustes.</value>
+  </data>
+  <data name="Bench.Gpu.None" xml:space="preserve">
+    <value>Nenhuma GPU de hardware foi encontrada neste PC.</value>
+  </data>
+  <data name="Bench.Gpu.Live" xml:space="preserve">
+    <value>{0} FPS agora</value>
+  </data>
+  <data name="Bench.Gpu.Result.Fps" xml:space="preserve">
+    <value>FPS médio</value>
+  </data>
+  <data name="Bench.Gpu.Result.Low" xml:space="preserve">
+    <value>1% low</value>
+  </data>
+  <data name="Bench.Gpu.Result.Frames" xml:space="preserve">
+    <value>Quadros</value>
+  </data>
+  <data name="Bench.Gpu.Result.Resolution" xml:space="preserve">
+    <value>Resolução</value>
+  </data>
+  <data name="Bench.Gpu.Result.Adapter" xml:space="preserve">
+    <value>Placa de vídeo</value>
+  </data>
+  <data name="Bench.Gpu.Result.Note" xml:space="preserve">
+    <value>A nota é o FPS médio × 10. Uma janela com a cena abre na frente durante o teste; Esc ou fechar a janela cancela. A leitura geral dos sensores fica pausada para não atrapalhar o 1% low, e só a temperatura da GPU é lida a cada 2 segundos.</value>
+  </data>
+  <data name="Bench.Phase.Gpu" xml:space="preserve">
+    <value>Renderizando a cena</value>
+  </data>
+  <data name="Bench.Rt.Title" xml:space="preserve">
+    <value>Ray tracing (DXR 1.1)</value>
+  </data>
+  <data name="Bench.Rt.Description" xml:space="preserve">
+    <value>Mede os núcleos de ray tracing da placa com a API DXR 1.1 do Direct3D 12, em 3 passadas com nota pela mediana.</value>
+  </data>
+  <data name="Bench.Rt.Checking" xml:space="preserve">
+    <value>Verificando se a placa tem ray tracing por hardware…</value>
+  </data>
+  <data name="Bench.Rt.Unsupported" xml:space="preserve">
+    <value>A {0} não tem ray tracing por hardware (DXR 1.1). O teste precisa de uma RTX 20 ou mais nova, Radeon RX 6000 ou mais nova ou Intel Arc.</value>
+  </data>
+  <data name="Bench.Rt.NotReady" xml:space="preserve">
+    <value>Esta placa tem DXR 1.1, mas o teste de ray tracing ainda não está disponível nesta versão: ele não pôde ser validado sem uma placa com ray tracing para conferir a imagem e a nota.</value>
+  </data>
+  <data name="Bench.Rt.NoDirect3D12" xml:space="preserve">
+    <value>O Direct3D 12 não respondeu neste PC, então não foi possível verificar o ray tracing.</value>
+  </data>
+  <data name="Stress.Gpu.Resolution" xml:space="preserve">
+    <value>Resolução da janela</value>
+  </data>
+  <data name="Stress.Gpu.Fullscreen" xml:space="preserve">
+    <value>Tela cheia</value>
+  </data>
+  <data name="Stress.Gpu.Msaa" xml:space="preserve">
+    <value>Suavização (MSAA)</value>
+  </data>
+  <data name="Stress.Gpu.Msaa.Off" xml:space="preserve">
+    <value>Desligada</value>
+  </data>
+  <data name="Stress.Gpu.Intensity" xml:space="preserve">
+    <value>Intensidade</value>
+  </data>
+  <data name="Stress.Gpu.Intensity.Normal" xml:space="preserve">
+    <value>Normal</value>
+  </data>
+  <data name="Stress.Gpu.Intensity.High" xml:space="preserve">
+    <value>Alta</value>
+  </data>
+  <data name="Stress.Gpu.Intensity.Extreme" xml:space="preserve">
+    <value>Extrema</value>
+  </data>
+  <data name="Stress.Gpu.WindowNote" xml:space="preserve">
+    <value>Uma janela com a carga abre na frente. Esc ou fechar a janela também para o teste.</value>
+  </data>
+  <data name="Activity.Benchmark.Title" xml:space="preserve">
+    <value>Benchmark concluído</value>
+  </data>
+  <data name="Activity.Benchmark.Text" xml:space="preserve">
+    <value>{0}: {1}</value>
+  </data>
+  <data name="Activity.Stress.Title" xml:space="preserve">
+    <value>Teste de estresse</value>
+  </data>
 </root>

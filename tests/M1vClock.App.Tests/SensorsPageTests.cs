@@ -32,7 +32,19 @@ internal sealed class FakeSensorService : ISensorService
         return new Lease(() => Releases++);
     }
 
-    public IDisposable Pause() => new Lease(() => { });
+    public int Pauses { get; private set; }
+
+    public int PauseReleases { get; private set; }
+
+    public IDisposable Pause()
+    {
+        Pauses++;
+        return new Lease(() => PauseReleases++);
+    }
+
+    public SensorSnapshot? Component { get; set; }
+
+    public SensorSnapshot? ReadComponent(SensorHardware component) => Component;
 
     public void Publish(SensorSnapshot snapshot)
     {

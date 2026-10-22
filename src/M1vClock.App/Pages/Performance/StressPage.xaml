@@ -1,0 +1,193 @@
+<UserControl x:Class="M1vClock.App.Pages.Performance.StressPage"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:dc="clr-namespace:M1vClock.App.DesignSystem.Controls"
+             xmlns:l="clr-namespace:M1vClock.App.Localization"
+             Focusable="False">
+
+  <dc:PageScaffold Title="{Binding Title}" Subtitle="{Binding Subtitle}">
+    <StackPanel>
+      <ContentControl Style="{StaticResource Banner.Warning}" Margin="0,0,0,16" Visibility="{Binding OtherTestRunning, Converter={StaticResource BoolToVisible}}">
+        <TextBlock Style="{StaticResource Banner.Text}" Text="{Binding OtherTestText}" />
+      </ContentControl>
+      <ContentControl Style="{StaticResource Banner.Warning}" Margin="0,0,0,16" Visibility="{Binding MessageIsWarning, Converter={StaticResource BoolToVisible}}">
+        <TextBlock Style="{StaticResource Banner.Text}" Text="{Binding Message}" />
+      </ContentControl>
+      <ContentControl Style="{StaticResource Banner.Critical}" Margin="0,0,0,16" Visibility="{Binding MessageIsCritical, Converter={StaticResource BoolToVisible}}">
+        <TextBlock Style="{StaticResource Banner.Text}" Text="{Binding Message}" />
+      </ContentControl>
+
+      <Border Style="{StaticResource Card}" Padding="20,16" Margin="0,0,0,16">
+        <StackPanel>
+          <DockPanel Margin="0,0,0,12">
+            <Button DockPanel.Dock="Right" Style="{StaticResource Button.Primary}" Content="{Binding ButtonText}" Command="{Binding ToggleCommand}"
+                    IsEnabled="{Binding CanToggle}" VerticalAlignment="Center" Margin="12,0,0,0" MinWidth="136" />
+            <dc:StateBadge DockPanel.Dock="Right" State="{Binding StatusTone}" Text="{Binding StatusText}" VerticalAlignment="Center" Margin="12,0,0,0" />
+            <TextBlock Text="{l:Text Stress.Section.Setup}" Style="{StaticResource Text.Headline}" VerticalAlignment="Center" />
+          </DockPanel>
+
+          <StackPanel IsEnabled="{Binding IsIdle}">
+            <DockPanel Margin="0,4,0,8">
+              <dc:ToggleSwitch DockPanel.Dock="Right" IsChecked="{Binding CpuEnabled, Mode=TwoWay}" VerticalAlignment="Center" AutomationProperties.Name="{l:Text Stress.Cpu}" />
+              <StackPanel Margin="0,0,24,0">
+                <TextBlock Text="{l:Text Stress.Cpu}" Style="{StaticResource Text.Body}" />
+                <TextBlock Text="{l:Text Stress.Cpu.Detail}" Style="{StaticResource Text.Subhead.Secondary}" TextWrapping="Wrap" />
+              </StackPanel>
+            </DockPanel>
+
+            <DockPanel Margin="0,8,0,8">
+              <dc:ToggleSwitch DockPanel.Dock="Right" IsChecked="{Binding RamEnabled, Mode=TwoWay}" VerticalAlignment="Center" AutomationProperties.Name="{l:Text Stress.Ram}" />
+              <StackPanel Margin="0,0,24,0">
+                <TextBlock Text="{l:Text Stress.Ram}" Style="{StaticResource Text.Body}" />
+                <TextBlock Text="{l:Text Stress.Ram.Detail}" Style="{StaticResource Text.Subhead.Secondary}" TextWrapping="Wrap" />
+                <StackPanel Margin="0,8,0,0" Visibility="{Binding RamEnabled, Converter={StaticResource BoolToVisible}}">
+                  <dc:SegmentedControl SelectedIndex="{Binding RamFractionIndex, Mode=TwoWay}" Width="240" HorizontalAlignment="Left"
+                                       AutomationProperties.Name="{l:Text Stress.Ram.Fraction}">
+                    <dc:SegmentedItem Content="40 %" />
+                    <dc:SegmentedItem Content="60 %" />
+                    <dc:SegmentedItem Content="80 %" />
+                  </dc:SegmentedControl>
+                  <TextBlock Text="{Binding RamPlanText}" Style="{StaticResource Text.Caption}" TextWrapping="Wrap" Margin="0,6,0,0" />
+                </StackPanel>
+              </StackPanel>
+            </DockPanel>
+
+            <DockPanel Margin="0,8,0,8">
+              <dc:ToggleSwitch DockPanel.Dock="Right" IsChecked="{Binding GpuEnabled, Mode=TwoWay}" IsEnabled="{Binding GpuAvailable}" VerticalAlignment="Center"
+                               AutomationProperties.Name="{l:Text Stress.Gpu}" />
+              <StackPanel Margin="0,0,24,0">
+                <TextBlock Text="{l:Text Stress.Gpu}" Style="{StaticResource Text.Body}" />
+                <TextBlock Text="{l:Text Stress.Gpu.Detail}" Style="{StaticResource Text.Subhead.Secondary}" TextWrapping="Wrap" />
+                <TextBlock Text="{l:Text Stress.Gpu.Unavailable}" Style="{StaticResource Text.Caption}" TextWrapping="Wrap" Margin="0,4,0,0"
+                           Visibility="{Binding GpuAvailable, Converter={StaticResource BoolToCollapsed}}" />
+                <StackPanel Margin="0,8,0,0" Visibility="{Binding GpuEnabled, Converter={StaticResource BoolToVisible}}">
+                  <WrapPanel>
+                    <StackPanel Margin="0,0,24,10">
+                      <TextBlock Text="{l:Text Stress.Gpu.Resolution}" Style="{StaticResource Text.Caption}" Margin="0,0,0,6" />
+                      <dc:SegmentedControl SelectedIndex="{Binding GpuResolutionIndex, Mode=TwoWay}" Width="400" HorizontalAlignment="Left"
+                                           AutomationProperties.Name="{l:Text Stress.Gpu.Resolution}">
+                        <dc:SegmentedItem Content="720p" />
+                        <dc:SegmentedItem Content="1080p" />
+                        <dc:SegmentedItem Content="1440p" />
+                        <dc:SegmentedItem Content="{l:Text Stress.Gpu.Fullscreen}" />
+                      </dc:SegmentedControl>
+                    </StackPanel>
+                    <StackPanel Margin="0,0,24,10">
+                      <TextBlock Text="{l:Text Stress.Gpu.Msaa}" Style="{StaticResource Text.Caption}" Margin="0,0,0,6" />
+                      <dc:SegmentedControl SelectedIndex="{Binding GpuMsaaIndex, Mode=TwoWay}" Width="270" HorizontalAlignment="Left"
+                                           AutomationProperties.Name="{l:Text Stress.Gpu.Msaa}">
+                        <dc:SegmentedItem Content="{l:Text Stress.Gpu.Msaa.Off}" />
+                        <dc:SegmentedItem Content="4x" />
+                        <dc:SegmentedItem Content="8x" />
+                      </dc:SegmentedControl>
+                    </StackPanel>
+                    <StackPanel Margin="0,0,0,10">
+                      <TextBlock Text="{l:Text Stress.Gpu.Intensity}" Style="{StaticResource Text.Caption}" Margin="0,0,0,6" />
+                      <dc:SegmentedControl SelectedIndex="{Binding GpuIntensityIndex, Mode=TwoWay}" Width="300" HorizontalAlignment="Left"
+                                           AutomationProperties.Name="{l:Text Stress.Gpu.Intensity}">
+                        <dc:SegmentedItem Content="{l:Text Stress.Gpu.Intensity.Normal}" />
+                        <dc:SegmentedItem Content="{l:Text Stress.Gpu.Intensity.High}" />
+                        <dc:SegmentedItem Content="{l:Text Stress.Gpu.Intensity.Extreme}" />
+                      </dc:SegmentedControl>
+                    </StackPanel>
+                  </WrapPanel>
+                  <TextBlock Text="{l:Text Stress.Gpu.WindowNote}" Style="{StaticResource Text.Caption}" TextWrapping="Wrap" />
+                </StackPanel>
+              </StackPanel>
+            </DockPanel>
+
+            <Border Style="{StaticResource Separator.Horizontal}" Margin="0,8" />
+
+            <WrapPanel Margin="0,8,0,0">
+              <StackPanel Margin="0,0,32,12">
+                <TextBlock Text="{l:Text Stress.Limit.Cpu}" Style="{StaticResource Text.Caption}" Margin="0,0,0,6" />
+                <StackPanel Orientation="Horizontal">
+                  <Button Style="{StaticResource Button.Secondary}" Content="−" Command="{Binding LowerCpuLimitCommand}" IsEnabled="{Binding CanLowerCpuLimit}"
+                          AutomationProperties.Name="{l:Text Stress.Limit.Lower}" />
+                  <TextBlock Text="{Binding CpuLimitText}" Style="{StaticResource Text.Body.Numeric}" Width="84" TextAlignment="Center" VerticalAlignment="Center" />
+                  <Button Style="{StaticResource Button.Secondary}" Content="+" Command="{Binding RaiseCpuLimitCommand}" IsEnabled="{Binding CanRaiseCpuLimit}"
+                          AutomationProperties.Name="{l:Text Stress.Limit.Raise}" />
+                </StackPanel>
+              </StackPanel>
+              <StackPanel Margin="0,0,32,12" Visibility="{Binding GpuEnabled, Converter={StaticResource BoolToVisible}}">
+                <TextBlock Text="{l:Text Stress.Limit.Gpu}" Style="{StaticResource Text.Caption}" Margin="0,0,0,6" />
+                <StackPanel Orientation="Horizontal">
+                  <Button Style="{StaticResource Button.Secondary}" Content="−" Command="{Binding LowerGpuLimitCommand}" IsEnabled="{Binding CanLowerGpuLimit}"
+                          AutomationProperties.Name="{l:Text Stress.Limit.Lower}" />
+                  <TextBlock Text="{Binding GpuLimitText}" Style="{StaticResource Text.Body.Numeric}" Width="84" TextAlignment="Center" VerticalAlignment="Center" />
+                  <Button Style="{StaticResource Button.Secondary}" Content="+" Command="{Binding RaiseGpuLimitCommand}" IsEnabled="{Binding CanRaiseGpuLimit}"
+                          AutomationProperties.Name="{l:Text Stress.Limit.Raise}" />
+                </StackPanel>
+              </StackPanel>
+              <StackPanel Margin="0,0,0,12">
+                <TextBlock Text="{l:Text Stress.Duration}" Style="{StaticResource Text.Caption}" Margin="0,0,0,6" />
+                <dc:SegmentedControl SelectedIndex="{Binding DurationIndex, Mode=TwoWay}" Width="470" AutomationProperties.Name="{l:Text Stress.Duration}">
+                  <dc:SegmentedItem Content="{l:Text Stress.Duration.Unlimited}" />
+                  <dc:SegmentedItem Content="5 min" />
+                  <dc:SegmentedItem Content="15 min" />
+                  <dc:SegmentedItem Content="30 min" />
+                  <dc:SegmentedItem Content="60 min" />
+                </dc:SegmentedControl>
+              </StackPanel>
+            </WrapPanel>
+            <TextBlock Text="{l:Text Stress.Limit.Hint}" Style="{StaticResource Text.Caption}" TextWrapping="Wrap" />
+          </StackPanel>
+          <TextBlock Text="{l:Text Stress.Leave.Note}" Style="{StaticResource Text.Caption}" TextWrapping="Wrap" Margin="0,8,0,0" />
+        </StackPanel>
+      </Border>
+
+      <ItemsControl ItemsSource="{Binding Cards}" Focusable="False" Margin="-8,0,-8,0">
+        <ItemsControl.ItemsPanel>
+          <ItemsPanelTemplate>
+            <UniformGrid Columns="4" />
+          </ItemsPanelTemplate>
+        </ItemsControl.ItemsPanel>
+        <ItemsControl.ItemTemplate>
+          <DataTemplate>
+            <dc:MetricCard Margin="8,0,8,16" Label="{Binding Label}" Value="{Binding Value}" Unit="{Binding Unit}" Detail="{Binding Detail}"
+                           State="{Binding State}" StateText="{Binding StateText}" IsLoading="{Binding IsLoading}" />
+          </DataTemplate>
+        </ItemsControl.ItemTemplate>
+      </ItemsControl>
+
+
+
+      <Border Style="{StaticResource Card}" Padding="20" Margin="0,0,0,16">
+        <StackPanel>
+          <DockPanel Margin="0,0,0,16">
+            <StackPanel Orientation="Horizontal" DockPanel.Dock="Right" VerticalAlignment="Center">
+              <Border Width="8" Height="8" CornerRadius="4" Background="{DynamicResource Brush.Accent}" VerticalAlignment="Center" Margin="0,0,6,0" />
+              <TextBlock Text="{l:Text Hw.Overview.Legend.Cpu}" Style="{StaticResource Text.Subhead}" Margin="0,0,16,0" />
+              <Border Width="8" Height="8" CornerRadius="4" Background="{DynamicResource Brush.TextSecondary}" VerticalAlignment="Center" Margin="0,0,6,0"
+                      Visibility="{Binding GpuEnabled, Converter={StaticResource BoolToVisible}}" />
+              <TextBlock Text="{l:Text Hw.Overview.Legend.Gpu}" Style="{StaticResource Text.Subhead}" Visibility="{Binding GpuEnabled, Converter={StaticResource BoolToVisible}}" />
+            </StackPanel>
+            <TextBlock Text="{l:Text Stress.Chart.Title}" Style="{StaticResource Text.Headline}" VerticalAlignment="Center" />
+          </DockPanel>
+          <dc:LiveChart Height="220" Primary="{Binding CpuSeries}" Secondary="{Binding GpuSeries}" WindowSeconds="600"
+                        Unit="{Binding ChartUnit}" ValueFormat="0" MinimumRange="30" />
+        </StackPanel>
+      </Border>
+
+      <ContentControl Content="{Binding Summary}" ContentTemplate="{StaticResource InfoSectionTemplate}" Visibility="{Binding HasSummary, Converter={StaticResource BoolToVisible}}" />
+
+      <Border Style="{StaticResource Card}" Padding="20,16" Margin="0,0,0,16">
+        <StackPanel>
+          <DockPanel Margin="0,0,0,8">
+            <Button DockPanel.Dock="Right" Style="{StaticResource Button.Plain}" Content="{l:Text Stress.Log.Clear}" Command="{Binding ClearLogCommand}"
+                    Visibility="{Binding HasLog, Converter={StaticResource BoolToVisible}}" />
+            <TextBlock Text="{l:Text Stress.Log.Title}" Style="{StaticResource Text.Headline}" VerticalAlignment="Center" />
+          </DockPanel>
+          <TextBlock Text="{l:Text Stress.Log.Empty}" Style="{StaticResource Text.Subhead.Secondary}" Visibility="{Binding HasLog, Converter={StaticResource BoolToCollapsed}}" />
+          <ItemsControl ItemsSource="{Binding Log}" Focusable="False">
+            <ItemsControl.ItemTemplate>
+              <DataTemplate>
+                <TextBlock Text="{Binding}" Style="{StaticResource Text.Subhead}" TextWrapping="Wrap" Margin="0,3" />
+              </DataTemplate>
+            </ItemsControl.ItemTemplate>
+          </ItemsControl>
+        </StackPanel>
+      </Border>
+    </StackPanel>
+  </dc:PageScaffold>
+</UserControl>

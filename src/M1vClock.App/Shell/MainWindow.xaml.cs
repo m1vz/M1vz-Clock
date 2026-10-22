@@ -46,8 +46,9 @@ public partial class MainWindow : Window
     private bool _maximizePressed;
     private bool _navigating;
     private bool _materialLogged;
+    private readonly HeavyTestGate _gate;
 
-    public MainWindow(MainViewModel viewModel, ThemeService theme, IShellLauncher shell, AppPaths paths, ILogger<MainWindow> logger)
+    public MainWindow(MainViewModel viewModel, ThemeService theme, IShellLauncher shell, AppPaths paths, HeavyTestGate gate, ILogger<MainWindow> logger)
     {
         ArgumentNullException.ThrowIfNull(viewModel);
         ArgumentNullException.ThrowIfNull(theme);
@@ -55,6 +56,7 @@ public partial class MainWindow : Window
         _theme = theme;
         _shell = shell;
         _paths = paths;
+        _gate = gate;
         _logger = logger;
         OpenPaletteCommand = new RelayCommand(OpenPalette);
         InitializeComponent();
@@ -709,6 +711,11 @@ public partial class MainWindow : Window
         if (e.Key == Key.Escape && (_dialogVisible || _paletteVisible))
         {
             CancelTopOverlay();
+            e.Handled = true;
+        }
+        else if (e.Key == Key.Escape && _gate.IsBusy)
+        {
+            _gate.RequestStop();
             e.Handled = true;
         }
         else if (_dialogVisible && e.Key == Key.K && Keyboard.Modifiers == ModifierKeys.Control)

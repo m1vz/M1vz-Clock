@@ -2,10 +2,12 @@ using M1vClock.App.Dialogs;
 using M1vClock.App.Navigation;
 using M1vClock.App.Pages;
 using M1vClock.App.Pages.Hardware;
+using M1vClock.App.Pages.Performance;
 using M1vClock.App.Search;
 using M1vClock.App.Services;
 using M1vClock.App.Shell;
 using M1vClock.Benchmarks;
+using M1vClock.Benchmarks.Safety;
 using M1vClock.Core;
 using M1vClock.Core.Paths;
 using M1vClock.Core.Security;
@@ -52,6 +54,11 @@ public static class AppHost
         builder.Services.AddHostedService<DeviceNotifier>();
         builder.Services.AddSingleton<OverviewHistory>();
         builder.Services.AddHostedService(provider => provider.GetRequiredService<OverviewHistory>());
+        builder.Services.AddSingleton<HeavyTestGate>();
+        builder.Services.AddSingleton<IComponentProbe, SensorComponentProbe>();
+        builder.Services.AddSingleton<IMachineProfile, MachineProfileProvider>();
+        builder.Services.AddSingleton<BenchmarkWorkLocation>();
+        builder.Services.AddHostedService<BenchmarkTempSweeper>();
         builder.Services.AddSingleton<SystemPreferences>();
         builder.Services.AddSingleton<AppSettingsService>();
         builder.Services.AddSingleton<ThemeService>();
@@ -73,6 +80,11 @@ public static class AppHost
         builder.Services.AddTransient<OverviewPageViewModel>();
         builder.Services.AddTransient<MemoryPageViewModel>();
         builder.Services.AddTransient<StoragePageViewModel>();
+        builder.Services.AddSingleton<IBenchJobSource, BenchJobFactory>();
+        builder.Services.AddSingleton<IFileDialogs, Win32FileDialogs>();
+        builder.Services.AddTransient<BenchmarksPageViewModel>();
+        builder.Services.AddSingleton<IStressWorkloadFactory, StressWorkloadFactory>();
+        builder.Services.AddTransient<StressPageViewModel>();
         return builder.Build();
     }
 }

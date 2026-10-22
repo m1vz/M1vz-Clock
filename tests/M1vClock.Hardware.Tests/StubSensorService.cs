@@ -32,6 +32,10 @@ internal sealed class StubSensorService : ISensorService
 
     public IDisposable Pause() => new Lease(() => { });
 
+    public SensorSnapshot? Component { get; set; }
+
+    public SensorSnapshot? ReadComponent(SensorHardware component) => Component;
+
     private sealed class Lease(Action release) : IDisposable
     {
         public void Dispose() => release();

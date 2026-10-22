@@ -8,6 +8,7 @@ internal sealed class FakeSensorSource : ISensorSource
 {
     private int _opens;
     private int _reads;
+    private int _componentReads;
 
     public int OpenCalls => Volatile.Read(ref _opens);
 
@@ -49,6 +50,32 @@ internal sealed class FakeSensorSource : ISensorSource
         {
             Interlocked.Increment(ref _reads);
             return ReadFailure is null ? Readings : throw ReadFailure;
+        }
+        finally
+        {
+            lock (this)
+            {
+                ConcurrentReads--;
+            }
+        }
+    }
+
+    public Exception? ComponentFailure { get; set; }
+
+    public int ComponentReads => Volatile.Read(ref _componentReads);
+
+    public IReadOnlyList<SensorReading> ReadComponent(SensorHardware component)
+    {
+        lock (this)
+        {
+            ConcurrentReads++;
+            MaxConcurrentReads = Math.Max(MaxConcurrentReads, ConcurrentReads);
+        }
+
+        try
+        {
+            Interlocked.Increment(ref _componentReads);
+            return ComponentFailure is null ? [.. Readings.Where(r => r.Hardware == component)] : throw ComponentFailure;
         }
         finally
         {
@@ -276,6 +303,110 @@ public sealed class SensorServiceTests : IDisposable
         Assert.Contains(SensorServiceState.Starting, states);
         Assert.Contains(SensorServiceState.Running, states);
         Assert.Equal(SensorServiceState.Stopped, states[^1]);
+    }
+
+    [Fact]
+    public void ReadingOneComponentBeforeTheSensorsAreOpenedGivesNothing()
+    {
+        using var service = Create();
+
+        Assert.Null(service.ReadComponent(SensorHardware.Cpu));
+        Assert.Equal(0, _source.ComponentReads);
+    }
+
+    [Fact]
+    public async Task ReadingOneComponentReturnsOnlyItsOwnSensors()
+    {
+        _source.Readings =
+        [
+            FakeSensorSource.Reading("cpu/0/temp", SensorHardware.Cpu, "CPU Package", SensorKind.Temperature, 61f),
+            FakeSensorSource.Reading("gpu/0/temp", SensorHardware.Gpu, "GPU Core", SensorKind.Temperature, 47f),
+            FakeSensorSource.Reading("sto/0/temp", SensorHardware.Storage, "Composite", SensorKind.Temperature, 38f),
+        ];
+        using var service = Create();
+        using var lease = service.Subscribe();
+        await WaitUntilAsync(() => service.State == SensorServiceState.Running);
+
+        var gpu = service.ReadComponent(SensorHardware.Gpu);
+
+        Assert.NotNull(gpu);
+        Assert.Equal(47f, gpu.GpuTemperature);
+        Assert.Null(gpu.CpuTemperature);
+        Assert.Single(gpu.Readings);
+        Assert.Equal(_clock.GetUtcNow(), gpu.At);
+    }
+
+    [Fact]
+    public async Task TheComponentCanStillBeReadWhileTheGeneralLoopIsPaused()
+    {
+        using var service = Create();
+        using var lease = service.Subscribe();
+        await WaitUntilAsync(() => service.State == SensorServiceState.Running);
+
+        using var pause = service.Pause();
+        await WaitUntilAsync(() => service.State == SensorServiceState.Paused);
+        var reads = _source.ReadCalls;
+        var cpu = service.ReadComponent(SensorHardware.Cpu);
+        _clock.Advance(TimeSpan.FromSeconds(5));
+        await Task.Delay(50, TestContext.Current.CancellationToken);
+
+        Assert.Equal(55f, cpu?.CpuTemperature);
+        Assert.Equal(reads, _source.ReadCalls);
+    }
+
+    [Fact]
+    public async Task ComponentReadsNeverOverlapWithTheGeneralRead()
+    {
+        using var service = Create();
+        using var lease = service.Subscribe();
+        await WaitUntilAsync(() => service.State == SensorServiceState.Running);
+
+        var component = Task.Run(
+            () =>
+            {
+                for (var i = 0; i < 300; i++)
+                {
+                    service.ReadComponent(SensorHardware.Cpu);
+                }
+            },
+            TestContext.Current.CancellationToken);
+        for (var i = 0; i < 30; i++)
+        {
+            _clock.Advance(SensorService.Interval);
+            await Task.Delay(2, TestContext.Current.CancellationToken);
+        }
+
+        await component;
+        Assert.Equal(1, _source.MaxConcurrentReads);
+        Assert.Equal(300, _source.ComponentReads);
+    }
+
+    [Fact]
+    public async Task AFailingComponentReadGivesNothingAndIsLoggedWithoutStoppingTheService()
+    {
+        _source.ComponentFailure = new InvalidOperationException("driver travou");
+        using var service = Create();
+        using var lease = service.Subscribe();
+        await WaitUntilAsync(() => service.State == SensorServiceState.Running);
+
+        var result = service.ReadComponent(SensorHardware.Cpu);
+
+        Assert.Null(result);
+        Assert.Equal(SensorServiceState.Running, service.State);
+        Assert.Contains(_logger.Entries, e => e.EventId.Id == 3205 && e.Exception is InvalidOperationException);
+    }
+
+    [Fact]
+    public async Task AfterTheServiceIsDisposedNothingIsReadAnymore()
+    {
+        var service = Create();
+        var lease = service.Subscribe();
+        await WaitUntilAsync(() => service.State == SensorServiceState.Running);
+        lease.Dispose();
+        service.Dispose();
+
+        Assert.Null(service.ReadComponent(SensorHardware.Cpu));
+        Assert.Equal(0, _source.ComponentReads);
     }
 }
 
