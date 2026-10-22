@@ -222,7 +222,6 @@ public sealed class StressSession : IAsyncDisposable
         }
 
         _monitor.Tripped -= onTripped;
-        wake.Dispose();
         return await FinishAsync(started).ConfigureAwait(false);
     }
 

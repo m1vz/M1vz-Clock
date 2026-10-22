@@ -329,6 +329,22 @@ public sealed class StressSessionTests : IAsyncDisposable
     }
 
     [Fact]
+    public async Task StoppingAgainAfterTheRunEndedIsHarmless()
+    {
+        _probe.Steady(ThermalComponent.Cpu, 60);
+        _session.Start(Plan(minutes: 0.05), _cpuRam, null);
+        await DriveAsync();
+
+        for (var i = 0; i < 50; i++)
+        {
+            _session.Stop();
+        }
+
+        Assert.False(_session.IsRunning);
+        Assert.Equal(1, _cpuRam.Halts);
+    }
+
+    [Fact]
     public async Task StoppingDoesNotWaitForTheNextClockTick()
     {
         _probe.Steady(ThermalComponent.Cpu, 60);

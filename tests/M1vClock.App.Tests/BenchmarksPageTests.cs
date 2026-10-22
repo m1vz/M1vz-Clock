@@ -4,6 +4,7 @@ using M1vClock.App.Localization;
 using M1vClock.App.Pages.Hardware;
 using M1vClock.App.Pages.Performance;
 using M1vClock.App.Services;
+using M1vClock.Benchmarks.Cpu;
 using M1vClock.Benchmarks.Io;
 using M1vClock.Benchmarks.Results;
 using M1vClock.Benchmarks.Safety;
@@ -977,5 +978,59 @@ public sealed class GpuBenchJobTests
         var job = new RayTracingJob(new StubMachine(), NullLogger<RayTracingJob>.Instance);
 
         await Assert.ThrowsAsync<InvalidOperationException>(() => job.RunAsync(TestContext.Current.CancellationToken));
+    }
+}
+
+public sealed class PathTracePreviewTests
+{
+    [Fact]
+    public void ThePreviewIsHalfTheSizeOfTheImageByDefaultAndItsRegionsFollow()
+    {
+        var tracer = new PathTracer(96, 64, 1);
+        var preview = new PathTracePreview(tracer);
+
+        Assert.Equal(48, preview.PixelWidth);
+        Assert.Equal(32, preview.PixelHeight);
+        Assert.Empty(preview.ActiveRegions());
+        Assert.Equal(PathTracePreview.DefaultFactor, 2);
+    }
+
+    [Fact]
+    public async Task WhileRenderingTheActiveBlocksAreReportedInPreviewCoordinates()
+    {
+        var tracer = new PathTracer(256, 256, 24);
+        var preview = new PathTracePreview(tracer);
+        var run = Task.Run(() => tracer.Run(2, TimeSpan.Zero, CancellationToken.None), TestContext.Current.CancellationToken);
+
+        var seen = new List<PreviewRegion>();
+        var guard = System.Diagnostics.Stopwatch.StartNew();
+        while (!run.IsCompleted && guard.Elapsed < TimeSpan.FromSeconds(30) && seen.Count == 0)
+        {
+            seen.AddRange(preview.ActiveRegions());
+            await Task.Delay(2, TestContext.Current.CancellationToken);
+        }
+
+        await run;
+        Assert.NotEmpty(seen);
+        Assert.All(seen, r =>
+        {
+            Assert.InRange(r.X, 0, 128);
+            Assert.InRange(r.Y, 0, 128);
+            Assert.InRange(r.Width, 1, PathTracer.BucketSize / 2);
+        });
+    }
+
+    [Fact]
+    public void CopyingFillsTheBufferWithTheDownsampledImage()
+    {
+        var tracer = new PathTracer(64, 64, 2);
+        tracer.Run(2, TimeSpan.Zero, CancellationToken.None);
+        var preview = new PathTracePreview(tracer);
+        var pixels = new int[preview.PixelWidth * preview.PixelHeight];
+
+        preview.CopyPixels(pixels);
+
+        Assert.Contains(pixels, p => (p & 0xFF) > 0);
+        Assert.All(pixels, p => Assert.Equal(0xFF, (p >> 24) & 0xFF));
     }
 }

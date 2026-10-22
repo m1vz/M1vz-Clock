@@ -19,6 +19,43 @@ public sealed class PathTracerTests
     }
 
     [Fact]
+    public void ADownsampledCopyWithFactorOneIsTheWholeImage()
+    {
+        var tracer = new PathTracer(Width, Height, Samples);
+        tracer.Run(2, TimeSpan.Zero, TestContext.Current.CancellationToken);
+        var full = new int[Width * Height];
+        var same = new int[Width * Height];
+
+        tracer.CopyPixelsTo(full);
+        tracer.CopyDownsampledPixelsTo(same, 1);
+
+        Assert.Equal(full, same);
+    }
+
+    [Fact]
+    public void ADownsampledCopyWithFactorTwoKeepsEverySecondPixelOfEverySecondRow()
+    {
+        var tracer = new PathTracer(Width, Height, Samples);
+        tracer.Run(2, TimeSpan.Zero, TestContext.Current.CancellationToken);
+        var half = new int[Width / 2 * (Height / 2)];
+
+        tracer.CopyDownsampledPixelsTo(half, 2);
+
+        Assert.Equal(tracer.PixelAt(0, 0), half[0]);
+        Assert.Equal(tracer.PixelAt(10, 6), half[3 * (Width / 2) + 5]);
+        Assert.Equal(tracer.PixelAt(Width - 2, Height - 2), half[^1]);
+    }
+
+    [Fact]
+    public void ADownsampledCopyIntoASmallBufferOrWithAZeroFactorIsRejected()
+    {
+        var tracer = new PathTracer(Width, Height, Samples);
+
+        Assert.Throws<ArgumentOutOfRangeException>(() => tracer.CopyDownsampledPixelsTo(new int[10], 2));
+        Assert.Throws<ArgumentOutOfRangeException>(() => tracer.CopyDownsampledPixelsTo(new int[Width * Height], 0));
+    }
+
+    [Fact]
     public void TheDefaultsKeepTheSceneSizeAndSampleCountOfTheOriginal()
     {
         var tracer = new PathTracer();

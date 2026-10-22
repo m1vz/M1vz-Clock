@@ -9,13 +9,15 @@ using M1vClock.Benchmarks.Safety;
 
 namespace M1vClock.App.Pages.Performance;
 
-public sealed class PathTracePreview(PathTracer tracer) : IPreviewSource
+public sealed class PathTracePreview(PathTracer tracer, int factor = PathTracePreview.DefaultFactor) : IPreviewSource
 {
-    public int PixelWidth => tracer.Width;
+    public const int DefaultFactor = 2;
 
-    public int PixelHeight => tracer.Height;
+    public int PixelWidth => tracer.Width / factor;
 
-    public void CopyPixels(Span<int> destination) => tracer.CopyPixelsTo(destination);
+    public int PixelHeight => tracer.Height / factor;
+
+    public void CopyPixels(Span<int> destination) => tracer.CopyDownsampledPixelsTo(destination, factor);
 
     public IReadOnlyList<PreviewRegion> ActiveRegions()
     {
@@ -23,7 +25,7 @@ public sealed class PathTracePreview(PathTracer tracer) : IPreviewSource
         foreach (var index in tracer.ActiveBuckets())
         {
             var bucket = tracer.Buckets[index];
-            regions.Add(new PreviewRegion(bucket.X, bucket.Y, bucket.Width, bucket.Height));
+            regions.Add(new PreviewRegion(bucket.X / factor, bucket.Y / factor, Math.Max(1, bucket.Width / factor), Math.Max(1, bucket.Height / factor)));
         }
 
         return regions;

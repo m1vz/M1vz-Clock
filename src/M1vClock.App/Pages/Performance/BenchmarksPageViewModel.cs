@@ -32,7 +32,7 @@ public sealed partial class BenchmarksPageViewModel : PageViewModel, IDisposable
 {
     public const int HistoryPageSize = 8;
 
-    private static readonly TimeSpan PollInterval = TimeSpan.FromMilliseconds(100);
+    private static readonly TimeSpan PollInterval = TimeSpan.FromMilliseconds(250);
 
     private readonly HeavyTestGate _gate;
     private readonly SafetyMonitor _monitor;

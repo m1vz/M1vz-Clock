@@ -24,7 +24,7 @@ public sealed class RenderPreview : FrameworkElement
         nameof(Source), typeof(IPreviewSource), typeof(RenderPreview), new FrameworkPropertyMetadata(null, FrameworkPropertyMetadataOptions.AffectsMeasure, OnSourceChanged));
 
     private const double CornerRadius = 10;
-    private static readonly TimeSpan Interval = TimeSpan.FromMilliseconds(100);
+    private static readonly TimeSpan Interval = TimeSpan.FromMilliseconds(250);
     private static readonly Pen RegionPen = CreateRegionPen();
 
     private readonly DispatcherTimer _timer;

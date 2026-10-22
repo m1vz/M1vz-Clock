@@ -42,6 +42,7 @@
     <DataTemplate x:Key="HistoryRowTemplate" DataType="{x:Type pf:BenchHistoryRowViewModel}">
       <Grid Margin="0,2">
         <Button x:Name="RowButton" Style="{StaticResource HistoryRowButton}" Command="{Binding SelectCommand}" CommandParameter="{Binding}"
+                AutomationProperties.Name="{Binding AutomationName}"
                 Margin="0,0,40,0">
           <Grid>
             <Grid.ColumnDefinitions>

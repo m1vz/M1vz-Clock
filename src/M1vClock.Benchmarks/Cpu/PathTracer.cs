@@ -70,6 +70,23 @@ public sealed class PathTracer
         _pixels.CopyTo(destination);
     }
 
+    public void CopyDownsampledPixelsTo(Span<int> destination, int factor)
+    {
+        ArgumentOutOfRangeException.ThrowIfLessThan(factor, 1);
+        var width = _width / factor;
+        var height = _height / factor;
+        ArgumentOutOfRangeException.ThrowIfLessThan(destination.Length, width * height);
+        for (var y = 0; y < height; y++)
+        {
+            var row = y * factor * _width;
+            var target = y * width;
+            for (var x = 0; x < width; x++)
+            {
+                destination[target + x] = _pixels[row + x * factor];
+            }
+        }
+    }
+
     public int PixelAt(int x, int y) => _pixels[y * _width + x];
 
     public IReadOnlyList<int> ActiveBuckets()

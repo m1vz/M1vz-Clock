@@ -74,6 +74,8 @@ public sealed partial class BenchHistoryRowViewModel : ObservableObject
         ? Loc.Format("Bench.History.Imported", string.IsNullOrWhiteSpace(Record.Machine.Cpu) ? Loc.Get("Bench.History.OtherPc") : Record.Machine.Cpu)
         : Loc.Get("Bench.History.ThisPc");
 
+    public string AutomationName => $"{TestText}, {DateText}, {ScoreText}, {MachineText}";
+
     public string ModeText => Record.Sustained ? Loc.Get("Bench.History.Sustained") : string.Empty;
 
     public bool HasMode => Record.Sustained;
