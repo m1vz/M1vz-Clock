@@ -386,6 +386,69 @@ public sealed class OverviewHistoryTests : IDisposable
     }
 
     [Fact]
+    public async Task WithTheBackgroundHistoryOffNoLeaseIsTakenButSnapshotsFromOthersAreStillRecorded()
+    {
+        _settings.Update(s => s.BackgroundSensorHistory = false);
+        var history = Create();
+
+        await history.StartAsync(TestContext.Current.CancellationToken);
+        _service.Publish(Snapshot());
+
+        Assert.Equal(0, _service.Subscriptions);
+        Assert.Equal(60, history.CpuTemperature.Latest);
+    }
+
+    [Fact]
+    public async Task TurningTheBackgroundHistoryOffAndOnReleasesAndTakesTheLeaseAgain()
+    {
+        var history = Create();
+        await history.StartAsync(TestContext.Current.CancellationToken);
+        Assert.Equal(1, _service.Subscriptions);
+
+        _settings.Update(s => s.BackgroundSensorHistory = false);
+        Assert.Equal(1, _service.Releases);
+
+        _settings.Update(s => s.BackgroundSensorHistory = true);
+        Assert.Equal(2, _service.Subscriptions);
+
+        await history.StopAsync(TestContext.Current.CancellationToken);
+        Assert.Equal(2, _service.Releases);
+    }
+
+    [Fact]
+    public async Task WhenTheSensorsStopBecauseNobodyUsesThemTheHistoryIsDropped()
+    {
+        var history = Create();
+        await history.StartAsync(TestContext.Current.CancellationToken);
+        history.Add(Snapshot());
+
+        _service.Change(SensorServiceState.Running);
+        Assert.NotEmpty(history.CpuLoad.Points);
+        _service.Change(SensorServiceState.Paused);
+        Assert.NotEmpty(history.CpuLoad.Points);
+        _service.Change(SensorServiceState.Stopped);
+
+        Assert.Empty(history.CpuLoad.Points);
+        Assert.Empty(history.GpuPower.Points);
+        Assert.Empty(history.CpuTemperature.Points);
+    }
+
+    [Fact]
+    public void OnlyTheLastFifteenMinutesStayInMemory()
+    {
+        var series = new TimeSeries("CPU", OverviewHistory.Retention);
+
+        for (var second = 0; second < 5000; second++)
+        {
+            series.Add(second, 50);
+        }
+
+        Assert.InRange(series.Points.Count, 900, 905);
+        Assert.Equal(4999, series.Points[^1].Time);
+        Assert.True(series.Points[0].Time >= 4999 - 15 * 60 - 2);
+    }
+
+    [Fact]
     public void TheSeriesKeepFifteenMinutes()
     {
         Assert.Equal(TimeSpan.FromMinutes(15), OverviewHistory.Retention);
