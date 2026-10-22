@@ -1,6 +1,7 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <ItemGroup>
+    <PackageReference Include="LibreHardwareMonitorLib" />
     <PackageReference Include="System.Management" />
     <PackageReference Include="Vortice.Direct3D12" />
     <PackageReference Include="Vortice.DXGI" />
