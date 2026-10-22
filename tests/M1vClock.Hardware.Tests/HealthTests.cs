@@ -193,7 +193,7 @@ public sealed class HealthServiceTests
     private static SensorSnapshot Snapshot(float? cpuTemperature, float memoryLoad) => new(
         DateTimeOffset.UnixEpoch,
         [
-            FakeSensorSource.Reading("mem", SensorHardware.Memory, "Memory", SensorKind.Load, memoryLoad),
+            FakeSensorSource.Reading("/ram/load/0", SensorHardware.Memory, "Memory", SensorKind.Load, memoryLoad),
             FakeSensorSource.Reading("cpu", SensorHardware.Cpu, "CPU Package", SensorKind.Temperature, cpuTemperature),
         ]);
 

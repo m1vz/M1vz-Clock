@@ -51,6 +51,8 @@ public sealed record SensorReading(
 
 public sealed record SensorSnapshot(DateTimeOffset At, IReadOnlyList<SensorReading> Readings)
 {
+    public const string PhysicalMemoryPrefix = "/ram/";
+
     public float? CpuTemperature
     {
         get
@@ -87,13 +89,16 @@ public sealed record SensorSnapshot(DateTimeOffset At, IReadOnlyList<SensorReadi
         }
     }
 
-    public float? MemoryUsedGb => Readings.FirstOrDefault(r => r.Hardware == SensorHardware.Memory && r.Kind == SensorKind.Data && r.Name == "Memory Used")?.Value;
+    public float? MemoryUsedGb => Physical(SensorKind.Data, "Memory Used");
 
-    public float? MemoryAvailableGb => Readings.FirstOrDefault(r => r.Hardware == SensorHardware.Memory && r.Kind == SensorKind.Data && r.Name == "Memory Available")?.Value;
+    public float? MemoryAvailableGb => Physical(SensorKind.Data, "Memory Available");
 
     public float? GpuLoad => Readings.FirstOrDefault(r => r.Hardware == SensorHardware.Gpu && r.Kind == SensorKind.Load && r.Name == "GPU Core")?.Value;
 
-    public float? MemoryLoad => Readings.FirstOrDefault(r => r.Hardware == SensorHardware.Memory && r.Kind == SensorKind.Load && r.Name == "Memory")?.Value;
+    public float? MemoryLoad => Physical(SensorKind.Load, "Memory");
+
+    private float? Physical(SensorKind kind, string name) =>
+        Readings.FirstOrDefault(r => r.Hardware == SensorHardware.Memory && r.Kind == kind && r.Name == name && r.Id.StartsWith(PhysicalMemoryPrefix, StringComparison.Ordinal))?.Value;
 
     private static bool HasAny(string name, params string[] parts) => parts.Any(p => name.Contains(p, StringComparison.OrdinalIgnoreCase));
 }

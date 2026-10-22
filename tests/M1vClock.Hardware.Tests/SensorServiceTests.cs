@@ -106,11 +106,11 @@ public sealed class SensorServiceTests : IDisposable
     public async Task SubscribingOpensTheSourceAndPublishesTheFirstSnapshotAtOnce()
     {
         using var service = Create();
-        var published = new List<SensorSnapshot>();
-        service.SnapshotReady += (_, snapshot) => published.Add(snapshot);
+        List<SensorSnapshot> published = [];
+        service.SnapshotReady += (_, snapshot) => Volatile.Write(ref published, [.. published, snapshot]);
 
         using var lease = service.Subscribe();
-        await WaitUntilAsync(() => service.Latest is not null);
+        await WaitUntilAsync(() => Volatile.Read(ref published) is { Count: > 0 });
 
         Assert.Equal(1, _source.OpenCalls);
         Assert.Equal(SensorServiceState.Running, service.State);
@@ -328,7 +328,8 @@ public sealed class SensorSnapshotTests
             R(SensorHardware.Cpu, "CPU Package", SensorKind.Power, 41.5f),
             R(SensorHardware.Gpu, "GPU Core", SensorKind.Temperature, 67),
             R(SensorHardware.Gpu, "GPU Core", SensorKind.Load, 88),
-            R(SensorHardware.Memory, "Memory", SensorKind.Load, 52));
+            FakeSensorSource.Reading("/vram/load/1", SensorHardware.Memory, "Memory", SensorKind.Load, 54),
+            FakeSensorSource.Reading("/ram/load/0", SensorHardware.Memory, "Memory", SensorKind.Load, 52));
 
         Assert.Equal(23f, snapshot.CpuLoad);
         Assert.Equal(41.5f, snapshot.CpuPower);
@@ -367,8 +368,10 @@ public sealed class SensorSnapshotTests
         var snapshot = Snapshot(
             R(SensorHardware.Gpu, "GPU Core", SensorKind.Clock, 1850),
             R(SensorHardware.Gpu, "GPU Memory", SensorKind.Clock, 1750),
-            R(SensorHardware.Memory, "Memory Used", SensorKind.Data, 11.2f),
-            R(SensorHardware.Memory, "Memory Available", SensorKind.Data, 4.8f));
+            FakeSensorSource.Reading("/vram/data/2", SensorHardware.Memory, "Memory Used", SensorKind.Data, 23.3f),
+            FakeSensorSource.Reading("/vram/data/3", SensorHardware.Memory, "Memory Available", SensorKind.Data, 19.5f),
+            FakeSensorSource.Reading("/ram/data/0", SensorHardware.Memory, "Memory Used", SensorKind.Data, 11.2f),
+            FakeSensorSource.Reading("/ram/data/1", SensorHardware.Memory, "Memory Available", SensorKind.Data, 4.8f));
 
         Assert.Equal(1850f, snapshot.GpuClock);
         Assert.Equal(11.2f, snapshot.MemoryUsedGb);
