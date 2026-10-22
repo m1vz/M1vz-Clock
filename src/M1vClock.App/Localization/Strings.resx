@@ -1953,4 +1953,106 @@
   <data name="Toast.Dismiss" xml:space="preserve">
     <value>Fechar aviso</value>
   </data>
+  <data name="Hw.Sensor.Search" xml:space="preserve">
+    <value>Buscar sensor ou componente</value>
+  </data>
+  <data name="Hw.Sensor.Filter.All" xml:space="preserve">
+    <value>Todos</value>
+  </data>
+  <data name="Hw.Sensor.Filter.Temperature" xml:space="preserve">
+    <value>Temperatura</value>
+  </data>
+  <data name="Hw.Sensor.Filter.Load" xml:space="preserve">
+    <value>Carga</value>
+  </data>
+  <data name="Hw.Sensor.Filter.Clock" xml:space="preserve">
+    <value>Clock</value>
+  </data>
+  <data name="Hw.Sensor.Filter.Power" xml:space="preserve">
+    <value>Consumo</value>
+  </data>
+  <data name="Hw.Sensor.Filter.Fan" xml:space="preserve">
+    <value>Ventoinhas</value>
+  </data>
+  <data name="Hw.Sensor.Filter.Other" xml:space="preserve">
+    <value>Outros</value>
+  </data>
+  <data name="Hw.Sensor.Hardware.Cpu" xml:space="preserve">
+    <value>Processador</value>
+  </data>
+  <data name="Hw.Sensor.Hardware.Gpu" xml:space="preserve">
+    <value>Placa de vídeo</value>
+  </data>
+  <data name="Hw.Sensor.Hardware.Memory" xml:space="preserve">
+    <value>Memória</value>
+  </data>
+  <data name="Hw.Sensor.Hardware.Motherboard" xml:space="preserve">
+    <value>Placa-mãe</value>
+  </data>
+  <data name="Hw.Sensor.Hardware.Storage" xml:space="preserve">
+    <value>Armazenamento</value>
+  </data>
+  <data name="Hw.Sensor.Hardware.Network" xml:space="preserve">
+    <value>Rede</value>
+  </data>
+  <data name="Hw.Sensor.Hardware.Cooling" xml:space="preserve">
+    <value>Refrigeração</value>
+  </data>
+  <data name="Hw.Sensor.Hardware.PowerSupply" xml:space="preserve">
+    <value>Fonte e energia</value>
+  </data>
+  <data name="Hw.Sensor.Hardware.Battery" xml:space="preserve">
+    <value>Bateria</value>
+  </data>
+  <data name="Hw.Sensor.Hardware.Other" xml:space="preserve">
+    <value>Outros</value>
+  </data>
+  <data name="Hw.Sensor.Col.Current" xml:space="preserve">
+    <value>Atual</value>
+  </data>
+  <data name="Hw.Sensor.Col.Min" xml:space="preserve">
+    <value>Mín</value>
+  </data>
+  <data name="Hw.Sensor.Col.Max" xml:space="preserve">
+    <value>Máx</value>
+  </data>
+  <data name="Hw.Sensor.Starting" xml:space="preserve">
+    <value>Detectando o hardware…</value>
+  </data>
+  <data name="Hw.Sensor.Failed" xml:space="preserve">
+    <value>Não foi possível abrir os sensores. O registro tem os detalhes.</value>
+  </data>
+  <data name="Hw.Sensor.NoMatch" xml:space="preserve">
+    <value>Nenhum sensor corresponde à busca.</value>
+  </data>
+  <data name="Hw.Sensor.Waiting" xml:space="preserve">
+    <value>Aguardando a primeira leitura…</value>
+  </data>
+  <data name="Hw.Sensor.Summary" xml:space="preserve">
+    <value>{0} sensores · atualizado às {1}</value>
+  </data>
+  <data name="Hw.Sensor.Summary.Frozen" xml:space="preserve">
+    <value>{0} sensores · valores congelados às {1}</value>
+  </data>
+  <data name="Hw.Sensor.Freeze" xml:space="preserve">
+    <value>Congelar</value>
+  </data>
+  <data name="Hw.Sensor.Resume" xml:space="preserve">
+    <value>Retomar</value>
+  </data>
+  <data name="Hw.Sensor.Note.MinMax" xml:space="preserve">
+    <value>Mín e Máx valem desde que o m1vClock abriu os sensores.</value>
+  </data>
+  <data name="Hw.Sensor.Problem.NotElevated" xml:space="preserve">
+    <value>A temperatura e o consumo da CPU não aparecem: o Windows só libera os sensores internos da CPU quando o m1vClock roda como administrador. Feche e abra de novo aceitando o pedido de administrador.</value>
+  </data>
+  <data name="Hw.Sensor.Problem.PawnIoMissing" xml:space="preserve">
+    <value>A temperatura e o consumo da CPU não aparecem porque falta o driver PawnIO. Ele é gratuito, assinado e também usado pelo LibreHardwareMonitor e pelo FanControl. A instalação pelo m1vClock chega numa próxima fase; por enquanto, instale pelo comando abaixo e reabra o app.</value>
+  </data>
+  <data name="Hw.Sensor.Problem.PawnIoCommand" xml:space="preserve">
+    <value>winget install --id namazso.PawnIO -e</value>
+  </data>
+  <data name="Hw.Sensor.Problem.ReadFailed" xml:space="preserve">
+    <value>O PawnIO está instalado, mas a leitura da CPU falhou. Se acabou de instalar, reinicie o PC. Se continuar, confira se o antivírus bloqueou o driver ou se a CPU é nova demais para a biblioteca de sensores.</value>
+  </data>
 </root>
