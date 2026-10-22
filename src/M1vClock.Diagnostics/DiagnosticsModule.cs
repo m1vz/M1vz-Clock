@@ -1,5 +1,6 @@
 using M1vClock.Diagnostics.Crashes;
 using M1vClock.Diagnostics.Events;
+using M1vClock.Diagnostics.Logs;
 using M1vClock.Diagnostics.Reliability;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -17,6 +18,8 @@ public static class DiagnosticsModule
         services.AddSingleton<ICrashService, CrashService>();
         services.AddSingleton<IReliabilitySource, WmiReliabilitySource>();
         services.AddSingleton<IReliabilityService, ReliabilityService>();
+        services.AddSingleton<ILogSource, FileLogSource>();
+        services.AddSingleton<ILogService, LogService>();
         return services;
     }
 }

@@ -31,4 +31,10 @@ internal static partial class DiagnosticsLog
 
     [LoggerMessage(EventId = 4009, Level = LogLevel.Warning, Message = "Não foi possível ler a confiabilidade ({Part}) pelo WMI.")]
     public static partial void ReliabilityFailed(ILogger logger, Exception exception, string part);
+
+    [LoggerMessage(EventId = 4010, Level = LogLevel.Warning, Message = "Não foi possível listar a pasta de logs.")]
+    public static partial void LogFolderFailed(ILogger logger, Exception exception);
+
+    [LoggerMessage(EventId = 4011, Level = LogLevel.Warning, Message = "Não foi possível ler o log {Name}.")]
+    public static partial void LogFileFailed(ILogger logger, Exception exception, string name);
 }
