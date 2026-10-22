@@ -54,6 +54,8 @@ public sealed partial class StressPageViewModel : PageViewModel, IDisposable
     private readonly DialogService _dialogs;
     private readonly AppSettingsService _settings;
     private readonly IUiThread _ui;
+    private readonly ActivityLog _activity;
+    private readonly bool _loaded;
     private readonly TimeProvider _clock;
     private readonly ILogger<StressPageViewModel> _logger;
     private bool _disposed;
@@ -66,6 +68,7 @@ public sealed partial class StressPageViewModel : PageViewModel, IDisposable
         IMachineProfile machine,
         DialogService dialogs,
         AppSettingsService settings,
+        ActivityLog activity,
         IUiThread ui,
         TimeProvider clock,
         ILogger<StressPageViewModel> logger)
@@ -77,6 +80,7 @@ public sealed partial class StressPageViewModel : PageViewModel, IDisposable
         ArgumentNullException.ThrowIfNull(machine);
         ArgumentNullException.ThrowIfNull(dialogs);
         ArgumentNullException.ThrowIfNull(settings);
+        ArgumentNullException.ThrowIfNull(activity);
         ArgumentNullException.ThrowIfNull(ui);
         ArgumentNullException.ThrowIfNull(clock);
         ArgumentNullException.ThrowIfNull(logger);
@@ -87,6 +91,7 @@ public sealed partial class StressPageViewModel : PageViewModel, IDisposable
         _dialogs = dialogs;
         _settings = settings;
         _ui = ui;
+        _activity = activity;
         _clock = clock;
         _logger = logger;
         CpuSeries = new TimeSeries(Loc.Get("Hw.Overview.Legend.Cpu"), TimeSpan.FromMinutes(10));
@@ -101,6 +106,9 @@ public sealed partial class StressPageViewModel : PageViewModel, IDisposable
         ResetCards();
         RebuildCards();
         StatusText = Loc.Get("Stress.Status.Idle");
+        CpuLimit = SavedLimit(settings.Current.StressCpuLimit, SafetyLimits.CpuMinimum, SafetyLimits.CpuConfirmAbove, SafetyLimits.CpuDefault);
+        GpuLimit = SavedLimit(settings.Current.StressGpuLimit, SafetyLimits.GpuMinimum, SafetyLimits.GpuConfirmAbove, SafetyLimits.GpuDefault);
+        _loaded = true;
         _gate.Changed += OnGateChanged;
     }
 
@@ -327,6 +335,7 @@ public sealed partial class StressPageViewModel : PageViewModel, IDisposable
         OnPropertyChanged(nameof(CpuLimitDisplay));
         OnPropertyChanged(nameof(CanLowerCpuLimit));
         OnPropertyChanged(nameof(CanRaiseCpuLimit));
+        SaveLimit(value, SafetyLimits.CpuConfirmAbove, (s, v) => s.StressCpuLimit = v);
     }
 
     partial void OnGpuLimitChanged(double value)
@@ -334,6 +343,7 @@ public sealed partial class StressPageViewModel : PageViewModel, IDisposable
         OnPropertyChanged(nameof(GpuLimitText));
         OnPropertyChanged(nameof(CanLowerGpuLimit));
         OnPropertyChanged(nameof(CanRaiseGpuLimit));
+        SaveLimit(value, SafetyLimits.GpuConfirmAbove, (s, v) => s.StressGpuLimit = v);
     }
 
     partial void OnIsRunningChanged(bool value)
@@ -353,6 +363,19 @@ public sealed partial class StressPageViewModel : PageViewModel, IDisposable
     partial void OnMessageToneChanged(MetricState value) => NotifyMessage();
 
     partial void OnSummaryChanged(InfoSectionViewModel? value) => OnPropertyChanged(nameof(HasSummary));
+
+    private static double SavedLimit(double saved, double minimum, double ceiling, double fallback) =>
+        double.IsFinite(saved) ? Math.Clamp(saved, minimum, ceiling) : fallback;
+
+    private void SaveLimit(double value, double ceiling, Action<AppSettings, double> store)
+    {
+        if (!_loaded || value > ceiling)
+        {
+            return;
+        }
+
+        _settings.Update(settings => store(settings, value));
+    }
 
     private void NotifyMessage()
     {
@@ -710,6 +733,7 @@ public sealed partial class StressPageViewModel : PageViewModel, IDisposable
         section.SetReady(rows);
         Summary = section;
         AddLog(Loc.Format("Stress.Log.Ended", text, FormatSpan(outcome.Elapsed)));
+        _activity.Add(new ActivityEntry(_clock.GetUtcNow(), "Icon.Stress", Loc.Get("Activity.Stress.Title"), Loc.Format("Stress.Log.Ended", text, FormatSpan(outcome.Elapsed))));
     }
 
     private (string Text, MetricState Tone) EndText(StressOutcome outcome) => outcome.End switch

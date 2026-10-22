@@ -136,6 +136,7 @@ public sealed class BenchmarksPageViewModelTests : IDisposable
     private readonly SafetyMonitor _monitor;
     private readonly BenchmarkHistory _history;
     private readonly AppSettingsService _settings;
+    private readonly ActivityLog _activity = new(new InlineUiThread());
     private readonly BenchmarksPageViewModel _page;
 
     public BenchmarksPageViewModelTests()
@@ -154,6 +155,7 @@ public sealed class BenchmarksPageViewModelTests : IDisposable
             new StubMachine(),
             _dialogs,
             _settings,
+            _activity,
             _clock,
             NullLogger<BenchmarksPageViewModel>.Instance);
     }
@@ -492,6 +494,30 @@ public sealed class BenchmarksPageViewModelTests : IDisposable
         await _page.ToggleAsync();
 
         Assert.Equal(Loc.Get("Bench.Error.Space"), _page.Message);
+    }
+
+    [Fact]
+    public async Task AFinishedRunAppearsInTheActivityOfTheOverview()
+    {
+        await _page.ToggleAsync();
+
+        var entry = Assert.Single(_activity.Entries);
+        Assert.Equal(Loc.Get("Activity.Benchmark.Title"), entry.Title);
+        Assert.Contains(BenchNames.Test(BenchmarkTests.CpuMulti), entry.Text, StringComparison.Ordinal);
+        Assert.Contains(BenchNames.Value(BenchmarkTests.CpuMulti, 3600), entry.Text, StringComparison.Ordinal);
+    }
+
+    [Fact]
+    public async Task ACancelledRunLeavesNothingInTheActivity()
+    {
+        _cpu.Body = FakeBenchJob.WaitForCancellation;
+        var run = _page.ToggleAsync();
+        await _cpu.Started;
+
+        await _page.ToggleAsync();
+        await run;
+
+        Assert.Empty(_activity.Entries);
     }
 
     [Fact]

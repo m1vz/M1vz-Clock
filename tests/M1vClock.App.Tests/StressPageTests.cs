@@ -104,6 +104,7 @@ public sealed class StressPageViewModelTests : IAsyncDisposable
     private readonly SafetyMonitor _monitor;
     private readonly StressSession _session;
     private readonly AppSettingsService _settings;
+    private readonly ActivityLog _activity = new(new InlineUiThread());
     private readonly StressPageViewModel _page;
     private readonly List<DialogRequest> _shown = [];
     private bool _answer = true;
@@ -127,7 +128,7 @@ public sealed class StressPageViewModelTests : IAsyncDisposable
                 _dialogs.CancelCommand.Execute(null);
             }
         };
-        _page = new StressPageViewModel(_session, _gate, _factory, new StubMachine(), _dialogs, _settings, new InlineUiThread(), _clock, NullLogger<StressPageViewModel>.Instance);
+        _page = new StressPageViewModel(_session, _gate, _factory, new StubMachine(), _dialogs, _settings, _activity, new InlineUiThread(), _clock, NullLogger<StressPageViewModel>.Instance);
     }
 
     public async ValueTask DisposeAsync()
@@ -179,6 +180,67 @@ public sealed class StressPageViewModelTests : IAsyncDisposable
         Assert.Equal(Loc.Get("Stress.Start"), _page.ButtonText);
         Assert.Equal(Loc.Get("Stress.Status.Idle"), _page.StatusText);
     }
+
+    [Fact]
+    public async Task AnEndedTestAppearsInTheActivityOfTheOverview()
+    {
+        var run = await StartAndWaitRunningAsync();
+        _page.ToggleCommand.Execute(null);
+        await run;
+
+        var entry = Assert.Single(_activity.Entries);
+        Assert.Equal(Loc.Get("Activity.Stress.Title"), entry.Title);
+        Assert.Contains(Loc.Get("Stress.Status.Stopped"), entry.Text, StringComparison.Ordinal);
+    }
+
+    [Fact]
+    public async Task TheChosenLimitIsRememberedForTheNextVisit()
+    {
+        _page.LowerCpuLimitCommand.Execute(null);
+        await _page.RaiseGpuLimitAsync();
+
+        Assert.Equal(80, _settings.Current.StressCpuLimit);
+        Assert.Equal(88, _settings.Current.StressGpuLimit);
+        var next = NewPage();
+        Assert.Equal(80, next.CpuLimit);
+        Assert.Equal(88, next.GpuLimit);
+    }
+
+    [Fact]
+    public async Task OpeningThePageDoesNotRewriteTheSettingsFile()
+    {
+        var path = Path.Combine(_temp.FullName, "settings.json");
+        var before = File.Exists(path) ? File.GetLastWriteTimeUtc(path) : DateTime.MinValue;
+
+        _ = NewPage();
+        await Task.Delay(50, TestContext.Current.CancellationToken);
+
+        Assert.Equal(before, File.Exists(path) ? File.GetLastWriteTimeUtc(path) : DateTime.MinValue);
+    }
+
+    [Fact]
+    public async Task ALimitAboveNinetyIsOnlyValidForTheSessionAndIsNeverSaved()
+    {
+        _page.CpuLimit = 90;
+        await _page.RaiseCpuLimitAsync();
+
+        Assert.Equal(95, _page.CpuLimit);
+        Assert.Equal(90, _settings.Current.StressCpuLimit);
+        Assert.Equal(90, NewPage().CpuLimit);
+    }
+
+    [Theory]
+    [InlineData(200, 90)]
+    [InlineData(10, 60)]
+    public void ATamperedSettingsFileCannotRaiseTheLimitAboveTheConfirmedCeiling(double saved, double expected)
+    {
+        _settings.Update(s => s.StressCpuLimit = saved);
+
+        Assert.Equal(expected, NewPage().CpuLimit);
+    }
+
+    private StressPageViewModel NewPage() =>
+        new(_session, _gate, _factory, new StubMachine(), _dialogs, _settings, _activity, new InlineUiThread(), _clock, NullLogger<StressPageViewModel>.Instance);
 
     [Fact]
     public void TheLiveCardsFollowTheComponentsThatWereChosen()

@@ -3162,4 +3162,13 @@
   <data name="Stress.Gpu.WindowNote" xml:space="preserve">
     <value>Uma janela com a carga abre na frente. Esc ou fechar a janela também para o teste.</value>
   </data>
+  <data name="Activity.Benchmark.Title" xml:space="preserve">
+    <value>Benchmark concluído</value>
+  </data>
+  <data name="Activity.Benchmark.Text" xml:space="preserve">
+    <value>{0}: {1}</value>
+  </data>
+  <data name="Activity.Stress.Title" xml:space="preserve">
+    <value>Teste de estresse</value>
+  </data>
 </root>

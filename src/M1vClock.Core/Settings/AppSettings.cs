@@ -31,5 +31,9 @@ public sealed class AppSettings : IVersionedSettings
 
     public bool BackgroundSensorHistory { get; set; } = true;
 
+    public double StressCpuLimit { get; set; } = 85;
+
+    public double StressGpuLimit { get; set; } = 83;
+
     public IReadOnlyList<string> CollapsedSidebarSections { get; set; } = [];
 }

@@ -40,6 +40,7 @@ public sealed partial class BenchmarksPageViewModel : PageViewModel, IDisposable
     private readonly IMachineProfile _machine;
     private readonly IFileDialogs _dialogs;
     private readonly AppSettingsService _settings;
+    private readonly ActivityLog _activity;
     private readonly TimeProvider _clock;
     private readonly ILogger<BenchmarksPageViewModel> _logger;
     private CancellationTokenSource? _run;
@@ -55,6 +56,7 @@ public sealed partial class BenchmarksPageViewModel : PageViewModel, IDisposable
         IMachineProfile machine,
         IFileDialogs dialogs,
         AppSettingsService settings,
+        ActivityLog activity,
         TimeProvider clock,
         ILogger<BenchmarksPageViewModel> logger)
         : base(PageCatalog.Find("benchmarks"))
@@ -66,6 +68,7 @@ public sealed partial class BenchmarksPageViewModel : PageViewModel, IDisposable
         ArgumentNullException.ThrowIfNull(machine);
         ArgumentNullException.ThrowIfNull(dialogs);
         ArgumentNullException.ThrowIfNull(settings);
+        ArgumentNullException.ThrowIfNull(activity);
         ArgumentNullException.ThrowIfNull(clock);
         ArgumentNullException.ThrowIfNull(logger);
         _gate = gate;
@@ -74,6 +77,7 @@ public sealed partial class BenchmarksPageViewModel : PageViewModel, IDisposable
         _machine = machine;
         _dialogs = dialogs;
         _settings = settings;
+        _activity = activity;
         _clock = clock;
         _logger = logger;
         Tabs = [.. jobs.Create().Select(job => new BenchTabViewModel(job))];
@@ -670,6 +674,7 @@ public sealed partial class BenchmarksPageViewModel : PageViewModel, IDisposable
             SecondScoreCaption = BenchNames.Test(second.Test);
         }
 
+        _activity.Add(new ActivityEntry(_clock.GetUtcNow(), job.IconKey, Loc.Get("Activity.Benchmark.Title"), Loc.Format("Activity.Benchmark.Text", BenchNames.Test(first.Test), ScoreHeadline)));
         ShowVersus(previous);
         if (outcome.Drafts.Count == 0)
         {
