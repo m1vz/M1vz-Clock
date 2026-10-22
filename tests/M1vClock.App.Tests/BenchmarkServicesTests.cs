@@ -1,7 +1,9 @@
 using System.IO;
 using M1vClock.App.Hosting;
 using M1vClock.App.Services;
+using M1vClock.Benchmarks;
 using M1vClock.Benchmarks.Io;
+using M1vClock.Benchmarks.Results;
 using M1vClock.Benchmarks.Safety;
 using M1vClock.Core.Paths;
 using M1vClock.Core.Results;
@@ -10,6 +12,8 @@ using M1vClock.Hardware.Gpu;
 using M1vClock.Hardware.Platform;
 using M1vClock.Hardware.Ram;
 using M1vClock.Hardware.Sensors;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Logging.Abstractions;
 using Microsoft.Extensions.Time.Testing;
 
@@ -395,5 +399,68 @@ public sealed class BenchmarkTempSweeperTests : IDisposable
         sweeper.Sweep(TestContext.Current.CancellationToken);
 
         Assert.False(Directory.Exists(leftover));
+    }
+}
+
+public sealed class BenchmarkHistoryRegistrationTests : IDisposable
+{
+    private readonly string _root = Path.Combine(Path.GetTempPath(), "m1vclock-tests", Guid.NewGuid().ToString("N"));
+
+    public void Dispose()
+    {
+        if (Directory.Exists(_root))
+        {
+            Directory.Delete(_root, recursive: true);
+        }
+    }
+
+    private ServiceProvider Start() => new ServiceCollection()
+        .AddSingleton(new AppPaths(_root, isHardened: false))
+        .AddSingleton(new ElevationInfo(false, "S-1-5-21-1", "PC-EXEMPLO\\usuario"))
+        .AddSingleton(TimeProvider.System)
+        .AddSingleton(typeof(ILogger<>), typeof(NullLogger<>))
+        .AddBenchmarksModule()
+        .BuildServiceProvider();
+
+    private static BenchmarkRecord Record(double score) => new()
+    {
+        Id = Guid.NewGuid(),
+        At = DateTimeOffset.UtcNow.AddMinutes(-1),
+        Test = BenchmarkTests.CpuMulti,
+        ScoreVersion = 1,
+        Score = score,
+        Metrics = new Dictionary<string, double> { ["seconds"] = 14 },
+        Machine = StubMachine.Profile,
+    };
+
+    [Fact]
+    public void ReopeningTheAppKeepsEveryResultAlreadySavedAndTheNextOneIsAddedToThem()
+    {
+        using (var first = Start())
+        {
+            var history = first.GetRequiredService<BenchmarkHistory>();
+            history.Add(Record(3000));
+            history.Add(Record(3100));
+        }
+
+        using var second = Start();
+        var reopened = second.GetRequiredService<BenchmarkHistory>();
+        Assert.Equal([3100, 3000], reopened.Records.Select(r => r.Score));
+
+        reopened.Add(Record(3200));
+
+        using var third = Start();
+        Assert.Equal(3, third.GetRequiredService<BenchmarkHistory>().Records.Count);
+    }
+
+    [Fact]
+    public void TheHistoryLivesInTheFolderOfTheCurrentUserAndNotInASharedOne()
+    {
+        using var provider = Start();
+        provider.GetRequiredService<BenchmarkHistory>().Add(Record(3000));
+
+        var file = Directory.EnumerateFiles(_root, BenchmarksModule.HistoryFileName, SearchOption.AllDirectories).Single();
+
+        Assert.Contains("S-1-5-21-1", file, StringComparison.Ordinal);
     }
 }
