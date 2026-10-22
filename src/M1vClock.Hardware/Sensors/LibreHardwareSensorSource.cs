@@ -1,5 +1,7 @@
 using System.Net.NetworkInformation;
 using LibreHardwareMonitor.Hardware;
+using Microsoft.Extensions.Logging;
+using Microsoft.Extensions.Logging.Abstractions;
 
 namespace M1vClock.Hardware.Sensors;
 
@@ -12,6 +14,9 @@ public interface ISensorSource : IDisposable
 
 public sealed class LibreHardwareSensorSource : ISensorSource
 {
+    private readonly ILogger<LibreHardwareSensorSource> _logger;
+    private bool _networkFailureLogged;
+
     private readonly Computer _computer = new()
     {
         IsCpuEnabled = true,
@@ -26,6 +31,11 @@ public sealed class LibreHardwareSensorSource : ISensorSource
     };
 
     private bool _opened;
+
+    public LibreHardwareSensorSource(ILogger<LibreHardwareSensorSource>? logger = null)
+    {
+        _logger = logger ?? NullLogger<LibreHardwareSensorSource>.Instance;
+    }
 
     public static SensorHardware MapHardware(HardwareType type) => type switch
     {
@@ -103,19 +113,31 @@ public sealed class LibreHardwareSensorSource : ISensorSource
         }
     }
 
-    private static IReadOnlyList<NetworkAdapterState> ReadInterfaces()
+    private IReadOnlyList<NetworkAdapterState> ReadInterfaces()
     {
         try
         {
             return [.. NetworkInterface.GetAllNetworkInterfaces().Select(n => new NetworkAdapterState(n.Name, n.OperationalStatus, n.NetworkInterfaceType, HasUsableAddress(n)))];
         }
-        catch (NetworkInformationException)
+        catch (NetworkInformationException ex)
         {
+            LogNetworkFailure(ex);
             return [];
         }
     }
 
-    private static bool HasUsableAddress(NetworkInterface adapter)
+    private void LogNetworkFailure(Exception exception)
+    {
+        if (_networkFailureLogged)
+        {
+            return;
+        }
+
+        _networkFailureLogged = true;
+        HardwareLog.OptionalSourceFailed(_logger, exception, "adaptadores de rede dos sensores");
+    }
+
+    private bool HasUsableAddress(NetworkInterface adapter)
     {
         try
         {
@@ -124,8 +146,9 @@ public sealed class LibreHardwareSensorSource : ISensorSource
                 && !System.Net.IPAddress.IsLoopback(a.Address)
                 && !a.Address.ToString().StartsWith("169.254.", StringComparison.Ordinal));
         }
-        catch (NetworkInformationException)
+        catch (NetworkInformationException ex)
         {
+            LogNetworkFailure(ex);
             return false;
         }
     }
