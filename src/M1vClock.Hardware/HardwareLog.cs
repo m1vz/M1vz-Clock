@@ -30,4 +30,16 @@ internal static partial class HardwareLog
 
     [LoggerMessage(EventId = 3105, Level = LogLevel.Information, Message = "Dispositivos USB mudaram: {Added} conectado(s), {Removed} removido(s).")]
     public static partial void DeviceBatchDetected(ILogger logger, int added, int removed);
+
+    [LoggerMessage(EventId = 3201, Level = LogLevel.Error, Message = "Não foi possível abrir os sensores de hardware.")]
+    public static partial void SensorOpenFailed(ILogger logger, Exception exception);
+
+    [LoggerMessage(EventId = 3202, Level = LogLevel.Warning, Message = "Falha ao ler os sensores; a leitura foi pulada.")]
+    public static partial void SensorReadFailed(ILogger logger, Exception exception);
+
+    [LoggerMessage(EventId = 3203, Level = LogLevel.Information, Message = "Sensores de hardware abertos em {Milliseconds} ms.")]
+    public static partial void SensorsOpened(ILogger logger, long milliseconds);
+
+    [LoggerMessage(EventId = 3204, Level = LogLevel.Warning, Message = "A leitura dos sensores não parou a tempo ao encerrar.")]
+    public static partial void SensorStopTimedOut(ILogger logger);
 }

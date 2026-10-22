@@ -4,6 +4,7 @@ using M1vClock.Hardware.Gpu;
 using M1vClock.Hardware.Network;
 using M1vClock.Hardware.Platform;
 using M1vClock.Hardware.Power;
+using M1vClock.Hardware.Sensors;
 using M1vClock.Hardware.Ram;
 using M1vClock.Hardware.Storage;
 using M1vClock.Hardware.Wmi;
@@ -39,6 +40,9 @@ public static class HardwareModule
         services.AddSingleton<IDeviceChangeSource, WmiDeviceChangeSource>();
         services.AddSingleton<IDeviceWatcher, DeviceWatcher>();
         services.TryAddSingleton(TimeProvider.System);
+        services.AddSingleton<ISensorSource, LibreHardwareSensorSource>();
+        services.AddSingleton<ISensorService, SensorService>();
+        services.AddSingleton<IPawnIoProbe, RegistryPawnIoProbe>();
         services.AddSingleton<INetworkInterfaceSource, SystemNetworkInterfaceSource>();
         services.AddSingleton<INetworkProbe, SystemNetworkProbe>();
         services.AddSingleton(NetworkTestOptions.Default);
