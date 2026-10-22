@@ -669,6 +669,26 @@ public sealed class StressPageViewModelTests : IAsyncDisposable
     }
 
     [Fact]
+    public async Task TheGpuLimitReachesBothEndsStartingFromItsDefault()
+    {
+        Assert.Equal(SafetyLimits.GpuDefault, _page.GpuLimit);
+
+        for (var i = 0; i < 5; i++)
+        {
+            _page.LowerGpuLimitCommand.Execute(null);
+        }
+
+        Assert.Equal(SafetyLimits.GpuMinimum, _page.GpuLimit);
+        Assert.False(_page.CanLowerGpuLimit);
+
+        _page.GpuLimit = 93;
+        await _page.RaiseGpuLimitAsync();
+
+        Assert.Equal(SafetyLimits.GpuHardMaximum, _page.GpuLimit);
+        Assert.False(_page.CanRaiseGpuLimit);
+    }
+
+    [Fact]
     public void TheLimitTextFollowsTheTemperatureUnitOfTheSettings()
     {
         Assert.Contains("85", _page.CpuLimitText, StringComparison.Ordinal);

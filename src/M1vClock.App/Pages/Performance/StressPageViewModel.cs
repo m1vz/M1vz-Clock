@@ -166,13 +166,13 @@ public sealed partial class StressPageViewModel : PageViewModel, IDisposable
 
     public string GpuLimitText => FormatTemperature(GpuLimit);
 
-    public bool CanLowerCpuLimit => IsIdle && CpuLimit - LimitStep >= SafetyLimits.CpuMinimum;
+    public bool CanLowerCpuLimit => IsIdle && CpuLimit > SafetyLimits.CpuMinimum;
 
-    public bool CanRaiseCpuLimit => IsIdle && CpuLimit + LimitStep <= SafetyLimits.CpuHardMaximum;
+    public bool CanRaiseCpuLimit => IsIdle && CpuLimit < SafetyLimits.CpuHardMaximum;
 
-    public bool CanLowerGpuLimit => IsIdle && GpuLimit - LimitStep >= SafetyLimits.GpuMinimum;
+    public bool CanLowerGpuLimit => IsIdle && GpuLimit > SafetyLimits.GpuMinimum;
 
-    public bool CanRaiseGpuLimit => IsIdle && GpuLimit + LimitStep <= SafetyLimits.GpuHardMaximum;
+    public bool CanRaiseGpuLimit => IsIdle && GpuLimit < SafetyLimits.GpuHardMaximum;
 
     public string RamPlanText
     {
@@ -277,8 +277,8 @@ public sealed partial class StressPageViewModel : PageViewModel, IDisposable
     [RelayCommand]
     public async Task RaiseCpuLimitAsync()
     {
-        var next = CpuLimit + LimitStep;
-        if (next > SafetyLimits.CpuHardMaximum)
+        var next = Math.Min(SafetyLimits.CpuHardMaximum, CpuLimit + LimitStep);
+        if (next <= CpuLimit)
         {
             return;
         }
@@ -297,8 +297,8 @@ public sealed partial class StressPageViewModel : PageViewModel, IDisposable
     [RelayCommand]
     public async Task RaiseGpuLimitAsync()
     {
-        var next = GpuLimit + LimitStep;
-        if (next > SafetyLimits.GpuHardMaximum)
+        var next = Math.Min(SafetyLimits.GpuHardMaximum, GpuLimit + LimitStep);
+        if (next <= GpuLimit)
         {
             return;
         }
