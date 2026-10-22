@@ -176,6 +176,17 @@ public sealed class InfoSectionViewModelTests
         Assert.False(row.CanReveal);
         Assert.Equal("TUF", row.Display);
     }
+
+    [Fact]
+    public void ScreenReadersHearTheLabelAndTheValueButNeverAHiddenSerial()
+    {
+        var rows = SystemRows.Board(new BoardInfo("ASUS", "TUF", null, new SensitiveText("ABC123")));
+
+        Assert.Equal("Modelo: TUF", new InfoRowViewModel("Modelo", "TUF").ToString());
+        Assert.DoesNotContain("ABC123", rows[3].ToString(), StringComparison.Ordinal);
+        rows[3].ToggleRevealCommand.Execute(null);
+        Assert.Contains("ABC123", rows[3].ToString(), StringComparison.Ordinal);
+    }
 }
 
 public sealed class SystemPageViewModelTests

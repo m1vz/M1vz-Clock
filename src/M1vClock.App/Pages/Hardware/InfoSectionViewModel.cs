@@ -33,6 +33,8 @@ public sealed partial class InfoRowViewModel(string label, string value, bool is
     [ObservableProperty]
     public partial bool IsRevealed { get; set; }
 
+    public override string ToString() => $"{Label}: {Display}";
+
     [RelayCommand]
     private void ToggleReveal() => IsRevealed = !IsRevealed;
 
