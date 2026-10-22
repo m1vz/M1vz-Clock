@@ -1842,4 +1842,115 @@
   <data name="Hw.Diag.Value.Loaded" xml:space="preserve">
     <value>{0} ms (durante o download)</value>
   </data>
+  <data name="Hw.Dev.Connected" xml:space="preserve">
+    <value>Dispositivos USB conectados</value>
+  </data>
+  <data name="Hw.Dev.Problem" xml:space="preserve">
+    <value>Dispositivos com problema</value>
+  </data>
+  <data name="Hw.Dev.Problem.Status" xml:space="preserve">
+    <value>Atenção</value>
+  </data>
+  <data name="Hw.Dev.Problem.Note" xml:space="preserve">
+    <value>O Windows marcou estes dispositivos com erro. Reconectar o cabo, usar outra porta USB ou reinstalar o driver costuma resolver.</value>
+  </data>
+  <data name="Hw.Dev.Problem.Code.10" xml:space="preserve">
+    <value>O dispositivo não inicia (código 10).</value>
+  </data>
+  <data name="Hw.Dev.Problem.Code.22" xml:space="preserve">
+    <value>O dispositivo está desativado (código 22).</value>
+  </data>
+  <data name="Hw.Dev.Problem.Code.28" xml:space="preserve">
+    <value>Falta o driver (código 28).</value>
+  </data>
+  <data name="Hw.Dev.Problem.Code.31" xml:space="preserve">
+    <value>O driver não carrega (código 31).</value>
+  </data>
+  <data name="Hw.Dev.Problem.Code.43" xml:space="preserve">
+    <value>O dispositivo avisou o Windows de um problema (código 43). Muitas vezes é o cabo ou a porta USB.</value>
+  </data>
+  <data name="Hw.Dev.Problem.Code.Other" xml:space="preserve">
+    <value>O Windows reportou o código de erro {0}.</value>
+  </data>
+  <data name="Hw.Dev.Empty" xml:space="preserve">
+    <value>Nenhum dispositivo USB conectado além dos hubs do PC.</value>
+  </data>
+  <data name="Hw.Dev.Category.SerialPort" xml:space="preserve">
+    <value>Porta serial</value>
+  </data>
+  <data name="Hw.Dev.Category.Audio" xml:space="preserve">
+    <value>Áudio</value>
+  </data>
+  <data name="Hw.Dev.Category.Input" xml:space="preserve">
+    <value>Entrada (teclado, mouse, controle)</value>
+  </data>
+  <data name="Hw.Dev.Category.Storage" xml:space="preserve">
+    <value>Armazenamento</value>
+  </data>
+  <data name="Hw.Dev.Category.Imaging" xml:space="preserve">
+    <value>Imagem (câmera, scanner)</value>
+  </data>
+  <data name="Hw.Dev.Category.Bluetooth" xml:space="preserve">
+    <value>Bluetooth</value>
+  </data>
+  <data name="Hw.Dev.Category.Network" xml:space="preserve">
+    <value>Rede</value>
+  </data>
+  <data name="Hw.Dev.Category.Generic" xml:space="preserve">
+    <value>Dispositivo USB</value>
+  </data>
+  <data name="Hw.Dev.Category.Hub" xml:space="preserve">
+    <value>Hub USB</value>
+  </data>
+  <data name="Hw.Dev.Notify.Title" xml:space="preserve">
+    <value>Avisos de dispositivos</value>
+  </data>
+  <data name="Hw.Dev.Notify.Detail" xml:space="preserve">
+    <value>Mostra um aviso quando um dispositivo USB ou uma unidade é conectado ou removido.</value>
+  </data>
+  <data name="Hw.Dev.Notify.Unavailable" xml:space="preserve">
+    <value>O Windows não deixou assinar os eventos de dispositivo, então os avisos estão indisponíveis.</value>
+  </data>
+  <data name="Hw.Dev.Activity" xml:space="preserve">
+    <value>Atividade recente</value>
+  </data>
+  <data name="Hw.Dev.Activity.Empty" xml:space="preserve">
+    <value>Nada foi conectado ou removido desde que o m1vClock abriu.</value>
+  </data>
+  <data name="Hw.Dev.Activity.Entry" xml:space="preserve">
+    <value>{0}: {1}</value>
+  </data>
+  <data name="Hw.Dev.Toast.UsbConnected" xml:space="preserve">
+    <value>Dispositivo USB conectado</value>
+  </data>
+  <data name="Hw.Dev.Toast.UsbDisconnected" xml:space="preserve">
+    <value>Dispositivo USB desconectado</value>
+  </data>
+  <data name="Hw.Dev.Toast.PenDrive" xml:space="preserve">
+    <value>Pendrive conectado</value>
+  </data>
+  <data name="Hw.Dev.Toast.External" xml:space="preserve">
+    <value>Disco externo conectado</value>
+  </data>
+  <data name="Hw.Dev.Toast.Drive" xml:space="preserve">
+    <value>Unidade conectada</value>
+  </data>
+  <data name="Hw.Dev.Toast.DriveRemoved" xml:space="preserve">
+    <value>Unidade removida</value>
+  </data>
+  <data name="Hw.Dev.Toast.VolumeText" xml:space="preserve">
+    <value>{0} · {1} livres de {2}</value>
+  </data>
+  <data name="Hw.Dev.Toast.SafeToRemove" xml:space="preserve">
+    <value>{0} pode ser desconectada.</value>
+  </data>
+  <data name="Hw.Dev.Toast.LetterRemoved" xml:space="preserve">
+    <value>{0} removida.</value>
+  </data>
+  <data name="Hw.Dev.Toast.Maker" xml:space="preserve">
+    <value>{0} · {1}</value>
+  </data>
+  <data name="Toast.Dismiss" xml:space="preserve">
+    <value>Fechar aviso</value>
+  </data>
 </root>
