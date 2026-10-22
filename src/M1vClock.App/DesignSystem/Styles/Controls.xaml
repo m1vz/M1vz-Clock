@@ -548,6 +548,24 @@
     <Setter Property="Focusable" Value="False" />
   </Style>
 
+  <Style TargetType="dc:ToastCard">
+    <Setter Property="Focusable" Value="False" />
+    <Setter Property="IsTabStop" Value="False" />
+    <Setter Property="Template">
+      <Setter.Value>
+        <ControlTemplate TargetType="dc:ToastCard">
+          <Border Width="360" Margin="0,8,0,0" Padding="16,12" CornerRadius="12" BorderThickness="1"
+                  Background="{DynamicResource Brush.SurfaceElevated}" BorderBrush="{DynamicResource Brush.Separator}">
+            <Border.Effect>
+              <DropShadowEffect BlurRadius="24" ShadowDepth="8" Direction="270" Opacity="0.2" />
+            </Border.Effect>
+            <ContentPresenter />
+          </Border>
+        </ControlTemplate>
+      </Setter.Value>
+    </Setter>
+  </Style>
+
   <Style TargetType="dc:EmptyState">
     <Setter Property="Focusable" Value="False" />
     <Setter Property="HorizontalAlignment" Value="Center" />
