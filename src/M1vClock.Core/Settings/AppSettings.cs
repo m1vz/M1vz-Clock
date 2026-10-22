@@ -29,5 +29,7 @@ public sealed class AppSettings : IVersionedSettings
 
     public bool NotifyDevices { get; set; } = true;
 
+    public bool BackgroundSensorHistory { get; set; } = true;
+
     public IReadOnlyList<string> CollapsedSidebarSections { get; set; } = [];
 }
