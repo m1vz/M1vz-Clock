@@ -220,6 +220,17 @@ public sealed class ReportSectionsTests
     }
 
     [Fact]
+    public void ARepeatedNoteIsSaidOnlyOnce()
+    {
+        var failed = ReadResult.Failure<BiosInfo>("WMI quebrado");
+        var report = Platform() with { Bios = failed, Cpus = ReadResult.Failure<IReadOnlyList<CpuInfo>>("WMI quebrado") };
+
+        var section = ReportSections.System(report);
+
+        Assert.Equal(["Não foi possível ler esta parte: WMI quebrado"], section.Notes);
+    }
+
+    [Fact]
     public void NoBenchmarkYetMeansAnEmptySectionThatTheReportSkips()
     {
         Assert.True(ReportSections.Benchmarks([]).IsEmpty);

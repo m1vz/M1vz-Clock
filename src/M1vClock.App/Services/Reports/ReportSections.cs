@@ -257,5 +257,5 @@ public static class ReportSections
         rows.Where(r => !r.IsSensitive && r.Value != Units.Missing).Select(r => new ReportRow(r.Label, r.Value));
 
     private static ReportSection Section(string id, List<ReportRow> rows, List<string> notes) =>
-        new(id, Loc.Get($"Diag.Report.Section.{id}"), rows, notes);
+        new(id, Loc.Get($"Diag.Report.Section.{id}"), rows, notes.Distinct(StringComparer.Ordinal).ToList());
 }
