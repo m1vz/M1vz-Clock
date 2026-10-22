@@ -42,4 +42,7 @@ internal static partial class HardwareLog
 
     [LoggerMessage(EventId = 3204, Level = LogLevel.Warning, Message = "A leitura dos sensores não parou a tempo ao encerrar.")]
     public static partial void SensorStopTimedOut(ILogger logger);
+
+    [LoggerMessage(EventId = 3205, Level = LogLevel.Warning, Message = "Falha ao ler só os sensores de {Component}.")]
+    public static partial void ComponentReadFailed(ILogger logger, Exception exception, Sensors.SensorHardware component);
 }

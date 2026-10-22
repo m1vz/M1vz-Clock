@@ -10,6 +10,8 @@ public interface ISensorSource : IDisposable
     void Open();
 
     IReadOnlyList<SensorReading> Read();
+
+    IReadOnlyList<SensorReading> ReadComponent(SensorHardware component);
 }
 
 public sealed class LibreHardwareSensorSource : ISensorSource
@@ -99,6 +101,25 @@ public sealed class LibreHardwareSensorSource : ISensorSource
             }
 
             Walk(hardware, readings);
+        }
+
+        return readings;
+    }
+
+    public IReadOnlyList<SensorReading> ReadComponent(SensorHardware component)
+    {
+        if (!_opened)
+        {
+            throw new InvalidOperationException("Os sensores ainda não foram abertos.");
+        }
+
+        var readings = new List<SensorReading>();
+        foreach (var hardware in _computer.Hardware)
+        {
+            if (MapHardware(hardware.HardwareType) == component)
+            {
+                Walk(hardware, readings);
+            }
         }
 
         return readings;
