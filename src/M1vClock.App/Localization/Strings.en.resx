@@ -2220,4 +2220,13 @@
   <data name="Hw.Health.Usb.Attention" xml:space="preserve">
     <value>{0} USB device(s) with an error in Windows.</value>
   </data>
+  <data name="Settings.Sensors" xml:space="preserve">
+    <value>Sensors</value>
+  </data>
+  <data name="Settings.Sensors.History" xml:space="preserve">
+    <value>Keep history in the background</value>
+  </data>
+  <data name="Settings.Sensors.History.Detail" xml:space="preserve">
+    <value>Keeps up to 15 minutes of charts on the Overview even while it is closed. When off, sensors are only read while a page that uses them is open, and the chart starts empty.</value>
+  </data>
 </root>
