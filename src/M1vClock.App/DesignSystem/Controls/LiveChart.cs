@@ -49,6 +49,12 @@ public sealed class TimeSeries(string label, TimeSpan retention)
 
         Updated?.Invoke(this, EventArgs.Empty);
     }
+
+    public void Clear()
+    {
+        _points.Clear();
+        Updated?.Invoke(this, EventArgs.Empty);
+    }
 }
 
 public sealed class LiveChart : FrameworkElement
