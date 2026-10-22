@@ -66,6 +66,7 @@ public static class AppHost
         builder.Services.AddTransient<PowerPageViewModel>();
         builder.Services.AddTransient<NetworkDiagnosticViewModel>();
         builder.Services.AddTransient<NetworkPageViewModel>();
+        builder.Services.AddTransient<DevicesPageViewModel>();
         builder.Services.AddTransient<MemoryPageViewModel>();
         builder.Services.AddTransient<StoragePageViewModel>();
         return builder.Build();

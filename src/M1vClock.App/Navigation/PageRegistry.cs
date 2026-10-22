@@ -17,6 +17,7 @@ public static class PageRegistry
         ["memory"] = Resolve<MemoryPageViewModel>,
         ["storage"] = Resolve<StoragePageViewModel>,
         ["network"] = Resolve<NetworkPageViewModel>,
+        ["devices"] = Resolve<DevicesPageViewModel>,
     };
 
     public static IReadOnlyCollection<string> Ids => Factories.Keys;
