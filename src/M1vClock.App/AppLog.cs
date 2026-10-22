@@ -87,4 +87,7 @@ internal static partial class AppLog
 
     [LoggerMessage(EventId = 2028, Level = LogLevel.Error, Message = "O teste de estresse terminou com erro.")]
     public static partial void StressFailed(ILogger logger, Exception exception);
+
+    [LoggerMessage(EventId = 2029, Level = LogLevel.Warning, Message = "Não foi possível verificar o suporte a ray tracing.")]
+    public static partial void RayTracingCheckFailed(ILogger logger, Exception exception);
 }

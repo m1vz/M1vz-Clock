@@ -60,6 +60,39 @@
                 <TextBlock Text="{l:Text Stress.Gpu.Detail}" Style="{StaticResource Text.Subhead.Secondary}" TextWrapping="Wrap" />
                 <TextBlock Text="{l:Text Stress.Gpu.Unavailable}" Style="{StaticResource Text.Caption}" TextWrapping="Wrap" Margin="0,4,0,0"
                            Visibility="{Binding GpuAvailable, Converter={StaticResource BoolToCollapsed}}" />
+                <StackPanel Margin="0,8,0,0" Visibility="{Binding GpuEnabled, Converter={StaticResource BoolToVisible}}">
+                  <WrapPanel>
+                    <StackPanel Margin="0,0,24,10">
+                      <TextBlock Text="{l:Text Stress.Gpu.Resolution}" Style="{StaticResource Text.Caption}" Margin="0,0,0,6" />
+                      <dc:SegmentedControl SelectedIndex="{Binding GpuResolutionIndex, Mode=TwoWay}" Width="400" HorizontalAlignment="Left"
+                                           AutomationProperties.Name="{l:Text Stress.Gpu.Resolution}">
+                        <dc:SegmentedItem Content="720p" />
+                        <dc:SegmentedItem Content="1080p" />
+                        <dc:SegmentedItem Content="1440p" />
+                        <dc:SegmentedItem Content="{l:Text Stress.Gpu.Fullscreen}" />
+                      </dc:SegmentedControl>
+                    </StackPanel>
+                    <StackPanel Margin="0,0,24,10">
+                      <TextBlock Text="{l:Text Stress.Gpu.Msaa}" Style="{StaticResource Text.Caption}" Margin="0,0,0,6" />
+                      <dc:SegmentedControl SelectedIndex="{Binding GpuMsaaIndex, Mode=TwoWay}" Width="270" HorizontalAlignment="Left"
+                                           AutomationProperties.Name="{l:Text Stress.Gpu.Msaa}">
+                        <dc:SegmentedItem Content="{l:Text Stress.Gpu.Msaa.Off}" />
+                        <dc:SegmentedItem Content="4x" />
+                        <dc:SegmentedItem Content="8x" />
+                      </dc:SegmentedControl>
+                    </StackPanel>
+                    <StackPanel Margin="0,0,0,10">
+                      <TextBlock Text="{l:Text Stress.Gpu.Intensity}" Style="{StaticResource Text.Caption}" Margin="0,0,0,6" />
+                      <dc:SegmentedControl SelectedIndex="{Binding GpuIntensityIndex, Mode=TwoWay}" Width="300" HorizontalAlignment="Left"
+                                           AutomationProperties.Name="{l:Text Stress.Gpu.Intensity}">
+                        <dc:SegmentedItem Content="{l:Text Stress.Gpu.Intensity.Normal}" />
+                        <dc:SegmentedItem Content="{l:Text Stress.Gpu.Intensity.High}" />
+                        <dc:SegmentedItem Content="{l:Text Stress.Gpu.Intensity.Extreme}" />
+                      </dc:SegmentedControl>
+                    </StackPanel>
+                  </WrapPanel>
+                  <TextBlock Text="{l:Text Stress.Gpu.WindowNote}" Style="{StaticResource Text.Caption}" TextWrapping="Wrap" />
+                </StackPanel>
               </StackPanel>
             </DockPanel>
 

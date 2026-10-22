@@ -8,6 +8,7 @@ using M1vClock.App.Localization;
 using M1vClock.App.Navigation;
 using M1vClock.App.Pages.Hardware;
 using M1vClock.App.Services;
+using M1vClock.Benchmarks.Gpu;
 using M1vClock.Benchmarks.Io;
 using M1vClock.Benchmarks.Safety;
 using M1vClock.Benchmarks.Stress;
@@ -23,17 +24,19 @@ public interface IStressWorkloadFactory
 
     IStressWorkload CreateCpuRam(bool cpu, bool ram, double ramFraction);
 
-    IStressWorkload? CreateGpu();
+    IStressWorkload? CreateGpu(GpuBurnSettings settings);
 }
 
 public sealed class StressWorkloadFactory(ILoggerFactory loggers) : IStressWorkloadFactory
 {
-    public bool GpuAvailable => false;
+    private readonly Lazy<bool> _gpu = new(GpuSupport.HasHardwareAdapter);
+
+    public bool GpuAvailable => _gpu.Value;
 
     public IStressWorkload CreateCpuRam(bool cpu, bool ram, double ramFraction) =>
         new StressRunner(cpu, ram, ramFraction, loggers.CreateLogger<StressRunner>());
 
-    public IStressWorkload? CreateGpu() => null;
+    public IStressWorkload? CreateGpu(GpuBurnSettings settings) => new GpuBurn(settings, loggers.CreateLogger<GpuBurn>());
 }
 
 public sealed partial class StressPageViewModel : PageViewModel, IDisposable
@@ -47,6 +50,7 @@ public sealed partial class StressPageViewModel : PageViewModel, IDisposable
     private readonly StressSession _session;
     private readonly HeavyTestGate _gate;
     private readonly IStressWorkloadFactory _factory;
+    private readonly IMachineProfile _machine;
     private readonly DialogService _dialogs;
     private readonly AppSettingsService _settings;
     private readonly IUiThread _ui;
@@ -59,6 +63,7 @@ public sealed partial class StressPageViewModel : PageViewModel, IDisposable
         StressSession session,
         HeavyTestGate gate,
         IStressWorkloadFactory factory,
+        IMachineProfile machine,
         DialogService dialogs,
         AppSettingsService settings,
         IUiThread ui,
@@ -69,6 +74,7 @@ public sealed partial class StressPageViewModel : PageViewModel, IDisposable
         ArgumentNullException.ThrowIfNull(session);
         ArgumentNullException.ThrowIfNull(gate);
         ArgumentNullException.ThrowIfNull(factory);
+        ArgumentNullException.ThrowIfNull(machine);
         ArgumentNullException.ThrowIfNull(dialogs);
         ArgumentNullException.ThrowIfNull(settings);
         ArgumentNullException.ThrowIfNull(ui);
@@ -77,6 +83,7 @@ public sealed partial class StressPageViewModel : PageViewModel, IDisposable
         _session = session;
         _gate = gate;
         _factory = factory;
+        _machine = machine;
         _dialogs = dialogs;
         _settings = settings;
         _ui = ui;
@@ -182,6 +189,15 @@ public sealed partial class StressPageViewModel : PageViewModel, IDisposable
 
     [ObservableProperty]
     public partial int DurationIndex { get; set; } = 2;
+
+    [ObservableProperty]
+    public partial int GpuResolutionIndex { get; set; } = 1;
+
+    [ObservableProperty]
+    public partial int GpuMsaaIndex { get; set; } = 1;
+
+    [ObservableProperty]
+    public partial int GpuIntensityIndex { get; set; } = 1;
 
     [ObservableProperty]
     public partial double CpuLimit { get; set; } = SafetyLimits.CpuDefault;
@@ -395,7 +411,13 @@ public sealed partial class StressPageViewModel : PageViewModel, IDisposable
 
         var fraction = RamFractions[Math.Clamp(RamFractionIndex, 0, RamFractions.Length - 1)];
         IStressWorkload? cpuRam = CpuEnabled || RamEnabled ? _factory.CreateCpuRam(CpuEnabled, RamEnabled, fraction) : null;
-        IStressWorkload? gpuWorkload = gpu ? _factory.CreateGpu() : null;
+        IStressWorkload? gpuWorkload = null;
+        if (gpu)
+        {
+            var machine = await _machine.GetAsync(CancellationToken.None).ConfigureAwait(true);
+            gpuWorkload = _factory.CreateGpu(GpuSettings(machine.Gpu));
+        }
+
         try
         {
             var plan = new StressPlan(
@@ -438,6 +460,29 @@ public sealed partial class StressPageViewModel : PageViewModel, IDisposable
             gpuWorkload?.Dispose();
             IsRunning = false;
         }
+    }
+
+    private GpuBurnSettings GpuSettings(string adapterName)
+    {
+        var (width, height, fullscreen) = Math.Clamp(GpuResolutionIndex, 0, 3) switch
+        {
+            0 => (1280, 720, false),
+            1 => (1920, 1080, false),
+            2 => (2560, 1440, false),
+            _ => (1920, 1080, true),
+        };
+        var msaa = Math.Clamp(GpuMsaaIndex, 0, 2) switch
+        {
+            0 => 1,
+            1 => 4,
+            _ => 8,
+        };
+        return Math.Clamp(GpuIntensityIndex, 0, 2) switch
+        {
+            0 => GpuBurnSettings.Normal(width, height, fullscreen, msaa, adapterName),
+            1 => GpuBurnSettings.High(width, height, fullscreen, msaa, adapterName),
+            _ => GpuBurnSettings.Extreme(width, height, fullscreen, msaa, adapterName),
+        };
     }
 
     private async Task<bool> ConfirmStartAsync(bool gpu, int minutes)

@@ -14,9 +14,13 @@ using Microsoft.Extensions.Time.Testing;
 
 namespace M1vClock.App.Tests;
 
-internal sealed class FakeBenchJob : IBenchJob
+internal sealed class FakeBenchJob : IBenchJob, IAvailabilityNotifier
 {
     private readonly TaskCompletionSource _started = new(TaskCreationOptions.RunContinuationsAsynchronously);
+
+    public event EventHandler? AvailabilityChanged;
+
+    public void RaiseAvailabilityChanged() => AvailabilityChanged?.Invoke(this, EventArgs.Empty);
 
     public string Id { get; init; } = "fake";
 
@@ -725,6 +729,55 @@ public sealed class BenchmarksPageViewModelTests : IDisposable
     }
 
     [Fact]
+    public void WhenATestBecomesUnavailableLaterThePageFollows()
+    {
+        var changes = new List<string?>();
+        _page.PropertyChanged += (_, e) => changes.Add(e.PropertyName);
+
+        _cpu.UnavailableReason = "Verificando…";
+        _cpu.RaiseAvailabilityChanged();
+
+        Assert.False(_page.CanStart);
+        Assert.True(_page.HasUnavailable);
+        Assert.Equal("Verificando…", _page.UnavailableText);
+        Assert.Contains(nameof(BenchmarksPageViewModel.CanToggle), changes);
+
+        _cpu.UnavailableReason = null;
+        _cpu.RaiseAvailabilityChanged();
+
+        Assert.True(_page.CanStart);
+        Assert.False(_page.HasUnavailable);
+    }
+
+    [Fact]
+    public void SelectingATestThatIsUnavailableDisablesTheButtonAtOnce()
+    {
+        _loading.UnavailableReason = "Sem unidades";
+        var changes = new List<string?>();
+        _page.PropertyChanged += (_, e) => changes.Add(e.PropertyName);
+
+        _page.SelectedIndex = 1;
+
+        Assert.False(_page.CanToggle);
+        Assert.Contains(nameof(BenchmarksPageViewModel.CanToggle), changes);
+
+        _page.SelectedIndex = 0;
+
+        Assert.True(_page.CanToggle);
+    }
+
+    [Fact]
+    public void ANotificationFromATestThatIsNotOnScreenIsIgnored()
+    {
+        _loading.UnavailableReason = "Sem unidades";
+
+        _loading.RaiseAvailabilityChanged();
+
+        Assert.True(_page.CanStart);
+        Assert.False(_page.HasUnavailable);
+    }
+
+    [Fact]
     public void ChangingTheTestWhileRunningIsIgnored()
     {
         _cpu.Body = FakeBenchJob.WaitForCancellation;
@@ -847,5 +900,56 @@ public sealed class BenchNamesTests
         {
             Assert.True(Loc.Exists($"Bench.Import.Failure.{failure}"), failure.ToString());
         }
+    }
+}
+
+public sealed class GpuBenchJobTests
+{
+    [Fact]
+    public void TheSceneJobOffersResolutionAndDurationAndWatchesTheGpuTemperature()
+    {
+        var job = new GpuSceneJob(new StubMachine());
+
+        Assert.Equal(["resolution", "duration"], job.Options.Select(o => o.Id));
+        Assert.Equal("1920x1080", job.Options[0].Value);
+        Assert.Equal("60", job.Options[1].Value);
+        Assert.Equal(ThermalComponent.Gpu, job.Thermal);
+        Assert.Equal([BenchmarkTests.GpuScene], job.HistoryTests);
+        Assert.Equal(BenchPoll.Idle, job.Poll());
+    }
+
+    [Fact]
+    public void TheSceneJobIsUnavailableOnlyWhenThereIsNoHardwareGpu()
+    {
+        var job = new GpuSceneJob(new StubMachine());
+
+        var hasGpu = M1vClock.Benchmarks.Gpu.GpuSupport.HasHardwareAdapter();
+
+        Assert.Equal(hasGpu, job.UnavailableReason is null);
+    }
+
+    [Fact]
+    public async Task TheRayTracingEntryChecksTheCardInTheBackgroundAndAnnouncesTheAnswer()
+    {
+        var job = new RayTracingJob(new StubMachine(), NullLogger<RayTracingJob>.Instance);
+        Assert.Equal(Loc.Get("Bench.Rt.Checking"), job.UnavailableReason);
+        var answered = new TaskCompletionSource(TaskCreationOptions.RunContinuationsAsynchronously);
+        job.AvailabilityChanged += (_, _) => answered.TrySetResult();
+
+        job.Refresh();
+        await answered.Task.WaitAsync(TimeSpan.FromSeconds(30), TestContext.Current.CancellationToken);
+
+        Assert.NotNull(job.UnavailableReason);
+        Assert.NotEqual(Loc.Get("Bench.Rt.Checking"), job.UnavailableReason);
+        Assert.Empty(job.Options);
+        Assert.Empty(job.HistoryTests);
+    }
+
+    [Fact]
+    public async Task TheRayTracingTestNeverRunsInThisVersion()
+    {
+        var job = new RayTracingJob(new StubMachine(), NullLogger<RayTracingJob>.Instance);
+
+        await Assert.ThrowsAsync<InvalidOperationException>(() => job.RunAsync(TestContext.Current.CancellationToken));
     }
 }

@@ -31,7 +31,7 @@ public interface IBenchJobSource
     IReadOnlyList<IBenchJob> Create();
 }
 
-public sealed class BenchJobFactory(BenchmarkWorkLocation location, ILoggerFactory loggers) : IBenchJobSource
+public sealed class BenchJobFactory(BenchmarkWorkLocation location, ILoggerFactory loggers, IMachineProfile machine) : IBenchJobSource
 {
     public IReadOnlyList<IBenchJob> Create() =>
     [
@@ -40,5 +40,7 @@ public sealed class BenchJobFactory(BenchmarkWorkLocation location, ILoggerFacto
         new MemoryJob(),
         new LoadingJob(location, loggers),
         new DiskJob(location, loggers),
+        new GpuSceneJob(machine),
+        new RayTracingJob(machine, loggers.CreateLogger<RayTracingJob>()),
     ];
 }

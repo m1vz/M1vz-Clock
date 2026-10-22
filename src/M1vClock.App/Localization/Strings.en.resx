@@ -2869,7 +2869,7 @@
     <value>Heavy Direct3D 11 scene that uses the whole card, FurMark style.</value>
   </data>
   <data name="Stress.Gpu.Unavailable" xml:space="preserve">
-    <value>Not available in this version yet.</value>
+    <value>No hardware GPU was found on this PC.</value>
   </data>
   <data name="Stress.Limit.Cpu" xml:space="preserve">
     <value>CPU cut-off</value>
@@ -3080,5 +3080,86 @@
   </data>
   <data name="Stress.Log.Ended" xml:space="preserve">
     <value>{0} · duration {1}</value>
+  </data>
+  <data name="Bench.Option.Resolution" xml:space="preserve">
+    <value>Resolution</value>
+  </data>
+  <data name="Bench.Gpu.Title" xml:space="preserve">
+    <value>Game scene (GPU)</value>
+  </data>
+  <data name="Bench.Gpu.Description" xml:space="preserve">
+    <value>A Direct3D 11 scene with terrain, 40,000 trees, shadows, water and post-processing. The camera and the workload are always the same, so the score compares cards and settings.</value>
+  </data>
+  <data name="Bench.Gpu.None" xml:space="preserve">
+    <value>No hardware GPU was found on this PC.</value>
+  </data>
+  <data name="Bench.Gpu.Live" xml:space="preserve">
+    <value>{0} FPS now</value>
+  </data>
+  <data name="Bench.Gpu.Result.Fps" xml:space="preserve">
+    <value>Average FPS</value>
+  </data>
+  <data name="Bench.Gpu.Result.Low" xml:space="preserve">
+    <value>1% low</value>
+  </data>
+  <data name="Bench.Gpu.Result.Frames" xml:space="preserve">
+    <value>Frames</value>
+  </data>
+  <data name="Bench.Gpu.Result.Resolution" xml:space="preserve">
+    <value>Resolution</value>
+  </data>
+  <data name="Bench.Gpu.Result.Adapter" xml:space="preserve">
+    <value>Graphics card</value>
+  </data>
+  <data name="Bench.Gpu.Result.Note" xml:space="preserve">
+    <value>The score is the average FPS × 10. A window with the scene opens in front during the test; Esc or closing the window cancels. General sensor reading is paused so it does not disturb the 1% low, and only the GPU temperature is read every 2 seconds.</value>
+  </data>
+  <data name="Bench.Phase.Gpu" xml:space="preserve">
+    <value>Rendering the scene</value>
+  </data>
+  <data name="Bench.Rt.Title" xml:space="preserve">
+    <value>Ray tracing (DXR 1.1)</value>
+  </data>
+  <data name="Bench.Rt.Description" xml:space="preserve">
+    <value>Measures the card's ray tracing cores with the Direct3D 12 DXR 1.1 API, in 3 passes with the score taken from the median.</value>
+  </data>
+  <data name="Bench.Rt.Checking" xml:space="preserve">
+    <value>Checking whether the card has hardware ray tracing…</value>
+  </data>
+  <data name="Bench.Rt.Unsupported" xml:space="preserve">
+    <value>The {0} has no hardware ray tracing (DXR 1.1). The test needs an RTX 20 or newer, a Radeon RX 6000 or newer, or an Intel Arc.</value>
+  </data>
+  <data name="Bench.Rt.NotReady" xml:space="preserve">
+    <value>This card has DXR 1.1, but the ray tracing test is not available in this version yet: it could not be validated without a ray tracing card to check the image and the score.</value>
+  </data>
+  <data name="Bench.Rt.NoDirect3D12" xml:space="preserve">
+    <value>Direct3D 12 did not respond on this PC, so ray tracing could not be checked.</value>
+  </data>
+  <data name="Stress.Gpu.Resolution" xml:space="preserve">
+    <value>Window resolution</value>
+  </data>
+  <data name="Stress.Gpu.Fullscreen" xml:space="preserve">
+    <value>Fullscreen</value>
+  </data>
+  <data name="Stress.Gpu.Msaa" xml:space="preserve">
+    <value>Anti-aliasing (MSAA)</value>
+  </data>
+  <data name="Stress.Gpu.Msaa.Off" xml:space="preserve">
+    <value>Off</value>
+  </data>
+  <data name="Stress.Gpu.Intensity" xml:space="preserve">
+    <value>Intensity</value>
+  </data>
+  <data name="Stress.Gpu.Intensity.Normal" xml:space="preserve">
+    <value>Normal</value>
+  </data>
+  <data name="Stress.Gpu.Intensity.High" xml:space="preserve">
+    <value>High</value>
+  </data>
+  <data name="Stress.Gpu.Intensity.Extreme" xml:space="preserve">
+    <value>Extreme</value>
+  </data>
+  <data name="Stress.Gpu.WindowNote" xml:space="preserve">
+    <value>A window with the load opens in front. Esc or closing the window also stops the test.</value>
   </data>
 </root>

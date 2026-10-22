@@ -81,6 +81,14 @@ public sealed partial class BenchmarksPageViewModel : PageViewModel, IDisposable
         LoadCard = new OverviewCardViewModel(Loc.Get("Bench.Live.Load"));
         PowerCard = new OverviewCardViewModel(Loc.Get("Bench.Live.Power"));
         ClockCard = new OverviewCardViewModel(Loc.Get("Bench.Live.Clock"));
+        foreach (var tab in Tabs)
+        {
+            if (tab.Job is IAvailabilityNotifier notifier)
+            {
+                notifier.AvailabilityChanged += OnAvailabilityChanged;
+            }
+        }
+
         Selected = Tabs[0].Job;
         _history.Changed += OnHistoryChanged;
         _gate.Changed += OnGateChanged;
@@ -218,6 +226,7 @@ public sealed partial class BenchmarksPageViewModel : PageViewModel, IDisposable
 
         OnPropertyChanged(nameof(Options));
         OnPropertyChanged(nameof(CanStart));
+        OnPropertyChanged(nameof(CanToggle));
         OnPropertyChanged(nameof(HasUnavailable));
         OnPropertyChanged(nameof(UnavailableText));
         _gate.StopRequested += OnStopRequested;
@@ -231,6 +240,14 @@ public sealed partial class BenchmarksPageViewModel : PageViewModel, IDisposable
 
     public void Dispose()
     {
+        foreach (var tab in Tabs)
+        {
+            if (tab.Job is IAvailabilityNotifier notifier)
+            {
+                notifier.AvailabilityChanged -= OnAvailabilityChanged;
+            }
+        }
+
         if (_disposed)
         {
             return;
@@ -355,7 +372,7 @@ public sealed partial class BenchmarksPageViewModel : PageViewModel, IDisposable
         VersusPrevious = string.Empty;
         foreach (var name in new[]
         {
-            nameof(Selected), nameof(Options), nameof(TestTitle), nameof(TestDescription), nameof(TestIconKey), nameof(CanStart),
+            nameof(Selected), nameof(Options), nameof(TestTitle), nameof(TestDescription), nameof(TestIconKey), nameof(CanStart), nameof(CanToggle),
             nameof(HasUnavailable), nameof(UnavailableText), nameof(ShowLive), nameof(HasProtectionText), nameof(CanShowMore),
         })
         {
@@ -411,6 +428,19 @@ public sealed partial class BenchmarksPageViewModel : PageViewModel, IDisposable
     {
         RefreshHistory();
         UpdateComparison();
+    }
+
+    private void OnAvailabilityChanged(object? sender, EventArgs e)
+    {
+        if (!ReferenceEquals(sender, Selected))
+        {
+            return;
+        }
+
+        OnPropertyChanged(nameof(CanStart));
+        OnPropertyChanged(nameof(CanToggle));
+        OnPropertyChanged(nameof(HasUnavailable));
+        OnPropertyChanged(nameof(UnavailableText));
     }
 
     private void OnGateChanged(object? sender, EventArgs e)

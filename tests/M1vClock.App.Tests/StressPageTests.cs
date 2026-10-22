@@ -4,6 +4,7 @@ using M1vClock.App.DesignSystem.Controls;
 using M1vClock.App.Localization;
 using M1vClock.App.Pages.Performance;
 using M1vClock.App.Services;
+using M1vClock.Benchmarks.Gpu;
 using M1vClock.Benchmarks.Safety;
 using M1vClock.Benchmarks.Stress;
 using M1vClock.Core.Settings;
@@ -77,7 +78,16 @@ internal sealed class StubStressFactory : IStressWorkloadFactory
         return workload;
     }
 
-    public IStressWorkload? CreateGpu() => null;
+    public GpuBurnSettings? LastGpuSettings { get; private set; }
+
+    public FakeStressWorkload? GpuWorkload { get; private set; }
+
+    public IStressWorkload? CreateGpu(GpuBurnSettings settings)
+    {
+        LastGpuSettings = settings;
+        GpuWorkload = new FakeStressWorkload();
+        return GpuWorkload;
+    }
 }
 
 public sealed class StressPageViewModelTests : IAsyncDisposable
@@ -117,7 +127,7 @@ public sealed class StressPageViewModelTests : IAsyncDisposable
                 _dialogs.CancelCommand.Execute(null);
             }
         };
-        _page = new StressPageViewModel(_session, _gate, _factory, _dialogs, _settings, new InlineUiThread(), _clock, NullLogger<StressPageViewModel>.Instance);
+        _page = new StressPageViewModel(_session, _gate, _factory, new StubMachine(), _dialogs, _settings, new InlineUiThread(), _clock, NullLogger<StressPageViewModel>.Instance);
     }
 
     public async ValueTask DisposeAsync()
@@ -389,7 +399,7 @@ public sealed class StressPageViewModelTests : IAsyncDisposable
     }
 
     [Fact]
-    public async Task AGpuTestIsIgnoredWhileTheGpuEngineIsNotAvailable()
+    public async Task AGpuTestIsIgnoredWhenThereIsNoHardwareGpu()
     {
         _page.GpuEnabled = true;
 
@@ -397,6 +407,112 @@ public sealed class StressPageViewModelTests : IAsyncDisposable
 
         Assert.Equal((true, false, 0.6), _factory.LastRequest);
         Assert.Single(_factory.Created);
+        Assert.Null(_factory.GpuWorkload);
+        _page.ToggleCommand.Execute(null);
+        await run;
+    }
+
+    [Fact]
+    public async Task TheGpuBurnIsCreatedWithTheOptionsThatWereChosenAndTheNameOfTheGpu()
+    {
+        _factory.GpuAvailable = true;
+        _page.CpuEnabled = false;
+        _page.GpuEnabled = true;
+        _page.GpuResolutionIndex = 2;
+        _page.GpuMsaaIndex = 2;
+        _page.GpuIntensityIndex = 2;
+
+        var run = await StartAndWaitRunningAsync();
+
+        var settings = _factory.LastGpuSettings!;
+        Assert.Equal((2560, 1440, false, 8, 160, 64), (settings.Width, settings.Height, settings.Fullscreen, settings.Msaa, settings.Shells, settings.Iterations));
+        Assert.Equal(StubMachine.Profile.Gpu, settings.AdapterName);
+        Assert.Equal(1, _factory.GpuWorkload!.Starts);
+        _page.ToggleCommand.Execute(null);
+        await run;
+        Assert.Equal(1, _factory.GpuWorkload.Disposals);
+    }
+
+    [Theory]
+    [InlineData(0, 1280, 720, false)]
+    [InlineData(1, 1920, 1080, false)]
+    [InlineData(3, 1920, 1080, true)]
+    public async Task TheResolutionChoiceMapsToASizeAndTheFullscreenFlag(int index, int width, int height, bool fullscreen)
+    {
+        _factory.GpuAvailable = true;
+        _page.CpuEnabled = false;
+        _page.GpuEnabled = true;
+        _page.GpuResolutionIndex = index;
+
+        var run = await StartAndWaitRunningAsync();
+
+        Assert.Equal((width, height, fullscreen), (_factory.LastGpuSettings!.Width, _factory.LastGpuSettings.Height, _factory.LastGpuSettings.Fullscreen));
+        _page.ToggleCommand.Execute(null);
+        await run;
+    }
+
+    [Fact]
+    public async Task AGpuTestWithoutAGpuTemperatureIsRefusedAndNothingStarts()
+    {
+        _factory.GpuAvailable = true;
+        _probe.GpuTemperature = null;
+        _page.CpuEnabled = false;
+        _page.GpuEnabled = true;
+
+        await _page.ToggleAsync();
+
+        Assert.False(_page.IsRunning);
+        Assert.Contains(Loc.Get("Bench.Component.Gpu"), _page.Message, StringComparison.Ordinal);
+        Assert.Equal(0, _factory.GpuWorkload!.Starts);
+        Assert.Equal(1, _factory.GpuWorkload.Disposals);
+        Assert.False(_gate.IsBusy);
+    }
+
+    [Fact]
+    public async Task ClosingTheGpuWindowEndsTheTestAsStoppedByTheUser()
+    {
+        _factory.GpuAvailable = true;
+        _page.CpuEnabled = false;
+        _page.GpuEnabled = true;
+        var run = await StartAndWaitRunningAsync();
+
+        _factory.GpuWorkload!.Status = _factory.GpuWorkload.Status with { Alive = false };
+        await AdvanceUntilAsync(() => !_page.IsRunning);
+        await run;
+
+        Assert.Equal(Loc.Get("Stress.Status.Stopped"), _page.StatusText);
+    }
+
+    [Fact]
+    public async Task AGpuFailureShowsItsReasonAndAbortsTheTest()
+    {
+        _factory.GpuAvailable = true;
+        _page.CpuEnabled = false;
+        _page.GpuEnabled = true;
+        var run = await StartAndWaitRunningAsync();
+
+        _factory.GpuWorkload!.Status = _factory.GpuWorkload.Status with { Error = "dispositivo perdido" };
+        await AdvanceUntilAsync(() => !_page.IsRunning);
+        await run;
+
+        Assert.Equal(Loc.Format("Stress.Status.Failed", "dispositivo perdido"), _page.StatusText);
+        Assert.Equal(MetricState.Critical, _page.StatusTone);
+    }
+
+    [Fact]
+    public async Task TheGpuCardsShowTheTemperatureAndTheFramesPerSecond()
+    {
+        _factory.GpuAvailable = true;
+        _page.CpuEnabled = false;
+        _page.GpuEnabled = true;
+        Assert.Contains(_page.GpuTemperatureCard, _page.Cards);
+        Assert.Contains(_page.GpuFpsCard, _page.Cards);
+        var run = await StartAndWaitRunningAsync();
+        _factory.GpuWorkload!.Status = _factory.GpuWorkload.Status with { Fps = 144, AverageFps = 140, Frames = 5000 };
+
+        await AdvanceUntilAsync(() => _page.GpuFpsCard.Value == "144");
+
+        Assert.Equal("50", _page.GpuTemperatureCard.Value.Split(',')[0]);
         _page.ToggleCommand.Execute(null);
         await run;
     }
