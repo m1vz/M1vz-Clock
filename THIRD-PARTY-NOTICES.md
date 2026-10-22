@@ -48,7 +48,7 @@ Os drivers seriais que o ResetExplode embute na pasta `Drivers/` **não** são M
 | LibreHardwareMonitorLib 0.9.6 | MPL-2.0 | Leitura de sensores, sem modificações | https://github.com/LibreHardwareMonitor/LibreHardwareMonitor |
 | Vortice.Direct3D11, Vortice.Direct3D12, Vortice.DXGI, Vortice.D3DCompiler | MIT | Cena e estresse de GPU, memória de vídeo e verificação de ray tracing | https://github.com/amerkoleci/Vortice.Windows |
 | CommunityToolkit.Mvvm | MIT | Camada de interface | https://github.com/CommunityToolkit/dotnet |
-| Microsoft.Extensions.* e System.Management | MIT | Hospedagem, injeção de dependência, logs e WMI | https://github.com/dotnet/runtime |
+| Microsoft.Extensions.*, System.Diagnostics.EventLog e System.Management | MIT | Hospedagem, injeção de dependência, logs, log de eventos do Windows e WMI | https://github.com/dotnet/runtime |
 | Serilog | Apache-2.0 | Registro em arquivo | https://github.com/serilog/serilog |
 | Ícones Lucide | ISC | Ícones da interface | `src/M1vClock.App/DesignSystem/Styles/Lucide-LICENSE.txt` |
 | Fonte Inter | SIL OFL 1.1 | Tipografia | `src/M1vClock.App/Assets/Fonts/Inter-OFL.txt` |
