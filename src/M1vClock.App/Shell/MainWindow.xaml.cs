@@ -93,6 +93,10 @@ public partial class MainWindow : Window
         {
             Dispatcher.BeginInvoke(DispatcherPriority.Background, OpenPalette);
         }
+        else if (options.Overlay == "toast")
+        {
+            Dispatcher.BeginInvoke(DispatcherPriority.Background, ShowSampleToasts);
+        }
         else if (options.Overlay == "dialog")
         {
             Dispatcher.BeginInvoke(DispatcherPriority.Background, () => _ = _viewModel.Dialogs.ShowAsync(SampleDialog(), SearchButton));
@@ -150,6 +154,12 @@ public partial class MainWindow : Window
         }
 
         return PageCatalog.Find("overview").IsAvailable ? "overview" : "design-system";
+    }
+
+    private void ShowSampleToasts()
+    {
+        _viewModel.Notifications.Show(new ToastRequest(Loc.Get("Hw.Dev.Toast.PenDrive"), Loc.Format("Hw.Dev.Toast.VolumeText", "KINGSTON (E:)", "12 GB", "30 GB"), "Icon.Storage", ToastTone.Success));
+        _viewModel.Notifications.Show(new ToastRequest(Loc.Get("Hw.Dev.Toast.UsbConnected"), "Logitech G Pro · Logitech", "Icon.Devices", ToastTone.Info));
     }
 
     private static DialogRequest SampleDialog() => new(

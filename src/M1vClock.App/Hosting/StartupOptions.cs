@@ -35,7 +35,7 @@ public sealed record StartupOptions(string? Page, ThemePreference? Theme, string
                     delay = TimeSpan.FromSeconds(Math.Clamp(seconds, 0.5, 30));
                     i++;
                     break;
-                case "--OVERLAY" when value is "palette" or "dialog":
+                case "--OVERLAY" when value is "palette" or "dialog" or "toast":
                     overlay = value;
                     i++;
                     break;

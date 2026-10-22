@@ -6,6 +6,7 @@
         xmlns:nav="clr-namespace:M1vClock.App.Navigation"
         xmlns:search="clr-namespace:M1vClock.App.Search"
         xmlns:shell="clr-namespace:M1vClock.App.Shell"
+        xmlns:svc="clr-namespace:M1vClock.App.Services"
         Title="m1vClock" Width="1280" Height="820" MinWidth="1040" MinHeight="640"
         WindowStartupLocation="CenterScreen" ResizeMode="CanResize"
         Background="Transparent" UseLayoutRounding="True"
@@ -133,6 +134,35 @@
             BorderBrush="{DynamicResource Brush.Separator}" BorderThickness="1,1,0,0" CornerRadius="12,0,0,0">
       <Grid x:Name="PageHost" ClipToBounds="True" />
     </Border>
+
+    <ItemsControl x:Name="ToastLayer" Grid.Row="1" Grid.Column="1" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="0,0,24,24"
+                  ItemsSource="{Binding Notifications.Toasts}" Focusable="False" IsTabStop="False">
+      <ItemsControl.ItemTemplate>
+        <DataTemplate DataType="{x:Type svc:ToastViewModel}">
+          <dc:ToastCard IsExiting="{Binding IsExiting}" AutomationProperties.Name="{Binding Title}" AutomationProperties.LiveSetting="Polite">
+            <DockPanel>
+              <Button DockPanel.Dock="Right" Style="{StaticResource Button.Icon}" Width="28" Height="28" MinWidth="28" Margin="8,-4,-8,0" VerticalAlignment="Top"
+                      dc:Assist.Icon="{StaticResource Icon.Close}" Command="{Binding DismissCommand}"
+                      ToolTip="{l:Text Toast.Dismiss}" AutomationProperties.Name="{l:Text Toast.Dismiss}" />
+              <dc:Icon x:Name="ToastGlyph" DockPanel.Dock="Left" Data="{Binding IconKey, Converter={StaticResource KeyToGeometry}}" Size="18"
+                       Foreground="{DynamicResource Brush.TextSecondary}" VerticalAlignment="Top" Margin="0,2,12,0" />
+              <StackPanel>
+                <TextBlock Text="{Binding Title}" Style="{StaticResource Text.Subhead}" FontWeight="SemiBold" TextWrapping="Wrap" />
+                <TextBlock Text="{Binding Text}" Style="{StaticResource Text.Subhead.Secondary}" TextWrapping="Wrap" Margin="0,2,0,0" />
+              </StackPanel>
+            </DockPanel>
+          </dc:ToastCard>
+          <DataTemplate.Triggers>
+            <DataTrigger Binding="{Binding Tone}" Value="Success">
+              <Setter TargetName="ToastGlyph" Property="Foreground" Value="{DynamicResource Brush.Positive}" />
+            </DataTrigger>
+            <DataTrigger Binding="{Binding Tone}" Value="Warning">
+              <Setter TargetName="ToastGlyph" Property="Foreground" Value="{DynamicResource Brush.Warning}" />
+            </DataTrigger>
+          </DataTemplate.Triggers>
+        </DataTemplate>
+      </ItemsControl.ItemTemplate>
+    </ItemsControl>
 
     <Grid x:Name="OverlayRoot" Grid.RowSpan="2" Grid.ColumnSpan="2" Visibility="Collapsed">
       <Border x:Name="Scrim" Background="{DynamicResource Brush.Scrim}" Opacity="0" MouseLeftButtonDown="Scrim_MouseLeftButtonDown" />
