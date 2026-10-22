@@ -18,4 +18,10 @@ internal static partial class BenchmarkLog
 
     [LoggerMessage(EventId = 4005, Level = LogLevel.Warning, Message = "Não foi possível verificar sobras de teste em {Parent}.")]
     public static partial void SweepFailed(ILogger logger, Exception exception, string parent);
+
+    [LoggerMessage(EventId = 4101, Level = LogLevel.Warning, Message = "Importação de resultados recusada: {Reason}.")]
+    public static partial void ImportFailed(ILogger logger, Exception? exception, Results.ImportFailure reason);
+
+    [LoggerMessage(EventId = 4102, Level = LogLevel.Error, Message = "Não foi possível gravar o histórico de benchmarks.")]
+    public static partial void HistorySaveFailed(ILogger logger, Exception exception);
 }
