@@ -115,10 +115,10 @@ Vários bugs só apareceram rodando de verdade, não nos testes unitários:
 | `M1vClock.Core.Tests` | 72 |
 | `M1vClock.Hardware.Tests` | 544 |
 | `M1vClock.Benchmarks.Tests` (novo) | 229 |
-| `M1vClock.App.Tests` | 610 |
+| `M1vClock.App.Tests` | 611 |
 | `M1vClock.Architecture.Tests` | 35 |
 
-Total 1.490, com 4 pulados que exigem administrador, 0 avisos de compilação. Há testes contra a máquina real para a pasta temporária, a E/S sem cache, a cena e o estresse de GPU (abrem uma janela por alguns segundos), a verificação de ray tracing e o conjunto de CPU. Os que dependem de tempo usam relógio falso.
+Total 1.491, com 4 pulados que exigem administrador, 0 avisos de compilação. Há testes contra a máquina real para a pasta temporária, a E/S sem cache, a cena e o estresse de GPU (abrem uma janela por alguns segundos), a verificação de ray tracing e o conjunto de CPU. Os que dependem de tempo usam relógio falso.
 
 ## Validação elevada do estresse (22/10/2026)
 
@@ -128,10 +128,36 @@ Release sob administrador com o PawnIO, roteiro de interface com corte no mínim
 - **CPU**: corte em 60 °C, a CPU ficou em 58 °C por 15 min a 100 % e cerca de 78 W; terminou como "Concluído (tempo esgotado)".
 - Achados corrigidos: o selo de status não aparecia para leitores de tela; o limite da GPU parava em 63 °C sem chegar a 60 °C; fechar a página depois de um teste encerrado gravava uma parada falsa no log.
 
+## Comparação lado a lado com o ResetExplode v0.16.0 (22/10/2026)
+
+Mesmo PC (Ryzen 7 5700X, RX 5500 XT, NVMe), os dois programas elevados, um de cada vez:
+
+| Teste | m1vClock | ResetExplode | Situação |
+|---|---|---|---|
+| Render single-core | 370 pts | 360 pts | mesma faixa |
+| Memória (leitura / cópia / latência) | 35,6 GB/s / 35,1 GB/s / 87,6 ns | 36,3 GB/s / 35,0 GB/s / 89,0 ns | mesma faixa |
+| Carregamento do mapa | 0,283 s | 0,28 s | mesma faixa |
+| Disco, fila 1 (leitura / escrita seq.) | 1.813 / 1.578 MB/s | 1.857 / 1.722 MB/s | mesma faixa (a nota v2 é diferente de propósito) |
+| Cena de GPU 1080p | 166,8 FPS, 1% low 129,4 | 166,9 FPS, 1% low 129,4 | idêntico |
+| Simulação de jogo | 152 FPS, 1% low 109 | 188 FPS, 1% low 111 | fora da faixa de propósito: só núcleos físicos |
+| Render multi-core | 2.905 a 3.125 pts no app elevado | 3.393 pts | **abaixo, causa não isolada** |
+
+**Simulação.** O m1vClock usa os 8 núcleos físicos e a mediana de 3 passadas porque, com as 16 threads, a nota variava até 45 % entre execuções; assim varia 0,5 %. A página avisa que por isso a nota não bate com a do original.
+
+**Render multi-core.** O motor sozinho, sem interface, dá 3.300 a 3.800 pts, a mesma faixa do original. Dentro do app a nota cai: 3.170 a 3.270 sem administrador e 2.905 a 3.125 com administrador (de 2.750 a 2.785 na primeira medição, em que o roteiro de automação também competia pela CPU). O que foi medido:
+
+- o monitor de segurança térmica custa cerca de 3 % (média de 2.978 com ele, 3.078 sem);
+- a prévia do render custa 3 a 5 % e a atualização de 250 ms da página, 5 a 8 %;
+- a leitura de sensores a cada segundo custa 1 % sem administrador e cerca de 6 % com o PawnIO;
+- tirar o processo da economia de energia do Windows, animar ou não a barra de progresso, a resolução do temporizador e o uso de um token de cancelamento não mudaram nada;
+- subir a prioridade das threads de render piorou muito a nota.
+
+O que sobra, em torno de 10 %, não foi explicado. O render single-core não sofre disso (370 contra 360).
+
 ## O que a fase 3 não verifica
 
 - **O renderizador de ray tracing (DXR 1.1) não foi portado.** A verificação de suporte está pronta e foi testada de verdade: esta RX 5500 XT não tem ray tracing por hardware, e a página diz isso com o nome da placa. Para uma placa que tem DXR 1.1 a entrada avisa que o teste não está disponível, porque o código de renderização e a nota não podem ser validados sem uma placa assim. O original tem 776 linhas desse teste; portar às cegas arriscaria dar uma nota errada.
 - **Corte por temperatura da CPU** não disparou de verdade: com o Release elevado e o PawnIO, 15 min de CPU a 100 % (cerca de 78 W) estabilizaram em 58 °C, abaixo do menor corte (60 °C), e o teste terminou pelo tempo. O corte é o mesmo código do da GPU.
-- **Comparação de notas com o ResetExplode** no mesmo PC (o plano pede "mesma faixa de nota"). O render de CPU e a simulação são idênticos ao original pixel a pixel e quadro a quadro, então a faixa segue do código, mas a medição lado a lado não foi feita.
+- **Nota do render multi-core dentro do app** fica 10 a 15 % abaixo da do ResetExplode e da medida sem interface; a causa restante não foi isolada (detalhes na comparação acima).
 - Estresse de GPU em tela cheia, MSAA 8x e durações longas (acima de 1 minuto) não foram rodados.
 - Notas em outro PC, Windows 10, alto contraste e texto acima de 100 %.
