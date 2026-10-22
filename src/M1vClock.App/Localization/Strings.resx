@@ -2743,7 +2743,7 @@
     <value>Variação entre passadas</value>
   </data>
   <data name="Bench.Sim.Result.Note" xml:space="preserve">
-    <value>A nota é a mediana de 3 passadas. Os trabalhadores ficam nos núcleos físicos para o resultado variar menos entre execuções.</value>
+    <value>A nota é a mediana de 3 passadas. Os trabalhadores ficam nos núcleos físicos para o resultado variar menos entre execuções, então a nota fica abaixo da do ResetExplode, que usava todas as threads.</value>
   </data>
   <data name="Bench.Memory.Title" xml:space="preserve">
     <value>Memória</value>

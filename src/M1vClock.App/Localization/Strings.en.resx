@@ -2743,7 +2743,7 @@
     <value>Pass-to-pass spread</value>
   </data>
   <data name="Bench.Sim.Result.Note" xml:space="preserve">
-    <value>The score is the median of 3 passes. Workers stay on physical cores so the result varies less between runs.</value>
+    <value>The score is the median of 3 passes. Workers stay on physical cores so the result varies less between runs, so the score is lower than ResetExplode's, which used every thread.</value>
   </data>
   <data name="Bench.Memory.Title" xml:space="preserve">
     <value>Memory</value>
