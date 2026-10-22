@@ -48,11 +48,12 @@ public sealed partial class DialogService : ObservableObject
     {
         ArgumentNullException.ThrowIfNull(request);
         _pending?.TrySetResult(false);
-        _pending = new TaskCompletionSource<bool>(TaskCreationOptions.RunContinuationsAsynchronously);
+        var pending = new TaskCompletionSource<bool>(TaskCreationOptions.RunContinuationsAsynchronously);
+        _pending = pending;
         Anchor = anchor;
         Current = request;
         Opened?.Invoke(this, EventArgs.Empty);
-        return _pending.Task;
+        return pending.Task;
     }
 
     [RelayCommand]
