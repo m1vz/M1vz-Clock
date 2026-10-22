@@ -84,4 +84,7 @@ internal static partial class AppLog
 
     [LoggerMessage(EventId = 2027, Level = LogLevel.Warning, Message = "Benchmark {Test} interrompido: {Reason}.")]
     public static partial void BenchmarkStopped(ILogger logger, string test, string reason);
+
+    [LoggerMessage(EventId = 2028, Level = LogLevel.Error, Message = "O teste de estresse terminou com erro.")]
+    public static partial void StressFailed(ILogger logger, Exception exception);
 }

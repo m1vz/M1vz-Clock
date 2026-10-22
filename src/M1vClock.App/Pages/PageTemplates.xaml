@@ -33,6 +33,10 @@
     <pf:BenchmarksPage />
   </DataTemplate>
 
+  <DataTemplate DataType="{x:Type pf:StressPageViewModel}">
+    <pf:StressPage />
+  </DataTemplate>
+
   <DataTemplate DataType="{x:Type hw:InfoPageViewModel}">
     <hw:InfoPage />
   </DataTemplate>

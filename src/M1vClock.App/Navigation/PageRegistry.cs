@@ -22,6 +22,7 @@ public static class PageRegistry
         ["sensors"] = Resolve<SensorsPageViewModel>,
         ["overview"] = Resolve<OverviewPageViewModel>,
         ["benchmarks"] = Resolve<BenchmarksPageViewModel>,
+        ["stress"] = Resolve<StressPageViewModel>,
     };
 
     public static IReadOnlyCollection<string> Ids => Factories.Keys;

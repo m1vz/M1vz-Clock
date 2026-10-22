@@ -83,6 +83,8 @@ public static class AppHost
         builder.Services.AddSingleton<IBenchJobSource, BenchJobFactory>();
         builder.Services.AddSingleton<IFileDialogs, Win32FileDialogs>();
         builder.Services.AddTransient<BenchmarksPageViewModel>();
+        builder.Services.AddSingleton<IStressWorkloadFactory, StressWorkloadFactory>();
+        builder.Services.AddTransient<StressPageViewModel>();
         return builder.Build();
     }
 }

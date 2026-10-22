@@ -2832,4 +2832,253 @@
   <data name="Bench.Disk.Result.Note" xml:space="preserve">
     <value>Nota versão 2, com fila real de E/S. Não é comparável com a do ResetExplode, que usava 8 threads síncronas.</value>
   </data>
+  <data name="Stress.Start" xml:space="preserve">
+    <value>Iniciar</value>
+  </data>
+  <data name="Stress.Stop" xml:space="preserve">
+    <value>Parar</value>
+  </data>
+  <data name="Stress.Section.Setup" xml:space="preserve">
+    <value>Configuração</value>
+  </data>
+  <data name="Stress.Cpu" xml:space="preserve">
+    <value>CPU</value>
+  </data>
+  <data name="Stress.Cpu.Detail" xml:space="preserve">
+    <value>Carga em todos os núcleos, com cálculos de ponto flutuante e de inteiros.</value>
+  </data>
+  <data name="Stress.Ram" xml:space="preserve">
+    <value>RAM</value>
+  </data>
+  <data name="Stress.Ram.Detail" xml:space="preserve">
+    <value>Grava padrões na memória livre, confere e conta os erros.</value>
+  </data>
+  <data name="Stress.Ram.Fraction" xml:space="preserve">
+    <value>Quanto da memória livre usar</value>
+  </data>
+  <data name="Stress.Ram.TooLittle" xml:space="preserve">
+    <value>Pouca memória livre: a parte de RAM do teste não vai rodar.</value>
+  </data>
+  <data name="Stress.Ram.Plan" xml:space="preserve">
+    <value>Vai reservar {0} da memória livre. Sempre sobra 1 GB para o Windows.</value>
+  </data>
+  <data name="Stress.Gpu" xml:space="preserve">
+    <value>GPU</value>
+  </data>
+  <data name="Stress.Gpu.Detail" xml:space="preserve">
+    <value>Cena pesada em Direct3D 11 que usa a placa inteira, no estilo FurMark.</value>
+  </data>
+  <data name="Stress.Gpu.Unavailable" xml:space="preserve">
+    <value>Ainda não disponível nesta versão.</value>
+  </data>
+  <data name="Stress.Limit.Cpu" xml:space="preserve">
+    <value>Corte da CPU</value>
+  </data>
+  <data name="Stress.Limit.Gpu" xml:space="preserve">
+    <value>Corte da GPU</value>
+  </data>
+  <data name="Stress.Limit.Lower" xml:space="preserve">
+    <value>Baixar o limite</value>
+  </data>
+  <data name="Stress.Limit.Raise" xml:space="preserve">
+    <value>Subir o limite</value>
+  </data>
+  <data name="Stress.Limit.Hint" xml:space="preserve">
+    <value>O teste para sozinho quando a temperatura chega a esse valor. De 60 a 90 °C você escolhe livremente. Acima de 90 °C, até 95 °C, pede confirmação dupla.</value>
+  </data>
+  <data name="Stress.Duration" xml:space="preserve">
+    <value>Duração</value>
+  </data>
+  <data name="Stress.Duration.Unlimited" xml:space="preserve">
+    <value>Sem limite</value>
+  </data>
+  <data name="Stress.Leave.Note" xml:space="preserve">
+    <value>Sair desta página interrompe o teste. Enquanto ele roda, a leitura geral dos sensores fica pausada. Esc também para.</value>
+  </data>
+  <data name="Stress.Chart.Title" xml:space="preserve">
+    <value>Temperatura</value>
+  </data>
+  <data name="Stress.Live.CpuTemperature" xml:space="preserve">
+    <value>Temperatura da CPU</value>
+  </data>
+  <data name="Stress.Live.CpuLoad" xml:space="preserve">
+    <value>Carga da CPU</value>
+  </data>
+  <data name="Stress.Live.CpuPower" xml:space="preserve">
+    <value>Consumo da CPU</value>
+  </data>
+  <data name="Stress.Live.Memory" xml:space="preserve">
+    <value>RAM: passadas</value>
+  </data>
+  <data name="Stress.Live.GpuTemperature" xml:space="preserve">
+    <value>Temperatura da GPU</value>
+  </data>
+  <data name="Stress.Live.GpuFps" xml:space="preserve">
+    <value>FPS da GPU</value>
+  </data>
+  <data name="Stress.Live.Elapsed" xml:space="preserve">
+    <value>Tempo</value>
+  </data>
+  <data name="Stress.Live.MemoryDetail" xml:space="preserve">
+    <value>{0} erro(s) · {1} em teste</value>
+  </data>
+  <data name="Stress.Live.Limit" xml:space="preserve">
+    <value>limite de {0}</value>
+  </data>
+  <data name="Stress.Live.FpsAverage" xml:space="preserve">
+    <value>média de {0}</value>
+  </data>
+  <data name="Stress.Live.NoLimit" xml:space="preserve">
+    <value>sem limite de tempo</value>
+  </data>
+  <data name="Stress.Status.Idle" xml:space="preserve">
+    <value>Parado</value>
+  </data>
+  <data name="Stress.Status.Running" xml:space="preserve">
+    <value>Rodando</value>
+  </data>
+  <data name="Stress.Status.Completed" xml:space="preserve">
+    <value>Concluído (tempo esgotado)</value>
+  </data>
+  <data name="Stress.Status.Stopped" xml:space="preserve">
+    <value>Parado pelo usuário</value>
+  </data>
+  <data name="Stress.Status.Aborted" xml:space="preserve">
+    <value>Abortado</value>
+  </data>
+  <data name="Stress.Status.Temperature" xml:space="preserve">
+    <value>Abortado: a {0} chegou a {1}, o limite era {2}</value>
+  </data>
+  <data name="Stress.Status.MemoryErrors" xml:space="preserve">
+    <value>Abortado: {0} erro(s) de memória detectados</value>
+  </data>
+  <data name="Stress.Status.SensorLost" xml:space="preserve">
+    <value>Abortado: o sensor de temperatura parou de responder</value>
+  </data>
+  <data name="Stress.Status.Unresponsive" xml:space="preserve">
+    <value>Abortado: a janela do teste parou de responder</value>
+  </data>
+  <data name="Stress.Status.Failed" xml:space="preserve">
+    <value>Abortado: falha no componente testado ({0})</value>
+  </data>
+  <data name="Stress.Error.NothingSelected" xml:space="preserve">
+    <value>Ligue a CPU, a RAM ou a GPU para começar.</value>
+  </data>
+  <data name="Stress.Error.NoSensor" xml:space="preserve">
+    <value>Sem leitura de temperatura da {0}. O teste de estresse não começa sem ela, porque não haveria como cortar a carga se esquentasse demais. Execute como administrador e instale o PawnIO: {1}</value>
+  </data>
+  <data name="Stress.Error.AlreadyRunning" xml:space="preserve">
+    <value>Já existe um teste de estresse rodando.</value>
+  </data>
+  <data name="Stress.Error.Generic" xml:space="preserve">
+    <value>O teste de estresse não terminou. Os detalhes estão no log.</value>
+  </data>
+  <data name="Stress.Confirm.Title" xml:space="preserve">
+    <value>Iniciar o teste de estresse?</value>
+  </data>
+  <data name="Stress.Confirm.Message" xml:space="preserve">
+    <value>O teste leva o computador ao limite por um tempo. Ele corta sozinho se passar da temperatura escolhida, e você pode parar a qualquer momento com Esc ou Parar.</value>
+  </data>
+  <data name="Stress.Confirm.Cpu" xml:space="preserve">
+    <value>CPU: 100 % de uso em todos os núcleos, corte em {0}</value>
+  </data>
+  <data name="Stress.Confirm.Ram" xml:space="preserve">
+    <value>RAM: {0}</value>
+  </data>
+  <data name="Stress.Confirm.Gpu" xml:space="preserve">
+    <value>GPU: carga máxima, corte em {0}</value>
+  </data>
+  <data name="Stress.Confirm.Unlimited" xml:space="preserve">
+    <value>Sem limite de tempo: roda até você parar</value>
+  </data>
+  <data name="Stress.Confirm.Duration" xml:space="preserve">
+    <value>Duração: {0} min</value>
+  </data>
+  <data name="Stress.Confirm.Undo" xml:space="preserve">
+    <value>Nada no Windows é alterado. Parar o teste devolve CPU, memória e GPU na hora.</value>
+  </data>
+  <data name="Stress.Confirm.Start" xml:space="preserve">
+    <value>Iniciar o teste</value>
+  </data>
+  <data name="Stress.HighLimit.Title" xml:space="preserve">
+    <value>Subir o limite da {0}?</value>
+  </data>
+  <data name="Stress.HighLimit.Message" xml:space="preserve">
+    <value>Um limite de {0} deixa a {1} chegar perto do que o fabricante tolera. Na dúvida, mantenha o padrão.</value>
+  </data>
+  <data name="Stress.HighLimit.Change" xml:space="preserve">
+    <value>O corte por temperatura sobe para {0}</value>
+  </data>
+  <data name="Stress.HighLimit.Undo" xml:space="preserve">
+    <value>Volte o limite ao padrão com o botão de menos.</value>
+  </data>
+  <data name="Stress.HighLimit.Continue" xml:space="preserve">
+    <value>Continuar</value>
+  </data>
+  <data name="Stress.HighLimit.SecondTitle" xml:space="preserve">
+    <value>Tem certeza?</value>
+  </data>
+  <data name="Stress.HighLimit.SecondMessage" xml:space="preserve">
+    <value>Último aviso: com o limite em {0}, o teste só para quando a {1} chegar a esse ponto. Calor excessivo pode encurtar a vida do componente.</value>
+  </data>
+  <data name="Stress.HighLimit.Confirm" xml:space="preserve">
+    <value>Sim, usar esse limite</value>
+  </data>
+  <data name="Stress.Summary.Title" xml:space="preserve">
+    <value>Resumo</value>
+  </data>
+  <data name="Stress.Summary.Duration" xml:space="preserve">
+    <value>Duração</value>
+  </data>
+  <data name="Stress.Summary.CpuMax" xml:space="preserve">
+    <value>Temperatura máxima da CPU</value>
+  </data>
+  <data name="Stress.Summary.GpuMax" xml:space="preserve">
+    <value>Temperatura máxima da GPU</value>
+  </data>
+  <data name="Stress.Summary.RamPasses" xml:space="preserve">
+    <value>Passadas de memória</value>
+  </data>
+  <data name="Stress.Summary.RamErrors" xml:space="preserve">
+    <value>Erros de memória</value>
+  </data>
+  <data name="Stress.Summary.GpuFrames" xml:space="preserve">
+    <value>Quadros da GPU</value>
+  </data>
+  <data name="Stress.Summary.GpuFps" xml:space="preserve">
+    <value>FPS médio da GPU</value>
+  </data>
+  <data name="Stress.Log.Title" xml:space="preserve">
+    <value>Registro</value>
+  </data>
+  <data name="Stress.Log.Empty" xml:space="preserve">
+    <value>Nada ainda.</value>
+  </data>
+  <data name="Stress.Log.Clear" xml:space="preserve">
+    <value>Limpar</value>
+  </data>
+  <data name="Stress.Log.Started" xml:space="preserve">
+    <value>Iniciado · CPU {0} · RAM {1} · GPU {2} · {3}</value>
+  </data>
+  <data name="Stress.Log.On" xml:space="preserve">
+    <value>sim ({0})</value>
+  </data>
+  <data name="Stress.Log.Off" xml:space="preserve">
+    <value>não</value>
+  </data>
+  <data name="Stress.Log.Limit" xml:space="preserve">
+    <value>limite de {0}</value>
+  </data>
+  <data name="Stress.Log.Fraction" xml:space="preserve">
+    <value>{0} da livre</value>
+  </data>
+  <data name="Stress.Log.NoLimit" xml:space="preserve">
+    <value>sem limite de tempo</value>
+  </data>
+  <data name="Stress.Log.Minutes" xml:space="preserve">
+    <value>{0} min</value>
+  </data>
+  <data name="Stress.Log.Ended" xml:space="preserve">
+    <value>{0} · duração {1}</value>
+  </data>
 </root>
