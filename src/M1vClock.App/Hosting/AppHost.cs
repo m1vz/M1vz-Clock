@@ -6,6 +6,7 @@ using M1vClock.App.Pages.Hardware;
 using M1vClock.App.Pages.Performance;
 using M1vClock.App.Search;
 using M1vClock.App.Services;
+using M1vClock.App.Services.Reports;
 using M1vClock.App.Shell;
 using M1vClock.Benchmarks;
 using M1vClock.Benchmarks.Safety;
@@ -91,6 +92,8 @@ public static class AppHost
         builder.Services.AddTransient<CrashesPageViewModel>();
         builder.Services.AddTransient<ReliabilityPageViewModel>();
         builder.Services.AddTransient<LogsPageViewModel>();
+        builder.Services.AddTransient<ReportPageViewModel>();
+        builder.Services.AddSingleton<IReportCollector, ReportCollector>();
         return builder.Build();
     }
 }

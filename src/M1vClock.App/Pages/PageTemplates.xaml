@@ -38,6 +38,10 @@
     <pf:StressPage />
   </DataTemplate>
 
+  <DataTemplate DataType="{x:Type dg:ReportPageViewModel}">
+    <dg:ReportPage />
+  </DataTemplate>
+
   <DataTemplate DataType="{x:Type dg:LogsPageViewModel}">
     <dg:LogsPage />
   </DataTemplate>

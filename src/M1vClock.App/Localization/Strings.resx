@@ -3921,4 +3921,88 @@
   <data name="Diag.Logs.Severity.Fatal" xml:space="preserve">
     <value>Fatal</value>
   </data>
+  <data name="Diag.Report.Title" xml:space="preserve">
+    <value>Relatório do m1vClock</value>
+  </data>
+  <data name="Diag.Report.Generated" xml:space="preserve">
+    <value>Gerado em {0} · m1vClock {1}</value>
+  </data>
+  <data name="Diag.Report.Footer" xml:space="preserve">
+    <value>Gerado neste computador pelo m1vClock. Nada foi enviado para a internet.</value>
+  </data>
+  <data name="Diag.Report.File.Name" xml:space="preserve">
+    <value>relatorio-m1vclock-{0}</value>
+  </data>
+  <data name="Diag.Report.File.Filter" xml:space="preserve">
+    <value>Página da web (*.html)|*.html|Texto (*.txt)|*.txt</value>
+  </data>
+  <data name="Diag.Report.Intro" xml:space="preserve">
+    <value>O relatório fica só no seu computador. Escolha o que incluir, salve ou copie e mande para quem for ajudar. Números de série, endereços de rede e o nome do computador ficam de fora, a menos que você ligue a opção do nome.</value>
+  </data>
+  <data name="Diag.Report.Include" xml:space="preserve">
+    <value>O que incluir</value>
+  </data>
+  <data name="Diag.Report.IncludeName" xml:space="preserve">
+    <value>Incluir o nome do computador</value>
+  </data>
+  <data name="Diag.Report.IncludeName.Detail" xml:space="preserve">
+    <value>Desligado por padrão, porque o nome pode identificar você.</value>
+  </data>
+  <data name="Diag.Report.Collect" xml:space="preserve">
+    <value>Coletar de novo</value>
+  </data>
+  <data name="Diag.Report.Collecting" xml:space="preserve">
+    <value>Coletando os dados do PC…</value>
+  </data>
+  <data name="Diag.Report.Save" xml:space="preserve">
+    <value>Salvar relatório…</value>
+  </data>
+  <data name="Diag.Report.Copy" xml:space="preserve">
+    <value>Copiar como texto</value>
+  </data>
+  <data name="Diag.Report.Preview" xml:space="preserve">
+    <value>Prévia do que vai no relatório</value>
+  </data>
+  <data name="Diag.Report.Preview.Empty" xml:space="preserve">
+    <value>Nenhuma parte escolhida. Ligue pelo menos uma acima.</value>
+  </data>
+  <data name="Diag.Report.Saved" xml:space="preserve">
+    <value>Relatório salvo em {0}.</value>
+  </data>
+  <data name="Diag.Report.SaveFailed" xml:space="preserve">
+    <value>Não foi possível salvar o relatório: {0}</value>
+  </data>
+  <data name="Diag.Report.NotRead" xml:space="preserve">
+    <value>Não foi possível ler esta parte: {0}</value>
+  </data>
+  <data name="Diag.Report.Rows" xml:space="preserve">
+    <value>{0} linha(s)</value>
+  </data>
+  <data name="Diag.Report.Section.system" xml:space="preserve">
+    <value>Sistema</value>
+  </data>
+  <data name="Diag.Report.Section.gpu" xml:space="preserve">
+    <value>Placa de vídeo</value>
+  </data>
+  <data name="Diag.Report.Section.memory" xml:space="preserve">
+    <value>Memória</value>
+  </data>
+  <data name="Diag.Report.Section.storage" xml:space="preserve">
+    <value>Armazenamento</value>
+  </data>
+  <data name="Diag.Report.Section.power" xml:space="preserve">
+    <value>Energia</value>
+  </data>
+  <data name="Diag.Report.Section.events" xml:space="preserve">
+    <value>Eventos do Windows</value>
+  </data>
+  <data name="Diag.Report.Section.crashes" xml:space="preserve">
+    <value>Reinícios inesperados e telas azuis</value>
+  </data>
+  <data name="Diag.Report.Section.reliability" xml:space="preserve">
+    <value>Confiabilidade</value>
+  </data>
+  <data name="Diag.Report.Section.benchmarks" xml:space="preserve">
+    <value>Benchmarks</value>
+  </data>
 </root>

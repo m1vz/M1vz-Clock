@@ -3921,4 +3921,88 @@
   <data name="Diag.Logs.Severity.Fatal" xml:space="preserve">
     <value>Fatal</value>
   </data>
+  <data name="Diag.Report.Title" xml:space="preserve">
+    <value>m1vClock report</value>
+  </data>
+  <data name="Diag.Report.Generated" xml:space="preserve">
+    <value>Generated on {0} · m1vClock {1}</value>
+  </data>
+  <data name="Diag.Report.Footer" xml:space="preserve">
+    <value>Generated on this computer by m1vClock. Nothing was sent to the internet.</value>
+  </data>
+  <data name="Diag.Report.File.Name" xml:space="preserve">
+    <value>m1vclock-report-{0}</value>
+  </data>
+  <data name="Diag.Report.File.Filter" xml:space="preserve">
+    <value>Web page (*.html)|*.html|Text (*.txt)|*.txt</value>
+  </data>
+  <data name="Diag.Report.Intro" xml:space="preserve">
+    <value>The report stays on your computer only. Choose what to include, save or copy it and send it to whoever will help. Serial numbers, network addresses and the computer name are left out, unless you turn on the name option.</value>
+  </data>
+  <data name="Diag.Report.Include" xml:space="preserve">
+    <value>What to include</value>
+  </data>
+  <data name="Diag.Report.IncludeName" xml:space="preserve">
+    <value>Include the computer name</value>
+  </data>
+  <data name="Diag.Report.IncludeName.Detail" xml:space="preserve">
+    <value>Off by default, because the name can identify you.</value>
+  </data>
+  <data name="Diag.Report.Collect" xml:space="preserve">
+    <value>Collect again</value>
+  </data>
+  <data name="Diag.Report.Collecting" xml:space="preserve">
+    <value>Collecting the PC data…</value>
+  </data>
+  <data name="Diag.Report.Save" xml:space="preserve">
+    <value>Save report…</value>
+  </data>
+  <data name="Diag.Report.Copy" xml:space="preserve">
+    <value>Copy as text</value>
+  </data>
+  <data name="Diag.Report.Preview" xml:space="preserve">
+    <value>Preview of what goes in the report</value>
+  </data>
+  <data name="Diag.Report.Preview.Empty" xml:space="preserve">
+    <value>No part chosen. Turn on at least one above.</value>
+  </data>
+  <data name="Diag.Report.Saved" xml:space="preserve">
+    <value>Report saved to {0}.</value>
+  </data>
+  <data name="Diag.Report.SaveFailed" xml:space="preserve">
+    <value>Could not save the report: {0}</value>
+  </data>
+  <data name="Diag.Report.NotRead" xml:space="preserve">
+    <value>Could not read this part: {0}</value>
+  </data>
+  <data name="Diag.Report.Rows" xml:space="preserve">
+    <value>{0} row(s)</value>
+  </data>
+  <data name="Diag.Report.Section.system" xml:space="preserve">
+    <value>System</value>
+  </data>
+  <data name="Diag.Report.Section.gpu" xml:space="preserve">
+    <value>Graphics card</value>
+  </data>
+  <data name="Diag.Report.Section.memory" xml:space="preserve">
+    <value>Memory</value>
+  </data>
+  <data name="Diag.Report.Section.storage" xml:space="preserve">
+    <value>Storage</value>
+  </data>
+  <data name="Diag.Report.Section.power" xml:space="preserve">
+    <value>Power</value>
+  </data>
+  <data name="Diag.Report.Section.events" xml:space="preserve">
+    <value>Windows events</value>
+  </data>
+  <data name="Diag.Report.Section.crashes" xml:space="preserve">
+    <value>Unexpected restarts and blue screens</value>
+  </data>
+  <data name="Diag.Report.Section.reliability" xml:space="preserve">
+    <value>Reliability</value>
+  </data>
+  <data name="Diag.Report.Section.benchmarks" xml:space="preserve">
+    <value>Benchmarks</value>
+  </data>
 </root>
