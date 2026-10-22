@@ -53,14 +53,16 @@ public sealed class OverviewHistory : IHostedService
     public Task StartAsync(CancellationToken cancellationToken)
     {
         _sensors.SnapshotReady += OnSnapshot;
+        _sensors.StateChanged += OnStateChanged;
         _settings.Changed += OnSettingsChanged;
-        _lease ??= _sensors.Subscribe();
+        UpdateLease();
         return Task.CompletedTask;
     }
 
     public Task StopAsync(CancellationToken cancellationToken)
     {
         _sensors.SnapshotReady -= OnSnapshot;
+        _sensors.StateChanged -= OnStateChanged;
         _settings.Changed -= OnSettingsChanged;
         _lease?.Dispose();
         _lease = null;
@@ -92,8 +94,39 @@ public sealed class OverviewHistory : IHostedService
 
     private void OnSnapshot(object? sender, SensorSnapshot snapshot) => _ui.Post(() => Add(snapshot));
 
+    private void UpdateLease()
+    {
+        var wanted = _settings.Current.BackgroundSensorHistory;
+        if (wanted && _lease is null)
+        {
+            _lease = _sensors.Subscribe();
+        }
+        else if (!wanted && _lease is not null)
+        {
+            _lease.Dispose();
+            _lease = null;
+        }
+    }
+
+    private void OnStateChanged(object? sender, EventArgs e) => _ui.Post(() =>
+    {
+        if (_sensors.State == SensorServiceState.Stopped)
+        {
+            ClearAll();
+        }
+    });
+
+    private void ClearAll()
+    {
+        foreach (var series in new[] { CpuTemperature, GpuTemperature, CpuLoad, GpuLoad, CpuPower, GpuPower })
+        {
+            series.Clear();
+        }
+    }
+
     private void OnSettingsChanged(object? sender, EventArgs e) => _ui.Post(() =>
     {
+        UpdateLease();
         var unit = _settings.Current.TemperatureUnit;
         if (unit == _unit)
         {
