@@ -28,4 +28,7 @@ internal static partial class DiagnosticsLog
 
     [LoggerMessage(EventId = 4008, Level = LogLevel.Information, Message = "Não foi possível ler o cabeçalho do dump {Name}; segue sem o código.")]
     public static partial void DumpHeaderUnreadable(ILogger logger, Exception exception, string name);
+
+    [LoggerMessage(EventId = 4009, Level = LogLevel.Warning, Message = "Não foi possível ler a confiabilidade ({Part}) pelo WMI.")]
+    public static partial void ReliabilityFailed(ILogger logger, Exception exception, string part);
 }
