@@ -338,6 +338,44 @@ public sealed class SensorSnapshotTests
     }
 
     [Fact]
+    public void TheCpuClockAveragesTheCoresAndIgnoresIdleAndEffectiveReadings()
+    {
+        var snapshot = Snapshot(
+            R(SensorHardware.Cpu, "Core #1", SensorKind.Clock, 4400),
+            R(SensorHardware.Cpu, "Core #2", SensorKind.Clock, 4600),
+            R(SensorHardware.Cpu, "Core #3", SensorKind.Clock, 0),
+            R(SensorHardware.Cpu, "Core #1 (Effective)", SensorKind.Clock, 800),
+            R(SensorHardware.Cpu, "Bus Speed", SensorKind.Clock, 100));
+
+        Assert.Equal(4500f, snapshot.CpuClock);
+    }
+
+    [Fact]
+    public void TheGpuPowerPrefersThePackageSensorAndFallsBackToTheFirstOne()
+    {
+        var withPackage = Snapshot(R(SensorHardware.Gpu, "GPU Core", SensorKind.Power, 80), R(SensorHardware.Gpu, "GPU Package", SensorKind.Power, 95));
+        var withoutPackage = Snapshot(R(SensorHardware.Gpu, "GPU SoC", SensorKind.Power, 12), R(SensorHardware.Gpu, "GPU Memory", SensorKind.Power, 20));
+
+        Assert.Equal(95f, withPackage.GpuPower);
+        Assert.Equal(12f, withoutPackage.GpuPower);
+        Assert.Null(Snapshot().GpuPower);
+    }
+
+    [Fact]
+    public void TheGpuClockAndTheMemoryAmountsComeFromTheirSensors()
+    {
+        var snapshot = Snapshot(
+            R(SensorHardware.Gpu, "GPU Core", SensorKind.Clock, 1850),
+            R(SensorHardware.Gpu, "GPU Memory", SensorKind.Clock, 1750),
+            R(SensorHardware.Memory, "Memory Used", SensorKind.Data, 11.2f),
+            R(SensorHardware.Memory, "Memory Available", SensorKind.Data, 4.8f));
+
+        Assert.Equal(1850f, snapshot.GpuClock);
+        Assert.Equal(11.2f, snapshot.MemoryUsedGb);
+        Assert.Equal(4.8f, snapshot.MemoryAvailableGb);
+    }
+
+    [Fact]
     public void AnEmptySnapshotHasNoReadings()
     {
         var snapshot = Snapshot();

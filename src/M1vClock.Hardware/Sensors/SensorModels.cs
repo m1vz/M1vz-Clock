@@ -67,6 +67,30 @@ public sealed record SensorSnapshot(DateTimeOffset At, IReadOnlyList<SensorReadi
 
     public float? GpuTemperature => Readings.FirstOrDefault(r => r.Hardware == SensorHardware.Gpu && r.Kind == SensorKind.Temperature && r.Name == "GPU Core")?.Value;
 
+    public float? CpuClock
+    {
+        get
+        {
+            var clocks = Readings.Where(r => r.Hardware == SensorHardware.Cpu && r.Kind == SensorKind.Clock && r.Name.StartsWith("Core #", StringComparison.Ordinal) && !r.Name.Contains("Effective", StringComparison.Ordinal) && r.Value is > 0).Select(r => r.Value!.Value).ToList();
+            return clocks.Count > 0 ? clocks.Average() : null;
+        }
+    }
+
+    public float? GpuClock => Readings.FirstOrDefault(r => r.Hardware == SensorHardware.Gpu && r.Kind == SensorKind.Clock && r.Name == "GPU Core")?.Value;
+
+    public float? GpuPower
+    {
+        get
+        {
+            var power = Readings.Where(r => r.Hardware == SensorHardware.Gpu && r.Kind == SensorKind.Power && r.Value is > 0).ToList();
+            return (power.FirstOrDefault(r => HasAny(r.Name, "Package", "Total", "Board")) ?? (power.Count > 0 ? power[0] : null))?.Value;
+        }
+    }
+
+    public float? MemoryUsedGb => Readings.FirstOrDefault(r => r.Hardware == SensorHardware.Memory && r.Kind == SensorKind.Data && r.Name == "Memory Used")?.Value;
+
+    public float? MemoryAvailableGb => Readings.FirstOrDefault(r => r.Hardware == SensorHardware.Memory && r.Kind == SensorKind.Data && r.Name == "Memory Available")?.Value;
+
     public float? GpuLoad => Readings.FirstOrDefault(r => r.Hardware == SensorHardware.Gpu && r.Kind == SensorKind.Load && r.Name == "GPU Core")?.Value;
 
     public float? MemoryLoad => Readings.FirstOrDefault(r => r.Hardware == SensorHardware.Memory && r.Kind == SensorKind.Load && r.Name == "Memory")?.Value;

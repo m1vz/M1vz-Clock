@@ -27,6 +27,8 @@ public sealed record HealthCheck(HealthKind Kind, HealthStatus Status, double Va
 
 public sealed record HealthReport(IReadOnlyList<HealthCheck> Checks, HealthStatus Overall)
 {
+    public Volume? SystemVolume { get; init; }
+
     public int Problems => Checks.Count(c => c.Status is HealthStatus.Attention or HealthStatus.Critical);
 }
 

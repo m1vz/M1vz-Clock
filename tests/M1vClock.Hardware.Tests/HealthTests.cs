@@ -242,6 +242,27 @@ public sealed class HealthServiceTests
     }
 
     [Fact]
+    public async Task TheReportCarriesTheSystemVolumeForTheOverview()
+    {
+        var service = Create(Storage(DiskVerdict.Good, Drive("D:", 1000, 10), Drive("C:", 2000, 500)), Power(), new FakeUsbService());
+
+        var report = await service.ReadAsync(null, elevated: false, TestContext.Current.CancellationToken);
+
+        Assert.Equal("C:", report.SystemVolume!.Letter);
+        Assert.Equal(2000UL, report.SystemVolume.TotalBytes);
+    }
+
+    [Fact]
+    public async Task WithoutTheSystemVolumeTheReportHasNone()
+    {
+        var service = Create(Storage(DiskVerdict.Good, Drive("D:", 1000, 10)), Power(), new FakeUsbService());
+
+        var report = await service.ReadAsync(null, elevated: false, TestContext.Current.CancellationToken);
+
+        Assert.Null(report.SystemVolume);
+    }
+
+    [Fact]
     public async Task WithoutASnapshotTheSensorAndMemoryChecksAreLeftOut()
     {
         var service = Create(Storage(DiskVerdict.Good, Drive("C:", 1000, 500)), Power(), new FakeUsbService());

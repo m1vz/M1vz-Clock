@@ -50,19 +50,16 @@ public sealed class HealthService : IHealthService
             powerReport.Source,
             powerReport.Batteries.TryGet(out var batteries) ? [.. batteries.Select(b => b.Assessment.Verdict)] : null,
             usbResult.TryGet(out var devices) ? devices.Count(d => d.HasProblem) : null);
-        return HealthEvaluator.Evaluate(inputs);
+        return HealthEvaluator.Evaluate(inputs) with { SystemVolume = SystemVolume(storageReport) };
     }
 
     private static string NormalizeDrive(string drive) => drive.TrimEnd('\\', '/').ToUpperInvariant();
 
-    private double? SystemDriveFreePercent(StorageReport report)
-    {
-        if (!report.Volumes.TryGet(out var volumes))
-        {
-            return null;
-        }
+    private Volume? SystemVolume(StorageReport report) =>
+        report.Volumes.TryGet(out var volumes)
+            ? volumes.FirstOrDefault(v => string.Equals(NormalizeDrive(v.Letter), _systemDrive, StringComparison.Ordinal))
+            : null;
 
-        var volume = volumes.FirstOrDefault(v => string.Equals(NormalizeDrive(v.Letter), _systemDrive, StringComparison.Ordinal));
-        return volume is null || volume.TotalBytes == 0 ? null : 100.0 * volume.FreeBytes / volume.TotalBytes;
-    }
+    private double? SystemDriveFreePercent(StorageReport report) =>
+        SystemVolume(report) is { TotalBytes: > 0 } volume ? 100.0 * volume.FreeBytes / volume.TotalBytes : null;
 }
