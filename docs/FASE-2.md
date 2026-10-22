@@ -60,11 +60,11 @@ Um serviço em segundo plano assina os eventos de dispositivo e de volume do Win
 | Projeto de testes | Testes |
 |---|---|
 | `M1vClock.Core.Tests` | 72 |
-| `M1vClock.Hardware.Tests` | 502 |
-| `M1vClock.App.Tests` | 473 |
+| `M1vClock.Hardware.Tests` | 538 |
+| `M1vClock.App.Tests` | 475 |
 | `M1vClock.Architecture.Tests` | 35 |
 
-Total 1.082 (3 pulados que exigem administrador), 0 avisos de compilação. Rodando como administrador, os 3 também passam (validado nesta máquina). Há testes contra a máquina real para WMI, adaptadores de rede, USB, assinatura de eventos de dispositivo e abertura do LibreHardwareMonitor. Os que dependem de tempo usam relógio falso. Há também testes sobre saídas reais deste PC (WMI de disco, GPU, memória, plataforma, USB e o `Get-StorageReliabilityCounter`) guardadas em `tests/M1vClock.Hardware.Tests/Fixtures`, capturadas como administrador por `tools/fixtures/capture-wmi-fixture.ps1` com nome do computador, usuário e números de série trocados. Para recapturar, rode o script como administrador.
+Total 1.120 (3 pulados que exigem administrador), 0 avisos de compilação. Rodando como administrador, os 3 também passam (validado nesta máquina). Há testes contra a máquina real para WMI, adaptadores de rede, USB, assinatura de eventos de dispositivo e abertura do LibreHardwareMonitor. Os que dependem de tempo usam relógio falso. Há também testes sobre saídas reais deste PC (WMI de disco, GPU, memória, plataforma, USB e o `Get-StorageReliabilityCounter`) guardadas em `tests/M1vClock.Hardware.Tests/Fixtures`, capturadas como administrador por `tools/fixtures/capture-wmi-fixture.ps1` com nome do computador, usuário e números de série trocados. Para recapturar, rode o script como administrador.
 
 ## Terceiros
 
@@ -76,18 +76,25 @@ Total 1.082 (3 pulados que exigem administrador), 0 avisos de compilação. Roda
 
 ## O que a fase 2 não verifica
 
-- **Administrador.** Validado nesta máquina: execução elevada, PawnIO 2.2.0 instalado pelo winget (hash verificado), temperatura da CPU (52,3 °C), consumo (62,6 W) e clock; contadores dos dois discos; os 3 testes que exigem administrador passam. Não foi exercitado o app de Release com o manifesto de administrador (o Debug elevado foi aberto a partir de um terminal elevado).
-- **Plugar e desplugar de verdade.** A assinatura dos eventos foi confirmada e a lógica de diferença, espera e avisos tem testes, mas ainda ninguém plugou um dispositivo com o app aberto.
+- **Administrador.** Validado nesta máquina: execução elevada, PawnIO 2.2.0 instalado pelo winget (hash verificado), temperatura da CPU (52,3 °C), consumo (62,6 W) e clock; contadores dos dois discos; os 3 testes que exigem administrador passam.
+- **Plugar e desplugar USB:** testado pelo usuário com o app aberto; o log registrou a remoção e a conexão.
 - **Bateria e notebook.** O código de bateria nunca rodou numa bateria real (este PC é de mesa) e não há leitura do `powercfg /batteryreport`.
 - **NVIDIA.** NVML, link PCIe, Resizable BAR e VBIOS não foram implementados; não há placa NVIDIA aqui. O banco de especificações de algumas placas AMD veio de especificações públicas lembradas, não de uma fonte lida na hora.
 - **Teste de velocidade da rede** só foi rodado à mão neste PC (cabo gigabit); a lógica tem testes, mas a medição não.
-- **Comparação lado a lado com o ResetExplode.** Não foi possível compilar o original aqui (algumas versões de pacote dele não resolvem). No lugar, os números foram conferidos contra o próprio Windows: RAM física (CIM), contadores dos discos (`Get-StorageReliabilityCounter`), lista USB (CIM) e memória de vídeo (DXGI e D3D do LibreHardwareMonitor).
+- **Comparação lado a lado com o ResetExplode:** feita com o .exe da página de Releases dele (v0.16.0), como administrador; resultado e correções em [COMPARACAO-RESETEXPLODE.md](COMPARACAO-RESETEXPLODE.md).
 - Alto contraste, texto acima de 100 % e Windows 10.
 
-## Bugs achados ao validar com administrador
+## Bugs achados ao validar com administrador e ao comparar com o original
 
 - Os contadores de disco (temperatura, horas ligado, ciclos, erros) nunca apareciam: o Windows só os entrega pela associação com cada disco e a consulta direta voltava vazia, mesmo como administrador. Os testes passavam porque usavam linhas inventadas. Agora a leitura é pela associação, o desgaste de HDD deixa de ser mostrado e, sem administrador, a página pede administrador.
 - A pasta protegida em quarentena não era recriada no lugar original (o `MoveTo` muda o caminho do objeto). Os 2 testes de administrador estavam pulados e esconderam o problema.
+- O desgaste do NVMe aparecia como 0 % porque o Windows devolve 0 neste drive, que informa 50 % pelo S.M.A.R.T.; os sensores passaram a completar o dado do disco.
+- A lista de sensores trazia dezenas de adaptadores de rede virtuais e filtros; agora só os conectados.
+- O teste de rede ganhou limite de dados (250 MB de download e 100 MB de upload).
+
+## Build Release
+
+O Release foi aberto de um terminal comum: o Windows pediu administrador (UAC), o app abriu elevado, leu os sensores e criou `C:\ProgramData\m1vClock` com dono Administradores, usuários só leitura e herança bloqueada.
 
 ## Decisões que precisam de OK
 
