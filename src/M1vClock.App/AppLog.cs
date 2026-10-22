@@ -60,4 +60,28 @@ internal static partial class AppLog
 
     [LoggerMessage(EventId = 2019, Level = LogLevel.Error, Message = "Falha ao tratar uma mudança de dispositivos.")]
     public static partial void DeviceNotifierFailed(ILogger logger, Exception exception);
+
+    [LoggerMessage(EventId = 2020, Level = LogLevel.Information, Message = "Teste pesado iniciado: {Name}. A leitura geral dos sensores ficou em pausa.")]
+    public static partial void HeavyTestEntered(ILogger logger, string name);
+
+    [LoggerMessage(EventId = 2021, Level = LogLevel.Information, Message = "Teste pesado terminado: {Name}. A leitura dos sensores voltou.")]
+    public static partial void HeavyTestLeft(ILogger logger, string name);
+
+    [LoggerMessage(EventId = 2022, Level = LogLevel.Warning, Message = "Os sensores demoraram demais para abrir; o teste segue sem esperar.")]
+    public static partial void SensorsSlowToOpen(ILogger logger, Exception exception);
+
+    [LoggerMessage(EventId = 2023, Level = LogLevel.Warning, Message = "Não foi possível montar o perfil da máquina para o histórico de benchmarks.")]
+    public static partial void MachineProfileFailed(ILogger logger, Exception exception);
+
+    [LoggerMessage(EventId = 2024, Level = LogLevel.Error, Message = "A limpeza de sobras dos testes falhou.")]
+    public static partial void TempSweepFailed(ILogger logger, Exception exception);
+
+    [LoggerMessage(EventId = 2025, Level = LogLevel.Error, Message = "O benchmark {Test} terminou com erro.")]
+    public static partial void BenchmarkFailed(ILogger logger, Exception exception, string test);
+
+    [LoggerMessage(EventId = 2026, Level = LogLevel.Information, Message = "Benchmark {Test} concluído: nota {Score}.")]
+    public static partial void BenchmarkCompleted(ILogger logger, string test, double score);
+
+    [LoggerMessage(EventId = 2027, Level = LogLevel.Warning, Message = "Benchmark {Test} interrompido: {Reason}.")]
+    public static partial void BenchmarkStopped(ILogger logger, string test, string reason);
 }
