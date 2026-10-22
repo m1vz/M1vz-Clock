@@ -23,6 +23,8 @@ public interface IStressWorkload : IDisposable
 {
     WorkloadStatus Status { get; }
 
+    bool IsResponsive => true;
+
     void Start();
 
     void Halt();

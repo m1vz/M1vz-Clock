@@ -139,7 +139,9 @@ public sealed class StressSession : IAsyncDisposable
         var wake = new CancellationTokenSource();
         EventHandler<SafetyTrip> onTripped = (_, _) => wake.Cancel();
         _monitor.Tripped += onTripped;
-        _monitor.Start(watched, plan.Limits, () => runner?.Status.MemoryErrors ?? 0, isResponsive);
+        var graphics = _gpu;
+        bool Responsive() => (runner?.IsResponsive ?? true) && (graphics?.IsResponsive ?? true) && (isResponsive?.Invoke() ?? true);
+        _monitor.Start(watched, plan.Limits, () => runner?.Status.MemoryErrors ?? 0, Responsive);
         var started = _clock.GetTimestamp();
         SafetyLog.StressStarted(_logger, plan.Cpu, plan.Ram, plan.Gpu, plan.Duration.TotalMinutes);
         _cpuRam?.Start();

@@ -1,5 +1,6 @@
 using M1vClock.Benchmarks.Cpu;
 using M1vClock.Benchmarks.Disk;
+using M1vClock.Benchmarks.Gpu;
 using M1vClock.Benchmarks.Memory;
 
 namespace M1vClock.Benchmarks.Results;
@@ -187,6 +188,20 @@ public static class BenchmarkCatalog
             ["sequential_mbs"] = result.SequentialReadMegabytesPerSecond,
             ["small_files_mbs"] = result.SmallFilesMegabytesPerSecond,
             ["files_per_second"] = result.FilesPerSecond,
+        };
+    }
+
+    public static Dictionary<string, double> MetricsOf(GpuSceneResult result)
+    {
+        ArgumentNullException.ThrowIfNull(result);
+        return new Dictionary<string, double>
+        {
+            ["average_fps"] = result.AverageFps,
+            ["low_fps"] = result.LowFps,
+            ["frames"] = result.Frames,
+            ["seconds"] = result.Seconds,
+            ["width"] = result.Width,
+            ["height"] = result.Height,
         };
     }
 

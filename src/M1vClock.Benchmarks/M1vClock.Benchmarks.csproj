@@ -6,6 +6,13 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Vortice.D3DCompiler" />
+    <PackageReference Include="Vortice.Direct3D11" />
+    <PackageReference Include="Vortice.Direct3D12" />
+    <PackageReference Include="Vortice.DXGI" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\M1vClock.Core\M1vClock.Core.csproj" />
   </ItemGroup>
 
