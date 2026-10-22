@@ -34,6 +34,26 @@ public sealed class DiskRowsTests
     }
 
     [Fact]
+    public void TheTotalDataWrittenAndReadIsShownInTerabytesWhenTheDriveReportsIt()
+    {
+        var counters = FullCounters() with { BytesWritten = 81_565_000_000_000UL, BytesRead = 62_009_000_000_000UL };
+
+        var values = DiskRows.Metrics(Disk(counters: counters)).ToDictionary(r => r.Label, r => r.Value);
+
+        Assert.Equal("81,6 TB", values["Total gravado"]);
+        Assert.Equal("62 TB", values["Total lido"]);
+    }
+
+    [Fact]
+    public void WithoutTheTotalsTheirRowsAreOmitted()
+    {
+        var labels = DiskRows.Metrics(Disk(counters: FullCounters())).Select(r => r.Label);
+
+        Assert.DoesNotContain("Total gravado", labels);
+        Assert.DoesNotContain("Total lido", labels);
+    }
+
+    [Fact]
     public void WithoutCountersOnlyWindowsHealthFirmwareAndSerialAreShown()
     {
         var rows = DiskRows.Metrics(Disk());

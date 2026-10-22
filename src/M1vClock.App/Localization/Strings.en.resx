@@ -2229,4 +2229,10 @@
   <data name="Settings.Sensors.History.Detail" xml:space="preserve">
     <value>Keeps up to 15 minutes of charts on the Overview even while it is closed. When off, sensors are only read while a page that uses them is open, and the chart starts empty.</value>
   </data>
+  <data name="Hw.Storage.Metric.Written" xml:space="preserve">
+    <value>Total written</value>
+  </data>
+  <data name="Hw.Storage.Metric.Read" xml:space="preserve">
+    <value>Total read</value>
+  </data>
 </root>

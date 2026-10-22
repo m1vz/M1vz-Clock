@@ -2229,4 +2229,10 @@
   <data name="Settings.Sensors.History.Detail" xml:space="preserve">
     <value>Mantém até 15 minutos de gráficos na Visão geral mesmo com ela fechada. Desligado, os sensores só são lidos enquanto uma página que os usa está aberta, e o gráfico começa vazio.</value>
   </data>
+  <data name="Hw.Storage.Metric.Written" xml:space="preserve">
+    <value>Total gravado</value>
+  </data>
+  <data name="Hw.Storage.Metric.Read" xml:space="preserve">
+    <value>Total lido</value>
+  </data>
 </root>

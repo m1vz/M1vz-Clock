@@ -94,6 +94,16 @@ public static class DiskRows
             rows.Add(Row("Hw.Storage.Metric.Cycles", cycles.ToString("N0", Loc.Culture)));
         }
 
+        if (counters?.BytesWritten is { } written)
+        {
+            rows.Add(Row("Hw.Storage.Metric.Written", Units.DecimalBytes(written)));
+        }
+
+        if (counters?.BytesRead is { } bytesRead)
+        {
+            rows.Add(Row("Hw.Storage.Metric.Read", Units.DecimalBytes(bytesRead)));
+        }
+
         if (counters?.ReadErrors is { } readErrors)
         {
             rows.Add(Row("Hw.Storage.Metric.ReadErrors", WithUncorrected(readErrors, counters.ReadErrorsUncorrected)));
