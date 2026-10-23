@@ -35,6 +35,7 @@ public static class PageRegistry
         ["cleanup"] = Resolve<CleanupPageViewModel>,
         ["standby"] = Resolve<StandbyPageViewModel>,
         ["apps"] = Resolve<AppsPageViewModel>,
+        ["tweaks"] = Resolve<TweaksPageViewModel>,
     };
 
     public static IReadOnlyCollection<string> Ids => Factories.Keys;

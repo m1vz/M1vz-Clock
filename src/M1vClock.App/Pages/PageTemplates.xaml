@@ -47,6 +47,10 @@
     <op:AppsPage />
   </DataTemplate>
 
+  <DataTemplate DataType="{x:Type op:TweaksPageViewModel}">
+    <op:TweaksPage />
+  </DataTemplate>
+
   <DataTemplate DataType="{x:Type op:CleanupPageViewModel}">
     <op:CleanupPage />
   </DataTemplate>

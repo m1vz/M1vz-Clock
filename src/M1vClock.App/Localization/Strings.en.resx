@@ -4434,4 +4434,187 @@
   <data name="Opt.Apps.LaunchFailed" xml:space="preserve">
     <value>Could not open the uninstaller of {0}: {1}</value>
   </data>
+  <data name="Opt.Tweaks.Intro" xml:space="preserve">
+    <value>Small Windows tweaks for gaming. All of them can be turned off again, they only touch what each card describes, and none lowers Windows security: Defender, UAC, Windows Update and core isolation stay as they are. Before each change m1vClock shows what will be written, and Restore originals brings everything back to how it was before you used this page.</value>
+  </data>
+  <data name="Opt.Tweaks.UserNote" xml:space="preserve">
+    <value>User tweaks apply to the account {0}.</value>
+  </data>
+  <data name="Opt.Tweaks.Summary.Total" xml:space="preserve">
+    <value>Tweaks</value>
+  </data>
+  <data name="Opt.Tweaks.Summary.On" xml:space="preserve">
+    <value>On</value>
+  </data>
+  <data name="Opt.Tweaks.Summary.Off" xml:space="preserve">
+    <value>Off</value>
+  </data>
+  <data name="Opt.Tweaks.Summary.Changed" xml:space="preserve">
+    <value>Changed by m1vClock</value>
+  </data>
+  <data name="Opt.Tweaks.State.On" xml:space="preserve">
+    <value>On</value>
+  </data>
+  <data name="Opt.Tweaks.State.Off" xml:space="preserve">
+    <value>Off</value>
+  </data>
+  <data name="Opt.Tweaks.State.Mixed" xml:space="preserve">
+    <value>Partial</value>
+  </data>
+  <data name="Opt.Tweaks.State.Unavailable" xml:space="preserve">
+    <value>Unavailable</value>
+  </data>
+  <data name="Opt.Tweaks.Meta.Restart" xml:space="preserve">
+    <value>needs a PC restart</value>
+  </data>
+  <data name="Opt.Tweaks.Meta.Admin" xml:space="preserve">
+    <value>needs m1vClock as administrator</value>
+  </data>
+  <data name="Opt.Tweaks.Meta.Changed" xml:space="preserve">
+    <value>changed by m1vClock</value>
+  </data>
+  <data name="Opt.Tweaks.Action.On" xml:space="preserve">
+    <value>Turn on</value>
+  </data>
+  <data name="Opt.Tweaks.Action.Off" xml:space="preserve">
+    <value>Turn off</value>
+  </data>
+  <data name="Opt.Tweaks.Issue.NoHighPerformancePlan" xml:space="preserve">
+    <value>This Windows does not have the High performance plan, and m1vClock does not create power plans.</value>
+  </data>
+  <data name="Opt.Tweaks.Issue.NoPlanToReturnTo" xml:space="preserve">
+    <value>There is no other power plan to go back to.</value>
+  </data>
+  <data name="Opt.Tweaks.Issue.ReadFailed" xml:space="preserve">
+    <value>Could not read the state of this tweak.</value>
+  </data>
+  <data name="Opt.Tweaks.Tip.NeedsAdmin" xml:space="preserve">
+    <value>Needs m1vClock as administrator.</value>
+  </data>
+  <data name="Opt.Tweaks.Value.Absent" xml:space="preserve">
+    <value>absent</value>
+  </data>
+  <data name="Opt.Tweaks.Change.TitleOn" xml:space="preserve">
+    <value>Turn this tweak on?</value>
+  </data>
+  <data name="Opt.Tweaks.Change.TitleOff" xml:space="preserve">
+    <value>Turn this tweak off?</value>
+  </data>
+  <data name="Opt.Tweaks.Change.Message" xml:space="preserve">
+    <value>Tweak: {0}. m1vClock will write what is listed below. Each line goes into the change history and can be undone.</value>
+  </data>
+  <data name="Opt.Tweaks.Change.Line" xml:space="preserve">
+    <value>{0}: {1} → {2}</value>
+  </data>
+  <data name="Opt.Tweaks.Change.Restart" xml:space="preserve">
+    <value>This change only takes effect after restarting the PC.</value>
+  </data>
+  <data name="Opt.Tweaks.Change.Undo" xml:space="preserve">
+    <value>To undo: Restore originals on this page or the change history. Turning a tweak off writes the Windows default values.</value>
+  </data>
+  <data name="Opt.Tweaks.Change.ConfirmOn" xml:space="preserve">
+    <value>Turn on</value>
+  </data>
+  <data name="Opt.Tweaks.Change.ConfirmOff" xml:space="preserve">
+    <value>Turn off</value>
+  </data>
+  <data name="Opt.Tweaks.Done.On" xml:space="preserve">
+    <value>Tweak turned on: {0}.</value>
+  </data>
+  <data name="Opt.Tweaks.Done.Off" xml:space="preserve">
+    <value>Tweak turned off: {0}.</value>
+  </data>
+  <data name="Opt.Tweaks.Done.Restart" xml:space="preserve">
+    <value>Restart the PC for it to take effect.</value>
+  </data>
+  <data name="Opt.Tweaks.Done.MouseLater" xml:space="preserve">
+    <value>Windows did not apply the mouse right away; it takes effect after signing out and in.</value>
+  </data>
+  <data name="Opt.Tweaks.Failed" xml:space="preserve">
+    <value>Could not change {0}: {1}</value>
+  </data>
+  <data name="Opt.Tweaks.ReadFailed" xml:space="preserve">
+    <value>Could not read the tweaks: {0}</value>
+  </data>
+  <data name="Opt.Tweaks.Restore" xml:space="preserve">
+    <value>Restore originals</value>
+  </data>
+  <data name="Opt.Tweaks.Restore.Tip" xml:space="preserve">
+    <value>Only available once m1vClock has changed a tweak.</value>
+  </data>
+  <data name="Opt.Tweaks.Restore.Title" xml:space="preserve">
+    <value>Restore the original values?</value>
+  </data>
+  <data name="Opt.Tweaks.Restore.Message" xml:space="preserve">
+    <value>m1vClock will undo, newest first, everything it changed on this page. Changes by other programs made after them may prevent part of the undo.</value>
+  </data>
+  <data name="Opt.Tweaks.Restore.Line" xml:space="preserve">
+    <value>Tweaks with m1vClock changes: {0}</value>
+  </data>
+  <data name="Opt.Tweaks.Restore.Undo" xml:space="preserve">
+    <value>After that each tweak is back to how it was before you used m1vClock.</value>
+  </data>
+  <data name="Opt.Tweaks.Restore.Confirm" xml:space="preserve">
+    <value>Restore</value>
+  </data>
+  <data name="Opt.Tweaks.Restore.Done" xml:space="preserve">
+    <value>{0} changes were undone.</value>
+  </data>
+  <data name="Opt.Tweaks.Restore.Partial" xml:space="preserve">
+    <value>Some changes could not be undone: {0}</value>
+  </data>
+  <data name="Opt.Tweaks.power.Title" xml:space="preserve">
+    <value>Power plan: High performance</value>
+  </data>
+  <data name="Opt.Tweaks.power.Description" xml:space="preserve">
+    <value>Keeps the CPU ready to boost at once, without aggressive power saving.</value>
+  </data>
+  <data name="Opt.Tweaks.power.Effect" xml:space="preserve">
+    <value>Fewer stutters in some games. On laptops it uses more battery. Turning it off returns to the plan that was active before.</value>
+  </data>
+  <data name="Opt.Tweaks.gamemode.Title" xml:space="preserve">
+    <value>Game Mode</value>
+  </data>
+  <data name="Opt.Tweaks.gamemode.Description" xml:space="preserve">
+    <value>Gives the game priority and keeps Windows Update from installing or restarting during a match.</value>
+  </data>
+  <data name="Opt.Tweaks.gamemode.Effect" xml:space="preserve">
+    <value>Recommended on: it is the Windows 11 default.</value>
+  </data>
+  <data name="Opt.Tweaks.gamedvr.Title" xml:space="preserve">
+    <value>Turn off background recording (Game DVR)</value>
+  </data>
+  <data name="Opt.Tweaks.gamedvr.Description" xml:space="preserve">
+    <value>Turns off the Xbox Game Bar's continuous capture, which records the last minutes of gameplay all the time.</value>
+  </data>
+  <data name="Opt.Tweaks.gamedvr.Effect" xml:space="preserve">
+    <value>Can recover a few FPS and reduce GPU and disk use. You lose the Game Bar's record-what-just-happened.</value>
+  </data>
+  <data name="Opt.Tweaks.hags.Title" xml:space="preserve">
+    <value>Hardware-accelerated GPU scheduling</value>
+  </data>
+  <data name="Opt.Tweaks.hags.Description" xml:space="preserve">
+    <value>The graphics card manages its own work queue instead of the CPU.</value>
+  </data>
+  <data name="Opt.Tweaks.hags.Effect" xml:space="preserve">
+    <value>Required for DLSS 3 Frame Generation. May lower latency. Needs a compatible card and driver and a PC restart.</value>
+  </data>
+  <data name="Opt.Tweaks.windowed.Title" xml:space="preserve">
+    <value>Optimizations for windowed games</value>
+  </data>
+  <data name="Opt.Tweaks.windowed.Description" xml:space="preserve">
+    <value>Makes DirectX 10 and 11 games in a window or borderless use the modern presentation model (flip).</value>
+  </data>
+  <data name="Opt.Tweaks.windowed.Effect" xml:space="preserve">
+    <value>Lower latency and VRR support in a window. A Windows 11 feature.</value>
+  </data>
+  <data name="Opt.Tweaks.mouse.Title" xml:space="preserve">
+    <value>Turn off mouse acceleration</value>
+  </data>
+  <data name="Opt.Tweaks.mouse.Description" xml:space="preserve">
+    <value>Unchecks Enhance pointer precision: the cursor always moves the same distance for the same movement.</value>
+  </data>
+  <data name="Opt.Tweaks.mouse.Effect" xml:space="preserve">
+    <value>Does not change FPS, but makes aim consistent in shooters. Takes effect at once.</value>
+  </data>
 </root>

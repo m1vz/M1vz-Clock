@@ -4434,4 +4434,187 @@
   <data name="Opt.Apps.LaunchFailed" xml:space="preserve">
     <value>Não foi possível abrir o desinstalador de {0}: {1}</value>
   </data>
+  <data name="Opt.Tweaks.Intro" xml:space="preserve">
+    <value>Pequenos ajustes do Windows para jogos. Todos podem ser desligados de novo, só mexem no que está descrito em cada cartão e nenhum reduz a segurança do Windows: Defender, UAC, Windows Update e isolamento de núcleo ficam como estão. Antes de cada mudança o m1vClock mostra o que será gravado, e Restaurar originais volta tudo ao que estava antes de você usar esta página.</value>
+  </data>
+  <data name="Opt.Tweaks.UserNote" xml:space="preserve">
+    <value>Os ajustes de usuário valem para a conta {0}.</value>
+  </data>
+  <data name="Opt.Tweaks.Summary.Total" xml:space="preserve">
+    <value>Ajustes</value>
+  </data>
+  <data name="Opt.Tweaks.Summary.On" xml:space="preserve">
+    <value>Ligados</value>
+  </data>
+  <data name="Opt.Tweaks.Summary.Off" xml:space="preserve">
+    <value>Desligados</value>
+  </data>
+  <data name="Opt.Tweaks.Summary.Changed" xml:space="preserve">
+    <value>Mudados pelo m1vClock</value>
+  </data>
+  <data name="Opt.Tweaks.State.On" xml:space="preserve">
+    <value>Ligado</value>
+  </data>
+  <data name="Opt.Tweaks.State.Off" xml:space="preserve">
+    <value>Desligado</value>
+  </data>
+  <data name="Opt.Tweaks.State.Mixed" xml:space="preserve">
+    <value>Parcial</value>
+  </data>
+  <data name="Opt.Tweaks.State.Unavailable" xml:space="preserve">
+    <value>Indisponível</value>
+  </data>
+  <data name="Opt.Tweaks.Meta.Restart" xml:space="preserve">
+    <value>precisa reiniciar o PC</value>
+  </data>
+  <data name="Opt.Tweaks.Meta.Admin" xml:space="preserve">
+    <value>precisa do m1vClock como administrador</value>
+  </data>
+  <data name="Opt.Tweaks.Meta.Changed" xml:space="preserve">
+    <value>mudado pelo m1vClock</value>
+  </data>
+  <data name="Opt.Tweaks.Action.On" xml:space="preserve">
+    <value>Ligar</value>
+  </data>
+  <data name="Opt.Tweaks.Action.Off" xml:space="preserve">
+    <value>Desligar</value>
+  </data>
+  <data name="Opt.Tweaks.Issue.NoHighPerformancePlan" xml:space="preserve">
+    <value>Este Windows não tem o plano Alto desempenho, e o m1vClock não cria planos de energia.</value>
+  </data>
+  <data name="Opt.Tweaks.Issue.NoPlanToReturnTo" xml:space="preserve">
+    <value>Não há outro plano de energia para onde voltar.</value>
+  </data>
+  <data name="Opt.Tweaks.Issue.ReadFailed" xml:space="preserve">
+    <value>Não foi possível ler o estado deste ajuste.</value>
+  </data>
+  <data name="Opt.Tweaks.Tip.NeedsAdmin" xml:space="preserve">
+    <value>Precisa do m1vClock como administrador.</value>
+  </data>
+  <data name="Opt.Tweaks.Value.Absent" xml:space="preserve">
+    <value>ausente</value>
+  </data>
+  <data name="Opt.Tweaks.Change.TitleOn" xml:space="preserve">
+    <value>Ligar este ajuste?</value>
+  </data>
+  <data name="Opt.Tweaks.Change.TitleOff" xml:space="preserve">
+    <value>Desligar este ajuste?</value>
+  </data>
+  <data name="Opt.Tweaks.Change.Message" xml:space="preserve">
+    <value>Ajuste: {0}. O m1vClock vai gravar o que está listado abaixo. Cada linha fica no histórico de alterações e dá para desfazer.</value>
+  </data>
+  <data name="Opt.Tweaks.Change.Line" xml:space="preserve">
+    <value>{0}: {1} → {2}</value>
+  </data>
+  <data name="Opt.Tweaks.Change.Restart" xml:space="preserve">
+    <value>Esta mudança só vale depois de reiniciar o PC.</value>
+  </data>
+  <data name="Opt.Tweaks.Change.Undo" xml:space="preserve">
+    <value>Para desfazer: Restaurar originais nesta página ou o histórico de alterações. Desligar um ajuste grava os valores padrão do Windows.</value>
+  </data>
+  <data name="Opt.Tweaks.Change.ConfirmOn" xml:space="preserve">
+    <value>Ligar</value>
+  </data>
+  <data name="Opt.Tweaks.Change.ConfirmOff" xml:space="preserve">
+    <value>Desligar</value>
+  </data>
+  <data name="Opt.Tweaks.Done.On" xml:space="preserve">
+    <value>Ajuste ligado: {0}.</value>
+  </data>
+  <data name="Opt.Tweaks.Done.Off" xml:space="preserve">
+    <value>Ajuste desligado: {0}.</value>
+  </data>
+  <data name="Opt.Tweaks.Done.Restart" xml:space="preserve">
+    <value>Reinicie o PC para valer.</value>
+  </data>
+  <data name="Opt.Tweaks.Done.MouseLater" xml:space="preserve">
+    <value>O Windows não aplicou o mouse na hora; vale depois de sair e entrar na conta.</value>
+  </data>
+  <data name="Opt.Tweaks.Failed" xml:space="preserve">
+    <value>Não foi possível mudar {0}: {1}</value>
+  </data>
+  <data name="Opt.Tweaks.ReadFailed" xml:space="preserve">
+    <value>Não foi possível ler os ajustes: {0}</value>
+  </data>
+  <data name="Opt.Tweaks.Restore" xml:space="preserve">
+    <value>Restaurar originais</value>
+  </data>
+  <data name="Opt.Tweaks.Restore.Tip" xml:space="preserve">
+    <value>Só fica ativo depois que o m1vClock muda algum ajuste.</value>
+  </data>
+  <data name="Opt.Tweaks.Restore.Title" xml:space="preserve">
+    <value>Restaurar os valores originais?</value>
+  </data>
+  <data name="Opt.Tweaks.Restore.Message" xml:space="preserve">
+    <value>O m1vClock vai desfazer, do mais novo para o mais antigo, tudo que mudou nesta página. Mudanças de outros programas feitas depois delas podem impedir parte do desfazer.</value>
+  </data>
+  <data name="Opt.Tweaks.Restore.Line" xml:space="preserve">
+    <value>Ajustes com mudanças do m1vClock: {0}</value>
+  </data>
+  <data name="Opt.Tweaks.Restore.Undo" xml:space="preserve">
+    <value>Depois disso cada ajuste volta a ficar como estava antes de você usar o m1vClock.</value>
+  </data>
+  <data name="Opt.Tweaks.Restore.Confirm" xml:space="preserve">
+    <value>Restaurar</value>
+  </data>
+  <data name="Opt.Tweaks.Restore.Done" xml:space="preserve">
+    <value>Foram desfeitas {0} alterações.</value>
+  </data>
+  <data name="Opt.Tweaks.Restore.Partial" xml:space="preserve">
+    <value>Algumas alterações não puderam ser desfeitas: {0}</value>
+  </data>
+  <data name="Opt.Tweaks.power.Title" xml:space="preserve">
+    <value>Plano de energia: Alto desempenho</value>
+  </data>
+  <data name="Opt.Tweaks.power.Description" xml:space="preserve">
+    <value>Mantém a CPU pronta para subir o clock na hora, sem economia agressiva de energia.</value>
+  </data>
+  <data name="Opt.Tweaks.power.Effect" xml:space="preserve">
+    <value>Menos engasgos em alguns jogos. Em notebooks gasta mais bateria. Ao desligar, volta o plano que estava ativo antes.</value>
+  </data>
+  <data name="Opt.Tweaks.gamemode.Title" xml:space="preserve">
+    <value>Modo de Jogo</value>
+  </data>
+  <data name="Opt.Tweaks.gamemode.Description" xml:space="preserve">
+    <value>Dá prioridade ao jogo e evita que o Windows Update instale ou reinicie durante a partida.</value>
+  </data>
+  <data name="Opt.Tweaks.gamemode.Effect" xml:space="preserve">
+    <value>Recomendado ligado: é o padrão do Windows 11.</value>
+  </data>
+  <data name="Opt.Tweaks.gamedvr.Title" xml:space="preserve">
+    <value>Desativar a gravação em segundo plano (Game DVR)</value>
+  </data>
+  <data name="Opt.Tweaks.gamedvr.Description" xml:space="preserve">
+    <value>Desliga a captura contínua do Xbox Game Bar, que grava os últimos minutos de jogo o tempo todo.</value>
+  </data>
+  <data name="Opt.Tweaks.gamedvr.Effect" xml:space="preserve">
+    <value>Pode recuperar alguns FPS e reduzir o uso de GPU e de disco. Você perde o gravar o que acabou de acontecer do Game Bar.</value>
+  </data>
+  <data name="Opt.Tweaks.hags.Title" xml:space="preserve">
+    <value>Agendamento de GPU acelerado por hardware</value>
+  </data>
+  <data name="Opt.Tweaks.hags.Description" xml:space="preserve">
+    <value>A própria placa de vídeo gerencia sua fila de trabalho, em vez da CPU.</value>
+  </data>
+  <data name="Opt.Tweaks.hags.Effect" xml:space="preserve">
+    <value>Necessário para o Frame Generation do DLSS 3. Pode reduzir a latência. Pede placa e driver compatíveis e reiniciar o PC.</value>
+  </data>
+  <data name="Opt.Tweaks.windowed.Title" xml:space="preserve">
+    <value>Otimizações para jogos em janela</value>
+  </data>
+  <data name="Opt.Tweaks.windowed.Description" xml:space="preserve">
+    <value>Faz jogos DirectX 10 e 11 em janela ou sem bordas usarem o modelo de apresentação moderno (flip).</value>
+  </data>
+  <data name="Opt.Tweaks.windowed.Effect" xml:space="preserve">
+    <value>Menor latência e suporte a VRR em janela. Recurso do Windows 11.</value>
+  </data>
+  <data name="Opt.Tweaks.mouse.Title" xml:space="preserve">
+    <value>Desligar a aceleração do mouse</value>
+  </data>
+  <data name="Opt.Tweaks.mouse.Description" xml:space="preserve">
+    <value>Desmarca Aprimorar precisão do ponteiro: o cursor anda sempre a mesma distância para o mesmo movimento.</value>
+  </data>
+  <data name="Opt.Tweaks.mouse.Effect" xml:space="preserve">
+    <value>Não muda o FPS, mas deixa a mira consistente em jogos de tiro. Vale na hora.</value>
+  </data>
 </root>
