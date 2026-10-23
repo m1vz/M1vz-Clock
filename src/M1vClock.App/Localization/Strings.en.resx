@@ -334,10 +334,10 @@
     <value>Repair</value>
   </data>
   <data name="Page.Repair.Description" xml:space="preserve">
-    <value>SFC and DISM to fix system files.</value>
+    <value>Checks Windows files and components with SFC and DISM, without changing anything.</value>
   </data>
   <data name="Page.Repair.Keywords" xml:space="preserve">
-    <value>repair,sfc,dism,fix</value>
+    <value>repair,sfc,dism,check,files,integrity</value>
   </data>
   <data name="Page.Events.Title" xml:space="preserve">
     <value>Events</value>
@@ -4616,5 +4616,101 @@
   </data>
   <data name="Opt.Tweaks.mouse.Effect" xml:space="preserve">
     <value>Does not change FPS, but makes aim consistent in shooters. Takes effect at once.</value>
+  </data>
+  <data name="Opt.Repair.Intro" xml:space="preserve">
+    <value>Here m1vClock only checks. Nothing is repaired or changed: if a problem shows up, you get the command to run yourself. The checks need m1vClock as administrator, can take several minutes and can be cancelled. If you leave this page, the check in progress is cancelled.</value>
+  </data>
+  <data name="Opt.Repair.NeedAdmin" xml:space="preserve">
+    <value>Open m1vClock as administrator to run the checks.</value>
+  </data>
+  <data name="Opt.Repair.Quick.Title" xml:space="preserve">
+    <value>Windows components: quick check (DISM)</value>
+  </data>
+  <data name="Opt.Repair.Quick.Description" xml:space="preserve">
+    <value>Reads only the problem flag Windows already stored about the component store, where it takes files from to repair and install features. Takes seconds.</value>
+  </data>
+  <data name="Opt.Repair.Full.Title" xml:space="preserve">
+    <value>Windows components: full check (DISM)</value>
+  </data>
+  <data name="Opt.Repair.Full.Description" xml:space="preserve">
+    <value>Scans the whole component store for damaged files without fixing anything. Takes several minutes and uses the disk heavily.</value>
+  </data>
+  <data name="Opt.Repair.Files.Title" xml:space="preserve">
+    <value>System files (SFC)</value>
+  </data>
+  <data name="Opt.Repair.Files.Description" xml:space="preserve">
+    <value>Compares the protected Windows files with the stored copies and reports the ones that differ, without fixing anything. Takes several minutes.</value>
+  </data>
+  <data name="Opt.Repair.Run" xml:space="preserve">
+    <value>Check</value>
+  </data>
+  <data name="Opt.Repair.Cancel" xml:space="preserve">
+    <value>Cancel</value>
+  </data>
+  <data name="Opt.Repair.Running" xml:space="preserve">
+    <value>Checking: {0}</value>
+  </data>
+  <data name="Opt.Repair.Running.Percent" xml:space="preserve">
+    <value>Checking: {0} · {1}%</value>
+  </data>
+  <data name="Opt.Repair.Verdict.None" xml:space="preserve">
+    <value>Not checked yet</value>
+  </data>
+  <data name="Opt.Repair.Verdict.Healthy" xml:space="preserve">
+    <value>No problems</value>
+  </data>
+  <data name="Opt.Repair.Verdict.Repairable" xml:space="preserve">
+    <value>Repairable</value>
+  </data>
+  <data name="Opt.Repair.Verdict.NotRepairable" xml:space="preserve">
+    <value>Not repairable</value>
+  </data>
+  <data name="Opt.Repair.Verdict.ProblemsFound" xml:space="preserve">
+    <value>Problems found</value>
+  </data>
+  <data name="Opt.Repair.Verdict.NeedsAdministrator" xml:space="preserve">
+    <value>Needs administrator</value>
+  </data>
+  <data name="Opt.Repair.Verdict.Cancelled" xml:space="preserve">
+    <value>Cancelled</value>
+  </data>
+  <data name="Opt.Repair.Verdict.Failed" xml:space="preserve">
+    <value>Failed</value>
+  </data>
+  <data name="Opt.Repair.Took" xml:space="preserve">
+    <value>Took {0} min {1} s.</value>
+  </data>
+  <data name="Opt.Repair.Advice.Components" xml:space="preserve">
+    <value>Windows flagged the component store as damaged. To repair it, open Terminal as administrator and run the command below, which needs internet. m1vClock does not do this repair yet.</value>
+  </data>
+  <data name="Opt.Repair.Advice.Files" xml:space="preserve">
+    <value>To repair, open Terminal as administrator and run the command below. m1vClock does not do this repair yet.</value>
+  </data>
+  <data name="Opt.Repair.Advice.Failed" xml:space="preserve">
+    <value>The check did not finish. The reason is in the app log.</value>
+  </data>
+  <data name="Opt.Repair.Advice.FailedCode" xml:space="preserve">
+    <value>The check did not finish (code {0}). The reason is in the app log.</value>
+  </data>
+  <data name="Opt.Repair.Copy" xml:space="preserve">
+    <value>Copy command</value>
+  </data>
+  <data name="Opt.Repair.Copied" xml:space="preserve">
+    <value>Command copied.</value>
+  </data>
+  <data name="Opt.Repair.CopyFailed" xml:space="preserve">
+    <value>Could not copy. Select the command and copy it by hand.</value>
+  </data>
+  <data name="Opt.Repair.Advice.FilesFound" xml:space="preserve">
+    <value>SFC found system files that differ from the stored copies.</value>
+  </data>
+  <data name="Opt.Repair.Advice.FilesNamed" xml:space="preserve">
+    <value>Files: {0}.</value>
+  </data>
+  <data name="Opt.Repair.Advice.Trimmed" xml:space="preserve">
+    <value>If your Windows was trimmed down on purpose, like Atlas, the repair may bring back what was removed.</value>
+  </data>
+  <data name="Opt.Repair.Running.NoProgress" xml:space="preserve">
+    <value>This check does not show its progress here. It usually takes a few minutes.</value>
   </data>
 </root>

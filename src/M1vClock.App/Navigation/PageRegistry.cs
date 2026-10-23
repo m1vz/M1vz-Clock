@@ -36,6 +36,7 @@ public static class PageRegistry
         ["standby"] = Resolve<StandbyPageViewModel>,
         ["apps"] = Resolve<AppsPageViewModel>,
         ["tweaks"] = Resolve<TweaksPageViewModel>,
+        ["repair"] = Resolve<RepairPageViewModel>,
     };
 
     public static IReadOnlyCollection<string> Ids => Factories.Keys;

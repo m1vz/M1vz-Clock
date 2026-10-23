@@ -51,6 +51,10 @@
     <op:TweaksPage />
   </DataTemplate>
 
+  <DataTemplate DataType="{x:Type op:RepairPageViewModel}">
+    <op:RepairPage />
+  </DataTemplate>
+
   <DataTemplate DataType="{x:Type op:CleanupPageViewModel}">
     <op:CleanupPage />
   </DataTemplate>

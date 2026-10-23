@@ -100,6 +100,7 @@ public static class AppHost
         builder.Services.AddTransient<StandbyPageViewModel>();
         builder.Services.AddTransient<AppsPageViewModel>();
         builder.Services.AddTransient<TweaksPageViewModel>();
+        builder.Services.AddTransient<RepairPageViewModel>();
         builder.Services.AddSingleton<IReportCollector, ReportCollector>();
         return builder.Build();
     }

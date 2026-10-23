@@ -334,10 +334,10 @@
     <value>Reparo</value>
   </data>
   <data name="Page.Repair.Description" xml:space="preserve">
-    <value>SFC e DISM para corrigir arquivos do sistema.</value>
+    <value>Verifica arquivos e componentes do Windows com SFC e DISM, sem alterar nada.</value>
   </data>
   <data name="Page.Repair.Keywords" xml:space="preserve">
-    <value>reparo,sfc,dism,corrigir</value>
+    <value>reparo,sfc,dism,verificar,arquivos,integridade</value>
   </data>
   <data name="Page.Events.Title" xml:space="preserve">
     <value>Eventos</value>
@@ -4616,5 +4616,101 @@
   </data>
   <data name="Opt.Tweaks.mouse.Effect" xml:space="preserve">
     <value>Não muda o FPS, mas deixa a mira consistente em jogos de tiro. Vale na hora.</value>
+  </data>
+  <data name="Opt.Repair.Intro" xml:space="preserve">
+    <value>Aqui o m1vClock só verifica. Nada é reparado nem alterado: se aparecer algum problema, você recebe o comando para rodar por conta própria. As verificações precisam do m1vClock como administrador, podem levar vários minutos e dá para cancelar. Se você sair desta página, a verificação em andamento é cancelada.</value>
+  </data>
+  <data name="Opt.Repair.NeedAdmin" xml:space="preserve">
+    <value>Abra o m1vClock como administrador para rodar as verificações.</value>
+  </data>
+  <data name="Opt.Repair.Quick.Title" xml:space="preserve">
+    <value>Componentes do Windows: verificação rápida (DISM)</value>
+  </data>
+  <data name="Opt.Repair.Quick.Description" xml:space="preserve">
+    <value>Lê só o indicador de problemas que o Windows já guardou sobre o repositório de componentes, de onde ele tira os arquivos para reparar e instalar recursos. Leva segundos.</value>
+  </data>
+  <data name="Opt.Repair.Full.Title" xml:space="preserve">
+    <value>Componentes do Windows: verificação completa (DISM)</value>
+  </data>
+  <data name="Opt.Repair.Full.Description" xml:space="preserve">
+    <value>Varre o repositório de componentes inteiro atrás de arquivos danificados, sem consertar nada. Leva vários minutos e usa bastante o disco.</value>
+  </data>
+  <data name="Opt.Repair.Files.Title" xml:space="preserve">
+    <value>Arquivos do sistema (SFC)</value>
+  </data>
+  <data name="Opt.Repair.Files.Description" xml:space="preserve">
+    <value>Compara os arquivos protegidos do Windows com as cópias guardadas e avisa os que estão diferentes, sem consertar nada. Leva vários minutos.</value>
+  </data>
+  <data name="Opt.Repair.Run" xml:space="preserve">
+    <value>Verificar</value>
+  </data>
+  <data name="Opt.Repair.Cancel" xml:space="preserve">
+    <value>Cancelar</value>
+  </data>
+  <data name="Opt.Repair.Running" xml:space="preserve">
+    <value>Verificando: {0}</value>
+  </data>
+  <data name="Opt.Repair.Running.Percent" xml:space="preserve">
+    <value>Verificando: {0} · {1}%</value>
+  </data>
+  <data name="Opt.Repair.Verdict.None" xml:space="preserve">
+    <value>Ainda não verificado</value>
+  </data>
+  <data name="Opt.Repair.Verdict.Healthy" xml:space="preserve">
+    <value>Sem problemas</value>
+  </data>
+  <data name="Opt.Repair.Verdict.Repairable" xml:space="preserve">
+    <value>Reparável</value>
+  </data>
+  <data name="Opt.Repair.Verdict.NotRepairable" xml:space="preserve">
+    <value>Não reparável</value>
+  </data>
+  <data name="Opt.Repair.Verdict.ProblemsFound" xml:space="preserve">
+    <value>Problemas encontrados</value>
+  </data>
+  <data name="Opt.Repair.Verdict.NeedsAdministrator" xml:space="preserve">
+    <value>Precisa de administrador</value>
+  </data>
+  <data name="Opt.Repair.Verdict.Cancelled" xml:space="preserve">
+    <value>Cancelada</value>
+  </data>
+  <data name="Opt.Repair.Verdict.Failed" xml:space="preserve">
+    <value>Falhou</value>
+  </data>
+  <data name="Opt.Repair.Took" xml:space="preserve">
+    <value>Levou {0} min {1} s.</value>
+  </data>
+  <data name="Opt.Repair.Advice.Components" xml:space="preserve">
+    <value>O Windows marcou o repositório de componentes como danificado. Para reparar, abra o Terminal como administrador e rode o comando abaixo, que precisa de internet. O m1vClock ainda não faz esse reparo.</value>
+  </data>
+  <data name="Opt.Repair.Advice.Files" xml:space="preserve">
+    <value>Para reparar, abra o Terminal como administrador e rode o comando abaixo. O m1vClock ainda não faz esse reparo.</value>
+  </data>
+  <data name="Opt.Repair.Advice.Failed" xml:space="preserve">
+    <value>A verificação não terminou. O motivo está no log do app.</value>
+  </data>
+  <data name="Opt.Repair.Advice.FailedCode" xml:space="preserve">
+    <value>A verificação não terminou (código {0}). O motivo está no log do app.</value>
+  </data>
+  <data name="Opt.Repair.Copy" xml:space="preserve">
+    <value>Copiar comando</value>
+  </data>
+  <data name="Opt.Repair.Copied" xml:space="preserve">
+    <value>Comando copiado.</value>
+  </data>
+  <data name="Opt.Repair.CopyFailed" xml:space="preserve">
+    <value>Não foi possível copiar. Selecione o comando e copie à mão.</value>
+  </data>
+  <data name="Opt.Repair.Advice.FilesFound" xml:space="preserve">
+    <value>O SFC achou arquivos do sistema diferentes das cópias guardadas.</value>
+  </data>
+  <data name="Opt.Repair.Advice.FilesNamed" xml:space="preserve">
+    <value>Arquivos: {0}.</value>
+  </data>
+  <data name="Opt.Repair.Advice.Trimmed" xml:space="preserve">
+    <value>Se o seu Windows foi enxugado de propósito, como o Atlas, o reparo pode trazer de volta o que foi removido.</value>
+  </data>
+  <data name="Opt.Repair.Running.NoProgress" xml:space="preserve">
+    <value>Esta verificação não mostra o andamento por aqui. Costuma levar alguns minutos.</value>
   </data>
 </root>
