@@ -39,6 +39,10 @@
     <pf:StressPage />
   </DataTemplate>
 
+  <DataTemplate DataType="{x:Type op:StandbyPageViewModel}">
+    <op:StandbyPage />
+  </DataTemplate>
+
   <DataTemplate DataType="{x:Type op:CleanupPageViewModel}">
     <op:CleanupPage />
   </DataTemplate>

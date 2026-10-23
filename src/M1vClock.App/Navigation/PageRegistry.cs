@@ -33,6 +33,7 @@ public static class PageRegistry
         ["startup"] = Resolve<StartupPageViewModel>,
         ["services"] = Resolve<ServicesPageViewModel>,
         ["cleanup"] = Resolve<CleanupPageViewModel>,
+        ["standby"] = Resolve<StandbyPageViewModel>,
     };
 
     public static IReadOnlyCollection<string> Ids => Factories.Keys;

@@ -4302,4 +4302,61 @@
   <data name="Opt.Cleanup.Failed" xml:space="preserve">
     <value>Could not clean: {0}</value>
   </data>
+  <data name="Opt.Memory.Intro" xml:space="preserve">
+    <value>Standby memory is a cache: Windows keeps there what was used recently so it opens again faster. It counts as free for programs, so there is almost never a reason to empty it. Emptying it does not touch the memory of open programs, but Windows will have to read the data from disk again, and for a moment everything may feel a little slower.</value>
+  </data>
+  <data name="Opt.Memory.Total" xml:space="preserve">
+    <value>Total memory</value>
+  </data>
+  <data name="Opt.Memory.InUse" xml:space="preserve">
+    <value>Used by programs</value>
+  </data>
+  <data name="Opt.Memory.Standby" xml:space="preserve">
+    <value>Standby (cache)</value>
+  </data>
+  <data name="Opt.Memory.Free" xml:space="preserve">
+    <value>Free</value>
+  </data>
+  <data name="Opt.Memory.Available" xml:space="preserve">
+    <value>Available to programs: {0}</value>
+  </data>
+  <data name="Opt.Memory.Modified" xml:space="preserve">
+    <value>Modified, waiting to be written to disk: {0}</value>
+  </data>
+  <data name="Opt.Memory.Action" xml:space="preserve">
+    <value>Empty standby memory</value>
+  </data>
+  <data name="Opt.Memory.NeedsAdmin" xml:space="preserve">
+    <value>Needs m1vClock as administrator to empty standby memory.</value>
+  </data>
+  <data name="Opt.Memory.Confirm.Title" xml:space="preserve">
+    <value>Empty the standby memory?</value>
+  </data>
+  <data name="Opt.Memory.Confirm.Message" xml:space="preserve">
+    <value>Only the Windows cache is discarded. The memory of your open programs is not touched, but recently used files may take a little longer to open.</value>
+  </data>
+  <data name="Opt.Memory.Confirm.Line" xml:space="preserve">
+    <value>About {0} of cache will be discarded.</value>
+  </data>
+  <data name="Opt.Memory.Confirm.Undo" xml:space="preserve">
+    <value>It cannot be undone, but Windows fills the cache again on its own.</value>
+  </data>
+  <data name="Opt.Memory.Confirm.Button" xml:space="preserve">
+    <value>Empty</value>
+  </data>
+  <data name="Opt.Memory.Done" xml:space="preserve">
+    <value>{0} of standby memory was freed (before {1}, now {2}).</value>
+  </data>
+  <data name="Opt.Memory.Done.Nothing" xml:space="preserve">
+    <value>The standby memory was already almost empty.</value>
+  </data>
+  <data name="Opt.Memory.NotAllowed" xml:space="preserve">
+    <value>Windows did not allow emptying the standby memory. Open m1vClock as administrator.</value>
+  </data>
+  <data name="Opt.Memory.Failed" xml:space="preserve">
+    <value>Could not empty the standby memory: {0}</value>
+  </data>
+  <data name="Opt.Memory.ReadFailed" xml:space="preserve">
+    <value>Could not read the Windows memory: {0}</value>
+  </data>
 </root>

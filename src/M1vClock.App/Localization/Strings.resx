@@ -4302,4 +4302,61 @@
   <data name="Opt.Cleanup.Failed" xml:space="preserve">
     <value>Não foi possível limpar: {0}</value>
   </data>
+  <data name="Opt.Memory.Intro" xml:space="preserve">
+    <value>A memória em espera é um cache: o Windows guarda ali o que foi usado há pouco para abrir de novo mais rápido. Ela conta como livre para os programas, então quase nunca há motivo para esvaziá-la. Esvaziar não mexe na memória dos programas abertos, mas o Windows vai precisar ler de novo os dados do disco, e por um momento tudo pode ficar um pouco mais lento.</value>
+  </data>
+  <data name="Opt.Memory.Total" xml:space="preserve">
+    <value>Memória total</value>
+  </data>
+  <data name="Opt.Memory.InUse" xml:space="preserve">
+    <value>Em uso por programas</value>
+  </data>
+  <data name="Opt.Memory.Standby" xml:space="preserve">
+    <value>Em espera (cache)</value>
+  </data>
+  <data name="Opt.Memory.Free" xml:space="preserve">
+    <value>Livre</value>
+  </data>
+  <data name="Opt.Memory.Available" xml:space="preserve">
+    <value>Disponível para programas: {0}</value>
+  </data>
+  <data name="Opt.Memory.Modified" xml:space="preserve">
+    <value>Modificada, esperando gravar no disco: {0}</value>
+  </data>
+  <data name="Opt.Memory.Action" xml:space="preserve">
+    <value>Esvaziar memória em espera</value>
+  </data>
+  <data name="Opt.Memory.NeedsAdmin" xml:space="preserve">
+    <value>Precisa do m1vClock como administrador para esvaziar a memória em espera.</value>
+  </data>
+  <data name="Opt.Memory.Confirm.Title" xml:space="preserve">
+    <value>Esvaziar a memória em espera?</value>
+  </data>
+  <data name="Opt.Memory.Confirm.Message" xml:space="preserve">
+    <value>Só o cache do Windows é descartado. A memória dos seus programas abertos não é tocada, mas arquivos usados há pouco podem demorar um pouco mais para abrir.</value>
+  </data>
+  <data name="Opt.Memory.Confirm.Line" xml:space="preserve">
+    <value>Cerca de {0} de cache serão descartados.</value>
+  </data>
+  <data name="Opt.Memory.Confirm.Undo" xml:space="preserve">
+    <value>Não dá para desfazer, mas o Windows enche o cache de novo sozinho.</value>
+  </data>
+  <data name="Opt.Memory.Confirm.Button" xml:space="preserve">
+    <value>Esvaziar</value>
+  </data>
+  <data name="Opt.Memory.Done" xml:space="preserve">
+    <value>Foram liberados {0} de memória em espera (antes {1}, agora {2}).</value>
+  </data>
+  <data name="Opt.Memory.Done.Nothing" xml:space="preserve">
+    <value>A memória em espera já estava quase vazia.</value>
+  </data>
+  <data name="Opt.Memory.NotAllowed" xml:space="preserve">
+    <value>O Windows não deixou esvaziar a memória em espera. Abra o m1vClock como administrador.</value>
+  </data>
+  <data name="Opt.Memory.Failed" xml:space="preserve">
+    <value>Não foi possível esvaziar a memória em espera: {0}</value>
+  </data>
+  <data name="Opt.Memory.ReadFailed" xml:space="preserve">
+    <value>Não foi possível ler a memória do Windows: {0}</value>
+  </data>
 </root>
