@@ -325,10 +325,10 @@
     <value>Apps</value>
   </data>
   <data name="Page.Apps.Description" xml:space="preserve">
-    <value>Install and update programs with winget.</value>
+    <value>Installed programs, largest first, with a shortcut to each program's own uninstaller.</value>
   </data>
   <data name="Page.Apps.Keywords" xml:space="preserve">
-    <value>apps,programs,winget,install,update</value>
+    <value>apps,programs,installed,uninstall,remove,size</value>
   </data>
   <data name="Page.Repair.Title" xml:space="preserve">
     <value>Repair</value>
@@ -4358,5 +4358,80 @@
   </data>
   <data name="Opt.Memory.ReadFailed" xml:space="preserve">
     <value>Could not read the Windows memory: {0}</value>
+  </data>
+  <data name="Opt.Apps.Intro" xml:space="preserve">
+    <value>This is the list of programs Windows has registered as installed, without system components. m1vClock deletes nothing here: the Uninstall button opens the program's own uninstaller, and it decides what to remove. Programs that did not report an uninstaller have no button.</value>
+  </data>
+  <data name="Opt.Apps.Summary.Total" xml:space="preserve">
+    <value>Programs</value>
+  </data>
+  <data name="Opt.Apps.Summary.Size" xml:space="preserve">
+    <value>Declared space</value>
+  </data>
+  <data name="Opt.Apps.Summary.Largest" xml:space="preserve">
+    <value>Largest program</value>
+  </data>
+  <data name="Opt.Apps.Summary.NoUninstaller" xml:space="preserve">
+    <value>No uninstaller</value>
+  </data>
+  <data name="Opt.Apps.Sort" xml:space="preserve">
+    <value>Sort by</value>
+  </data>
+  <data name="Opt.Apps.Sort.Size" xml:space="preserve">
+    <value>Size</value>
+  </data>
+  <data name="Opt.Apps.Sort.Name" xml:space="preserve">
+    <value>Name</value>
+  </data>
+  <data name="Opt.Apps.Sort.Date" xml:space="preserve">
+    <value>Date</value>
+  </data>
+  <data name="Opt.Apps.Search" xml:space="preserve">
+    <value>Search by name or publisher</value>
+  </data>
+  <data name="Opt.Apps.Empty" xml:space="preserve">
+    <value>No programs match this search.</value>
+  </data>
+  <data name="Opt.Apps.Showing" xml:space="preserve">
+    <value>Showing {0} of {1} programs. Use search to find the others.</value>
+  </data>
+  <data name="Opt.Apps.ReadFailed" xml:space="preserve">
+    <value>Could not read the installed programs: {0}</value>
+  </data>
+  <data name="Opt.Apps.Meta.SizeUnknown" xml:space="preserve">
+    <value>Size not reported</value>
+  </data>
+  <data name="Opt.Apps.Meta.Date" xml:space="preserve">
+    <value>installed on {0}</value>
+  </data>
+  <data name="Opt.Apps.Meta.User" xml:space="preserve">
+    <value>this user only</value>
+  </data>
+  <data name="Opt.Apps.Uninstall" xml:space="preserve">
+    <value>Uninstall</value>
+  </data>
+  <data name="Opt.Apps.NoUninstaller" xml:space="preserve">
+    <value>This program did not report an uninstaller m1vClock can open. Use Windows Settings.</value>
+  </data>
+  <data name="Opt.Apps.Confirm.Title" xml:space="preserve">
+    <value>Uninstall {0}?</value>
+  </data>
+  <data name="Opt.Apps.Confirm.Message" xml:space="preserve">
+    <value>m1vClock will open the program's own uninstaller. It may ask for administrator permission, and it decides what to remove; m1vClock deletes nothing.</value>
+  </data>
+  <data name="Opt.Apps.Confirm.Line" xml:space="preserve">
+    <value>The uninstaller of {0} will be opened.</value>
+  </data>
+  <data name="Opt.Apps.Confirm.Undo" xml:space="preserve">
+    <value>m1vClock cannot undo an uninstall. To get the program back, it has to be installed again.</value>
+  </data>
+  <data name="Opt.Apps.Confirm.Action" xml:space="preserve">
+    <value>Open uninstaller</value>
+  </data>
+  <data name="Opt.Apps.Opened" xml:space="preserve">
+    <value>The uninstaller of {0} was opened. When it finishes, use Refresh to see the new list.</value>
+  </data>
+  <data name="Opt.Apps.LaunchFailed" xml:space="preserve">
+    <value>Could not open the uninstaller of {0}: {1}</value>
   </data>
 </root>

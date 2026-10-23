@@ -325,10 +325,10 @@
     <value>Aplicativos</value>
   </data>
   <data name="Page.Apps.Description" xml:space="preserve">
-    <value>Instalar e atualizar programas com o winget.</value>
+    <value>Programas instalados, do maior para o menor, com atalho para o desinstalador de cada um.</value>
   </data>
   <data name="Page.Apps.Keywords" xml:space="preserve">
-    <value>apps,programas,winget,instalar,atualizar</value>
+    <value>apps,programas,instalados,desinstalar,remover,tamanho</value>
   </data>
   <data name="Page.Repair.Title" xml:space="preserve">
     <value>Reparo</value>
@@ -4358,5 +4358,80 @@
   </data>
   <data name="Opt.Memory.ReadFailed" xml:space="preserve">
     <value>Não foi possível ler a memória do Windows: {0}</value>
+  </data>
+  <data name="Opt.Apps.Intro" xml:space="preserve">
+    <value>Esta é a lista dos programas que o Windows tem registrados como instalados, sem os componentes do sistema. O m1vClock não apaga nada aqui: o botão Desinstalar abre o desinstalador do próprio programa, e é ele quem decide o que remover. Programas que não informaram um desinstalador ficam sem o botão.</value>
+  </data>
+  <data name="Opt.Apps.Summary.Total" xml:space="preserve">
+    <value>Programas</value>
+  </data>
+  <data name="Opt.Apps.Summary.Size" xml:space="preserve">
+    <value>Espaço declarado</value>
+  </data>
+  <data name="Opt.Apps.Summary.Largest" xml:space="preserve">
+    <value>Maior programa</value>
+  </data>
+  <data name="Opt.Apps.Summary.NoUninstaller" xml:space="preserve">
+    <value>Sem desinstalador</value>
+  </data>
+  <data name="Opt.Apps.Sort" xml:space="preserve">
+    <value>Ordenar por</value>
+  </data>
+  <data name="Opt.Apps.Sort.Size" xml:space="preserve">
+    <value>Tamanho</value>
+  </data>
+  <data name="Opt.Apps.Sort.Name" xml:space="preserve">
+    <value>Nome</value>
+  </data>
+  <data name="Opt.Apps.Sort.Date" xml:space="preserve">
+    <value>Data</value>
+  </data>
+  <data name="Opt.Apps.Search" xml:space="preserve">
+    <value>Buscar pelo nome ou pela empresa</value>
+  </data>
+  <data name="Opt.Apps.Empty" xml:space="preserve">
+    <value>Nenhum programa com essa busca.</value>
+  </data>
+  <data name="Opt.Apps.Showing" xml:space="preserve">
+    <value>Mostrando {0} de {1} programas. Use a busca para achar os outros.</value>
+  </data>
+  <data name="Opt.Apps.ReadFailed" xml:space="preserve">
+    <value>Não foi possível ler os programas instalados: {0}</value>
+  </data>
+  <data name="Opt.Apps.Meta.SizeUnknown" xml:space="preserve">
+    <value>Tamanho não informado</value>
+  </data>
+  <data name="Opt.Apps.Meta.Date" xml:space="preserve">
+    <value>instalado em {0}</value>
+  </data>
+  <data name="Opt.Apps.Meta.User" xml:space="preserve">
+    <value>só para este usuário</value>
+  </data>
+  <data name="Opt.Apps.Uninstall" xml:space="preserve">
+    <value>Desinstalar</value>
+  </data>
+  <data name="Opt.Apps.NoUninstaller" xml:space="preserve">
+    <value>Este programa não informou um desinstalador que o m1vClock consiga abrir. Use as Configurações do Windows.</value>
+  </data>
+  <data name="Opt.Apps.Confirm.Title" xml:space="preserve">
+    <value>Desinstalar {0}?</value>
+  </data>
+  <data name="Opt.Apps.Confirm.Message" xml:space="preserve">
+    <value>O m1vClock vai abrir o desinstalador do próprio programa. Ele pode pedir permissão de administrador e é ele quem decide o que remover; o m1vClock não apaga nada.</value>
+  </data>
+  <data name="Opt.Apps.Confirm.Line" xml:space="preserve">
+    <value>O desinstalador de {0} será aberto.</value>
+  </data>
+  <data name="Opt.Apps.Confirm.Undo" xml:space="preserve">
+    <value>O m1vClock não consegue desfazer uma desinstalação. Para ter o programa de volta, é preciso instalá-lo de novo.</value>
+  </data>
+  <data name="Opt.Apps.Confirm.Action" xml:space="preserve">
+    <value>Abrir desinstalador</value>
+  </data>
+  <data name="Opt.Apps.Opened" xml:space="preserve">
+    <value>O desinstalador de {0} foi aberto. Quando ele terminar, use Atualizar para ver a lista nova.</value>
+  </data>
+  <data name="Opt.Apps.LaunchFailed" xml:space="preserve">
+    <value>Não foi possível abrir o desinstalador de {0}: {1}</value>
   </data>
 </root>

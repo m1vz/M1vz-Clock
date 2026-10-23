@@ -102,4 +102,7 @@ internal static partial class AppLog
 
     [LoggerMessage(EventId = 2034, Level = LogLevel.Warning, Message = "A limpeza não terminou.")]
     public static partial void CleanupFailed(ILogger logger, Exception exception);
+
+    [LoggerMessage(EventId = 2035, Level = LogLevel.Warning, Message = "Não foi possível abrir o desinstalador de {Program}.")]
+    public static partial void UninstallLaunchFailed(ILogger logger, Exception exception, string program);
 }

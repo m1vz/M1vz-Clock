@@ -43,6 +43,10 @@
     <op:StandbyPage />
   </DataTemplate>
 
+  <DataTemplate DataType="{x:Type op:AppsPageViewModel}">
+    <op:AppsPage />
+  </DataTemplate>
+
   <DataTemplate DataType="{x:Type op:CleanupPageViewModel}">
     <op:CleanupPage />
   </DataTemplate>

@@ -98,6 +98,7 @@ public static class AppHost
         builder.Services.AddTransient<ServicesPageViewModel>();
         builder.Services.AddTransient<CleanupPageViewModel>();
         builder.Services.AddTransient<StandbyPageViewModel>();
+        builder.Services.AddTransient<AppsPageViewModel>();
         builder.Services.AddSingleton<IReportCollector, ReportCollector>();
         return builder.Build();
     }
