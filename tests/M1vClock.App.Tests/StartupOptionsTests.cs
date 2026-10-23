@@ -66,6 +66,14 @@ public sealed class StartupOptionsTests
     }
 
     [Fact]
+    public void RenderOnlyScreenshotsAreOffUnlessAskedFor()
+    {
+        Assert.False(StartupOptions.Parse(["--screenshot", "captura.png"]).RenderOnly);
+        Assert.True(StartupOptions.Parse(["--screenshot", "captura.png", "--screenshot-render"]).RenderOnly);
+        Assert.True(StartupOptions.Parse(["--SCREENSHOT-RENDER", "--page", "tweaks"]).RenderOnly);
+    }
+
+    [Fact]
     public void FlagWithoutValueAndNegativeScrollAreSafe()
     {
         var options = StartupOptions.Parse(["--scroll", "-50", "--page"]);
