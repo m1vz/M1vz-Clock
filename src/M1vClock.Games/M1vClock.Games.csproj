@@ -4,4 +4,8 @@
     <ProjectReference Include="..\M1vClock.Core\M1vClock.Core.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <InternalsVisibleTo Include="M1vClock.Games.Tests" />
+  </ItemGroup>
+
 </Project>
