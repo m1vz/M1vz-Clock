@@ -1,4 +1,5 @@
 using M1vClock.Optimize.Cleanup;
+using M1vClock.Optimize.Memory;
 using M1vClock.Optimize.Services;
 using M1vClock.Optimize.Startup;
 using Microsoft.Extensions.DependencyInjection;
@@ -22,6 +23,8 @@ public static class OptimizeModule
             CleanupCatalog.Create(CleanupPaths.Current),
             provider.GetRequiredService<TimeProvider>(),
             provider.GetRequiredService<ILogger<CleanupService>>()));
+        services.AddSingleton<IMemoryListSource, NtMemoryListSource>();
+        services.AddSingleton<IMemoryListService, MemoryListService>();
         return services;
     }
 }
