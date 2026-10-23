@@ -1,10 +1,13 @@
 using M1vClock.App.Dialogs;
 using M1vClock.App.Navigation;
 using M1vClock.App.Pages;
+using M1vClock.App.Pages.Diagnostics;
 using M1vClock.App.Pages.Hardware;
+using M1vClock.App.Pages.Optimize;
 using M1vClock.App.Pages.Performance;
 using M1vClock.App.Search;
 using M1vClock.App.Services;
+using M1vClock.App.Services.Reports;
 using M1vClock.App.Shell;
 using M1vClock.Benchmarks;
 using M1vClock.Benchmarks.Safety;
@@ -49,6 +52,7 @@ public static class AppHost
         builder.Services.AddSingleton(new AppInfo(version, paths.Root, elevation.IsElevated));
         builder.Services.AddSingleton<IUiThread, WpfUiThread>();
         builder.Services.AddSingleton<ActivityLog>();
+        builder.Services.AddSingleton<IClipboardService, WpfClipboardService>();
         builder.Services.AddSingleton<NotificationService>();
         builder.Services.AddSingleton<INotificationService>(provider => provider.GetRequiredService<NotificationService>());
         builder.Services.AddHostedService<DeviceNotifier>();
@@ -85,6 +89,19 @@ public static class AppHost
         builder.Services.AddTransient<BenchmarksPageViewModel>();
         builder.Services.AddSingleton<IStressWorkloadFactory, StressWorkloadFactory>();
         builder.Services.AddTransient<StressPageViewModel>();
+        builder.Services.AddTransient<EventsPageViewModel>();
+        builder.Services.AddTransient<CrashesPageViewModel>();
+        builder.Services.AddTransient<ReliabilityPageViewModel>();
+        builder.Services.AddTransient<LogsPageViewModel>();
+        builder.Services.AddTransient<ReportPageViewModel>();
+        builder.Services.AddTransient<StartupPageViewModel>();
+        builder.Services.AddTransient<ServicesPageViewModel>();
+        builder.Services.AddTransient<CleanupPageViewModel>();
+        builder.Services.AddTransient<StandbyPageViewModel>();
+        builder.Services.AddTransient<AppsPageViewModel>();
+        builder.Services.AddTransient<TweaksPageViewModel>();
+        builder.Services.AddTransient<RepairPageViewModel>();
+        builder.Services.AddSingleton<IReportCollector, ReportCollector>();
         return builder.Build();
     }
 }

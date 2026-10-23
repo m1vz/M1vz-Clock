@@ -90,4 +90,19 @@ internal static partial class AppLog
 
     [LoggerMessage(EventId = 2029, Level = LogLevel.Warning, Message = "Não foi possível verificar o suporte a ray tracing.")]
     public static partial void RayTracingCheckFailed(ILogger logger, Exception exception);
+
+    [LoggerMessage(EventId = 2031, Level = LogLevel.Information, Message = "A área de transferência estava em uso por outro programa.")]
+    public static partial void ClipboardBusy(ILogger logger, Exception exception);
+
+    [LoggerMessage(EventId = 2032, Level = LogLevel.Warning, Message = "Não foi possível montar a parte {Section} do relatório.")]
+    public static partial void ReportSectionFailed(ILogger logger, Exception exception, string section);
+
+    [LoggerMessage(EventId = 2033, Level = LogLevel.Warning, Message = "Não foi possível salvar o relatório.")]
+    public static partial void ReportSaveFailed(ILogger logger, Exception exception);
+
+    [LoggerMessage(EventId = 2034, Level = LogLevel.Warning, Message = "A limpeza não terminou.")]
+    public static partial void CleanupFailed(ILogger logger, Exception exception);
+
+    [LoggerMessage(EventId = 2035, Level = LogLevel.Warning, Message = "Não foi possível abrir o desinstalador de {Program}.")]
+    public static partial void UninstallLaunchFailed(ILogger logger, Exception exception, string program);
 }

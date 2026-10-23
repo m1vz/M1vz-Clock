@@ -3,7 +3,7 @@ using M1vClock.Core.Settings;
 
 namespace M1vClock.App.Hosting;
 
-public sealed record StartupOptions(string? Page, ThemePreference? Theme, string? ScreenshotPath, TimeSpan ScreenshotDelay, string? Overlay = null, double Scroll = 0)
+public sealed record StartupOptions(string? Page, ThemePreference? Theme, string? ScreenshotPath, TimeSpan ScreenshotDelay, string? Overlay = null, double Scroll = 0, bool RenderOnly = false)
 {
     public static StartupOptions Parse(IReadOnlyList<string> args)
     {
@@ -14,6 +14,7 @@ public sealed record StartupOptions(string? Page, ThemePreference? Theme, string
         var delay = TimeSpan.FromSeconds(3);
         string? overlay = null;
         double scroll = 0;
+        var renderOnly = false;
         for (var i = 0; i < args.Count; i++)
         {
             var value = i + 1 < args.Count ? args[i + 1] : null;
@@ -39,6 +40,9 @@ public sealed record StartupOptions(string? Page, ThemePreference? Theme, string
                     overlay = value;
                     i++;
                     break;
+                case "--SCREENSHOT-RENDER":
+                    renderOnly = true;
+                    break;
                 case "--SCROLL" when value is not null && double.TryParse(value, System.Globalization.CultureInfo.InvariantCulture, out var offset):
                     scroll = Math.Max(0, offset);
                     i++;
@@ -46,6 +50,6 @@ public sealed record StartupOptions(string? Page, ThemePreference? Theme, string
             }
         }
 
-        return new StartupOptions(page, theme, screenshot, delay, overlay, scroll);
+        return new StartupOptions(page, theme, screenshot, delay, overlay, scroll, renderOnly);
     }
 }

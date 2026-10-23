@@ -106,7 +106,7 @@ public partial class MainWindow : Window
 
         if (options.ScreenshotPath is { } path)
         {
-            _ = CaptureAndCloseAsync(path, options.ScreenshotDelay);
+            _ = CaptureAndCloseAsync(path, options.ScreenshotDelay, options.RenderOnly);
         }
     }
 
@@ -202,15 +202,19 @@ public partial class MainWindow : Window
         }
     }
 
-    private async Task CaptureAndCloseAsync(string path, TimeSpan delay)
+    private async Task CaptureAndCloseAsync(string path, TimeSpan delay, bool renderOnly)
     {
         await Task.Delay(delay).ConfigureAwait(true);
-        BringToFront();
+        if (!renderOnly)
+        {
+            BringToFront();
+        }
+
         await Dispatcher.InvokeAsync(() => { }, DispatcherPriority.ApplicationIdle);
         await Task.Delay(250).ConfigureAwait(true);
         try
         {
-            var image = _source is null ? null : WindowInterop.CaptureScreenRegion(_source.Handle);
+            var image = renderOnly || _source is null ? null : WindowInterop.CaptureScreenRegion(_source.Handle);
             image ??= WindowInterop.Render(Root);
             var directory = Path.GetDirectoryName(path);
             if (!string.IsNullOrEmpty(directory))

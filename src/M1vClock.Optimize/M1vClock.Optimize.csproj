@@ -1,7 +1,19 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
+  <PropertyGroup>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="System.Management" />
+  </ItemGroup>
+
   <ItemGroup>
     <ProjectReference Include="..\M1vClock.Core\M1vClock.Core.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <InternalsVisibleTo Include="M1vClock.Optimize.Tests" />
   </ItemGroup>
 
 </Project>

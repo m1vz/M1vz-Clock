@@ -325,19 +325,19 @@
     <value>Apps</value>
   </data>
   <data name="Page.Apps.Description" xml:space="preserve">
-    <value>Install and update programs with winget.</value>
+    <value>Installed programs, largest first, with a shortcut to each program's own uninstaller.</value>
   </data>
   <data name="Page.Apps.Keywords" xml:space="preserve">
-    <value>apps,programs,winget,install,update</value>
+    <value>apps,programs,installed,uninstall,remove,size</value>
   </data>
   <data name="Page.Repair.Title" xml:space="preserve">
     <value>Repair</value>
   </data>
   <data name="Page.Repair.Description" xml:space="preserve">
-    <value>SFC and DISM to fix system files.</value>
+    <value>Checks Windows files and components with SFC and DISM, without changing anything.</value>
   </data>
   <data name="Page.Repair.Keywords" xml:space="preserve">
-    <value>repair,sfc,dism,fix</value>
+    <value>repair,sfc,dism,check,files,integrity</value>
   </data>
   <data name="Page.Events.Title" xml:space="preserve">
     <value>Events</value>
@@ -3170,5 +3170,1547 @@
   </data>
   <data name="Activity.Stress.Title" xml:space="preserve">
     <value>Stress test</value>
+  </data>
+  <data name="Diag.Events.Window" xml:space="preserve">
+    <value>Period</value>
+  </data>
+  <data name="Diag.Events.Window.Day" xml:space="preserve">
+    <value>24 hours</value>
+  </data>
+  <data name="Diag.Events.Window.Week" xml:space="preserve">
+    <value>7 days</value>
+  </data>
+  <data name="Diag.Events.Window.Fortnight" xml:space="preserve">
+    <value>14 days</value>
+  </data>
+  <data name="Diag.Events.Window.Month" xml:space="preserve">
+    <value>30 days</value>
+  </data>
+  <data name="Diag.Events.Summary.Critical" xml:space="preserve">
+    <value>Critical</value>
+  </data>
+  <data name="Diag.Events.Summary.Error" xml:space="preserve">
+    <value>Errors</value>
+  </data>
+  <data name="Diag.Events.Summary.Warning" xml:space="preserve">
+    <value>Warnings</value>
+  </data>
+  <data name="Diag.Events.Summary.Kinds" xml:space="preserve">
+    <value>{0} different kind(s)</value>
+  </data>
+  <data name="Diag.Events.ShowNoise" xml:space="preserve">
+    <value>Show repeated noise</value>
+  </data>
+  <data name="Diag.Events.ShowNoise.Detail" xml:space="preserve">
+    <value>Events that show up thousands of times or that Windows considers harmless are hidden by default.</value>
+  </data>
+  <data name="Diag.Events.Hidden" xml:space="preserve">
+    <value>{0} repetitive events hidden, from {1} kind(s). Turn on “Show repeated noise” to see them.</value>
+  </data>
+  <data name="Diag.Events.Empty" xml:space="preserve">
+    <value>No relevant errors or warnings in this period.</value>
+  </data>
+  <data name="Diag.Events.Count" xml:space="preserve">
+    <value>{0}×</value>
+  </data>
+  <data name="Diag.Events.Last" xml:space="preserve">
+    <value>Latest: {0}</value>
+  </data>
+  <data name="Diag.Events.Source" xml:space="preserve">
+    <value>{0} · ID {1}</value>
+  </data>
+  <data name="Diag.Events.Log.System" xml:space="preserve">
+    <value>System</value>
+  </data>
+  <data name="Diag.Events.Log.Application" xml:space="preserve">
+    <value>Application</value>
+  </data>
+  <data name="Diag.Events.Truncated" xml:space="preserve">
+    <value>The period has too many events; the reading stopped at the newest ones of each log.</value>
+  </data>
+  <data name="Diag.Events.LogFailed" xml:space="preserve">
+    <value>Could not read the {0} log: {1}</value>
+  </data>
+  <data name="Diag.Severity.Critical" xml:space="preserve">
+    <value>Critical</value>
+  </data>
+  <data name="Diag.Severity.Error" xml:space="preserve">
+    <value>Error</value>
+  </data>
+  <data name="Diag.Severity.Warning" xml:space="preserve">
+    <value>Warning</value>
+  </data>
+  <data name="Diag.Kind.UnexpectedShutdown" xml:space="preserve">
+    <value>Shutdown</value>
+  </data>
+  <data name="Diag.Kind.Hardware" xml:space="preserve">
+    <value>Hardware</value>
+  </data>
+  <data name="Diag.Kind.Disk" xml:space="preserve">
+    <value>Disk</value>
+  </data>
+  <data name="Diag.Kind.Display" xml:space="preserve">
+    <value>Graphics</value>
+  </data>
+  <data name="Diag.Kind.Service" xml:space="preserve">
+    <value>Service</value>
+  </data>
+  <data name="Diag.Kind.Application" xml:space="preserve">
+    <value>Program</value>
+  </data>
+  <data name="Diag.Kind.Update" xml:space="preserve">
+    <value>Update</value>
+  </data>
+  <data name="Diag.Kind.Noise" xml:space="preserve">
+    <value>Noise</value>
+  </data>
+  <data name="Diag.Known.KernelPower41.Title" xml:space="preserve">
+    <value>The PC shut down without warning</value>
+  </data>
+  <data name="Diag.Known.KernelPower41.Detail" xml:space="preserve">
+    <value>Windows restarted without a clean shutdown: power loss, freeze, forced restart or blue screen. If it happens on its own, check temperatures, power supply and memory.</value>
+  </data>
+  <data name="Diag.Known.UnexpectedShutdown6008.Title" xml:space="preserve">
+    <value>Previous unexpected shutdown</value>
+  </data>
+  <data name="Diag.Known.UnexpectedShutdown6008.Detail" xml:space="preserve">
+    <value>Windows logs this on the boot after an unclean shutdown. It usually comes with the Kernel-Power 41 event.</value>
+  </data>
+  <data name="Diag.Known.BugCheck1001.Title" xml:space="preserve">
+    <value>Windows restarted after a blue screen</value>
+  </data>
+  <data name="Diag.Known.BugCheck1001.Detail" xml:space="preserve">
+    <value>The Blue screens page shows the code and what it usually means.</value>
+  </data>
+  <data name="Diag.Known.DiskBadBlock.Title" xml:space="preserve">
+    <value>Bad sector on the disk</value>
+  </data>
+  <data name="Diag.Known.DiskBadBlock.Detail" xml:space="preserve">
+    <value>The disk reported a bad block. One can be normal; if it repeats, back up and check SMART on the Storage page.</value>
+  </data>
+  <data name="Diag.Known.DiskController.Title" xml:space="preserve">
+    <value>Disk controller error</value>
+  </data>
+  <data name="Diag.Known.DiskController.Detail" xml:space="preserve">
+    <value>The disk, the cable or the controller failed on an operation. If it repeats, it points to the cable, the SATA port or the disk itself.</value>
+  </data>
+  <data name="Diag.Known.DiskPaging.Title" xml:space="preserve">
+    <value>Error while paging to disk</value>
+  </data>
+  <data name="Diag.Known.DiskPaging.Detail" xml:space="preserve">
+    <value>Windows could not read or write virtual memory on the disk. It points to a disk or memory problem.</value>
+  </data>
+  <data name="Diag.Known.DiskRetried.Title" xml:space="preserve">
+    <value>Disk operation retried</value>
+  </data>
+  <data name="Diag.Known.DiskRetried.Detail" xml:space="preserve">
+    <value>Windows had to repeat a read or write. A few times is normal; many in a short time point to a failing disk or cable.</value>
+  </data>
+  <data name="Diag.Known.NtfsCorruption.Title" xml:space="preserve">
+    <value>File system error</value>
+  </data>
+  <data name="Diag.Known.NtfsCorruption.Detail" xml:space="preserve">
+    <value>NTFS found corruption. Run the disk check on the Repair page and back up.</value>
+  </data>
+  <data name="Diag.Known.NvmeReset.Title" xml:space="preserve">
+    <value>NVMe SSD reset by Windows</value>
+  </data>
+  <data name="Diag.Known.NvmeReset.Detail" xml:space="preserve">
+    <value>Windows had to reset the SSD because it was slow to answer. If it repeats, update the SSD firmware and driver.</value>
+  </data>
+  <data name="Diag.Known.DisplayTimeout.Title" xml:space="preserve">
+    <value>The graphics driver stopped responding and recovered</value>
+  </data>
+  <data name="Diag.Known.DisplayTimeout.Detail" xml:space="preserve">
+    <value>Usually an unstable graphics driver, overclock or high card temperature. If it repeats, reinstall the driver and test without overclock.</value>
+  </data>
+  <data name="Diag.Known.DriverNotLoaded.Title" xml:space="preserve">
+    <value>A driver failed to load</value>
+  </data>
+  <data name="Diag.Known.DriverNotLoaded.Detail" xml:space="preserve">
+    <value>Windows could not start a device driver. If the device works you can ignore it; otherwise reinstall the driver.</value>
+  </data>
+  <data name="Diag.Known.TpmProvisioning.Title" xml:space="preserve">
+    <value>The TPM was not fully provisioned</value>
+  </data>
+  <data name="Diag.Known.TpmProvisioning.Detail" xml:space="preserve">
+    <value>Common warning on desktop PCs. It only matters if you need the TPM, for example for Windows 11 or BitLocker.</value>
+  </data>
+  <data name="Diag.Known.DcomPermission.Title" xml:space="preserve">
+    <value>A DCOM component permission</value>
+  </data>
+  <data name="Diag.Known.DcomPermission.Detail" xml:space="preserve">
+    <value>Very common and almost always harmless: a Windows program asked for a permission it does not have. You can ignore it.</value>
+  </data>
+  <data name="Diag.Known.DcomNoResponse.Title" xml:space="preserve">
+    <value>A DCOM server did not respond</value>
+  </data>
+  <data name="Diag.Known.DcomNoResponse.Detail" xml:space="preserve">
+    <value>A program tried to talk to a component that did not answer in time. It only matters if it comes with freezes.</value>
+  </data>
+  <data name="Diag.Known.EsentFile.Title" xml:space="preserve">
+    <value>A Windows database complaining about a file</value>
+  </data>
+  <data name="Diag.Known.EsentFile.Detail" xml:space="preserve">
+    <value>It usually comes from search or another Windows service and repeats thousands of times. Generally harmless, and hidden by default.</value>
+  </data>
+  <data name="Diag.Known.TimeSync.Title" xml:space="preserve">
+    <value>The clock could not sync with the time server</value>
+  </data>
+  <data name="Diag.Known.TimeSync.Detail" xml:space="preserve">
+    <value>It may be the internet being unstable at the time. If the PC clock ends up wrong, change the Windows time server.</value>
+  </data>
+  <data name="Diag.Known.ServiceFailedToStart.Title" xml:space="preserve">
+    <value>A service failed to start</value>
+  </data>
+  <data name="Diag.Known.ServiceFailedToStart.Detail" xml:space="preserve">
+    <value>The event text says which one. If it is a service you use, restart it; if it belongs to a program you uninstalled, it is a leftover.</value>
+  </data>
+  <data name="Diag.Known.ServiceTimeout.Title" xml:space="preserve">
+    <value>A service took too long to respond</value>
+  </data>
+  <data name="Diag.Known.ServiceTimeout.Detail" xml:space="preserve">
+    <value>Windows gave up waiting for the service. It tends to happen at boot, when the PC is busy.</value>
+  </data>
+  <data name="Diag.Known.ServiceTerminated.Title" xml:space="preserve">
+    <value>A service ended unexpectedly</value>
+  </data>
+  <data name="Diag.Known.ServiceTerminated.Detail" xml:space="preserve">
+    <value>The service stopped on its own. If it is important, check the Services page.</value>
+  </data>
+  <data name="Diag.Known.ServiceCrashed.Title" xml:space="preserve">
+    <value>A service crashed</value>
+  </data>
+  <data name="Diag.Known.ServiceCrashed.Detail" xml:space="preserve">
+    <value>The service closed with an error. If it repeats, reinstall the program that owns it.</value>
+  </data>
+  <data name="Diag.Known.FilterAttach.Title" xml:space="preserve">
+    <value>A file filter could not attach to a volume</value>
+  </data>
+  <data name="Diag.Known.FilterAttach.Detail" xml:space="preserve">
+    <value>Common with antivirus, backup or virtual disk drivers. Harmless if nothing else fails.</value>
+  </data>
+  <data name="Diag.Known.VssError.Title" xml:space="preserve">
+    <value>Shadow copy service failure</value>
+  </data>
+  <data name="Diag.Known.VssError.Detail" xml:space="preserve">
+    <value>It affects restore points and backups. Check that system protection is on.</value>
+  </data>
+  <data name="Diag.Known.VolsnapError.Title" xml:space="preserve">
+    <value>Failed to create a volume shadow copy</value>
+  </data>
+  <data name="Diag.Known.VolsnapError.Detail" xml:space="preserve">
+    <value>It can affect restore points. Lack of disk space is the most common cause.</value>
+  </data>
+  <data name="Diag.Known.AppCrash.Title" xml:space="preserve">
+    <value>A program crashed</value>
+  </data>
+  <data name="Diag.Known.AppCrash.Detail" xml:space="preserve">
+    <value>The event text shows which program and module failed. The same program repeating calls for an update or a reinstall.</value>
+  </data>
+  <data name="Diag.Known.DotNetCrash.Title" xml:space="preserve">
+    <value>A .NET program closed on an error</value>
+  </data>
+  <data name="Diag.Known.DotNetCrash.Detail" xml:space="preserve">
+    <value>An app built on .NET hit an error it did not handle. The event text shows which one.</value>
+  </data>
+  <data name="Diag.Known.AppHang.Title" xml:space="preserve">
+    <value>A program stopped responding</value>
+  </data>
+  <data name="Diag.Known.AppHang.Detail" xml:space="preserve">
+    <value>The program froze its window and Windows logged it. If repeated, it calls for an update or a reinstall.</value>
+  </data>
+  <data name="Diag.Known.AppReport.Title" xml:space="preserve">
+    <value>Error report sent to Windows</value>
+  </data>
+  <data name="Diag.Known.AppReport.Detail" xml:space="preserve">
+    <value>It goes with a program failure and carries the report file name.</value>
+  </data>
+  <data name="Diag.Known.UpdateFailed.Title" xml:space="preserve">
+    <value>A Windows update failed</value>
+  </data>
+  <data name="Diag.Known.UpdateFailed.Detail" xml:space="preserve">
+    <value>Try again in Settings, Windows Update. If it persists, the Repair page has the Windows Update repairs.</value>
+  </data>
+  <data name="Diag.Known.Whea.Title" xml:space="preserve">
+    <value>Hardware error reported by Windows</value>
+  </data>
+  <data name="Diag.Known.Whea.Detail" xml:space="preserve">
+    <value>The processor, the memory or the PCI bus reported an error. Corrected now and then is normal; repeated or fatal deserves attention: check temperature, overclock and memory.</value>
+  </data>
+  <data name="Diag.Known.GpuDriver.Title" xml:space="preserve">
+    <value>Graphics driver error</value>
+  </data>
+  <data name="Diag.Known.GpuDriver.Detail" xml:space="preserve">
+    <value>The graphics card driver logged a problem. If it comes with screen freezes, reinstall the driver and test without overclock.</value>
+  </data>
+  <data name="Diag.Known.Perflib.Title" xml:space="preserve">
+    <value>Performance counter problem</value>
+  </data>
+  <data name="Diag.Known.Perflib.Detail" xml:space="preserve">
+    <value>A program installed faulty performance counters. Harmless.</value>
+  </data>
+  <data name="Diag.Crashes.Window.Quarter" xml:space="preserve">
+    <value>90 days</value>
+  </data>
+  <data name="Diag.Crashes.Summary.BlueScreens" xml:space="preserve">
+    <value>Blue screens</value>
+  </data>
+  <data name="Diag.Crashes.Summary.Shutdowns" xml:space="preserve">
+    <value>Unexpected restarts</value>
+  </data>
+  <data name="Diag.Crashes.Summary.Apps" xml:space="preserve">
+    <value>Program crashes</value>
+  </data>
+  <data name="Diag.Crashes.Summary.AppKinds" xml:space="preserve">
+    <value>{0} different program(s)</value>
+  </data>
+  <data name="Diag.Crashes.Settings.Title" xml:space="preserve">
+    <value>Blue screen recording</value>
+  </data>
+  <data name="Diag.Crashes.Settings.Status.Off" xml:space="preserve">
+    <value>Dumps off</value>
+  </data>
+  <data name="Diag.Crashes.Settings.Status.On" xml:space="preserve">
+    <value>Dumps on</value>
+  </data>
+  <data name="Diag.Crashes.Settings.Mode" xml:space="preserve">
+    <value>Dump type</value>
+  </data>
+  <data name="Diag.Crashes.Settings.Folder" xml:space="preserve">
+    <value>Dump folder</value>
+  </data>
+  <data name="Diag.Crashes.Settings.File" xml:space="preserve">
+    <value>Full dump file</value>
+  </data>
+  <data name="Diag.Crashes.Settings.AutoReboot" xml:space="preserve">
+    <value>Restart on its own after a blue screen</value>
+  </data>
+  <data name="Diag.Crashes.Settings.LogEvent" xml:space="preserve">
+    <value>Write to the event log</value>
+  </data>
+  <data name="Diag.Crashes.Settings.Advice.Off" xml:space="preserve">
+    <value>This PC is set to keep nothing when a blue screen happens. Without that, a blue screen shows up as just an unexpected restart, with no code and no cause. To turn it on: Windows Settings, System, About, Advanced system settings, Startup and Recovery, and choose “Automatic memory dump”.</value>
+  </data>
+  <data name="Diag.Crashes.Settings.Advice.Unknown" xml:space="preserve">
+    <value>Windows has no dump type set on this PC. Check Startup and Recovery in the advanced system settings.</value>
+  </data>
+  <data name="Diag.Dump.Mode.Disabled" xml:space="preserve">
+    <value>Off (nothing is kept)</value>
+  </data>
+  <data name="Diag.Dump.Mode.Small" xml:space="preserve">
+    <value>Small (minidump)</value>
+  </data>
+  <data name="Diag.Dump.Mode.Kernel" xml:space="preserve">
+    <value>Kernel memory</value>
+  </data>
+  <data name="Diag.Dump.Mode.Complete" xml:space="preserve">
+    <value>Complete memory</value>
+  </data>
+  <data name="Diag.Dump.Mode.Automatic" xml:space="preserve">
+    <value>Automatic</value>
+  </data>
+  <data name="Diag.Dump.Mode.Unknown" xml:space="preserve">
+    <value>Not set</value>
+  </data>
+  <data name="Diag.Crashes.Shutdowns.Title" xml:space="preserve">
+    <value>Unexpected restarts</value>
+  </data>
+  <data name="Diag.Crashes.Shutdowns.Empty" xml:space="preserve">
+    <value>No unexpected restarts in this period.</value>
+  </data>
+  <data name="Diag.Crashes.Cause.BlueScreen" xml:space="preserve">
+    <value>Blue screen: {0}</value>
+  </data>
+  <data name="Diag.Crashes.Cause.BlueScreen.Unnamed" xml:space="preserve">
+    <value>Blue screen with code {0}</value>
+  </data>
+  <data name="Diag.Crashes.Cause.BlueScreen.NoDescription" xml:space="preserve">
+    <value>Windows has no description for this code. Search for it together with “bug check” to see what it means.</value>
+  </data>
+  <data name="Diag.Crashes.Cause.PowerButton" xml:space="preserve">
+    <value>Forced shutdown with the power button</value>
+  </data>
+  <data name="Diag.Crashes.Cause.PowerButton.Detail" xml:space="preserve">
+    <value>The power button was held until the PC turned off. It is usually the way out of a frozen screen.</value>
+  </data>
+  <data name="Diag.Crashes.Cause.Unknown" xml:space="preserve">
+    <value>No cause recorded</value>
+  </data>
+  <data name="Diag.Crashes.Cause.Unknown.Detail" xml:space="preserve">
+    <value>It may have been a power loss, a total freeze or a blue screen that left no record. If the PC restarts on its own, check the power supply, temperatures and memory.</value>
+  </data>
+  <data name="Diag.Crashes.Parameters" xml:space="preserve">
+    <value>Parameters: {0}</value>
+  </data>
+  <data name="Diag.Crashes.Apps.Title" xml:space="preserve">
+    <value>Programs that crashed</value>
+  </data>
+  <data name="Diag.Crashes.Apps.Empty" xml:space="preserve">
+    <value>No program crashed in this period.</value>
+  </data>
+  <data name="Diag.Crashes.Apps.TitleIn" xml:space="preserve">
+    <value>{0} crashed in {1}</value>
+  </data>
+  <data name="Diag.Crashes.Apps.TitleSelf" xml:space="preserve">
+    <value>{0} crashed</value>
+  </data>
+  <data name="Diag.Crashes.Apps.Exception" xml:space="preserve">
+    <value>Exception {0}</value>
+  </data>
+  <data name="Diag.Crashes.Origin.GraphicsDriver" xml:space="preserve">
+    <value>The module that failed is the {0} graphics driver. If it repeats, reinstall the driver (cleaning the old one) and test without overclock.</value>
+  </data>
+  <data name="Diag.Crashes.Origin.Windows" xml:space="preserve">
+    <value>The module that failed belongs to Windows itself. If it repeats, the Repair page helps fix system files.</value>
+  </data>
+  <data name="Diag.Crashes.Origin.Application" xml:space="preserve">
+    <value>The error is in the program's own code. Updating or reinstalling usually fixes it.</value>
+  </data>
+  <data name="Diag.Crashes.Origin.ThirdPartyModule" xml:space="preserve">
+    <value>The module that failed is third-party (a plugin, overlay or library). Turning off whatever hooks into that program usually fixes it.</value>
+  </data>
+  <data name="Diag.Crashes.KernelDumps.Title" xml:space="preserve">
+    <value>Blue screen dumps</value>
+  </data>
+  <data name="Diag.Crashes.KernelDumps.Empty" xml:space="preserve">
+    <value>No blue screen dump files on this PC.</value>
+  </data>
+  <data name="Diag.Crashes.UserDumps.Title" xml:space="preserve">
+    <value>Program dumps</value>
+  </data>
+  <data name="Diag.Crashes.UserDumps.Hint" xml:space="preserve">
+    <value>Files Windows keeps when a program crashes. They can take a lot of space and contain the program's data.</value>
+  </data>
+  <data name="Diag.Crashes.UserDumps.Empty" xml:space="preserve">
+    <value>No program dumps kept.</value>
+  </data>
+  <data name="Diag.Crashes.Dump.Meta" xml:space="preserve">
+    <value>{0} · {1}</value>
+  </data>
+  <data name="Diag.Crashes.Failed" xml:space="preserve">
+    <value>Could not read {0}: {1}</value>
+  </data>
+  <data name="Diag.Crashes.Part.settings" xml:space="preserve">
+    <value>the dump settings</value>
+  </data>
+  <data name="Diag.Crashes.Part.shutdowns" xml:space="preserve">
+    <value>the unexpected restarts</value>
+  </data>
+  <data name="Diag.Crashes.Part.apps" xml:space="preserve">
+    <value>the program crashes</value>
+  </data>
+  <data name="Diag.Crashes.Part.kernelDumps" xml:space="preserve">
+    <value>the blue screen dumps</value>
+  </data>
+  <data name="Diag.Crashes.Part.userDumps" xml:space="preserve">
+    <value>the program dumps</value>
+  </data>
+  <data name="Diag.BugCheck.IRQL_NOT_LESS_OR_EQUAL.Detail" xml:space="preserve">
+    <value>A driver or the kernel touched memory at the wrong time. Usually a faulty driver or unstable memory.</value>
+  </data>
+  <data name="Diag.BugCheck.BAD_POOL_HEADER.Detail" xml:space="preserve">
+    <value>System memory was corrupted. It points to a bad driver or faulty memory.</value>
+  </data>
+  <data name="Diag.BugCheck.MEMORY_MANAGEMENT.Detail" xml:space="preserve">
+    <value>Serious memory management error. Run the Windows memory diagnostic and test the sticks one by one.</value>
+  </data>
+  <data name="Diag.BugCheck.KMODE_EXCEPTION_NOT_HANDLED.Detail" xml:space="preserve">
+    <value>A driver raised an error nobody handled. Update or reinstall the driver of the device named in the dump.</value>
+  </data>
+  <data name="Diag.BugCheck.NTFS_FILE_SYSTEM.Detail" xml:space="preserve">
+    <value>The file system hit an error. Check the disk on the Repair page and back up.</value>
+  </data>
+  <data name="Diag.BugCheck.SYSTEM_SERVICE_EXCEPTION.Detail" xml:space="preserve">
+    <value>A system service failed, almost always because of the graphics driver or antivirus. Reinstall the graphics driver.</value>
+  </data>
+  <data name="Diag.BugCheck.NO_MORE_SYSTEM_PTES.Detail" xml:space="preserve">
+    <value>Windows ran out of kernel address space because of a driver leak. Update the drivers.</value>
+  </data>
+  <data name="Diag.BugCheck.PFN_LIST_CORRUPT.Detail" xml:space="preserve">
+    <value>The memory page list was corrupted. It points to a bad driver or faulty memory.</value>
+  </data>
+  <data name="Diag.BugCheck.PAGE_FAULT_IN_NONPAGED_AREA.Detail" xml:space="preserve">
+    <value>The system tried to use memory that does not exist. Usually faulty memory, a bad driver or a failing disk.</value>
+  </data>
+  <data name="Diag.BugCheck.REGISTRY_ERROR.Detail" xml:space="preserve">
+    <value>Windows found a problem in the registry or on the disk that holds it. Check the disk.</value>
+  </data>
+  <data name="Diag.BugCheck.KERNEL_STACK_INPAGE_ERROR.Detail" xml:space="preserve">
+    <value>Windows could not read data from disk into memory. It points to a disk, cable or controller problem.</value>
+  </data>
+  <data name="Diag.BugCheck.KERNEL_DATA_INPAGE_ERROR.Detail" xml:space="preserve">
+    <value>Windows could not read data from disk into memory. It points to a disk, cable or controller problem.</value>
+  </data>
+  <data name="Diag.BugCheck.INACCESSIBLE_BOOT_DEVICE.Detail" xml:space="preserve">
+    <value>Windows lost access to the boot disk. It happens after changing the controller mode (AHCI/RAID) or a storage driver.</value>
+  </data>
+  <data name="Diag.BugCheck.SYSTEM_THREAD_EXCEPTION_NOT_HANDLED.Detail" xml:space="preserve">
+    <value>A system task failed unhandled, almost always because of a driver. The dump says which one.</value>
+  </data>
+  <data name="Diag.BugCheck.UNEXPECTED_KERNEL_MODE_TRAP.Detail" xml:space="preserve">
+    <value>The CPU received a condition the kernel did not expect. It can be memory, overheating or an unstable overclock.</value>
+  </data>
+  <data name="Diag.BugCheck.DRIVER_POWER_STATE_FAILURE.Detail" xml:space="preserve">
+    <value>A driver did not answer when suspending or waking the device. Update the drivers and check the power options.</value>
+  </data>
+  <data name="Diag.BugCheck.INTERNAL_POWER_ERROR.Detail" xml:space="preserve">
+    <value>Internal power management error. Update the BIOS and the chipset drivers.</value>
+  </data>
+  <data name="Diag.BugCheck.ACPI_BIOS_ERROR.Detail" xml:space="preserve">
+    <value>The BIOS described the hardware in a way Windows does not accept. Update the BIOS.</value>
+  </data>
+  <data name="Diag.BugCheck.ATTEMPTED_WRITE_TO_READONLY_MEMORY.Detail" xml:space="preserve">
+    <value>A driver tried to write to protected memory. Update or reinstall the driver named in the dump.</value>
+  </data>
+  <data name="Diag.BugCheck.BAD_POOL_CALLER.Detail" xml:space="preserve">
+    <value>A driver asked for memory the wrong way. Update the drivers and remove any you installed recently.</value>
+  </data>
+  <data name="Diag.BugCheck.DRIVER_VERIFIER_DETECTED_VIOLATION.Detail" xml:space="preserve">
+    <value>Driver Verifier caught a driver doing something forbidden. Turn the verifier off if you did not turn it on.</value>
+  </data>
+  <data name="Diag.BugCheck.DRIVER_CORRUPTED_EXPOOL.Detail" xml:space="preserve">
+    <value>A driver corrupted system memory. Update the drivers.</value>
+  </data>
+  <data name="Diag.BugCheck.DRIVER_IRQL_NOT_LESS_OR_EQUAL.Detail" xml:space="preserve">
+    <value>A driver accessed memory at a forbidden moment. It is one of the most common codes; the dump points to the driver.</value>
+  </data>
+  <data name="Diag.BugCheck.THREAD_STUCK_IN_DEVICE_DRIVER.Detail" xml:space="preserve">
+    <value>A driver, usually the graphics one, got stuck waiting for the hardware. Reinstall the graphics driver.</value>
+  </data>
+  <data name="Diag.BugCheck.CRITICAL_PROCESS_DIED.Detail" xml:space="preserve">
+    <value>An essential Windows process ended. It can be the disk, memory or damaged system files.</value>
+  </data>
+  <data name="Diag.BugCheck.CRITICAL_OBJECT_TERMINATION.Detail" xml:space="preserve">
+    <value>An essential process or thread ended. It can be the disk, memory or damaged system files.</value>
+  </data>
+  <data name="Diag.BugCheck.CLOCK_WATCHDOG_TIMEOUT.Detail" xml:space="preserve">
+    <value>A CPU core stopped responding. Usually an unstable overclock or undervolt, or an outdated BIOS.</value>
+  </data>
+  <data name="Diag.BugCheck.CRITICAL_STRUCTURE_CORRUPTION.Detail" xml:space="preserve">
+    <value>The kernel detected that a protected structure was changed. It can be a bad driver or faulty memory.</value>
+  </data>
+  <data name="Diag.BugCheck.VIDEO_TDR_FAILURE.Detail" xml:space="preserve">
+    <value>The graphics driver stopped responding and Windows could not recover. Reinstall the driver and test without overclock.</value>
+  </data>
+  <data name="Diag.BugCheck.VIDEO_TDR_TIMEOUT_DETECTED.Detail" xml:space="preserve">
+    <value>The graphics card took too long to respond. Reinstall the driver and test without overclock.</value>
+  </data>
+  <data name="Diag.BugCheck.VIDEO_SCHEDULER_INTERNAL_ERROR.Detail" xml:space="preserve">
+    <value>The video scheduler hit a fatal error. Reinstall the graphics driver.</value>
+  </data>
+  <data name="Diag.BugCheck.WHEA_UNCORRECTABLE_ERROR.Detail" xml:space="preserve">
+    <value>The hardware reported an error that could not be corrected: CPU, memory, motherboard or overclock. Check temperatures and test without overclock.</value>
+  </data>
+  <data name="Diag.BugCheck.DPC_WATCHDOG_VIOLATION.Detail" xml:space="preserve">
+    <value>A driver took too long on an urgent task. Usually an SSD, network or graphics driver; update the SSD firmware.</value>
+  </data>
+  <data name="Diag.BugCheck.KERNEL_SECURITY_CHECK_FAILURE.Detail" xml:space="preserve">
+    <value>The kernel detected corrupted data. It can be a bad driver, memory or a failing disk.</value>
+  </data>
+  <data name="Diag.BugCheck.KERNEL_MODE_HEAP_CORRUPTION.Detail" xml:space="preserve">
+    <value>A driver corrupted kernel memory. Update the drivers.</value>
+  </data>
+  <data name="Diag.BugCheck.VIDEO_ENGINE_TIMEOUT_DETECTED.Detail" xml:space="preserve">
+    <value>A graphics card engine stopped responding. Reinstall the graphics driver and check the card temperature.</value>
+  </data>
+  <data name="Diag.BugCheck.UNEXPECTED_STORE_EXCEPTION.Detail" xml:space="preserve">
+    <value>The Windows storage component hit an error. Usually a failing SSD or disk driver; check SMART.</value>
+  </data>
+  <data name="Diag.BugCheck.LIVE_SYSTEM_DUMP.Detail" xml:space="preserve">
+    <value>This is not a blue screen: Windows took a copy of memory without shutting the PC down, because of a problem that did not bring the system down.</value>
+  </data>
+  <data name="Diag.BugCheck.SYNTHETIC_WATCHDOG_TIMEOUT.Detail" xml:space="preserve">
+    <value>The system stayed frozen for too long without answering. Usually a driver, overclock or BIOS.</value>
+  </data>
+  <data name="Diag.Exception.BREAKPOINT.Detail" xml:space="preserve">
+    <value>The program stopped at a breakpoint, which happens with debuggers or an internal error.</value>
+  </data>
+  <data name="Diag.Exception.ACCESS_VIOLATION.Detail" xml:space="preserve">
+    <value>Invalid memory access, the most common reason for a crash.</value>
+  </data>
+  <data name="Diag.Exception.ILLEGAL_INSTRUCTION.Detail" xml:space="preserve">
+    <value>The program ran an instruction the CPU does not know, like a new program on an old CPU.</value>
+  </data>
+  <data name="Diag.Exception.INT_DIVIDE_BY_ZERO.Detail" xml:space="preserve">
+    <value>Division by zero inside the program.</value>
+  </data>
+  <data name="Diag.Exception.STACK_OVERFLOW.Detail" xml:space="preserve">
+    <value>The program used more stack than exists, usually because of an endless recursion.</value>
+  </data>
+  <data name="Diag.Exception.DLL_NOT_FOUND.Detail" xml:space="preserve">
+    <value>The program needs a DLL that was not found. Reinstall the program or the Visual C++ components.</value>
+  </data>
+  <data name="Diag.Exception.DLL_INIT_FAILED.Detail" xml:space="preserve">
+    <value>A DLL failed to start. It can be the wrong version or a broken component.</value>
+  </data>
+  <data name="Diag.Exception.HEAP_CORRUPTION.Detail" xml:space="preserve">
+    <value>The program's memory was corrupted. Usually a program bug or an injected module.</value>
+  </data>
+  <data name="Diag.Exception.STACK_BUFFER_OVERRUN.Detail" xml:space="preserve">
+    <value>The program ended on a security check or a fatal internal error.</value>
+  </data>
+  <data name="Diag.Exception.INVALID_IMAGE_FORMAT.Detail" xml:space="preserve">
+    <value>The program or a DLL has a mismatched architecture (32 and 64 bits mixed).</value>
+  </data>
+  <data name="Diag.Exception.CLR_EXCEPTION.Detail" xml:space="preserve">
+    <value>A .NET program threw an exception it did not handle.</value>
+  </data>
+  <data name="Diag.Exception.CPP_EXCEPTION.Detail" xml:space="preserve">
+    <value>A C++ program threw an exception it did not handle.</value>
+  </data>
+  <data name="Diag.Reliability.Index.Current" xml:space="preserve">
+    <value>Now</value>
+  </data>
+  <data name="Diag.Reliability.Index.Lowest" xml:space="preserve">
+    <value>Lowest in the period</value>
+  </data>
+  <data name="Diag.Reliability.Index.Average" xml:space="preserve">
+    <value>Period average</value>
+  </data>
+  <data name="Diag.Reliability.Index.Scale" xml:space="preserve">
+    <value>out of 10</value>
+  </data>
+  <data name="Diag.Reliability.Verdict.Stable" xml:space="preserve">
+    <value>Stable</value>
+  </data>
+  <data name="Diag.Reliability.Verdict.Occasional" xml:space="preserve">
+    <value>Occasional failures</value>
+  </data>
+  <data name="Diag.Reliability.Verdict.Unstable" xml:space="preserve">
+    <value>Unstable</value>
+  </data>
+  <data name="Diag.Reliability.Verdict.Unknown" xml:space="preserve">
+    <value>No data</value>
+  </data>
+  <data name="Diag.Reliability.Chart.Title" xml:space="preserve">
+    <value>Stability over time</value>
+  </data>
+  <data name="Diag.Reliability.Chart.Name" xml:space="preserve">
+    <value>Stability index over the period; now {0} out of 10</value>
+  </data>
+  <data name="Diag.Reliability.Chart.Note" xml:space="preserve">
+    <value>Windows works out the index every hour, from 1 to 10, from the failures of the last days. Each failure drops the number and it only climbs back after days without failures. The red ticks at the bottom mark when failures happened.</value>
+  </data>
+  <data name="Diag.Reliability.Summary.Failures" xml:space="preserve">
+    <value>Failures</value>
+  </data>
+  <data name="Diag.Reliability.Summary.Changes" xml:space="preserve">
+    <value>Installs and updates</value>
+  </data>
+  <data name="Diag.Reliability.Records.Title" xml:space="preserve">
+    <value>Records</value>
+  </data>
+  <data name="Diag.Reliability.ShowChanges" xml:space="preserve">
+    <value>Also show installs and updates</value>
+  </data>
+  <data name="Diag.Reliability.ShowChanges.Detail" xml:space="preserve">
+    <value>By default the list shows only failures, which are what lowers the index.</value>
+  </data>
+  <data name="Diag.Reliability.Hidden" xml:space="preserve">
+    <value>{0} records that are not failures (installs, updates and others) are hidden. Turn on the switch above to see them.</value>
+  </data>
+  <data name="Diag.Reliability.Empty" xml:space="preserve">
+    <value>No failures recorded in this period.</value>
+  </data>
+  <data name="Diag.Reliability.Kind.UpdateInstalled" xml:space="preserve">
+    <value>Update installed</value>
+  </data>
+  <data name="Diag.Reliability.Kind.UpdateFailed" xml:space="preserve">
+    <value>Update failed to install</value>
+  </data>
+  <data name="Diag.Reliability.Kind.SoftwareInstalled" xml:space="preserve">
+    <value>Program installed</value>
+  </data>
+  <data name="Diag.Reliability.Kind.SoftwareRemoved" xml:space="preserve">
+    <value>Program removed</value>
+  </data>
+  <data name="Diag.Reliability.Kind.SoftwareReconfigured" xml:space="preserve">
+    <value>Program reconfigured</value>
+  </data>
+  <data name="Diag.Reliability.Kind.UnexpectedShutdown" xml:space="preserve">
+    <value>Unexpected shutdown</value>
+  </data>
+  <data name="Diag.Reliability.Kind.AppCrash" xml:space="preserve">
+    <value>Program crashed</value>
+  </data>
+  <data name="Diag.Reliability.Kind.WindowsFailure" xml:space="preserve">
+    <value>Windows failure (blue screen)</value>
+  </data>
+  <data name="Diag.Reliability.Kind.Other" xml:space="preserve">
+    <value>Other record</value>
+  </data>
+  <data name="Diag.Reliability.Part.stability" xml:space="preserve">
+    <value>the stability index</value>
+  </data>
+  <data name="Diag.Reliability.Part.records" xml:space="preserve">
+    <value>the records</value>
+  </data>
+  <data name="Diag.Logs.File" xml:space="preserve">
+    <value>Log file</value>
+  </data>
+  <data name="Diag.Logs.File.Today" xml:space="preserve">
+    <value>Today</value>
+  </data>
+  <data name="Diag.Logs.File.Yesterday" xml:space="preserve">
+    <value>Yesterday</value>
+  </data>
+  <data name="Diag.Logs.File.Label" xml:space="preserve">
+    <value>{0} · {1}</value>
+  </data>
+  <data name="Diag.Logs.Level" xml:space="preserve">
+    <value>Level</value>
+  </data>
+  <data name="Diag.Logs.Level.All" xml:space="preserve">
+    <value>Everything</value>
+  </data>
+  <data name="Diag.Logs.Level.Problems" xml:space="preserve">
+    <value>Warnings and errors</value>
+  </data>
+  <data name="Diag.Logs.Level.Errors" xml:space="preserve">
+    <value>Errors only</value>
+  </data>
+  <data name="Diag.Logs.Search" xml:space="preserve">
+    <value>Search the text, the source and the details</value>
+  </data>
+  <data name="Diag.Logs.Summary" xml:space="preserve">
+    <value>{0} entries · {1} warnings · {2} errors</value>
+  </data>
+  <data name="Diag.Logs.Showing" xml:space="preserve">
+    <value>Showing the {0} newest of {1} entries that match the filter.</value>
+  </data>
+  <data name="Diag.Logs.MidFile" xml:space="preserve">
+    <value>The file is large; only its end was read.</value>
+  </data>
+  <data name="Diag.Logs.Empty" xml:space="preserve">
+    <value>No entries with this filter.</value>
+  </data>
+  <data name="Diag.Logs.NoFiles" xml:space="preserve">
+    <value>There are no log files yet.</value>
+  </data>
+  <data name="Diag.Logs.OpenFolder" xml:space="preserve">
+    <value>Open logs folder</value>
+  </data>
+  <data name="Diag.Logs.Copy" xml:space="preserve">
+    <value>Copy what is on screen</value>
+  </data>
+  <data name="Diag.Logs.Copied" xml:space="preserve">
+    <value>Copied to the clipboard.</value>
+  </data>
+  <data name="Diag.Logs.CopyFailed" xml:space="preserve">
+    <value>Windows did not let the clipboard be used right now. Try again.</value>
+  </data>
+  <data name="Diag.Logs.Failed" xml:space="preserve">
+    <value>Could not read the logs: {0}</value>
+  </data>
+  <data name="Diag.Logs.Severity.Verbose" xml:space="preserve">
+    <value>Verbose</value>
+  </data>
+  <data name="Diag.Logs.Severity.Debug" xml:space="preserve">
+    <value>Debug</value>
+  </data>
+  <data name="Diag.Logs.Severity.Information" xml:space="preserve">
+    <value>Info</value>
+  </data>
+  <data name="Diag.Logs.Severity.Warning" xml:space="preserve">
+    <value>Warning</value>
+  </data>
+  <data name="Diag.Logs.Severity.Error" xml:space="preserve">
+    <value>Error</value>
+  </data>
+  <data name="Diag.Logs.Severity.Fatal" xml:space="preserve">
+    <value>Fatal</value>
+  </data>
+  <data name="Diag.Report.Title" xml:space="preserve">
+    <value>m1vClock report</value>
+  </data>
+  <data name="Diag.Report.Generated" xml:space="preserve">
+    <value>Generated on {0} · m1vClock {1}</value>
+  </data>
+  <data name="Diag.Report.Footer" xml:space="preserve">
+    <value>Generated on this computer by m1vClock. Nothing was sent to the internet.</value>
+  </data>
+  <data name="Diag.Report.File.Name" xml:space="preserve">
+    <value>m1vclock-report-{0}</value>
+  </data>
+  <data name="Diag.Report.File.Filter" xml:space="preserve">
+    <value>Web page (*.html)|*.html|Text (*.txt)|*.txt</value>
+  </data>
+  <data name="Diag.Report.Intro" xml:space="preserve">
+    <value>The report stays on your computer only. Choose what to include, save or copy it and send it to whoever will help. Serial numbers, network addresses and the computer name are left out, unless you turn on the name option.</value>
+  </data>
+  <data name="Diag.Report.Include" xml:space="preserve">
+    <value>What to include</value>
+  </data>
+  <data name="Diag.Report.IncludeName" xml:space="preserve">
+    <value>Include the computer name</value>
+  </data>
+  <data name="Diag.Report.IncludeName.Detail" xml:space="preserve">
+    <value>Off by default, because the name can identify you.</value>
+  </data>
+  <data name="Diag.Report.Collect" xml:space="preserve">
+    <value>Collect again</value>
+  </data>
+  <data name="Diag.Report.Collecting" xml:space="preserve">
+    <value>Collecting the PC data…</value>
+  </data>
+  <data name="Diag.Report.Save" xml:space="preserve">
+    <value>Save report…</value>
+  </data>
+  <data name="Diag.Report.Copy" xml:space="preserve">
+    <value>Copy as text</value>
+  </data>
+  <data name="Diag.Report.Preview" xml:space="preserve">
+    <value>Preview of what goes in the report</value>
+  </data>
+  <data name="Diag.Report.Preview.Empty" xml:space="preserve">
+    <value>No part chosen. Turn on at least one above.</value>
+  </data>
+  <data name="Diag.Report.Saved" xml:space="preserve">
+    <value>Report saved to {0}.</value>
+  </data>
+  <data name="Diag.Report.SaveFailed" xml:space="preserve">
+    <value>Could not save the report: {0}</value>
+  </data>
+  <data name="Diag.Report.NotRead" xml:space="preserve">
+    <value>Could not read this part: {0}</value>
+  </data>
+  <data name="Diag.Report.Rows" xml:space="preserve">
+    <value>{0} row(s)</value>
+  </data>
+  <data name="Diag.Report.Section.system" xml:space="preserve">
+    <value>System</value>
+  </data>
+  <data name="Diag.Report.Section.gpu" xml:space="preserve">
+    <value>Graphics card</value>
+  </data>
+  <data name="Diag.Report.Section.memory" xml:space="preserve">
+    <value>Memory</value>
+  </data>
+  <data name="Diag.Report.Section.storage" xml:space="preserve">
+    <value>Storage</value>
+  </data>
+  <data name="Diag.Report.Section.power" xml:space="preserve">
+    <value>Power</value>
+  </data>
+  <data name="Diag.Report.Section.events" xml:space="preserve">
+    <value>Windows events</value>
+  </data>
+  <data name="Diag.Report.Section.crashes" xml:space="preserve">
+    <value>Unexpected restarts and blue screens</value>
+  </data>
+  <data name="Diag.Report.Section.reliability" xml:space="preserve">
+    <value>Reliability</value>
+  </data>
+  <data name="Diag.Report.Section.benchmarks" xml:space="preserve">
+    <value>Benchmarks</value>
+  </data>
+  <data name="Opt.Startup.Intro" xml:space="preserve">
+    <value>These programs start together with Windows and compete for processor, memory and disk right at sign-in. Turning one off does not uninstall anything, and you can turn it back on whenever you want.</value>
+  </data>
+  <data name="Opt.Startup.Summary.Total" xml:space="preserve">
+    <value>At startup</value>
+  </data>
+  <data name="Opt.Startup.Summary.Enabled" xml:space="preserve">
+    <value>Start on their own</value>
+  </data>
+  <data name="Opt.Startup.Summary.Disabled" xml:space="preserve">
+    <value>Turned off</value>
+  </data>
+  <data name="Opt.Startup.Summary.Missing" xml:space="preserve">
+    <value>With a missing file</value>
+  </data>
+  <data name="Opt.Startup.Status.Enabled" xml:space="preserve">
+    <value>Starts on its own</value>
+  </data>
+  <data name="Opt.Startup.Status.Disabled" xml:space="preserve">
+    <value>Turned off</value>
+  </data>
+  <data name="Opt.Startup.Status.Missing" xml:space="preserve">
+    <value>File missing</value>
+  </data>
+  <data name="Opt.Startup.Where.UserRun" xml:space="preserve">
+    <value>Your user only (registry)</value>
+  </data>
+  <data name="Opt.Startup.Where.MachineRun" xml:space="preserve">
+    <value>All users (registry)</value>
+  </data>
+  <data name="Opt.Startup.Where.MachineRun32" xml:space="preserve">
+    <value>All users, 32-bit (registry)</value>
+  </data>
+  <data name="Opt.Startup.Where.UserFolder" xml:space="preserve">
+    <value>Your user's Startup folder</value>
+  </data>
+  <data name="Opt.Startup.Where.CommonFolder" xml:space="preserve">
+    <value>All users' Startup folder</value>
+  </data>
+  <data name="Opt.Startup.Meta" xml:space="preserve">
+    <value>{0} · {1}</value>
+  </data>
+  <data name="Opt.Startup.Action.Disable" xml:space="preserve">
+    <value>Turn off</value>
+  </data>
+  <data name="Opt.Startup.Action.Enable" xml:space="preserve">
+    <value>Turn on</value>
+  </data>
+  <data name="Opt.Startup.NeedAdmin" xml:space="preserve">
+    <value>Needs m1vClock as administrator to change this program.</value>
+  </data>
+  <data name="Opt.Startup.Disable.Title" xml:space="preserve">
+    <value>Turn off at startup?</value>
+  </data>
+  <data name="Opt.Startup.Disable.Message" xml:space="preserve">
+    <value>{0} stops opening on its own when you sign in to Windows. The program stays installed and works normally when you open it.</value>
+  </data>
+  <data name="Opt.Startup.Disable.Change" xml:space="preserve">
+    <value>The startup state of {0} becomes turned off.</value>
+  </data>
+  <data name="Opt.Startup.Disable.Confirm" xml:space="preserve">
+    <value>Turn off</value>
+  </data>
+  <data name="Opt.Startup.Enable.Title" xml:space="preserve">
+    <value>Turn on at startup?</value>
+  </data>
+  <data name="Opt.Startup.Enable.Message" xml:space="preserve">
+    <value>{0} starts opening on its own when you sign in to Windows.</value>
+  </data>
+  <data name="Opt.Startup.Enable.Change" xml:space="preserve">
+    <value>The startup state of {0} becomes turned on.</value>
+  </data>
+  <data name="Opt.Startup.Enable.Confirm" xml:space="preserve">
+    <value>Turn on</value>
+  </data>
+  <data name="Opt.Startup.Undo" xml:space="preserve">
+    <value>To go back, use the button here again or Undo on the History page.</value>
+  </data>
+  <data name="Opt.Startup.Done.Disabled" xml:space="preserve">
+    <value>{0} was turned off at startup. You can undo it on the History page.</value>
+  </data>
+  <data name="Opt.Startup.Done.Enabled" xml:space="preserve">
+    <value>{0} was turned on at startup. You can undo it on the History page.</value>
+  </data>
+  <data name="Opt.Startup.Failed" xml:space="preserve">
+    <value>Could not change {0}: {1}</value>
+  </data>
+  <data name="Opt.Startup.NoRestorePoint" xml:space="preserve">
+    <value>Warning: the restore point could not be created before the change ({0}).</value>
+  </data>
+  <data name="Opt.Startup.Empty" xml:space="preserve">
+    <value>No program opens on its own with Windows.</value>
+  </data>
+  <data name="Opt.Startup.ReadFailed" xml:space="preserve">
+    <value>Could not read the startup list: {0}</value>
+  </data>
+  <data name="Opt.Services.Intro" xml:space="preserve">
+    <value>Services are programs that Windows and other programs keep running in the background. m1vClock only lets you change the startup of third-party services that are not antivirus or anti-cheat. The change applies from the next time the PC starts.</value>
+  </data>
+  <data name="Opt.Services.Filter" xml:space="preserve">
+    <value>Show</value>
+  </data>
+  <data name="Opt.Services.Filter.ThirdParty" xml:space="preserve">
+    <value>Third-party</value>
+  </data>
+  <data name="Opt.Services.Filter.All" xml:space="preserve">
+    <value>All</value>
+  </data>
+  <data name="Opt.Services.Search" xml:space="preserve">
+    <value>Search by name, company or description</value>
+  </data>
+  <data name="Opt.Services.Summary.Total" xml:space="preserve">
+    <value>Services on this PC</value>
+  </data>
+  <data name="Opt.Services.Summary.ThirdParty" xml:space="preserve">
+    <value>Third-party</value>
+  </data>
+  <data name="Opt.Services.Summary.AutoThird" xml:space="preserve">
+    <value>Third-party that start on their own</value>
+  </data>
+  <data name="Opt.Services.Summary.Running" xml:space="preserve">
+    <value>Running now</value>
+  </data>
+  <data name="Opt.Services.State.Running" xml:space="preserve">
+    <value>Running</value>
+  </data>
+  <data name="Opt.Services.State.Stopped" xml:space="preserve">
+    <value>Stopped</value>
+  </data>
+  <data name="Opt.Services.State.Other" xml:space="preserve">
+    <value>Changing</value>
+  </data>
+  <data name="Opt.Services.Mode.Boot" xml:space="preserve">
+    <value>System boot</value>
+  </data>
+  <data name="Opt.Services.Mode.System" xml:space="preserve">
+    <value>System start</value>
+  </data>
+  <data name="Opt.Services.Mode.Automatic" xml:space="preserve">
+    <value>Automatic</value>
+  </data>
+  <data name="Opt.Services.Mode.AutomaticDelayed" xml:space="preserve">
+    <value>Automatic (delayed)</value>
+  </data>
+  <data name="Opt.Services.Mode.Manual" xml:space="preserve">
+    <value>Manual</value>
+  </data>
+  <data name="Opt.Services.Mode.Disabled" xml:space="preserve">
+    <value>Disabled</value>
+  </data>
+  <data name="Opt.Services.Mode.Unknown" xml:space="preserve">
+    <value>Unknown</value>
+  </data>
+  <data name="Opt.Services.Mode.Label" xml:space="preserve">
+    <value>Startup: {0}</value>
+  </data>
+  <data name="Opt.Services.Protection.Windows" xml:space="preserve">
+    <value>Windows service: m1vClock does not change its startup.</value>
+  </data>
+  <data name="Opt.Services.Protection.SecuritySoftware" xml:space="preserve">
+    <value>Antivirus or security software: m1vClock does not change its startup.</value>
+  </data>
+  <data name="Opt.Services.Protection.AntiCheat" xml:space="preserve">
+    <value>Anti-cheat: turning it off can stop games from opening. m1vClock does not change its startup.</value>
+  </data>
+  <data name="Opt.Services.Meta" xml:space="preserve">
+    <value>{0} · {1}</value>
+  </data>
+  <data name="Opt.Services.Change.Title" xml:space="preserve">
+    <value>Change the startup of {0}?</value>
+  </data>
+  <data name="Opt.Services.Change.Message" xml:space="preserve">
+    <value>{0} will start as {1} the next time the PC starts. The service is not stopped or started now.</value>
+  </data>
+  <data name="Opt.Services.Change.Line" xml:space="preserve">
+    <value>The startup of {0} changes from {1} to {2}.</value>
+  </data>
+  <data name="Opt.Services.Change.Undo" xml:space="preserve">
+    <value>To go back, choose the previous mode here or use Undo on the History page.</value>
+  </data>
+  <data name="Opt.Services.Change.Confirm" xml:space="preserve">
+    <value>Change</value>
+  </data>
+  <data name="Opt.Services.Done" xml:space="preserve">
+    <value>The startup of {0} is now {1}. It applies from the next time the PC starts. You can undo it on the History page.</value>
+  </data>
+  <data name="Opt.Services.Failed" xml:space="preserve">
+    <value>Could not change {0}: {1}</value>
+  </data>
+  <data name="Opt.Services.ReadFailed" xml:space="preserve">
+    <value>Could not read the service list: {0}</value>
+  </data>
+  <data name="Opt.Services.Empty" xml:space="preserve">
+    <value>No service with this filter.</value>
+  </data>
+  <data name="Opt.Services.Showing" xml:space="preserve">
+    <value>Showing {0} of {1} services. Use the search to find the others.</value>
+  </data>
+  <data name="Opt.Cleanup.Intro" xml:space="preserve">
+    <value>Cleanup only touches folders from a fixed list, where Windows and programs recreate what they need. Only files older than a day are included, and whatever is in use stays. What gets deleted does not go to the recycle bin and cannot be undone.</value>
+  </data>
+  <data name="Opt.Cleanup.Scanning" xml:space="preserve">
+    <value>Measuring the folders…</value>
+  </data>
+  <data name="Opt.Cleanup.Summary.Total" xml:space="preserve">
+    <value>Can be freed</value>
+  </data>
+  <data name="Opt.Cleanup.Summary.Files" xml:space="preserve">
+    <value>Files</value>
+  </data>
+  <data name="Opt.Cleanup.Summary.Places" xml:space="preserve">
+    <value>Places with something to clean</value>
+  </data>
+  <data name="Opt.Cleanup.Cat.userTemp.Title" xml:space="preserve">
+    <value>Your user's temporary files</value>
+  </data>
+  <data name="Opt.Cleanup.Cat.userTemp.Detail" xml:space="preserve">
+    <value>Leftovers from programs in the Temp folder, older than a day. Open programs may be using some, and those stay.</value>
+  </data>
+  <data name="Opt.Cleanup.Cat.windowsTemp.Title" xml:space="preserve">
+    <value>Windows temporary files</value>
+  </data>
+  <data name="Opt.Cleanup.Cat.windowsTemp.Detail" xml:space="preserve">
+    <value>The Windows Temp folder, with files older than a day.</value>
+  </data>
+  <data name="Opt.Cleanup.Cat.updateDownloads.Title" xml:space="preserve">
+    <value>Windows Update downloads</value>
+  </data>
+  <data name="Opt.Cleanup.Cat.updateDownloads.Detail" xml:space="preserve">
+    <value>Updates that were already downloaded. Windows downloads them again if it needs to.</value>
+  </data>
+  <data name="Opt.Cleanup.Cat.crashDumps.Title" xml:space="preserve">
+    <value>Dumps of programs that crashed</value>
+  </data>
+  <data name="Opt.Cleanup.Cat.crashDumps.Detail" xml:space="preserve">
+    <value>Files Windows keeps when a program crashes. They are for diagnosis only and can be large.</value>
+  </data>
+  <data name="Opt.Cleanup.Cat.errorReports.Title" xml:space="preserve">
+    <value>Windows error reports</value>
+  </data>
+  <data name="Opt.Cleanup.Cat.errorReports.Detail" xml:space="preserve">
+    <value>Crash reports that were already archived or are queued.</value>
+  </data>
+  <data name="Opt.Cleanup.Cat.shaderCache.Title" xml:space="preserve">
+    <value>DirectX shader cache</value>
+  </data>
+  <data name="Opt.Cleanup.Cat.shaderCache.Detail" xml:space="preserve">
+    <value>Windows and games rebuild it on their own. The first game after cleaning may open a little slower.</value>
+  </data>
+  <data name="Opt.Cleanup.Size" xml:space="preserve">
+    <value>{0} · {1} file(s)</value>
+  </data>
+  <data name="Opt.Cleanup.Nothing" xml:space="preserve">
+    <value>Nothing to clean here.</value>
+  </data>
+  <data name="Opt.Cleanup.Rebuilds" xml:space="preserve">
+    <value>Rebuilds itself</value>
+  </data>
+  <data name="Opt.Cleanup.NeedsAdmin" xml:space="preserve">
+    <value>Needs administrator</value>
+  </data>
+  <data name="Opt.Cleanup.NeedsAdmin.Tip" xml:space="preserve">
+    <value>Open m1vClock as administrator to clean this place.</value>
+  </data>
+  <data name="Opt.Cleanup.Unreadable" xml:space="preserve">
+    <value>{0} file(s) could not be measured.</value>
+  </data>
+  <data name="Opt.Cleanup.Action.Clean" xml:space="preserve">
+    <value>Clean</value>
+  </data>
+  <data name="Opt.Cleanup.Action.CleanAll" xml:space="preserve">
+    <value>Clean everything</value>
+  </data>
+  <data name="Opt.Cleanup.Confirm.Title" xml:space="preserve">
+    <value>Delete these files?</value>
+  </data>
+  <data name="Opt.Cleanup.Confirm.Message" xml:space="preserve">
+    <value>Deleted files do not go to the recycle bin and cannot be undone. Only those in the listed folders, older than a day and not in use are included.</value>
+  </data>
+  <data name="Opt.Cleanup.Confirm.Line" xml:space="preserve">
+    <value>{0}: {1}</value>
+  </data>
+  <data name="Opt.Cleanup.Confirm.Undo" xml:space="preserve">
+    <value>There is no way to undo it. If in doubt, cancel.</value>
+  </data>
+  <data name="Opt.Cleanup.Confirm.Button" xml:space="preserve">
+    <value>Delete</value>
+  </data>
+  <data name="Opt.Cleanup.Done" xml:space="preserve">
+    <value>{0} file(s) deleted and {1} freed.</value>
+  </data>
+  <data name="Opt.Cleanup.Done.Kept" xml:space="preserve">
+    <value>{0} stayed because they are in use or protected.</value>
+  </data>
+  <data name="Opt.Cleanup.Failed" xml:space="preserve">
+    <value>Could not clean: {0}</value>
+  </data>
+  <data name="Opt.Memory.Intro" xml:space="preserve">
+    <value>Standby memory is a cache: Windows keeps there what was used recently so it opens again faster. It counts as free for programs, so there is almost never a reason to empty it. Emptying it does not touch the memory of open programs, but Windows will have to read the data from disk again, and for a moment everything may feel a little slower.</value>
+  </data>
+  <data name="Opt.Memory.Total" xml:space="preserve">
+    <value>Total memory</value>
+  </data>
+  <data name="Opt.Memory.InUse" xml:space="preserve">
+    <value>Used by programs</value>
+  </data>
+  <data name="Opt.Memory.Standby" xml:space="preserve">
+    <value>Standby (cache)</value>
+  </data>
+  <data name="Opt.Memory.Free" xml:space="preserve">
+    <value>Free</value>
+  </data>
+  <data name="Opt.Memory.Available" xml:space="preserve">
+    <value>Available to programs: {0}</value>
+  </data>
+  <data name="Opt.Memory.Modified" xml:space="preserve">
+    <value>Modified, waiting to be written to disk: {0}</value>
+  </data>
+  <data name="Opt.Memory.Action" xml:space="preserve">
+    <value>Empty standby memory</value>
+  </data>
+  <data name="Opt.Memory.NeedsAdmin" xml:space="preserve">
+    <value>Needs m1vClock as administrator to empty standby memory.</value>
+  </data>
+  <data name="Opt.Memory.Confirm.Title" xml:space="preserve">
+    <value>Empty the standby memory?</value>
+  </data>
+  <data name="Opt.Memory.Confirm.Message" xml:space="preserve">
+    <value>Only the Windows cache is discarded. The memory of your open programs is not touched, but recently used files may take a little longer to open.</value>
+  </data>
+  <data name="Opt.Memory.Confirm.Line" xml:space="preserve">
+    <value>About {0} of cache will be discarded.</value>
+  </data>
+  <data name="Opt.Memory.Confirm.Undo" xml:space="preserve">
+    <value>It cannot be undone, but Windows fills the cache again on its own.</value>
+  </data>
+  <data name="Opt.Memory.Confirm.Button" xml:space="preserve">
+    <value>Empty</value>
+  </data>
+  <data name="Opt.Memory.Done" xml:space="preserve">
+    <value>{0} of standby memory was freed (before {1}, now {2}).</value>
+  </data>
+  <data name="Opt.Memory.Done.Nothing" xml:space="preserve">
+    <value>The standby memory was already almost empty.</value>
+  </data>
+  <data name="Opt.Memory.NotAllowed" xml:space="preserve">
+    <value>Windows did not allow emptying the standby memory. Open m1vClock as administrator.</value>
+  </data>
+  <data name="Opt.Memory.Failed" xml:space="preserve">
+    <value>Could not empty the standby memory: {0}</value>
+  </data>
+  <data name="Opt.Memory.ReadFailed" xml:space="preserve">
+    <value>Could not read the Windows memory: {0}</value>
+  </data>
+  <data name="Opt.Apps.Intro" xml:space="preserve">
+    <value>This is the list of programs Windows has registered as installed, without system components. m1vClock deletes nothing here: the Uninstall button opens the program's own uninstaller, and it decides what to remove. Programs that did not report an uninstaller have no button.</value>
+  </data>
+  <data name="Opt.Apps.Summary.Total" xml:space="preserve">
+    <value>Programs</value>
+  </data>
+  <data name="Opt.Apps.Summary.Size" xml:space="preserve">
+    <value>Declared space</value>
+  </data>
+  <data name="Opt.Apps.Summary.Largest" xml:space="preserve">
+    <value>Largest program</value>
+  </data>
+  <data name="Opt.Apps.Summary.NoUninstaller" xml:space="preserve">
+    <value>No uninstaller</value>
+  </data>
+  <data name="Opt.Apps.Sort" xml:space="preserve">
+    <value>Sort by</value>
+  </data>
+  <data name="Opt.Apps.Sort.Size" xml:space="preserve">
+    <value>Size</value>
+  </data>
+  <data name="Opt.Apps.Sort.Name" xml:space="preserve">
+    <value>Name</value>
+  </data>
+  <data name="Opt.Apps.Sort.Date" xml:space="preserve">
+    <value>Date</value>
+  </data>
+  <data name="Opt.Apps.Search" xml:space="preserve">
+    <value>Search by name or publisher</value>
+  </data>
+  <data name="Opt.Apps.Empty" xml:space="preserve">
+    <value>No programs match this search.</value>
+  </data>
+  <data name="Opt.Apps.Showing" xml:space="preserve">
+    <value>Showing {0} of {1} programs. Use search to find the others.</value>
+  </data>
+  <data name="Opt.Apps.ReadFailed" xml:space="preserve">
+    <value>Could not read the installed programs: {0}</value>
+  </data>
+  <data name="Opt.Apps.Meta.SizeUnknown" xml:space="preserve">
+    <value>Size not reported</value>
+  </data>
+  <data name="Opt.Apps.Meta.Date" xml:space="preserve">
+    <value>installed on {0}</value>
+  </data>
+  <data name="Opt.Apps.Meta.User" xml:space="preserve">
+    <value>this user only</value>
+  </data>
+  <data name="Opt.Apps.Uninstall" xml:space="preserve">
+    <value>Uninstall</value>
+  </data>
+  <data name="Opt.Apps.NoUninstaller" xml:space="preserve">
+    <value>This program did not report an uninstaller m1vClock can open. Use Windows Settings.</value>
+  </data>
+  <data name="Opt.Apps.Confirm.Title" xml:space="preserve">
+    <value>Uninstall {0}?</value>
+  </data>
+  <data name="Opt.Apps.Confirm.Message" xml:space="preserve">
+    <value>m1vClock will open the program's own uninstaller. It may ask for administrator permission, and it decides what to remove; m1vClock deletes nothing.</value>
+  </data>
+  <data name="Opt.Apps.Confirm.Line" xml:space="preserve">
+    <value>The uninstaller of {0} will be opened.</value>
+  </data>
+  <data name="Opt.Apps.Confirm.Undo" xml:space="preserve">
+    <value>m1vClock cannot undo an uninstall. To get the program back, it has to be installed again.</value>
+  </data>
+  <data name="Opt.Apps.Confirm.Action" xml:space="preserve">
+    <value>Open uninstaller</value>
+  </data>
+  <data name="Opt.Apps.Opened" xml:space="preserve">
+    <value>The uninstaller of {0} was opened. When it finishes, use Refresh to see the new list.</value>
+  </data>
+  <data name="Opt.Apps.LaunchFailed" xml:space="preserve">
+    <value>Could not open the uninstaller of {0}: {1}</value>
+  </data>
+  <data name="Opt.Tweaks.Intro" xml:space="preserve">
+    <value>Small Windows tweaks for gaming. All of them can be turned off again, they only touch what each card describes, and none lowers Windows security: Defender, UAC, Windows Update and core isolation stay as they are. Before each change m1vClock shows what will be written, and Restore originals brings everything back to how it was before you used this page.</value>
+  </data>
+  <data name="Opt.Tweaks.UserNote" xml:space="preserve">
+    <value>User tweaks apply to the account {0}.</value>
+  </data>
+  <data name="Opt.Tweaks.Summary.Total" xml:space="preserve">
+    <value>Tweaks</value>
+  </data>
+  <data name="Opt.Tweaks.Summary.On" xml:space="preserve">
+    <value>On</value>
+  </data>
+  <data name="Opt.Tweaks.Summary.Off" xml:space="preserve">
+    <value>Off</value>
+  </data>
+  <data name="Opt.Tweaks.Summary.Changed" xml:space="preserve">
+    <value>Changed by m1vClock</value>
+  </data>
+  <data name="Opt.Tweaks.State.On" xml:space="preserve">
+    <value>On</value>
+  </data>
+  <data name="Opt.Tweaks.State.Off" xml:space="preserve">
+    <value>Off</value>
+  </data>
+  <data name="Opt.Tweaks.State.Mixed" xml:space="preserve">
+    <value>Partial</value>
+  </data>
+  <data name="Opt.Tweaks.State.Unavailable" xml:space="preserve">
+    <value>Unavailable</value>
+  </data>
+  <data name="Opt.Tweaks.Meta.Restart" xml:space="preserve">
+    <value>needs a PC restart</value>
+  </data>
+  <data name="Opt.Tweaks.Meta.Admin" xml:space="preserve">
+    <value>needs m1vClock as administrator</value>
+  </data>
+  <data name="Opt.Tweaks.Meta.Changed" xml:space="preserve">
+    <value>changed by m1vClock</value>
+  </data>
+  <data name="Opt.Tweaks.Action.On" xml:space="preserve">
+    <value>Turn on</value>
+  </data>
+  <data name="Opt.Tweaks.Action.Off" xml:space="preserve">
+    <value>Turn off</value>
+  </data>
+  <data name="Opt.Tweaks.Issue.NoHighPerformancePlan" xml:space="preserve">
+    <value>This Windows does not have the High performance plan, and m1vClock does not create power plans.</value>
+  </data>
+  <data name="Opt.Tweaks.Issue.NoPlanToReturnTo" xml:space="preserve">
+    <value>There is no other power plan to go back to.</value>
+  </data>
+  <data name="Opt.Tweaks.Issue.ReadFailed" xml:space="preserve">
+    <value>Could not read the state of this tweak.</value>
+  </data>
+  <data name="Opt.Tweaks.Tip.NeedsAdmin" xml:space="preserve">
+    <value>Needs m1vClock as administrator.</value>
+  </data>
+  <data name="Opt.Tweaks.Value.Absent" xml:space="preserve">
+    <value>absent</value>
+  </data>
+  <data name="Opt.Tweaks.Change.TitleOn" xml:space="preserve">
+    <value>Turn this tweak on?</value>
+  </data>
+  <data name="Opt.Tweaks.Change.TitleOff" xml:space="preserve">
+    <value>Turn this tweak off?</value>
+  </data>
+  <data name="Opt.Tweaks.Change.Message" xml:space="preserve">
+    <value>Tweak: {0}. m1vClock will write what is listed below. Each line goes into the change history and can be undone.</value>
+  </data>
+  <data name="Opt.Tweaks.Change.Line" xml:space="preserve">
+    <value>{0}: {1} → {2}</value>
+  </data>
+  <data name="Opt.Tweaks.Change.Restart" xml:space="preserve">
+    <value>This change only takes effect after restarting the PC.</value>
+  </data>
+  <data name="Opt.Tweaks.Change.Undo" xml:space="preserve">
+    <value>To undo: Restore originals on this page or the change history. Turning a tweak off writes the Windows default values.</value>
+  </data>
+  <data name="Opt.Tweaks.Change.ConfirmOn" xml:space="preserve">
+    <value>Turn on</value>
+  </data>
+  <data name="Opt.Tweaks.Change.ConfirmOff" xml:space="preserve">
+    <value>Turn off</value>
+  </data>
+  <data name="Opt.Tweaks.Done.On" xml:space="preserve">
+    <value>Tweak turned on: {0}.</value>
+  </data>
+  <data name="Opt.Tweaks.Done.Off" xml:space="preserve">
+    <value>Tweak turned off: {0}.</value>
+  </data>
+  <data name="Opt.Tweaks.Done.Restart" xml:space="preserve">
+    <value>Restart the PC for it to take effect.</value>
+  </data>
+  <data name="Opt.Tweaks.Done.MouseLater" xml:space="preserve">
+    <value>Windows did not apply the mouse right away; it takes effect after signing out and in.</value>
+  </data>
+  <data name="Opt.Tweaks.Failed" xml:space="preserve">
+    <value>Could not change {0}: {1}</value>
+  </data>
+  <data name="Opt.Tweaks.ReadFailed" xml:space="preserve">
+    <value>Could not read the tweaks: {0}</value>
+  </data>
+  <data name="Opt.Tweaks.Restore" xml:space="preserve">
+    <value>Restore originals</value>
+  </data>
+  <data name="Opt.Tweaks.Restore.Tip" xml:space="preserve">
+    <value>Only available once m1vClock has changed a tweak.</value>
+  </data>
+  <data name="Opt.Tweaks.Restore.Title" xml:space="preserve">
+    <value>Restore the original values?</value>
+  </data>
+  <data name="Opt.Tweaks.Restore.Message" xml:space="preserve">
+    <value>m1vClock will undo, newest first, everything it changed on this page. Changes by other programs made after them may prevent part of the undo.</value>
+  </data>
+  <data name="Opt.Tweaks.Restore.Line" xml:space="preserve">
+    <value>Tweaks with m1vClock changes: {0}</value>
+  </data>
+  <data name="Opt.Tweaks.Restore.Undo" xml:space="preserve">
+    <value>After that each tweak is back to how it was before you used m1vClock.</value>
+  </data>
+  <data name="Opt.Tweaks.Restore.Confirm" xml:space="preserve">
+    <value>Restore</value>
+  </data>
+  <data name="Opt.Tweaks.Restore.Done" xml:space="preserve">
+    <value>{0} changes were undone.</value>
+  </data>
+  <data name="Opt.Tweaks.Restore.Partial" xml:space="preserve">
+    <value>Some changes could not be undone: {0}</value>
+  </data>
+  <data name="Opt.Tweaks.power.Title" xml:space="preserve">
+    <value>Power plan: High performance</value>
+  </data>
+  <data name="Opt.Tweaks.power.Description" xml:space="preserve">
+    <value>Keeps the CPU ready to boost at once, without aggressive power saving.</value>
+  </data>
+  <data name="Opt.Tweaks.power.Effect" xml:space="preserve">
+    <value>Fewer stutters in some games. On laptops it uses more battery. Turning it off returns to the plan that was active before.</value>
+  </data>
+  <data name="Opt.Tweaks.gamemode.Title" xml:space="preserve">
+    <value>Game Mode</value>
+  </data>
+  <data name="Opt.Tweaks.gamemode.Description" xml:space="preserve">
+    <value>Gives the game priority and keeps Windows Update from installing or restarting during a match.</value>
+  </data>
+  <data name="Opt.Tweaks.gamemode.Effect" xml:space="preserve">
+    <value>Recommended on: it is the Windows 11 default.</value>
+  </data>
+  <data name="Opt.Tweaks.gamedvr.Title" xml:space="preserve">
+    <value>Turn off background recording (Game DVR)</value>
+  </data>
+  <data name="Opt.Tweaks.gamedvr.Description" xml:space="preserve">
+    <value>Turns off the Xbox Game Bar's continuous capture, which records the last minutes of gameplay all the time.</value>
+  </data>
+  <data name="Opt.Tweaks.gamedvr.Effect" xml:space="preserve">
+    <value>Can recover a few FPS and reduce GPU and disk use. You lose the Game Bar's record-what-just-happened.</value>
+  </data>
+  <data name="Opt.Tweaks.hags.Title" xml:space="preserve">
+    <value>Hardware-accelerated GPU scheduling</value>
+  </data>
+  <data name="Opt.Tweaks.hags.Description" xml:space="preserve">
+    <value>The graphics card manages its own work queue instead of the CPU.</value>
+  </data>
+  <data name="Opt.Tweaks.hags.Effect" xml:space="preserve">
+    <value>Required for DLSS 3 Frame Generation. May lower latency. Needs a compatible card and driver and a PC restart.</value>
+  </data>
+  <data name="Opt.Tweaks.windowed.Title" xml:space="preserve">
+    <value>Optimizations for windowed games</value>
+  </data>
+  <data name="Opt.Tweaks.windowed.Description" xml:space="preserve">
+    <value>Makes DirectX 10 and 11 games in a window or borderless use the modern presentation model (flip).</value>
+  </data>
+  <data name="Opt.Tweaks.windowed.Effect" xml:space="preserve">
+    <value>Lower latency and VRR support in a window. A Windows 11 feature.</value>
+  </data>
+  <data name="Opt.Tweaks.mouse.Title" xml:space="preserve">
+    <value>Turn off mouse acceleration</value>
+  </data>
+  <data name="Opt.Tweaks.mouse.Description" xml:space="preserve">
+    <value>Unchecks Enhance pointer precision: the cursor always moves the same distance for the same movement.</value>
+  </data>
+  <data name="Opt.Tweaks.mouse.Effect" xml:space="preserve">
+    <value>Does not change FPS, but makes aim consistent in shooters. Takes effect at once.</value>
+  </data>
+  <data name="Opt.Repair.Intro" xml:space="preserve">
+    <value>Here m1vClock only checks. Nothing is repaired or changed: if a problem shows up, you get the command to run yourself. The checks need m1vClock as administrator, can take several minutes and can be cancelled. If you leave this page, the check in progress is cancelled.</value>
+  </data>
+  <data name="Opt.Repair.NeedAdmin" xml:space="preserve">
+    <value>Open m1vClock as administrator to run the checks.</value>
+  </data>
+  <data name="Opt.Repair.Quick.Title" xml:space="preserve">
+    <value>Windows components: quick check (DISM)</value>
+  </data>
+  <data name="Opt.Repair.Quick.Description" xml:space="preserve">
+    <value>Reads only the problem flag Windows already stored about the component store, where it takes files from to repair and install features. Takes seconds.</value>
+  </data>
+  <data name="Opt.Repair.Full.Title" xml:space="preserve">
+    <value>Windows components: full check (DISM)</value>
+  </data>
+  <data name="Opt.Repair.Full.Description" xml:space="preserve">
+    <value>Scans the whole component store for damaged files without fixing anything. Takes several minutes and uses the disk heavily.</value>
+  </data>
+  <data name="Opt.Repair.Files.Title" xml:space="preserve">
+    <value>System files (SFC)</value>
+  </data>
+  <data name="Opt.Repair.Files.Description" xml:space="preserve">
+    <value>Compares the protected Windows files with the stored copies and reports the ones that differ, without fixing anything. Takes several minutes.</value>
+  </data>
+  <data name="Opt.Repair.Run" xml:space="preserve">
+    <value>Check</value>
+  </data>
+  <data name="Opt.Repair.Cancel" xml:space="preserve">
+    <value>Cancel</value>
+  </data>
+  <data name="Opt.Repair.Running" xml:space="preserve">
+    <value>Checking: {0}</value>
+  </data>
+  <data name="Opt.Repair.Running.Percent" xml:space="preserve">
+    <value>Checking: {0} · {1}%</value>
+  </data>
+  <data name="Opt.Repair.Verdict.None" xml:space="preserve">
+    <value>Not checked yet</value>
+  </data>
+  <data name="Opt.Repair.Verdict.Healthy" xml:space="preserve">
+    <value>No problems</value>
+  </data>
+  <data name="Opt.Repair.Verdict.Repairable" xml:space="preserve">
+    <value>Repairable</value>
+  </data>
+  <data name="Opt.Repair.Verdict.NotRepairable" xml:space="preserve">
+    <value>Not repairable</value>
+  </data>
+  <data name="Opt.Repair.Verdict.ProblemsFound" xml:space="preserve">
+    <value>Problems found</value>
+  </data>
+  <data name="Opt.Repair.Verdict.NeedsAdministrator" xml:space="preserve">
+    <value>Needs administrator</value>
+  </data>
+  <data name="Opt.Repair.Verdict.Cancelled" xml:space="preserve">
+    <value>Cancelled</value>
+  </data>
+  <data name="Opt.Repair.Verdict.Failed" xml:space="preserve">
+    <value>Failed</value>
+  </data>
+  <data name="Opt.Repair.Took" xml:space="preserve">
+    <value>Took {0} min {1} s.</value>
+  </data>
+  <data name="Opt.Repair.Advice.Components" xml:space="preserve">
+    <value>Windows flagged the component store as damaged. To repair it, open Terminal as administrator and run the command below, which needs internet. m1vClock does not do this repair yet.</value>
+  </data>
+  <data name="Opt.Repair.Advice.Files" xml:space="preserve">
+    <value>To repair, open Terminal as administrator and run the command below. m1vClock does not do this repair yet.</value>
+  </data>
+  <data name="Opt.Repair.Advice.Failed" xml:space="preserve">
+    <value>The check did not finish. The reason is in the app log.</value>
+  </data>
+  <data name="Opt.Repair.Advice.FailedCode" xml:space="preserve">
+    <value>The check did not finish (code {0}). The reason is in the app log.</value>
+  </data>
+  <data name="Opt.Repair.Copy" xml:space="preserve">
+    <value>Copy command</value>
+  </data>
+  <data name="Opt.Repair.Copied" xml:space="preserve">
+    <value>Command copied.</value>
+  </data>
+  <data name="Opt.Repair.CopyFailed" xml:space="preserve">
+    <value>Could not copy. Select the command and copy it by hand.</value>
+  </data>
+  <data name="Opt.Repair.Advice.FilesFound" xml:space="preserve">
+    <value>SFC found system files that differ from the stored copies.</value>
+  </data>
+  <data name="Opt.Repair.Advice.FilesNamed" xml:space="preserve">
+    <value>Files: {0}.</value>
+  </data>
+  <data name="Opt.Repair.Advice.Trimmed" xml:space="preserve">
+    <value>If your Windows was trimmed down on purpose, like Atlas, the repair may bring back what was removed.</value>
+  </data>
+  <data name="Opt.Repair.Running.NoProgress" xml:space="preserve">
+    <value>This check does not show its progress here. It usually takes a few minutes.</value>
   </data>
 </root>

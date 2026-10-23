@@ -103,6 +103,42 @@ public sealed class BenchTempAreaTests : IDisposable
     }
 
     [Fact]
+    public async Task AFileThatAnotherProgramHoldsForAMomentDoesNotLeaveTheFolderBehind()
+    {
+        var area = BenchTempArea.Create(_parent.Path, hardened: false, _logger);
+        var path = area.Path;
+        var held = new FileStream(area.PathOf("held.dat"), FileMode.Create, FileAccess.Write, FileShare.None);
+        var release = Task.Run(
+            async () =>
+            {
+                await Task.Delay(120, TestContext.Current.CancellationToken);
+                await held.DisposeAsync();
+            },
+            TestContext.Current.CancellationToken);
+
+        area.Dispose();
+        await release;
+
+        Assert.False(Directory.Exists(path));
+        Assert.Contains(_logger.Entries, e => e.EventId.Id == 4006);
+        Assert.DoesNotContain(_logger.Entries, e => e.EventId.Id == 4002);
+    }
+
+    [Fact]
+    public async Task AFileThatStaysHeldMakesTheAreaGiveUpWithAWarningAndLeaveItForTheNextSweep()
+    {
+        var area = BenchTempArea.Create(_parent.Path, hardened: false, _logger);
+        var path = area.Path;
+        await using var held = new FileStream(area.PathOf("held.dat"), FileMode.Create, FileAccess.Write, FileShare.None);
+
+        area.Dispose();
+
+        Assert.True(Directory.Exists(path));
+        Assert.Contains(_logger.Entries, e => e.EventId.Id == 4002);
+        Assert.Equal(5, _logger.Entries.Count(e => e.EventId.Id == 4006));
+    }
+
+    [Fact]
     public void ANestedFolderInsideTheAreaIsNeverDeletedBlindly()
     {
         var area = BenchTempArea.Create(_parent.Path, hardened: false, _logger);
