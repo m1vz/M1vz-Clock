@@ -4203,4 +4203,103 @@
   <data name="Opt.Services.Showing" xml:space="preserve">
     <value>Mostrando {0} de {1} serviços. Use a busca para achar os outros.</value>
   </data>
+  <data name="Opt.Cleanup.Intro" xml:space="preserve">
+    <value>A limpeza só mexe em pastas de uma lista fixa, onde o Windows e os programas recriam o que for preciso. Só entram arquivos com mais de um dia, e o que está em uso fica. O que for apagado não vai para a lixeira e não dá para desfazer.</value>
+  </data>
+  <data name="Opt.Cleanup.Scanning" xml:space="preserve">
+    <value>Medindo as pastas…</value>
+  </data>
+  <data name="Opt.Cleanup.Summary.Total" xml:space="preserve">
+    <value>Dá para liberar</value>
+  </data>
+  <data name="Opt.Cleanup.Summary.Files" xml:space="preserve">
+    <value>Arquivos</value>
+  </data>
+  <data name="Opt.Cleanup.Summary.Places" xml:space="preserve">
+    <value>Lugares com o que limpar</value>
+  </data>
+  <data name="Opt.Cleanup.Cat.userTemp.Title" xml:space="preserve">
+    <value>Arquivos temporários do seu usuário</value>
+  </data>
+  <data name="Opt.Cleanup.Cat.userTemp.Detail" xml:space="preserve">
+    <value>Sobras de programas na pasta Temp, com mais de um dia. Programas abertos podem estar usando alguns, e esses ficam.</value>
+  </data>
+  <data name="Opt.Cleanup.Cat.windowsTemp.Title" xml:space="preserve">
+    <value>Arquivos temporários do Windows</value>
+  </data>
+  <data name="Opt.Cleanup.Cat.windowsTemp.Detail" xml:space="preserve">
+    <value>A pasta Temp do Windows, com arquivos de mais de um dia.</value>
+  </data>
+  <data name="Opt.Cleanup.Cat.updateDownloads.Title" xml:space="preserve">
+    <value>Downloads do Windows Update</value>
+  </data>
+  <data name="Opt.Cleanup.Cat.updateDownloads.Detail" xml:space="preserve">
+    <value>Atualizações que já foram baixadas. O Windows baixa de novo se precisar.</value>
+  </data>
+  <data name="Opt.Cleanup.Cat.crashDumps.Title" xml:space="preserve">
+    <value>Dumps de programas que travaram</value>
+  </data>
+  <data name="Opt.Cleanup.Cat.crashDumps.Detail" xml:space="preserve">
+    <value>Arquivos que o Windows guarda quando um programa trava. Servem só para diagnóstico e podem ser grandes.</value>
+  </data>
+  <data name="Opt.Cleanup.Cat.errorReports.Title" xml:space="preserve">
+    <value>Relatórios de erro do Windows</value>
+  </data>
+  <data name="Opt.Cleanup.Cat.errorReports.Detail" xml:space="preserve">
+    <value>Relatórios de falhas que já foram arquivados ou estão na fila.</value>
+  </data>
+  <data name="Opt.Cleanup.Cat.shaderCache.Title" xml:space="preserve">
+    <value>Cache de shaders do DirectX</value>
+  </data>
+  <data name="Opt.Cleanup.Cat.shaderCache.Detail" xml:space="preserve">
+    <value>O Windows e os jogos recriam sozinhos. O primeiro jogo depois da limpeza pode abrir um pouco mais devagar.</value>
+  </data>
+  <data name="Opt.Cleanup.Size" xml:space="preserve">
+    <value>{0} · {1} arquivo(s)</value>
+  </data>
+  <data name="Opt.Cleanup.Nothing" xml:space="preserve">
+    <value>Nada para limpar aqui.</value>
+  </data>
+  <data name="Opt.Cleanup.Rebuilds" xml:space="preserve">
+    <value>Recria sozinho</value>
+  </data>
+  <data name="Opt.Cleanup.NeedsAdmin" xml:space="preserve">
+    <value>Precisa de administrador</value>
+  </data>
+  <data name="Opt.Cleanup.NeedsAdmin.Tip" xml:space="preserve">
+    <value>Abra o m1vClock como administrador para limpar este lugar.</value>
+  </data>
+  <data name="Opt.Cleanup.Unreadable" xml:space="preserve">
+    <value>{0} arquivo(s) não puderam ser medidos.</value>
+  </data>
+  <data name="Opt.Cleanup.Action.Clean" xml:space="preserve">
+    <value>Limpar</value>
+  </data>
+  <data name="Opt.Cleanup.Action.CleanAll" xml:space="preserve">
+    <value>Limpar tudo</value>
+  </data>
+  <data name="Opt.Cleanup.Confirm.Title" xml:space="preserve">
+    <value>Apagar estes arquivos?</value>
+  </data>
+  <data name="Opt.Cleanup.Confirm.Message" xml:space="preserve">
+    <value>Os arquivos apagados não vão para a lixeira e não dá para desfazer. Só entram os que estão nas pastas da lista, têm mais de um dia e não estão em uso.</value>
+  </data>
+  <data name="Opt.Cleanup.Confirm.Line" xml:space="preserve">
+    <value>{0}: {1}</value>
+  </data>
+  <data name="Opt.Cleanup.Confirm.Undo" xml:space="preserve">
+    <value>Não há como desfazer. Se tiver dúvida, cancele.</value>
+  </data>
+  <data name="Opt.Cleanup.Confirm.Button" xml:space="preserve">
+    <value>Apagar</value>
+  </data>
+  <data name="Opt.Cleanup.Done" xml:space="preserve">
+    <value>{0} arquivo(s) apagados e {1} liberados.</value>
+  </data>
+  <data name="Opt.Cleanup.Done.Kept" xml:space="preserve">
+    <value>{0} ficaram porque estão em uso ou protegidos.</value>
+  </data>
+  <data name="Opt.Cleanup.Failed" xml:space="preserve">
+    <value>Não foi possível limpar: {0}</value>
+  </data>
 </root>

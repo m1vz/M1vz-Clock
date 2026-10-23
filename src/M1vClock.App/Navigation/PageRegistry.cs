@@ -32,6 +32,7 @@ public static class PageRegistry
         ["report"] = Resolve<ReportPageViewModel>,
         ["startup"] = Resolve<StartupPageViewModel>,
         ["services"] = Resolve<ServicesPageViewModel>,
+        ["cleanup"] = Resolve<CleanupPageViewModel>,
     };
 
     public static IReadOnlyCollection<string> Ids => Factories.Keys;

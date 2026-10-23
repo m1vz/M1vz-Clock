@@ -4203,4 +4203,103 @@
   <data name="Opt.Services.Showing" xml:space="preserve">
     <value>Showing {0} of {1} services. Use the search to find the others.</value>
   </data>
+  <data name="Opt.Cleanup.Intro" xml:space="preserve">
+    <value>Cleanup only touches folders from a fixed list, where Windows and programs recreate what they need. Only files older than a day are included, and whatever is in use stays. What gets deleted does not go to the recycle bin and cannot be undone.</value>
+  </data>
+  <data name="Opt.Cleanup.Scanning" xml:space="preserve">
+    <value>Measuring the folders…</value>
+  </data>
+  <data name="Opt.Cleanup.Summary.Total" xml:space="preserve">
+    <value>Can be freed</value>
+  </data>
+  <data name="Opt.Cleanup.Summary.Files" xml:space="preserve">
+    <value>Files</value>
+  </data>
+  <data name="Opt.Cleanup.Summary.Places" xml:space="preserve">
+    <value>Places with something to clean</value>
+  </data>
+  <data name="Opt.Cleanup.Cat.userTemp.Title" xml:space="preserve">
+    <value>Your user's temporary files</value>
+  </data>
+  <data name="Opt.Cleanup.Cat.userTemp.Detail" xml:space="preserve">
+    <value>Leftovers from programs in the Temp folder, older than a day. Open programs may be using some, and those stay.</value>
+  </data>
+  <data name="Opt.Cleanup.Cat.windowsTemp.Title" xml:space="preserve">
+    <value>Windows temporary files</value>
+  </data>
+  <data name="Opt.Cleanup.Cat.windowsTemp.Detail" xml:space="preserve">
+    <value>The Windows Temp folder, with files older than a day.</value>
+  </data>
+  <data name="Opt.Cleanup.Cat.updateDownloads.Title" xml:space="preserve">
+    <value>Windows Update downloads</value>
+  </data>
+  <data name="Opt.Cleanup.Cat.updateDownloads.Detail" xml:space="preserve">
+    <value>Updates that were already downloaded. Windows downloads them again if it needs to.</value>
+  </data>
+  <data name="Opt.Cleanup.Cat.crashDumps.Title" xml:space="preserve">
+    <value>Dumps of programs that crashed</value>
+  </data>
+  <data name="Opt.Cleanup.Cat.crashDumps.Detail" xml:space="preserve">
+    <value>Files Windows keeps when a program crashes. They are for diagnosis only and can be large.</value>
+  </data>
+  <data name="Opt.Cleanup.Cat.errorReports.Title" xml:space="preserve">
+    <value>Windows error reports</value>
+  </data>
+  <data name="Opt.Cleanup.Cat.errorReports.Detail" xml:space="preserve">
+    <value>Crash reports that were already archived or are queued.</value>
+  </data>
+  <data name="Opt.Cleanup.Cat.shaderCache.Title" xml:space="preserve">
+    <value>DirectX shader cache</value>
+  </data>
+  <data name="Opt.Cleanup.Cat.shaderCache.Detail" xml:space="preserve">
+    <value>Windows and games rebuild it on their own. The first game after cleaning may open a little slower.</value>
+  </data>
+  <data name="Opt.Cleanup.Size" xml:space="preserve">
+    <value>{0} · {1} file(s)</value>
+  </data>
+  <data name="Opt.Cleanup.Nothing" xml:space="preserve">
+    <value>Nothing to clean here.</value>
+  </data>
+  <data name="Opt.Cleanup.Rebuilds" xml:space="preserve">
+    <value>Rebuilds itself</value>
+  </data>
+  <data name="Opt.Cleanup.NeedsAdmin" xml:space="preserve">
+    <value>Needs administrator</value>
+  </data>
+  <data name="Opt.Cleanup.NeedsAdmin.Tip" xml:space="preserve">
+    <value>Open m1vClock as administrator to clean this place.</value>
+  </data>
+  <data name="Opt.Cleanup.Unreadable" xml:space="preserve">
+    <value>{0} file(s) could not be measured.</value>
+  </data>
+  <data name="Opt.Cleanup.Action.Clean" xml:space="preserve">
+    <value>Clean</value>
+  </data>
+  <data name="Opt.Cleanup.Action.CleanAll" xml:space="preserve">
+    <value>Clean everything</value>
+  </data>
+  <data name="Opt.Cleanup.Confirm.Title" xml:space="preserve">
+    <value>Delete these files?</value>
+  </data>
+  <data name="Opt.Cleanup.Confirm.Message" xml:space="preserve">
+    <value>Deleted files do not go to the recycle bin and cannot be undone. Only those in the listed folders, older than a day and not in use are included.</value>
+  </data>
+  <data name="Opt.Cleanup.Confirm.Line" xml:space="preserve">
+    <value>{0}: {1}</value>
+  </data>
+  <data name="Opt.Cleanup.Confirm.Undo" xml:space="preserve">
+    <value>There is no way to undo it. If in doubt, cancel.</value>
+  </data>
+  <data name="Opt.Cleanup.Confirm.Button" xml:space="preserve">
+    <value>Delete</value>
+  </data>
+  <data name="Opt.Cleanup.Done" xml:space="preserve">
+    <value>{0} file(s) deleted and {1} freed.</value>
+  </data>
+  <data name="Opt.Cleanup.Done.Kept" xml:space="preserve">
+    <value>{0} stayed because they are in use or protected.</value>
+  </data>
+  <data name="Opt.Cleanup.Failed" xml:space="preserve">
+    <value>Could not clean: {0}</value>
+  </data>
 </root>

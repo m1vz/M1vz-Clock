@@ -99,4 +99,7 @@ internal static partial class AppLog
 
     [LoggerMessage(EventId = 2033, Level = LogLevel.Warning, Message = "Não foi possível salvar o relatório.")]
     public static partial void ReportSaveFailed(ILogger logger, Exception exception);
+
+    [LoggerMessage(EventId = 2034, Level = LogLevel.Warning, Message = "A limpeza não terminou.")]
+    public static partial void CleanupFailed(ILogger logger, Exception exception);
 }
