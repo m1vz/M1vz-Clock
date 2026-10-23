@@ -1,3 +1,4 @@
+using M1vClock.Core.Security;
 using M1vClock.Core.Journal;
 using M1vClock.Core.RegistryValues;
 using M1vClock.Core.Results;
@@ -291,6 +292,57 @@ public sealed class ServiceManagerTests
 
             Assert.Empty(registry.Values);
         }
+    }
+}
+
+public sealed class RealElevatedServiceTests
+{
+    [Fact]
+    public async Task ElevatedAndOnRequestADummyServiceKeyIsChangedAndUndoneThroughTheRealManager()
+    {
+        Assert.SkipUnless(ElevationInfo.Current().IsElevated, "Precisa de administrador.");
+        Assert.SkipUnless(Environment.GetEnvironmentVariable("M1VCLOCK_REAL_ACTIONS") == "1", "Muda o sistema de verdade: defina M1VCLOCK_REAL_ACTIONS=1.");
+        var name = "m1vClockTeste" + Guid.NewGuid().ToString("N")[..8];
+        var keyPath = $@"{ServiceManager.ServicesKey}\{name}";
+        var registry = new WindowsRegistryAccess();
+        var address = new RegistryValueAddress(RegistryHive.LocalMachine, RegistryView.Registry64, keyPath, "Start");
+        using var temp = new TempFile();
+        var gateCount = new CountingGate();
+        using var journal = new ChangeJournal(new JournalStore(temp.At("journal.json"), NullLogger<JournalStore>.Instance), [new RegistryValueHandler(registry)], gateCount, new FakeTimeProvider(), NullLogger<ChangeJournal>.Instance);
+        var manager = new ServiceManager(new WmiServiceSource(NullLogger<WmiServiceSource>.Instance), new WindowsFileDetailsSource(NullLogger<WindowsFileDetailsSource>.Instance), journal);
+        try
+        {
+            using (var root = RegistryKey.OpenBaseKey(RegistryHive.LocalMachine, RegistryView.Registry64))
+            using (var key = root.CreateSubKey(keyPath))
+            {
+                key.SetValue("Start", 3, RegistryValueKind.DWord);
+            }
+
+            var entry = new ServiceEntry(name, "Teste do m1vClock", null, ServiceRunState.Stopped, ServiceStartMode.Manual, null, null, ServiceOrigin.ThirdParty, null, ProtectionReason.None);
+
+            var disabled = await manager.SetStartModeAsync(entry, ServiceStartMode.Disabled, TestContext.Current.CancellationToken);
+            Assert.True(disabled.Succeeded);
+            Assert.Equal(4, registry.Read(address).Data);
+
+            var automatic = await manager.SetStartModeAsync(entry, ServiceStartMode.Automatic, TestContext.Current.CancellationToken);
+            Assert.True(automatic.Succeeded);
+            Assert.Equal(2, registry.Read(address).Data);
+            Assert.Equal(2, gateCount.Calls);
+
+            var undone = journal.UndoAll();
+
+            Assert.Equal(2, undone.Undone);
+            Assert.Empty(undone.Failures);
+            Assert.Equal(3, registry.Read(address).Data);
+        }
+        finally
+        {
+            using var root = RegistryKey.OpenBaseKey(RegistryHive.LocalMachine, RegistryView.Registry64);
+            root.DeleteSubKeyTree(keyPath, throwOnMissingSubKey: false);
+        }
+
+        using var check = RegistryKey.OpenBaseKey(RegistryHive.LocalMachine, RegistryView.Registry64);
+        Assert.Null(check.OpenSubKey(keyPath));
     }
 }
 

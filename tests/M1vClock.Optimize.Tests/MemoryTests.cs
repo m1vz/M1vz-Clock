@@ -148,6 +148,22 @@ public sealed class RealMachineMemoryTests
     }
 
     [Fact]
+    public async Task ElevatedAndOnRequestThePurgeReallyEmptiesTheStandbyList()
+    {
+        Assert.SkipUnless(ElevationInfo.Current().IsElevated, "Precisa de administrador.");
+        Assert.SkipUnless(Environment.GetEnvironmentVariable("M1VCLOCK_REAL_ACTIONS") == "1", "Muda o sistema de verdade: defina M1VCLOCK_REAL_ACTIONS=1.");
+        var service = new MemoryListService(Source);
+        var before = (await service.ReadAsync(TestContext.Current.CancellationToken)).Value!;
+
+        var result = await service.PurgeStandbyAsync(TestContext.Current.CancellationToken);
+
+        Assert.Equal(PurgeStatus.Done, result.Status);
+        Assert.Equal(before.StandbyBytes > 0, result.StandbyBefore > 0);
+        Assert.True(result.StandbyAfter < result.StandbyBefore || result.StandbyBefore < 100L * 1024 * 1024, $"antes {result.StandbyBefore}, depois {result.StandbyAfter}");
+        Console.WriteLine($"PURGA REAL: antes {result.StandbyBefore / 1048576} MB, depois {result.StandbyAfter / 1048576} MB, liberado {result.Freed / 1048576} MB");
+    }
+
+    [Fact]
     public void ThePurgeNeverRunsForRealInTestsAndWithoutAdministratorItAsksForIt()
     {
         if (ElevationInfo.Current().IsElevated)

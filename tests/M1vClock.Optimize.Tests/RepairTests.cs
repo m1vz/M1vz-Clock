@@ -185,6 +185,7 @@ public sealed class RealDismTests
 
         var outcome = source.CheckHealth(scan: false, new Quiet(), TestContext.Current.CancellationToken);
 
+        Console.WriteLine($"DISM API rapida: status {outcome.Status}, estado {outcome.Health}, codigo {outcome.ErrorCode}");
         Assert.Equal(DismStatus.Done, outcome.Status);
         Assert.Contains(outcome.Health, new[] { DismHealth.Healthy, DismHealth.Repairable, DismHealth.NotRepairable });
     }
