@@ -1,3 +1,4 @@
+using M1vClock.Optimize.Services;
 using M1vClock.Optimize.Startup;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -11,6 +12,8 @@ public static class OptimizeModule
         services.AddSingleton<IStartupSource, WindowsStartupSource>();
         services.AddSingleton<IFileDetailsSource, WindowsFileDetailsSource>();
         services.AddSingleton<IStartupService, StartupService>();
+        services.AddSingleton<IServiceSource, WmiServiceSource>();
+        services.AddSingleton<IServiceManager, ServiceManager>();
         return services;
     }
 }
