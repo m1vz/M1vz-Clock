@@ -21,7 +21,8 @@ public sealed record LoadSample(
     float? GpuTemperature,
     float? CpuTemperature,
     bool GpuThermalCap = false,
-    double? Fps = null)
+    double? Fps = null,
+    double? FpsLow = null)
 {
     public const double VramFull = 97;
     public const double CpuTemperatureLimit = 95;
@@ -67,7 +68,8 @@ public sealed record SessionReport(
     double? PeakRam,
     double? PeakGpuTemperature,
     double? PeakCpuTemperature,
-    double? AverageFps);
+    double? AverageFps,
+    double? AverageFpsLow);
 
 public sealed class BottleneckSession
 {
@@ -121,7 +123,8 @@ public sealed class BottleneckSession
         Peak(s => s.RamPercent),
         Peak(s => s.GpuTemperature),
         Peak(s => s.CpuTemperature),
-        Average(s => s.Fps is > 0 ? s.Fps : null));
+        Average(s => s.Fps is > 0 ? s.Fps : null),
+        Average(s => s.FpsLow is > 0 ? s.FpsLow : null));
 
     private double? Average(Func<LoadSample, double?> select)
     {

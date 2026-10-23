@@ -4804,7 +4804,7 @@
     <value>Could not read the {0} library.</value>
   </data>
   <data name="Game.Bottleneck.Intro" xml:space="preserve">
-    <value>Every second m1vClock looks at what may be limiting the game: the GPU, the CPU (or a single core of it), video memory, RAM or temperature. Open the game, record a session here and see the distribution at the end. It does not measure frames per second yet: the conclusion comes only from how busy each part is, so it is an estimate. If you leave this page, the recording in progress is discarded.</value>
+    <value>Every second m1vClock looks at what may be limiting the game: the GPU, the CPU (or a single core of it), video memory, RAM or temperature. Open the game, record a session here and see the distribution at the end. With m1vClock as administrator it also measures the frames per second of the program in front; without administrator the conclusion comes only from how busy each part is, so it is an estimate. If you leave this page, the recording in progress is discarded.</value>
   </data>
   <data name="Game.Bottleneck.NoSensors" xml:space="preserve">
     <value>Sensors are not active right now. They are paused during benchmarks and stress tests.</value>
@@ -4919,5 +4919,23 @@
   </data>
   <data name="Game.Bottleneck.Report.None" xml:space="preserve">
     <value>The session ended without any readings.</value>
+  </data>
+  <data name="Game.Bottleneck.Metric.Fps" xml:space="preserve">
+    <value>Frames per second</value>
+  </data>
+  <data name="Game.Bottleneck.Metric.FpsLow" xml:space="preserve">
+    <value>1% low</value>
+  </data>
+  <data name="Game.Bottleneck.Hint.NeedsAdmin" xml:space="preserve">
+    <value>Open m1vClock as administrator to measure frames per second.</value>
+  </data>
+  <data name="Game.Bottleneck.Hint.Failed" xml:space="preserve">
+    <value>Could not measure frames per second. The reason is in the app log.</value>
+  </data>
+  <data name="Game.Bottleneck.Hint.NoGame" xml:space="preserve">
+    <value>Keep the game in front, with the image moving, to measure frames per second.</value>
+  </data>
+  <data name="Game.Bottleneck.Report.Fps" xml:space="preserve">
+    <value>Frames per second: average {0}, 1% low {1}</value>
   </data>
 </root>

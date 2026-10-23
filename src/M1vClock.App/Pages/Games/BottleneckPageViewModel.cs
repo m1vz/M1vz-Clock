@@ -7,6 +7,7 @@ using M1vClock.App.Localization;
 using M1vClock.App.Navigation;
 using M1vClock.App.Services;
 using M1vClock.Games.Bottleneck;
+using M1vClock.Games.Frames;
 using M1vClock.Hardware.Sensors;
 
 namespace M1vClock.App.Pages.Games;
@@ -23,20 +24,24 @@ public sealed partial class BottleneckPageViewModel : PageViewModel, IDisposable
     private readonly IUiThread _ui;
     private readonly AppSettingsService _settings;
     private readonly TimeProvider _clock;
+    private readonly IFrameMonitor _frames;
     private IDisposable? _lease;
+    private IDisposable? _framesLease;
     private BottleneckSession? _session;
 
-    public BottleneckPageViewModel(ISensorService sensors, IUiThread ui, AppSettingsService settings, TimeProvider clock)
+    public BottleneckPageViewModel(ISensorService sensors, IUiThread ui, AppSettingsService settings, TimeProvider clock, IFrameMonitor frames)
         : base(PageCatalog.Find("bottleneck"))
     {
         ArgumentNullException.ThrowIfNull(sensors);
         ArgumentNullException.ThrowIfNull(ui);
         ArgumentNullException.ThrowIfNull(settings);
         ArgumentNullException.ThrowIfNull(clock);
+        ArgumentNullException.ThrowIfNull(frames);
         _sensors = sensors;
         _ui = ui;
         _settings = settings;
         _clock = clock;
+        _frames = frames;
         DurationLabels = DurationMinutes.Select(m => Loc.Get($"Game.Bottleneck.Duration.{m}")).ToList();
         DurationIndex = 1;
     }
@@ -46,6 +51,8 @@ public sealed partial class BottleneckPageViewModel : PageViewModel, IDisposable
     public ObservableCollection<LimiterRowView> ReportRows { get; } = [];
 
     public bool HasLive => !IsWaiting;
+
+    public bool HasFpsHint => FpsHint.Length > 0;
 
     public bool CanStart => !IsRecording && !IsWaiting;
 
@@ -77,6 +84,16 @@ public sealed partial class BottleneckPageViewModel : PageViewModel, IDisposable
 
     [ObservableProperty]
     public partial MetricState LiveTone { get; set; } = MetricState.Neutral;
+
+    [ObservableProperty]
+    public partial string FpsText { get; set; } = Units.Missing;
+
+    [ObservableProperty]
+    public partial string FpsLowText { get; set; } = Units.Missing;
+
+    [ObservableProperty]
+    [NotifyPropertyChangedFor(nameof(HasFpsHint))]
+    public partial string FpsHint { get; set; } = string.Empty;
 
     [ObservableProperty]
     public partial string GpuText { get; set; } = Units.Missing;
@@ -113,6 +130,10 @@ public sealed partial class BottleneckPageViewModel : PageViewModel, IDisposable
     public partial string ReportAverages { get; set; } = string.Empty;
 
     [ObservableProperty]
+    [NotifyPropertyChangedFor(nameof(HasReportFps))]
+    public partial string ReportFps { get; set; } = string.Empty;
+
+    [ObservableProperty]
     public partial string ReportPeaks { get; set; } = string.Empty;
 
     [ObservableProperty]
@@ -124,11 +145,14 @@ public sealed partial class BottleneckPageViewModel : PageViewModel, IDisposable
 
     public bool HasReportWarning => ReportWarning.Length > 0;
 
+    public bool HasReportFps => ReportFps.Length > 0;
+
     public override void OnNavigatedTo()
     {
         _sensors.SnapshotReady += OnSnapshot;
         _sensors.StateChanged += OnStateChanged;
         _lease ??= _sensors.Subscribe();
+        _framesLease ??= _frames.Acquire();
         OnPropertyChanged(nameof(HasNoSensors));
         if (_sensors.Latest is { } latest)
         {
@@ -176,6 +200,8 @@ public sealed partial class BottleneckPageViewModel : PageViewModel, IDisposable
         _sensors.StateChanged -= OnStateChanged;
         _lease?.Dispose();
         _lease = null;
+        _framesLease?.Dispose();
+        _framesLease = null;
     }
 
     private void OnSnapshot(object? sender, SensorSnapshot snapshot) => _ui.Post(() => Apply(snapshot));
@@ -186,13 +212,22 @@ public sealed partial class BottleneckPageViewModel : PageViewModel, IDisposable
 
     private void Apply(SensorSnapshot snapshot)
     {
-        var sample = BottleneckSampler.From(snapshot);
+        var frames = _frames.GetForegroundStats();
+        var sample = BottleneckSampler.From(snapshot, frames);
         var unit = _settings.Current.TemperatureUnit;
         var limiter = sample.Classify();
         IsWaiting = false;
         LiveTitle = Loc.Get($"Game.Bottleneck.Limiter.{limiter}");
         LiveAdvice = Loc.Get($"Game.Bottleneck.Advice.{limiter}");
         LiveTone = ToneOf(limiter);
+        FpsText = frames is null ? Units.Missing : frames.Fps.ToString("0", Loc.Culture);
+        FpsLowText = frames is null ? Units.Missing : frames.OnePercentLowFps.ToString("0", Loc.Culture);
+        FpsHint = _frames.State switch
+        {
+            FrameMonitorState.NeedsAdministrator => Loc.Get("Game.Bottleneck.Hint.NeedsAdmin"),
+            FrameMonitorState.Failed => Loc.Get("Game.Bottleneck.Hint.Failed"),
+            _ => frames is null ? Loc.Get("Game.Bottleneck.Hint.NoGame") : string.Empty,
+        };
         GpuText = SensorFormat.Value(SensorKind.Load, sample.GpuLoad, unit, Loc.Culture);
         CpuText = SensorFormat.Value(SensorKind.Load, sample.CpuTotal, unit, Loc.Culture);
         CoreText = SensorFormat.Value(SensorKind.Load, sample.CpuBusiestCore, unit, Loc.Culture);
@@ -242,6 +277,9 @@ public sealed partial class BottleneckPageViewModel : PageViewModel, IDisposable
             "Game.Bottleneck.Report.Averages",
             SensorFormat.Value(SensorKind.Load, (float?)report.AverageGpuLoad, unit, Loc.Culture),
             SensorFormat.Value(SensorKind.Load, (float?)report.AverageCpuTotal, unit, Loc.Culture));
+        ReportFps = report.AverageFps is { } averageFps
+            ? Loc.Format("Game.Bottleneck.Report.Fps", averageFps.ToString("0", Loc.Culture), (report.AverageFpsLow ?? 0).ToString("0", Loc.Culture))
+            : string.Empty;
         ReportPeaks = Loc.Format(
             "Game.Bottleneck.Report.Peaks",
             SensorFormat.Value(SensorKind.Load, (float?)report.PeakCpuCore, unit, Loc.Culture),
@@ -263,7 +301,7 @@ public sealed partial class BottleneckPageViewModel : PageViewModel, IDisposable
     private void ClearReport()
     {
         ReportRows.Clear();
-        ReportMain = ReportAdvice = ReportSamples = ReportAverages = ReportPeaks = ReportWarning = string.Empty;
+        ReportMain = ReportAdvice = ReportSamples = ReportAverages = ReportFps = ReportPeaks = ReportWarning = string.Empty;
     }
 
     private static MetricState ToneOf(Limiter limiter) => limiter switch

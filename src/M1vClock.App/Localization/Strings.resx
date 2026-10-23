@@ -4804,7 +4804,7 @@
     <value>Não foi possível ler a biblioteca do {0}.</value>
   </data>
   <data name="Game.Bottleneck.Intro" xml:space="preserve">
-    <value>A cada segundo o m1vClock olha o que pode estar limitando o jogo: a GPU, a CPU (ou um só núcleo dela), a memória de vídeo, a RAM ou a temperatura. Abra o jogo, grave uma sessão aqui e veja a distribuição no fim. Ele ainda não mede os quadros por segundo: a conclusão vem só do uso de cada peça, então é uma estimativa. Se você sair desta página, a gravação em andamento é descartada.</value>
+    <value>A cada segundo o m1vClock olha o que pode estar limitando o jogo: a GPU, a CPU (ou um só núcleo dela), a memória de vídeo, a RAM ou a temperatura. Abra o jogo, grave uma sessão aqui e veja a distribuição no fim. Com o m1vClock como administrador ele também mede os quadros por segundo do programa que estiver na frente; sem administrador a conclusão vem só do uso de cada peça, então é uma estimativa. Se você sair desta página, a gravação em andamento é descartada.</value>
   </data>
   <data name="Game.Bottleneck.NoSensors" xml:space="preserve">
     <value>Os sensores não estão ativos agora. Eles ficam pausados durante benchmarks e testes de estresse.</value>
@@ -4919,5 +4919,23 @@
   </data>
   <data name="Game.Bottleneck.Report.None" xml:space="preserve">
     <value>A sessão terminou sem nenhuma medição.</value>
+  </data>
+  <data name="Game.Bottleneck.Metric.Fps" xml:space="preserve">
+    <value>Quadros por segundo</value>
+  </data>
+  <data name="Game.Bottleneck.Metric.FpsLow" xml:space="preserve">
+    <value>1% pior (1% low)</value>
+  </data>
+  <data name="Game.Bottleneck.Hint.NeedsAdmin" xml:space="preserve">
+    <value>Abra o m1vClock como administrador para medir os quadros por segundo.</value>
+  </data>
+  <data name="Game.Bottleneck.Hint.Failed" xml:space="preserve">
+    <value>Não foi possível medir os quadros por segundo. O motivo está no log do app.</value>
+  </data>
+  <data name="Game.Bottleneck.Hint.NoGame" xml:space="preserve">
+    <value>Deixe o jogo na frente, com a imagem se movendo, para medir os quadros por segundo.</value>
+  </data>
+  <data name="Game.Bottleneck.Report.Fps" xml:space="preserve">
+    <value>Quadros por segundo: média {0}, 1% pior {1}</value>
   </data>
 </root>

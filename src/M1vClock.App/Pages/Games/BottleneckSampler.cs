@@ -1,5 +1,6 @@
 using System.Text.RegularExpressions;
 using M1vClock.Games.Bottleneck;
+using M1vClock.Games.Frames;
 using M1vClock.Hardware.Sensors;
 
 namespace M1vClock.App.Pages.Games;
@@ -9,7 +10,7 @@ public static partial class BottleneckSampler
     [GeneratedRegex(@"^CPU Core #\d+$", RegexOptions.CultureInvariant)]
     private static partial Regex CoreName();
 
-    public static LoadSample From(SensorSnapshot snapshot)
+    public static LoadSample From(SensorSnapshot snapshot, FrameStats? frames = null)
     {
         ArgumentNullException.ThrowIfNull(snapshot);
         return new LoadSample(
@@ -19,7 +20,9 @@ public static partial class BottleneckSampler
             VideoMemoryPercent(snapshot),
             snapshot.MemoryLoad,
             Positive(snapshot.GpuTemperature),
-            Positive(snapshot.CpuTemperature));
+            Positive(snapshot.CpuTemperature),
+            Fps: frames?.Fps,
+            FpsLow: frames?.OnePercentLowFps);
     }
 
     public static float? BusiestCore(SensorSnapshot snapshot)

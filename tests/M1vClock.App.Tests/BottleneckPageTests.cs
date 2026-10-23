@@ -4,6 +4,7 @@ using M1vClock.App.Pages.Games;
 using M1vClock.App.Services;
 using M1vClock.Core.Settings;
 using M1vClock.Games.Bottleneck;
+using M1vClock.Games.Frames;
 using M1vClock.Hardware.Sensors;
 using Microsoft.Extensions.Logging.Abstractions;
 using Microsoft.Extensions.Time.Testing;
@@ -37,6 +38,32 @@ internal static class Snapshots
         R(SensorHardware.Gpu, "GPU Memory Total", SensorKind.SmallData, 8176),
         R(SensorHardware.Gpu, "GPU Core", SensorKind.Temperature, 75),
         R(SensorHardware.Memory, "Memory", SensorKind.Load, 60, "/ram/load/0"));
+}
+
+internal sealed class FakeFrames : IFrameMonitor
+{
+    public FrameMonitorState State { get; set; } = FrameMonitorState.Running;
+
+    public FrameStats? Foreground { get; set; }
+
+    public int Acquired { get; private set; }
+
+    public int Released { get; private set; }
+
+    public IDisposable Acquire()
+    {
+        Acquired++;
+        return new Lease(() => Released++);
+    }
+
+    public FrameStats? GetStats(int processId) => Foreground;
+
+    public FrameStats? GetForegroundStats() => Foreground;
+
+    private sealed class Lease(Action release) : IDisposable
+    {
+        public void Dispose() => release();
+    }
 }
 
 public sealed class BottleneckSamplerTests
@@ -101,6 +128,7 @@ public sealed class BottleneckPageViewModelTests : IDisposable
 {
     private readonly DirectoryInfo _temp = Directory.CreateTempSubdirectory("m1v-bottleneck-");
     private readonly FakeSensorService _sensors = new() { State = SensorServiceState.Running };
+    private readonly FakeFrames _frames = new();
     private readonly FakeTimeProvider _clock = new(new DateTimeOffset(2026, 10, 23, 12, 0, 0, TimeSpan.Zero));
     private readonly AppSettingsService _settings;
     private readonly BottleneckPageViewModel _page;
@@ -109,7 +137,7 @@ public sealed class BottleneckPageViewModelTests : IDisposable
     {
         var store = new SettingsStore<AppSettings>(Path.Combine(_temp.FullName, "settings.json"), AppSettings.CurrentSchemaVersion, [], NullLogger.Instance);
         _settings = new AppSettingsService(store, NullLogger<AppSettingsService>.Instance);
-        _page = new BottleneckPageViewModel(_sensors, new InlineUiThread(), _settings, _clock);
+        _page = new BottleneckPageViewModel(_sensors, new InlineUiThread(), _settings, _clock, _frames);
     }
 
     public void Dispose()
@@ -155,6 +183,84 @@ public sealed class BottleneckPageViewModelTests : IDisposable
         Assert.Equal("42 °C", _page.GpuTempText);
         Assert.Equal("—", _page.CpuTempText);
         Assert.StartsWith("Nem a CPU nem a GPU", _page.LiveAdvice, StringComparison.Ordinal);
+    }
+
+    [Fact]
+    public void TheFramesPerSecondOfTheProgramInFrontAreShownWithTheOnePercentLow()
+    {
+        _frames.Foreground = new FrameStats(42, "jogo", 143.4, 6.97, 98.6, []);
+        _page.OnNavigatedTo();
+
+        Tick(Snapshots.Busy(gpu: 97));
+
+        Assert.Equal("143", _page.FpsText);
+        Assert.Equal("99", _page.FpsLowText);
+        Assert.False(_page.HasFpsHint);
+    }
+
+    [Theory]
+    [InlineData(FrameMonitorState.NeedsAdministrator, "Abra o m1vClock como administrador para medir os quadros por segundo.")]
+    [InlineData(FrameMonitorState.Failed, "Não foi possível medir os quadros por segundo. O motivo está no log do app.")]
+    [InlineData(FrameMonitorState.Running, "Deixe o jogo na frente, com a imagem se movendo, para medir os quadros por segundo.")]
+    public void WithoutFramesTheHintExplainsWhyAndTheValuesAreDashes(FrameMonitorState state, string hint)
+    {
+        _frames.State = state;
+        _page.OnNavigatedTo();
+
+        Tick(Snapshots.Busy(gpu: 97));
+
+        Assert.Equal("—", _page.FpsText);
+        Assert.Equal("—", _page.FpsLowText);
+        Assert.Equal(hint, _page.FpsHint);
+        Assert.True(_page.HasFpsHint);
+    }
+
+    [Fact]
+    public void TheFrameMeasurementIsAcquiredOnArrivingAndReleasedOnLeaving()
+    {
+        _page.OnNavigatedTo();
+        _page.OnNavigatedTo();
+
+        Assert.Equal(1, _frames.Acquired);
+
+        _page.OnNavigatedFrom();
+
+        Assert.Equal(1, _frames.Released);
+    }
+
+    [Fact]
+    public void ASessionWithFramesReportsTheAverageFpsAndOnePercentLow()
+    {
+        _frames.Foreground = new FrameStats(42, "jogo", 60, 16.7, 45, []);
+        _page.OnNavigatedTo();
+        Tick(Snapshots.Idle());
+        _page.Start();
+        for (var i = 0; i < 12; i++)
+        {
+            Tick(Snapshots.Busy(gpu: 97));
+        }
+
+        _page.Stop();
+
+        Assert.Equal("Quadros por segundo: média 60, 1% pior 45", _page.ReportFps);
+        Assert.True(_page.HasReportFps);
+    }
+
+    [Fact]
+    public void ASessionWithoutFramesHasNoFpsLine()
+    {
+        _page.OnNavigatedTo();
+        Tick(Snapshots.Idle());
+        _page.Start();
+        for (var i = 0; i < 12; i++)
+        {
+            Tick(Snapshots.Busy(gpu: 97));
+        }
+
+        _page.Stop();
+
+        Assert.Equal(string.Empty, _page.ReportFps);
+        Assert.False(_page.HasReportFps);
     }
 
     [Fact]
