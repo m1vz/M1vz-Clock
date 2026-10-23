@@ -42,6 +42,7 @@
           <dc:SegmentedControl ItemsSource="{Binding FilterLabels}" SelectedIndex="{Binding FilterIndex, Mode=TwoWay}" Width="320" HorizontalAlignment="Left"
                                AutomationProperties.Name="{l:Text Opt.Services.Filter}" />
           <TextBox Style="{StaticResource Input.Text}" Text="{Binding SearchText, UpdateSourceTrigger=PropertyChanged}" Margin="0,16,0,0"
+                   dc:Assist.Icon="{StaticResource Icon.Search}" dc:Assist.Placeholder="{l:Text Opt.Services.Search}"
                    AutomationProperties.Name="{l:Text Opt.Services.Search}" ToolTip="{l:Text Opt.Services.Search}" />
         </StackPanel>
       </Border>
