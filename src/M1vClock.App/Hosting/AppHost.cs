@@ -103,6 +103,7 @@ public static class AppHost
         builder.Services.AddTransient<TweaksPageViewModel>();
         builder.Services.AddTransient<RepairPageViewModel>();
         builder.Services.AddTransient<LibraryPageViewModel>();
+        builder.Services.AddTransient<BottleneckPageViewModel>();
         builder.Services.AddSingleton<IReportCollector, ReportCollector>();
         return builder.Build();
     }

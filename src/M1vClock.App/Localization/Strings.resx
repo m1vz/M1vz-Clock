@@ -4803,4 +4803,121 @@
   <data name="Game.Library.ReadFailed" xml:space="preserve">
     <value>Não foi possível ler a biblioteca do {0}.</value>
   </data>
+  <data name="Game.Bottleneck.Intro" xml:space="preserve">
+    <value>A cada segundo o m1vClock olha o que pode estar limitando o jogo: a GPU, a CPU (ou um só núcleo dela), a memória de vídeo, a RAM ou a temperatura. Abra o jogo, grave uma sessão aqui e veja a distribuição no fim. Ele ainda não mede os quadros por segundo: a conclusão vem só do uso de cada peça, então é uma estimativa. Se você sair desta página, a gravação em andamento é descartada.</value>
+  </data>
+  <data name="Game.Bottleneck.NoSensors" xml:space="preserve">
+    <value>Os sensores não estão ativos agora. Eles ficam pausados durante benchmarks e testes de estresse.</value>
+  </data>
+  <data name="Game.Bottleneck.Waiting" xml:space="preserve">
+    <value>Esperando a primeira leitura dos sensores…</value>
+  </data>
+  <data name="Game.Bottleneck.Now" xml:space="preserve">
+    <value>Agora</value>
+  </data>
+  <data name="Game.Bottleneck.Metric.Gpu" xml:space="preserve">
+    <value>Uso da GPU</value>
+  </data>
+  <data name="Game.Bottleneck.Metric.Cpu" xml:space="preserve">
+    <value>Uso da CPU</value>
+  </data>
+  <data name="Game.Bottleneck.Metric.Core" xml:space="preserve">
+    <value>Núcleo mais ocupado</value>
+  </data>
+  <data name="Game.Bottleneck.Metric.Vram" xml:space="preserve">
+    <value>Memória de vídeo</value>
+  </data>
+  <data name="Game.Bottleneck.Metric.Ram" xml:space="preserve">
+    <value>Memória RAM</value>
+  </data>
+  <data name="Game.Bottleneck.Metric.GpuTemp" xml:space="preserve">
+    <value>Temperatura da GPU</value>
+  </data>
+  <data name="Game.Bottleneck.Metric.CpuTemp" xml:space="preserve">
+    <value>Temperatura da CPU</value>
+  </data>
+  <data name="Game.Bottleneck.Limiter.Gpu" xml:space="preserve">
+    <value>GPU no limite</value>
+  </data>
+  <data name="Game.Bottleneck.Limiter.Cpu" xml:space="preserve">
+    <value>Gargalo de CPU</value>
+  </data>
+  <data name="Game.Bottleneck.Limiter.Vram" xml:space="preserve">
+    <value>Memória de vídeo cheia</value>
+  </data>
+  <data name="Game.Bottleneck.Limiter.Ram" xml:space="preserve">
+    <value>Memória RAM cheia</value>
+  </data>
+  <data name="Game.Bottleneck.Limiter.Thermal" xml:space="preserve">
+    <value>Limitado por temperatura</value>
+  </data>
+  <data name="Game.Bottleneck.Limiter.Capped" xml:space="preserve">
+    <value>Nada no limite</value>
+  </data>
+  <data name="Game.Bottleneck.Advice.Gpu" xml:space="preserve">
+    <value>Normal em jogos pesados: a placa de vídeo está sendo bem aproveitada. Para mais FPS, reduza a resolução ou a qualidade gráfica, ou ative DLSS ou FSR.</value>
+  </data>
+  <data name="Game.Bottleneck.Advice.Cpu" xml:space="preserve">
+    <value>A CPU, ou um núcleo dela, não acompanha a GPU. Subir resolução e gráficos quase não custa FPS. Para ganhar FPS, reduza opções que pesam na CPU (distância de visão, multidões, física), feche programas em segundo plano e confira se o XMP ou EXPO da RAM está ativo na BIOS.</value>
+  </data>
+  <data name="Game.Bottleneck.Advice.Vram" xml:space="preserve">
+    <value>A memória da placa de vídeo encheu, o que causa travadas. Reduza a qualidade das texturas ou a resolução.</value>
+  </data>
+  <data name="Game.Bottleneck.Advice.Ram" xml:space="preserve">
+    <value>Há pouca RAM livre: o Windows passa a usar o disco e o jogo engasga. Feche navegadores e outros programas.</value>
+  </data>
+  <data name="Game.Bottleneck.Advice.Thermal" xml:space="preserve">
+    <value>A temperatura alta está derrubando o clock. Verifique a ventilação do gabinete, a poeira e a pasta térmica.</value>
+  </data>
+  <data name="Game.Bottleneck.Advice.Capped" xml:space="preserve">
+    <value>Nem a CPU nem a GPU estão no limite: provavelmente há trava de FPS, V-Sync ou G-Sync limitando, ou o jogo está em menu ou pausa. É normal se o FPS já é o desejado.</value>
+  </data>
+  <data name="Game.Bottleneck.Session" xml:space="preserve">
+    <value>Gravar uma sessão de jogo</value>
+  </data>
+  <data name="Game.Bottleneck.Duration" xml:space="preserve">
+    <value>Duração</value>
+  </data>
+  <data name="Game.Bottleneck.Duration.1" xml:space="preserve">
+    <value>1 min</value>
+  </data>
+  <data name="Game.Bottleneck.Duration.3" xml:space="preserve">
+    <value>3 min</value>
+  </data>
+  <data name="Game.Bottleneck.Duration.5" xml:space="preserve">
+    <value>5 min</value>
+  </data>
+  <data name="Game.Bottleneck.Duration.10" xml:space="preserve">
+    <value>10 min</value>
+  </data>
+  <data name="Game.Bottleneck.Start" xml:space="preserve">
+    <value>Gravar</value>
+  </data>
+  <data name="Game.Bottleneck.Stop" xml:space="preserve">
+    <value>Parar e ver o resultado</value>
+  </data>
+  <data name="Game.Bottleneck.Recording" xml:space="preserve">
+    <value>Gravando: {0} de {1}</value>
+  </data>
+  <data name="Game.Bottleneck.Report" xml:space="preserve">
+    <value>Resultado da sessão</value>
+  </data>
+  <data name="Game.Bottleneck.Report.Samples" xml:space="preserve">
+    <value>{0} medições</value>
+  </data>
+  <data name="Game.Bottleneck.Report.Main" xml:space="preserve">
+    <value>Principal limite: {0}</value>
+  </data>
+  <data name="Game.Bottleneck.Report.Averages" xml:space="preserve">
+    <value>Médias: GPU {0}, CPU {1}</value>
+  </data>
+  <data name="Game.Bottleneck.Report.Peaks" xml:space="preserve">
+    <value>Picos: núcleo {0}, memória de vídeo {1}, RAM {2}, GPU {3}, CPU {4}</value>
+  </data>
+  <data name="Game.Bottleneck.Report.TooShort" xml:space="preserve">
+    <value>A sessão teve poucas medições ({0}). Grave por mais tempo para o resultado valer.</value>
+  </data>
+  <data name="Game.Bottleneck.Report.None" xml:space="preserve">
+    <value>A sessão terminou sem nenhuma medição.</value>
+  </data>
 </root>

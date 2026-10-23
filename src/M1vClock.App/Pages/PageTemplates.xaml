@@ -60,6 +60,10 @@
     <gm:LibraryPage />
   </DataTemplate>
 
+  <DataTemplate DataType="{x:Type gm:BottleneckPageViewModel}">
+    <gm:BottleneckPage />
+  </DataTemplate>
+
   <DataTemplate DataType="{x:Type op:CleanupPageViewModel}">
     <op:CleanupPage />
   </DataTemplate>
