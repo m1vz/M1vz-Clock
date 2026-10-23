@@ -105,4 +105,7 @@ internal static partial class AppLog
 
     [LoggerMessage(EventId = 2035, Level = LogLevel.Warning, Message = "Não foi possível abrir o desinstalador de {Program}.")]
     public static partial void UninstallLaunchFailed(ILogger logger, Exception exception, string program);
+
+    [LoggerMessage(EventId = 2036, Level = LogLevel.Warning, Message = "Não foi possível abrir {Game}.")]
+    public static partial void GameLaunchFailed(ILogger logger, Exception exception, string game);
 }

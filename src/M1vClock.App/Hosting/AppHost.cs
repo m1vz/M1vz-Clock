@@ -2,6 +2,7 @@ using M1vClock.App.Dialogs;
 using M1vClock.App.Navigation;
 using M1vClock.App.Pages;
 using M1vClock.App.Pages.Diagnostics;
+using M1vClock.App.Pages.Games;
 using M1vClock.App.Pages.Hardware;
 using M1vClock.App.Pages.Optimize;
 using M1vClock.App.Pages.Performance;
@@ -101,6 +102,7 @@ public static class AppHost
         builder.Services.AddTransient<AppsPageViewModel>();
         builder.Services.AddTransient<TweaksPageViewModel>();
         builder.Services.AddTransient<RepairPageViewModel>();
+        builder.Services.AddTransient<LibraryPageViewModel>();
         builder.Services.AddSingleton<IReportCollector, ReportCollector>();
         return builder.Build();
     }

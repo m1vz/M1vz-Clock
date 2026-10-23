@@ -4713,4 +4713,94 @@
   <data name="Opt.Repair.Running.NoProgress" xml:space="preserve">
     <value>This check does not show its progress here. It usually takes a few minutes.</value>
   </data>
+  <data name="Game.Library.Intro" xml:space="preserve">
+    <value>The installed games m1vClock found on Steam, Epic Games and Riot. It only reads those launchers' lists: it does not touch the games or their files. Play asks the launcher itself to open the game, always without administrator, even if m1vClock is running as administrator.</value>
+  </data>
+  <data name="Game.Library.Summary.Total" xml:space="preserve">
+    <value>Games</value>
+  </data>
+  <data name="Game.Library.Summary.Size" xml:space="preserve">
+    <value>Space used</value>
+  </data>
+  <data name="Game.Library.Summary.Platforms" xml:space="preserve">
+    <value>Launchers</value>
+  </data>
+  <data name="Game.Library.Summary.Attention" xml:space="preserve">
+    <value>Need attention</value>
+  </data>
+  <data name="Game.Library.Filter" xml:space="preserve">
+    <value>Launcher</value>
+  </data>
+  <data name="Game.Library.Filter.All" xml:space="preserve">
+    <value>All</value>
+  </data>
+  <data name="Game.Library.Sort" xml:space="preserve">
+    <value>Sort by</value>
+  </data>
+  <data name="Game.Library.Sort.Name" xml:space="preserve">
+    <value>Name</value>
+  </data>
+  <data name="Game.Library.Sort.Size" xml:space="preserve">
+    <value>Size</value>
+  </data>
+  <data name="Game.Library.Search" xml:space="preserve">
+    <value>Search by game name</value>
+  </data>
+  <data name="Game.Library.Empty" xml:space="preserve">
+    <value>No games match this filter. m1vClock looks on Steam, Epic Games and Riot.</value>
+  </data>
+  <data name="Game.Library.Showing" xml:space="preserve">
+    <value>Showing {0} of {1} games. Use search to find the others.</value>
+  </data>
+  <data name="Game.Library.State.Installed" xml:space="preserve">
+    <value>Installed</value>
+  </data>
+  <data name="Game.Library.State.UpdatePending" xml:space="preserve">
+    <value>Update pending</value>
+  </data>
+  <data name="Game.Library.State.Updating" xml:space="preserve">
+    <value>Updating</value>
+  </data>
+  <data name="Game.Library.State.NeedsRepair" xml:space="preserve">
+    <value>Needs repair</value>
+  </data>
+  <data name="Game.Library.State.Incomplete" xml:space="preserve">
+    <value>Incomplete</value>
+  </data>
+  <data name="Game.Library.Platform.Steam" xml:space="preserve">
+    <value>Steam</value>
+  </data>
+  <data name="Game.Library.Platform.Epic" xml:space="preserve">
+    <value>Epic Games</value>
+  </data>
+  <data name="Game.Library.Platform.Riot" xml:space="preserve">
+    <value>Riot Games</value>
+  </data>
+  <data name="Game.Library.Meta.SizeUnknown" xml:space="preserve">
+    <value>size not reported</value>
+  </data>
+  <data name="Game.Library.Play" xml:space="preserve">
+    <value>Play</value>
+  </data>
+  <data name="Game.Library.Folder" xml:space="preserve">
+    <value>Open folder</value>
+  </data>
+  <data name="Game.Library.Tip.NoLaunch" xml:space="preserve">
+    <value>This game is not ready to open right now.</value>
+  </data>
+  <data name="Game.Library.Tip.NoFolder" xml:space="preserve">
+    <value>This game's folder was not found.</value>
+  </data>
+  <data name="Game.Library.Opening" xml:space="preserve">
+    <value>Request sent to {1} to open {0}.</value>
+  </data>
+  <data name="Game.Library.PlayFailed" xml:space="preserve">
+    <value>Could not open {0}: {1}</value>
+  </data>
+  <data name="Game.Library.FolderFailed" xml:space="preserve">
+    <value>Could not open the folder of {0}: {1}</value>
+  </data>
+  <data name="Game.Library.ReadFailed" xml:space="preserve">
+    <value>Could not read the {0} library.</value>
+  </data>
 </root>

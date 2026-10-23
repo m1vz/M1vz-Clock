@@ -1,5 +1,6 @@
 using M1vClock.App.Pages;
 using M1vClock.App.Pages.Diagnostics;
+using M1vClock.App.Pages.Games;
 using M1vClock.App.Pages.Hardware;
 using M1vClock.App.Pages.Optimize;
 using M1vClock.App.Pages.Performance;
@@ -37,6 +38,7 @@ public static class PageRegistry
         ["apps"] = Resolve<AppsPageViewModel>,
         ["tweaks"] = Resolve<TweaksPageViewModel>,
         ["repair"] = Resolve<RepairPageViewModel>,
+        ["library"] = Resolve<LibraryPageViewModel>,
     };
 
     public static IReadOnlyCollection<string> Ids => Factories.Keys;
