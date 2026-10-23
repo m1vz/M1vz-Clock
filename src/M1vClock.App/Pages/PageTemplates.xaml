@@ -4,6 +4,7 @@
                     xmlns:pages="clr-namespace:M1vClock.App.Pages"
                     xmlns:hw="clr-namespace:M1vClock.App.Pages.Hardware"
                     xmlns:dg="clr-namespace:M1vClock.App.Pages.Diagnostics"
+                    xmlns:op="clr-namespace:M1vClock.App.Pages.Optimize"
                     xmlns:pf="clr-namespace:M1vClock.App.Pages.Performance">
 
   <DataTemplate DataType="{x:Type nav:PlaceholderPageViewModel}">
@@ -36,6 +37,10 @@
 
   <DataTemplate DataType="{x:Type pf:StressPageViewModel}">
     <pf:StressPage />
+  </DataTemplate>
+
+  <DataTemplate DataType="{x:Type op:StartupPageViewModel}">
+    <op:StartupPage />
   </DataTemplate>
 
   <DataTemplate DataType="{x:Type dg:ReportPageViewModel}">

@@ -4005,4 +4005,100 @@
   <data name="Diag.Report.Section.benchmarks" xml:space="preserve">
     <value>Benchmarks</value>
   </data>
+  <data name="Opt.Startup.Intro" xml:space="preserve">
+    <value>These programs start together with Windows and compete for processor, memory and disk right at sign-in. Turning one off does not uninstall anything, and you can turn it back on whenever you want.</value>
+  </data>
+  <data name="Opt.Startup.Summary.Total" xml:space="preserve">
+    <value>At startup</value>
+  </data>
+  <data name="Opt.Startup.Summary.Enabled" xml:space="preserve">
+    <value>Start on their own</value>
+  </data>
+  <data name="Opt.Startup.Summary.Disabled" xml:space="preserve">
+    <value>Turned off</value>
+  </data>
+  <data name="Opt.Startup.Summary.Missing" xml:space="preserve">
+    <value>With a missing file</value>
+  </data>
+  <data name="Opt.Startup.Status.Enabled" xml:space="preserve">
+    <value>Starts on its own</value>
+  </data>
+  <data name="Opt.Startup.Status.Disabled" xml:space="preserve">
+    <value>Turned off</value>
+  </data>
+  <data name="Opt.Startup.Status.Missing" xml:space="preserve">
+    <value>File missing</value>
+  </data>
+  <data name="Opt.Startup.Where.UserRun" xml:space="preserve">
+    <value>Your user only (registry)</value>
+  </data>
+  <data name="Opt.Startup.Where.MachineRun" xml:space="preserve">
+    <value>All users (registry)</value>
+  </data>
+  <data name="Opt.Startup.Where.MachineRun32" xml:space="preserve">
+    <value>All users, 32-bit (registry)</value>
+  </data>
+  <data name="Opt.Startup.Where.UserFolder" xml:space="preserve">
+    <value>Your user's Startup folder</value>
+  </data>
+  <data name="Opt.Startup.Where.CommonFolder" xml:space="preserve">
+    <value>All users' Startup folder</value>
+  </data>
+  <data name="Opt.Startup.Meta" xml:space="preserve">
+    <value>{0} · {1}</value>
+  </data>
+  <data name="Opt.Startup.Action.Disable" xml:space="preserve">
+    <value>Turn off</value>
+  </data>
+  <data name="Opt.Startup.Action.Enable" xml:space="preserve">
+    <value>Turn on</value>
+  </data>
+  <data name="Opt.Startup.NeedAdmin" xml:space="preserve">
+    <value>Needs m1vClock as administrator to change this program.</value>
+  </data>
+  <data name="Opt.Startup.Disable.Title" xml:space="preserve">
+    <value>Turn off at startup?</value>
+  </data>
+  <data name="Opt.Startup.Disable.Message" xml:space="preserve">
+    <value>{0} stops opening on its own when you sign in to Windows. The program stays installed and works normally when you open it.</value>
+  </data>
+  <data name="Opt.Startup.Disable.Change" xml:space="preserve">
+    <value>The startup state of {0} becomes turned off.</value>
+  </data>
+  <data name="Opt.Startup.Disable.Confirm" xml:space="preserve">
+    <value>Turn off</value>
+  </data>
+  <data name="Opt.Startup.Enable.Title" xml:space="preserve">
+    <value>Turn on at startup?</value>
+  </data>
+  <data name="Opt.Startup.Enable.Message" xml:space="preserve">
+    <value>{0} starts opening on its own when you sign in to Windows.</value>
+  </data>
+  <data name="Opt.Startup.Enable.Change" xml:space="preserve">
+    <value>The startup state of {0} becomes turned on.</value>
+  </data>
+  <data name="Opt.Startup.Enable.Confirm" xml:space="preserve">
+    <value>Turn on</value>
+  </data>
+  <data name="Opt.Startup.Undo" xml:space="preserve">
+    <value>To go back, use the button here again or Undo on the History page.</value>
+  </data>
+  <data name="Opt.Startup.Done.Disabled" xml:space="preserve">
+    <value>{0} was turned off at startup. You can undo it on the History page.</value>
+  </data>
+  <data name="Opt.Startup.Done.Enabled" xml:space="preserve">
+    <value>{0} was turned on at startup. You can undo it on the History page.</value>
+  </data>
+  <data name="Opt.Startup.Failed" xml:space="preserve">
+    <value>Could not change {0}: {1}</value>
+  </data>
+  <data name="Opt.Startup.NoRestorePoint" xml:space="preserve">
+    <value>Warning: the restore point could not be created before the change ({0}).</value>
+  </data>
+  <data name="Opt.Startup.Empty" xml:space="preserve">
+    <value>No program opens on its own with Windows.</value>
+  </data>
+  <data name="Opt.Startup.ReadFailed" xml:space="preserve">
+    <value>Could not read the startup list: {0}</value>
+  </data>
 </root>

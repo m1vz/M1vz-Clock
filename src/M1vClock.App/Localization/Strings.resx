@@ -4005,4 +4005,100 @@
   <data name="Diag.Report.Section.benchmarks" xml:space="preserve">
     <value>Benchmarks</value>
   </data>
+  <data name="Opt.Startup.Intro" xml:space="preserve">
+    <value>Estes programas começam junto com o Windows e disputam processador, memória e disco logo na entrada. Desligar não desinstala nada, e você pode ligar de novo quando quiser.</value>
+  </data>
+  <data name="Opt.Startup.Summary.Total" xml:space="preserve">
+    <value>Na inicialização</value>
+  </data>
+  <data name="Opt.Startup.Summary.Enabled" xml:space="preserve">
+    <value>Abrem sozinhos</value>
+  </data>
+  <data name="Opt.Startup.Summary.Disabled" xml:space="preserve">
+    <value>Desligados</value>
+  </data>
+  <data name="Opt.Startup.Summary.Missing" xml:space="preserve">
+    <value>Com arquivo ausente</value>
+  </data>
+  <data name="Opt.Startup.Status.Enabled" xml:space="preserve">
+    <value>Abre sozinho</value>
+  </data>
+  <data name="Opt.Startup.Status.Disabled" xml:space="preserve">
+    <value>Desligado</value>
+  </data>
+  <data name="Opt.Startup.Status.Missing" xml:space="preserve">
+    <value>Arquivo ausente</value>
+  </data>
+  <data name="Opt.Startup.Where.UserRun" xml:space="preserve">
+    <value>Só para o seu usuário (registro)</value>
+  </data>
+  <data name="Opt.Startup.Where.MachineRun" xml:space="preserve">
+    <value>Todos os usuários (registro)</value>
+  </data>
+  <data name="Opt.Startup.Where.MachineRun32" xml:space="preserve">
+    <value>Todos os usuários, 32 bits (registro)</value>
+  </data>
+  <data name="Opt.Startup.Where.UserFolder" xml:space="preserve">
+    <value>Pasta Inicializar do seu usuário</value>
+  </data>
+  <data name="Opt.Startup.Where.CommonFolder" xml:space="preserve">
+    <value>Pasta Inicializar de todos os usuários</value>
+  </data>
+  <data name="Opt.Startup.Meta" xml:space="preserve">
+    <value>{0} · {1}</value>
+  </data>
+  <data name="Opt.Startup.Action.Disable" xml:space="preserve">
+    <value>Desligar</value>
+  </data>
+  <data name="Opt.Startup.Action.Enable" xml:space="preserve">
+    <value>Ligar</value>
+  </data>
+  <data name="Opt.Startup.NeedAdmin" xml:space="preserve">
+    <value>Precisa do m1vClock como administrador para mudar este programa.</value>
+  </data>
+  <data name="Opt.Startup.Disable.Title" xml:space="preserve">
+    <value>Desligar da inicialização?</value>
+  </data>
+  <data name="Opt.Startup.Disable.Message" xml:space="preserve">
+    <value>{0} deixa de abrir sozinho quando você entra no Windows. O programa continua instalado e funciona normalmente quando você abrir.</value>
+  </data>
+  <data name="Opt.Startup.Disable.Change" xml:space="preserve">
+    <value>O estado de {0} na inicialização passa a desligado.</value>
+  </data>
+  <data name="Opt.Startup.Disable.Confirm" xml:space="preserve">
+    <value>Desligar</value>
+  </data>
+  <data name="Opt.Startup.Enable.Title" xml:space="preserve">
+    <value>Ligar na inicialização?</value>
+  </data>
+  <data name="Opt.Startup.Enable.Message" xml:space="preserve">
+    <value>{0} passa a abrir sozinho quando você entra no Windows.</value>
+  </data>
+  <data name="Opt.Startup.Enable.Change" xml:space="preserve">
+    <value>O estado de {0} na inicialização passa a ligado.</value>
+  </data>
+  <data name="Opt.Startup.Enable.Confirm" xml:space="preserve">
+    <value>Ligar</value>
+  </data>
+  <data name="Opt.Startup.Undo" xml:space="preserve">
+    <value>Para voltar atrás, use o botão aqui de novo ou Desfazer na página Histórico.</value>
+  </data>
+  <data name="Opt.Startup.Done.Disabled" xml:space="preserve">
+    <value>{0} foi desligado da inicialização. Você pode desfazer na página Histórico.</value>
+  </data>
+  <data name="Opt.Startup.Done.Enabled" xml:space="preserve">
+    <value>{0} foi ligado na inicialização. Você pode desfazer na página Histórico.</value>
+  </data>
+  <data name="Opt.Startup.Failed" xml:space="preserve">
+    <value>Não foi possível mudar {0}: {1}</value>
+  </data>
+  <data name="Opt.Startup.NoRestorePoint" xml:space="preserve">
+    <value>Atenção: não foi possível criar o ponto de restauração antes da mudança ({0}).</value>
+  </data>
+  <data name="Opt.Startup.Empty" xml:space="preserve">
+    <value>Nenhum programa abre sozinho com o Windows.</value>
+  </data>
+  <data name="Opt.Startup.ReadFailed" xml:space="preserve">
+    <value>Não foi possível ler a lista de inicialização: {0}</value>
+  </data>
 </root>
