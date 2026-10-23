@@ -41,7 +41,12 @@ public static class ServiceClassifier
     public static ServiceOrigin OriginOf(string? imagePath, string? company, string windowsDirectory)
     {
         ArgumentNullException.ThrowIfNull(windowsDirectory);
-        if (imagePath is not null && windowsDirectory.Length > 0 && imagePath.StartsWith(windowsDirectory + @"\", StringComparison.OrdinalIgnoreCase))
+        if (string.IsNullOrWhiteSpace(imagePath))
+        {
+            return ServiceOrigin.Microsoft;
+        }
+
+        if (windowsDirectory.Length > 0 && imagePath.StartsWith(windowsDirectory + @"\", StringComparison.OrdinalIgnoreCase))
         {
             return ServiceOrigin.Microsoft;
         }

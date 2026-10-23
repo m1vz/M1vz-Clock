@@ -4101,4 +4101,106 @@
   <data name="Opt.Startup.ReadFailed" xml:space="preserve">
     <value>Could not read the startup list: {0}</value>
   </data>
+  <data name="Opt.Services.Intro" xml:space="preserve">
+    <value>Services are programs that Windows and other programs keep running in the background. m1vClock only lets you change the startup of third-party services that are not antivirus or anti-cheat. The change applies from the next time the PC starts.</value>
+  </data>
+  <data name="Opt.Services.Filter" xml:space="preserve">
+    <value>Show</value>
+  </data>
+  <data name="Opt.Services.Filter.ThirdParty" xml:space="preserve">
+    <value>Third-party</value>
+  </data>
+  <data name="Opt.Services.Filter.All" xml:space="preserve">
+    <value>All</value>
+  </data>
+  <data name="Opt.Services.Search" xml:space="preserve">
+    <value>Search by name, company or description</value>
+  </data>
+  <data name="Opt.Services.Summary.Total" xml:space="preserve">
+    <value>Services on this PC</value>
+  </data>
+  <data name="Opt.Services.Summary.ThirdParty" xml:space="preserve">
+    <value>Third-party</value>
+  </data>
+  <data name="Opt.Services.Summary.AutoThird" xml:space="preserve">
+    <value>Third-party that start on their own</value>
+  </data>
+  <data name="Opt.Services.Summary.Running" xml:space="preserve">
+    <value>Running now</value>
+  </data>
+  <data name="Opt.Services.State.Running" xml:space="preserve">
+    <value>Running</value>
+  </data>
+  <data name="Opt.Services.State.Stopped" xml:space="preserve">
+    <value>Stopped</value>
+  </data>
+  <data name="Opt.Services.State.Other" xml:space="preserve">
+    <value>Changing</value>
+  </data>
+  <data name="Opt.Services.Mode.Boot" xml:space="preserve">
+    <value>System boot</value>
+  </data>
+  <data name="Opt.Services.Mode.System" xml:space="preserve">
+    <value>System start</value>
+  </data>
+  <data name="Opt.Services.Mode.Automatic" xml:space="preserve">
+    <value>Automatic</value>
+  </data>
+  <data name="Opt.Services.Mode.AutomaticDelayed" xml:space="preserve">
+    <value>Automatic (delayed)</value>
+  </data>
+  <data name="Opt.Services.Mode.Manual" xml:space="preserve">
+    <value>Manual</value>
+  </data>
+  <data name="Opt.Services.Mode.Disabled" xml:space="preserve">
+    <value>Disabled</value>
+  </data>
+  <data name="Opt.Services.Mode.Unknown" xml:space="preserve">
+    <value>Unknown</value>
+  </data>
+  <data name="Opt.Services.Mode.Label" xml:space="preserve">
+    <value>Startup: {0}</value>
+  </data>
+  <data name="Opt.Services.Protection.Windows" xml:space="preserve">
+    <value>Windows service: m1vClock does not change its startup.</value>
+  </data>
+  <data name="Opt.Services.Protection.SecuritySoftware" xml:space="preserve">
+    <value>Antivirus or security software: m1vClock does not change its startup.</value>
+  </data>
+  <data name="Opt.Services.Protection.AntiCheat" xml:space="preserve">
+    <value>Anti-cheat: turning it off can stop games from opening. m1vClock does not change its startup.</value>
+  </data>
+  <data name="Opt.Services.Meta" xml:space="preserve">
+    <value>{0} · {1}</value>
+  </data>
+  <data name="Opt.Services.Change.Title" xml:space="preserve">
+    <value>Change the startup of {0}?</value>
+  </data>
+  <data name="Opt.Services.Change.Message" xml:space="preserve">
+    <value>{0} will start as {1} the next time the PC starts. The service is not stopped or started now.</value>
+  </data>
+  <data name="Opt.Services.Change.Line" xml:space="preserve">
+    <value>The startup of {0} changes from {1} to {2}.</value>
+  </data>
+  <data name="Opt.Services.Change.Undo" xml:space="preserve">
+    <value>To go back, choose the previous mode here or use Undo on the History page.</value>
+  </data>
+  <data name="Opt.Services.Change.Confirm" xml:space="preserve">
+    <value>Change</value>
+  </data>
+  <data name="Opt.Services.Done" xml:space="preserve">
+    <value>The startup of {0} is now {1}. It applies from the next time the PC starts. You can undo it on the History page.</value>
+  </data>
+  <data name="Opt.Services.Failed" xml:space="preserve">
+    <value>Could not change {0}: {1}</value>
+  </data>
+  <data name="Opt.Services.ReadFailed" xml:space="preserve">
+    <value>Could not read the service list: {0}</value>
+  </data>
+  <data name="Opt.Services.Empty" xml:space="preserve">
+    <value>No service with this filter.</value>
+  </data>
+  <data name="Opt.Services.Showing" xml:space="preserve">
+    <value>Showing {0} of {1} services. Use the search to find the others.</value>
+  </data>
 </root>

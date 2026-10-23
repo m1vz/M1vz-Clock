@@ -56,7 +56,7 @@ public sealed record ServiceEntry(
     string? Company,
     ProtectionReason Protection)
 {
-    public bool CanChange => Protection == ProtectionReason.None;
+    public bool CanChange => Protection == ProtectionReason.None && StartMode is ServiceStartMode.Automatic or ServiceStartMode.AutomaticDelayed or ServiceStartMode.Manual or ServiceStartMode.Disabled;
 
     public bool IsRunning => State == ServiceRunState.Running;
 

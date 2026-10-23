@@ -39,6 +39,10 @@
     <pf:StressPage />
   </DataTemplate>
 
+  <DataTemplate DataType="{x:Type op:ServicesPageViewModel}">
+    <op:ServicesPage />
+  </DataTemplate>
+
   <DataTemplate DataType="{x:Type op:StartupPageViewModel}">
     <op:StartupPage />
   </DataTemplate>

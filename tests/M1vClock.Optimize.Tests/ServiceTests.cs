@@ -45,7 +45,8 @@ public sealed class ServiceClassifierTests
         Assert.Equal(ServiceOrigin.Microsoft, ServiceClassifier.OriginOf(Windows + @"\System32\svchost.exe", null, Windows));
         Assert.Equal(ServiceOrigin.ThirdParty, ServiceClassifier.OriginOf(@"C:\Program Files (x86)\Kaspersky Lab\Kaspersky 21.27\avp.exe", "AO Kaspersky Lab", Windows));
         Assert.Equal(ServiceOrigin.Microsoft, ServiceClassifier.OriginOf(@"C:\ProgramData\Microsoft\Windows Defender\Platform\4.18\MsMpEng.exe", "Microsoft Corporation", Windows));
-        Assert.Equal(ServiceOrigin.ThirdParty, ServiceClassifier.OriginOf(null, null, Windows));
+        Assert.Equal(ServiceOrigin.Microsoft, ServiceClassifier.OriginOf(null, null, Windows));
+        Assert.Equal(ServiceOrigin.Microsoft, ServiceClassifier.OriginOf("  ", null, Windows));
         Assert.Equal(ServiceOrigin.ThirdParty, ServiceClassifier.OriginOf(Windows + "extra" + @"\x.exe", null, Windows));
     }
 
@@ -168,6 +169,23 @@ public sealed class ServiceManagerTests
         Assert.True(report.Services.Single(s => s.Name == "WSearch").StartsAutomatically);
         Assert.Equal("Google LLC", report.Services.Single(s => s.Name == "chromoting").Company);
         Assert.Equal(@"C:\Program Files (x86)\Google\Chrome Remote Desktop\154.0.8037.40\remoting_host.exe", report.Services.Single(s => s.Name == "chromoting").ImagePath);
+    }
+
+    [Fact]
+    public async Task ALocalSessionManagerLikeServiceWithNoFileIsAWindowsServiceAndCannotBeChanged()
+    {
+        var source = new FakeServices(Raw("LSM", "LSM", "Running", "Unknown", string.Empty), Raw("Estranho", "Estranho", "Running", "Unknown", "\"C:\\Programas\\estranho.exe\""));
+
+        var report = (await Create(source, new FakeCompany([])).ReadAsync(CancellationToken.None)).Value!;
+
+        var lsm = report.Services.Single(s => s.Name == "LSM");
+        Assert.Equal(ServiceOrigin.Microsoft, lsm.Origin);
+        Assert.Equal(ProtectionReason.Windows, lsm.Protection);
+        Assert.False(lsm.CanChange);
+        var strange = report.Services.Single(s => s.Name == "Estranho");
+        Assert.Equal(ServiceOrigin.ThirdParty, strange.Origin);
+        Assert.Equal(ProtectionReason.None, strange.Protection);
+        Assert.False(strange.CanChange);
     }
 
     [Fact]
@@ -312,7 +330,8 @@ public sealed class RealMachineServiceTests
         {
             Assert.False(string.IsNullOrWhiteSpace(s.Name));
             Assert.False(string.IsNullOrWhiteSpace(s.DisplayName));
-            Assert.Equal(s.Protection == ProtectionReason.None, s.CanChange);
+            Assert.True(!s.CanChange || s.Protection == ProtectionReason.None);
+            Assert.True(!s.CanChange || s.StartMode is ServiceStartMode.Automatic or ServiceStartMode.AutomaticDelayed or ServiceStartMode.Manual or ServiceStartMode.Disabled);
             if (s.ImagePath is not null && s.ImagePath.StartsWith(windows + "\\", StringComparison.OrdinalIgnoreCase))
             {
                 Assert.Equal(ServiceOrigin.Microsoft, s.Origin);

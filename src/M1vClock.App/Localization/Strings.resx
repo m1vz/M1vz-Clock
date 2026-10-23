@@ -4101,4 +4101,106 @@
   <data name="Opt.Startup.ReadFailed" xml:space="preserve">
     <value>Não foi possível ler a lista de inicialização: {0}</value>
   </data>
+  <data name="Opt.Services.Intro" xml:space="preserve">
+    <value>Serviços são programas que o Windows e outros programas deixam rodando em segundo plano. O m1vClock só deixa mudar o início dos serviços de terceiros que não são antivírus nem anti-cheat. A mudança vale a partir da próxima vez que o PC ligar.</value>
+  </data>
+  <data name="Opt.Services.Filter" xml:space="preserve">
+    <value>Mostrar</value>
+  </data>
+  <data name="Opt.Services.Filter.ThirdParty" xml:space="preserve">
+    <value>De terceiros</value>
+  </data>
+  <data name="Opt.Services.Filter.All" xml:space="preserve">
+    <value>Todos</value>
+  </data>
+  <data name="Opt.Services.Search" xml:space="preserve">
+    <value>Buscar pelo nome, empresa ou descrição</value>
+  </data>
+  <data name="Opt.Services.Summary.Total" xml:space="preserve">
+    <value>Serviços no PC</value>
+  </data>
+  <data name="Opt.Services.Summary.ThirdParty" xml:space="preserve">
+    <value>De terceiros</value>
+  </data>
+  <data name="Opt.Services.Summary.AutoThird" xml:space="preserve">
+    <value>De terceiros que abrem sozinhos</value>
+  </data>
+  <data name="Opt.Services.Summary.Running" xml:space="preserve">
+    <value>Rodando agora</value>
+  </data>
+  <data name="Opt.Services.State.Running" xml:space="preserve">
+    <value>Rodando</value>
+  </data>
+  <data name="Opt.Services.State.Stopped" xml:space="preserve">
+    <value>Parado</value>
+  </data>
+  <data name="Opt.Services.State.Other" xml:space="preserve">
+    <value>Em transição</value>
+  </data>
+  <data name="Opt.Services.Mode.Boot" xml:space="preserve">
+    <value>Início do sistema</value>
+  </data>
+  <data name="Opt.Services.Mode.System" xml:space="preserve">
+    <value>Início do sistema</value>
+  </data>
+  <data name="Opt.Services.Mode.Automatic" xml:space="preserve">
+    <value>Automático</value>
+  </data>
+  <data name="Opt.Services.Mode.AutomaticDelayed" xml:space="preserve">
+    <value>Automático (atrasado)</value>
+  </data>
+  <data name="Opt.Services.Mode.Manual" xml:space="preserve">
+    <value>Manual</value>
+  </data>
+  <data name="Opt.Services.Mode.Disabled" xml:space="preserve">
+    <value>Desativado</value>
+  </data>
+  <data name="Opt.Services.Mode.Unknown" xml:space="preserve">
+    <value>Desconhecido</value>
+  </data>
+  <data name="Opt.Services.Mode.Label" xml:space="preserve">
+    <value>Início: {0}</value>
+  </data>
+  <data name="Opt.Services.Protection.Windows" xml:space="preserve">
+    <value>Serviço do Windows: o m1vClock não muda o início dele.</value>
+  </data>
+  <data name="Opt.Services.Protection.SecuritySoftware" xml:space="preserve">
+    <value>Antivírus ou segurança: o m1vClock não muda o início dele.</value>
+  </data>
+  <data name="Opt.Services.Protection.AntiCheat" xml:space="preserve">
+    <value>Anti-cheat: desligar pode impedir jogos de abrirem. O m1vClock não muda o início dele.</value>
+  </data>
+  <data name="Opt.Services.Meta" xml:space="preserve">
+    <value>{0} · {1}</value>
+  </data>
+  <data name="Opt.Services.Change.Title" xml:space="preserve">
+    <value>Mudar o início de {0}?</value>
+  </data>
+  <data name="Opt.Services.Change.Message" xml:space="preserve">
+    <value>{0} passa a iniciar como {1} na próxima vez que o PC ligar. O serviço não é parado nem iniciado agora.</value>
+  </data>
+  <data name="Opt.Services.Change.Line" xml:space="preserve">
+    <value>O início de {0} passa de {1} para {2}.</value>
+  </data>
+  <data name="Opt.Services.Change.Undo" xml:space="preserve">
+    <value>Para voltar atrás, escolha o modo anterior aqui ou use Desfazer na página Histórico.</value>
+  </data>
+  <data name="Opt.Services.Change.Confirm" xml:space="preserve">
+    <value>Mudar</value>
+  </data>
+  <data name="Opt.Services.Done" xml:space="preserve">
+    <value>O início de {0} agora é {1}. Vale a partir da próxima vez que o PC ligar. Você pode desfazer na página Histórico.</value>
+  </data>
+  <data name="Opt.Services.Failed" xml:space="preserve">
+    <value>Não foi possível mudar {0}: {1}</value>
+  </data>
+  <data name="Opt.Services.ReadFailed" xml:space="preserve">
+    <value>Não foi possível ler a lista de serviços: {0}</value>
+  </data>
+  <data name="Opt.Services.Empty" xml:space="preserve">
+    <value>Nenhum serviço com esse filtro.</value>
+  </data>
+  <data name="Opt.Services.Showing" xml:space="preserve">
+    <value>Mostrando {0} de {1} serviços. Use a busca para achar os outros.</value>
+  </data>
 </root>
