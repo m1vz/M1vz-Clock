@@ -164,6 +164,61 @@ public sealed class RealDismTests
         }
     }
 
+    private sealed class Recorder : IProgress<int>
+    {
+        public List<int> Values { get; } = [];
+
+        public void Report(int value)
+        {
+            lock (Values)
+            {
+                Values.Add(value);
+            }
+        }
+    }
+
+    [Fact]
+    public void ElevatedTheQuickCheckReturnsAHealthVerdict()
+    {
+        Assert.SkipUnless(ElevationInfo.Current().IsElevated, "Precisa de administrador.");
+        var source = new WindowsDismSource(NullLogger<WindowsDismSource>.Instance);
+
+        var outcome = source.CheckHealth(scan: false, new Quiet(), TestContext.Current.CancellationToken);
+
+        Assert.Equal(DismStatus.Done, outcome.Status);
+        Assert.Contains(outcome.Health, new[] { DismHealth.Healthy, DismHealth.Repairable, DismHealth.NotRepairable });
+    }
+
+    [Fact]
+    public void ElevatedTheFullScanReportsProgressAndStopsWhenCancelled()
+    {
+        Assert.SkipUnless(ElevationInfo.Current().IsElevated, "Precisa de administrador.");
+        Assert.SkipUnless(Environment.GetEnvironmentVariable("M1VCLOCK_SLOW_TESTS") == "1", "Teste lento: defina M1VCLOCK_SLOW_TESTS=1.");
+        var source = new WindowsDismSource(NullLogger<WindowsDismSource>.Instance);
+        var recorder = new Recorder();
+        using var cancel = new CancellationTokenSource(TimeSpan.FromSeconds(75));
+        var progress = new Progress5(recorder, cancel);
+
+        var outcome = source.CheckHealth(scan: true, progress, cancel.Token);
+
+        Assert.Contains(outcome.Status, new[] { DismStatus.Cancelled, DismStatus.Done });
+        Assert.NotEmpty(recorder.Values);
+        Assert.All(recorder.Values, v => Assert.InRange(v, 0, 100));
+        Assert.Equal(recorder.Values.Order().ToList(), recorder.Values);
+    }
+
+    private sealed class Progress5(Recorder recorder, CancellationTokenSource cancel) : IProgress<int>
+    {
+        public void Report(int value)
+        {
+            recorder.Report(value);
+            if (value >= 15)
+            {
+                cancel.Cancel();
+            }
+        }
+    }
+
     [Fact]
     public void ThisPcDismIsAskedForRealAndAnswersWithAVerdictOrAsksForAdministrator()
     {
