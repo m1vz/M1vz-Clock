@@ -1,3 +1,4 @@
+using M1vClock.Optimize.Apps;
 using M1vClock.Optimize.Cleanup;
 using M1vClock.Optimize.Memory;
 using M1vClock.Optimize.Services;
@@ -25,6 +26,8 @@ public static class OptimizeModule
             provider.GetRequiredService<ILogger<CleanupService>>()));
         services.AddSingleton<IMemoryListSource, NtMemoryListSource>();
         services.AddSingleton<IMemoryListService, MemoryListService>();
+        services.AddSingleton<IInstalledAppSource, WindowsInstalledAppSource>();
+        services.AddSingleton<IInstalledAppService, InstalledAppService>();
         return services;
     }
 }

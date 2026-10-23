@@ -12,4 +12,7 @@ internal static partial class OptimizeLog
 
     [LoggerMessage(EventId = 6003, Level = LogLevel.Warning, Message = "Não foi possível ler a lista de serviços pelo WMI.")]
     public static partial void ServicesFailed(ILogger logger, Exception exception);
+
+    [LoggerMessage(EventId = 6030, Level = LogLevel.Warning, Message = "Não foi possível ler os programas instalados de {Scope}.")]
+    public static partial void AppsFailed(ILogger logger, Exception exception, string scope);
 }
