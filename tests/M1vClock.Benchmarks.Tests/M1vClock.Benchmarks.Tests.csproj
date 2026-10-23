@@ -11,6 +11,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\src\M1vClock.Benchmarks\M1vClock.Benchmarks.csproj" />
+    <ProjectReference Include="..\..\src\M1vClock.Games\M1vClock.Games.csproj" />
   </ItemGroup>
 
 </Project>
