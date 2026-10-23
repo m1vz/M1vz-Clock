@@ -3,6 +3,9 @@ using M1vClock.Optimize.Cleanup;
 using M1vClock.Optimize.Memory;
 using M1vClock.Optimize.Services;
 using M1vClock.Optimize.Startup;
+using M1vClock.Optimize.Tweaks;
+using M1vClock.Core.Journal;
+using M1vClock.Core.RegistryValues;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.DependencyInjection.Extensions;
 using Microsoft.Extensions.Logging;
@@ -28,6 +31,16 @@ public static class OptimizeModule
         services.AddSingleton<IMemoryListService, MemoryListService>();
         services.AddSingleton<IInstalledAppSource, WindowsInstalledAppSource>();
         services.AddSingleton<IInstalledAppService, InstalledAppService>();
+        services.AddSingleton<IPowerSchemeAccess, WindowsPowerSchemeAccess>();
+        services.AddSingleton<INativeMouse, WindowsNativeMouse>();
+        services.TryAddEnumerable(ServiceDescriptor.Singleton<IChangeHandler, PowerSchemeHandler>());
+        services.AddSingleton<ITweakService>(provider => new TweakService(
+            TweakCatalog.Create(),
+            provider.GetRequiredService<IRegistryAccess>(),
+            provider.GetRequiredService<IPowerSchemeAccess>(),
+            provider.GetRequiredService<INativeMouse>(),
+            provider.GetRequiredService<IChangeJournal>(),
+            provider.GetRequiredService<ILogger<TweakService>>()));
         return services;
     }
 }
