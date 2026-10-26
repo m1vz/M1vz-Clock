@@ -1,6 +1,7 @@
 using M1vClock.Core.Paths;
 using M1vClock.Core.Security;
 using M1vClock.Core.Settings;
+using M1vClock.Games.Estimate;
 using M1vClock.Games.Frames;
 using M1vClock.Games.Library;
 using M1vClock.Games.Profiles;
@@ -30,6 +31,17 @@ public static class GamesModule
                 provider.GetRequiredService<ILogger<SettingsStore<GameSettings>>>());
         });
         services.AddSingleton<IGameSettings, GameSettingsService>();
+        services.AddSingleton<IReferenceFpsSource>(provider =>
+        {
+            var paths = provider.GetRequiredService<AppPaths>();
+            var elevation = provider.GetRequiredService<ElevationInfo>();
+            return new HowManyFpsClient(
+                new SocketsHttpHandler { PooledConnectionLifetime = TimeSpan.FromMinutes(5) },
+                provider.GetRequiredService<IGameSettings>(),
+                Path.Combine(paths.EnsureDirectory(paths.UserDirectory(elevation.UserSid)), "fps-cache.json"),
+                provider.GetRequiredService<TimeProvider>(),
+                provider.GetRequiredService<ILogger<HowManyFpsClient>>());
+        });
         services.AddSingleton<IGameLibraryService, GameLibraryService>();
         services.AddSingleton<IGameProcesses, WindowsGameProcesses>();
         services.AddSingleton<GameSession>();
