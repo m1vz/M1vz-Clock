@@ -108,4 +108,7 @@ internal static partial class AppLog
 
     [LoggerMessage(EventId = 2036, Level = LogLevel.Warning, Message = "Não foi possível abrir {Game}.")]
     public static partial void GameLaunchFailed(ILogger logger, Exception exception, string game);
+
+    [LoggerMessage(EventId = 2037, Level = LogLevel.Warning, Message = "Consulta de FPS de {Game} falhou.")]
+    public static partial void FpsReferenceFailed(ILogger logger, Exception exception, string game);
 }

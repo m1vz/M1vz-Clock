@@ -253,10 +253,10 @@
     <value>FPS</value>
   </data>
   <data name="Page.Fps.Description" xml:space="preserve">
-    <value>Frames per second and frame time.</value>
+    <value>How many FPS to expect in each game on this PC.</value>
   </data>
   <data name="Page.Fps.Keywords" xml:space="preserve">
-    <value>fps,frametime,frames,performance</value>
+    <value>fps,estimate,frames,performance,howmanyfps,games</value>
   </data>
   <data name="Page.Bottleneck.Title" xml:space="preserve">
     <value>Bottleneck</value>
@@ -5249,5 +5249,173 @@
   </data>
   <data name="Game.Session.Warning.ArgumentsNotSupported" xml:space="preserve">
     <value>The arguments were not used: this store does not accept them.</value>
+  </data>
+  <data name="Game.Fps.Intro" xml:space="preserve">
+    <value>How many FPS to expect in each game with this PC's CPU and GPU. It is a rough estimate based on relative performance tables and public reference numbers; real FPS changes with the map, game version, driver and settings. To measure for real, use the Bottleneck page with the game open.</value>
+  </data>
+  <data name="Game.Fps.Machine.Cpu" xml:space="preserve">
+    <value>Processor</value>
+  </data>
+  <data name="Game.Fps.Machine.Gpu" xml:space="preserve">
+    <value>Graphics card</value>
+  </data>
+  <data name="Game.Fps.Machine.Indexed" xml:space="preserve">
+    <value>Index {0} · reference: {1} = 100</value>
+  </data>
+  <data name="Game.Fps.Machine.Unknown" xml:space="preserve">
+    <value>Not in the performance table</value>
+  </data>
+  <data name="Game.Fps.Unknown.Gpu" xml:space="preserve">
+    <value>Your graphics card is not in the performance table, so no estimate is possible. With a HowManyFPS key, querying the service still works.</value>
+  </data>
+  <data name="Game.Fps.Unknown.Cpu" xml:space="preserve">
+    <value>Your processor is not in the performance table, so no estimate is possible. With a HowManyFPS key, querying the service still works.</value>
+  </data>
+  <data name="Game.Fps.Unknown.Both" xml:space="preserve">
+    <value>Neither the processor nor the graphics card is in the performance table, so no estimate is possible.</value>
+  </data>
+  <data name="Game.Fps.Resolution" xml:space="preserve">
+    <value>Resolution</value>
+  </data>
+  <data name="Game.Fps.Resolution.FullHd" xml:space="preserve">
+    <value>1080p</value>
+  </data>
+  <data name="Game.Fps.Resolution.QuadHd" xml:space="preserve">
+    <value>1440p</value>
+  </data>
+  <data name="Game.Fps.Resolution.UltraHd" xml:space="preserve">
+    <value>4K</value>
+  </data>
+  <data name="Game.Fps.Preset" xml:space="preserve">
+    <value>Graphics quality</value>
+  </data>
+  <data name="Game.Fps.Preset.Low" xml:space="preserve">
+    <value>Low</value>
+  </data>
+  <data name="Game.Fps.Preset.Medium" xml:space="preserve">
+    <value>Medium</value>
+  </data>
+  <data name="Game.Fps.Preset.High" xml:space="preserve">
+    <value>High</value>
+  </data>
+  <data name="Game.Fps.Preset.Ultra" xml:space="preserve">
+    <value>Ultra</value>
+  </data>
+  <data name="Game.Fps.Upscaling" xml:space="preserve">
+    <value>Upscaling (DLSS, FSR, XeSS)</value>
+  </data>
+  <data name="Game.Fps.Upscaling.Off" xml:space="preserve">
+    <value>Off</value>
+  </data>
+  <data name="Game.Fps.Upscaling.Quality" xml:space="preserve">
+    <value>Quality</value>
+  </data>
+  <data name="Game.Fps.Upscaling.Performance" xml:space="preserve">
+    <value>Performance</value>
+  </data>
+  <data name="Game.Fps.OnlyInstalled" xml:space="preserve">
+    <value>Only games installed on this PC</value>
+  </data>
+  <data name="Game.Fps.Search" xml:space="preserve">
+    <value>Search by game name</value>
+  </data>
+  <data name="Game.Fps.Installed" xml:space="preserve">
+    <value>Installed</value>
+  </data>
+  <data name="Game.Fps.Empty" xml:space="preserve">
+    <value>No catalog game matches this filter.</value>
+  </data>
+  <data name="Game.Fps.Low" xml:space="preserve">
+    <value>1% low {0}</value>
+  </data>
+  <data name="Game.Fps.Rating.Excellent" xml:space="preserve">
+    <value>Excellent</value>
+  </data>
+  <data name="Game.Fps.Rating.Great" xml:space="preserve">
+    <value>Great</value>
+  </data>
+  <data name="Game.Fps.Rating.Playable" xml:space="preserve">
+    <value>Playable</value>
+  </data>
+  <data name="Game.Fps.Rating.Weak" xml:space="preserve">
+    <value>Weak</value>
+  </data>
+  <data name="Game.Fps.Rating.Unplayable" xml:space="preserve">
+    <value>Unplayable</value>
+  </data>
+  <data name="Game.Fps.Limiter.Gpu" xml:space="preserve">
+    <value>graphics card</value>
+  </data>
+  <data name="Game.Fps.Limiter.Cpu" xml:space="preserve">
+    <value>processor</value>
+  </data>
+  <data name="Game.Fps.Limiter.Engine" xml:space="preserve">
+    <value>the game's own frame cap</value>
+  </data>
+  <data name="Game.Fps.Source.Local" xml:space="preserve">
+    <value>Local estimate · limited by: {0}</value>
+  </data>
+  <data name="Game.Fps.Source.Service" xml:space="preserve">
+    <value>HowManyFPS (real player sessions)</value>
+  </data>
+  <data name="Game.Fps.Source.Cached" xml:space="preserve">
+    <value>HowManyFPS, saved query (up to 7 days)</value>
+  </data>
+  <data name="Game.Fps.Key.Heading" xml:space="preserve">
+    <value>HowManyFPS (optional)</value>
+  </data>
+  <data name="Game.Fps.Key.Intro" xml:space="preserve">
+    <value>With a HowManyFPS API key (requested by e-mail from the service), m1vClock queries FPS measured in real sessions with this CPU and GPU. Only the CPU, GPU and game names, the resolution and the upscaling are sent. The key is encrypted for this Windows user. The API format could not be tested without a key.</value>
+  </data>
+  <data name="Game.Fps.Key.Field" xml:space="preserve">
+    <value>HowManyFPS API key</value>
+  </data>
+  <data name="Game.Fps.Key.Save" xml:space="preserve">
+    <value>Save key</value>
+  </data>
+  <data name="Game.Fps.Key.Remove" xml:space="preserve">
+    <value>Remove key</value>
+  </data>
+  <data name="Game.Fps.Key.Saved" xml:space="preserve">
+    <value>Key saved and encrypted.</value>
+  </data>
+  <data name="Game.Fps.Key.None" xml:space="preserve">
+    <value>No key saved: only the local estimate is used.</value>
+  </data>
+  <data name="Game.Fps.Key.Done" xml:space="preserve">
+    <value>Key saved. Use Query to fetch the service numbers.</value>
+  </data>
+  <data name="Game.Fps.Key.Removed" xml:space="preserve">
+    <value>Key removed.</value>
+  </data>
+  <data name="Game.Fps.Query" xml:space="preserve">
+    <value>Query</value>
+  </data>
+  <data name="Game.Fps.Query.Tip" xml:space="preserve">
+    <value>Queries HowManyFPS for the listed games, one at a time. Answers are kept for 7 days to save quota.</value>
+  </data>
+  <data name="Game.Fps.Query.Done" xml:space="preserve">
+    <value>HowManyFPS answered for {0} of {1} games.</value>
+  </data>
+  <data name="Game.Fps.Failure.NotConfigured" xml:space="preserve">
+    <value>Save a key before querying.</value>
+  </data>
+  <data name="Game.Fps.Failure.KeyRefused" xml:space="preserve">
+    <value>HowManyFPS refused the key.</value>
+  </data>
+  <data name="Game.Fps.Failure.NotFound" xml:space="preserve">
+    <value>HowManyFPS does not have this game or hardware.</value>
+  </data>
+  <data name="Game.Fps.Failure.QuotaExhausted" xml:space="preserve">
+    <value>The key's query quota ran out. Saved answers still apply.</value>
+  </data>
+  <data name="Game.Fps.Failure.ServerError" xml:space="preserve">
+    <value>HowManyFPS answered with an error. Try again later.</value>
+  </data>
+  <data name="Game.Fps.Failure.BadResponse" xml:space="preserve">
+    <value>The HowManyFPS answer came in an unexpected format.</value>
+  </data>
+  <data name="Game.Fps.Failure.Network" xml:space="preserve">
+    <value>No connection to HowManyFPS.</value>
   </data>
 </root>

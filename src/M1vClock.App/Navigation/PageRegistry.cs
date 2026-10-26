@@ -40,6 +40,7 @@ public static class PageRegistry
         ["repair"] = Resolve<RepairPageViewModel>,
         ["library"] = Resolve<LibraryPageViewModel>,
         ["bottleneck"] = Resolve<BottleneckPageViewModel>,
+        ["fps"] = Resolve<FpsPageViewModel>,
     };
 
     public static IReadOnlyCollection<string> Ids => Factories.Keys;

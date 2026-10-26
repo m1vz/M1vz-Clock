@@ -108,6 +108,8 @@ public static class AppHost
         builder.Services.AddSingleton<LibraryServices>();
         builder.Services.AddTransient<LibraryPageViewModel>();
         builder.Services.AddTransient<BottleneckPageViewModel>();
+        builder.Services.AddSingleton<FpsServices>();
+        builder.Services.AddTransient<FpsPageViewModel>();
         builder.Services.AddSingleton<IReportCollector, ReportCollector>();
         return builder.Build();
     }

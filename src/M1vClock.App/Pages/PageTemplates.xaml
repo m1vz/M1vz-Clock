@@ -64,6 +64,10 @@
     <gm:BottleneckPage />
   </DataTemplate>
 
+  <DataTemplate DataType="{x:Type gm:FpsPageViewModel}">
+    <gm:FpsPage />
+  </DataTemplate>
+
   <DataTemplate DataType="{x:Type op:CleanupPageViewModel}">
     <op:CleanupPage />
   </DataTemplate>
