@@ -95,6 +95,23 @@ public sealed class LogParserTests
     }
 
     [Fact]
+    public void AFatalLineWrittenWithoutASourceIsStillAnEntryWithItsStackAsDetails()
+    {
+        var entries = LogParser.Parse(
+        [
+            "2026-10-26 20:11:33.682 -03:00 [FTL] : Falha ao iniciar o m1vClock.",
+            "System.InvalidOperationException: Unable to resolve service for type 'M1vClock.App.Pages.Games.LibraryServices'.",
+            "   at Microsoft.Extensions.DependencyInjection.ServiceProvider.GetService(Type serviceType)",
+        ]);
+
+        var entry = Assert.Single(entries);
+        Assert.Equal(LogSeverity.Fatal, entry.Severity);
+        Assert.Equal(string.Empty, entry.Source);
+        Assert.Equal("Falha ao iniciar o m1vClock.", entry.Message);
+        Assert.StartsWith("System.InvalidOperationException", entry.Details, StringComparison.Ordinal);
+    }
+
+    [Fact]
     public void NothingToParseGivesNoEntries()
     {
         Assert.Empty(LogParser.Parse([]));
