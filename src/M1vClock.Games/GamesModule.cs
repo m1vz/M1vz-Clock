@@ -33,7 +33,7 @@ public static class GamesModule
         services.AddSingleton<IGameLibraryService, GameLibraryService>();
         services.AddSingleton<IGameProcesses, WindowsGameProcesses>();
         services.AddSingleton<GameSession>();
-        services.AddSingleton<SteamLaunchOptions>();
+        services.AddSingleton<ISteamLaunchOptions, SteamLaunchOptions>();
         services.TryAddSingleton(TimeProvider.System);
         services.AddSingleton<IFrameEventSource, EtwFrameEventSource>();
         services.AddSingleton<IProcessNames, WindowsProcessNames>();

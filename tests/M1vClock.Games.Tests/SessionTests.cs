@@ -533,6 +533,18 @@ public sealed class SteamLaunchOptionsTests
         Assert.Equal("-m1vclock-teste", SteamLaunchOptions.Get(Vdf.Parse(updated), "730"));
         Assert.Equal(text.Length, Lf(File.ReadAllText(file!)).Length);
     }
+
+    [Fact]
+    public void TheDeadlockOptionsOfThisPcAreReadAndCs2HasNone()
+    {
+        var steam = new WindowsGameLocations(new WindowsRegistryAccess()).SteamFolder;
+        Assert.SkipWhen(steam is null, "Steam não instalada");
+        var options = new SteamLaunchOptions(new FixedLocations(steam: steam), new ScriptedProcesses(), NullLogger<SteamLaunchOptions>.Instance);
+        Assert.SkipUnless(options.Read("1422450") is not null, "Deadlock sem opções de inicialização neste PC");
+
+        Assert.StartsWith("-no_prewarm_map -vulkan", options.Read("1422450"), StringComparison.Ordinal);
+        Assert.Null(options.Read("730"));
+    }
 }
 
 public sealed class RealWindowsProfileTests

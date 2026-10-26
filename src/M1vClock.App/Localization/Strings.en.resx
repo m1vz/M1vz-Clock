@@ -244,10 +244,10 @@
     <value>Library</value>
   </data>
   <data name="Page.Library.Description" xml:space="preserve">
-    <value>Games installed from Steam, Epic and other stores.</value>
+    <value>Games from Steam, Epic, Riot, GOG, Ubisoft and the ones you add.</value>
   </data>
   <data name="Page.Library.Keywords" xml:space="preserve">
-    <value>games,steam,epic,library</value>
+    <value>games,steam,epic,riot,gog,ubisoft,library,profile,arguments</value>
   </data>
   <data name="Page.Fps.Title" xml:space="preserve">
     <value>FPS</value>
@@ -4714,7 +4714,7 @@
     <value>This check does not show its progress here. It usually takes a few minutes.</value>
   </data>
   <data name="Game.Library.Intro" xml:space="preserve">
-    <value>The installed games m1vClock found on Steam, Epic Games and Riot. It only reads those launchers' lists: it does not touch the games or their files. Play asks the launcher itself to open the game, always without administrator, even if m1vClock is running as administrator.</value>
+    <value>The games m1vClock found on Steam, Epic Games, Riot, GOG and Ubisoft, plus the ones you add by hand. It only reads those launchers' lists. Play always starts the game without administrator; with a profile, m1vClock also applies the arguments, Windows options and helper programs you chose.</value>
   </data>
   <data name="Game.Library.Summary.Total" xml:space="preserve">
     <value>Games</value>
@@ -4937,5 +4937,317 @@
   </data>
   <data name="Game.Bottleneck.Report.Fps" xml:space="preserve">
     <value>Frames per second: average {0}, 1% low {1}</value>
+  </data>
+  <data name="Game.Library.Platform.Gog" xml:space="preserve">
+    <value>GOG</value>
+  </data>
+  <data name="Game.Library.Platform.Ubisoft" xml:space="preserve">
+    <value>Ubisoft</value>
+  </data>
+  <data name="Game.Library.Platform.Manual" xml:space="preserve">
+    <value>Manual</value>
+  </data>
+  <data name="Game.Library.Add" xml:space="preserve">
+    <value>Add game</value>
+  </data>
+  <data name="Game.Library.Add.Tip" xml:space="preserve">
+    <value>Pick the .exe of a game that did not come from a store.</value>
+  </data>
+  <data name="Game.Library.Add.Pick" xml:space="preserve">
+    <value>Choose the game executable</value>
+  </data>
+  <data name="Game.Library.Add.Done" xml:space="preserve">
+    <value>{0} was added to the library.</value>
+  </data>
+  <data name="Game.Library.Add.Problem.NotAnExecutable" xml:space="preserve">
+    <value>Choose an .exe file on this PC (not on a network folder).</value>
+  </data>
+  <data name="Game.Library.Add.Problem.Missing" xml:space="preserve">
+    <value>The chosen file no longer exists.</value>
+  </data>
+  <data name="Game.Library.Add.Problem.UnsafeArguments" xml:space="preserve">
+    <value>The arguments contain characters that cannot be used.</value>
+  </data>
+  <data name="Game.Library.Add.Problem.AlreadyAdded" xml:space="preserve">
+    <value>This game is already in the library.</value>
+  </data>
+  <data name="Game.Library.Remove" xml:space="preserve">
+    <value>Remove</value>
+  </data>
+  <data name="Game.Library.Remove.Title" xml:space="preserve">
+    <value>Remove {0} from the library?</value>
+  </data>
+  <data name="Game.Library.Remove.Message" xml:space="preserve">
+    <value>It only leaves the m1vClock list, along with its profile. No game file is deleted.</value>
+  </data>
+  <data name="Game.Library.Remove.Confirm" xml:space="preserve">
+    <value>Remove from list</value>
+  </data>
+  <data name="Game.Library.Remove.Done" xml:space="preserve">
+    <value>{0} was removed from the library.</value>
+  </data>
+  <data name="Game.Profile.Edit" xml:space="preserve">
+    <value>Edit profile</value>
+  </data>
+  <data name="Game.Profile.Create" xml:space="preserve">
+    <value>Create profile</value>
+  </data>
+  <data name="Game.Profile.Badge" xml:space="preserve">
+    <value>Has profile</value>
+  </data>
+  <data name="Game.Profile.Saved" xml:space="preserve">
+    <value>{0} profile saved. It applies from the next time you click Play.</value>
+  </data>
+  <data name="Game.Profile.Heading" xml:space="preserve">
+    <value>{0} profile</value>
+  </data>
+  <data name="Game.Profile.Intro" xml:space="preserve">
+    <value>The profile is applied when you click Play here in m1vClock. The game starts without administrator rights, and the Windows changes go to History, where they can be undone.</value>
+  </data>
+  <data name="Game.Profile.Section.Launch" xml:space="preserve">
+    <value>How the game starts</value>
+  </data>
+  <data name="Game.Profile.Engine" xml:space="preserve">
+    <value>Engine (sets the argument format)</value>
+  </data>
+  <data name="Game.Profile.Engine.Unknown" xml:space="preserve">
+    <value>None</value>
+  </data>
+  <data name="Game.Profile.Engine.Source" xml:space="preserve">
+    <value>Source</value>
+  </data>
+  <data name="Game.Profile.Engine.Unity" xml:space="preserve">
+    <value>Unity</value>
+  </data>
+  <data name="Game.Profile.Engine.Unreal" xml:space="preserve">
+    <value>Unreal</value>
+  </data>
+  <data name="Game.Profile.Engine.Detected" xml:space="preserve">
+    <value>Detected from the game folder: {0}.</value>
+  </data>
+  <data name="Game.Profile.Engine.NotDetected" xml:space="preserve">
+    <value>The engine could not be recognized from the game folder. With "None", only the extra arguments are used.</value>
+  </data>
+  <data name="Game.Profile.Window" xml:space="preserve">
+    <value>Window mode</value>
+  </data>
+  <data name="Game.Profile.Window.Default" xml:space="preserve">
+    <value>Game's own</value>
+  </data>
+  <data name="Game.Profile.Window.Fullscreen" xml:space="preserve">
+    <value>Fullscreen</value>
+  </data>
+  <data name="Game.Profile.Window.Borderless" xml:space="preserve">
+    <value>Borderless</value>
+  </data>
+  <data name="Game.Profile.Window.Windowed" xml:space="preserve">
+    <value>Windowed</value>
+  </data>
+  <data name="Game.Profile.Width" xml:space="preserve">
+    <value>Width</value>
+  </data>
+  <data name="Game.Profile.Height" xml:space="preserve">
+    <value>Height</value>
+  </data>
+  <data name="Game.Profile.Refresh" xml:space="preserve">
+    <value>Refresh (Hz)</value>
+  </data>
+  <data name="Game.Profile.Extra" xml:space="preserve">
+    <value>Extra arguments</value>
+  </data>
+  <data name="Game.Profile.Preview" xml:space="preserve">
+    <value>Arguments that will be used</value>
+  </data>
+  <data name="Game.Profile.Preview.None" xml:space="preserve">
+    <value>None</value>
+  </data>
+  <data name="Game.Profile.Args.Direct" xml:space="preserve">
+    <value>These arguments are passed when m1vClock starts the executable.</value>
+  </data>
+  <data name="Game.Profile.Args.Steam" xml:space="preserve">
+    <value>Steam does not take arguments through its launch link. Save them to the launch options with the button below (with Steam closed).</value>
+  </data>
+  <data name="Game.Profile.Args.Unsupported" xml:space="preserve">
+    <value>This store starts the game through its own app and does not accept outside arguments. They will not be used; the rest of the profile still applies.</value>
+  </data>
+  <data name="Game.Profile.Steam.None" xml:space="preserve">
+    <value>Steam launch options: none.</value>
+  </data>
+  <data name="Game.Profile.Steam.Current" xml:space="preserve">
+    <value>Steam launch options: {0}</value>
+  </data>
+  <data name="Game.Profile.Steam.Write" xml:space="preserve">
+    <value>Save to Steam</value>
+  </data>
+  <data name="Game.Profile.Steam.Write.Tip" xml:space="preserve">
+    <value>Writes the arguments above to this game's launch options (localconfig.vdf). The first version of the file is kept next to it and never overwritten.</value>
+  </data>
+  <data name="Game.Profile.Steam.Result.Written" xml:space="preserve">
+    <value>Launch options saved. The original copy of the Steam file was kept next to it.</value>
+  </data>
+  <data name="Game.Profile.Steam.Result.Unchanged" xml:space="preserve">
+    <value>The Steam launch options were already like this.</value>
+  </data>
+  <data name="Game.Profile.Steam.Result.SteamRunning" xml:space="preserve">
+    <value>Close Steam before saving: it rewrites the file when it exits and would erase the change.</value>
+  </data>
+  <data name="Game.Profile.Steam.Result.NoConfig" xml:space="preserve">
+    <value>The Steam configuration file was not found. Sign in to Steam at least once on this PC.</value>
+  </data>
+  <data name="Game.Profile.Steam.Result.UnsafeOptions" xml:space="preserve">
+    <value>The arguments contain characters that cannot be saved.</value>
+  </data>
+  <data name="Game.Profile.Steam.Result.UnsupportedFormat" xml:space="preserve">
+    <value>The Steam file is in a format that cannot be rewritten safely. Nothing was changed.</value>
+  </data>
+  <data name="Game.Profile.Steam.Result.Failed" xml:space="preserve">
+    <value>The Steam file could not be written. Nothing was changed.</value>
+  </data>
+  <data name="Game.Profile.Section.Windows" xml:space="preserve">
+    <value>In Windows</value>
+  </data>
+  <data name="Game.Profile.Priority" xml:space="preserve">
+    <value>Process priority</value>
+  </data>
+  <data name="Game.Profile.Priority.Normal" xml:space="preserve">
+    <value>Normal</value>
+  </data>
+  <data name="Game.Profile.Priority.AboveNormal" xml:space="preserve">
+    <value>Above normal</value>
+  </data>
+  <data name="Game.Profile.Priority.High" xml:space="preserve">
+    <value>High</value>
+  </data>
+  <data name="Game.Profile.Gpu" xml:space="preserve">
+    <value>High-performance GPU</value>
+  </data>
+  <data name="Game.Profile.Gpu.Tip" xml:space="preserve">
+    <value>Same option as Settings &gt; System &gt; Display &gt; Graphics. It only matters on PCs with two GPUs.</value>
+  </data>
+  <data name="Game.Profile.Fso" xml:space="preserve">
+    <value>Disable fullscreen optimizations</value>
+  </data>
+  <data name="Game.Profile.Fso.Tip" xml:space="preserve">
+    <value>Same option as the executable's Compatibility tab. It can lower latency in some older games; in newer ones it usually changes nothing.</value>
+  </data>
+  <data name="Game.Profile.Exe" xml:space="preserve">
+    <value>Game executable (for the Windows options)</value>
+  </data>
+  <data name="Game.Profile.Exe.None" xml:space="preserve">
+    <value>None chosen. Steam and Epic do not say which .exe is the game; choose it to use the two options above.</value>
+  </data>
+  <data name="Game.Profile.Exe.Tip" xml:space="preserve">
+    <value>The priority does not depend on this: m1vClock finds the process through the game folder.</value>
+  </data>
+  <data name="Game.Profile.Exe.Choose" xml:space="preserve">
+    <value>Choose</value>
+  </data>
+  <data name="Game.Profile.Exe.Clear" xml:space="preserve">
+    <value>Clear</value>
+  </data>
+  <data name="Game.Profile.Exe.Pick" xml:space="preserve">
+    <value>Choose the game's main executable</value>
+  </data>
+  <data name="Game.Profile.Exe.Filter" xml:space="preserve">
+    <value>Programs (*.exe)|*.exe</value>
+  </data>
+  <data name="Game.Profile.Section.Helpers" xml:space="preserve">
+    <value>Helper programs</value>
+  </data>
+  <data name="Game.Profile.Helpers.Intro" xml:space="preserve">
+    <value>They open before the game, without administrator rights. Marked ones close when the game closes, but only if m1vClock opened them.</value>
+  </data>
+  <data name="Game.Profile.Helpers.Add" xml:space="preserve">
+    <value>Add program</value>
+  </data>
+  <data name="Game.Profile.Helpers.Remove" xml:space="preserve">
+    <value>Remove</value>
+  </data>
+  <data name="Game.Profile.Helpers.Close" xml:space="preserve">
+    <value>Close with the game</value>
+  </data>
+  <data name="Game.Profile.Helpers.Args" xml:space="preserve">
+    <value>Arguments</value>
+  </data>
+  <data name="Game.Profile.Helper.Pick" xml:space="preserve">
+    <value>Choose the helper program</value>
+  </data>
+  <data name="Game.Profile.Save" xml:space="preserve">
+    <value>Save profile</value>
+  </data>
+  <data name="Game.Profile.Problem.ResolutionOutOfRange" xml:space="preserve">
+    <value>Fill in width and height together, with numbers between 320 and 16384.</value>
+  </data>
+  <data name="Game.Profile.Problem.RefreshOutOfRange" xml:space="preserve">
+    <value>The refresh rate must be between 24 and 1000 Hz, or empty.</value>
+  </data>
+  <data name="Game.Profile.Problem.UnsafeExtra" xml:space="preserve">
+    <value>The extra arguments contain line breaks or exceed 1024 characters.</value>
+  </data>
+  <data name="Game.Profile.Problem.BadExecutable" xml:space="preserve">
+    <value>Choose an .exe file on this PC (not on a network folder).</value>
+  </data>
+  <data name="Game.Profile.Problem.BadHelper" xml:space="preserve">
+    <value>Helper programs must be .exe files on this PC, with arguments up to 1024 characters.</value>
+  </data>
+  <data name="Game.Profile.Journal.Gpu" xml:space="preserve">
+    <value>High-performance GPU for {0}</value>
+  </data>
+  <data name="Game.Profile.Journal.Fullscreen" xml:space="preserve">
+    <value>Fullscreen optimizations for {0}</value>
+  </data>
+  <data name="Game.Session.Heading" xml:space="preserve">
+    <value>Game started with a profile</value>
+  </data>
+  <data name="Game.Session.Stop" xml:space="preserve">
+    <value>Stop following</value>
+  </data>
+  <data name="Game.Session.Stop.Tip" xml:space="preserve">
+    <value>Stops following the game and closes the marked helper programs. The game stays open.</value>
+  </data>
+  <data name="Game.Session.Busy" xml:space="preserve">
+    <value>A game is already being followed. Stop following it before starting another one with a profile.</value>
+  </data>
+  <data name="Game.Session.Stage.Applying" xml:space="preserve">
+    <value>Applying the {0} profile…</value>
+  </data>
+  <data name="Game.Session.Stage.OpeningHelpers" xml:space="preserve">
+    <value>Opening the {0} helper programs…</value>
+  </data>
+  <data name="Game.Session.Stage.Launching" xml:space="preserve">
+    <value>Starting {0}…</value>
+  </data>
+  <data name="Game.Session.Stage.WaitingForGame" xml:space="preserve">
+    <value>Waiting for {0} to appear (up to 3 minutes)…</value>
+  </data>
+  <data name="Game.Session.Stage.Running" xml:space="preserve">
+    <value>{0} is running.</value>
+  </data>
+  <data name="Game.Session.Stage.Finished" xml:space="preserve">
+    <value>{0} closed.</value>
+  </data>
+  <data name="Game.Session.Stage.NotDetected" xml:space="preserve">
+    <value>The {0} process did not appear within 3 minutes. If it started, the Windows options are still applied, but the priority was not set.</value>
+  </data>
+  <data name="Game.Session.Stage.Failed" xml:space="preserve">
+    <value>Could not start {0}: {1}</value>
+  </data>
+  <data name="Game.Session.Stage.Cancelled" xml:space="preserve">
+    <value>Stopped following {0}.</value>
+  </data>
+  <data name="Game.Session.Warning.PreferenceFailed" xml:space="preserve">
+    <value>A Windows option was not applied (see the logs).</value>
+  </data>
+  <data name="Game.Session.Warning.PriorityDenied" xml:space="preserve">
+    <value>The game refused the priority change (common with anti-cheat).</value>
+  </data>
+  <data name="Game.Session.Warning.HelperFailed" xml:space="preserve">
+    <value>A helper program did not open.</value>
+  </data>
+  <data name="Game.Session.Warning.HelperNotClosed" xml:space="preserve">
+    <value>A helper program did not close.</value>
+  </data>
+  <data name="Game.Session.Warning.ArgumentsNotSupported" xml:space="preserve">
+    <value>The arguments were not used: this store does not accept them.</value>
   </data>
 </root>

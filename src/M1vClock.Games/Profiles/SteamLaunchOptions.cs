@@ -15,7 +15,14 @@ public enum SteamOptionsResult
     Failed,
 }
 
-public sealed class SteamLaunchOptions(IGameLocations locations, IGameProcesses processes, ILogger<SteamLaunchOptions> logger)
+public interface ISteamLaunchOptions
+{
+    string? Read(string appId);
+
+    SteamOptionsResult Write(string appId, string? options);
+}
+
+public sealed class SteamLaunchOptions(IGameLocations locations, IGameProcesses processes, ILogger<SteamLaunchOptions> logger) : ISteamLaunchOptions
 {
     public const string BackupSuffix = ".m1vclock-original";
     private static readonly string[] AppsPath = ["Software", "Valve", "Steam", "apps"];

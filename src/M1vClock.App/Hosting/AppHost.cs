@@ -102,6 +102,10 @@ public static class AppHost
         builder.Services.AddTransient<AppsPageViewModel>();
         builder.Services.AddTransient<TweaksPageViewModel>();
         builder.Services.AddTransient<RepairPageViewModel>();
+        builder.Services.AddSingleton<IGameSessionRunner, GameSessionRunner>();
+        builder.Services.AddSingleton<GameSessionHost>();
+        builder.Services.AddSingleton<ProfileEditorServices>();
+        builder.Services.AddSingleton<LibraryServices>();
         builder.Services.AddTransient<LibraryPageViewModel>();
         builder.Services.AddTransient<BottleneckPageViewModel>();
         builder.Services.AddSingleton<IReportCollector, ReportCollector>();

@@ -63,8 +63,8 @@ public sealed class LibraryPageViewModelTests
     ],
     []);
 
-    private static LibraryPageViewModel Create(StubLibrary library, RecordingShell? shell = null) =>
-        new(library, shell ?? new RecordingShell(), new CollectingLogger<LibraryPageViewModel>());
+    private static LibraryPageViewModel Create(StubLibrary library, RecordingShell? shell = null, GameTestRig? rig = null) =>
+        new((rig ?? new GameTestRig()).Services(library, shell ?? new RecordingShell()), new CollectingLogger<LibraryPageViewModel>());
 
     [Fact]
     public async Task TheSummaryAndTheRowsComeFromTheLibraryAndStartSortedByName()
