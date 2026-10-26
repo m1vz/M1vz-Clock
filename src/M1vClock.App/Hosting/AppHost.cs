@@ -1,5 +1,6 @@
 using M1vClock.App.Dialogs;
 using M1vClock.App.Navigation;
+using M1vClock.App.Overlay;
 using M1vClock.App.Pages;
 using M1vClock.App.Pages.Diagnostics;
 using M1vClock.App.Pages.Games;
@@ -110,6 +111,13 @@ public static class AppHost
         builder.Services.AddTransient<BottleneckPageViewModel>();
         builder.Services.AddSingleton<FpsServices>();
         builder.Services.AddTransient<FpsPageViewModel>();
+        builder.Services.AddSingleton<IOverlaySurface, WpfOverlaySurface>();
+        builder.Services.AddSingleton<WindowHotkeys>();
+        builder.Services.AddSingleton<IOverlayHotkeys>(provider => provider.GetRequiredService<WindowHotkeys>());
+        builder.Services.AddSingleton<IOverlayForeground, WindowsOverlayForeground>();
+        builder.Services.AddSingleton<OverlayController>();
+        builder.Services.AddSingleton<OverlayServices>();
+        builder.Services.AddTransient<OverlayPageViewModel>();
         builder.Services.AddSingleton<IReportCollector, ReportCollector>();
         return builder.Build();
     }

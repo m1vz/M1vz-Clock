@@ -5418,4 +5418,172 @@
   <data name="Game.Fps.Failure.Network" xml:space="preserve">
     <value>Sem conexão com a HowManyFPS.</value>
   </data>
+  <data name="Game.Overlay.Intro" xml:space="preserve">
+    <value>Uma caixa pequena por cima do jogo com FPS, tempo de quadro e sensores, no estilo do RivaTuner. Ela ignora cliques e nunca rouba o foco. Aparece sobre jogos em tela cheia sem bordas e na maioria dos jogos DirectX 11/12; não aparece em tela cheia exclusiva antiga, porque isso exigiria injetar código no jogo (o m1vClock não faz isso). O FPS precisa do m1vClock aberto como administrador.</value>
+  </data>
+  <data name="Game.Overlay.Show" xml:space="preserve">
+    <value>Mostrar overlay</value>
+  </data>
+  <data name="Game.Overlay.Hide" xml:space="preserve">
+    <value>Esconder overlay</value>
+  </data>
+  <data name="Game.Overlay.Waiting" xml:space="preserve">
+    <value>aguardando jogo</value>
+  </data>
+  <data name="Game.Overlay.NeedsAdmin" xml:space="preserve">
+    <value>FPS exige administrador</value>
+  </data>
+  <data name="Game.Overlay.FramesNeedAdmin" xml:space="preserve">
+    <value>Sem administrador, o overlay mostra os sensores mas não o FPS: a leitura dos quadros usa o rastreamento de eventos do Windows, que só funciona elevado.</value>
+  </data>
+  <data name="Game.Overlay.Core" xml:space="preserve">
+    <value>núcleo</value>
+  </data>
+  <data name="Game.Overlay.Memory" xml:space="preserve">
+    <value>mem</value>
+  </data>
+  <data name="Game.Overlay.Fan" xml:space="preserve">
+    <value>fan</value>
+  </data>
+  <data name="Game.Overlay.Corner" xml:space="preserve">
+    <value>Canto da tela</value>
+  </data>
+  <data name="Game.Overlay.Corner.TopLeft" xml:space="preserve">
+    <value>Superior esquerdo</value>
+  </data>
+  <data name="Game.Overlay.Corner.TopRight" xml:space="preserve">
+    <value>Superior direito</value>
+  </data>
+  <data name="Game.Overlay.Corner.BottomLeft" xml:space="preserve">
+    <value>Inferior esquerdo</value>
+  </data>
+  <data name="Game.Overlay.Corner.BottomRight" xml:space="preserve">
+    <value>Inferior direito</value>
+  </data>
+  <data name="Game.Overlay.Scale" xml:space="preserve">
+    <value>Tamanho</value>
+  </data>
+  <data name="Game.Overlay.Hotkey" xml:space="preserve">
+    <value>Atalho para mostrar e esconder</value>
+  </data>
+  <data name="Game.Overlay.Hotkey.Apply" xml:space="preserve">
+    <value>Usar atalho</value>
+  </data>
+  <data name="Game.Overlay.Hotkey.Tip" xml:space="preserve">
+    <value>Exemplos: Ctrl+Shift+F10, Alt+O, F12. Funciona mesmo com o jogo em primeiro plano.</value>
+  </data>
+  <data name="Game.Overlay.Hotkey.State.NotAttached" xml:space="preserve">
+    <value>O atalho fica salvo e passa a valer quando a janela principal abrir.</value>
+  </data>
+  <data name="Game.Overlay.Hotkey.State.Registered" xml:space="preserve">
+    <value>Atalho ativo.</value>
+  </data>
+  <data name="Game.Overlay.Hotkey.State.Invalid" xml:space="preserve">
+    <value>Atalho inválido. Use um modificador (Ctrl, Alt, Shift ou Win) com uma letra, número ou tecla F, ou só uma tecla F.</value>
+  </data>
+  <data name="Game.Overlay.Hotkey.State.InUse" xml:space="preserve">
+    <value>Outro programa já usa esse atalho. O anterior continua valendo.</value>
+  </data>
+  <data name="Game.Overlay.Hotkey.State.Failed" xml:space="preserve">
+    <value>O Windows recusou o atalho. O anterior continua valendo.</value>
+  </data>
+  <data name="Game.Overlay.Preview" xml:space="preserve">
+    <value>Prévia com os dados de agora</value>
+  </data>
+  <data name="Game.Overlay.Items" xml:space="preserve">
+    <value>O que mostrar</value>
+  </data>
+  <data name="Game.Overlay.Preset.Minimal" xml:space="preserve">
+    <value>Só FPS</value>
+  </data>
+  <data name="Game.Overlay.Preset.Default" xml:space="preserve">
+    <value>Padrão</value>
+  </data>
+  <data name="Game.Overlay.Preset.Everything" xml:space="preserve">
+    <value>Tudo</value>
+  </data>
+  <data name="Game.Overlay.Group.Frames" xml:space="preserve">
+    <value>Quadros</value>
+  </data>
+  <data name="Game.Overlay.Group.Gpu" xml:space="preserve">
+    <value>Placa de vídeo</value>
+  </data>
+  <data name="Game.Overlay.Group.Vram" xml:space="preserve">
+    <value>Memória de vídeo</value>
+  </data>
+  <data name="Game.Overlay.Group.Cpu" xml:space="preserve">
+    <value>Processador</value>
+  </data>
+  <data name="Game.Overlay.Group.Ram" xml:space="preserve">
+    <value>Memória RAM</value>
+  </data>
+  <data name="Game.Overlay.Group.Other" xml:space="preserve">
+    <value>Outros</value>
+  </data>
+  <data name="Game.Overlay.Item.Fps" xml:space="preserve">
+    <value>FPS</value>
+  </data>
+  <data name="Game.Overlay.Item.Frametime" xml:space="preserve">
+    <value>Tempo de quadro</value>
+  </data>
+  <data name="Game.Overlay.Item.Low1" xml:space="preserve">
+    <value>1% low</value>
+  </data>
+  <data name="Game.Overlay.Item.Graph" xml:space="preserve">
+    <value>Gráfico do tempo de quadro</value>
+  </data>
+  <data name="Game.Overlay.Item.GpuLoad" xml:space="preserve">
+    <value>Uso</value>
+  </data>
+  <data name="Game.Overlay.Item.GpuTemp" xml:space="preserve">
+    <value>Temperatura</value>
+  </data>
+  <data name="Game.Overlay.Item.GpuHotspot" xml:space="preserve">
+    <value>Hotspot</value>
+  </data>
+  <data name="Game.Overlay.Item.GpuClock" xml:space="preserve">
+    <value>Clock do núcleo</value>
+  </data>
+  <data name="Game.Overlay.Item.GpuMemclock" xml:space="preserve">
+    <value>Clock da memória</value>
+  </data>
+  <data name="Game.Overlay.Item.GpuPower" xml:space="preserve">
+    <value>Consumo</value>
+  </data>
+  <data name="Game.Overlay.Item.GpuFan" xml:space="preserve">
+    <value>Ventoinha</value>
+  </data>
+  <data name="Game.Overlay.Item.VramUsed" xml:space="preserve">
+    <value>Usada (GB)</value>
+  </data>
+  <data name="Game.Overlay.Item.VramPct" xml:space="preserve">
+    <value>Uso (%)</value>
+  </data>
+  <data name="Game.Overlay.Item.CpuLoad" xml:space="preserve">
+    <value>Uso total</value>
+  </data>
+  <data name="Game.Overlay.Item.CpuMaxcore" xml:space="preserve">
+    <value>Núcleo mais ocupado</value>
+  </data>
+  <data name="Game.Overlay.Item.CpuTemp" xml:space="preserve">
+    <value>Temperatura</value>
+  </data>
+  <data name="Game.Overlay.Item.CpuClock" xml:space="preserve">
+    <value>Clock médio</value>
+  </data>
+  <data name="Game.Overlay.Item.CpuPower" xml:space="preserve">
+    <value>Consumo</value>
+  </data>
+  <data name="Game.Overlay.Item.RamUsed" xml:space="preserve">
+    <value>Usada (GB)</value>
+  </data>
+  <data name="Game.Overlay.Item.RamPct" xml:space="preserve">
+    <value>Uso (%)</value>
+  </data>
+  <data name="Game.Overlay.Item.Game" xml:space="preserve">
+    <value>Nome do processo</value>
+  </data>
+  <data name="Game.Overlay.Item.Clock" xml:space="preserve">
+    <value>Hora</value>
+  </data>
 </root>

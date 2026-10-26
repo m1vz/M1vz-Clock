@@ -5,6 +5,7 @@ using System.Windows.Markup;
 using System.Windows.Threading;
 using M1vClock.App.Hosting;
 using M1vClock.App.Localization;
+using M1vClock.App.Overlay;
 using M1vClock.App.Services;
 using M1vClock.App.Shell;
 using M1vClock.Core.Diagnostics;
@@ -72,6 +73,8 @@ public partial class App : Application
         var window = services.GetRequiredService<MainWindow>();
         MainWindow = window;
         window.Show();
+        services.GetRequiredService<WindowHotkeys>().Attach(window);
+        services.GetRequiredService<OverlayController>().Start();
         window.Start(options, previous);
 
         _instance.Listen(

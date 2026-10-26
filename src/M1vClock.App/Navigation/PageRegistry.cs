@@ -41,6 +41,7 @@ public static class PageRegistry
         ["library"] = Resolve<LibraryPageViewModel>,
         ["bottleneck"] = Resolve<BottleneckPageViewModel>,
         ["fps"] = Resolve<FpsPageViewModel>,
+        ["overlay"] = Resolve<OverlayPageViewModel>,
     };
 
     public static IReadOnlyCollection<string> Ids => Factories.Keys;

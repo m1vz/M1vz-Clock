@@ -68,6 +68,10 @@
     <gm:FpsPage />
   </DataTemplate>
 
+  <DataTemplate DataType="{x:Type gm:OverlayPageViewModel}">
+    <gm:OverlayPage />
+  </DataTemplate>
+
   <DataTemplate DataType="{x:Type op:CleanupPageViewModel}">
     <op:CleanupPage />
   </DataTemplate>
