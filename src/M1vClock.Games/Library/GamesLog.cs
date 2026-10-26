@@ -12,4 +12,7 @@ internal static partial class GamesLog
 
     [LoggerMessage(EventId = 7003, Level = LogLevel.Information, Message = "Biblioteca de jogos lida: {Count} jogos.")]
     public static partial void Read(ILogger logger, int count);
+
+    [LoggerMessage(EventId = 7014, Level = LogLevel.Warning, Message = "Não foi possível gravar as configurações de jogos.")]
+    public static partial void SettingsSaveFailed(ILogger logger, Exception exception);
 }

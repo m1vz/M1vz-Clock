@@ -26,6 +26,40 @@ public sealed class VdfNode
     public string? Text(string name) => Child(name)?.Value;
 
     internal void Add(VdfNode child) => _children.Add(child);
+
+    internal void Set(string name, string value)
+    {
+        var index = _children.FindIndex(c => string.Equals(c.Name, name, StringComparison.OrdinalIgnoreCase));
+        var node = new VdfNode(index >= 0 ? _children[index].Name : name, value);
+        if (index >= 0)
+        {
+            _children[index] = node;
+        }
+        else
+        {
+            _children.Add(node);
+        }
+    }
+
+    internal bool Remove(string name) =>
+        _children.RemoveAll(c => string.Equals(c.Name, name, StringComparison.OrdinalIgnoreCase)) > 0;
+
+    internal VdfNode GetOrAddObject(string name)
+    {
+        if (Child(name) is { IsObject: true } existing)
+        {
+            return existing;
+        }
+
+        if (Child(name) is not null)
+        {
+            throw new FormatException($"\"{name}\" deveria ser um grupo.");
+        }
+
+        var node = new VdfNode(name, null);
+        _children.Add(node);
+        return node;
+    }
 }
 
 public static class Vdf
@@ -40,6 +74,49 @@ public static class Vdf
         ReadMembers(reader, root, 0, topLevel: true);
         return root.Children.Count == 1 ? root.Children[0] : root;
     }
+
+    public static string Serialize(VdfNode root)
+    {
+        ArgumentNullException.ThrowIfNull(root);
+        var text = new StringBuilder();
+        if (root.Name.Length == 0)
+        {
+            foreach (var child in root.Children)
+            {
+                Write(text, child, 0);
+            }
+        }
+        else
+        {
+            Write(text, root, 0);
+        }
+
+        return text.ToString();
+    }
+
+    private static void Write(StringBuilder text, VdfNode node, int depth)
+    {
+        var indent = new string('\t', depth);
+        if (!node.IsObject)
+        {
+            text.Append(indent).Append('"').Append(Escape(node.Name)).Append("\"\t\t\"").Append(Escape(node.Value!)).Append("\"\n");
+            return;
+        }
+
+        text.Append(indent).Append('"').Append(Escape(node.Name)).Append("\"\n").Append(indent).Append("{\n");
+        foreach (var child in node.Children)
+        {
+            Write(text, child, depth + 1);
+        }
+
+        text.Append(indent).Append("}\n");
+    }
+
+    private static string Escape(string value) =>
+        value.Replace("\\", "\\\\", StringComparison.Ordinal)
+            .Replace("\"", "\\\"", StringComparison.Ordinal)
+            .Replace("\n", "\\n", StringComparison.Ordinal)
+            .Replace("\t", "\\t", StringComparison.Ordinal);
 
     private static void ReadMembers(Reader reader, VdfNode parent, int depth, bool topLevel)
     {

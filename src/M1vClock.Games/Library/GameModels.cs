@@ -7,6 +7,9 @@ public enum GamePlatform
     Steam,
     Epic,
     Riot,
+    Gog,
+    Ubisoft,
+    Manual,
 }
 
 public enum GameState
@@ -41,6 +44,33 @@ public sealed partial record GameLaunch(string Target, string? Arguments)
 
         return new GameLaunch(clientPath, $"--launch-product={product} --launch-patchline={patchline}");
     }
+
+    public static GameLaunch? Ubisoft(string installId) =>
+        Digits().IsMatch(installId) ? new GameLaunch("uplay://launch/" + installId + "/0", null) : null;
+
+    public static GameLaunch? Executable(string path, string? arguments)
+    {
+        if (!IsExecutablePath(path) || !IsSafeArguments(arguments))
+        {
+            return null;
+        }
+
+        return new GameLaunch(Path.GetFullPath(path), string.IsNullOrWhiteSpace(arguments) ? null : arguments.Trim());
+    }
+
+    public static bool IsExecutablePath(string? path) =>
+        !string.IsNullOrWhiteSpace(path)
+        && path.IndexOfAny(['"', '\0', '\r', '\n']) < 0
+        && Path.IsPathFullyQualified(path)
+        && !path.StartsWith(@"\\", StringComparison.Ordinal)
+        && string.Equals(Path.GetExtension(path), ".exe", StringComparison.OrdinalIgnoreCase);
+
+    public static bool IsSafeArguments(string? arguments) =>
+        arguments is null || (arguments.Length <= MaximumArguments && !arguments.Any(char.IsControl));
+
+    public const int MaximumArguments = 1024;
+
+    public bool IsExecutable => Path.IsPathFullyQualified(Target) && Target.EndsWith(".exe", StringComparison.OrdinalIgnoreCase);
 }
 
 public sealed record GameEntry(
@@ -81,6 +111,8 @@ public interface IGameFileSystem
     string ReadAllText(string path);
 
     IEnumerable<string> EnumerateFiles(string directory, string pattern);
+
+    IEnumerable<string> EnumerateDirectories(string directory);
 }
 
 public interface IGameLocations

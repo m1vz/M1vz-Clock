@@ -1,4 +1,5 @@
 using M1vClock.Core.RegistryValues;
+using M1vClock.Games.Settings;
 using Microsoft.Extensions.Logging;
 using Microsoft.Win32;
 
@@ -14,6 +15,9 @@ public sealed class WindowsGameFileSystem : IGameFileSystem
 
     public IEnumerable<string> EnumerateFiles(string directory, string pattern) =>
         Directory.Exists(directory) ? Directory.EnumerateFiles(directory, pattern, SearchOption.TopDirectoryOnly) : [];
+
+    public IEnumerable<string> EnumerateDirectories(string directory) =>
+        Directory.Exists(directory) ? Directory.EnumerateDirectories(directory, "*", SearchOption.TopDirectoryOnly) : [];
 }
 
 public sealed class WindowsGameLocations(IRegistryAccess registry) : IGameLocations
@@ -55,7 +59,12 @@ public sealed class WindowsGameLocations(IRegistryAccess registry) : IGameLocati
     private static string? ExistingFolder(string path) => Directory.Exists(path) ? path : null;
 }
 
-public sealed class GameLibraryService(IGameFileSystem files, IGameLocations locations, ILogger<GameLibraryService> logger) : IGameLibraryService
+public sealed class GameLibraryService(
+    IGameFileSystem files,
+    IGameLocations locations,
+    IGameRegistry registry,
+    IGameSettings settings,
+    ILogger<GameLibraryService> logger) : IGameLibraryService
 {
     public Task<GameLibrary> ReadAsync(CancellationToken cancellationToken) =>
         Task.Run(() => Read(cancellationToken), cancellationToken);
@@ -75,6 +84,9 @@ public sealed class GameLibraryService(IGameFileSystem files, IGameLocations loc
         Collect(GamePlatform.Steam, locations.SteamFolder, folder => new SteamLibraryReader(files, logger).Read(folder), games, failed, cancellationToken);
         Collect(GamePlatform.Epic, locations.EpicManifestsFolder, folder => new EpicLibraryReader(files, logger).Read(folder), games, failed, cancellationToken);
         Collect(GamePlatform.Riot, locations.RiotInstallsFile, file => new RiotLibraryReader(files, logger).Read(file), games, failed, cancellationToken);
+        Collect(GamePlatform.Gog, GogLibraryReader.GamesKey, _ => new GogLibraryReader(registry, files, logger).Read(), games, failed, cancellationToken);
+        Collect(GamePlatform.Ubisoft, UbisoftLibraryReader.InstallsKey, _ => new UbisoftLibraryReader(registry, files, logger).Read(), games, failed, cancellationToken);
+        Collect(GamePlatform.Manual, string.Empty, _ => ManualGames.Entries(settings.Read(s => s.ManualGames.ToList()), files), games, failed, cancellationToken);
         GamesLog.Read(logger, games.Count);
         var withFolders = games.Select(g => g with { FolderExists = g.InstallFolder is not null && files.DirectoryExists(g.InstallFolder) }).ToList();
         return new GameLibrary(Sort(withFolders, GameSort.Name), failed);
@@ -92,7 +104,7 @@ public sealed class GameLibraryService(IGameFileSystem files, IGameLocations loc
         {
             games.AddRange(read(location));
         }
-        catch (Exception ex) when (ex is IOException or UnauthorizedAccessException or FormatException or System.Text.Json.JsonException)
+        catch (Exception ex) when (ex is IOException or UnauthorizedAccessException or FormatException or System.Text.Json.JsonException or System.Security.SecurityException)
         {
             GamesLog.LibraryFailed(logger, ex, platform);
             failed.Add(platform);

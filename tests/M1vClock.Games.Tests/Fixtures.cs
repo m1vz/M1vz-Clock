@@ -1,5 +1,6 @@
 using System.IO.Enumeration;
 using M1vClock.Games.Library;
+using M1vClock.Games.Settings;
 
 namespace M1vClock.Games.Tests;
 
@@ -51,6 +52,12 @@ internal sealed class MemoryFiles : IGameFileSystem
         }
 
         return _files.TryGetValue(full, out var text) ? text : throw new FileNotFoundException(path);
+    }
+
+    public IEnumerable<string> EnumerateDirectories(string directory)
+    {
+        var folder = Normalize(directory);
+        return _directories.Where(d => string.Equals(Path.GetDirectoryName(d), folder, StringComparison.OrdinalIgnoreCase)).ToList();
     }
 
     public IEnumerable<string> EnumerateFiles(string directory, string pattern)
@@ -226,4 +233,59 @@ internal static class Real
             "rc_live": "C:/Riot Games/Riot Client/RiotClientServices.exe"
         }
         """;
+}
+
+internal sealed class MemoryRegistry : IGameRegistry
+{
+    private readonly Dictionary<string, Dictionary<string, string>> _keys = new(StringComparer.OrdinalIgnoreCase);
+
+    public bool Denied { get; set; }
+
+    public MemoryRegistry Set(string key, string name, string value)
+    {
+        if (!_keys.TryGetValue(key, out var values))
+        {
+            values = new Dictionary<string, string>(StringComparer.OrdinalIgnoreCase);
+            _keys[key] = values;
+        }
+
+        values[name] = value;
+        return this;
+    }
+
+    public IReadOnlyList<string> SubKeyNames(string machineKey)
+    {
+        if (Denied)
+        {
+            throw new System.Security.SecurityException("Acesso negado.");
+        }
+
+        var prefix = machineKey + "\\";
+        return _keys.Keys
+            .Where(k => k.StartsWith(prefix, StringComparison.OrdinalIgnoreCase))
+            .Select(k => k[prefix.Length..].Split('\\')[0])
+            .Distinct(StringComparer.OrdinalIgnoreCase)
+            .ToList();
+    }
+
+    public string? Text(string machineKey, string valueName) =>
+        _keys.TryGetValue(machineKey, out var values) && values.TryGetValue(valueName, out var text) ? text : null;
+}
+
+internal sealed class MemoryGameSettings : IGameSettings
+{
+    private readonly GameSettings _settings = new();
+
+    public event EventHandler? Changed;
+
+    public int Saves { get; private set; }
+
+    public T Read<T>(Func<GameSettings, T> read) => read(_settings);
+
+    public void Update(Action<GameSettings> change)
+    {
+        change(_settings);
+        Saves++;
+        Changed?.Invoke(this, EventArgs.Empty);
+    }
 }

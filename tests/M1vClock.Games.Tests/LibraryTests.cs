@@ -363,7 +363,7 @@ public sealed class GameLibraryServiceTests
     }
 
     private static GameLibraryService Create(MemoryFiles files, IGameLocations? locations = null) =>
-        new(files, locations ?? new FixedLocations(Real.SteamFolder, Real.EpicFolder, Real.RiotFile), NullLogger<GameLibraryService>.Instance);
+        new(files, locations ?? new FixedLocations(Real.SteamFolder, Real.EpicFolder, Real.RiotFile), new MemoryRegistry(), new MemoryGameSettings(), NullLogger<GameLibraryService>.Instance);
 
     [Fact]
     public async Task AllPlatformsAreCombinedAndSortedByName()
@@ -442,7 +442,7 @@ public sealed class RealGameLibraryTests
     [Fact]
     public async Task ThisPcLibraryIsReadForRealWithoutDuplicatesOrBlankNames()
     {
-        var service = new GameLibraryService(new WindowsGameFileSystem(), new WindowsGameLocations(new WindowsRegistryAccess()), NullLogger<GameLibraryService>.Instance);
+        var service = new GameLibraryService(new WindowsGameFileSystem(), new WindowsGameLocations(new WindowsRegistryAccess()), new WindowsGameRegistry(), new MemoryGameSettings(), NullLogger<GameLibraryService>.Instance);
 
         var library = await service.ReadAsync(TestContext.Current.CancellationToken);
 
