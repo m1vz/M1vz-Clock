@@ -66,7 +66,19 @@ internal sealed class ScratchDirectory : IDisposable
             }
         }
 
-        Directory.Delete(Path, recursive: true);
+        for (var attempt = 1; ; attempt++)
+        {
+            try
+            {
+                Directory.Delete(Path, recursive: true);
+                return;
+            }
+            catch (IOException ex) when (attempt < 5)
+            {
+                TestContext.Current.SendDiagnosticMessage("limpeza adiada: " + ex.Message);
+                Thread.Sleep(100 * attempt);
+            }
+        }
     }
 }
 
