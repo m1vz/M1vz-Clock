@@ -111,4 +111,10 @@ internal static partial class AppLog
 
     [LoggerMessage(EventId = 2037, Level = LogLevel.Warning, Message = "Consulta de FPS de {Game} falhou.")]
     public static partial void FpsReferenceFailed(ILogger logger, Exception exception, string game);
+
+    [LoggerMessage(EventId = 2038, Level = LogLevel.Warning, Message = "Verificação de estabilidade não começou: {Status}.")]
+    public static partial void StabilityRefused(ILogger logger, Exception exception, M1vClock.App.Pages.Performance.StabilityStartStatus status);
+
+    [LoggerMessage(EventId = 2039, Level = LogLevel.Warning, Message = "SessionGuard na abertura: {Decision} ({Reason}).")]
+    public static partial void GuardChecked(ILogger logger, M1vClock.Tuning.GuardDecision decision, M1vClock.Tuning.GuardReason reason);
 }

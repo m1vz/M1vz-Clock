@@ -118,6 +118,20 @@ public static class AppHost
         builder.Services.AddSingleton<OverlayController>();
         builder.Services.AddSingleton<OverlayServices>();
         builder.Services.AddTransient<OverlayPageViewModel>();
+        builder.Services.AddSingleton<StabilityRunnerServices>();
+        builder.Services.AddSingleton<IStabilityRunner, StabilityRunner>();
+        builder.Services.AddSingleton(provider => new OverclockServices(
+            provider.GetRequiredService<M1vClock.Hardware.Platform.IPlatformService>(),
+            provider.GetRequiredService<IMachineProfile>(),
+            provider.GetRequiredService<M1vClock.Tuning.Gpu.AdlxReader>(),
+            provider.GetRequiredService<M1vClock.Tuning.Gpu.NvidiaTuner>(),
+            provider.GetRequiredService<M1vClock.Tuning.SessionGuard>(),
+            provider.GetRequiredService<M1vClock.Tuning.Stability.IHardwareErrorSource>(),
+            provider.GetRequiredService<IStabilityRunner>(),
+            provider.GetRequiredService<DialogService>(),
+            provider.GetRequiredService<AppInfo>(),
+            provider.GetRequiredService<TimeProvider>()));
+        builder.Services.AddTransient<OverclockPageViewModel>();
         builder.Services.AddSingleton<IReportCollector, ReportCollector>();
         return builder.Build();
     }

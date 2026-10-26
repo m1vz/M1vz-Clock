@@ -235,7 +235,7 @@
     <value>Overclock</value>
   </data>
   <data name="Page.Overclock.Description" xml:space="preserve">
-    <value>CPU and GPU tuning with safe limits and undo.</value>
+    <value>Graphics card, stability check and BIOS guide.</value>
   </data>
   <data name="Page.Overclock.Keywords" xml:space="preserve">
     <value>overclock,oc,undervolt,curve optimizer,clock</value>
@@ -5585,5 +5585,299 @@
   </data>
   <data name="Game.Overlay.Item.Clock" xml:space="preserve">
     <value>Time</value>
+  </data>
+  <data name="Oc.Intro" xml:space="preserve">
+    <value>Graphics card settings, a stability check and the guide for BIOS changes. Make one change at a time and run the check after each one. If the PC or the video driver crashes after a GPU change made here, m1vClock puts the card back to default the next time it opens.</value>
+  </data>
+  <data name="Oc.Gpu.Heading" xml:space="preserve">
+    <value>Graphics card</value>
+  </data>
+  <data name="Oc.Gpu.None" xml:space="preserve">
+    <value>No AMD or NVIDIA card answered the driver libraries (ADLX or NVML).</value>
+  </data>
+  <data name="Oc.Gpu.Amd.Note" xml:space="preserve">
+    <value>Read through ADLX, the AMD driver library. In this version m1vClock only reads AMD settings; to change them, use AMD Software: Adrenalin.</value>
+  </data>
+  <data name="Oc.Gpu.Nvidia.Note" xml:space="preserve">
+    <value>Read and set through NVML, the NVIDIA driver library. It only lowers or caps: power limit and clock ceiling. Applying needs m1vClock running as administrator.</value>
+  </data>
+  <data name="Oc.Gpu.Range" xml:space="preserve">
+    <value>{0} to {1} {2}</value>
+  </data>
+  <data name="Oc.Gpu.Clock" xml:space="preserve">
+    <value>Adjustable clock</value>
+  </data>
+  <data name="Oc.Gpu.Voltage" xml:space="preserve">
+    <value>Adjustable voltage</value>
+  </data>
+  <data name="Oc.Gpu.Power" xml:space="preserve">
+    <value>Power limit</value>
+  </data>
+  <data name="Oc.Gpu.PowerValue" xml:space="preserve">
+    <value>now {0} (default {1}; range {2})</value>
+  </data>
+  <data name="Oc.Gpu.State" xml:space="preserve">
+    <value>State</value>
+  </data>
+  <data name="Oc.Gpu.State.Factory" xml:space="preserve">
+    <value>Factory settings</value>
+  </data>
+  <data name="Oc.Gpu.State.Changed" xml:space="preserve">
+    <value>Changed from factory</value>
+  </data>
+  <data name="Oc.Gpu.NoTuning" xml:space="preserve">
+    <value>This card does not accept manual tuning through the driver.</value>
+  </data>
+  <data name="Oc.Gpu.PowerField" xml:space="preserve">
+    <value>Power limit (W)</value>
+  </data>
+  <data name="Oc.Gpu.CapField" xml:space="preserve">
+    <value>Clock ceiling</value>
+  </data>
+  <data name="Oc.Gpu.Cap.None" xml:space="preserve">
+    <value>No ceiling</value>
+  </data>
+  <data name="Oc.Gpu.Cap.Offset" xml:space="preserve">
+    <value>Up to {0} MHz</value>
+  </data>
+  <data name="Oc.Gpu.Apply" xml:space="preserve">
+    <value>Apply</value>
+  </data>
+  <data name="Oc.Gpu.Restore" xml:space="preserve">
+    <value>Back to default</value>
+  </data>
+  <data name="Oc.Gpu.NeedsAdmin" xml:space="preserve">
+    <value>To change the graphics card, open m1vClock as administrator.</value>
+  </data>
+  <data name="Oc.Gpu.PowerOutOfRange" xml:space="preserve">
+    <value>The power limit must be between {0} and {1} W.</value>
+  </data>
+  <data name="Oc.Gpu.Confirm.Title" xml:space="preserve">
+    <value>Apply tuning to {0}?</value>
+  </data>
+  <data name="Oc.Gpu.Confirm.Message" xml:space="preserve">
+    <value>The driver applies it right away. Then run the stability check.</value>
+  </data>
+  <data name="Oc.Gpu.Confirm.Power" xml:space="preserve">
+    <value>Power limit: {0} W</value>
+  </data>
+  <data name="Oc.Gpu.Confirm.Cap" xml:space="preserve">
+    <value>Clock ceiling: {0} MHz</value>
+  </data>
+  <data name="Oc.Gpu.Confirm.NoCap" xml:space="preserve">
+    <value>No clock ceiling</value>
+  </data>
+  <data name="Oc.Gpu.Confirm.Undo" xml:space="preserve">
+    <value>"Back to default" undoes it. If the driver or the PC crashes, m1vClock undoes it by itself the next time it opens.</value>
+  </data>
+  <data name="Oc.Gpu.Result.Applied" xml:space="preserve">
+    <value>Tuning applied. Run the stability check to confirm.</value>
+  </data>
+  <data name="Oc.Gpu.Result.Partial" xml:space="preserve">
+    <value>The driver accepted only part of the tuning. See the current values above.</value>
+  </data>
+  <data name="Oc.Gpu.Result.Refused" xml:space="preserve">
+    <value>The driver refused the tuning.</value>
+  </data>
+  <data name="Oc.Gpu.Result.OutOfRange" xml:space="preserve">
+    <value>Values outside what the card accepts. Nothing was changed.</value>
+  </data>
+  <data name="Oc.Gpu.Result.NoDevice" xml:space="preserve">
+    <value>The card did not answer.</value>
+  </data>
+  <data name="Oc.Gpu.Result.LibraryMissing" xml:space="preserve">
+    <value>The driver library is not available.</value>
+  </data>
+  <data name="Oc.Gpu.Restored" xml:space="preserve">
+    <value>Graphics card back to factory defaults.</value>
+  </data>
+  <data name="Oc.Guard.Toast.Title" xml:space="preserve">
+    <value>GPU tuning undone</value>
+  </data>
+  <data name="Oc.Guard.Toast.PreviousSessionCrashed" xml:space="preserve">
+    <value>m1vClock closed unexpectedly after the tuning. The card is back to default.</value>
+  </data>
+  <data name="Oc.Guard.Toast.DriverReset" xml:space="preserve">
+    <value>The video driver restarted after the tuning. The card is back to default.</value>
+  </data>
+  <data name="Oc.Guard.Toast.UnexpectedShutdown" xml:space="preserve">
+    <value>The PC shut down without warning after the tuning. The card is back to default.</value>
+  </data>
+  <data name="Oc.Guard.Toast.None" xml:space="preserve">
+    <value>The card is back to default.</value>
+  </data>
+  <data name="Oc.Check.Heading" xml:space="preserve">
+    <value>Stability check</value>
+  </data>
+  <data name="Oc.Check.Intro" xml:space="preserve">
+    <value>Uses the same workload as the Stress test page, with the same temperature limits, and watches the Windows log: a hardware error (WHEA), a video driver restart or a memory error fails it right away.</value>
+  </data>
+  <data name="Oc.Check.Target" xml:space="preserve">
+    <value>What to test</value>
+  </data>
+  <data name="Oc.Check.Target.CpuAndMemory" xml:space="preserve">
+    <value>CPU + RAM</value>
+  </data>
+  <data name="Oc.Check.Target.Gpu" xml:space="preserve">
+    <value>GPU</value>
+  </data>
+  <data name="Oc.Check.Target.Everything" xml:space="preserve">
+    <value>Everything</value>
+  </data>
+  <data name="Oc.Check.Duration" xml:space="preserve">
+    <value>Duration</value>
+  </data>
+  <data name="Oc.Check.Minutes" xml:space="preserve">
+    <value>{0} min</value>
+  </data>
+  <data name="Oc.Check.Start" xml:space="preserve">
+    <value>Start check</value>
+  </data>
+  <data name="Oc.Check.Stop" xml:space="preserve">
+    <value>Stop</value>
+  </data>
+  <data name="Oc.Check.Starting" xml:space="preserve">
+    <value>Getting ready…</value>
+  </data>
+  <data name="Oc.Check.Running" xml:space="preserve">
+    <value>{0} of {1} · max CPU {2} · max GPU {3}</value>
+  </data>
+  <data name="Oc.Check.Cancelled" xml:space="preserve">
+    <value>Check cancelled.</value>
+  </data>
+  <data name="Oc.Check.Refused.OtherTestRunning" xml:space="preserve">
+    <value>Another heavy test is running. Finish it first.</value>
+  </data>
+  <data name="Oc.Check.Refused.NoTemperatureSensor" xml:space="preserve">
+    <value>Without a temperature reading the test does not start (open m1vClock as administrator to read the CPU).</value>
+  </data>
+  <data name="Oc.Check.Refused.NotEnoughMemory" xml:space="preserve">
+    <value>Too little free memory for the RAM test. Close some programs.</value>
+  </data>
+  <data name="Oc.Check.Refused.Refused" xml:space="preserve">
+    <value>The test could not start.</value>
+  </data>
+  <data name="Oc.Check.Refused.Started" xml:space="preserve">
+    <value>The test started.</value>
+  </data>
+  <data name="Oc.Verdict.Stable" xml:space="preserve">
+    <value>Stable</value>
+  </data>
+  <data name="Oc.Verdict.Unstable" xml:space="preserve">
+    <value>Unstable</value>
+  </data>
+  <data name="Oc.Verdict.Inconclusive" xml:space="preserve">
+    <value>Inconclusive</value>
+  </data>
+  <data name="Oc.Verdict.Detail" xml:space="preserve">
+    <value>Duration {0} · max CPU {1} · max GPU {2} · WHEA {3} · video resets {4} · memory errors {5}</value>
+  </data>
+  <data name="Oc.Verdict.StableHint" xml:space="preserve">
+    <value>No errors. For Curve Optimizer or undervolting, use the PC normally for a day and check the recent errors below: instability often shows up under light use.</value>
+  </data>
+  <data name="Oc.Verdict.Reason.WheaErrors" xml:space="preserve">
+    <value>Windows logged a hardware error (WHEA): unstable CPU, RAM or PCIe. Go back one step.</value>
+  </data>
+  <data name="Oc.Verdict.Reason.DriverResets" xml:space="preserve">
+    <value>The video driver restarted during the test. Go back one step on the GPU tuning.</value>
+  </data>
+  <data name="Oc.Verdict.Reason.UnexpectedShutdown" xml:space="preserve">
+    <value>The PC shut down without warning during the test.</value>
+  </data>
+  <data name="Oc.Verdict.Reason.MemoryErrors" xml:space="preserve">
+    <value>The RAM test found errors: the memory profile (EXPO/XMP) or the timings are not stable.</value>
+  </data>
+  <data name="Oc.Verdict.Reason.WorkloadCrashed" xml:space="preserve">
+    <value>The test workload stopped with an error (the GPU may have hung).</value>
+  </data>
+  <data name="Oc.Verdict.Reason.TooHot" xml:space="preserve">
+    <value>It stopped for temperature before the end. Improve cooling or reduce the tuning before concluding anything.</value>
+  </data>
+  <data name="Oc.Verdict.Reason.StoppedEarly" xml:space="preserve">
+    <value>The test lasted less than 5 minutes: too little to conclude.</value>
+  </data>
+  <data name="Oc.Verdict.Reason.SensorLost" xml:space="preserve">
+    <value>The temperature reading disappeared during the test.</value>
+  </data>
+  <data name="Oc.Verdict.Reason.WindowUnresponsive" xml:space="preserve">
+    <value>m1vClock stopped responding during the test.</value>
+  </data>
+  <data name="Oc.Verdict.Reason.ErrorsUnreadable" xml:space="preserve">
+    <value>The Windows log could not be read, so hardware errors were not checked.</value>
+  </data>
+  <data name="Oc.Errors.Heading" xml:space="preserve">
+    <value>Recent hardware errors (7 days)</value>
+  </data>
+  <data name="Oc.Errors.None" xml:space="preserve">
+    <value>No hardware error, video driver restart or unexpected shutdown.</value>
+  </data>
+  <data name="Oc.Errors.Some" xml:space="preserve">
+    <value>WHEA: {0} · video driver resets: {1} · unexpected shutdowns: {2} · last at {3}</value>
+  </data>
+  <data name="Oc.Errors.Unreadable" xml:space="preserve">
+    <value>The Windows log could not be read: {0}</value>
+  </data>
+  <data name="Oc.Errors.Tip" xml:space="preserve">
+    <value>Unexpected shutdowns also count power loss and a held power button; see the Crashes page for details on each one.</value>
+  </data>
+  <data name="Oc.Bios.Heading" xml:space="preserve">
+    <value>BIOS guide · {0} · {1}</value>
+  </data>
+  <data name="Oc.Bios.Intro" xml:space="preserve">
+    <value>Menus change a little between BIOS versions. The values are safe starting points, not a guarantee: every chip is different.</value>
+  </data>
+  <data name="Oc.Bios.SaveProfile.Title" xml:space="preserve">
+    <value>Before you start: save the current profile</value>
+  </data>
+  <data name="Oc.Bios.SaveProfile.Text" xml:space="preserve">
+    <value>If the PC does not boot after a change, wait for three attempts (many boards recover by themselves) or clear the CMOS with the CLR_CMOS jumper or by removing the battery for a minute.</value>
+  </data>
+  <data name="Oc.Bios.MemoryProfile.Title" xml:space="preserve">
+    <value>Enable the memory profile ({0})</value>
+  </data>
+  <data name="Oc.Bios.MemoryProfile.Text" xml:space="preserve">
+    <value>It is the biggest gaming gain for most PCs: the RAM leaves the default speed and runs at its rated speed. Test with the "CPU + RAM" check for 15 minutes.</value>
+  </data>
+  <data name="Oc.Bios.PrecisionBoostOverdrive.Title" xml:space="preserve">
+    <value>Precision Boost Overdrive (PBO)</value>
+  </data>
+  <data name="Oc.Bios.PrecisionBoostOverdrive.Text" xml:space="preserve">
+    <value>Set it to Advanced and PBO Limits to Motherboard. Boost lasts longer, with more heat. Test with the check.</value>
+  </data>
+  <data name="Oc.Bios.CurveOptimizer.Title" xml:space="preserve">
+    <value>Curve Optimizer (CPU undervolt)</value>
+  </data>
+  <data name="Oc.Bios.CurveOptimizer.Text" xml:space="preserve">
+    <value>All Cores, Negative, 10. If it passes, try 15, 20… until it fails and go back 5. It usually ends between -10 and {1}. Errors often show under light use: use the PC for a day and check recent errors.</value>
+  </data>
+  <data name="Oc.Bios.BoostOverride.Title" xml:space="preserve">
+    <value>Max CPU Boost Clock Override (optional)</value>
+  </data>
+  <data name="Oc.Bios.BoostOverride.Text" xml:space="preserve">
+    <value>After a stable Curve Optimizer: +100 MHz, test; then +200 MHz. Small gain; it may need a smaller Curve Optimizer.</value>
+  </data>
+  <data name="Oc.Bios.EcoMode.Title" xml:space="preserve">
+    <value>Cool alternative: Eco Mode</value>
+  </data>
+  <data name="Oc.Bios.EcoMode.Text" xml:space="preserve">
+    <value>Instead of more performance, it caps the CPU at 65 W or 105 W. It loses little in games and runs much cooler and quieter.</value>
+  </data>
+  <data name="Oc.Bios.IntelPowerLimits.Title" xml:space="preserve">
+    <value>Intel power limits (PL1/PL2)</value>
+  </data>
+  <data name="Oc.Bios.IntelPowerLimits.Text" xml:space="preserve">
+    <value>Use Intel's values for your model (the "Intel Default Settings" profile when the board offers it). Boards that unlock everything run hot and, on 13th and 14th gen, speed up wear.</value>
+  </data>
+  <data name="Oc.Bios.IntelUndervolt.Title" xml:space="preserve">
+    <value>Undervolt (negative offset)</value>
+  </data>
+  <data name="Oc.Bios.IntelUndervolt.Text" xml:space="preserve">
+    <value>Start at -0.025 V and go down 0.010 V at a time, testing each step. Prefer this to raising multipliers.</value>
+  </data>
+  <data name="Oc.Bios.TestEachStep.Title" xml:space="preserve">
+    <value>One change at a time</value>
+  </data>
+  <data name="Oc.Bios.TestEachStep.Text" xml:space="preserve">
+    <value>After each change, run the stability check here. If it fails, undo only the last step.</value>
   </data>
 </root>

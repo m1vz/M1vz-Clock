@@ -75,6 +75,17 @@ public partial class App : Application
         window.Show();
         services.GetRequiredService<WindowHotkeys>().Attach(window);
         services.GetRequiredService<OverlayController>().Start();
+        var guard = services.GetRequiredService<M1vClock.Tuning.SessionGuard>().CheckAtStartup(previous is not null);
+        if (guard.Decision != M1vClock.Tuning.GuardDecision.Nothing)
+        {
+            AppLog.GuardChecked(_logger, guard.Decision, guard.Reason);
+        }
+
+        if (guard.Decision == M1vClock.Tuning.GuardDecision.RestoreDefaults)
+        {
+            services.GetRequiredService<INotificationService>().Show(new ToastRequest(
+                Loc.Get("Oc.Guard.Toast.Title"), Loc.Get($"Oc.Guard.Toast.{guard.Reason}"), "Icon.Overclock", ToastTone.Warning));
+        }
         window.Start(options, previous);
 
         _instance.Listen(

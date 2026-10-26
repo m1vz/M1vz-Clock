@@ -72,6 +72,10 @@
     <gm:OverlayPage />
   </DataTemplate>
 
+  <DataTemplate DataType="{x:Type pf:OverclockPageViewModel}">
+    <pf:OverclockPage />
+  </DataTemplate>
+
   <DataTemplate DataType="{x:Type op:CleanupPageViewModel}">
     <op:CleanupPage />
   </DataTemplate>
