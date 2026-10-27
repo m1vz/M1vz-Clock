@@ -9,6 +9,7 @@
     <SelfContained>false</SelfContained>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
     <StartupObject>M1vClock.App.Program</StartupObject>
+    <ApplicationIcon>Assets\m1vClock.ico</ApplicationIcon>
     <M1vAsInvoker Condition="'$(M1vAsInvoker)' == '' And '$(Configuration)' == 'Debug'">true</M1vAsInvoker>
     <ApplicationManifest>app.manifest</ApplicationManifest>
     <ApplicationManifest Condition="'$(M1vAsInvoker)' == 'true'">app.asinvoker.manifest</ApplicationManifest>
@@ -21,6 +22,7 @@
 
   <ItemGroup>
     <Resource Include="Assets\Fonts\*.ttf" />
+    <Resource Include="Assets\m1vClock.ico" />
   </ItemGroup>
 
   <ItemGroup>

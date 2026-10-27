@@ -7,7 +7,7 @@
         xmlns:search="clr-namespace:M1vClock.App.Search"
         xmlns:shell="clr-namespace:M1vClock.App.Shell"
         xmlns:svc="clr-namespace:M1vClock.App.Services"
-        Title="m1vClock" Width="1280" Height="820" MinWidth="1040" MinHeight="640"
+        Title="m1vClock" Icon="/Assets/m1vClock.ico" Width="1280" Height="820" MinWidth="1040" MinHeight="640"
         WindowStartupLocation="CenterScreen" ResizeMode="CanResize"
         Background="Transparent" UseLayoutRounding="True"
         FontFamily="{StaticResource Font.Text}" FontSize="{DynamicResource Size.Body}" Foreground="{DynamicResource Brush.TextPrimary}">
