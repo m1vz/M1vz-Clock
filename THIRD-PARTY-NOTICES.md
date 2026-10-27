@@ -2,34 +2,6 @@
 
 O m1vClock reaproveita código e usa componentes de terceiros. Este arquivo reúne os avisos exigidos pelas licenças.
 
-## Código reaproveitado (MIT)
-
-Partes dos benchmarks (algoritmos e shaders), o banco de especificações de GPU e o catálogo de FPS foram adaptadas de um projeto sob a licença abaixo.
-
-```
-MIT License
-
-Copyright (c) 2026 Gustavo (GustavoReset)
-
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
-
-The above copyright notice and this permission notice shall be included in all
-copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-SOFTWARE.
-```
-
 Drivers seriais de terceiros não fazem parte deste projeto. Eles serão baixados na hora, com verificação de assinatura.
 
 ## Componentes usados
