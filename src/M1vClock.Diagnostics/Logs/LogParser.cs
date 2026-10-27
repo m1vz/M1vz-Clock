@@ -7,7 +7,7 @@ public static partial class LogParser
 {
     private const string TimeFormat = "yyyy-MM-dd HH:mm:ss.fff zzz";
 
-    [GeneratedRegex(@"^(?<time>\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2}\.\d{3} [+-]\d{2}:\d{2}) \[(?<level>[A-Z]{3})\] (?<source>\S+): (?<message>.*)$", RegexOptions.ExplicitCapture, matchTimeoutMilliseconds: 250)]
+    [GeneratedRegex(@"^(?<time>\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2}\.\d{3} [+-]\d{2}:\d{2}) \[(?<level>[A-Z]{3})\] (?<source>\S*): (?<message>.*)$", RegexOptions.ExplicitCapture, matchTimeoutMilliseconds: 250)]
     private static partial Regex Header();
 
     public static IReadOnlyList<LogEntry> Parse(IEnumerable<string> lines)

@@ -17,6 +17,8 @@
     <Project Path="tests/M1vClock.Benchmarks.Tests/M1vClock.Benchmarks.Tests.csproj" />
     <Project Path="tests/M1vClock.Diagnostics.Tests/M1vClock.Diagnostics.Tests.csproj" />
     <Project Path="tests/M1vClock.Optimize.Tests/M1vClock.Optimize.Tests.csproj" />
+    <Project Path="tests/M1vClock.Games.Tests/M1vClock.Games.Tests.csproj" />
+    <Project Path="tests/M1vClock.Tuning.Tests/M1vClock.Tuning.Tests.csproj" />
     <Project Path="tests/M1vClock.App.Tests/M1vClock.App.Tests.csproj" />
     <Project Path="tests/M1vClock.Architecture.Tests/M1vClock.Architecture.Tests.csproj" />
   </Folder>

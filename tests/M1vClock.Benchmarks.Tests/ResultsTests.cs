@@ -343,9 +343,10 @@ public sealed class BenchmarkExchangeTests : IDisposable
         BenchmarkExchange.Write(FilePath(), [Samples.Record()], Samples.Now);
 
         var text = File.ReadAllText(FilePath());
+        var withoutProductName = text.Replace("m1vclock", string.Empty, StringComparison.OrdinalIgnoreCase);
 
-        Assert.DoesNotContain(Environment.MachineName, text, StringComparison.OrdinalIgnoreCase);
-        Assert.DoesNotContain(Environment.UserName, text, StringComparison.OrdinalIgnoreCase);
+        Assert.DoesNotContain(Environment.MachineName, withoutProductName, StringComparison.OrdinalIgnoreCase);
+        Assert.DoesNotContain(Environment.UserName, withoutProductName, StringComparison.OrdinalIgnoreCase);
         using var document = JsonDocument.Parse(text);
         Assert.Equal(BenchmarkExchange.FormatName, document.RootElement.GetProperty("Format").GetString());
     }

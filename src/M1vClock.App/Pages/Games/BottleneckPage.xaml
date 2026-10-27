@@ -1,0 +1,93 @@
+<UserControl x:Class="M1vClock.App.Pages.Games.BottleneckPage"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:dc="clr-namespace:M1vClock.App.DesignSystem.Controls"
+             xmlns:l="clr-namespace:M1vClock.App.Localization"
+             Focusable="False">
+  <dc:PageScaffold Title="{Binding Title}" Subtitle="{Binding Subtitle}">
+    <StackPanel>
+      <ContentControl Style="{StaticResource Banner.Warning}" Margin="0,0,0,16" Visibility="{Binding HasNoSensors, Converter={StaticResource BoolToVisible}}">
+        <TextBlock Style="{StaticResource Banner.Text}" Text="{l:Text Game.Bottleneck.NoSensors}" TextWrapping="Wrap" />
+      </ContentControl>
+
+      <TextBlock Text="{l:Text Game.Bottleneck.Intro}" Style="{StaticResource Text.Subhead.Secondary}" TextWrapping="Wrap" Margin="4,0,0,16" />
+      <TextBlock Text="{l:Text Game.Bottleneck.Waiting}" Style="{StaticResource Text.Subhead.Secondary}" Margin="4,0,0,16"
+                 Visibility="{Binding IsWaiting, Converter={StaticResource BoolToVisible}}" />
+
+      <StackPanel Visibility="{Binding HasLive, Converter={StaticResource BoolToVisible}}">
+        <Border Style="{StaticResource Card}" Padding="20,16" Margin="0,0,0,16">
+          <StackPanel>
+            <DockPanel>
+              <dc:StateBadge DockPanel.Dock="Right" State="{Binding LiveTone}" Text="{l:Text Game.Bottleneck.Now}" VerticalAlignment="Top" Margin="20,0,0,0" />
+              <TextBlock Text="{Binding LiveTitle}" Style="{StaticResource Text.Headline}" TextWrapping="Wrap" />
+            </DockPanel>
+            <TextBlock Text="{Binding LiveAdvice}" Style="{StaticResource Text.Subhead.Secondary}" TextWrapping="Wrap" Margin="0,8,0,0" />
+          </StackPanel>
+        </Border>
+
+        <UniformGrid Columns="4" Margin="-8,0,-8,8">
+          <dc:MetricCard Margin="8,0" Label="{l:Text Game.Bottleneck.Metric.Gpu}" Value="{Binding GpuText}" />
+          <dc:MetricCard Margin="8,0" Label="{l:Text Game.Bottleneck.Metric.Cpu}" Value="{Binding CpuText}" />
+          <dc:MetricCard Margin="8,0" Label="{l:Text Game.Bottleneck.Metric.Core}" Value="{Binding CoreText}" />
+          <dc:MetricCard Margin="8,0" Label="{l:Text Game.Bottleneck.Metric.Vram}" Value="{Binding VramText}" />
+        </UniformGrid>
+        <UniformGrid Columns="4" Margin="-8,8,-8,16">
+          <dc:MetricCard Margin="8,0" Label="{l:Text Game.Bottleneck.Metric.Ram}" Value="{Binding RamText}" />
+          <dc:MetricCard Margin="8,0" Label="{l:Text Game.Bottleneck.Metric.GpuTemp}" Value="{Binding GpuTempText}" />
+          <dc:MetricCard Margin="8,0" Label="{l:Text Game.Bottleneck.Metric.CpuTemp}" Value="{Binding CpuTempText}" />
+        </UniformGrid>
+        <UniformGrid Columns="4" Margin="-8,0,-8,8">
+          <dc:MetricCard Margin="8,0" Label="{l:Text Game.Bottleneck.Metric.Fps}" Value="{Binding FpsText}" />
+          <dc:MetricCard Margin="8,0" Label="{l:Text Game.Bottleneck.Metric.FpsLow}" Value="{Binding FpsLowText}" />
+        </UniformGrid>
+        <TextBlock Text="{Binding FpsHint}" Style="{StaticResource Text.Caption}" Foreground="{DynamicResource Brush.TextTertiary}" TextWrapping="Wrap" Margin="4,0,0,16"
+                   Visibility="{Binding HasFpsHint, Converter={StaticResource BoolToVisible}}" />
+      </StackPanel>
+
+      <Border Style="{StaticResource Card}" Padding="20,16" Margin="0,0,0,16">
+        <StackPanel>
+          <TextBlock Text="{l:Text Game.Bottleneck.Session}" Style="{StaticResource Text.Headline}" />
+          <TextBlock Text="{l:Text Game.Bottleneck.Duration}" Style="{StaticResource Text.Caption}" Margin="0,12,0,6" />
+          <dc:SegmentedControl ItemsSource="{Binding DurationLabels}" SelectedIndex="{Binding DurationIndex, Mode=TwoWay}" Width="320" HorizontalAlignment="Left"
+                               IsEnabled="{Binding CanStart}" AutomationProperties.Name="{l:Text Game.Bottleneck.Duration}" />
+          <StackPanel Orientation="Horizontal" Margin="0,16,0,0">
+            <Button Style="{StaticResource Button.Primary}" Content="{l:Text Game.Bottleneck.Start}" IsEnabled="{Binding CanStart}" Command="{Binding StartCommand}" Margin="0,0,8,0" />
+            <Button Style="{StaticResource Button.Secondary}" Content="{l:Text Game.Bottleneck.Stop}" IsEnabled="{Binding IsRecording}" Command="{Binding StopCommand}" />
+          </StackPanel>
+          <StackPanel Margin="0,16,0,0" Visibility="{Binding IsRecording, Converter={StaticResource BoolToVisible}}">
+            <TextBlock Text="{Binding RecordingText}" Style="{StaticResource Text.Subhead}" TextWrapping="Wrap" />
+            <dc:ProgressTrack Fraction="{Binding Fraction}" Margin="0,8,0,0" />
+          </StackPanel>
+        </StackPanel>
+      </Border>
+
+      <Border Style="{StaticResource Card}" Padding="20,16" Margin="0,0,0,16" Visibility="{Binding HasReport, Converter={StaticResource BoolToVisible}}">
+        <StackPanel>
+          <TextBlock Text="{l:Text Game.Bottleneck.Report}" Style="{StaticResource Text.Caption}" Margin="0,0,0,6" />
+          <TextBlock Text="{Binding ReportMain}" Style="{StaticResource Text.Headline}" TextWrapping="Wrap" />
+          <TextBlock Text="{Binding ReportAdvice}" Style="{StaticResource Text.Subhead.Secondary}" TextWrapping="Wrap" Margin="0,8,0,12" />
+          <ItemsControl ItemsSource="{Binding ReportRows}" Focusable="False">
+            <ItemsControl.ItemTemplate>
+              <DataTemplate>
+                <StackPanel Margin="0,0,0,8" AutomationProperties.Name="{Binding Name}">
+                  <DockPanel>
+                    <TextBlock DockPanel.Dock="Right" Text="{Binding PercentText}" Style="{StaticResource Text.Subhead}" />
+                    <TextBlock Text="{Binding Name}" Style="{StaticResource Text.Subhead}" />
+                  </DockPanel>
+                  <dc:ProgressTrack Fraction="{Binding Fraction}" Margin="0,4,0,0" />
+                </StackPanel>
+              </DataTemplate>
+            </ItemsControl.ItemTemplate>
+          </ItemsControl>
+          <TextBlock Text="{Binding ReportSamples}" Style="{StaticResource Text.Caption}" Foreground="{DynamicResource Brush.TextTertiary}" Margin="0,8,0,0" />
+          <TextBlock Text="{Binding ReportFps}" Style="{StaticResource Text.Caption}" Foreground="{DynamicResource Brush.TextTertiary}" TextWrapping="Wrap" Margin="0,4,0,0"
+                     Visibility="{Binding HasReportFps, Converter={StaticResource BoolToVisible}}" />
+          <TextBlock Text="{Binding ReportAverages}" Style="{StaticResource Text.Caption}" Foreground="{DynamicResource Brush.TextTertiary}" TextWrapping="Wrap" Margin="0,4,0,0" />
+          <TextBlock Text="{Binding ReportPeaks}" Style="{StaticResource Text.Caption}" Foreground="{DynamicResource Brush.TextTertiary}" TextWrapping="Wrap" Margin="0,4,0,0" />
+          <TextBlock Text="{Binding ReportWarning}" Style="{StaticResource Text.Subhead.Secondary}" TextWrapping="Wrap" Margin="0,10,0,0"
+                     Visibility="{Binding HasReportWarning, Converter={StaticResource BoolToVisible}}" />
+        </StackPanel>
+      </Border>
+    </StackPanel>
+  </dc:PageScaffold>
+</UserControl>

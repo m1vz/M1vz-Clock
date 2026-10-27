@@ -47,6 +47,7 @@ Os drivers seriais que o ResetExplode embute na pasta `Drivers/` **não** são M
 |---|---|---|---|
 | LibreHardwareMonitorLib 0.9.6 | MPL-2.0 | Leitura de sensores, sem modificações | https://github.com/LibreHardwareMonitor/LibreHardwareMonitor |
 | Vortice.Direct3D11, Vortice.Direct3D12, Vortice.DXGI, Vortice.D3DCompiler | MIT | Cena e estresse de GPU, memória de vídeo e verificação de ray tracing | https://github.com/amerkoleci/Vortice.Windows |
+| Microsoft.Diagnostics.Tracing.TraceEvent 3.2.8 | MIT | Medição de quadros por segundo pelos eventos de apresentação do Windows (ETW), sem injetar nada nos jogos | https://github.com/microsoft/perfview |
 | CommunityToolkit.Mvvm | MIT | Camada de interface | https://github.com/CommunityToolkit/dotnet |
 | Microsoft.Extensions.*, System.Diagnostics.EventLog e System.Management | MIT | Hospedagem, injeção de dependência, logs, log de eventos do Windows e WMI | https://github.com/dotnet/runtime |
 | Serilog | Apache-2.0 | Registro em arquivo | https://github.com/serilog/serilog |

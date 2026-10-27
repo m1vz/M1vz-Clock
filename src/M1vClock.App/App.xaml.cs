@@ -5,6 +5,7 @@ using System.Windows.Markup;
 using System.Windows.Threading;
 using M1vClock.App.Hosting;
 using M1vClock.App.Localization;
+using M1vClock.App.Overlay;
 using M1vClock.App.Services;
 using M1vClock.App.Shell;
 using M1vClock.Core.Diagnostics;
@@ -72,6 +73,19 @@ public partial class App : Application
         var window = services.GetRequiredService<MainWindow>();
         MainWindow = window;
         window.Show();
+        services.GetRequiredService<WindowHotkeys>().Attach(window);
+        services.GetRequiredService<OverlayController>().Start();
+        var guard = services.GetRequiredService<M1vClock.Tuning.SessionGuard>().CheckAtStartup(previous is not null);
+        if (guard.Decision != M1vClock.Tuning.GuardDecision.Nothing)
+        {
+            AppLog.GuardChecked(_logger, guard.Decision, guard.Reason);
+        }
+
+        if (guard.Decision == M1vClock.Tuning.GuardDecision.RestoreDefaults)
+        {
+            services.GetRequiredService<INotificationService>().Show(new ToastRequest(
+                Loc.Get("Oc.Guard.Toast.Title"), Loc.Get($"Oc.Guard.Toast.{guard.Reason}"), "Icon.Overclock", ToastTone.Warning));
+        }
         window.Start(options, previous);
 
         _instance.Listen(

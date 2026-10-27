@@ -1,3 +1,4 @@
+using M1vClock.Core.Security;
 using M1vClock.Core.Journal;
 using M1vClock.Core.RegistryValues;
 using M1vClock.Optimize.Tweaks;
@@ -502,6 +503,50 @@ public sealed class RealTweakTests
             journal.Dispose();
             holder.Dispose();
         }
+    }
+
+    [Fact]
+    public async Task ElevatedAndOnRequestADummyMachineKeyGoesThroughTheSamePathAsHardwareScheduling()
+    {
+        Assert.SkipUnless(ElevationInfo.Current().IsElevated, "Precisa de administrador.");
+        Assert.SkipUnless(Environment.GetEnvironmentVariable("M1VCLOCK_REAL_ACTIONS") == "1", "Muda o sistema de verdade: defina M1VCLOCK_REAL_ACTIONS=1.");
+        var key = @"SOFTWARE\m1vClock-Teste-" + Guid.NewGuid().ToString("N");
+        var address = new RegistryValueAddress(RegistryHive.LocalMachine, RegistryView.Registry64, key, "HwSchMode");
+        var real = new WindowsRegistryAccess();
+        var journal = RealJournal(out var holder);
+        var catalog = new List<TweakDefinition> { new("dummy-hags", "Agendamento de teste", true, LiveEffect.None, [new DwordStep(address, on: 2, off: 1, absentIsOn: false)]) };
+        var service = new TweakService(catalog, real, new FakePower(), new FakeMouse(), journal, NullLogger<TweakService>.Instance);
+        try
+        {
+            var entry = (await service.ReadAsync(TestContext.Current.CancellationToken)).Value!.Entries.Single();
+            Assert.True(entry.NeedsAdministrator);
+            Assert.True(entry.NeedsRestart);
+            Assert.Equal(TweakState.Off, entry.State);
+
+            var on = await service.SetAsync("dummy-hags", turnOn: true, TestContext.Current.CancellationToken);
+            Assert.True(on.Succeeded);
+            Assert.True(on.RestartNeeded);
+            Assert.Equal(2, real.Read(address).Data);
+
+            var off = await service.SetAsync("dummy-hags", turnOn: false, TestContext.Current.CancellationToken);
+            Assert.True(off.Succeeded);
+            Assert.Equal(1, real.Read(address).Data);
+
+            var restored = await service.RestoreOriginalsAsync(TestContext.Current.CancellationToken);
+            Assert.Equal(2, restored.Undone);
+            Assert.Empty(restored.Failures);
+            Assert.False(real.Read(address).ValueExists);
+        }
+        finally
+        {
+            using var root = RegistryKey.OpenBaseKey(RegistryHive.LocalMachine, RegistryView.Registry64);
+            root.DeleteSubKeyTree(key, throwOnMissingSubKey: false);
+            journal.Dispose();
+            holder.Dispose();
+        }
+
+        using var check = RegistryKey.OpenBaseKey(RegistryHive.LocalMachine, RegistryView.Registry64);
+        Assert.Null(check.OpenSubKey(key));
     }
 
     private static ChangeJournal RealJournal(out TempFile holder)

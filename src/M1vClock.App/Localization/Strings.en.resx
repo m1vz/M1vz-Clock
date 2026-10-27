@@ -235,7 +235,7 @@
     <value>Overclock</value>
   </data>
   <data name="Page.Overclock.Description" xml:space="preserve">
-    <value>CPU and GPU tuning with safe limits and undo.</value>
+    <value>Graphics card, stability check and BIOS guide.</value>
   </data>
   <data name="Page.Overclock.Keywords" xml:space="preserve">
     <value>overclock,oc,undervolt,curve optimizer,clock</value>
@@ -244,19 +244,19 @@
     <value>Library</value>
   </data>
   <data name="Page.Library.Description" xml:space="preserve">
-    <value>Games installed from Steam, Epic and other stores.</value>
+    <value>Games from Steam, Epic, Riot, GOG, Ubisoft and the ones you add.</value>
   </data>
   <data name="Page.Library.Keywords" xml:space="preserve">
-    <value>games,steam,epic,library</value>
+    <value>games,steam,epic,riot,gog,ubisoft,library,profile,arguments</value>
   </data>
   <data name="Page.Fps.Title" xml:space="preserve">
     <value>FPS</value>
   </data>
   <data name="Page.Fps.Description" xml:space="preserve">
-    <value>Frames per second and frame time.</value>
+    <value>How many FPS to expect in each game on this PC.</value>
   </data>
   <data name="Page.Fps.Keywords" xml:space="preserve">
-    <value>fps,frametime,frames,performance</value>
+    <value>fps,estimate,frames,performance,howmanyfps,games</value>
   </data>
   <data name="Page.Bottleneck.Title" xml:space="preserve">
     <value>Bottleneck</value>
@@ -4712,5 +4712,1172 @@
   </data>
   <data name="Opt.Repair.Running.NoProgress" xml:space="preserve">
     <value>This check does not show its progress here. It usually takes a few minutes.</value>
+  </data>
+  <data name="Game.Library.Intro" xml:space="preserve">
+    <value>The games m1vClock found on Steam, Epic Games, Riot, GOG and Ubisoft, plus the ones you add by hand. It only reads those launchers' lists. Play always starts the game without administrator; with a profile, m1vClock also applies the arguments, Windows options and helper programs you chose.</value>
+  </data>
+  <data name="Game.Library.Summary.Total" xml:space="preserve">
+    <value>Games</value>
+  </data>
+  <data name="Game.Library.Summary.Size" xml:space="preserve">
+    <value>Space used</value>
+  </data>
+  <data name="Game.Library.Summary.Platforms" xml:space="preserve">
+    <value>Launchers</value>
+  </data>
+  <data name="Game.Library.Summary.Attention" xml:space="preserve">
+    <value>Need attention</value>
+  </data>
+  <data name="Game.Library.Filter" xml:space="preserve">
+    <value>Launcher</value>
+  </data>
+  <data name="Game.Library.Filter.All" xml:space="preserve">
+    <value>All</value>
+  </data>
+  <data name="Game.Library.Sort" xml:space="preserve">
+    <value>Sort by</value>
+  </data>
+  <data name="Game.Library.Sort.Name" xml:space="preserve">
+    <value>Name</value>
+  </data>
+  <data name="Game.Library.Sort.Size" xml:space="preserve">
+    <value>Size</value>
+  </data>
+  <data name="Game.Library.Search" xml:space="preserve">
+    <value>Search by game name</value>
+  </data>
+  <data name="Game.Library.Empty" xml:space="preserve">
+    <value>No games match this filter. m1vClock looks on Steam, Epic Games and Riot.</value>
+  </data>
+  <data name="Game.Library.Showing" xml:space="preserve">
+    <value>Showing {0} of {1} games. Use search to find the others.</value>
+  </data>
+  <data name="Game.Library.State.Installed" xml:space="preserve">
+    <value>Installed</value>
+  </data>
+  <data name="Game.Library.State.UpdatePending" xml:space="preserve">
+    <value>Update pending</value>
+  </data>
+  <data name="Game.Library.State.Updating" xml:space="preserve">
+    <value>Updating</value>
+  </data>
+  <data name="Game.Library.State.NeedsRepair" xml:space="preserve">
+    <value>Needs repair</value>
+  </data>
+  <data name="Game.Library.State.Incomplete" xml:space="preserve">
+    <value>Incomplete</value>
+  </data>
+  <data name="Game.Library.Platform.Steam" xml:space="preserve">
+    <value>Steam</value>
+  </data>
+  <data name="Game.Library.Platform.Epic" xml:space="preserve">
+    <value>Epic Games</value>
+  </data>
+  <data name="Game.Library.Platform.Riot" xml:space="preserve">
+    <value>Riot Games</value>
+  </data>
+  <data name="Game.Library.Meta.SizeUnknown" xml:space="preserve">
+    <value>size not reported</value>
+  </data>
+  <data name="Game.Library.Play" xml:space="preserve">
+    <value>Play</value>
+  </data>
+  <data name="Game.Library.Folder" xml:space="preserve">
+    <value>Open folder</value>
+  </data>
+  <data name="Game.Library.Tip.NoLaunch" xml:space="preserve">
+    <value>This game is not ready to open right now.</value>
+  </data>
+  <data name="Game.Library.Tip.NoFolder" xml:space="preserve">
+    <value>This game's folder was not found.</value>
+  </data>
+  <data name="Game.Library.Opening" xml:space="preserve">
+    <value>Request sent to {1} to open {0}.</value>
+  </data>
+  <data name="Game.Library.PlayFailed" xml:space="preserve">
+    <value>Could not open {0}: {1}</value>
+  </data>
+  <data name="Game.Library.FolderFailed" xml:space="preserve">
+    <value>Could not open the folder of {0}: {1}</value>
+  </data>
+  <data name="Game.Library.ReadFailed" xml:space="preserve">
+    <value>Could not read the {0} library.</value>
+  </data>
+  <data name="Game.Bottleneck.Intro" xml:space="preserve">
+    <value>Every second m1vClock looks at what may be limiting the game: the GPU, the CPU (or a single core of it), video memory, RAM or temperature. Open the game, record a session here and see the distribution at the end. With m1vClock as administrator it also measures the frames per second of the program in front; without administrator the conclusion comes only from how busy each part is, so it is an estimate. If you leave this page, the recording in progress is discarded.</value>
+  </data>
+  <data name="Game.Bottleneck.NoSensors" xml:space="preserve">
+    <value>Sensors are not active right now. They are paused during benchmarks and stress tests.</value>
+  </data>
+  <data name="Game.Bottleneck.Waiting" xml:space="preserve">
+    <value>Waiting for the first sensor reading…</value>
+  </data>
+  <data name="Game.Bottleneck.Now" xml:space="preserve">
+    <value>Right now</value>
+  </data>
+  <data name="Game.Bottleneck.Metric.Gpu" xml:space="preserve">
+    <value>GPU load</value>
+  </data>
+  <data name="Game.Bottleneck.Metric.Cpu" xml:space="preserve">
+    <value>CPU load</value>
+  </data>
+  <data name="Game.Bottleneck.Metric.Core" xml:space="preserve">
+    <value>Busiest core</value>
+  </data>
+  <data name="Game.Bottleneck.Metric.Vram" xml:space="preserve">
+    <value>Video memory</value>
+  </data>
+  <data name="Game.Bottleneck.Metric.Ram" xml:space="preserve">
+    <value>RAM</value>
+  </data>
+  <data name="Game.Bottleneck.Metric.GpuTemp" xml:space="preserve">
+    <value>GPU temperature</value>
+  </data>
+  <data name="Game.Bottleneck.Metric.CpuTemp" xml:space="preserve">
+    <value>CPU temperature</value>
+  </data>
+  <data name="Game.Bottleneck.Limiter.Gpu" xml:space="preserve">
+    <value>GPU at its limit</value>
+  </data>
+  <data name="Game.Bottleneck.Limiter.Cpu" xml:space="preserve">
+    <value>CPU bottleneck</value>
+  </data>
+  <data name="Game.Bottleneck.Limiter.Vram" xml:space="preserve">
+    <value>Video memory full</value>
+  </data>
+  <data name="Game.Bottleneck.Limiter.Ram" xml:space="preserve">
+    <value>RAM full</value>
+  </data>
+  <data name="Game.Bottleneck.Limiter.Thermal" xml:space="preserve">
+    <value>Limited by temperature</value>
+  </data>
+  <data name="Game.Bottleneck.Limiter.Capped" xml:space="preserve">
+    <value>Nothing at its limit</value>
+  </data>
+  <data name="Game.Bottleneck.Advice.Gpu" xml:space="preserve">
+    <value>Normal in demanding games: the graphics card is being well used. For more FPS, lower the resolution or graphics quality, or turn on DLSS or FSR.</value>
+  </data>
+  <data name="Game.Bottleneck.Advice.Cpu" xml:space="preserve">
+    <value>The CPU, or one of its cores, cannot keep up with the GPU. Raising resolution and graphics costs almost no FPS. To gain FPS, lower options that weigh on the CPU (view distance, crowds, physics), close background programs and check that the RAM's XMP or EXPO is on in the BIOS.</value>
+  </data>
+  <data name="Game.Bottleneck.Advice.Vram" xml:space="preserve">
+    <value>The graphics card's memory is full, which causes stutter. Lower texture quality or resolution.</value>
+  </data>
+  <data name="Game.Bottleneck.Advice.Ram" xml:space="preserve">
+    <value>Little free RAM: Windows starts using the disk and the game stutters. Close browsers and other programs.</value>
+  </data>
+  <data name="Game.Bottleneck.Advice.Thermal" xml:space="preserve">
+    <value>High temperature is pulling the clock down. Check case airflow, dust and thermal paste.</value>
+  </data>
+  <data name="Game.Bottleneck.Advice.Capped" xml:space="preserve">
+    <value>Neither the CPU nor the GPU is at its limit: there is probably an FPS cap, V-Sync or G-Sync limiting, or the game is in a menu or paused. Normal if the FPS is already what you want.</value>
+  </data>
+  <data name="Game.Bottleneck.Session" xml:space="preserve">
+    <value>Record a game session</value>
+  </data>
+  <data name="Game.Bottleneck.Duration" xml:space="preserve">
+    <value>Duration</value>
+  </data>
+  <data name="Game.Bottleneck.Duration.1" xml:space="preserve">
+    <value>1 min</value>
+  </data>
+  <data name="Game.Bottleneck.Duration.3" xml:space="preserve">
+    <value>3 min</value>
+  </data>
+  <data name="Game.Bottleneck.Duration.5" xml:space="preserve">
+    <value>5 min</value>
+  </data>
+  <data name="Game.Bottleneck.Duration.10" xml:space="preserve">
+    <value>10 min</value>
+  </data>
+  <data name="Game.Bottleneck.Start" xml:space="preserve">
+    <value>Record</value>
+  </data>
+  <data name="Game.Bottleneck.Stop" xml:space="preserve">
+    <value>Stop and see the result</value>
+  </data>
+  <data name="Game.Bottleneck.Recording" xml:space="preserve">
+    <value>Recording: {0} of {1}</value>
+  </data>
+  <data name="Game.Bottleneck.Report" xml:space="preserve">
+    <value>Session result</value>
+  </data>
+  <data name="Game.Bottleneck.Report.Samples" xml:space="preserve">
+    <value>{0} readings</value>
+  </data>
+  <data name="Game.Bottleneck.Report.Main" xml:space="preserve">
+    <value>Main limit: {0}</value>
+  </data>
+  <data name="Game.Bottleneck.Report.Averages" xml:space="preserve">
+    <value>Averages: GPU {0}, CPU {1}</value>
+  </data>
+  <data name="Game.Bottleneck.Report.Peaks" xml:space="preserve">
+    <value>Peaks: core {0}, video memory {1}, RAM {2}, GPU {3}, CPU {4}</value>
+  </data>
+  <data name="Game.Bottleneck.Report.TooShort" xml:space="preserve">
+    <value>The session had few readings ({0}). Record for longer for the result to count.</value>
+  </data>
+  <data name="Game.Bottleneck.Report.None" xml:space="preserve">
+    <value>The session ended without any readings.</value>
+  </data>
+  <data name="Game.Bottleneck.Metric.Fps" xml:space="preserve">
+    <value>Frames per second</value>
+  </data>
+  <data name="Game.Bottleneck.Metric.FpsLow" xml:space="preserve">
+    <value>1% low</value>
+  </data>
+  <data name="Game.Bottleneck.Hint.NeedsAdmin" xml:space="preserve">
+    <value>Open m1vClock as administrator to measure frames per second.</value>
+  </data>
+  <data name="Game.Bottleneck.Hint.Failed" xml:space="preserve">
+    <value>Could not measure frames per second. The reason is in the app log.</value>
+  </data>
+  <data name="Game.Bottleneck.Hint.NoGame" xml:space="preserve">
+    <value>Keep the game in front, with the image moving, to measure frames per second.</value>
+  </data>
+  <data name="Game.Bottleneck.Report.Fps" xml:space="preserve">
+    <value>Frames per second: average {0}, 1% low {1}</value>
+  </data>
+  <data name="Game.Library.Platform.Gog" xml:space="preserve">
+    <value>GOG</value>
+  </data>
+  <data name="Game.Library.Platform.Ubisoft" xml:space="preserve">
+    <value>Ubisoft</value>
+  </data>
+  <data name="Game.Library.Platform.Manual" xml:space="preserve">
+    <value>Manual</value>
+  </data>
+  <data name="Game.Library.Add" xml:space="preserve">
+    <value>Add game</value>
+  </data>
+  <data name="Game.Library.Add.Tip" xml:space="preserve">
+    <value>Pick the .exe of a game that did not come from a store.</value>
+  </data>
+  <data name="Game.Library.Add.Pick" xml:space="preserve">
+    <value>Choose the game executable</value>
+  </data>
+  <data name="Game.Library.Add.Done" xml:space="preserve">
+    <value>{0} was added to the library.</value>
+  </data>
+  <data name="Game.Library.Add.Problem.NotAnExecutable" xml:space="preserve">
+    <value>Choose an .exe file on this PC (not on a network folder).</value>
+  </data>
+  <data name="Game.Library.Add.Problem.Missing" xml:space="preserve">
+    <value>The chosen file no longer exists.</value>
+  </data>
+  <data name="Game.Library.Add.Problem.UnsafeArguments" xml:space="preserve">
+    <value>The arguments contain characters that cannot be used.</value>
+  </data>
+  <data name="Game.Library.Add.Problem.AlreadyAdded" xml:space="preserve">
+    <value>This game is already in the library.</value>
+  </data>
+  <data name="Game.Library.Remove" xml:space="preserve">
+    <value>Remove</value>
+  </data>
+  <data name="Game.Library.Remove.Title" xml:space="preserve">
+    <value>Remove {0} from the library?</value>
+  </data>
+  <data name="Game.Library.Remove.Message" xml:space="preserve">
+    <value>It only leaves the m1vClock list, along with its profile. No game file is deleted.</value>
+  </data>
+  <data name="Game.Library.Remove.Confirm" xml:space="preserve">
+    <value>Remove from list</value>
+  </data>
+  <data name="Game.Library.Remove.Done" xml:space="preserve">
+    <value>{0} was removed from the library.</value>
+  </data>
+  <data name="Game.Profile.Edit" xml:space="preserve">
+    <value>Edit profile</value>
+  </data>
+  <data name="Game.Profile.Create" xml:space="preserve">
+    <value>Create profile</value>
+  </data>
+  <data name="Game.Profile.Badge" xml:space="preserve">
+    <value>Has profile</value>
+  </data>
+  <data name="Game.Profile.Saved" xml:space="preserve">
+    <value>{0} profile saved. It applies from the next time you click Play.</value>
+  </data>
+  <data name="Game.Profile.Heading" xml:space="preserve">
+    <value>{0} profile</value>
+  </data>
+  <data name="Game.Profile.Intro" xml:space="preserve">
+    <value>The profile is applied when you click Play here in m1vClock. The game starts without administrator rights, and the Windows changes go to History, where they can be undone.</value>
+  </data>
+  <data name="Game.Profile.Section.Launch" xml:space="preserve">
+    <value>How the game starts</value>
+  </data>
+  <data name="Game.Profile.Engine" xml:space="preserve">
+    <value>Engine (sets the argument format)</value>
+  </data>
+  <data name="Game.Profile.Engine.Unknown" xml:space="preserve">
+    <value>None</value>
+  </data>
+  <data name="Game.Profile.Engine.Source" xml:space="preserve">
+    <value>Source</value>
+  </data>
+  <data name="Game.Profile.Engine.Unity" xml:space="preserve">
+    <value>Unity</value>
+  </data>
+  <data name="Game.Profile.Engine.Unreal" xml:space="preserve">
+    <value>Unreal</value>
+  </data>
+  <data name="Game.Profile.Engine.Detected" xml:space="preserve">
+    <value>Detected from the game folder: {0}.</value>
+  </data>
+  <data name="Game.Profile.Engine.NotDetected" xml:space="preserve">
+    <value>The engine could not be recognized from the game folder. With "None", only the extra arguments are used.</value>
+  </data>
+  <data name="Game.Profile.Window" xml:space="preserve">
+    <value>Window mode</value>
+  </data>
+  <data name="Game.Profile.Window.Default" xml:space="preserve">
+    <value>Game's own</value>
+  </data>
+  <data name="Game.Profile.Window.Fullscreen" xml:space="preserve">
+    <value>Fullscreen</value>
+  </data>
+  <data name="Game.Profile.Window.Borderless" xml:space="preserve">
+    <value>Borderless</value>
+  </data>
+  <data name="Game.Profile.Window.Windowed" xml:space="preserve">
+    <value>Windowed</value>
+  </data>
+  <data name="Game.Profile.Width" xml:space="preserve">
+    <value>Width</value>
+  </data>
+  <data name="Game.Profile.Height" xml:space="preserve">
+    <value>Height</value>
+  </data>
+  <data name="Game.Profile.Refresh" xml:space="preserve">
+    <value>Refresh (Hz)</value>
+  </data>
+  <data name="Game.Profile.Extra" xml:space="preserve">
+    <value>Extra arguments</value>
+  </data>
+  <data name="Game.Profile.Preview" xml:space="preserve">
+    <value>Arguments that will be used</value>
+  </data>
+  <data name="Game.Profile.Preview.None" xml:space="preserve">
+    <value>None</value>
+  </data>
+  <data name="Game.Profile.Args.Direct" xml:space="preserve">
+    <value>These arguments are passed when m1vClock starts the executable.</value>
+  </data>
+  <data name="Game.Profile.Args.Steam" xml:space="preserve">
+    <value>Steam does not take arguments through its launch link. Save them to the launch options with the button below (with Steam closed).</value>
+  </data>
+  <data name="Game.Profile.Args.Unsupported" xml:space="preserve">
+    <value>This store starts the game through its own app and does not accept outside arguments. They will not be used; the rest of the profile still applies.</value>
+  </data>
+  <data name="Game.Profile.Steam.None" xml:space="preserve">
+    <value>Steam launch options: none.</value>
+  </data>
+  <data name="Game.Profile.Steam.Current" xml:space="preserve">
+    <value>Steam launch options: {0}</value>
+  </data>
+  <data name="Game.Profile.Steam.Write" xml:space="preserve">
+    <value>Save to Steam</value>
+  </data>
+  <data name="Game.Profile.Steam.Write.Tip" xml:space="preserve">
+    <value>Writes the arguments above to this game's launch options (localconfig.vdf). The first version of the file is kept next to it and never overwritten.</value>
+  </data>
+  <data name="Game.Profile.Steam.Result.Written" xml:space="preserve">
+    <value>Launch options saved. The original copy of the Steam file was kept next to it.</value>
+  </data>
+  <data name="Game.Profile.Steam.Result.Unchanged" xml:space="preserve">
+    <value>The Steam launch options were already like this.</value>
+  </data>
+  <data name="Game.Profile.Steam.Result.SteamRunning" xml:space="preserve">
+    <value>Close Steam before saving: it rewrites the file when it exits and would erase the change.</value>
+  </data>
+  <data name="Game.Profile.Steam.Result.NoConfig" xml:space="preserve">
+    <value>The Steam configuration file was not found. Sign in to Steam at least once on this PC.</value>
+  </data>
+  <data name="Game.Profile.Steam.Result.UnsafeOptions" xml:space="preserve">
+    <value>The arguments contain characters that cannot be saved.</value>
+  </data>
+  <data name="Game.Profile.Steam.Result.UnsupportedFormat" xml:space="preserve">
+    <value>The Steam file is in a format that cannot be rewritten safely. Nothing was changed.</value>
+  </data>
+  <data name="Game.Profile.Steam.Result.Failed" xml:space="preserve">
+    <value>The Steam file could not be written. Nothing was changed.</value>
+  </data>
+  <data name="Game.Profile.Section.Windows" xml:space="preserve">
+    <value>In Windows</value>
+  </data>
+  <data name="Game.Profile.Priority" xml:space="preserve">
+    <value>Process priority</value>
+  </data>
+  <data name="Game.Profile.Priority.Normal" xml:space="preserve">
+    <value>Normal</value>
+  </data>
+  <data name="Game.Profile.Priority.AboveNormal" xml:space="preserve">
+    <value>Above normal</value>
+  </data>
+  <data name="Game.Profile.Priority.High" xml:space="preserve">
+    <value>High</value>
+  </data>
+  <data name="Game.Profile.Gpu" xml:space="preserve">
+    <value>High-performance GPU</value>
+  </data>
+  <data name="Game.Profile.Gpu.Tip" xml:space="preserve">
+    <value>Same option as Settings &gt; System &gt; Display &gt; Graphics. It only matters on PCs with two GPUs.</value>
+  </data>
+  <data name="Game.Profile.Fso" xml:space="preserve">
+    <value>Disable fullscreen optimizations</value>
+  </data>
+  <data name="Game.Profile.Fso.Tip" xml:space="preserve">
+    <value>Same option as the executable's Compatibility tab. It can lower latency in some older games; in newer ones it usually changes nothing.</value>
+  </data>
+  <data name="Game.Profile.Exe" xml:space="preserve">
+    <value>Game executable (for the Windows options)</value>
+  </data>
+  <data name="Game.Profile.Exe.None" xml:space="preserve">
+    <value>None chosen. Steam and Epic do not say which .exe is the game; choose it to use the two options above.</value>
+  </data>
+  <data name="Game.Profile.Exe.Tip" xml:space="preserve">
+    <value>The priority does not depend on this: m1vClock finds the process through the game folder.</value>
+  </data>
+  <data name="Game.Profile.Exe.Choose" xml:space="preserve">
+    <value>Choose</value>
+  </data>
+  <data name="Game.Profile.Exe.Clear" xml:space="preserve">
+    <value>Clear</value>
+  </data>
+  <data name="Game.Profile.Exe.Pick" xml:space="preserve">
+    <value>Choose the game's main executable</value>
+  </data>
+  <data name="Game.Profile.Exe.Filter" xml:space="preserve">
+    <value>Programs (*.exe)|*.exe</value>
+  </data>
+  <data name="Game.Profile.Section.Helpers" xml:space="preserve">
+    <value>Helper programs</value>
+  </data>
+  <data name="Game.Profile.Helpers.Intro" xml:space="preserve">
+    <value>They open before the game, without administrator rights. Marked ones close when the game closes, but only if m1vClock opened them.</value>
+  </data>
+  <data name="Game.Profile.Helpers.Add" xml:space="preserve">
+    <value>Add program</value>
+  </data>
+  <data name="Game.Profile.Helpers.Remove" xml:space="preserve">
+    <value>Remove</value>
+  </data>
+  <data name="Game.Profile.Helpers.Close" xml:space="preserve">
+    <value>Close with the game</value>
+  </data>
+  <data name="Game.Profile.Helpers.Args" xml:space="preserve">
+    <value>Arguments</value>
+  </data>
+  <data name="Game.Profile.Helper.Pick" xml:space="preserve">
+    <value>Choose the helper program</value>
+  </data>
+  <data name="Game.Profile.Save" xml:space="preserve">
+    <value>Save profile</value>
+  </data>
+  <data name="Game.Profile.Problem.ResolutionOutOfRange" xml:space="preserve">
+    <value>Fill in width and height together, with numbers between 320 and 16384.</value>
+  </data>
+  <data name="Game.Profile.Problem.RefreshOutOfRange" xml:space="preserve">
+    <value>The refresh rate must be between 24 and 1000 Hz, or empty.</value>
+  </data>
+  <data name="Game.Profile.Problem.UnsafeExtra" xml:space="preserve">
+    <value>The extra arguments contain line breaks or exceed 1024 characters.</value>
+  </data>
+  <data name="Game.Profile.Problem.BadExecutable" xml:space="preserve">
+    <value>Choose an .exe file on this PC (not on a network folder).</value>
+  </data>
+  <data name="Game.Profile.Problem.BadHelper" xml:space="preserve">
+    <value>Helper programs must be .exe files on this PC, with arguments up to 1024 characters.</value>
+  </data>
+  <data name="Game.Profile.Journal.Gpu" xml:space="preserve">
+    <value>High-performance GPU for {0}</value>
+  </data>
+  <data name="Game.Profile.Journal.Fullscreen" xml:space="preserve">
+    <value>Fullscreen optimizations for {0}</value>
+  </data>
+  <data name="Game.Session.Heading" xml:space="preserve">
+    <value>Game started with a profile</value>
+  </data>
+  <data name="Game.Session.Stop" xml:space="preserve">
+    <value>Stop following</value>
+  </data>
+  <data name="Game.Session.Stop.Tip" xml:space="preserve">
+    <value>Stops following the game and closes the marked helper programs. The game stays open.</value>
+  </data>
+  <data name="Game.Session.Busy" xml:space="preserve">
+    <value>A game is already being followed. Stop following it before starting another one with a profile.</value>
+  </data>
+  <data name="Game.Session.Stage.Applying" xml:space="preserve">
+    <value>Applying the {0} profile…</value>
+  </data>
+  <data name="Game.Session.Stage.OpeningHelpers" xml:space="preserve">
+    <value>Opening the {0} helper programs…</value>
+  </data>
+  <data name="Game.Session.Stage.Launching" xml:space="preserve">
+    <value>Starting {0}…</value>
+  </data>
+  <data name="Game.Session.Stage.WaitingForGame" xml:space="preserve">
+    <value>Waiting for {0} to appear (up to 3 minutes)…</value>
+  </data>
+  <data name="Game.Session.Stage.Running" xml:space="preserve">
+    <value>{0} is running.</value>
+  </data>
+  <data name="Game.Session.Stage.Finished" xml:space="preserve">
+    <value>{0} closed.</value>
+  </data>
+  <data name="Game.Session.Stage.NotDetected" xml:space="preserve">
+    <value>The {0} process did not appear within 3 minutes. If it started, the Windows options are still applied, but the priority was not set.</value>
+  </data>
+  <data name="Game.Session.Stage.Failed" xml:space="preserve">
+    <value>Could not start {0}: {1}</value>
+  </data>
+  <data name="Game.Session.Stage.Cancelled" xml:space="preserve">
+    <value>Stopped following {0}.</value>
+  </data>
+  <data name="Game.Session.Warning.PreferenceFailed" xml:space="preserve">
+    <value>A Windows option was not applied (see the logs).</value>
+  </data>
+  <data name="Game.Session.Warning.PriorityDenied" xml:space="preserve">
+    <value>The game refused the priority change (common with anti-cheat).</value>
+  </data>
+  <data name="Game.Session.Warning.HelperFailed" xml:space="preserve">
+    <value>A helper program did not open.</value>
+  </data>
+  <data name="Game.Session.Warning.HelperNotClosed" xml:space="preserve">
+    <value>A helper program did not close.</value>
+  </data>
+  <data name="Game.Session.Warning.ArgumentsNotSupported" xml:space="preserve">
+    <value>The arguments were not used: this store does not accept them.</value>
+  </data>
+  <data name="Game.Fps.Intro" xml:space="preserve">
+    <value>How many FPS to expect in each game with this PC's CPU and GPU. It is a rough estimate based on relative performance tables and public reference numbers; real FPS changes with the map, game version, driver and settings. To measure for real, use the Bottleneck page with the game open.</value>
+  </data>
+  <data name="Game.Fps.Machine.Cpu" xml:space="preserve">
+    <value>Processor</value>
+  </data>
+  <data name="Game.Fps.Machine.Gpu" xml:space="preserve">
+    <value>Graphics card</value>
+  </data>
+  <data name="Game.Fps.Machine.Indexed" xml:space="preserve">
+    <value>Index {0} · reference: {1} = 100</value>
+  </data>
+  <data name="Game.Fps.Machine.Unknown" xml:space="preserve">
+    <value>Not in the performance table</value>
+  </data>
+  <data name="Game.Fps.Unknown.Gpu" xml:space="preserve">
+    <value>Your graphics card is not in the performance table, so no estimate is possible. With a HowManyFPS key, querying the service still works.</value>
+  </data>
+  <data name="Game.Fps.Unknown.Cpu" xml:space="preserve">
+    <value>Your processor is not in the performance table, so no estimate is possible. With a HowManyFPS key, querying the service still works.</value>
+  </data>
+  <data name="Game.Fps.Unknown.Both" xml:space="preserve">
+    <value>Neither the processor nor the graphics card is in the performance table, so no estimate is possible.</value>
+  </data>
+  <data name="Game.Fps.Resolution" xml:space="preserve">
+    <value>Resolution</value>
+  </data>
+  <data name="Game.Fps.Resolution.FullHd" xml:space="preserve">
+    <value>1080p</value>
+  </data>
+  <data name="Game.Fps.Resolution.QuadHd" xml:space="preserve">
+    <value>1440p</value>
+  </data>
+  <data name="Game.Fps.Resolution.UltraHd" xml:space="preserve">
+    <value>4K</value>
+  </data>
+  <data name="Game.Fps.Preset" xml:space="preserve">
+    <value>Graphics quality</value>
+  </data>
+  <data name="Game.Fps.Preset.Low" xml:space="preserve">
+    <value>Low</value>
+  </data>
+  <data name="Game.Fps.Preset.Medium" xml:space="preserve">
+    <value>Medium</value>
+  </data>
+  <data name="Game.Fps.Preset.High" xml:space="preserve">
+    <value>High</value>
+  </data>
+  <data name="Game.Fps.Preset.Ultra" xml:space="preserve">
+    <value>Ultra</value>
+  </data>
+  <data name="Game.Fps.Upscaling" xml:space="preserve">
+    <value>Upscaling (DLSS, FSR, XeSS)</value>
+  </data>
+  <data name="Game.Fps.Upscaling.Off" xml:space="preserve">
+    <value>Off</value>
+  </data>
+  <data name="Game.Fps.Upscaling.Quality" xml:space="preserve">
+    <value>Quality</value>
+  </data>
+  <data name="Game.Fps.Upscaling.Performance" xml:space="preserve">
+    <value>Performance</value>
+  </data>
+  <data name="Game.Fps.OnlyInstalled" xml:space="preserve">
+    <value>Only games installed on this PC</value>
+  </data>
+  <data name="Game.Fps.Search" xml:space="preserve">
+    <value>Search by game name</value>
+  </data>
+  <data name="Game.Fps.Installed" xml:space="preserve">
+    <value>Installed</value>
+  </data>
+  <data name="Game.Fps.Empty" xml:space="preserve">
+    <value>No catalog game matches this filter.</value>
+  </data>
+  <data name="Game.Fps.Low" xml:space="preserve">
+    <value>1% low {0}</value>
+  </data>
+  <data name="Game.Fps.Rating.Excellent" xml:space="preserve">
+    <value>Excellent</value>
+  </data>
+  <data name="Game.Fps.Rating.Great" xml:space="preserve">
+    <value>Great</value>
+  </data>
+  <data name="Game.Fps.Rating.Playable" xml:space="preserve">
+    <value>Playable</value>
+  </data>
+  <data name="Game.Fps.Rating.Weak" xml:space="preserve">
+    <value>Weak</value>
+  </data>
+  <data name="Game.Fps.Rating.Unplayable" xml:space="preserve">
+    <value>Unplayable</value>
+  </data>
+  <data name="Game.Fps.Limiter.Gpu" xml:space="preserve">
+    <value>graphics card</value>
+  </data>
+  <data name="Game.Fps.Limiter.Cpu" xml:space="preserve">
+    <value>processor</value>
+  </data>
+  <data name="Game.Fps.Limiter.Engine" xml:space="preserve">
+    <value>the game's own frame cap</value>
+  </data>
+  <data name="Game.Fps.Source.Local" xml:space="preserve">
+    <value>Local estimate · limited by: {0}</value>
+  </data>
+  <data name="Game.Fps.Source.Service" xml:space="preserve">
+    <value>HowManyFPS (real player sessions)</value>
+  </data>
+  <data name="Game.Fps.Source.Cached" xml:space="preserve">
+    <value>HowManyFPS, saved query (up to 7 days)</value>
+  </data>
+  <data name="Game.Fps.Key.Heading" xml:space="preserve">
+    <value>HowManyFPS (optional)</value>
+  </data>
+  <data name="Game.Fps.Key.Intro" xml:space="preserve">
+    <value>With a HowManyFPS API key (requested by e-mail from the service), m1vClock queries FPS measured in real sessions with this CPU and GPU. Only the CPU, GPU and game names, the resolution and the upscaling are sent. The key is encrypted for this Windows user. The API format could not be tested without a key.</value>
+  </data>
+  <data name="Game.Fps.Key.Field" xml:space="preserve">
+    <value>HowManyFPS API key</value>
+  </data>
+  <data name="Game.Fps.Key.Save" xml:space="preserve">
+    <value>Save key</value>
+  </data>
+  <data name="Game.Fps.Key.Remove" xml:space="preserve">
+    <value>Remove key</value>
+  </data>
+  <data name="Game.Fps.Key.Saved" xml:space="preserve">
+    <value>Key saved and encrypted.</value>
+  </data>
+  <data name="Game.Fps.Key.None" xml:space="preserve">
+    <value>No key saved: only the local estimate is used.</value>
+  </data>
+  <data name="Game.Fps.Key.Done" xml:space="preserve">
+    <value>Key saved. Use Query to fetch the service numbers.</value>
+  </data>
+  <data name="Game.Fps.Key.Removed" xml:space="preserve">
+    <value>Key removed.</value>
+  </data>
+  <data name="Game.Fps.Query" xml:space="preserve">
+    <value>Query</value>
+  </data>
+  <data name="Game.Fps.Query.Tip" xml:space="preserve">
+    <value>Queries HowManyFPS for the listed games, one at a time. Answers are kept for 7 days to save quota.</value>
+  </data>
+  <data name="Game.Fps.Query.Done" xml:space="preserve">
+    <value>HowManyFPS answered for {0} of {1} games.</value>
+  </data>
+  <data name="Game.Fps.Failure.NotConfigured" xml:space="preserve">
+    <value>Save a key before querying.</value>
+  </data>
+  <data name="Game.Fps.Failure.KeyRefused" xml:space="preserve">
+    <value>HowManyFPS refused the key.</value>
+  </data>
+  <data name="Game.Fps.Failure.NotFound" xml:space="preserve">
+    <value>HowManyFPS does not have this game or hardware.</value>
+  </data>
+  <data name="Game.Fps.Failure.QuotaExhausted" xml:space="preserve">
+    <value>The key's query quota ran out. Saved answers still apply.</value>
+  </data>
+  <data name="Game.Fps.Failure.ServerError" xml:space="preserve">
+    <value>HowManyFPS answered with an error. Try again later.</value>
+  </data>
+  <data name="Game.Fps.Failure.BadResponse" xml:space="preserve">
+    <value>The HowManyFPS answer came in an unexpected format.</value>
+  </data>
+  <data name="Game.Fps.Failure.Network" xml:space="preserve">
+    <value>No connection to HowManyFPS.</value>
+  </data>
+  <data name="Game.Overlay.Intro" xml:space="preserve">
+    <value>A small box over the game with FPS, frame time and sensors, in the style of RivaTuner. It ignores clicks and never steals focus. It shows over borderless fullscreen games and most DirectX 11/12 games; it does not show over old exclusive fullscreen, because that would require injecting code into the game (m1vClock does not do that). FPS needs m1vClock running as administrator.</value>
+  </data>
+  <data name="Game.Overlay.Show" xml:space="preserve">
+    <value>Show overlay</value>
+  </data>
+  <data name="Game.Overlay.Hide" xml:space="preserve">
+    <value>Hide overlay</value>
+  </data>
+  <data name="Game.Overlay.Waiting" xml:space="preserve">
+    <value>waiting for game</value>
+  </data>
+  <data name="Game.Overlay.NeedsAdmin" xml:space="preserve">
+    <value>FPS needs admin</value>
+  </data>
+  <data name="Game.Overlay.FramesNeedAdmin" xml:space="preserve">
+    <value>Without administrator rights, the overlay shows the sensors but not the FPS: frame reading uses Windows event tracing, which only works elevated.</value>
+  </data>
+  <data name="Game.Overlay.Core" xml:space="preserve">
+    <value>core</value>
+  </data>
+  <data name="Game.Overlay.Memory" xml:space="preserve">
+    <value>mem</value>
+  </data>
+  <data name="Game.Overlay.Fan" xml:space="preserve">
+    <value>fan</value>
+  </data>
+  <data name="Game.Overlay.Corner" xml:space="preserve">
+    <value>Screen corner</value>
+  </data>
+  <data name="Game.Overlay.Corner.TopLeft" xml:space="preserve">
+    <value>Top left</value>
+  </data>
+  <data name="Game.Overlay.Corner.TopRight" xml:space="preserve">
+    <value>Top right</value>
+  </data>
+  <data name="Game.Overlay.Corner.BottomLeft" xml:space="preserve">
+    <value>Bottom left</value>
+  </data>
+  <data name="Game.Overlay.Corner.BottomRight" xml:space="preserve">
+    <value>Bottom right</value>
+  </data>
+  <data name="Game.Overlay.Scale" xml:space="preserve">
+    <value>Size</value>
+  </data>
+  <data name="Game.Overlay.Hotkey" xml:space="preserve">
+    <value>Shortcut to show and hide</value>
+  </data>
+  <data name="Game.Overlay.Hotkey.Apply" xml:space="preserve">
+    <value>Use shortcut</value>
+  </data>
+  <data name="Game.Overlay.Hotkey.Tip" xml:space="preserve">
+    <value>Examples: Ctrl+Shift+F10, Alt+O, F12. It works even with the game in the foreground.</value>
+  </data>
+  <data name="Game.Overlay.Hotkey.State.NotAttached" xml:space="preserve">
+    <value>The shortcut is saved and takes effect when the main window opens.</value>
+  </data>
+  <data name="Game.Overlay.Hotkey.State.Registered" xml:space="preserve">
+    <value>Shortcut active.</value>
+  </data>
+  <data name="Game.Overlay.Hotkey.State.Invalid" xml:space="preserve">
+    <value>Invalid shortcut. Use a modifier (Ctrl, Alt, Shift or Win) with a letter, number or F key, or an F key alone.</value>
+  </data>
+  <data name="Game.Overlay.Hotkey.State.InUse" xml:space="preserve">
+    <value>Another program already uses this shortcut. The previous one still applies.</value>
+  </data>
+  <data name="Game.Overlay.Hotkey.State.Failed" xml:space="preserve">
+    <value>Windows refused the shortcut. The previous one still applies.</value>
+  </data>
+  <data name="Game.Overlay.Preview" xml:space="preserve">
+    <value>Preview with current data</value>
+  </data>
+  <data name="Game.Overlay.Items" xml:space="preserve">
+    <value>What to show</value>
+  </data>
+  <data name="Game.Overlay.Preset.Minimal" xml:space="preserve">
+    <value>FPS only</value>
+  </data>
+  <data name="Game.Overlay.Preset.Default" xml:space="preserve">
+    <value>Default</value>
+  </data>
+  <data name="Game.Overlay.Preset.Everything" xml:space="preserve">
+    <value>Everything</value>
+  </data>
+  <data name="Game.Overlay.Group.Frames" xml:space="preserve">
+    <value>Frames</value>
+  </data>
+  <data name="Game.Overlay.Group.Gpu" xml:space="preserve">
+    <value>Graphics card</value>
+  </data>
+  <data name="Game.Overlay.Group.Vram" xml:space="preserve">
+    <value>Video memory</value>
+  </data>
+  <data name="Game.Overlay.Group.Cpu" xml:space="preserve">
+    <value>Processor</value>
+  </data>
+  <data name="Game.Overlay.Group.Ram" xml:space="preserve">
+    <value>RAM</value>
+  </data>
+  <data name="Game.Overlay.Group.Other" xml:space="preserve">
+    <value>Other</value>
+  </data>
+  <data name="Game.Overlay.Item.Fps" xml:space="preserve">
+    <value>FPS</value>
+  </data>
+  <data name="Game.Overlay.Item.Frametime" xml:space="preserve">
+    <value>Frame time</value>
+  </data>
+  <data name="Game.Overlay.Item.Low1" xml:space="preserve">
+    <value>1% low</value>
+  </data>
+  <data name="Game.Overlay.Item.Graph" xml:space="preserve">
+    <value>Frame time graph</value>
+  </data>
+  <data name="Game.Overlay.Item.GpuLoad" xml:space="preserve">
+    <value>Load</value>
+  </data>
+  <data name="Game.Overlay.Item.GpuTemp" xml:space="preserve">
+    <value>Temperature</value>
+  </data>
+  <data name="Game.Overlay.Item.GpuHotspot" xml:space="preserve">
+    <value>Hotspot</value>
+  </data>
+  <data name="Game.Overlay.Item.GpuClock" xml:space="preserve">
+    <value>Core clock</value>
+  </data>
+  <data name="Game.Overlay.Item.GpuMemclock" xml:space="preserve">
+    <value>Memory clock</value>
+  </data>
+  <data name="Game.Overlay.Item.GpuPower" xml:space="preserve">
+    <value>Power</value>
+  </data>
+  <data name="Game.Overlay.Item.GpuFan" xml:space="preserve">
+    <value>Fan</value>
+  </data>
+  <data name="Game.Overlay.Item.VramUsed" xml:space="preserve">
+    <value>Used (GB)</value>
+  </data>
+  <data name="Game.Overlay.Item.VramPct" xml:space="preserve">
+    <value>Usage (%)</value>
+  </data>
+  <data name="Game.Overlay.Item.CpuLoad" xml:space="preserve">
+    <value>Total load</value>
+  </data>
+  <data name="Game.Overlay.Item.CpuMaxcore" xml:space="preserve">
+    <value>Busiest core</value>
+  </data>
+  <data name="Game.Overlay.Item.CpuTemp" xml:space="preserve">
+    <value>Temperature</value>
+  </data>
+  <data name="Game.Overlay.Item.CpuClock" xml:space="preserve">
+    <value>Average clock</value>
+  </data>
+  <data name="Game.Overlay.Item.CpuPower" xml:space="preserve">
+    <value>Power</value>
+  </data>
+  <data name="Game.Overlay.Item.RamUsed" xml:space="preserve">
+    <value>Used (GB)</value>
+  </data>
+  <data name="Game.Overlay.Item.RamPct" xml:space="preserve">
+    <value>Usage (%)</value>
+  </data>
+  <data name="Game.Overlay.Item.Game" xml:space="preserve">
+    <value>Process name</value>
+  </data>
+  <data name="Game.Overlay.Item.Clock" xml:space="preserve">
+    <value>Time</value>
+  </data>
+  <data name="Oc.Intro" xml:space="preserve">
+    <value>Graphics card settings, a stability check and the guide for BIOS changes. Make one change at a time and run the check after each one. If the PC or the video driver crashes after a GPU change made here, m1vClock puts the card back to default the next time it opens.</value>
+  </data>
+  <data name="Oc.Gpu.Heading" xml:space="preserve">
+    <value>Graphics card</value>
+  </data>
+  <data name="Oc.Gpu.None" xml:space="preserve">
+    <value>No AMD or NVIDIA card answered the driver libraries (ADLX or NVML).</value>
+  </data>
+  <data name="Oc.Gpu.Amd.Note" xml:space="preserve">
+    <value>Read through ADLX, the AMD driver library. In this version m1vClock only reads AMD settings; to change them, use AMD Software: Adrenalin.</value>
+  </data>
+  <data name="Oc.Gpu.Nvidia.Note" xml:space="preserve">
+    <value>Read and set through NVML, the NVIDIA driver library. It only lowers or caps: power limit and clock ceiling. Applying needs m1vClock running as administrator.</value>
+  </data>
+  <data name="Oc.Gpu.Range" xml:space="preserve">
+    <value>{0} to {1} {2}</value>
+  </data>
+  <data name="Oc.Gpu.Clock" xml:space="preserve">
+    <value>Adjustable clock</value>
+  </data>
+  <data name="Oc.Gpu.Voltage" xml:space="preserve">
+    <value>Adjustable voltage</value>
+  </data>
+  <data name="Oc.Gpu.Power" xml:space="preserve">
+    <value>Power limit</value>
+  </data>
+  <data name="Oc.Gpu.PowerValue" xml:space="preserve">
+    <value>now {0} (default {1}; range {2})</value>
+  </data>
+  <data name="Oc.Gpu.State" xml:space="preserve">
+    <value>State</value>
+  </data>
+  <data name="Oc.Gpu.State.Factory" xml:space="preserve">
+    <value>Factory settings</value>
+  </data>
+  <data name="Oc.Gpu.State.Changed" xml:space="preserve">
+    <value>Changed from factory</value>
+  </data>
+  <data name="Oc.Gpu.NoTuning" xml:space="preserve">
+    <value>This card does not accept manual tuning through the driver.</value>
+  </data>
+  <data name="Oc.Gpu.PowerField" xml:space="preserve">
+    <value>Power limit (W)</value>
+  </data>
+  <data name="Oc.Gpu.CapField" xml:space="preserve">
+    <value>Clock ceiling</value>
+  </data>
+  <data name="Oc.Gpu.Cap.None" xml:space="preserve">
+    <value>No ceiling</value>
+  </data>
+  <data name="Oc.Gpu.Cap.Offset" xml:space="preserve">
+    <value>Up to {0} MHz</value>
+  </data>
+  <data name="Oc.Gpu.Apply" xml:space="preserve">
+    <value>Apply</value>
+  </data>
+  <data name="Oc.Gpu.Restore" xml:space="preserve">
+    <value>Back to default</value>
+  </data>
+  <data name="Oc.Gpu.NeedsAdmin" xml:space="preserve">
+    <value>To change the graphics card, open m1vClock as administrator.</value>
+  </data>
+  <data name="Oc.Gpu.PowerOutOfRange" xml:space="preserve">
+    <value>The power limit must be between {0} and {1} W.</value>
+  </data>
+  <data name="Oc.Gpu.Confirm.Title" xml:space="preserve">
+    <value>Apply tuning to {0}?</value>
+  </data>
+  <data name="Oc.Gpu.Confirm.Message" xml:space="preserve">
+    <value>The driver applies it right away. Then run the stability check.</value>
+  </data>
+  <data name="Oc.Gpu.Confirm.Power" xml:space="preserve">
+    <value>Power limit: {0} W</value>
+  </data>
+  <data name="Oc.Gpu.Confirm.Cap" xml:space="preserve">
+    <value>Clock ceiling: {0} MHz</value>
+  </data>
+  <data name="Oc.Gpu.Confirm.NoCap" xml:space="preserve">
+    <value>No clock ceiling</value>
+  </data>
+  <data name="Oc.Gpu.Confirm.Undo" xml:space="preserve">
+    <value>"Back to default" undoes it. If the driver or the PC crashes, m1vClock undoes it by itself the next time it opens.</value>
+  </data>
+  <data name="Oc.Gpu.Result.Applied" xml:space="preserve">
+    <value>Tuning applied. Run the stability check to confirm.</value>
+  </data>
+  <data name="Oc.Gpu.Result.Partial" xml:space="preserve">
+    <value>The driver accepted only part of the tuning. See the current values above.</value>
+  </data>
+  <data name="Oc.Gpu.Result.Refused" xml:space="preserve">
+    <value>The driver refused the tuning.</value>
+  </data>
+  <data name="Oc.Gpu.Result.OutOfRange" xml:space="preserve">
+    <value>Values outside what the card accepts. Nothing was changed.</value>
+  </data>
+  <data name="Oc.Gpu.Result.NoDevice" xml:space="preserve">
+    <value>The card did not answer.</value>
+  </data>
+  <data name="Oc.Gpu.Result.LibraryMissing" xml:space="preserve">
+    <value>The driver library is not available.</value>
+  </data>
+  <data name="Oc.Gpu.Restored" xml:space="preserve">
+    <value>Graphics card back to factory defaults.</value>
+  </data>
+  <data name="Oc.Guard.Toast.Title" xml:space="preserve">
+    <value>GPU tuning undone</value>
+  </data>
+  <data name="Oc.Guard.Toast.PreviousSessionCrashed" xml:space="preserve">
+    <value>m1vClock closed unexpectedly after the tuning. The card is back to default.</value>
+  </data>
+  <data name="Oc.Guard.Toast.DriverReset" xml:space="preserve">
+    <value>The video driver restarted after the tuning. The card is back to default.</value>
+  </data>
+  <data name="Oc.Guard.Toast.UnexpectedShutdown" xml:space="preserve">
+    <value>The PC shut down without warning after the tuning. The card is back to default.</value>
+  </data>
+  <data name="Oc.Guard.Toast.None" xml:space="preserve">
+    <value>The card is back to default.</value>
+  </data>
+  <data name="Oc.Check.Heading" xml:space="preserve">
+    <value>Stability check</value>
+  </data>
+  <data name="Oc.Check.Intro" xml:space="preserve">
+    <value>Uses the same workload as the Stress test page, with the same temperature limits, and watches the Windows log: a hardware error (WHEA), a video driver restart or a memory error fails it right away.</value>
+  </data>
+  <data name="Oc.Check.Target" xml:space="preserve">
+    <value>What to test</value>
+  </data>
+  <data name="Oc.Check.Target.CpuAndMemory" xml:space="preserve">
+    <value>CPU + RAM</value>
+  </data>
+  <data name="Oc.Check.Target.Gpu" xml:space="preserve">
+    <value>GPU</value>
+  </data>
+  <data name="Oc.Check.Target.Everything" xml:space="preserve">
+    <value>Everything</value>
+  </data>
+  <data name="Oc.Check.Duration" xml:space="preserve">
+    <value>Duration</value>
+  </data>
+  <data name="Oc.Check.Minutes" xml:space="preserve">
+    <value>{0} min</value>
+  </data>
+  <data name="Oc.Check.Start" xml:space="preserve">
+    <value>Start check</value>
+  </data>
+  <data name="Oc.Check.Stop" xml:space="preserve">
+    <value>Stop</value>
+  </data>
+  <data name="Oc.Check.Starting" xml:space="preserve">
+    <value>Getting ready…</value>
+  </data>
+  <data name="Oc.Check.Running" xml:space="preserve">
+    <value>{0} of {1} · max CPU {2} · max GPU {3}</value>
+  </data>
+  <data name="Oc.Check.Cancelled" xml:space="preserve">
+    <value>Check cancelled.</value>
+  </data>
+  <data name="Oc.Check.Refused.OtherTestRunning" xml:space="preserve">
+    <value>Another heavy test is running. Finish it first.</value>
+  </data>
+  <data name="Oc.Check.Refused.NoTemperatureSensor" xml:space="preserve">
+    <value>Without a temperature reading the test does not start (open m1vClock as administrator to read the CPU).</value>
+  </data>
+  <data name="Oc.Check.Refused.NotEnoughMemory" xml:space="preserve">
+    <value>Too little free memory for the RAM test. Close some programs.</value>
+  </data>
+  <data name="Oc.Check.Refused.Refused" xml:space="preserve">
+    <value>The test could not start.</value>
+  </data>
+  <data name="Oc.Check.Refused.Started" xml:space="preserve">
+    <value>The test started.</value>
+  </data>
+  <data name="Oc.Verdict.Stable" xml:space="preserve">
+    <value>Stable</value>
+  </data>
+  <data name="Oc.Verdict.Unstable" xml:space="preserve">
+    <value>Unstable</value>
+  </data>
+  <data name="Oc.Verdict.Inconclusive" xml:space="preserve">
+    <value>Inconclusive</value>
+  </data>
+  <data name="Oc.Verdict.Detail" xml:space="preserve">
+    <value>Duration {0} · max CPU {1} · max GPU {2} · WHEA {3} · video resets {4} · memory errors {5}</value>
+  </data>
+  <data name="Oc.Verdict.StableHint" xml:space="preserve">
+    <value>No errors. For Curve Optimizer or undervolting, use the PC normally for a day and check the recent errors below: instability often shows up under light use.</value>
+  </data>
+  <data name="Oc.Verdict.Reason.WheaErrors" xml:space="preserve">
+    <value>Windows logged a hardware error (WHEA): unstable CPU, RAM or PCIe. Go back one step.</value>
+  </data>
+  <data name="Oc.Verdict.Reason.DriverResets" xml:space="preserve">
+    <value>The video driver restarted during the test. Go back one step on the GPU tuning.</value>
+  </data>
+  <data name="Oc.Verdict.Reason.UnexpectedShutdown" xml:space="preserve">
+    <value>The PC shut down without warning during the test.</value>
+  </data>
+  <data name="Oc.Verdict.Reason.MemoryErrors" xml:space="preserve">
+    <value>The RAM test found errors: the memory profile (EXPO/XMP) or the timings are not stable.</value>
+  </data>
+  <data name="Oc.Verdict.Reason.WorkloadCrashed" xml:space="preserve">
+    <value>The test workload stopped with an error (the GPU may have hung).</value>
+  </data>
+  <data name="Oc.Verdict.Reason.TooHot" xml:space="preserve">
+    <value>It stopped for temperature before the end. Improve cooling or reduce the tuning before concluding anything.</value>
+  </data>
+  <data name="Oc.Verdict.Reason.StoppedEarly" xml:space="preserve">
+    <value>The test lasted less than 5 minutes: too little to conclude.</value>
+  </data>
+  <data name="Oc.Verdict.Reason.SensorLost" xml:space="preserve">
+    <value>The temperature reading disappeared during the test.</value>
+  </data>
+  <data name="Oc.Verdict.Reason.WindowUnresponsive" xml:space="preserve">
+    <value>m1vClock stopped responding during the test.</value>
+  </data>
+  <data name="Oc.Verdict.Reason.ErrorsUnreadable" xml:space="preserve">
+    <value>The Windows log could not be read, so hardware errors were not checked.</value>
+  </data>
+  <data name="Oc.Errors.Heading" xml:space="preserve">
+    <value>Recent hardware errors (7 days)</value>
+  </data>
+  <data name="Oc.Errors.None" xml:space="preserve">
+    <value>No hardware error, video driver restart or unexpected shutdown.</value>
+  </data>
+  <data name="Oc.Errors.Some" xml:space="preserve">
+    <value>WHEA: {0} · video driver resets: {1} · unexpected shutdowns: {2} · last at {3}</value>
+  </data>
+  <data name="Oc.Errors.Unreadable" xml:space="preserve">
+    <value>The Windows log could not be read: {0}</value>
+  </data>
+  <data name="Oc.Errors.Tip" xml:space="preserve">
+    <value>Unexpected shutdowns also count power loss and a held power button; see the Crashes page for details on each one.</value>
+  </data>
+  <data name="Oc.Bios.Heading" xml:space="preserve">
+    <value>BIOS guide · {0} · {1}</value>
+  </data>
+  <data name="Oc.Bios.Intro" xml:space="preserve">
+    <value>Menus change a little between BIOS versions. The values are safe starting points, not a guarantee: every chip is different.</value>
+  </data>
+  <data name="Oc.Bios.SaveProfile.Title" xml:space="preserve">
+    <value>Before you start: save the current profile</value>
+  </data>
+  <data name="Oc.Bios.SaveProfile.Text" xml:space="preserve">
+    <value>If the PC does not boot after a change, wait for three attempts (many boards recover by themselves) or clear the CMOS with the CLR_CMOS jumper or by removing the battery for a minute.</value>
+  </data>
+  <data name="Oc.Bios.MemoryProfile.Title" xml:space="preserve">
+    <value>Enable the memory profile ({0})</value>
+  </data>
+  <data name="Oc.Bios.MemoryProfile.Text" xml:space="preserve">
+    <value>It is the biggest gaming gain for most PCs: the RAM leaves the default speed and runs at its rated speed. Test with the "CPU + RAM" check for 15 minutes.</value>
+  </data>
+  <data name="Oc.Bios.PrecisionBoostOverdrive.Title" xml:space="preserve">
+    <value>Precision Boost Overdrive (PBO)</value>
+  </data>
+  <data name="Oc.Bios.PrecisionBoostOverdrive.Text" xml:space="preserve">
+    <value>Set it to Advanced and PBO Limits to Motherboard. Boost lasts longer, with more heat. Test with the check.</value>
+  </data>
+  <data name="Oc.Bios.CurveOptimizer.Title" xml:space="preserve">
+    <value>Curve Optimizer (CPU undervolt)</value>
+  </data>
+  <data name="Oc.Bios.CurveOptimizer.Text" xml:space="preserve">
+    <value>All Cores, Negative, 10. If it passes, try 15, 20… until it fails and go back 5. It usually ends between -10 and {1}. Errors often show under light use: use the PC for a day and check recent errors.</value>
+  </data>
+  <data name="Oc.Bios.BoostOverride.Title" xml:space="preserve">
+    <value>Max CPU Boost Clock Override (optional)</value>
+  </data>
+  <data name="Oc.Bios.BoostOverride.Text" xml:space="preserve">
+    <value>After a stable Curve Optimizer: +100 MHz, test; then +200 MHz. Small gain; it may need a smaller Curve Optimizer.</value>
+  </data>
+  <data name="Oc.Bios.EcoMode.Title" xml:space="preserve">
+    <value>Cool alternative: Eco Mode</value>
+  </data>
+  <data name="Oc.Bios.EcoMode.Text" xml:space="preserve">
+    <value>Instead of more performance, it caps the CPU at 65 W or 105 W. It loses little in games and runs much cooler and quieter.</value>
+  </data>
+  <data name="Oc.Bios.IntelPowerLimits.Title" xml:space="preserve">
+    <value>Intel power limits (PL1/PL2)</value>
+  </data>
+  <data name="Oc.Bios.IntelPowerLimits.Text" xml:space="preserve">
+    <value>Use Intel's values for your model (the "Intel Default Settings" profile when the board offers it). Boards that unlock everything run hot and, on 13th and 14th gen, speed up wear.</value>
+  </data>
+  <data name="Oc.Bios.IntelUndervolt.Title" xml:space="preserve">
+    <value>Undervolt (negative offset)</value>
+  </data>
+  <data name="Oc.Bios.IntelUndervolt.Text" xml:space="preserve">
+    <value>Start at -0.025 V and go down 0.010 V at a time, testing each step. Prefer this to raising multipliers.</value>
+  </data>
+  <data name="Oc.Bios.TestEachStep.Title" xml:space="preserve">
+    <value>One change at a time</value>
+  </data>
+  <data name="Oc.Bios.TestEachStep.Text" xml:space="preserve">
+    <value>After each change, run the stability check here. If it fails, undo only the last step.</value>
   </data>
 </root>

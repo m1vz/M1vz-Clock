@@ -5,6 +5,7 @@
                     xmlns:hw="clr-namespace:M1vClock.App.Pages.Hardware"
                     xmlns:dg="clr-namespace:M1vClock.App.Pages.Diagnostics"
                     xmlns:op="clr-namespace:M1vClock.App.Pages.Optimize"
+                    xmlns:gm="clr-namespace:M1vClock.App.Pages.Games"
                     xmlns:pf="clr-namespace:M1vClock.App.Pages.Performance">
 
   <DataTemplate DataType="{x:Type nav:PlaceholderPageViewModel}">
@@ -53,6 +54,26 @@
 
   <DataTemplate DataType="{x:Type op:RepairPageViewModel}">
     <op:RepairPage />
+  </DataTemplate>
+
+  <DataTemplate DataType="{x:Type gm:LibraryPageViewModel}">
+    <gm:LibraryPage />
+  </DataTemplate>
+
+  <DataTemplate DataType="{x:Type gm:BottleneckPageViewModel}">
+    <gm:BottleneckPage />
+  </DataTemplate>
+
+  <DataTemplate DataType="{x:Type gm:FpsPageViewModel}">
+    <gm:FpsPage />
+  </DataTemplate>
+
+  <DataTemplate DataType="{x:Type gm:OverlayPageViewModel}">
+    <gm:OverlayPage />
+  </DataTemplate>
+
+  <DataTemplate DataType="{x:Type pf:OverclockPageViewModel}">
+    <pf:OverclockPage />
   </DataTemplate>
 
   <DataTemplate DataType="{x:Type op:CleanupPageViewModel}">

@@ -1,7 +1,9 @@
 using M1vClock.App.Dialogs;
 using M1vClock.App.Navigation;
+using M1vClock.App.Overlay;
 using M1vClock.App.Pages;
 using M1vClock.App.Pages.Diagnostics;
+using M1vClock.App.Pages.Games;
 using M1vClock.App.Pages.Hardware;
 using M1vClock.App.Pages.Optimize;
 using M1vClock.App.Pages.Performance;
@@ -101,6 +103,35 @@ public static class AppHost
         builder.Services.AddTransient<AppsPageViewModel>();
         builder.Services.AddTransient<TweaksPageViewModel>();
         builder.Services.AddTransient<RepairPageViewModel>();
+        builder.Services.AddSingleton<IGameSessionRunner, GameSessionRunner>();
+        builder.Services.AddSingleton<GameSessionHost>();
+        builder.Services.AddSingleton<ProfileEditorServices>();
+        builder.Services.AddSingleton<LibraryServices>();
+        builder.Services.AddTransient<LibraryPageViewModel>();
+        builder.Services.AddTransient<BottleneckPageViewModel>();
+        builder.Services.AddSingleton<FpsServices>();
+        builder.Services.AddTransient<FpsPageViewModel>();
+        builder.Services.AddSingleton<IOverlaySurface, WpfOverlaySurface>();
+        builder.Services.AddSingleton<WindowHotkeys>();
+        builder.Services.AddSingleton<IOverlayHotkeys>(provider => provider.GetRequiredService<WindowHotkeys>());
+        builder.Services.AddSingleton<IOverlayForeground, WindowsOverlayForeground>();
+        builder.Services.AddSingleton<OverlayController>();
+        builder.Services.AddSingleton<OverlayServices>();
+        builder.Services.AddTransient<OverlayPageViewModel>();
+        builder.Services.AddSingleton<StabilityRunnerServices>();
+        builder.Services.AddSingleton<IStabilityRunner, StabilityRunner>();
+        builder.Services.AddSingleton(provider => new OverclockServices(
+            provider.GetRequiredService<M1vClock.Hardware.Platform.IPlatformService>(),
+            provider.GetRequiredService<IMachineProfile>(),
+            provider.GetRequiredService<M1vClock.Tuning.Gpu.AdlxReader>(),
+            provider.GetRequiredService<M1vClock.Tuning.Gpu.NvidiaTuner>(),
+            provider.GetRequiredService<M1vClock.Tuning.SessionGuard>(),
+            provider.GetRequiredService<M1vClock.Tuning.Stability.IHardwareErrorSource>(),
+            provider.GetRequiredService<IStabilityRunner>(),
+            provider.GetRequiredService<DialogService>(),
+            provider.GetRequiredService<AppInfo>(),
+            provider.GetRequiredService<TimeProvider>()));
+        builder.Services.AddTransient<OverclockPageViewModel>();
         builder.Services.AddSingleton<IReportCollector, ReportCollector>();
         return builder.Build();
     }
