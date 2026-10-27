@@ -1,7 +1,7 @@
 # m1vClock · Plano (fase 0)
 
 Data: 21/10/2026
-Referência lida: `GustavoReset/ResetExplode`, commit `ce1d9b3` (v0.16, 22 commits), clonado em `_ref/ResetExplode` e fora do git do m1vClock.
+Referência lida: app original v0.16 (commit `ce1d9b3`), clonado em `_ref/` e fora do git do m1vClock.
 
 Foram lidos os 115 arquivos do repositório: 13.971 linhas de C#, 3.641 de XAML, README, NOVIDADES, LEIA-ME, workflow, `publicar.bat`, manifest e `.csproj`. Os binários de driver em `Drivers/` foram conferidos pelo `Drivers/LEIA-ME.md` e pela origem declarada.
 
@@ -9,8 +9,8 @@ Sumário
 
 1. Resumo
 2. Máquina de desenvolvimento e o que dá para testar aqui
-3. Mapa de funcionalidades: ResetExplode → m1vClock
-4. Problemas encontrados no ResetExplode
+3. Mapa de funcionalidades: App original → m1vClock
+4. Problemas encontrados no app original
 5. Arquitetura do m1vClock
 6. Dependências e licenças
 7. Conexões com a internet
@@ -66,7 +66,7 @@ O que **dá** para testar bem aqui: sensores AMD de CPU e GPU (com PawnIO), ADLX
 
 ---
 
-## 3. Mapa de funcionalidades: ResetExplode → m1vClock
+## 3. Mapa de funcionalidades: App original → m1vClock
 
 Legenda dos projetos: **App**, **Core**, **Hardware**, **Benchmarks**, **Tuning**, **Optimize**, **Diagnostics**, **Games**, **Integrations**, **Maker** (todos `M1vClock.*`).
 
@@ -94,7 +94,7 @@ Legenda dos projetos: **App**, **Core**, **Hardware**, **Benchmarks**, **Tuning*
 
 | Funcionalidade | Original | Novo | O que muda |
 |---|---|---|---|
-| CPU path tracer multi/single, determinístico | `BenchRenderer.cs` | Benchmarks `Cpu.PathTracer` | Mesmo algoritmo, cena e fórmula de nota, para comparar com o ResetExplode |
+| CPU path tracer multi/single, determinístico | `BenchRenderer.cs` | Benchmarks `Cpu.PathTracer` | Mesmo algoritmo, cena e fórmula de nota, para comparar com o app original |
 | Simulação de jogo na CPU | `GameSimBench.cs` | Benchmarks `Cpu.GameSim` | Mesmo algoritmo |
 | Cena de jogo D3D11 | `GpuGameBench.cs` | Benchmarks `Gpu.Scene` | Janela Win32 compartilhada (hoje copiada 3 vezes) |
 | Ray tracing DXR 1.1, aquecimento + 3 passadas + mediana | `GpuRtBench.cs`, `MainWindow.Rt.cs` | Benchmarks `Gpu.RayTracing` | Mediana e variação em funções testadas |
@@ -167,7 +167,7 @@ Legenda dos projetos: **App**, **Core**, **Hardware**, **Benchmarks**, **Tuning*
 
 ---
 
-## 4. Problemas encontrados no ResetExplode
+## 4. Problemas encontrados no app original
 
 ### 4.1 Os seis do briefing (confirmados)
 
@@ -191,8 +191,8 @@ Contexto: o app roda como administrador. Qualquer arquivo que ele lê, executa o
 | S1 | Carga da DLL Corsair por nome, com busca no `PATH` | `CorsairSdk.cs:93` | DLL plantada vira código com administrador |
 | S2 | O winget é executado a partir de `%LocalAppData%\Microsoft\WindowsApps\winget.exe`, pasta do usuário; o botão do PawnIO roda `cmd.exe /k winget ...` achando o winget pelo `PATH` | `AppInstaller.cs:59-60`, `MainWindow.xaml.cs:221-239` | Programa comum troca o `winget.exe` e ganha administrador |
 | S3 | `settings.json` fica em `%AppData%` e alimenta ações privilegiadas: "Restaurar removidos" faz `File.Move(Backup, Original)` com caminhos lidos do JSON; restaura comando em `HKLM\...\Run`; regrava ComDB; executa `.exe` de jogos e auxiliares | `StartupManager.cs:157-170`, `AppSettings.cs`, `GameLauncher.cs:163-182` | Mover arquivo arbitrário como administrador = escalação de privilégio completa |
-| S4 | Backup de drivers seriais em `%AppData%\ResetExplode\DriversSeriais`, restaurado com `pnputil /add-driver *.inf /subdirs /install` | `MakerDrivers.cs:77, 191-195` | Programa comum planta um driver assinado porém vulnerável e o app instala no kernel |
-| S5 | Pastas de nome fixo em locais graváveis: `%TEMP%\ResetExplode\drivers-incluidos\<chip>` (com `Directory.Delete(recursive)` antes de extrair), `%TEMP%\ResetExplodeBench`, `X:\ResetExplodeBench` na raiz da unidade (usuário comum pode criar pasta em `C:\`), `%TEMP%\ResetExplode\drivers` | `MakerDrivers.cs:255-256`, `MemoryBench.cs:99,160`, `DiskBench.cs:52-54`, `DriverManager.cs:80` | Uma junção no lugar da pasta faz o app apagar ou gravar onde não devia |
+| S4 | Backup de drivers seriais em `%AppData%\<app>\DriversSeriais`, restaurado com `pnputil /add-driver *.inf /subdirs /install` | `MakerDrivers.cs:77, 191-195` | Programa comum planta um driver assinado porém vulnerável e o app instala no kernel |
+| S5 | Pastas de nome fixo em locais graváveis: `%TEMP%\<app>\drivers-incluidos\<chip>` (com `Directory.Delete(recursive)` antes de extrair), `%TEMP%\<app>Bench`, `X:\<app>Bench` na raiz da unidade (usuário comum pode criar pasta em `C:\`), `%TEMP%\<app>\drivers` | `MakerDrivers.cs:255-256`, `MemoryBench.cs:99,160`, `DiskBench.cs:52-54`, `DriverManager.cs:80` | Uma junção no lugar da pasta faz o app apagar ou gravar onde não devia |
 | S6 | Instalador de driver baixado é verificado e só depois executado, em pasta do usuário | `DriverManager.cs:316-321` | Troca do arquivo entre a verificação e a execução |
 | S7 | Jogos, programas auxiliares, Steam, OpenRGB, navegador e o relatório HTML são abertos **com administrador** (herdam o token). O OpenRGB é procurado em `Downloads` e na Área de Trabalho | `GameLauncher.cs:168,177-182`, `MainWindow.Integ.cs:223-270`, vários `Process.Start(url)` | Jogo e navegador como administrador; `OpenRGB.exe` plantado em Downloads roda como administrador |
 | S8 | `nvml.dll` carregada pelo nome via `DllImport` | `Nvml.cs:9` | A pasta do `.exe` vem antes do System32; com o `.exe` rodando de Downloads, DLL plantada roda como administrador |
@@ -222,7 +222,7 @@ Contexto: o app roda como administrador. Qualquer arquivo que ele lê, executa o
 | R16 | "Fechar programas que prendem a porta" mata o processo à força, sem pedir para fechar | `MainWindow.Maker.cs:188` |
 | R17 | Histórico de benchmark limitado a 10 itens e guardado dentro das configurações | `MainWindow.xaml.cs:759-762, 1071-1075` |
 | R18 | Código repetido: janela Win32 dos testes de GPU (3 cópias), `PowerCfg` (2), `RefId` (2), formatação de bytes (5) | vários |
-| R19 | 203 ocorrências de "RESET"/"ResetExplode": sessão ETW `ResetExplode-Frames`, user-agent, pastas, nome do cliente no OpenRGB, título e autor no Razer, classes de janela, mutex, relatório, textos | vários |
+| R19 | 203 ocorrências de "RESET" e do nome do app: sessão ETW `<nome>-Frames`, user-agent, pastas, nome do cliente no OpenRGB, título e autor no Razer, classes de janela, mutex, relatório, textos | vários |
 
 ### 4.4 Interface e acessibilidade
 
@@ -367,9 +367,9 @@ As regras "sem comentários" e "sem `catch` vazio" viram testes automáticos no 
 
 Todo download de driver: HTTPS, tamanho conferido, hash publicado quando houver, catálogo `.cat` com assinatura WHQL da Microsoft ou do fabricante esperado, arquivo apagado se não bater. Os domínios dos fabricantes não estão na lista de conexões permitidas do briefing (decisão 8).
 
-### 6.4 ResetExplode
+### 6.4 Código reaproveitado do app original
 
-MIT, `Copyright (c) 2026 Gustavo (GustavoReset)`. O aviso vai no `THIRD-PARTY-NOTICES.md` e o projeto é citado no README. Código aproveitado: algoritmos dos benchmarks (para manter as notas comparáveis), parser VDF, regras de diagnóstico serial, mapa de fabricantes de GPU, textos do guia de BIOS. Toda a marca "RESET" sai.
+MIT. O aviso de licença exigido fica no `THIRD-PARTY-NOTICES.md`. Código aproveitado: algoritmos dos benchmarks (para manter as notas comparáveis), parser VDF, regras de diagnóstico serial, mapa de fabricantes de GPU, textos do guia de BIOS. Toda a marca "RESET" sai.
 
 ---
 
@@ -408,7 +408,7 @@ Zero telemetria. Lista completa (vai para o README e para Configurações › Pr
 | Medição de FPS em Vulkan/OpenGL | Médio | ETW do DxgKrnl é mais complexo; se não ficar confiável, documentar a limitação como hoje |
 | Overlay em tela cheia exclusiva | Baixo | Impossível sem injeção; limitação documentada |
 | Leitura de temperatura durante benchmark de GPU | Médio | Medir o efeito no 1% low (fase 3) |
-| Notas diferentes do ResetExplode | Médio | Mesmos algoritmos; o JIT do .NET 10 pode mudar a nota. Medir lado a lado e documentar a diferença. O teste de disco muda de propósito (fila real) e ganha versão própria |
+| Notas diferentes do app original | Médio | Mesmos algoritmos; o JIT do .NET 10 pode mudar a nota. Medir lado a lado e documentar a diferença. O teste de disco muda de propósito (fila real) e ganha versão própria |
 | Escala de texto no WPF | Baixo | Ler o fator do Windows e aplicar à escala tipográfica |
 | Pontos de restauração | Baixo | Windows ignora pedidos a menos de 24 h de outro ponto; tratar e avisar |
 | Tamanho da v1 | Alto | Fases curtas com parada; cada fase entrega algo que roda |
@@ -423,8 +423,8 @@ Cada fase termina com: `dotnet build` sem erros e sem avisos, testes passando, a
 |---|---|---|---|
 | 0 | Este plano | — | aguardando ok |
 | 1 | Solução e projetos, `Directory.Build.props`, DI, Serilog, settings com schema e migração, `ChangeJournal`, `SecureStore`, `ProcessRunner`, `ShellLauncher`, `SafeNativeLoader`, instância única, crash reporter, navegação, barra lateral, Ctrl+K, tema claro/escuro, página **Design system** (paleta, tipografia, botões, cartão de métrica, gráfico ao vivo, lista, interruptor, diálogo de confirmação, barra lateral) | Journal aplicar/desfazer/desfazer tudo; migração de settings; montagem de argumentos; regras de arquitetura; capturas claro e escuro | G |
-| 2 | Visão geral, Sistema, Sensores (busca e filtros), GPU, Memória, Armazenamento + S.M.A.R.T., Energia/Bateria, Rede, USB/dispositivos | Veredito SMART, jitter/perda, parser do battery report, EXPO/canais, banco de GPU; comparação com o ResetExplode lado a lado | G |
-| 3 | Benchmarks (todos), histórico, comparação e importação, stress CPU/RAM/GPU com `SafetyMonitor` | 1% low, mediana, variação; duas execuções com diferença abaixo de 3% nos determinísticos; mesma faixa de nota do ResetExplode; limpeza de temporários após encerrar o app à força | G |
+| 2 | Visão geral, Sistema, Sensores (busca e filtros), GPU, Memória, Armazenamento + S.M.A.R.T., Energia/Bateria, Rede, USB/dispositivos | Veredito SMART, jitter/perda, parser do battery report, EXPO/canais, banco de GPU; comparação com o app original lado a lado | G |
+| 3 | Benchmarks (todos), histórico, comparação e importação, stress CPU/RAM/GPU com `SafetyMonitor` | 1% low, mediana, variação; duas execuções com diferença abaixo de 3% nos determinísticos; mesma faixa de nota do app original; limpeza de temporários após encerrar o app à força | G |
 | 4 | Otimização (limpeza, memória, ajustes, serviços, inicialização, apps), reparo, logs e diagnóstico (eventos, telas azuis, confiabilidade, relatório) | Regras de limpeza (caminhos proibidos nunca entram), parsers (powercfg, winget, minidump/BugCheck), cada alteração: aplicar → conferir → desfazer → conferir, primeiro na VM | G |
 | 5 | Jogos (biblioteca, perfis, Steam, FPS estimado, gargalo, overlay), overclock NVIDIA e AMD, estabilidade, guia de BIOS, SessionGuard | VDF, argumentos por engine, gargalo, veredito de estabilidade; ADLX nesta máquina | G |
 | 6 | Drivers, RGB (Corsair, OpenRGB, Razer, perfis, efeito por jogo), Maker, bandeja e alertas | Saída do pnputil, ComDB, diagnóstico serial; carga da DLL só com assinatura válida; DLL adulterada é recusada | M |
@@ -449,7 +449,7 @@ Podem esperar a fase indicada (se não disser nada, sigo a recomendação):
 8. **Drivers seriais (fase 6):** liberar `wch-ic.com`, `silabs.com`, `ftdichip.com` e `raw.githubusercontent.com` para download com verificação, ou só abrir a página oficial e instalar de um arquivo que você baixar? Recomendo liberar.
 9. **Teste de rede (fase 2):** trocar o 8.8.8.8 (Google) por 1.0.0.1 (Cloudflare). Recomendo trocar.
 10. **ARM64:** deixar para depois da v1. Recomendo.
-11. **Benchmarks (fase 3):** manter algoritmos e fórmulas idênticos ao ResetExplode para comparar notas; o teste de disco ganha fila real e versão nova. Recomendo.
+11. **Benchmarks (fase 3):** manter algoritmos e fórmulas idênticos ao app original para comparar notas; o teste de disco ganha fila real e versão nova. Recomendo.
 12. **Ícones:** Lucide (ISC, traço único) ou Phosphor (MIT). Recomendo Lucide.
 13. **Copyright e repositório (fase 7):** nome para o `LICENSE` (seu nome, "m1vClock contributors" ou outro) e o endereço do repositório no GitHub.
 

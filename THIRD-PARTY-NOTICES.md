@@ -2,18 +2,9 @@
 
 O m1vClock reaproveita código e usa componentes de terceiros. Este arquivo reúne os avisos exigidos pelas licenças.
 
-## ResetExplode (MIT)
+## Código reaproveitado (MIT)
 
-Projeto: https://github.com/GustavoReset/ResetExplode
-
-Os algoritmos dos benchmarks foram mantidos iguais aos do ResetExplode para que as notas sejam comparáveis, e partes do código e dos shaders foram aproveitadas:
-
-- Render de CPU por path tracing (cena, semente por pixel e fórmula da nota) e simulação de jogo na CPU, conferidos contra o original.
-- Latência e banda de memória e o teste de carregamento de mapa.
-- A cena de jogo em Direct3D 11 (geração do terreno, árvores, câmera e shaders) e o estresse de GPU com pelos em camadas (shaders).
-- O banco de especificações de GPU e o mapa de fabricantes, na fase 2.
-
-Todo o resto (organização em projetos, camada de hardware, monitor de segurança, histórico, pasta temporária, interface) é do m1vClock. O código foi reescrito, não copiado por inteiro.
+Partes dos benchmarks (algoritmos e shaders), o banco de especificações de GPU e o catálogo de FPS foram adaptadas de um projeto sob a licença abaixo.
 
 ```
 MIT License
@@ -39,7 +30,7 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 ```
 
-Os drivers seriais que o ResetExplode embute na pasta `Drivers/` **não** são MIT e não fazem parte deste projeto. Eles serão baixados na hora, com verificação de assinatura.
+Drivers seriais de terceiros não fazem parte deste projeto. Eles serão baixados na hora, com verificação de assinatura.
 
 ## Componentes usados
 

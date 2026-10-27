@@ -2743,7 +2743,7 @@
     <value>Variação entre passadas</value>
   </data>
   <data name="Bench.Sim.Result.Note" xml:space="preserve">
-    <value>A nota é a mediana de 3 passadas. Os trabalhadores ficam nos núcleos físicos para o resultado variar menos entre execuções, então a nota fica abaixo da do ResetExplode, que usava todas as threads.</value>
+    <value>A nota é a mediana de 3 passadas. Os trabalhadores ficam só nos núcleos físicos para o resultado variar menos entre execuções; por isso a nota fica abaixo da que se teria usando todas as threads.</value>
   </data>
   <data name="Bench.Memory.Title" xml:space="preserve">
     <value>Memória</value>
@@ -2830,7 +2830,7 @@
     <value>{0} · arquivo de {1} MB</value>
   </data>
   <data name="Bench.Disk.Result.Note" xml:space="preserve">
-    <value>Nota versão 2, com fila real de E/S. Não é comparável com a do ResetExplode, que usava 8 threads síncronas.</value>
+    <value>Nota versão 2, com fila real de E/S. Não é comparável com notas de testes que usam threads síncronas no lugar da fila.</value>
   </data>
   <data name="Stress.Start" xml:space="preserve">
     <value>Iniciar</value>

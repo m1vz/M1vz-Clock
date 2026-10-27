@@ -2743,7 +2743,7 @@
     <value>Pass-to-pass spread</value>
   </data>
   <data name="Bench.Sim.Result.Note" xml:space="preserve">
-    <value>The score is the median of 3 passes. Workers stay on physical cores so the result varies less between runs, so the score is lower than ResetExplode's, which used every thread.</value>
+    <value>The score is the median of 3 passes. Workers stay on the physical cores only so the result varies less between runs; that is why the score is lower than one using every thread.</value>
   </data>
   <data name="Bench.Memory.Title" xml:space="preserve">
     <value>Memory</value>
@@ -2830,7 +2830,7 @@
     <value>{0} · {1} MB file</value>
   </data>
   <data name="Bench.Disk.Result.Note" xml:space="preserve">
-    <value>Score version 2, with a real I/O queue. Not comparable with ResetExplode's, which used 8 synchronous threads.</value>
+    <value>Score version 2, with a real I/O queue. It is not comparable with scores from tests that use synchronous threads instead of a queue.</value>
   </data>
   <data name="Stress.Start" xml:space="preserve">
     <value>Start</value>

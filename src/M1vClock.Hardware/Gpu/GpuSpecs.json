@@ -1,5 +1,5 @@
 {
-  "source": "Banco de referência derivado do ResetExplode (MIT, Copyright (c) 2026 Gustavo / GustavoReset), com acréscimos para AMD RDNA 1 e 2. Valores de referência dos fabricantes; o hardware não os informa.",
+  "source": "Banco de referência (licença em THIRD-PARTY-NOTICES.md), com acréscimos para AMD RDNA 1 e 2. Valores de referência dos fabricantes; o hardware não os informa.",
   "vendors": {
     "1002": "AMD",
     "8086": "Intel",

@@ -39,7 +39,7 @@ Para ver uma página direto: `m1vClock.exe --page library|fps|bottleneck|overlay
 
 ### FPS estimado
 
-- O catálogo e os índices vieram do ResetExplode, com placas e processadores mais antigos acrescentados (deste PC: RX 5500 XT = 36, Ryzen 7 5700X = 77; RTX 4070 e Ryzen 7 7700X = 100). Exemplo deste PC: CS2 em 1080p Alta dá 122 FPS, limitado pela placa de vídeo.
+- O catálogo e os índices vieram do app original, com placas e processadores mais antigos acrescentados (deste PC: RX 5500 XT = 36, Ryzen 7 5700X = 77; RTX 4070 e Ryzen 7 7700X = 100). Exemplo deste PC: CS2 em 1080p Alta dá 122 FPS, limitado pela placa de vídeo.
 - **HowManyFPS:** só com chave do usuário, cifrada por DPAPI para o usuário do Windows; envia só nomes de CPU, GPU, jogo, resolução e upscaling; respostas guardadas por 7 dias. **O formato da API não foi testado** (sem chave); os cabeçalhos de autenticação são os mesmos do original.
 - Os gêneros do catálogo estão só em português.
 

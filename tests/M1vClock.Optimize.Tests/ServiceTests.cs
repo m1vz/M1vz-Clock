@@ -67,7 +67,7 @@ public sealed class ServiceClassifierTests
     }
 
     [Theory]
-    [InlineData("ResetExplodeHelper", "Reset Explode Helper")]
+    [InlineData("ResetToolHelper", "Reset Tool Helper")]
     [InlineData("PresetService", "Preset Manager")]
     [InlineData("MeuAvpTool", "Navpad")]
     public void ANameThatOnlyContainsAKeywordInsideAWordIsNotProtected(string name, string display)
