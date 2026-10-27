@@ -81,7 +81,6 @@ Total 1.120 (3 pulados que exigem administrador), 0 avisos de compilação. Roda
 - **Bateria e notebook.** O código de bateria nunca rodou numa bateria real (este PC é de mesa) e não há leitura do `powercfg /batteryreport`.
 - **NVIDIA.** NVML, link PCIe, Resizable BAR e VBIOS não foram implementados; não há placa NVIDIA aqui. O banco de especificações de algumas placas AMD veio de especificações públicas lembradas, não de uma fonte lida na hora.
 - **Teste de velocidade da rede** só foi rodado à mão neste PC (cabo gigabit); a lógica tem testes, mas a medição não.
-- **Comparação lado a lado com o ResetExplode:** feita com o .exe da página de Releases dele (v0.16.0), como administrador; resultado e correções em [COMPARACAO-RESETEXPLODE.md](COMPARACAO-RESETEXPLODE.md).
 - Alto contraste, texto acima de 100 % e Windows 10.
 
 ## Bugs achados ao validar com administrador e ao comparar com o original

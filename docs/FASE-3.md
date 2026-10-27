@@ -19,7 +19,7 @@ Para ver uma página direto: `m1vClock.exe --page benchmarks|stress --theme ligh
 | Simulação de jogo | FPS que a CPU aguenta com 30 mil unidades (grade espacial, física, IA e preparo do desenho) | FPS médio, mediana de 3 passadas | Estado idêntico ao original após 120 quadros. Os trabalhadores ficam nos núcleos físicos (ver "Achados") |
 | Memória | Latência da RAM e banda de leitura e de cópia, fora do cache | banda de leitura em GB/s | Usa memória nativa e devolve tudo ao terminar; precisa de cerca de 2,5 GB livres e recusa antes de começar se não houver |
 | Carregamento | Um pacote de 512 MB e mil arquivos de 64 KB lidos sem o cache do Windows | tempo para carregar o mapa (menor é melhor) | Passada de aquecimento para o antivírus não distorcer a medida |
-| Disco | Sequencial de 1 MB e aleatório de 4 KB com fila de verdade (1, 8 e 32 requisições ao mesmo tempo) | nota versão 2 | Entrada e saída assíncronas de verdade; o original usava 8 threads síncronas e o README dizia QD32. A nota v2 **não** se compara com a do ResetExplode |
+| Disco | Sequencial de 1 MB e aleatório de 4 KB com fila de verdade (1, 8 e 32 requisições ao mesmo tempo) | nota versão 2 | Entrada e saída assíncronas de verdade; o original usava 8 threads síncronas e o README dizia QD32. A nota v2 **não** se compara com a do app original |
 | Cena de jogo (GPU) | Cena Direct3D 11 com terreno, 40 mil árvores, sombras 4096², água e pós-processamento; câmera fixa por tempo | FPS médio × 10 | Mesma cena e mesma câmera do original. 1% low pelo mesmo cálculo |
 | Ray tracing (DXR 1.1) | Verifica se a placa tem DXR 1.1 por hardware | n/a | Ver "O que a fase 3 não verifica" |
 
@@ -106,7 +106,7 @@ Vários bugs só apareceram rodando de verdade, não nos testes unitários:
 |---|---|---|
 | Vortice.Direct3D11, Vortice.D3DCompiler | MIT | Cena de jogo e estresse de GPU (shaders compilados em tempo de execução com o `d3dcompiler_47.dll` do Windows) |
 | Vortice.Direct3D12, Vortice.DXGI | MIT | Verificação de ray tracing e escolha da placa |
-| Algoritmos dos benchmarks do ResetExplode | MIT | Para manter as notas comparáveis; aviso em `THIRD-PARTY-NOTICES.md` |
+| Algoritmos dos benchmarks do app original | MIT | Para manter as notas comparáveis; aviso em `THIRD-PARTY-NOTICES.md` |
 
 ## Testes
 
@@ -128,11 +128,11 @@ Release sob administrador com o PawnIO, roteiro de interface com corte no mínim
 - **CPU**: corte em 60 °C, a CPU ficou em 58 °C por 15 min a 100 % e cerca de 78 W; terminou como "Concluído (tempo esgotado)".
 - Achados corrigidos: o selo de status não aparecia para leitores de tela; o limite da GPU parava em 63 °C sem chegar a 60 °C; fechar a página depois de um teste encerrado gravava uma parada falsa no log.
 
-## Comparação lado a lado com o ResetExplode v0.16.0 (22/10/2026)
+## Comparação lado a lado com o app original (v0.16.0) (22/10/2026)
 
 Mesmo PC (Ryzen 7 5700X, RX 5500 XT, NVMe), os dois programas elevados, um de cada vez:
 
-| Teste | m1vClock | ResetExplode | Situação |
+| Teste | m1vClock | Original | Situação |
 |---|---|---|---|
 | Render single-core | 370 pts | 360 pts | mesma faixa |
 | Memória (leitura / cópia / latência) | 35,6 GB/s / 35,1 GB/s / 87,6 ns | 36,3 GB/s / 35,0 GB/s / 89,0 ns | mesma faixa |
@@ -158,6 +158,6 @@ O que sobra, em torno de 10 %, não foi explicado. O render single-core não sof
 
 - **O renderizador de ray tracing (DXR 1.1) não foi portado.** A verificação de suporte está pronta e foi testada de verdade: esta RX 5500 XT não tem ray tracing por hardware, e a página diz isso com o nome da placa. Para uma placa que tem DXR 1.1 a entrada avisa que o teste não está disponível, porque o código de renderização e a nota não podem ser validados sem uma placa assim. O original tem 776 linhas desse teste; portar às cegas arriscaria dar uma nota errada.
 - **Corte por temperatura da CPU** não disparou de verdade: com o Release elevado e o PawnIO, 15 min de CPU a 100 % (cerca de 78 W) estabilizaram em 58 °C, abaixo do menor corte (60 °C), e o teste terminou pelo tempo. O corte é o mesmo código do da GPU.
-- **Nota do render multi-core dentro do app** fica 10 a 15 % abaixo da do ResetExplode e da medida sem interface; a causa restante não foi isolada (detalhes na comparação acima).
+- **Nota do render multi-core dentro do app** fica 10 a 15 % abaixo da do app original e da medida sem interface; a causa restante não foi isolada (detalhes na comparação acima).
 - Estresse de GPU em tela cheia, MSAA 8x e durações longas (acima de 1 minuto) não foram rodados.
 - Notas em outro PC, Windows 10, alto contraste e texto acima de 100 %.
